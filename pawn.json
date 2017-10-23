@@ -1,0 +1,5 @@
+{
+    "user": "sampctl",
+    "repo": "samp-stdlib",
+    "dependencies": ["openmultiplayer/omp-stdlib"]
+}
