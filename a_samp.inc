@@ -394,6 +394,7 @@ forward OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid);
 forward OnIncomingConnection(playerid, ip_address[], port);
 forward OnTrailerUpdate(playerid, vehicleid);
 forward OnVehicleSirenStateChange(playerid, vehicleid, newstate);
+forward OnPlayerFinishedDownloading(playerid, virtualworld);
 
 #define CLICK_SOURCE_SCOREBOARD		0
 forward OnPlayerClickPlayer(playerid, clickedplayerid, source);
