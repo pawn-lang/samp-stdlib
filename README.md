@@ -1,6 +1,6 @@
 # samp-stdlib
 
-The San Andreas Multiplayer Pawn Standard Library Package - designed for the sampctl package management system: https://github.com/Southclaws/sampctl
+The San Andreas Multiplayer Pawn Standard Library Package - designed for the [sampctl package management system](http://sampctl.com).
 
 ## Why?
 
