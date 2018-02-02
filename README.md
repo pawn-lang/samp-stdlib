@@ -24,7 +24,7 @@ The `master` branch will contain RC libraries if there is an active RC. The most
 
 [sampctl](http://bit.ly/sampctl) simplifies version control, this repository exists to help sampctl users who work with multiple SA:MP server versions.
 
-### Versioning starts at 0.3z (specifically, 0.3z-R1) ### there are no earlier libraries in this repo
+### Versioning starts at 0.3z (specifically, 0.3z-R1)
 
 0.3z is the earliest version supported by [sampctl](http://bit.ly/sampctl). Most servers use the latest version so it didn't seem worth archiving every SA:MP library version.
 
