@@ -1,7 +1,5 @@
 {
     "user": "sampctl",
     "repo": "samp-stdlib",
-    "entry": "test.pwn",
-    "output": "test.amx",
     "dependencies": ["sampctl/pawn-stdlib"]
 }
