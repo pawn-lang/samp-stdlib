@@ -1,6 +1,6 @@
 /*  SA-MP Player Functions
  *
- *  (c) Copyright 2005-2012, SA-MP Team
+ *  (c) Copyright 2005-2014, SA-MP Team
  *
  */
 
@@ -261,3 +261,6 @@ native StopRecordingPlayerData(playerid);
 
 native SelectTextDraw(playerid, hovercolor); // enables the mouse so the player can select a textdraw
 native CancelSelectTextDraw(playerid);	// cancel textdraw selection with the mouse
+
+// Explosion
+native CreateExplosionForPlayer(playerid, Float:X, Float:Y, Float:Z, type, Float:Radius);
