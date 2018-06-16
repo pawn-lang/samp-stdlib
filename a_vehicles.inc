@@ -60,7 +60,7 @@ native AttachTrailerToVehicle(trailerid, vehicleid);
 native DetachTrailerFromVehicle(vehicleid);
 native IsTrailerAttachedToVehicle(vehicleid);
 native GetVehicleTrailer(vehicleid);
-native SetVehicleNumberPlate(vehicleid, numberplate[]);
+native SetVehicleNumberPlate(vehicleid, const numberplate[]);
 native GetVehicleModel(vehicleid);
 native GetVehicleComponentInSlot(vehicleid, slot); // There is 1 slot for each CARMODTYPE_*
 native GetVehicleComponentType(component); // Find CARMODTYPE_* for component id

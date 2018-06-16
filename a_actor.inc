@@ -18,7 +18,7 @@ native IsActorStreamedIn(actorid, forplayerid);
 native SetActorVirtualWorld(actorid, vworld);
 native GetActorVirtualWorld(actorid);
 
-native ApplyActorAnimation(actorid, animlib[], animname[], Float:fDelta, loop, lockx, locky, freeze, time);
+native ApplyActorAnimation(actorid, const animlib[], const animname[], Float:fDelta, loop, lockx, locky, freeze, time);
 native ClearActorAnimations(actorid);
 
 native SetActorPos(actorid, Float:X, Float:Y, Float:Z);

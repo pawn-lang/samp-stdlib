@@ -27,7 +27,7 @@
 native print(const string[]);
 native printf(const format[], {Float,_}:...);
 native format(output[], len, const format[], {Float,_}:...);
-native SetTimer(funcname[], interval, repeating);
+native SetTimer(const funcname[], interval, repeating);
 native KillTimer(timerid);
 native GetTickCount();
 native Float:asin(Float:value);
@@ -35,8 +35,8 @@ native Float:acos(Float:value);
 native Float:atan(Float:value);
 native Float:atan2(Float:x, Float:y);
 
-native SendChat(msg[]);
-native SendCommand(commandtext[]);
+native SendChat(const msg[]);
+native SendCommand(const commandtext[]);
 
 native GetPlayerState(playerid);
 native GetPlayerPos(playerid, &Float:x, &Float:y, &Float:z);
@@ -57,14 +57,14 @@ native SetMyFacingAngle(Float:ang);
 native GetDistanceFromMeToPoint(Float:X, Float:Y, Float:Z, &Float:Distance);
 native IsPlayerInRangeOfPoint(playerid, Float:range, Float:X, Float:Y, Float:Z);
 
-native GetPlayerName(playerid, const name[], len);
+native GetPlayerName(playerid, name[], len);
 native IsPlayerConnected(playerid);
 
 #define PLAYER_RECORDING_TYPE_NONE		0
 #define PLAYER_RECORDING_TYPE_DRIVER	1
 #define PLAYER_RECORDING_TYPE_ONFOOT	2
 
-native StartRecordingPlayback(playbacktype, recordname[]);
+native StartRecordingPlayback(playbacktype, const recordname[]);
 native StopRecordingPlayback();
 native PauseRecordingPlayback();
 native ResumeRecordingPlayback();

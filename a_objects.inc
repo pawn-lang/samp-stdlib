@@ -65,10 +65,10 @@ native AttachPlayerObjectToPlayer(objectplayer, objectid, attachplayer, Float:Of
 #define OBJECT_MATERIAL_TEXT_ALIGN_CENTER	1
 #define OBJECT_MATERIAL_TEXT_ALIGN_RIGHT	2
 
-native SetObjectMaterial(objectid, materialindex, modelid, txdname[], texturename[], materialcolor=0);
-native SetPlayerObjectMaterial(playerid, objectid, materialindex, modelid, txdname[], texturename[], materialcolor=0);
+native SetObjectMaterial(objectid, materialindex, modelid, const txdname[], const texturename[], materialcolor=0);
+native SetPlayerObjectMaterial(playerid, objectid, materialindex, modelid, const txdname[], const texturename[], materialcolor=0);
 
-native SetObjectMaterialText(objectid, text[], materialindex = 0, materialsize = OBJECT_MATERIAL_SIZE_256x128, fontface[] = "Arial", fontsize = 24, bold = 1, fontcolor = 0xFFFFFFFF, backcolor = 0, textalignment = 0);
-native SetPlayerObjectMaterialText(playerid, objectid, text[], materialindex = 0, materialsize = OBJECT_MATERIAL_SIZE_256x128, fontface[] = "Arial", fontsize = 24, bold = 1, fontcolor = 0xFFFFFFFF, backcolor = 0, textalignment = 0);
+native SetObjectMaterialText(objectid, const text[], materialindex = 0, materialsize = OBJECT_MATERIAL_SIZE_256x128, const fontface[] = "Arial", fontsize = 24, bold = 1, fontcolor = 0xFFFFFFFF, backcolor = 0, textalignment = 0);
+native SetPlayerObjectMaterialText(playerid, objectid, const text[], materialindex = 0, materialsize = OBJECT_MATERIAL_SIZE_256x128, const fontface[] = "Arial", fontsize = 24, bold = 1, fontcolor = 0xFFFFFFFF, backcolor = 0, textalignment = 0);
 
 native SetObjectsDefaultCameraCol(disable);
