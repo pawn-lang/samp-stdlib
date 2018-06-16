@@ -19,6 +19,6 @@
 #define HTTP_ERROR_CONTENT_TOO_BIG		5
 #define HTTP_ERROR_MALFORMED_RESPONSE	6
 
-native HTTP(index, type, url[], data[], callback[]);
+native HTTP(index, type, const url[], const data[], const callback[]);
 
 // example HTTP callback: public MyHttpResponse(index, response_code, data[]) { ... }

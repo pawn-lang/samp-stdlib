@@ -9,9 +9,9 @@
 #define _sampdb_included
 #pragma library sampdb
 
-native DB:db_open(name[]);
+native DB:db_open(const name[]);
 native db_close(DB:db);
-native DBResult:db_query(DB:db, query[]);
+native DBResult:db_query(DB:db, const query[]);
 native db_free_result(DBResult:dbresult);
 native db_num_rows(DBResult:dbresult);
 native db_next_row(DBResult:dbresult);
