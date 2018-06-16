@@ -99,11 +99,11 @@ native ResetPlayerMoney(playerid);
 native SetPlayerName(playerid, const name[]);
 native GetPlayerMoney(playerid);
 native GetPlayerState(playerid);
-native GetPlayerIp(playerid, name[], len);
+native GetPlayerIp(playerid, ip[], len = sizeof(ip));
 native GetPlayerPing(playerid);
 native GetPlayerWeapon(playerid);
 native GetPlayerKeys(playerid, &keys, &updown, &leftright);
-native GetPlayerName(playerid, name[], len);
+native GetPlayerName(playerid, name[], len = sizeof(name));
 native SetPlayerTime(playerid, hour, minute);
 native GetPlayerTime(playerid, &hour, &minute);
 native TogglePlayerClock(playerid, toggle);
@@ -160,7 +160,7 @@ native PlayerTextDrawSetPreviewVehCol(playerid, PlayerText:text, color1, color2)
 native SetPVarInt(playerid, const varname[], int_value);
 native GetPVarInt(playerid, const varname[]);
 native SetPVarString(playerid, const varname[], const string_value[]);
-native GetPVarString(playerid, const varname[], string_return[], len);
+native GetPVarString(playerid, const varname[], string_return[], len = sizeof(string_return));
 native SetPVarFloat(playerid, const varname[], Float:float_value);
 native Float:GetPVarFloat(playerid, const varname[]);
 native DeletePVar(playerid, const varname[]);
@@ -172,7 +172,7 @@ native DeletePVar(playerid, const varname[]);
 #define PLAYER_VARTYPE_FLOAT		3
 
 native GetPVarsUpperIndex(playerid);
-native GetPVarNameAtIndex(playerid, index, ret_varname[], ret_len);
+native GetPVarNameAtIndex(playerid, index, ret_varname[], ret_len = sizeof(ret_varname));
 native GetPVarType(playerid, const varname[]);
 
 #define MAX_CHATBUBBLE_LENGTH 144
@@ -188,7 +188,7 @@ native PlayerPlaySound(playerid, soundid, Float:x, Float:y, Float:z);
 native ApplyAnimation(playerid, const animlib[], const animname[], Float:fDelta, loop, lockx, locky, freeze, time, forcesync = 0);
 native ClearAnimations(playerid, forcesync = 0);
 native GetPlayerAnimationIndex(playerid); // return the index of any running applied animations (0 if none are running)
-native GetAnimationName(index, animlib[], len1, animname[], len2); // get the animation lib/name for the index
+native GetAnimationName(index, animlib[], len1 = sizeof(animlib), animname[], len2 = sizeof(animname)); // get the animation lib/name for the index
 native GetPlayerSpecialAction(playerid);
 native SetPlayerSpecialAction(playerid,actionid);
 native DisableRemoteVehicleCollisions(playerid, disable);

@@ -26,7 +26,7 @@
 // Util
 native print(const string[]);
 native printf(const format[], {Float,_}:...);
-native format(output[], len, const format[], {Float,_}:...);
+native format(output[], len = sizeof(output), const format[], {Float,_}:...);
 native SetTimer(const funcname[], interval, repeating);
 native KillTimer(timerid);
 native GetTickCount();
@@ -57,7 +57,7 @@ native SetMyFacingAngle(Float:ang);
 native GetDistanceFromMeToPoint(Float:X, Float:Y, Float:Z, &Float:Distance);
 native IsPlayerInRangeOfPoint(playerid, Float:range, Float:X, Float:Y, Float:Z);
 
-native GetPlayerName(playerid, name[], len);
+native GetPlayerName(playerid, name[], len = sizeof(name));
 native IsPlayerConnected(playerid);
 
 #define PLAYER_RECORDING_TYPE_NONE		0

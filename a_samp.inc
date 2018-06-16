@@ -56,7 +56,7 @@
 // Util
 native print(const string[]);
 native printf(const format[], {Float,_}:...);
-native format(output[], len, const format[], {Float,_}:...);
+native format(output[], len = sizeof(output), const format[], {Float,_}:...);
 native SendClientMessage(playerid, color, const message[]);
 native SendClientMessageToAll(color, const message[]);
 native SendPlayerMessageToPlayer(playerid, senderid, const message[]);
@@ -82,13 +82,13 @@ native GetVehiclePoolSize();
 native GetActorPoolSize();
 
 // Hash
-native SHA256_PassHash(const password[], const salt[], ret_hash[], ret_hash_len); // SHA256 for password hashing
+native SHA256_PassHash(const password[], const salt[], ret_hash[], ret_hash_len = sizeof(ret_hash)); // SHA256 for password hashing
 
 // Server wide persistent variable system (SVars)
 native SetSVarInt(const varname[], int_value);
 native GetSVarInt(const varname[]);
 native SetSVarString(const varname[], const string_value[]);
-native GetSVarString(const varname[], string_return[], len);
+native GetSVarString(const varname[], string_return[], len = sizeof(string_return));
 native SetSVarFloat(const varname[], Float:float_value);
 native Float:GetSVarFloat(const varname[]);
 native DeleteSVar(const varname[]);
@@ -100,7 +100,7 @@ native DeleteSVar(const varname[]);
 #define SERVER_VARTYPE_FLOAT		3
 
 native GetSVarsUpperIndex();
-native GetSVarNameAtIndex(index, ret_varname[], ret_len);
+native GetSVarNameAtIndex(index, ret_varname[], ret_len = sizeof(ret_varname));
 native GetSVarType(const varname[]);
 
 // Game
@@ -117,7 +117,7 @@ native ShowNameTags(show);
 native ShowPlayerMarkers(mode);
 native GameModeExit();
 native SetWorldTime(hour);
-native GetWeaponName(weaponid, weapon[], len);
+native GetWeaponName(weaponid, weapon[], len = sizeof(weapon));
 native EnableTirePopping(enable); // deprecated function
 native EnableVehicleFriendlyFire();
 native AllowInteriorWeapons(allow);
@@ -146,8 +146,8 @@ native IsPlayerNPC(playerid);
 native AddCharModel(baseid, newid, const dffname[], const txdname[]);
 native AddSimpleModel(virtualworld, baseid, newid, const dffname[], const txdname[]);
 native AddSimpleModelTimed(virtualworld, baseid, newid, const dffname[], const txdname[], timeon, timeoff);
-native FindModelFileNameFromCRC(crc, retstr[], retstr_size);
-native FindTextureFileNameFromCRC(crc, retstr[], retstr_size);
+native FindModelFileNameFromCRC(crc, retstr[], retstr_size = sizeof(retstr));
+native FindTextureFileNameFromCRC(crc, retstr[], retstr_size = sizeof(retstr));
 native RedirectDownload(playerid, const url[]);
 
 // Admin
@@ -156,18 +156,18 @@ native Kick(playerid);
 native Ban(playerid);
 native BanEx(playerid, const reason[]);
 native SendRconCommand(const command[]);
-native GetPlayerNetworkStats(playerid, retstr[], retstr_size);
-native GetNetworkStats(retstr[], retstr_size);
-native GetPlayerVersion(playerid, version[], len); // Returns the SA-MP client revision as reported by the player
+native GetPlayerNetworkStats(playerid, retstr[], retstr_size = sizeof(retstr));
+native GetNetworkStats(retstr[], retstr_size = sizeof(retstr));
+native GetPlayerVersion(playerid, version[], len = sizeof(version)); // Returns the SA-MP client revision as reported by the player
 native BlockIpAddress(const ip_address[], timems);
 native UnBlockIpAddress(const ip_address[]);
 
 // Deprecated:
-native GetServerVarAsString(const varname[], buffer[], len);
+native GetServerVarAsString(const varname[], buffer[], len = sizeof(buffer));
 native GetServerVarAsInt(const varname[]);
 native GetServerVarAsBool(const varname[]);
 // These are the same 3 functions as above although they avoid the name ambiguity/conflict with the SVar system.
-native GetConsoleVarAsString(const varname[], buffer[], len);
+native GetConsoleVarAsString(const varname[], buffer[], len = sizeof(buffer));
 native GetConsoleVarAsInt(const varname[]);
 native GetConsoleVarAsBool(const varname[]);
 
@@ -181,7 +181,7 @@ native NetStats_BytesSent(playerid);
 native NetStats_MessagesRecvPerSecond(playerid);
 native Float:NetStats_PacketLossPercent(playerid);
 native NetStats_ConnectionStatus(playerid);
-native NetStats_GetIpPort(playerid, ip_port[], ip_port_len);
+native NetStats_GetIpPort(playerid, ip_port[], ip_port_len = sizeof(ip_port));
 
 // Menu
 native Menu:CreateMenu(const title[], columns, Float:x, Float:y, Float:col1width, Float:col2width = 0.0);
