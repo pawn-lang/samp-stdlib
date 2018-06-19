@@ -563,7 +563,7 @@ native GetPlayerState(playerid);
 
 /// <summary>Get the specified player's IP address and store it in a string.</summary>
 /// <param name="playerid">The ID of the player to get the IP address of</param>
-/// <param name="ip">The string to store the player's IP address in, passed by reference</param>
+/// <param name="name">The string to store the player's IP address in, passed by reference</param>
 /// <param name="len">The maximum length of the IP address (recommended 16)</param>
 /// <seealso name="NetStats_GetIpPort"/>
 /// <seealso name="GetPlayerName"/>
@@ -574,7 +574,7 @@ native GetPlayerState(playerid);
 /// <seealso name="OnPlayerDisconnect"/>
 /// <remarks>This function does not work when used in <a href="#OnPlayerDisconnect">OnPlayerDisconnect</a> because the player is already disconnected. It will return an invalid IP (<b><c>255.255.255.255</c></b>). Save players' IPs under <a href="#OnPlayerConnect">OnPlayerConnect</a> if they need to be used under <a href="#OnPlayerDisconnect">OnPlayerDisconnect</a>. </remarks>
 /// <returns><b><c>1</c></b> on success and <b><c>0</c></b> on failure.</returns>
-native GetPlayerIp(playerid, ip[], len);
+native GetPlayerIp(playerid, name[], len);
 
 /// <summary>Get the ping of a player. The ping measures the amount of time it takes for the server to 'ping' the client and for the client to send the message back.</summary>
 /// <param name="playerid">The ID of the player to get the ping of</param>
