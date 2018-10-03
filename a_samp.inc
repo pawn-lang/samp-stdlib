@@ -8,7 +8,6 @@
 	#endinput
 #endif
 #define _samp_included
-#pragma library samp
 
 #pragma tabsize 4
 // Ignores warning 217 for properly indented PAWNO code
