@@ -4,9 +4,10 @@
  *
  */
 
-#if defined _players_included
+#if defined _INC_a_players
 	#endinput
 #endif
+#define _INC_a_players
 #define _players_included
 
 #define SPECIAL_ACTION_NONE				0

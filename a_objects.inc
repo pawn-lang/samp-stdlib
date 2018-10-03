@@ -4,9 +4,10 @@
  *
  */
 
-#if defined _objects_included
+#if defined _INC_a_objects
 	#endinput
 #endif
+#define _INC_a_objects
 #define _objects_included
 
 // Objects

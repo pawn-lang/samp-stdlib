@@ -4,9 +4,10 @@
  *
  */
 
-#if defined _actor_included
+#if defined _INC_a_actor
 	#endinput
 #endif
+#define _INC_a_actor
 #define _actor_included
 
 /// <summary>Create a static 'actor' in the world. These 'actors' are like NPCs, however they have limited functionality. They do not take up server player slots.</summary>

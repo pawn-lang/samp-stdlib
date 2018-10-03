@@ -4,6 +4,11 @@
  *
  */
 
+#if defined _INC_a_http
+	#endinput
+#endif
+#define _INC_a_http
+
 // HTTP requests
 #define HTTP_GET						1
 #define HTTP_POST						2
