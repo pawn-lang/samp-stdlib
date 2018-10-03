@@ -87,21 +87,27 @@
 #define INVALID_PLAYER_3DTEXT_ID               (PlayerText3D:0xFFFF)
 
 // States
-#define PLAYER_STATE_NONE                      (0)
-#define PLAYER_STATE_ONFOOT                    (1)
-#define PLAYER_STATE_DRIVER                    (2)
-#define PLAYER_STATE_PASSENGER                 (3)
-#define PLAYER_STATE_EXIT_VEHICLE              (4) // (used internally)
-#define PLAYER_STATE_ENTER_VEHICLE_DRIVER      (5) // (used internally)
-#define PLAYER_STATE_ENTER_VEHICLE_PASSENGER   (6) // (used internally)
-#define PLAYER_STATE_WASTED                    (7)
-#define PLAYER_STATE_SPAWNED                   (8)
-#define PLAYER_STATE_SPECTATING                (9)
+enum
+{
+	PLAYER_STATE_NONE,
+	PLAYER_STATE_ONFOOT,
+	PLAYER_STATE_DRIVER,
+	PLAYER_STATE_PASSENGER,
+	PLAYER_STATE_EXIT_VEHICLE,            // (used internally)
+	PLAYER_STATE_ENTER_VEHICLE_DRIVER,    // (used internally)
+	PLAYER_STATE_ENTER_VEHICLE_PASSENGER, // (used internally)
+	PLAYER_STATE_WASTED,
+	PLAYER_STATE_SPAWNED,
+	PLAYER_STATE_SPECTATING
+}
 
 // Marker modes used by ShowPlayerMarkers()
-#define PLAYER_MARKERS_MODE_OFF                (0)
-#define PLAYER_MARKERS_MODE_GLOBAL             (1)
-#define PLAYER_MARKERS_MODE_STREAMED           (2)
+enum e_PLAYER_MARKERS
+{
+	PLAYER_MARKERS_MODE_OFF,
+	PLAYER_MARKERS_MODE_GLOBAL,
+	PLAYER_MARKERS_MODE_STREAMED
+}
 
 // Weapons
 #define WEAPON_BRASSKNUCKLE                    (1)
@@ -176,42 +182,70 @@
 #define KEY_RIGHT                              (128)
 
 // Player GUI Dialog
-#define DIALOG_STYLE_MSGBOX                    (0)
-#define DIALOG_STYLE_INPUT                     (1)
-#define DIALOG_STYLE_LIST                      (2)
-#define DIALOG_STYLE_PASSWORD                  (3)
-#define DIALOG_STYLE_TABLIST                   (4)
-#define DIALOG_STYLE_TABLIST_HEADERS           (5)
+enum e_DIALOG_STYLE
+{
+	DIALOG_STYLE_MSGBOX,
+	DIALOG_STYLE_INPUT,
+	DIALOG_STYLE_LIST,
+	DIALOG_STYLE_PASSWORD,
+	DIALOG_STYLE_TABLIST,
+	DIALOG_STYLE_TABLIST_HEADERS
+}
 
 // Text Draw
-#define TEXT_DRAW_FONT_SPRITE_DRAW             (4)
-#define TEXT_DRAW_FONT_MODEL_PREVIEW           (5)
+#define TEXT_DRAW_FONT_SPRITE_DRAW	 (4)
+#define TEXT_DRAW_FONT_MODEL_PREVIEW (5)
+
+enum e_TEXT_DRAW_ALIGN
+{
+	TEXT_DRAW_ALIGN_LEFT = 1,
+	TEXT_DRAW_ALIGN_CENTER,
+	TEXT_DRAW_ALIGN_RIGHT
+}
 
 // SVar enumeration
-#define	SERVER_VARTYPE_NONE                    (0)
-#define SERVER_VARTYPE_INT                     (1)
-#define SERVER_VARTYPE_STRING                  (2)
-#define SERVER_VARTYPE_FLOAT                   (3)
+enum e_SERVER_VARTYPE
+{
+	SERVER_VARTYPE_NONE,
+	SERVER_VARTYPE_INT,
+	SERVER_VARTYPE_STRING,
+	SERVER_VARTYPE_FLOAT
+}
 
 // Artwork/NetModels
-#define DOWNLOAD_REQUEST_EMPTY                 (0)
-#define DOWNLOAD_REQUEST_MODEL_FILE            (1)
-#define DOWNLOAD_REQUEST_TEXTURE_FILE          (2)
+enum e_DOWNLOAD_REQUEST
+{
+	DOWNLOAD_REQUEST_EMPTY,
+	DOWNLOAD_REQUEST_MODEL_FILE,
+	DOWNLOAD_REQUEST_TEXTURE_FILE
+}
 
-#define CLICK_SOURCE_SCOREBOARD                (0)
+enum e_CLICK_SOURCE
+{
+	CLICK_SOURCE_SCOREBOARD
+}
 
-#define EDIT_RESPONSE_CANCEL                   (0)
-#define EDIT_RESPONSE_FINAL                    (1)
-#define EDIT_RESPONSE_UPDATE                   (2)
+enum e_EDIT_RESPONSE
+{
+	EDIT_RESPONSE_CANCEL,
+	EDIT_RESPONSE_FINAL,
+	EDIT_RESPONSE_UPDATE
+}
 
-#define SELECT_OBJECT_GLOBAL_OBJECT            (1)
-#define SELECT_OBJECT_PLAYER_OBJECT            (2)
+enum e_SELECT_OBJECT
+{
+	SELECT_OBJECT_GLOBAL_OBJECT = 1,
+	SELECT_OBJECT_PLAYER_OBJECT
+}
 
-#define BULLET_HIT_TYPE_NONE                   (0)
-#define BULLET_HIT_TYPE_PLAYER                 (1)
-#define BULLET_HIT_TYPE_VEHICLE                (2)
-#define BULLET_HIT_TYPE_OBJECT                 (3)
-#define BULLET_HIT_TYPE_PLAYER_OBJECT          (4)
+enum e_BULLET_HIT_TYPE
+{
+	BULLET_HIT_TYPE_NONE,
+	BULLET_HIT_TYPE_PLAYER,
+	BULLET_HIT_TYPE_VEHICLE,
+	BULLET_HIT_TYPE_OBJECT,
+	BULLET_HIT_TYPE_PLAYER_OBJECT
+}
 
 // Limits
 #if MAX_PLAYER_NAME < 1 || MAX_PLAYER_NAME > 24
@@ -366,7 +400,7 @@ open.mp releases can use `A` as the first digit.
 	/// </remarks>
 	/// <remarks>The values for the placeholders follow in the exact same order as parameters in the call. For example, <b><c>"I am %i years old"</c></b> - the <b><c>%i</c></b> will be replaced with an Integer variable, which is the person's age.</remarks>
 	/// <remarks>You may optionally put a number between the <b><c>%</c></b> and the letter of the placeholder code. This number indicates the field width; if the size of the parameter to print at the position of the placeholder is smaller than the field width, the field is expanded with spaces. To cut the number of decimal places beeing shown of a float, you can add <b><c>.&lt;max number&gt;</c></b> between the <b><c>%</c></b> and the <b><c>f</c></b>. (example: <b><c>%.2f</c></b>)</remarks>
-	native printf(const format[], {Float, _}:...);
+	native printf(const format[], {Float,_}:...);
 #endif
 
 /// <summary>Formats a string to include variables and other strings inside it.</summary>
@@ -499,7 +533,7 @@ native GameTextForPlayer(playerid, const string[], time, style);
 /// <remarks>The function that should be called must be public. </remarks>
 /// <remarks>The use of many timers will result in increased memory/cpu usage. </remarks>
 /// <returns>The ID of the timer that was started. Timer IDs start at <b><c>1</c></b>.</returns>
-native SetTimer(const functionName[], interval, repeating);
+native SetTimer(const functionName[], interval, bool:repeating);
 
 /// <summary>Sets a timer to call a function after the specified interval. This variant ('Ex') can pass parameters (such as a player ID) to the function.</summary>
 /// <param name="functionName">The name of a public function to call when the timer expires</param>
@@ -527,7 +561,7 @@ native SetTimer(const functionName[], interval, repeating);
 ///   </ul>
 /// </remarks>
 /// <returns>The ID of the timer that was started. Timer IDs start at <b><c>1</c></b> and are never reused. There are no internal checks to verify that the parameters passed are valid (e.g. duration not a minus value).</returns>
-native SetTimerEx(const functionName[], interval, repeating, const format[], {Float, _}:...);
+native SetTimerEx(const functionName[], interval, bool:repeating, const format[] = "", {Float, _}:...);
 
 /// <summary>Kills (stops) a running timer.</summary>
 /// <param name="timerid">The ID of the timer to kill (returned by <a href="#SetTimer">SetTimer</a> or <a href="#SetTimerEx">SetTimerEx</a>)</param>
@@ -568,7 +602,7 @@ native GetMaxPlayers();
 ///     <li><b><c>s</c></b> - a string</li>
 ///   </ul>
 /// </remarks>
-native CallRemoteFunction(const function[], const format[], {Float, _}:...);
+native CallRemoteFunction(const function[], const format[], {Float,_}:...);
 
 /// <summary>Calls a public function from the script in which it is used.</summary>
 /// <param name="function">Public function's name</param>
@@ -588,7 +622,7 @@ native CallRemoteFunction(const function[], const format[], {Float, _}:...);
 ///     <li><b><c>s</c></b> - a string</li>
 ///   </ul>
 /// </remarks>
-native CallLocalFunction(const function[], const format[], {Float, _}:...);
+native CallLocalFunction(const function[], const format[], {Float,_}:...);
 
 /// <summary>Returns the norm (length) of the provided vector.</summary>
 /// <param name="x">The vector's magnitude on the x axis</param>
@@ -800,7 +834,7 @@ native GetSVarNameAtIndex(index, output[], size = sizeof (output));
 ///   </ul>
 /// </remarks>
 /// <returns>Returns the type of the SVar. See table below.</returns>
-native GetSVarType(const svar[]);
+native e_SERVER_VARTYPE:GetSVarType(const svar[]);
 
 // Game
 
@@ -1000,7 +1034,7 @@ native ShowNameTags(bool:show);
 ///   </ul>
 /// </remarks>
 /// <remarks>It is also possible to set a player's colour to a colour that has full transparency (no alpha value). This makes it possible to show markers on a per-player basis.</remarks>
-native ShowPlayerMarkers(mode);
+native ShowPlayerMarkers(e_PLAYER_MARKERS:mode);
 
 /// <summary>Ends the current gamemode.</summary>
 /// <seealso name="OnGameModeExit"/>
@@ -1044,6 +1078,7 @@ native EnableVehicleFriendlyFire();
 /// <seealso name="SetPlayerInterior"/>
 /// <seealso name="GetPlayerInterior"/>
 /// <seealso name="OnPlayerInteriorChange"/>
+#pragma deprecated Use `OnPlayerInteriorChange`.
 native AllowInteriorWeapons(bool:allow);
 
 /// <summary>Set the world weather for all players.</summary>
@@ -1737,7 +1772,7 @@ native TextDrawTextSize(Text:text, Float:width, Float:height);
 /// <param name="text">The ID of the textdraw to set the alignment of</param>
 /// <param name="alignment"><b><c>1</c></b>-left <b><c>2</c></b>-centered <b><c>3</c></b>-right</param>
 /// <remarks>For alignment <b><c>2</c></b> (center) the x and y values of <a href="#TextSize">TextSize</a> need to be swapped, see notes at <a href="#TextDrawTextSize">TextDrawTextSize</a>, also position coordinate become position of center of textdraw and not left/top edges. </remarks>
-native TextDrawAlignment(Text:text, alignment);
+native TextDrawAlignment(Text:text, e_TEXT_DRAW_ALIGN:alignment);
 
 /// <summary>Sets the text colour of a textdraw.</summary>
 /// <param name="text">The ID of the textdraw to change the colour of.</param>
@@ -2189,7 +2224,7 @@ native UpdatePlayer3DTextLabelText(playerid, PlayerText3D:textid, colour, const 
 /// <param name="caption">The title at the top of the dialog. The length of the caption can not exceed more than 64 characters before it starts to cut off</param>
 /// <param name="info">The text to display in the main dialog. Use <b><c>\n</c></b> to start a new line and <b><c>\t</c></b> to tabulate</param>
 /// <param name="button1">The text on the left button</param>
-/// <param name="button2">The text on the right button. Leave it blank ("") to hide it</param>
+/// <param name="button2">The text on the right button. Leave it blank ( "" ) to hide it</param>
 /// <seealso name="TextDrawShowForPlayer"/>
 /// <seealso name="OnDialogResponse"/>
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
@@ -2199,7 +2234,7 @@ native UpdatePlayer3DTextLabelText(playerid, PlayerText3D:textid, colour, const 
 ///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute. This means the player is not connected.<br />
 /// </returns>
-native ShowPlayerDialog(playerid, dialogid, style, const caption[], const info[], const button1[], const button2[]);
+native ShowPlayerDialog(playerid, dialogid, e_DIALOG_STYLE:style, const caption[], const info[], const button1[], const button2[]);
 
 /// <summary>Get a players unique ID.</summary>
 /// <param name="playerid">The player to get the unique ID of</param>
@@ -3064,7 +3099,7 @@ forward OnPlayerRequestDownload(playerid, type, crc);
 ///   <b><c>0</c></b> - Indicates that this callback will be passed to the next filterscript.<br />
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnPlayerClickPlayer(playerid, clickedplayerid, source);
+forward OnPlayerClickPlayer(playerid, clickedplayerid, e_CLICK_SOURCE:source);
 
 /// <summary>This callback is called when a player finishes editing an object (<a href="#EditObject">EditObject</a>/<a href="#EditPlayerObject">EditPlayerObject</a>).</summary>
 /// <param name="playerid">The ID of the player that edited an object</param>
@@ -3088,7 +3123,7 @@ forward OnPlayerClickPlayer(playerid, clickedplayerid, source);
 ///   <b><c>0</c></b> - Indicates that this callback will be passed to the next script.<br />
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnPlayerEditObject(playerid, playerobject, objectid, response, Float:fX, Float:fY, Float:fZ, Float:fRotX, Float:fRotY, Float:fRotZ);
+forward OnPlayerEditObject(playerid, playerobject, objectid, /*e_EDIT_RESPONSE:*/response, Float:fX, Float:fY, Float:fZ, Float:fRotX, Float:fRotY, Float:fRotZ);
 
 /// <summary>This callback is called when a player ends attached object edition mode.</summary>
 /// <param name="playerid">The ID of the player that ended edition mode</param>
@@ -3114,7 +3149,7 @@ forward OnPlayerEditObject(playerid, playerobject, objectid, response, Float:fX,
 ///   <b><c>0</c></b> - Indicates that this callback will be passed to the next script.<br />
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnPlayerEditAttachedObject(playerid, response, index, modelid, boneid, Float:fOffsetX, Float:fOffsetY, Float:fOffsetZ, Float:fRotX, Float:fRotY, Float:fRotZ, Float:fScaleX, Float:fScaleY, Float:fScaleZ);
+forward OnPlayerEditAttachedObject(playerid, /*e_EDIT_RESPONSE:*/response, index, modelid, boneid, Float:fOffsetX, Float:fOffsetY, Float:fOffsetZ, Float:fRotX, Float:fRotY, Float:fRotZ, Float:fScaleX, Float:fScaleY, Float:fScaleZ);
 
 /// <summary>This callback is called when a player selects an object after <a href="#SelectObject">SelectObject</a> has been used.</summary>
 /// <param name="playerid">The ID of the player that selected an object</param>
@@ -3131,7 +3166,7 @@ forward OnPlayerEditAttachedObject(playerid, response, index, modelid, boneid, F
 ///   <b><c>0</c></b> - Indicates that this callback will be passed to the next script.<br />
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnPlayerSelectObject(playerid, type, objectid, modelid, Float:fX, Float:fY, Float:fZ);
+forward OnPlayerSelectObject(playerid, e_SELECT_OBJECT:type, objectid, modelid, Float:fX, Float:fY, Float:fZ);
 
 /// <summary>This callback is called when a player fires a shot from a weapon. Only bullet weapons are supported. Only <b>passenger</b> drive-by is supported (not driver drive-by, and not sea sparrow / hunter shots).</summary>
 /// <param name="playerid">The ID of the player that shot a weapon</param>
@@ -3173,7 +3208,7 @@ forward OnPlayerSelectObject(playerid, type, objectid, modelid, Float:fX, Float:
 ///   <b><c>1</c></b> - Allow the bullet to cause damage.<br />
 ///   It is always called first in filterscripts so returning <b><c>0</c></b> there also blocks other scripts from seeing it.
 /// </returns>
-forward OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY, Float:fZ);
+forward OnPlayerWeaponShot(playerid, weaponid, e_BULLET_HIT_TYPE:hittype, hitid, Float:fX, Float:fY, Float:fZ);
 
 /// <summary>This callback is called when a SendClientCheck request comletes</summary>
 /// <param name="playerid">The ID of the player checked</param>

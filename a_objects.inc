@@ -18,24 +18,30 @@
 // Defines
 // --------------------------------------------------
 
-#define OBJECT_MATERIAL_SIZE_32x32             (10)
-#define OBJECT_MATERIAL_SIZE_64x32             (20)
-#define OBJECT_MATERIAL_SIZE_64x64             (30)
-#define OBJECT_MATERIAL_SIZE_128x32            (40)
-#define OBJECT_MATERIAL_SIZE_128x64            (50)
-#define OBJECT_MATERIAL_SIZE_128x128           (60)
-#define OBJECT_MATERIAL_SIZE_256x32            (70)
-#define OBJECT_MATERIAL_SIZE_256x64            (80)
-#define OBJECT_MATERIAL_SIZE_256x128           (90)
-#define OBJECT_MATERIAL_SIZE_256x256           (100)
-#define OBJECT_MATERIAL_SIZE_512x64            (110)
-#define OBJECT_MATERIAL_SIZE_512x128           (120)
-#define OBJECT_MATERIAL_SIZE_512x256           (130)
-#define OBJECT_MATERIAL_SIZE_512x512           (140)
+enum e_OBJECT_MATERIAL_SIZE (+= 10)
+{
+	OBJECT_MATERIAL_SIZE_32x32 = 10,
+	OBJECT_MATERIAL_SIZE_64x32,
+	OBJECT_MATERIAL_SIZE_64x64,
+	OBJECT_MATERIAL_SIZE_128x32,
+	OBJECT_MATERIAL_SIZE_128x64,
+	OBJECT_MATERIAL_SIZE_128x128,
+	OBJECT_MATERIAL_SIZE_256x32,
+	OBJECT_MATERIAL_SIZE_256x64,
+	OBJECT_MATERIAL_SIZE_256x128,
+	OBJECT_MATERIAL_SIZE_256x256,
+	OBJECT_MATERIAL_SIZE_512x64,
+	OBJECT_MATERIAL_SIZE_512x128,
+	OBJECT_MATERIAL_SIZE_512x256,
+	OBJECT_MATERIAL_SIZE_512x512,
+}
 
-#define OBJECT_MATERIAL_TEXT_ALIGN_LEFT        (0)
-#define OBJECT_MATERIAL_TEXT_ALIGN_CENTER      (1)
-#define OBJECT_MATERIAL_TEXT_ALIGN_RIGHT       (2)
+enum e_OBJECT_MATERIAL_TEXT_ALIGN
+{
+	OBJECT_MATERIAL_TEXT_ALIGN_LEFT,
+	OBJECT_MATERIAL_TEXT_ALIGN_CENTER,
+	OBJECT_MATERIAL_TEXT_ALIGN_RIGHT
+}
 
 // Objects
 
@@ -581,7 +587,7 @@ native SetPlayerObjectMaterial(playerid, objectid, materialIndex, modelid, const
 ///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute.
 /// </returns>
-native SetObjectMaterialText(objectid, const text[], materialIndex = 0, materialSize = OBJECT_MATERIAL_SIZE_256x128, const fontFace[] = "Arial", fontSize = 24, bool:bold = true, fontColour = 0xFFFFFFFF, backgroundColour = 0, textAlignment = 0);
+native SetObjectMaterialText(objectid, const text[], materialIndex = 0, e_OBJECT_MATERIAL_SIZE:materialSize = OBJECT_MATERIAL_SIZE_256x128, const fontFace[] = "Arial", fontSize = 24, bool:bold = true, fontColour = 0xFFFFFFFF, backgroundColour = 0, e_OBJECT_MATERIAL_TEXT_ALIGN:textalignment = OBJECT_MATERIAL_TEXT_ALIGN_LEFT);
 
 /// <summary>Replace the texture of a player object with text.</summary>
 /// <param name="playerid">The ID of the player whose player object to set the text of</param>
@@ -626,7 +632,7 @@ native SetObjectMaterialText(objectid, const text[], materialIndex = 0, material
 ///     <li><b><c>OBJECT_MATERIAL_SIZE_512x512</c></b> 140</li>
 ///   </ul>
 /// </remarks>
-native SetPlayerObjectMaterialText(playerid, objectid, const text[], materialIndex = 0, materialSize = OBJECT_MATERIAL_SIZE_256x128, const fontFace[] = "Arial", fontSize = 24, bool:bold = true, fontColour = 0xFFFFFFFF, backgroundColour = 0, textAlignment = 0);
+native SetPlayerObjectMaterialText(playerid, objectid, const text[], materialIndex = 0, e_OBJECT_MATERIAL_SIZE:materialSize = OBJECT_MATERIAL_SIZE_256x128, const fontFace[] = "Arial", fontSize = 24, bool:bold = true, fontColour = 0xFFFFFFFF, backgroundColour = 0, e_OBJECT_MATERIAL_TEXT_ALIGN:textalignment = OBJECT_MATERIAL_TEXT_ALIGN_LEFT);
 
 /// <summary>Allows camera collisions with newly created objects to be disabled by default.</summary>
 /// <param name="disable"><b><c>1</c></b> to disable camera collisions for newly created objects and <b><c>0</c></b> to enable them (enabled by default)</param>
@@ -635,5 +641,5 @@ native SetPlayerObjectMaterialText(playerid, objectid, const text[], materialInd
 /// <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
 /// <remarks>This function only affects the camera collision of objects created AFTER its use - it does not toggle existing objects' camera collisions.</remarks>
 /// <remarks>This only works outside the map boundaries (past <b><c>-3000</c></b>/<b><c>3000</c></b> units on the x and/or y axis).</remarks>
-native SetObjectsDefaultCameraCol(disable);
+native SetObjectsDefaultCameraCol(bool:disable);
 

@@ -18,34 +18,41 @@
 // Defines
 // --------------------------------------------------
 
-#define CARMODTYPE_SPOILER                     (0)
-#define CARMODTYPE_HOOD                        (1)
-#define CARMODTYPE_ROOF                        (2)
-#define CARMODTYPE_SIDESKIRT                   (3)
-#define CARMODTYPE_LAMPS                       (4)
-#define CARMODTYPE_NITRO                       (5)
-#define CARMODTYPE_EXHAUST                     (6)
-#define CARMODTYPE_WHEELS                      (7)
-#define CARMODTYPE_STEREO                      (8)
-#define CARMODTYPE_HYDRAULICS                  (9)
-#define CARMODTYPE_FRONT_BUMPER                (10)
-#define CARMODTYPE_REAR_BUMPER                 (11)
-#define CARMODTYPE_VENT_RIGHT                  (12)
-#define CARMODTYPE_VENT_LEFT                   (13)
+enum e_CARMODTYPE
+{
+	CARMODTYPE_SPOILER,
+	CARMODTYPE_HOOD,
+	CARMODTYPE_ROOF,
+	CARMODTYPE_SIDESKIRT,
+	CARMODTYPE_LAMPS,
+	CARMODTYPE_NITRO,
+	CARMODTYPE_EXHAUST,
+	CARMODTYPE_WHEELS,
+	CARMODTYPE_STEREO,
+	CARMODTYPE_HYDRAULICS,
+	CARMODTYPE_FRONT_BUMPER,
+	CARMODTYPE_REAR_BUMPER,
+	CARMODTYPE_VENT_RIGHT,
+	CARMODTYPE_VENT_LEFT
+}
 
+#define VEHICLE_PARAMS_ON		(1)
 #define VEHICLE_PARAMS_UNSET                   (-1)
 #define VEHICLE_PARAMS_OFF                     (0)
 #define VEHICLE_PARAMS_ON                      (1)
 
-#define VEHICLE_MODEL_INFO_SIZE                (1)
-#define VEHICLE_MODEL_INFO_FRONTSEAT           (2)
-#define VEHICLE_MODEL_INFO_REARSEAT            (3)
-#define VEHICLE_MODEL_INFO_PETROLCAP           (4)
-#define VEHICLE_MODEL_INFO_WHEELSFRONT         (5)
-#define VEHICLE_MODEL_INFO_WHEELSREAR          (6)
-#define VEHICLE_MODEL_INFO_WHEELSMID           (7)
-#define VEHICLE_MODEL_INFO_FRONT_BUMPER_Z      (8)
-#define VEHICLE_MODEL_INFO_REAR_BUMPER_Z       (9)
+enum e_VEHICLE_MODEL_INFO
+{
+	VEHICLE_MODEL_INFO_SIZE = 1,
+	VEHICLE_MODEL_INFO_FRONTSEAT,
+	VEHICLE_MODEL_INFO_REARSEAT,
+	VEHICLE_MODEL_INFO_PETROLCAP,
+	VEHICLE_MODEL_INFO_WHEELSFRONT,
+	VEHICLE_MODEL_INFO_WHEELSREAR,
+	VEHICLE_MODEL_INFO_WHEELSMID,
+	VEHICLE_MODEL_INFO_FRONT_BUMPER_Z,
+	VEHICLE_MODEL_INFO_REAR_BUMPER_Z
+}
 
 // Vehicle
 
@@ -534,7 +541,7 @@ native GetVehicleModel(vehicleid);
 ///   </ul>
 /// </remarks>
 /// <returns>The ID of the component installed in the specified slot. Returns <b><c>0</c></b> if no component in specified vehicle's specified slot, or if vehicle doesn't exist.</returns>
-native GetVehicleComponentInSlot(vehicleid, slot); // There is 1 slot for each CARMODTYPE_*
+native GetVehicleComponentInSlot(vehicleid, e_CARMODTYPE:slot); // There is 1 slot for each CARMODTYPE_*
 
 /// <summary>Find out what type of component a certain ID is.</summary>
 /// <param name="component">The component ID to check</param>
@@ -545,7 +552,7 @@ native GetVehicleComponentInSlot(vehicleid, slot); // There is 1 slot for each C
 /// <seealso name="OnEnterExitModShop"/>
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <returns>The component slot ID of the specified component or <b><c>-1</c></b> if the component is invalid.</returns>
-native GetVehicleComponentType(component); // Find CARMODTYPE_* for component ID
+native e_CARMODTYPE:GetVehicleComponentType(component); // Find CARMODTYPE_* for component ID
 
 /// <summary>Fully repairs a vehicle, including visual damage (bumps, dents, scratches, popped tires etc.).</summary>
 /// <param name="vehicleid">The ID of the vehicle to repair</param>
@@ -720,7 +727,7 @@ native UpdateVehicleDamageStatus(vehicleid, panels, doors, lights, tires);
 ///     <li><b><c>VEHICLE_MODEL_INFO_REAR_BUMPER_Z </c></b> - height of the rear bumper</li>
 ///   </ul>
 /// </remarks>
-native GetVehicleModelInfo(vehiclemodel, infotype, &Float:x, &Float:y, &Float:z);
+native GetVehicleModelInfo(vehiclemodel, e_VEHICLE_MODEL_INFO:infotype, &Float:x, &Float:y, &Float:z);
 
 // Virtual Worlds
 

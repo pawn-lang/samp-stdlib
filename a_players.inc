@@ -44,12 +44,15 @@
 #define SPECIAL_ACTION_CUFFED                  (24)
 #define SPECIAL_ACTION_CARRY                   (25)
 
-#define FIGHT_STYLE_NORMAL                     (4)
-#define FIGHT_STYLE_BOXING                     (5)
-#define FIGHT_STYLE_KUNGFU                     (6)
-#define FIGHT_STYLE_KNEEHEAD                   (7)
-#define FIGHT_STYLE_GRABKICK                   (15)
-#define FIGHT_STYLE_ELBOW                      (16)
+enum e_FIGHT_STYLE
+{
+	FIGHT_STYLE_NORMAL = 4,
+	FIGHT_STYLE_BOXING,
+	FIGHT_STYLE_KUNGFU,
+	FIGHT_STYLE_KNEEHEAD,
+	FIGHT_STYLE_GRABKICK = 15,
+	FIGHT_STYLE_ELBOW
+}
 
 #define WEAPONSKILL_PISTOL                     (0)
 #define WEAPONSKILL_PISTOL_SILENCED            (1)
@@ -70,28 +73,43 @@
 #define WEAPONSTATE_RELOADING                  (3)
 
 // PVar enumeration
-#define PLAYER_VARTYPE_NONE                    (0)
-#define PLAYER_VARTYPE_INT                     (1)
-#define PLAYER_VARTYPE_STRING                  (2)
-#define PLAYER_VARTYPE_FLOAT                   (3)
+enum e_PLAYER_VARTYPE
+{
+	PLAYER_VARTYPE_NONE,
+	PLAYER_VARTYPE_INT,
+	PLAYER_VARTYPE_STRING,
+	PLAYER_VARTYPE_FLOAT
+}
 
-#define MAPICON_LOCAL                          (0) // displays in the player's local area
-#define MAPICON_GLOBAL                         (1) // displays always
-#define MAPICON_LOCAL_CHECKPOINT               (2) // displays in the player's local area and has a checkpoint marker
-#define MAPICON_GLOBAL_CHECKPOINT              (3) // displays always and has a checkpoint marker
+enum e_MAPICON
+{
+	MAPICON_LOCAL,            // displays in the player's local area
+	MAPICON_GLOBAL,           // displays always
+	MAPICON_LOCAL_CHECKPOINT, // displays in the player's local area and has a checkpoint marker
+	MAPICON_GLOBAL_CHECKPOINT // displays always and has a checkpoint marker
+}
 
-#define CAMERA_CUT                             (2)
-#define CAMERA_MOVE                            (1)
+enum e_CAMERA
+{
+	CAMERA_MOVE = 1,
+	CAMERA_CUT
+}
 
 // Spectating
-#define SPECTATE_MODE_NORMAL                   (1)
-#define SPECTATE_MODE_FIXED                    (2)
-#define SPECTATE_MODE_SIDE                     (3)
+enum e_SPECTATE_MODE
+{
+	SPECTATE_MODE_NORMAL = 1,
+	SPECTATE_MODE_FIXED,
+	SPECTATE_MODE_SIDE
+}
 
 // Recording for NPC playback
-#define PLAYER_RECORDING_TYPE_NONE             (0)
-#define PLAYER_RECORDING_TYPE_DRIVER           (1)
-#define PLAYER_RECORDING_TYPE_ONFOOT           (2)
+enum e_PLAYER_RECORDING_TYPE
+{
+	PLAYER_RECORDING_TYPE_NONE,
+	PLAYER_RECORDING_TYPE_DRIVER,
+	PLAYER_RECORDING_TYPE_ONFOOT
+}
 
 // Player
 
@@ -479,6 +497,12 @@ native SetPlayerSkin(playerid, skinid);
 /// <returns>The skin ID (<b><c>0</c></b> if invalid).</returns>
 native GetPlayerSkin(playerid);
 
+/// <summary>Returns the class of the players skin.</summary>
+/// <param name="playerid">The player you want to get the skin from</param>
+/// <seealso name="SetPlayerSkin"/>
+/// <remarks>Returns the new skin after <a href="#SetSpawnInfo">SetSpawnInfo</a> is called but before the player actually respawns to get the new skin. </remarks>
+/// <remarks>Returns the old skin if the player was spawned through <a href="#SpawnPlayer">SpawnPlayer</a> function. </remarks>
+/// <returns>The skin id (<b><c>0</c></b> if invalid).</returns>
 native GetPlayerCustomSkin(playerid);
 
 /// <summary>Give a player a weapon with a specified amount of ammo.</summary>
@@ -744,7 +768,7 @@ native GetPlayerWantedLevel(playerid);
 ///     <li><b><c>FIGHT_STYLE_ELBOW</c></b></li>
 ///   </ul>
 /// </remarks>
-native SetPlayerFightingStyle(playerid, style);
+native SetPlayerFightingStyle(playerid, e_FIGHT_STYLE:style);
 
 /// <summary>Get the fighting style the player currently using.</summary>
 /// <param name="playerid">The ID of the player to get the fighting style of</param>
@@ -762,7 +786,7 @@ native SetPlayerFightingStyle(playerid, style);
 ///   </ul>
 /// </remarks>
 /// <returns>The ID of the fighting style of the player.</returns>
-native GetPlayerFightingStyle(playerid);
+native e_FIGHT_STYLE:GetPlayerFightingStyle(playerid);
 
 /// <summary>Set a player's velocity on the x, y and z axes.</summary>
 /// <param name="playerid">The player to apply the speed to</param>
@@ -1184,7 +1208,7 @@ native PlayerTextDrawTextSize(playerid, PlayerText:text, Float:width, Float:heig
 /// <seealso name="PlayerTextDrawHide"/>
 /// <remarks>This feature (player-textdraws) was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <remarks>For alignment <b><c>2</c></b> (center) the x and y values of TextSize need to be swapped, see notes at <a href="#PlayerTextDrawTextSize">PlayerTextDrawTextSize</a>. </remarks>
-native PlayerTextDrawAlignment(playerid, PlayerText:text, alignment);
+native PlayerTextDrawAlignment(playerid, PlayerText:text, e_TEXT_DRAW_ALIGN:alignment);
 
 /// <summary>Sets the text colour of a player-textdraw.</summary>
 /// <param name="playerid">The ID of the player who's textdraw to set the colour of</param>
@@ -1628,7 +1652,7 @@ native GetPVarNameAtIndex(playerid, index, output[], size = sizeof (output));
 ///   </ul>
 /// </remarks>
 /// <returns>Returns the type of the PVar. See table below.</returns>
-native GetPVarType(playerid, const pvar[]);
+native e_PLAYER_VARTYPE:GetPVarType(playerid, const pvar[]);
 
 #if MAX_CHATBUBBLE_LENGTH < 1 || MAX_CHATBUBBLE_LENGTH > 144
 	#error MAX_CHATBUBBLE_LENGTH must be >= 1 and <= 144
@@ -1749,7 +1773,7 @@ native PlayerPlaySound(playerid, soundid, Float:x, Float:y, Float:z);
 /// <returns>This function always returns <b><c>1</c></b>, even if the player specified does not exist, or any of the parameters are invalid (e.g. invalid library).</returns>
 native ApplyAnimation(playerid, const animationLibrary[], const animationName[], Float:delta, bool:loop, bool:lockX, bool:lockY, bool:freeze, time, bool:forceSync = false);
 
-/// <summary>Clears all animations for the given player (it also cancels all current tasks such as jetpacking, parachuting, entering vehicles, driving (removes player out of vehicle), swimming, etc.. ).</summary>
+/// <summary>Clears all animations for the given player (it also cancels all current tasks such as jetpacking,parachuting,entering vehicles, driving (removes player out of vehicle), swimming, etc.. ).</summary>
 /// <param name="playerid">The ID of the player to clear the animations of</param>
 /// <param name="forceSync">Set to <b><c>1</c></b> to force playerid to sync the animation with other players in streaming radius (optional=<b><c>0</c></b>)</param>
 /// <seealso name="ApplyAnimation"/>
@@ -2011,7 +2035,7 @@ native ShowPlayerNameTagForPlayer(playerid, targetid, bool:show);
 ///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute. Player is not connected.
 /// </returns>
-native SetPlayerMapIcon(playerid, iconid, Float:x, Float:y, Float:z, markerType, colour, style = MAPICON_LOCAL);
+native SetPlayerMapIcon(playerid, iconid, Float:x, Float:y, Float:z, markerType, colour, e_MAPICON:style = MAPICON_LOCAL);
 
 /// <summary>Removes a map icon that was set earlier for a player using <a href="#SetPlayerMapIcon">SetPlayerMapIcon</a>.</summary>
 /// <param name="playerid">The ID of the player whose icon to remove</param>
@@ -2029,6 +2053,7 @@ native RemovePlayerMapIcon(playerid, iconid);
 /// <remarks><b>This function, as of 0.3d, is deprecated. Check <a href="#OnPlayerClickMap">OnPlayerClickMap</a>.</b></remarks>
 /// <remarks>This function will work only if <a href="#AllowAdminTeleport">AllowAdminTeleport</a> is enabled, and you have to be an admin.</remarks>
 /// <seealso name="AllowAdminTeleport"/>
+#pragma deprecated Use `OnPlayerClickMap`.
 native AllowPlayerTeleport(playerid, bool:allow);
 
 // Player camera
@@ -2047,7 +2072,7 @@ native AllowPlayerTeleport(playerid, bool:allow);
 ///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute. The player specified doesn't exist.
 /// </returns>
-native SetPlayerCameraPos(playerid, Float:x, Float:y, Float:z);
+native SetPlayerCameraPos(playerid,Float:x, Float:y, Float:z);
 
 /// <summary>Set the direction a player's camera looks at. Generally meant to be used in combination with <a href="#SetPlayerCameraPos">SetPlayerCameraPos</a>.</summary>
 /// <param name="playerid">The ID of the player whose camera to set</param>
@@ -2064,7 +2089,7 @@ native SetPlayerCameraPos(playerid, Float:x, Float:y, Float:z);
 ///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute. The player specified does not exist.
 /// </returns>
-native SetPlayerCameraLookAt(playerid, Float:x, Float:y, Float:z, cut = CAMERA_CUT);
+native SetPlayerCameraLookAt(playerid, Float:x, Float:y, Float:z, e_CAMERA:cut = CAMERA_CUT);
 
 /// <summary>Restore the camera to a place behind the player, after using a function like <a href="#SetPlayerCameraPos">SetPlayerCameraPos</a>.</summary>
 /// <param name="playerid">The player you want to restore the camera for</param>
@@ -2223,7 +2248,7 @@ native AttachCameraToPlayerObject(playerid, objectid);
 /// <seealso name="SetPlayerCameraLookAt"/>
 /// <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <remarks>Use <b><c>TogglePlayerSpectating</c></b> to make objects stream in for the player while the camera is moving. You can reset the camera behind the player with <b><c>SetCameraBehindPlayer</c></b>.</remarks>
-native InterpolateCameraPos(playerid, Float:fromX, Float:fromY, Float:fromZ, Float:toX, Float:toY, Float:toZ, time, cut = CAMERA_CUT);
+native InterpolateCameraPos(playerid, Float:fromX, Float:fromY, Float:fromZ, Float:toX, Float:toY, Float:toZ, time, e_CAMERA:cut = CAMERA_CUT);
 
 /// <summary>Interpolate a player's camera's 'look at' point between two coordinates with a set speed. Can be be used with <a href="#InterpolateCameraPos">InterpolateCameraPos</a>.</summary>
 /// <param name="playerid">The ID of the player the camera should be moved for</param>
@@ -2240,7 +2265,7 @@ native InterpolateCameraPos(playerid, Float:fromX, Float:fromY, Float:fromZ, Flo
 /// <seealso name="SetPlayerCameraPos"/>
 /// <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <remarks>Use <b><c>TogglePlayerSpectating</c></b> to make objects stream in for the player while the camera is moving. You can reset the camera behind the player with <b><c>SetCameraBehindPlayer</c></b>.</remarks>
-native InterpolateCameraLookAt(playerid, Float:fromX, Float:fromY, Float:fromZ, Float:toX, Float:toY, Float:toZ, time, cut = CAMERA_CUT);
+native InterpolateCameraLookAt(playerid, Float:fromX, Float:fromY, Float:fromZ, Float:toX, Float:toY, Float:toZ, time, e_CAMERA:cut = CAMERA_CUT);
 
 // Player conditionals
 
@@ -2369,7 +2394,7 @@ native TogglePlayerSpectating(playerid, bool:toggle);
 ///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute. One of the players specified does not exist.
 /// </returns>
-native PlayerSpectatePlayer(playerid, targetid, mode = SPECTATE_MODE_NORMAL);
+native PlayerSpectatePlayer(playerid, targetid, e_SPECTATE_MODE:mode = SPECTATE_MODE_NORMAL);
 
 /// <summary>Sets a player to spectate another vehicle. Their camera will be attached to the vehicle as if they are driving it.</summary>
 /// <param name="playerid">The ID of the player who should spectate a vehicle</param>
@@ -2383,7 +2408,7 @@ native PlayerSpectatePlayer(playerid, targetid, mode = SPECTATE_MODE_NORMAL);
 ///   <b><c>1</c></b>: The function executed successfully. Note that success is reported if the player is not in spectator mode (<a href="#TogglePlayerSpectating">TogglePlayerSpectating</a>), but nothing will happen. <a href="#TogglePlayerSpectating">TogglePlayerSpectating</a> MUST be used first.<br />
 ///   <b><c>0</c></b>: The function failed to execute. The player, vehicle, or both don't exist.
 /// </returns>
-native PlayerSpectateVehicle(playerid, targetid, mode = SPECTATE_MODE_NORMAL);
+native PlayerSpectateVehicle(playerid, targetid, e_SPECTATE_MODE:mode = SPECTATE_MODE_NORMAL);
 
 /// <summary>Starts recording a player's movements to a file, which can then be reproduced by an NPC.</summary>
 /// <param name="playerid">The ID of the player to record</param>
@@ -2391,7 +2416,7 @@ native PlayerSpectateVehicle(playerid, targetid, mode = SPECTATE_MODE_NORMAL);
 /// <param name="recordFile">The name of the file which will hold the recorded data. It will be saved in the scriptfiles directory, with an automatically added .rec extension, you will need to move the file to npcmodes/recordings to use for playback</param>
 /// <seealso name="StopRecordingPlayerData"/>
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
-native StartRecordingPlayerData(playerid, recordType, const recordFile[]);
+native StartRecordingPlayerData(playerid, e_PLAYER_RECORDING_TYPE:recordType, const recordFile[]);
 
 /// <summary>Stops all the recordings that had been started with <a href="#StartRecordingPlayerData">StartRecordingPlayerData</a> for a specific player.</summary>
 /// <param name="playerid">The player you want to stop the recordings of</param>

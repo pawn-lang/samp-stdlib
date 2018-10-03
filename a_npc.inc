@@ -61,13 +61,16 @@
 #define INVALID_GANG_ZONE                      (-1)
 
 // States
-#define PLAYER_STATE_NONE                      (0)
-#define PLAYER_STATE_ONFOOT                    (1)
-#define PLAYER_STATE_DRIVER                    (2)
-#define PLAYER_STATE_PASSENGER                 (3)
-#define PLAYER_STATE_WASTED                    (7)
-#define PLAYER_STATE_SPAWNED                   (8)
-#define PLAYER_STATE_SPECTATING                (9)
+enum
+{
+	PLAYER_STATE_NONE,
+	PLAYER_STATE_ONFOOT,
+	PLAYER_STATE_DRIVER,
+	PLAYER_STATE_PASSENGER,
+	PLAYER_STATE_WASTED = 7,
+	PLAYER_STATE_SPAWNED,
+	PLAYER_STATE_SPECTATING
+}
 
 // Weapons
 #define WEAPON_BRASSKNUCKLE                    (1)
@@ -138,9 +141,12 @@
 #define KEY_LEFT                               (-128)
 #define KEY_RIGHT                              (128)
 
-#define PLAYER_RECORDING_TYPE_NONE             (0)
-#define PLAYER_RECORDING_TYPE_DRIVER           (1)
-#define PLAYER_RECORDING_TYPE_ONFOOT           (2)
+enum e_PLAYER_RECORDING_TYPE
+{
+	PLAYER_RECORDING_TYPE_NONE,
+	PLAYER_RECORDING_TYPE_DRIVER,
+	PLAYER_RECORDING_TYPE_ONFOOT
+}
 
 // Limits
 #if MAX_PLAYER_NAME < 1 || MAX_PLAYER_NAME > 24
@@ -269,7 +275,7 @@ open.mp releases can use `A` as the first digit.
 	/// </remarks>
 	/// <remarks>The values for the placeholders follow in the exact same order as parameters in the call. For example, <b><c>"I am %i years old"</c></b> - the <b><c>%i</c></b> will be replaced with an Integer variable, which is the person's age.</remarks>
 	/// <remarks>You may optionally put a number between the <b><c>%</c></b> and the letter of the placeholder code. This number indicates the field width; if the size of the parameter to print at the position of the placeholder is smaller than the field width, the field is expanded with spaces. To cut the number of decimal places beeing shown of a float, you can add <b><c>.&lt;max number&gt;</c></b> between the <b><c>%</c></b> and the <b><c>f</c></b>. (example: <b><c>%.2f</c></b>)</remarks>
-	native printf(const format[], {Float, _}:...);
+	native printf(const format[], {Float,_}:...);
 #endif
 
 /// <summary>Formats a string to include variables and other strings inside it.</summary>
@@ -309,7 +315,7 @@ native format(output[], len = sizeof (output), const format[], {Float, _}:...);
 /// <remarks>The function that should be called must be public. </remarks>
 /// <remarks>The use of many timers will result in increased memory/cpu usage. </remarks>
 /// <returns>The ID of the timer that was started. Timer IDs start at <b><c>1</c></b>.</returns>
-native SetTimer(const functionName[], interval, repeating);
+native SetTimer(const functionName[], interval, bool:repeating);
 
 /// <summary>Kills (stops) a running timer.</summary>
 /// <param name="timerid">The ID of the timer to kill (returned by <a href="#SetTimer">SetTimer</a> or <a href="#SetTimerEx">SetTimerEx</a>)</param>
@@ -531,10 +537,10 @@ native bool:IsPlayerConnected(playerid);
 
 /// <summary>This will run a .rec file which has to be saved in the npcmodes/recordings folder. These files allow the NPC to follow certain actions. Their actions can be recorded manually. For more information, check the related functions.</summary>
 /// <param name="playbacktype">The type of recording to be loaded</param>
-/// <param name="recordFike">The filename to be loaded, without the .rec extension</param>
+/// <param name="recordFile">The filename to be loaded, without the .rec extension</param>
 /// <seealso name="StopRecordingPlayback"/>
 /// <remarks>This NPC function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
-native StartRecordingPlayback(playbacktype, const recordFike[]);
+native StartRecordingPlayback(e_PLAYER_RECORDING_TYPE:playbacktype, const recordFile[]);
 
 /// <summary>This will stop the current .rec file which is being ran by the NPC, making it stay idle until some other order is given.</summary>
 /// <seealso name="StartRecordingPlayback"/>

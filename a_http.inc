@@ -18,23 +18,29 @@
 // --------------------------------------------------
 
 // HTTP requests
-#define HTTP_GET                               (1)
-#define HTTP_POST                              (2)
-#define HTTP_HEAD                              (3)
+enum e_HTTP_METHOD
+{
+	HTTP_GET = 1,
+	HTTP_POST,
+	HTTP_HEAD
+}
 
 // HTTP error response codes
 // These codes compliment ordinary HTTP response codes returned in 'responseCode'
-// (10x) (20x OK) (30x Moved) (40x Unauthorised) (50x Server Error)  
-#define HTTP_ERROR_BAD_HOST                    (1)
-#define HTTP_ERROR_NO_SOCKET                   (2)
-#define HTTP_ERROR_CANT_CONNECT                (3)
-#define HTTP_ERROR_CANT_WRITE                  (4)
-#define HTTP_ERROR_CONTENT_TOO_BIG             (5)
-#define HTTP_ERROR_MALFORMED_RESPONSE          (6)
+// (10x) (20x OK) (30x Moved) (40x Unauthorised) (50x Server Error)
+enum e_HTTP_ERROR
+{
+	HTTP_ERROR_BAD_HOST = 1,
+	HTTP_ERROR_NO_SOCKET,
+	HTTP_ERROR_CANT_CONNECT,
+	HTTP_ERROR_CANT_WRITE,
+	HTTP_ERROR_CONTENT_TOO_BIG,
+	HTTP_ERROR_MALFORMED_RESPONSE
+}
 
 /// <summary>Sends a threaded HTTP request.</summary>
 /// <param name="index">ID used to differentiate requests that are sent to the same callback (useful for playerids)</param>
-/// <param name="type">The type of request you wish to send</param>
+/// <param name="method">The type of request you wish to send</param>
 /// <param name="url">The URL you want to request. (Without 'http://')</param>
 /// <param name="data">Any POST data you want to send with the request</param>
 /// <param name="callback">Name of the callback function you want to use to handle responses to this request</param>
@@ -60,7 +66,7 @@
 ///     <li>+ standard HTTP response codes</li>
 ///   </ul>
 /// </remarks>
-native HTTP(index, type, const url[], const data[], const callback[]);
+native HTTP(index, e_HTTP_METHOD:method, const url[], const data[], const callback[]);
 
 // example HTTP callback: public MyHttpResponse(index, responseCode, const data[]) { ... }
 
