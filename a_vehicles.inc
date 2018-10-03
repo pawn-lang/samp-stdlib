@@ -4,9 +4,10 @@
  *
  */
 
-#if defined _vehicles_included
+#if defined _INC_a_vehicles
 	#endinput
 #endif
+#define _INC_a_vehicles
 #define _vehicles_included
 
 #define CARMODTYPE_SPOILER		0

@@ -4,9 +4,10 @@
  *
  */
 
-#if defined _samp_included
+#if defined _INC_a_npc
 	#endinput
 #endif
+#define _INC_a_npc
 #define _samp_included
 
 #pragma tabsize 4
