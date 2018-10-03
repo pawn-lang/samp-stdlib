@@ -1947,6 +1947,12 @@ native UpdatePlayer3DTextLabelText(playerid, PlayerText3D:id, color, const text[
 /// </returns>
 native ShowPlayerDialog(playerid, dialogid, style, const caption[], const info[], const button1[], const button2[]);
 
+/// <summary>Get a players unique ID.</summary>
+/// <param name="playerid">The player to get the unique ID of</param>
+/// <param name="serial">Where to save the unique ID</param>
+/// <param name="maxlen">The size of "serial"</param>
+native gpci(playerid, serial[], maxlen);
+
 // --------------------------------------------------
 // Defines
 // --------------------------------------------------
