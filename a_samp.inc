@@ -40,16 +40,18 @@
 #define MAX_OBJECTS								(2000)
 #define INVALID_OBJECT_ID						(0xFFFF)
 #define MAX_GANG_ZONES							(1024)
-#define MAX_TEXT_DRAWS							(2048)
-#define MAX_PLAYER_TEXT_DRAWS					(256)
-#define MAX_MENUS								(128)
-#define MAX_3DTEXT_GLOBAL						(1024)
-#define MAX_3DTEXT_PLAYER						(1024)
+#define MAX_TEXT_DRAWS							(Text:2048)
+#define MAX_PLAYER_TEXT_DRAWS					(PlayerText:256)
+#define MAX_MENUS								(Menu:128)
+#define MAX_3DTEXT_GLOBAL						(Text3D:1024)
+#define MAX_3DTEXT_PLAYER						(PlayerText3D:1024)
 #define MAX_PICKUPS								(4096)
-#define INVALID_MENU							(0xFF)
-#define INVALID_TEXT_DRAW						(0xFFFF)
+#define INVALID_MENU							(Menu:0xFF)
+#define INVALID_TEXT_DRAW						(Text:0xFFFF)
+#define INVALID_PLAYER_TEXT_DRAW				(PlayerText:0xFFFF)
 #define INVALID_GANG_ZONE						(-1)
-#define INVALID_3DTEXT_ID						(0xFFFF)
+#define INVALID_3DTEXT_ID						(Text3D:0xFFFF)
+#define INVALID_PLAYER_3DTEXT_ID				(PlayerText3D:0xFFFF)
 
 // --------------------------------------------------
 // Natives
@@ -783,7 +785,7 @@ native SetWeather(weatherid);
 /// <summary>Get the currently set gravity.</summary>
 /// <seealso name="SetGravity"/>
 /// <returns>The current set gravity (as a float).</returns>
-native GetGravity();
+native Float:GetGravity();
 
 /// <summary>Set the gravity for all players.</summary>
 /// <param name="gravity">The value that the gravity should be set to (between -50 and 50)</param>
