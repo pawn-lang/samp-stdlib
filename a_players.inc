@@ -10,6 +10,8 @@
 #define _INC_a_players
 #define _players_included
 
+#define SAMP_CONST_CORRECT
+
 #define SPECIAL_ACTION_NONE				0
 #define SPECIAL_ACTION_DUCK				1
 #define SPECIAL_ACTION_USEJETPACK		2

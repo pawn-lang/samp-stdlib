@@ -9,6 +9,8 @@
 #endif
 #define _INC_a_http
 
+#define SAMP_CONST_CORRECT
+
 // HTTP requests
 #define HTTP_GET						1
 #define HTTP_POST						2

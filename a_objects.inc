@@ -10,6 +10,8 @@
 #define _INC_a_objects
 #define _objects_included
 
+#define SAMP_CONST_CORRECT
+
 // Objects
 
 /// <summary>Creates an object at specified coordinates in the game world.</summary>
