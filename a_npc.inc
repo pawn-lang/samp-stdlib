@@ -10,6 +10,8 @@
 #define _INC_a_npc
 #define _samp_included
 
+#define SAMP_CONST_CORRECT
+
 #pragma tabsize 4
 
 #include <core>

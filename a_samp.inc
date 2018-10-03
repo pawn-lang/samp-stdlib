@@ -10,6 +10,8 @@
 #define _INC_a_samp
 #define _samp_included
 
+#define SAMP_CONST_CORRECT
+
 #pragma tabsize 4
 // Ignores warning 217 for properly indented PAWNO code
 // It's tab size is 4 and often uses 4 spaces instead, PAWNCC's is 8

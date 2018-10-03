@@ -9,6 +9,8 @@
 #define _INC_a_sampdb
 #define _sampdb_included
 
+#define SAMP_CONST_CORRECT
+
 /// <summary>This function is used to open a connection to a SQLite database, which is inside the <b><c>/scriptfiles</c></b> folder.</summary>
 /// <param name="name">File name of the database</param>
 /// <remarks>Return type for this function has changed since version <b>0.3.7 R2</b>.</remarks>

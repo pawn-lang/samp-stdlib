@@ -10,6 +10,8 @@
 #define _INC_a_vehicles
 #define _vehicles_included
 
+#define SAMP_CONST_CORRECT
+
 #define CARMODTYPE_SPOILER		0
 #define CARMODTYPE_HOOD			1
 #define CARMODTYPE_ROOF			2
