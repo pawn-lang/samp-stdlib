@@ -485,10 +485,10 @@ native Float:GetSVarFloat(const varname[]);
 native DeleteSVar(const varname[]);
 
 // SVar enumeration
-#define	SERVER_VARTYPE_NONE			0
-#define SERVER_VARTYPE_INT			1
-#define SERVER_VARTYPE_STRING		2
-#define SERVER_VARTYPE_FLOAT		3
+#define	SERVER_VARTYPE_NONE			(0)
+#define SERVER_VARTYPE_INT			(1)
+#define SERVER_VARTYPE_STRING		(2)
+#define SERVER_VARTYPE_FLOAT		(3)
 
 
 /// <summary>Each SVar (server-variable) has its own unique identification number for lookup, this function returns the highest ID.</summary>
@@ -889,9 +889,9 @@ native ConnectNPC(const name[], const script[]);
 native IsPlayerNPC(playerid);
 
 // Artwork/NetModels
-#define DOWNLOAD_REQUEST_EMPTY			0
-#define DOWNLOAD_REQUEST_MODEL_FILE		1
-#define DOWNLOAD_REQUEST_TEXTURE_FILE	2
+#define DOWNLOAD_REQUEST_EMPTY			(0)
+#define DOWNLOAD_REQUEST_MODEL_FILE		(1)
+#define DOWNLOAD_REQUEST_TEXTURE_FILE	(2)
 
 native AddCharModel(baseid, newid, const dffname[], const txdname[]);
 native AddSimpleModel(virtualworld, baseid, newid, const dffname[], const txdname[]);
@@ -1406,8 +1406,8 @@ native DisableMenuRow(Menu:menuid, row);
 native Menu:GetPlayerMenu(playerid);
 
 // Text Draw
-#define TEXT_DRAW_FONT_SPRITE_DRAW	 4
-#define TEXT_DRAW_FONT_MODEL_PREVIEW 5
+#define TEXT_DRAW_FONT_SPRITE_DRAW	 (4)
+#define TEXT_DRAW_FONT_MODEL_PREVIEW (5)
 
 
 /// <summary>Creates a textdraw. Textdraws are, as the name implies, text (mainly - there can be boxes, sprites and model previews (skins/vehicles/weapons/objects too) that is drawn on a player's screens.</summary>
@@ -1918,12 +1918,12 @@ native DeletePlayer3DTextLabel(playerid, PlayerText3D:id);
 native UpdatePlayer3DTextLabelText(playerid, PlayerText3D:id, color, const text[]);
 
 // Player GUI Dialog
-#define DIALOG_STYLE_MSGBOX				0
-#define DIALOG_STYLE_INPUT				1
-#define DIALOG_STYLE_LIST				2
-#define DIALOG_STYLE_PASSWORD			3
-#define DIALOG_STYLE_TABLIST			4
-#define DIALOG_STYLE_TABLIST_HEADERS	5
+#define DIALOG_STYLE_MSGBOX				(0)
+#define DIALOG_STYLE_INPUT				(1)
+#define DIALOG_STYLE_LIST				(2)
+#define DIALOG_STYLE_PASSWORD			(3)
+#define DIALOG_STYLE_TABLIST			(4)
+#define DIALOG_STYLE_TABLIST_HEADERS	(5)
 
 
 /// <summary>Shows the player a synchronous (only one at a time) dialog box.</summary>
@@ -2884,7 +2884,7 @@ forward OnVehicleSirenStateChange(playerid, vehicleid, newstate);
 forward OnPlayerFinishedDownloading(playerid, virtualworld);
 forward OnPlayerRequestDownload(playerid, type, crc);
 
-#define CLICK_SOURCE_SCOREBOARD		0
+#define CLICK_SOURCE_SCOREBOARD		(0)
 
 /// <summary>Called when a player double-clicks on a player on the scoreboard.</summary>
 /// <param name="playerid">The ID of the player that clicked on a player on the scoreboard</param>
@@ -2900,9 +2900,9 @@ forward OnPlayerRequestDownload(playerid, type, crc);
 /// </returns>
 forward OnPlayerClickPlayer(playerid, clickedplayerid, source);
 
-#define EDIT_RESPONSE_CANCEL		0
-#define EDIT_RESPONSE_FINAL			1
-#define EDIT_RESPONSE_UPDATE		2
+#define EDIT_RESPONSE_CANCEL		(0)
+#define EDIT_RESPONSE_FINAL			(1)
+#define EDIT_RESPONSE_UPDATE		(2)
 
 
 /// <summary>This callback is called when a player finishes editing an object (<a href="#EditObject">EditObject</a>/<a href="#EditPlayerObject">EditPlayerObject</a>).</summary>
@@ -2960,8 +2960,8 @@ Float:fOffsetX, Float:fOffsetY, Float:fOffsetZ,
 Float:fRotX, Float:fRotY, Float:fRotZ,
 Float:fScaleX, Float:fScaleY, Float:fScaleZ );
 
-#define SELECT_OBJECT_GLOBAL_OBJECT	1
-#define SELECT_OBJECT_PLAYER_OBJECT 2
+#define SELECT_OBJECT_GLOBAL_OBJECT	(1)
+#define SELECT_OBJECT_PLAYER_OBJECT (2)
 
 
 /// <summary>This callback is called when a player selects an object after <a href="#SelectObject">SelectObject</a> has been used.</summary>
@@ -2981,11 +2981,11 @@ Float:fScaleX, Float:fScaleY, Float:fScaleZ );
 /// </returns>
 forward OnPlayerSelectObject(playerid, type, objectid, modelid, Float:fX, Float:fY, Float:fZ);
 
-#define BULLET_HIT_TYPE_NONE			0
-#define BULLET_HIT_TYPE_PLAYER			1
-#define BULLET_HIT_TYPE_VEHICLE			2
-#define BULLET_HIT_TYPE_OBJECT			3
-#define BULLET_HIT_TYPE_PLAYER_OBJECT	4
+#define BULLET_HIT_TYPE_NONE			(0)
+#define BULLET_HIT_TYPE_PLAYER			(1)
+#define BULLET_HIT_TYPE_VEHICLE			(2)
+#define BULLET_HIT_TYPE_OBJECT			(3)
+#define BULLET_HIT_TYPE_PLAYER_OBJECT	(4)
 
 
 /// <summary>This callback is called when a player fires a shot from a weapon. Only bullet weapons are supported. Only <b>passenger</b> drive-by is supported (not driver drive-by, and not sea sparrow / hunter shots).</summary>

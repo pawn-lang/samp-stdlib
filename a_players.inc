@@ -12,51 +12,51 @@
 
 #define SAMP_CONST_CORRECT
 
-#define SPECIAL_ACTION_NONE				0
-#define SPECIAL_ACTION_DUCK				1
-#define SPECIAL_ACTION_USEJETPACK		2
-#define SPECIAL_ACTION_ENTER_VEHICLE	3
-#define SPECIAL_ACTION_EXIT_VEHICLE     4
-#define SPECIAL_ACTION_DANCE1			5
-#define SPECIAL_ACTION_DANCE2			6
-#define SPECIAL_ACTION_DANCE3			7
-#define SPECIAL_ACTION_DANCE4			8
-#define SPECIAL_ACTION_HANDSUP			10
-#define SPECIAL_ACTION_USECELLPHONE		11
-#define SPECIAL_ACTION_SITTING			12
-#define SPECIAL_ACTION_STOPUSECELLPHONE 13
-#define SPECIAL_ACTION_DRINK_BEER		20
-#define SPECIAL_ACTION_SMOKE_CIGGY		21
-#define SPECIAL_ACTION_DRINK_WINE		22
-#define SPECIAL_ACTION_DRINK_SPRUNK		23
-#define SPECIAL_ACTION_PISSING			68
-#define SPECIAL_ACTION_CUFFED			24
-#define SPECIAL_ACTION_CARRY			25
+#define SPECIAL_ACTION_NONE				(0)
+#define SPECIAL_ACTION_DUCK				(1)
+#define SPECIAL_ACTION_USEJETPACK		(2)
+#define SPECIAL_ACTION_ENTER_VEHICLE	(3)
+#define SPECIAL_ACTION_EXIT_VEHICLE     (4)
+#define SPECIAL_ACTION_DANCE1			(5)
+#define SPECIAL_ACTION_DANCE2			(6)
+#define SPECIAL_ACTION_DANCE3			(7)
+#define SPECIAL_ACTION_DANCE4			(8)
+#define SPECIAL_ACTION_HANDSUP			(10)
+#define SPECIAL_ACTION_USECELLPHONE		(11)
+#define SPECIAL_ACTION_SITTING			(12)
+#define SPECIAL_ACTION_STOPUSECELLPHONE (13)
+#define SPECIAL_ACTION_DRINK_BEER		(20)
+#define SPECIAL_ACTION_SMOKE_CIGGY		(21)
+#define SPECIAL_ACTION_DRINK_WINE		(22)
+#define SPECIAL_ACTION_DRINK_SPRUNK		(23)
+#define SPECIAL_ACTION_PISSING			(68)
+#define SPECIAL_ACTION_CUFFED			(24)
+#define SPECIAL_ACTION_CARRY			(25)
 
-#define FIGHT_STYLE_NORMAL				4
-#define FIGHT_STYLE_BOXING				5
-#define FIGHT_STYLE_KUNGFU				6
-#define FIGHT_STYLE_KNEEHEAD			7
-#define FIGHT_STYLE_GRABKICK			15
-#define FIGHT_STYLE_ELBOW				16
+#define FIGHT_STYLE_NORMAL				(4)
+#define FIGHT_STYLE_BOXING				(5)
+#define FIGHT_STYLE_KUNGFU				(6)
+#define FIGHT_STYLE_KNEEHEAD			(7)
+#define FIGHT_STYLE_GRABKICK			(15)
+#define FIGHT_STYLE_ELBOW				(16)
 
-#define WEAPONSKILL_PISTOL 				0
-#define WEAPONSKILL_PISTOL_SILENCED		1
-#define WEAPONSKILL_DESERT_EAGLE		2
-#define WEAPONSKILL_SHOTGUN				3
-#define WEAPONSKILL_SAWNOFF_SHOTGUN		4
-#define WEAPONSKILL_SPAS12_SHOTGUN		5
-#define WEAPONSKILL_MICRO_UZI			6
-#define WEAPONSKILL_MP5					7
-#define WEAPONSKILL_AK47				8
-#define WEAPONSKILL_M4					9
-#define WEAPONSKILL_SNIPERRIFLE			10
+#define WEAPONSKILL_PISTOL 				(0)
+#define WEAPONSKILL_PISTOL_SILENCED		(1)
+#define WEAPONSKILL_DESERT_EAGLE		(2)
+#define WEAPONSKILL_SHOTGUN				(3)
+#define WEAPONSKILL_SAWNOFF_SHOTGUN		(4)
+#define WEAPONSKILL_SPAS12_SHOTGUN		(5)
+#define WEAPONSKILL_MICRO_UZI			(6)
+#define WEAPONSKILL_MP5					(7)
+#define WEAPONSKILL_AK47				(8)
+#define WEAPONSKILL_M4					(9)
+#define WEAPONSKILL_SNIPERRIFLE			(10)
 
-#define WEAPONSTATE_UNKNOWN				-1
-#define WEAPONSTATE_NO_BULLETS			0
-#define WEAPONSTATE_LAST_BULLET			1
-#define WEAPONSTATE_MORE_BULLETS		2
-#define WEAPONSTATE_RELOADING			3
+#define WEAPONSTATE_UNKNOWN				(-1)
+#define WEAPONSTATE_NO_BULLETS			(0)
+#define WEAPONSTATE_LAST_BULLET			(1)
+#define WEAPONSTATE_MORE_BULLETS		(2)
+#define WEAPONSTATE_RELOADING			(3)
 
 // Player
 
@@ -911,7 +911,7 @@ native GetPlayerLastShotVectors(playerid, &Float:fOriginX, &Float:fOriginY, &Flo
 
 // Attached to bone objects
 
-#define MAX_PLAYER_ATTACHED_OBJECTS 10 // This is the number of attached indexes available ie 10 = 0-9
+#define MAX_PLAYER_ATTACHED_OBJECTS (10) // This is the number of attached indexes available ie 10 = 0-9
 
 
 /// <summary>Attach an object to a specific bone on a player.</summary>
@@ -1557,10 +1557,10 @@ native Float:GetPVarFloat(playerid, const varname[]);
 native DeletePVar(playerid, const varname[]);
 
 // PVar enumeration
-#define PLAYER_VARTYPE_NONE			0
-#define PLAYER_VARTYPE_INT			1
-#define PLAYER_VARTYPE_STRING		2
-#define PLAYER_VARTYPE_FLOAT		3
+#define PLAYER_VARTYPE_NONE			(0)
+#define PLAYER_VARTYPE_INT			(1)
+#define PLAYER_VARTYPE_STRING		(2)
+#define PLAYER_VARTYPE_FLOAT		(3)
 
 
 /// <summary>Each PVar (player-variable) has its own unique identification number for lookup, this function returns the highest ID set for a player.</summary>
@@ -1603,7 +1603,7 @@ native GetPVarNameAtIndex(playerid, index, ret_varname[], ret_len);
 /// <returns>Returns the type of the PVar. See table below.</returns>
 native GetPVarType(playerid, const varname[]);
 
-#define MAX_CHATBUBBLE_LENGTH 144
+#define MAX_CHATBUBBLE_LENGTH (144)
 
 /// <summary>Creates a chat bubble above a player's name tag.</summary>
 /// <param name="playerid">The player which should have the chat bubble</param>
@@ -1955,10 +1955,10 @@ native SetPlayerMarkerForPlayer(playerid, showplayerid, color);
 /// <remarks><a href="#ShowNameTags">ShowNameTags</a> must be set to <b><c>1</c></b> to be able to show name tags with ShowPlayerNameTagForPlayer, that means that in order to be effective you need to <c>ShowPlayerNameTagForPlayer(forplayerid, playerid, 0)</c> ahead of time(<a href="#OnPlayerStreamIn">OnPlayerStreamIn</a> is a good spot).</remarks>
 native ShowPlayerNameTagForPlayer(playerid, showplayerid, show);
 
-#define MAPICON_LOCAL			  0 // displays in the player's local are
-#define MAPICON_GLOBAL			  1 // displays always
-#define MAPICON_LOCAL_CHECKPOINT  2 // displays in the player's local area and has a checkpoint marker
-#define MAPICON_GLOBAL_CHECKPOINT 3 // displays always and has a checkpoint marker
+#define MAPICON_LOCAL			  (0) // displays in the player's local are
+#define MAPICON_GLOBAL			  (1) // displays always
+#define MAPICON_LOCAL_CHECKPOINT  (2) // displays in the player's local area and has a checkpoint marker
+#define MAPICON_GLOBAL_CHECKPOINT (3) // displays always and has a checkpoint marker
 
 
 /// <summary>Place an icon/marker on a player's map. Can be used to mark locations such as banks and hospitals to players.</summary>
@@ -2026,8 +2026,8 @@ native AllowPlayerTeleport(playerid, allow);
 /// </returns>
 native SetPlayerCameraPos(playerid,Float:x, Float:y, Float:z);
 
-#define CAMERA_CUT	2
-#define CAMERA_MOVE 1
+#define CAMERA_CUT	(2)
+#define CAMERA_MOVE (1)
 
 
 /// <summary>Set the direction a player's camera looks at. Generally meant to be used in combination with <a href="#SetPlayerCameraPos">SetPlayerCameraPos</a>.</summary>
@@ -2318,9 +2318,9 @@ native EnableStuntBonusForPlayer(playerid, enable);
 native EnableStuntBonusForAll(enable);
 
 // Spectating
-#define SPECTATE_MODE_NORMAL	1
-#define SPECTATE_MODE_FIXED		2
-#define SPECTATE_MODE_SIDE		3
+#define SPECTATE_MODE_NORMAL	(1)
+#define SPECTATE_MODE_FIXED		(2)
+#define SPECTATE_MODE_SIDE		(3)
 
 
 /// <summary>Toggle whether a player is in spectator mode or not. While in spectator mode a player can spectate (watch) other players and vehicles. After using this function, either <a href="#PlayerSpectatePlayer">PlayerSpectatePlayer</a> or <a href="#PlayerSpectateVehicle">PlayerSpectateVehicle</a> needs to be used.</summary>
@@ -2374,9 +2374,9 @@ native PlayerSpectatePlayer(playerid, targetplayerid, mode = SPECTATE_MODE_NORMA
 native PlayerSpectateVehicle(playerid, targetvehicleid, mode = SPECTATE_MODE_NORMAL);
 
 // Recording for NPC playback
-#define PLAYER_RECORDING_TYPE_NONE		0
-#define PLAYER_RECORDING_TYPE_DRIVER	1
-#define PLAYER_RECORDING_TYPE_ONFOOT	2
+#define PLAYER_RECORDING_TYPE_NONE		(0)
+#define PLAYER_RECORDING_TYPE_DRIVER	(1)
+#define PLAYER_RECORDING_TYPE_ONFOOT	(2)
 
 
 /// <summary>Starts recording a player's movements to a file, which can then be reproduced by an NPC.</summary>

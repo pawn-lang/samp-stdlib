@@ -316,9 +316,9 @@ native GetPlayerName(playerid, name[], len);
 /// <returns><b><c>1</c></b> if the player is connected, <b><c>0</c></b> if not.</returns>
 native IsPlayerConnected(playerid);
 
-#define PLAYER_RECORDING_TYPE_NONE		0
-#define PLAYER_RECORDING_TYPE_DRIVER	1
-#define PLAYER_RECORDING_TYPE_ONFOOT	2
+#define PLAYER_RECORDING_TYPE_NONE		(0)
+#define PLAYER_RECORDING_TYPE_DRIVER	(1)
+#define PLAYER_RECORDING_TYPE_ONFOOT	(2)
 
 /// <summary>This will run a .rec file which has to be saved in the npcmodes/recordings folder. These files allow the NPC to follow certain actions. Their actions can be recorded manually. For more information, check the related functions.</summary>
 /// <param name="playbacktype">The type of recording to be loaded</param>
