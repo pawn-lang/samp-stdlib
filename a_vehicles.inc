@@ -732,3 +732,11 @@ native SetVehicleVirtualWorld(vehicleid, worldid);
 /// <seealso name="GetPlayerVirtualWorld"/>
 /// <returns>The virtual world that the vehicle is in.</returns>
 native GetVehicleVirtualWorld(vehicleid);
+
+/// <summary>Check if a vehicle ID is valid.</summary>
+/// <param name="vehicleid">The ID of the vehicle to check</param>
+/// <seealso name="CreateVehicle"/>
+/// <seealso name="DestroyVehicle"/>
+/// <returns>true or false.</returns>
+native bool:IsValidVehicle(vehicleid);
+
