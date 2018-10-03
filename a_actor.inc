@@ -8,7 +8,6 @@
 	#endinput
 #endif
 #define _actor_included
-#pragma library actors
 
 /// <summary>Create a static 'actor' in the world. These 'actors' are like NPCs, however they have limited functionality. They do not take up server player slots.</summary>
 /// <param name="modelid">The model ID (skin ID) the actor should have</param>

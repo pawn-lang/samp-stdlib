@@ -8,7 +8,6 @@
 	#endinput
 #endif
 #define _players_included
-#pragma library players
 
 #define SPECIAL_ACTION_NONE				0
 #define SPECIAL_ACTION_DUCK				1

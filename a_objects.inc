@@ -8,7 +8,6 @@
 	#endinput
 #endif
 #define _objects_included
-#pragma library objects
 
 // Objects
 

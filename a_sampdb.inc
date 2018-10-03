@@ -7,7 +7,6 @@
 	#endinput
 #endif
 #define _sampdb_included
-#pragma library sampdb
 
 /// <summary>This function is used to open a connection to a SQLite database, which is inside the <b><c>/scriptfiles</c></b> folder.</summary>
 /// <param name="name">File name of the database</param>

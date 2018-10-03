@@ -8,7 +8,6 @@
 	#endinput
 #endif
 #define _vehicles_included
-#pragma library vehicles
 
 #define CARMODTYPE_SPOILER		0
 #define CARMODTYPE_HOOD			1
