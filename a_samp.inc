@@ -318,31 +318,31 @@ native CallLocalFunction(const function[], const format[], {Float,_}:...);
 /// <returns>The norm (length) of the provided vector as a float.</returns>
 native Float:VectorSize(Float:x, Float:y, Float:z);
 
-/// <summary>Get the inversed value of a sine in radians.</summary>
+/// <summary>Get the inversed value of a sine in degrees.</summary>
 /// <param name="value">The sine for which to find the angle for</param>
 /// <seealso name="floatsin"/>
-/// <returns>The angle in radians.</returns>
+/// <returns>The angle in degrees.</returns>
 native Float:asin(Float:value);
 
-/// <summary>Get the inversed value of a cosine in radians.</summary>
+/// <summary>Get the inversed value of a cosine in degrees.</summary>
 /// <param name="value">The cosine for which to find the angle for</param>
 /// <seealso name="floatcos"/>
-/// <returns>The angle in radians.</returns>
+/// <returns>The angle in degrees.</returns>
 native Float:acos(Float:value);
 
-/// <summary>Get the inversed value of a tangent in radians.</summary>
+/// <summary>Get the inversed value of a tangent in degrees.</summary>
 /// <param name="value">The tangent for which to find the angle for</param>
 /// <seealso name="atan2"/>
 /// <seealso name="floattan"/>
-/// <returns>The angle in radians.</returns>
+/// <returns>The angle in degrees.</returns>
 native Float:atan(Float:value);
 
-/// <summary>Get the multi-valued inversed value of a tangent in radians.</summary>
+/// <summary>Get the multi-valued inversed value of a tangent in degrees.</summary>
 /// <param name="y">y size</param>
 /// <param name="x">x size</param>
 /// <seealso name="atan"/>
 /// <seealso name="floattan"/>
-/// <returns>The angle in radians.</returns>
+/// <returns>The angle in degrees.</returns>
 native Float:atan2(Float:y, Float:x);
 
 
