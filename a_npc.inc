@@ -32,7 +32,7 @@
 #endif
 
 #if !defined MAX_OBJECTS
-	#define MAX_OBJECTS (150)
+	#define MAX_OBJECTS (2000)
 #endif
 
 #if !defined MAX_GANG_ZONES
@@ -40,11 +40,11 @@
 #endif
 
 #if !defined MAX_TEXT_DRAWS
-	#define MAX_TEXT_DRAWS (1024)
+	#define MAX_TEXT_DRAWS (Text:2048)
 #endif
 
 #if !defined MAX_MENUS
-	#define MAX_MENUS (128)
+	#define MAX_MENUS (Menu:128)
 #endif
 
 // Invalids
@@ -52,9 +52,9 @@
 
 #define INVALID_PLAYER_ID						(0xFFFF)
 #define INVALID_VEHICLE_ID						(0xFFFF)
-#define INVALID_OBJECT_ID						(255)
-#define INVALID_MENU							(0xFF)
-#define INVALID_TEXT_DRAW						(0xFFFF)
+#define INVALID_OBJECT_ID						(0xFFFF)
+#define INVALID_MENU							(Menu:0xFF)
+#define INVALID_TEXT_DRAW						(Text:0xFFFF)
 #define INVALID_GANG_ZONE						(-1)
 
 // States
@@ -152,16 +152,16 @@
 	#error MAX_VEHICLES must be >= 1 and <= 2000
 #endif
 
-#if MAX_OBJECTS < 1 || MAX_OBJECTS > 150
-	#error MAX_OBJECTS must be >= 1 and <= 150
+#if MAX_OBJECTS < 1 || MAX_OBJECTS > 2000
+	#error MAX_OBJECTS must be >= 1 and <= 2000
 #endif
 
 #if MAX_GANG_ZONES < 1 || MAX_GANG_ZONES > 1024
 	#error MAX_GANG_ZONES must be >= 1 and <= 1024
 #endif
 
-#if MAX_TEXT_DRAWS < 1 || MAX_TEXT_DRAWS > 1024
-	#error MAX_TEXT_DRAWS must be >= 1 and <= 1024
+#if MAX_TEXT_DRAWS < 1 || MAX_TEXT_DRAWS > 2048
+	#error MAX_TEXT_DRAWS must be >= 1 and <= 2048
 #endif
 
 #if MAX_MENUS < 1 || MAX_MENUS > 128
