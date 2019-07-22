@@ -226,3 +226,4 @@ native IsActorInvulnerable(actorid);
 /// <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
 /// <returns><b><c>1</c></b> if the actor is valid, <b><c>0</c></b> if not.</returns>
 native IsValidActor(actorid);
+

@@ -3173,4 +3173,20 @@ forward OnPlayerSelectObject(playerid, type, objectid, modelid, Float:fX, Float:
 /// </returns>
 forward OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY, Float:fZ);
 
+/// <summary>This callback is called when a SendClientCheck request comletes</summary>
+/// <param name="playerid">The ID of the player checked</param>
+/// <param name="type">The type of check performed</param>
+/// <param name="arg"></param>
+/// <param name="response">The result of the check</param>
+/// <seealso name="SendClientCheck"/>
+forward OnClientCheckResponse(playerid, type, arg, response);
+
+/// <summary>This callback is called when a SendClientCheck request comletes</summary>
+/// <param name="playerid">The ID of the player who got cash from the game</param>
+/// <param name="amount">The amount of cash given</param>
+/// <param name="source">Where the money came from</param>
+/// <remarks>Doesn't work</remarks>
+forward OnScriptCash(playerid, amount, source);
+
 // --------------------------------------------------
+

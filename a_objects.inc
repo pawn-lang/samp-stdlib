@@ -640,3 +640,4 @@ native SetPlayerObjectMaterialText(playerid, objectid, const text[], materialind
 /// <remarks>This function only affects the camera collision of objects created AFTER its use - it does not toggle existing objects' camera collisions.</remarks>
 /// <remarks>This only works outside the map boundaries (past <b><c>-3000</c></b>/<b><c>3000</c></b> units on the x and/or y axis).</remarks>
 native SetObjectsDefaultCameraCol(disable);
+

@@ -2437,3 +2437,18 @@ native CancelSelectTextDraw(playerid);	// cancel textdraw selection with the mou
 /// <remarks>There is a limit as to how many explosions can be seen at once by a player. This is roughly 10.</remarks>
 /// <returns>This function always returns <b><c>1</c></b>, even if the function failed to excute (player doesn't exist, invalid radius, or invalid explosion type).</returns>
 native CreateExplosionForPlayer(playerid, Float:X, Float:Y, Float:Z, type, Float:Radius);
+
+/// <summary>Fetch the GPCI of a user, this is linked to SAMP/GTA on their computer.</summary>
+/// <param name="playerid">The ID of the player to get the unique ID of</param>
+/// <param name="serial">The destination string for the ID</param>
+/// <param name="maxlen">The length of the destination string</param>
+native gpci(playerid, serial[], maxlen = sizeof (serial));
+
+/// <summary>Perform a memory check on the client.</summary>
+/// <param name="playerid">The ID of the player to check</param>
+/// <param name="type">The type of check to perform</param>
+/// <param name="memAddr">The base address to check</param>
+/// <param name="memOffset">The offset from the base address</param>
+/// <param name="byteCount">The number of bytes to check</param>
+native SendClientCheck(playerid, type, memAddr, memOffset, byteCount);
+
