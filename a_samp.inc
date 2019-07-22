@@ -12,6 +12,59 @@
 
 #define SAMP_CONST_CORRECT
 
+/*
+
+Version examples:
+
+0.3.DL R1       - 03D010
+
+0.3.7 R3        - 037030
+0.3.7 R2-2      - 037022
+0.3.7 R1-2      - 037012
+0.3.7           - 037000
+
+0.3z R4         - 030700
+0.3z R3         - 030700
+0.3z R2-1       - 030700
+0.3z R1-2       - 030700
+0.3z            - 030700
+0.3x R2 patch 1 - 030621
+0.3x R2         - 030620
+0.3x R1-2       - 030612
+0.3x            - 030600
+0.3e            - 030500
+0.3d            - 030400
+0.3c            - 030300
+0.3b            - 030200
+0.3a            - 030100
+
+0.2X            - 02A000
+0.2.2 R3        - 022300
+
+Rough rules:
+
+Uses (roughtly) BCD.  Special versions are denoted outside 0-9.
+
+0.1.2c R4-5
+| | ||  | |
+0 1 23  4 5
+=
+0x012345
+
+(assuming c is the third revision)
+
+0.2X becomes 02A000 because it is basically 0.2.3, but not, while higher than
+0.2.2 so can't be 020400 (for example).  Also, its a capital letter, so doesn't
+use the revision method.
+
+P.S.  Making a consistent scheme for SA:MP versions is REALLY hard.
+
+open.mp releases can use `A` as the first digit.
+
+*/
+
+public const SAMP_INCLUDES_VERSION = 0x037030;
+
 #pragma tabsize 4
 // Ignores warning 217 for properly indented PAWNO code
 // It's tab size is 4 and often uses 4 spaces instead, PAWNCC's is 8
