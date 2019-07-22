@@ -235,24 +235,24 @@
 	#error MAX_GANG_ZONES must be >= 1 and <= 1024
 #endif
 
-#if MAX_TEXT_DRAWS < 1 || MAX_TEXT_DRAWS > Text:2048
-	#error MAX_TEXT_DRAWS must be >= 1 and <= Text:2048
+#if MAX_TEXT_DRAWS < Text:1 || MAX_TEXT_DRAWS > Text:2048
+	#error MAX_TEXT_DRAWS must be >= 1 and <= 2048
 #endif
 
-#if MAX_PLAYER_TEXT_DRAWS < 1 || MAX_PLAYER_TEXT_DRAWS > PlayerText:256
-	#error MAX_PLAYER_TEXT_DRAWS must be >= 1 and <= PlayerText:256
+#if MAX_PLAYER_TEXT_DRAWS < PlayerText:1 || MAX_PLAYER_TEXT_DRAWS > PlayerText:256
+	#error MAX_PLAYER_TEXT_DRAWS must be >= 1 and <= 256
 #endif
 
-#if MAX_MENUS < 1 || MAX_MENUS > Menu:128
-	#error MAX_MENUS must be >= 1 and <= Menu:128
+#if MAX_MENUS < Menu:1 || MAX_MENUS > Menu:128
+	#error MAX_MENUS must be >= 1 and <= 128
 #endif
 
-#if MAX_3DTEXT_GLOBAL < 1 || MAX_3DTEXT_GLOBAL > Text3D:1024
-	#error MAX_3DTEXT_GLOBAL must be >= 1 and <= Text3D:1024
+#if MAX_3DTEXT_GLOBAL < Text3D:1 || MAX_3DTEXT_GLOBAL > Text3D:1024
+	#error MAX_3DTEXT_GLOBAL must be >= 1 and <= 1024
 #endif
 
-#if MAX_3DTEXT_PLAYER < 0 || MAX_3DTEXT_PLAYER > PlayerText3D:1024
-	#error MAX_3DTEXT_PLAYER must be >= 0 and <= PlayerText3D:1024
+#if MAX_3DTEXT_PLAYER < PlayerText3D:1 || MAX_3DTEXT_PLAYER > PlayerText3D:1024
+	#error MAX_3DTEXT_PLAYER must be >= 1 and <= 1024
 #endif
 
 #if MAX_PICKUPS < 1 || MAX_PICKUPS > 4096
@@ -3175,11 +3175,11 @@ forward OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:f
 
 /// <summary>This callback is called when a SendClientCheck request comletes</summary>
 /// <param name="playerid">The ID of the player checked</param>
-/// <param name="type">The type of check performed</param>
-/// <param name="arg"></param>
-/// <param name="response">The result of the check</param>
+/// <param name="actionid">The type of check performed</param>
+/// <param name="memaddr">The address requested</param>
+/// <param name="retndata">The result of the check</param>
 /// <seealso name="SendClientCheck"/>
-forward OnClientCheckResponse(playerid, type, arg, response);
+forward OnClientCheckResponse(playerid, actionid, memaddr, retndata);
 
 /// <summary>This callback is called when a SendClientCheck request comletes</summary>
 /// <param name="playerid">The ID of the player who got cash from the game</param>

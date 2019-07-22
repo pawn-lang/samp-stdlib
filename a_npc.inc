@@ -160,11 +160,11 @@
 	#error MAX_GANG_ZONES must be >= 1 and <= 1024
 #endif
 
-#if MAX_TEXT_DRAWS < 1 || MAX_TEXT_DRAWS > 2048
+#if MAX_TEXT_DRAWS < Text:1 || MAX_TEXT_DRAWS > Text:2048
 	#error MAX_TEXT_DRAWS must be >= 1 and <= 2048
 #endif
 
-#if MAX_MENUS < 1 || MAX_MENUS > 128
+#if MAX_MENUS < Menu:1 || MAX_MENUS > Menu:128
 	#error MAX_MENUS must be >= 1 and <= 128
 #endif
 
