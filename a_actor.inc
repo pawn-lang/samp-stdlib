@@ -12,6 +12,8 @@
 
 #define SAMP_CONST_CORRECT
 
+#pragma tabsize 4
+
 /// <summary>Create a static 'actor' in the world. These 'actors' are like NPCs, however they have limited functionality. They do not take up server player slots.</summary>
 /// <param name="modelid">The model ID (skin ID) the actor should have</param>
 /// <param name="X">The X coordinate to create the actor at</param>

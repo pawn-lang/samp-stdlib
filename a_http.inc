@@ -11,6 +11,12 @@
 
 #define SAMP_CONST_CORRECT
 
+#pragma tabsize 4
+
+// --------------------------------------------------
+// Defines
+// --------------------------------------------------
+
 // HTTP requests
 #define HTTP_GET						(1)
 #define HTTP_POST						(2)

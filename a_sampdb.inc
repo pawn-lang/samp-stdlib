@@ -11,6 +11,8 @@
 
 #define SAMP_CONST_CORRECT
 
+#pragma tabsize 4
+
 /// <summary>This function is used to open a connection to a SQLite database, which is inside the <b><c>/scriptfiles</c></b> folder.</summary>
 /// <param name="name">File name of the database</param>
 /// <remarks>Return type for this function has changed since version <b>0.3.7 R2</b>.</remarks>

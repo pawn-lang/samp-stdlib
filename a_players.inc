@@ -12,6 +12,17 @@
 
 #define SAMP_CONST_CORRECT
 
+#pragma tabsize 4
+
+// Limits
+#if !defined MAX_PLAYER_ATTACHED_OBJECTS
+	#define MAX_PLAYER_ATTACHED_OBJECTS (10)
+#endif
+
+#if !defined MAX_CHATBUBBLE_LENGTH
+	#define MAX_CHATBUBBLE_LENGTH (144)
+#endif
+
 #define SPECIAL_ACTION_NONE				(0)
 #define SPECIAL_ACTION_DUCK				(1)
 #define SPECIAL_ACTION_USEJETPACK		(2)
@@ -57,6 +68,30 @@
 #define WEAPONSTATE_LAST_BULLET			(1)
 #define WEAPONSTATE_MORE_BULLETS		(2)
 #define WEAPONSTATE_RELOADING			(3)
+
+// PVar enumeration
+#define PLAYER_VARTYPE_NONE			(0)
+#define PLAYER_VARTYPE_INT			(1)
+#define PLAYER_VARTYPE_STRING		(2)
+#define PLAYER_VARTYPE_FLOAT		(3)
+
+#define MAPICON_LOCAL			  (0) // displays in the player's local are
+#define MAPICON_GLOBAL			  (1) // displays always
+#define MAPICON_LOCAL_CHECKPOINT  (2) // displays in the player's local area and has a checkpoint marker
+#define MAPICON_GLOBAL_CHECKPOINT (3) // displays always and has a checkpoint marker
+
+#define CAMERA_CUT	(2)
+#define CAMERA_MOVE (1)
+
+// Spectating
+#define SPECTATE_MODE_NORMAL	(1)
+#define SPECTATE_MODE_FIXED		(2)
+#define SPECTATE_MODE_SIDE		(3)
+
+// Recording for NPC playback
+#define PLAYER_RECORDING_TYPE_NONE		(0)
+#define PLAYER_RECORDING_TYPE_DRIVER	(1)
+#define PLAYER_RECORDING_TYPE_ONFOOT	(2)
 
 // Player
 
@@ -910,9 +945,9 @@ native RemoveBuildingForPlayer(playerid, modelid, Float:fX, Float:fY, Float:fZ, 
 native GetPlayerLastShotVectors(playerid, &Float:fOriginX, &Float:fOriginY, &Float:fOriginZ, &Float:fHitPosX, &Float:fHitPosY, &Float:fHitPosZ);
 
 // Attached to bone objects
-
-#define MAX_PLAYER_ATTACHED_OBJECTS (10) // This is the number of attached indexes available ie 10 = 0-9
-
+#if MAX_PLAYER_ATTACHED_OBJECTS < 1 || MAX_PLAYER_ATTACHED_OBJECTS > 10
+	#error MAX_PLAYER_ATTACHED_OBJECTS must be >= 1 and <= 10
+#endif
 
 /// <summary>Attach an object to a specific bone on a player.</summary>
 /// <param name="playerid">The ID of the player to attach the object to</param>
@@ -1556,13 +1591,6 @@ native Float:GetPVarFloat(playerid, const varname[]);
 /// </returns>
 native DeletePVar(playerid, const varname[]);
 
-// PVar enumeration
-#define PLAYER_VARTYPE_NONE			(0)
-#define PLAYER_VARTYPE_INT			(1)
-#define PLAYER_VARTYPE_STRING		(2)
-#define PLAYER_VARTYPE_FLOAT		(3)
-
-
 /// <summary>Each PVar (player-variable) has its own unique identification number for lookup, this function returns the highest ID set for a player.</summary>
 /// <param name="playerid">The ID of the player to get the upper PVar index of</param>
 /// <seealso name="GetPVarNameAtIndex"/>
@@ -1603,7 +1631,9 @@ native GetPVarNameAtIndex(playerid, index, ret_varname[], ret_len);
 /// <returns>Returns the type of the PVar. See table below.</returns>
 native GetPVarType(playerid, const varname[]);
 
-#define MAX_CHATBUBBLE_LENGTH (144)
+#if MAX_CHATBUBBLE_LENGTH < 1 || MAX_CHATBUBBLE_LENGTH > 144
+	#error MAX_CHATBUBBLE_LENGTH must be >= 1 and <= 144
+#endif
 
 /// <summary>Creates a chat bubble above a player's name tag.</summary>
 /// <param name="playerid">The player which should have the chat bubble</param>
@@ -1955,12 +1985,6 @@ native SetPlayerMarkerForPlayer(playerid, showplayerid, color);
 /// <remarks><a href="#ShowNameTags">ShowNameTags</a> must be set to <b><c>1</c></b> to be able to show name tags with ShowPlayerNameTagForPlayer, that means that in order to be effective you need to <c>ShowPlayerNameTagForPlayer(forplayerid, playerid, 0)</c> ahead of time(<a href="#OnPlayerStreamIn">OnPlayerStreamIn</a> is a good spot).</remarks>
 native ShowPlayerNameTagForPlayer(playerid, showplayerid, show);
 
-#define MAPICON_LOCAL			  (0) // displays in the player's local are
-#define MAPICON_GLOBAL			  (1) // displays always
-#define MAPICON_LOCAL_CHECKPOINT  (2) // displays in the player's local area and has a checkpoint marker
-#define MAPICON_GLOBAL_CHECKPOINT (3) // displays always and has a checkpoint marker
-
-
 /// <summary>Place an icon/marker on a player's map. Can be used to mark locations such as banks and hospitals to players.</summary>
 /// <param name="playerid">The ID of the player to set the map icon for</param>
 /// <param name="iconid">The player's icon ID, ranging from <b><c>0</c></b> to <b><c>99</c></b>. This means there is a maximum of <b><c>100</c></b> map icons. ID can be used in <a href="#RemovePlayerMapIcon">RemovePlayerMapIcon</a></param>
@@ -2025,10 +2049,6 @@ native AllowPlayerTeleport(playerid, allow);
 ///   <b><c>0</c></b>: The function failed to execute. The player specified doesn't exist.
 /// </returns>
 native SetPlayerCameraPos(playerid,Float:x, Float:y, Float:z);
-
-#define CAMERA_CUT	(2)
-#define CAMERA_MOVE (1)
-
 
 /// <summary>Set the direction a player's camera looks at. Generally meant to be used in combination with <a href="#SetPlayerCameraPos">SetPlayerCameraPos</a>.</summary>
 /// <param name="playerid">The ID of the player whose camera to set</param>
@@ -2317,12 +2337,6 @@ native EnableStuntBonusForPlayer(playerid, enable);
 /// <seealso name="EnableStuntBonusForPlayer"/>
 native EnableStuntBonusForAll(enable);
 
-// Spectating
-#define SPECTATE_MODE_NORMAL	(1)
-#define SPECTATE_MODE_FIXED		(2)
-#define SPECTATE_MODE_SIDE		(3)
-
-
 /// <summary>Toggle whether a player is in spectator mode or not. While in spectator mode a player can spectate (watch) other players and vehicles. After using this function, either <a href="#PlayerSpectatePlayer">PlayerSpectatePlayer</a> or <a href="#PlayerSpectateVehicle">PlayerSpectateVehicle</a> needs to be used.</summary>
 /// <param name="playerid">The ID of the player who should spectate</param>
 /// <param name="toggle"><b><c>1</c></b> to enable spectating and <b><c>0</c></b> to disable</param>
@@ -2372,12 +2386,6 @@ native PlayerSpectatePlayer(playerid, targetplayerid, mode = SPECTATE_MODE_NORMA
 ///   <b><c>0</c></b>: The function failed to execute. The player, vehicle, or both don't exist.
 /// </returns>
 native PlayerSpectateVehicle(playerid, targetvehicleid, mode = SPECTATE_MODE_NORMAL);
-
-// Recording for NPC playback
-#define PLAYER_RECORDING_TYPE_NONE		(0)
-#define PLAYER_RECORDING_TYPE_DRIVER	(1)
-#define PLAYER_RECORDING_TYPE_ONFOOT	(2)
-
 
 /// <summary>Starts recording a player's movements to a file, which can then be reproduced by an NPC.</summary>
 /// <param name="playerid">The ID of the player to record</param>

@@ -12,6 +12,12 @@
 
 #define SAMP_CONST_CORRECT
 
+#pragma tabsize 4
+
+// --------------------------------------------------
+// Defines
+// --------------------------------------------------
+
 #define CARMODTYPE_SPOILER		(0)
 #define CARMODTYPE_HOOD			(1)
 #define CARMODTYPE_ROOF			(2)
@@ -30,6 +36,16 @@
 #define VEHICLE_PARAMS_UNSET	(-1)
 #define VEHICLE_PARAMS_OFF		(0)
 #define VEHICLE_PARAMS_ON		(1)
+
+#define VEHICLE_MODEL_INFO_SIZE				(1)
+#define VEHICLE_MODEL_INFO_FRONTSEAT		(2)
+#define VEHICLE_MODEL_INFO_REARSEAT			(3)
+#define VEHICLE_MODEL_INFO_PETROLCAP		(4)
+#define VEHICLE_MODEL_INFO_WHEELSFRONT		(5)
+#define VEHICLE_MODEL_INFO_WHEELSREAR		(6)
+#define VEHICLE_MODEL_INFO_WHEELSMID		(7)
+#define VEHICLE_MODEL_INFO_FRONT_BUMPER_Z	(8)
+#define VEHICLE_MODEL_INFO_REAR_BUMPER_Z	(9)
 
 // Vehicle
 
@@ -681,17 +697,6 @@ native GetVehicleDamageStatus(vehicleid, &panels, &doors, &lights, &tires);
 ///   </ul>
 /// </remarks>
 native UpdateVehicleDamageStatus(vehicleid, panels, doors, lights, tires);
-
-#define VEHICLE_MODEL_INFO_SIZE				(1)
-#define VEHICLE_MODEL_INFO_FRONTSEAT		(2)
-#define VEHICLE_MODEL_INFO_REARSEAT			(3)
-#define VEHICLE_MODEL_INFO_PETROLCAP		(4)
-#define VEHICLE_MODEL_INFO_WHEELSFRONT		(5)
-#define VEHICLE_MODEL_INFO_WHEELSREAR		(6)
-#define VEHICLE_MODEL_INFO_WHEELSMID		(7)
-#define VEHICLE_MODEL_INFO_FRONT_BUMPER_Z	(8)
-#define VEHICLE_MODEL_INFO_REAR_BUMPER_Z	(9)
-
 
 /// <summary>Retrieve information about a specific vehicle model such as the size or position of seats.</summary>
 /// <param name="vehiclemodel">The vehicle <a href="http://wiki.sa-mp.com/wiki/Vehicles:All">model</a> to get info of</param>
