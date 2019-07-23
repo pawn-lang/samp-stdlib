@@ -3,11 +3,15 @@
 //  (c) Copyright 2015, SA-MP Team
 //
 
-#if defined _sampdb_included
+#if defined _INC_a_sampdb
 	#endinput
 #endif
+#define _INC_a_sampdb
 #define _sampdb_included
-#pragma library sampdb
+
+#define SAMP_CONST_CORRECT
+
+#pragma tabsize 4
 
 /// <summary>This function is used to open a connection to a SQLite database, which is inside the <b><c>/scriptfiles</c></b> folder.</summary>
 /// <param name="name">File name of the database</param>
@@ -128,3 +132,4 @@ native db_get_result_mem_handle(DBResult:result);
 
 native db_debug_openfiles();
 native db_debug_openresults();
+

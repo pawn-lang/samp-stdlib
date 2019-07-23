@@ -4,30 +4,48 @@
  *
  */
 
-#if defined _vehicles_included
+#if defined _INC_a_vehicles
 	#endinput
 #endif
+#define _INC_a_vehicles
 #define _vehicles_included
-#pragma library vehicles
 
-#define CARMODTYPE_SPOILER		0
-#define CARMODTYPE_HOOD			1
-#define CARMODTYPE_ROOF			2
-#define CARMODTYPE_SIDESKIRT	3
-#define CARMODTYPE_LAMPS		4
-#define CARMODTYPE_NITRO		5
-#define CARMODTYPE_EXHAUST		6
-#define CARMODTYPE_WHEELS		7
-#define CARMODTYPE_STEREO		8
-#define CARMODTYPE_HYDRAULICS	9
-#define CARMODTYPE_FRONT_BUMPER	10
-#define CARMODTYPE_REAR_BUMPER	11
-#define CARMODTYPE_VENT_RIGHT	12
-#define CARMODTYPE_VENT_LEFT	13
+#define SAMP_CONST_CORRECT
 
-#define VEHICLE_PARAMS_UNSET	-1
-#define VEHICLE_PARAMS_OFF		0
-#define VEHICLE_PARAMS_ON		1
+#pragma tabsize 4
+
+// --------------------------------------------------
+// Defines
+// --------------------------------------------------
+
+#define CARMODTYPE_SPOILER                     (0)
+#define CARMODTYPE_HOOD                        (1)
+#define CARMODTYPE_ROOF                        (2)
+#define CARMODTYPE_SIDESKIRT                   (3)
+#define CARMODTYPE_LAMPS                       (4)
+#define CARMODTYPE_NITRO                       (5)
+#define CARMODTYPE_EXHAUST                     (6)
+#define CARMODTYPE_WHEELS                      (7)
+#define CARMODTYPE_STEREO                      (8)
+#define CARMODTYPE_HYDRAULICS                  (9)
+#define CARMODTYPE_FRONT_BUMPER                (10)
+#define CARMODTYPE_REAR_BUMPER                 (11)
+#define CARMODTYPE_VENT_RIGHT                  (12)
+#define CARMODTYPE_VENT_LEFT                   (13)
+
+#define VEHICLE_PARAMS_UNSET                   (-1)
+#define VEHICLE_PARAMS_OFF                     (0)
+#define VEHICLE_PARAMS_ON                      (1)
+
+#define VEHICLE_MODEL_INFO_SIZE                (1)
+#define VEHICLE_MODEL_INFO_FRONTSEAT           (2)
+#define VEHICLE_MODEL_INFO_REARSEAT            (3)
+#define VEHICLE_MODEL_INFO_PETROLCAP           (4)
+#define VEHICLE_MODEL_INFO_WHEELSFRONT         (5)
+#define VEHICLE_MODEL_INFO_WHEELSREAR          (6)
+#define VEHICLE_MODEL_INFO_WHEELSMID           (7)
+#define VEHICLE_MODEL_INFO_FRONT_BUMPER_Z      (8)
+#define VEHICLE_MODEL_INFO_REAR_BUMPER_Z       (9)
 
 // Vehicle
 
@@ -680,17 +698,6 @@ native GetVehicleDamageStatus(vehicleid, &panels, &doors, &lights, &tires);
 /// </remarks>
 native UpdateVehicleDamageStatus(vehicleid, panels, doors, lights, tires);
 
-#define VEHICLE_MODEL_INFO_SIZE				1
-#define VEHICLE_MODEL_INFO_FRONTSEAT		2
-#define VEHICLE_MODEL_INFO_REARSEAT			3
-#define VEHICLE_MODEL_INFO_PETROLCAP		4
-#define VEHICLE_MODEL_INFO_WHEELSFRONT		5
-#define VEHICLE_MODEL_INFO_WHEELSREAR		6
-#define VEHICLE_MODEL_INFO_WHEELSMID		7
-#define VEHICLE_MODEL_INFO_FRONT_BUMPER_Z	8
-#define VEHICLE_MODEL_INFO_REAR_BUMPER_Z	9
-
-
 /// <summary>Retrieve information about a specific vehicle model such as the size or position of seats.</summary>
 /// <param name="vehiclemodel">The vehicle <a href="http://wiki.sa-mp.com/wiki/Vehicles:All">model</a> to get info of</param>
 /// <param name="infotype">The type of information to retrieve</param>
@@ -730,3 +737,11 @@ native SetVehicleVirtualWorld(vehicleid, worldid);
 /// <seealso name="GetPlayerVirtualWorld"/>
 /// <returns>The virtual world that the vehicle is in.</returns>
 native GetVehicleVirtualWorld(vehicleid);
+
+/// <summary>Check if a vehicle ID is valid.</summary>
+/// <param name="vehicleid">The ID of the vehicle to check</param>
+/// <seealso name="CreateVehicle"/>
+/// <seealso name="DestroyVehicle"/>
+/// <returns>true or false.</returns>
+native bool:IsValidVehicle(vehicleid);
+

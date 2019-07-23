@@ -4,11 +4,15 @@
  *
  */
 
-#if defined _actor_included
+#if defined _INC_a_actor
 	#endinput
 #endif
+#define _INC_a_actor
 #define _actor_included
-#pragma library actors
+
+#define SAMP_CONST_CORRECT
+
+#pragma tabsize 4
 
 /// <summary>Create a static 'actor' in the world. These 'actors' are like NPCs, however they have limited functionality. They do not take up server player slots.</summary>
 /// <param name="modelid">The model ID (skin ID) the actor should have</param>
@@ -222,3 +226,4 @@ native IsActorInvulnerable(actorid);
 /// <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
 /// <returns><b><c>1</c></b> if the actor is valid, <b><c>0</c></b> if not.</returns>
 native IsValidActor(actorid);
+

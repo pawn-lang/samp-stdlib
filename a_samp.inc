@@ -4,15 +4,262 @@
  *
  */
 
-#if defined _samp_included
+#if defined _INC_a_samp
 	#endinput
 #endif
+#define _INC_a_samp
 #define _samp_included
-#pragma library samp
+
+#define SAMP_CONST_CORRECT
 
 #pragma tabsize 4
 // Ignores warning 217 for properly indented PAWNO code
 // It's tab size is 4 and often uses 4 spaces instead, PAWNCC's is 8
+
+// --------------------------------------------------
+// Defines
+// --------------------------------------------------
+
+// Limits
+#if !defined MAX_PLAYER_NAME
+	#define MAX_PLAYER_NAME                    (24)
+#endif
+
+#if !defined MAX_PLAYERS
+	#define MAX_PLAYERS                        (1000)
+#endif
+
+#if !defined MAX_VEHICLES
+	#define MAX_VEHICLES                       (2000)
+#endif
+
+#if !defined MAX_ACTORS
+	#define MAX_ACTORS                         (1000)
+#endif
+
+#if !defined MAX_OBJECTS
+	#define MAX_OBJECTS                        (2000)
+#endif
+
+#if !defined MAX_GANG_ZONES
+	#define MAX_GANG_ZONES                     (1024)
+#endif
+
+#if !defined MAX_TEXT_DRAWS
+	#define MAX_TEXT_DRAWS                     (Text:2048)
+#endif
+
+#if !defined MAX_PLAYER_TEXT_DRAWS
+	#define MAX_PLAYER_TEXT_DRAWS              (PlayerText:256)
+#endif
+
+#if !defined MAX_MENUS
+	#define MAX_MENUS                          (Menu:128)
+#endif
+
+#if !defined MAX_3DTEXT_GLOBAL
+	#define MAX_3DTEXT_GLOBAL                  (Text3D:1024)
+#endif
+
+#if !defined MAX_3DTEXT_PLAYER
+	#define MAX_3DTEXT_PLAYER                  (PlayerText3D:1024)
+#endif
+
+#if !defined MAX_PICKUPS
+	#define MAX_PICKUPS                        (4096)
+#endif
+
+// Invalids
+#define NO_TEAM                                (255)
+
+#define INVALID_PLAYER_ID                      (0xFFFF)
+#define INVALID_VEHICLE_ID                     (0xFFFF)
+#define INVALID_ACTOR_ID                       (0xFFFF)
+#define INVALID_OBJECT_ID                      (0xFFFF)
+#define INVALID_MENU                           (Menu:0xFF)
+#define INVALID_TEXT_DRAW                      (Text:0xFFFF)
+#define INVALID_PLAYER_TEXT_DRAW               (PlayerText:0xFFFF)
+#define INVALID_GANG_ZONE                      (-1)
+#define INVALID_3DTEXT_ID                      (Text3D:0xFFFF)
+#define INVALID_PLAYER_3DTEXT_ID               (PlayerText3D:0xFFFF)
+
+// States
+#define PLAYER_STATE_NONE                      (0)
+#define PLAYER_STATE_ONFOOT                    (1)
+#define PLAYER_STATE_DRIVER                    (2)
+#define PLAYER_STATE_PASSENGER                 (3)
+#define PLAYER_STATE_EXIT_VEHICLE              (4) // (used internally)
+#define PLAYER_STATE_ENTER_VEHICLE_DRIVER      (5) // (used internally)
+#define PLAYER_STATE_ENTER_VEHICLE_PASSENGER   (6) // (used internally)
+#define PLAYER_STATE_WASTED                    (7)
+#define PLAYER_STATE_SPAWNED                   (8)
+#define PLAYER_STATE_SPECTATING                (9)
+
+// Marker modes used by ShowPlayerMarkers()
+#define PLAYER_MARKERS_MODE_OFF                (0)
+#define PLAYER_MARKERS_MODE_GLOBAL             (1)
+#define PLAYER_MARKERS_MODE_STREAMED           (2)
+
+// Weapons
+#define WEAPON_BRASSKNUCKLE                    (1)
+#define WEAPON_GOLFCLUB                        (2)
+#define WEAPON_NITESTICK                       (3)
+#define WEAPON_KNIFE                           (4)
+#define WEAPON_BAT                             (5)
+#define WEAPON_SHOVEL                          (6)
+#define WEAPON_POOLSTICK                       (7)
+#define WEAPON_KATANA                          (8)
+#define WEAPON_CHAINSAW                        (9)
+#define WEAPON_DILDO                           (10)
+#define WEAPON_DILDO2                          (11)
+#define WEAPON_VIBRATOR                        (12)
+#define WEAPON_VIBRATOR2                       (13)
+#define WEAPON_FLOWER                          (14)
+#define WEAPON_CANE                            (15)
+#define WEAPON_GRENADE                         (16)
+#define WEAPON_TEARGAS                         (17)
+#define WEAPON_MOLTOV                          (18)
+#define WEAPON_COLT45                          (22)
+#define WEAPON_SILENCED                        (23)
+#define WEAPON_DEAGLE                          (24)
+#define WEAPON_SHOTGUN                         (25)
+#define WEAPON_SAWEDOFF                        (26)
+#define WEAPON_SHOTGSPA                        (27)
+#define WEAPON_UZI                             (28)
+#define WEAPON_MP5                             (29)
+#define WEAPON_AK47                            (30)
+#define WEAPON_M4                              (31)
+#define WEAPON_TEC9                            (32)
+#define WEAPON_RIFLE                           (33)
+#define WEAPON_SNIPER                          (34)
+#define WEAPON_ROCKETLAUNCHER                  (35)
+#define WEAPON_HEATSEEKER                      (36)
+#define WEAPON_FLAMETHROWER                    (37)
+#define WEAPON_MINIGUN                         (38)
+#define WEAPON_SATCHEL                         (39)
+#define WEAPON_BOMB                            (40)
+#define WEAPON_SPRAYCAN                        (41)
+#define WEAPON_FIREEXTINGUISHER                (42)
+#define WEAPON_CAMERA                          (43)
+#define WEAPON_PARACHUTE                       (46)
+#define WEAPON_VEHICLE                         (49)
+#define WEAPON_DROWN                           (53)
+#define WEAPON_COLLISION                       (54)
+
+// Keys
+#define KEY_ACTION                             (1)
+#define KEY_CROUCH                             (2)
+#define KEY_FIRE                               (4)
+#define KEY_SPRINT                             (8)
+#define KEY_SECONDARY_ATTACK                   (16)
+#define KEY_JUMP                               (32)
+#define KEY_LOOK_RIGHT                         (64)
+#define KEY_HANDBRAKE                          (128)
+#define KEY_LOOK_LEFT                          (256)
+#define KEY_SUBMISSION                         (512)
+#define KEY_LOOK_BEHIND                        (512)
+#define KEY_WALK                               (1024)
+#define KEY_ANALOG_UP                          (2048)
+#define KEY_ANALOG_DOWN                        (4096)
+#define KEY_ANALOG_LEFT                        (8192)
+#define KEY_ANALOG_RIGHT                       (16384)
+#define KEY_YES                                (65536)
+#define KEY_NO                                 (131072)
+#define KEY_CTRL_BACK                          (262144)
+
+#define KEY_UP                                 (-128)
+#define KEY_DOWN                               (128)
+#define KEY_LEFT                               (-128)
+#define KEY_RIGHT                              (128)
+
+// Player GUI Dialog
+#define DIALOG_STYLE_MSGBOX                    (0)
+#define DIALOG_STYLE_INPUT                     (1)
+#define DIALOG_STYLE_LIST                      (2)
+#define DIALOG_STYLE_PASSWORD                  (3)
+#define DIALOG_STYLE_TABLIST                   (4)
+#define DIALOG_STYLE_TABLIST_HEADERS           (5)
+
+// Text Draw
+#define TEXT_DRAW_FONT_SPRITE_DRAW             (4)
+#define TEXT_DRAW_FONT_MODEL_PREVIEW           (5)
+
+// SVar enumeration
+#define	SERVER_VARTYPE_NONE                    (0)
+#define SERVER_VARTYPE_INT                     (1)
+#define SERVER_VARTYPE_STRING                  (2)
+#define SERVER_VARTYPE_FLOAT                   (3)
+
+// Artwork/NetModels
+#define DOWNLOAD_REQUEST_EMPTY                 (0)
+#define DOWNLOAD_REQUEST_MODEL_FILE            (1)
+#define DOWNLOAD_REQUEST_TEXTURE_FILE          (2)
+
+#define CLICK_SOURCE_SCOREBOARD                (0)
+
+#define EDIT_RESPONSE_CANCEL                   (0)
+#define EDIT_RESPONSE_FINAL                    (1)
+#define EDIT_RESPONSE_UPDATE                   (2)
+
+#define SELECT_OBJECT_GLOBAL_OBJECT            (1)
+#define SELECT_OBJECT_PLAYER_OBJECT            (2)
+
+#define BULLET_HIT_TYPE_NONE                   (0)
+#define BULLET_HIT_TYPE_PLAYER                 (1)
+#define BULLET_HIT_TYPE_VEHICLE                (2)
+#define BULLET_HIT_TYPE_OBJECT                 (3)
+#define BULLET_HIT_TYPE_PLAYER_OBJECT          (4)
+
+// Limits
+#if MAX_PLAYER_NAME < 1 || MAX_PLAYER_NAME > 24
+	#error MAX_PLAYER_NAME must be >= 1 and <= 24
+#endif
+
+#if MAX_PLAYERS < 1 || MAX_PLAYERS > 1000
+	#error MAX_PLAYERS must be >= 1 and <= 1000
+#endif
+
+#if MAX_VEHICLES < 1 || MAX_VEHICLES > 2000
+	#error MAX_VEHICLES must be >= 1 and <= 2000
+#endif
+
+#if MAX_ACTORS < 1 || MAX_ACTORS > 1000
+	#error MAX_ACTORS must be >= 1 and <= 1000
+#endif
+
+#if MAX_OBJECTS < 1 || MAX_OBJECTS > 2000
+	#error MAX_OBJECTS must be >= 1 and <= 2000
+#endif
+
+#if MAX_GANG_ZONES < 1 || MAX_GANG_ZONES > 1024
+	#error MAX_GANG_ZONES must be >= 1 and <= 1024
+#endif
+
+#if MAX_TEXT_DRAWS < Text:1 || MAX_TEXT_DRAWS > Text:2048
+	#error MAX_TEXT_DRAWS must be >= 1 and <= 2048
+#endif
+
+#if MAX_PLAYER_TEXT_DRAWS < PlayerText:1 || MAX_PLAYER_TEXT_DRAWS > PlayerText:256
+	#error MAX_PLAYER_TEXT_DRAWS must be >= 1 and <= 256
+#endif
+
+#if MAX_MENUS < Menu:1 || MAX_MENUS > Menu:128
+	#error MAX_MENUS must be >= 1 and <= 128
+#endif
+
+#if MAX_3DTEXT_GLOBAL < Text3D:1 || MAX_3DTEXT_GLOBAL > Text3D:1024
+	#error MAX_3DTEXT_GLOBAL must be >= 1 and <= 1024
+#endif
+
+#if MAX_3DTEXT_PLAYER < PlayerText3D:1 || MAX_3DTEXT_PLAYER > PlayerText3D:1024
+	#error MAX_3DTEXT_PLAYER must be >= 1 and <= 1024
+#endif
+
+#if MAX_PICKUPS < 1 || MAX_PICKUPS > 4096
+	#error MAX_PICKUPS must be >= 1 and <= 4096
+#endif
+
+public const SAMP_INCLUDES_VERSION = 0x037030;
 
 #include <core>
 #include <float>
@@ -25,29 +272,58 @@
 #include <a_objects>
 #include <a_actor>
 #include <a_sampdb>
+#include <a_http>
 
-// Limits and internal constants
-#define MAX_PLAYER_NAME							(24)
-#define MAX_PLAYERS								(1000)
-#define MAX_VEHICLES							(2000)
-#define MAX_ACTORS								(1000)
-#define INVALID_PLAYER_ID						(0xFFFF)
-#define INVALID_VEHICLE_ID						(0xFFFF)
-#define INVALID_ACTOR_ID						(0xFFFF)
-#define NO_TEAM									(255)
-#define MAX_OBJECTS								(2000)
-#define INVALID_OBJECT_ID						(0xFFFF)
-#define MAX_GANG_ZONES							(1024)
-#define MAX_TEXT_DRAWS							(2048)
-#define MAX_PLAYER_TEXT_DRAWS					(256)
-#define MAX_MENUS								(128)
-#define MAX_3DTEXT_GLOBAL						(1024)
-#define MAX_3DTEXT_PLAYER						(1024)
-#define MAX_PICKUPS								(4096)
-#define INVALID_MENU							(0xFF)
-#define INVALID_TEXT_DRAW						(0xFFFF)
-#define INVALID_GANG_ZONE						(-1)
-#define INVALID_3DTEXT_ID						(0xFFFF)
+/*
+
+Version examples:
+
+0.3.DL R1       - 03D010
+
+0.3.7 R3        - 037030
+0.3.7 R2-2      - 037022
+0.3.7 R1-2      - 037012
+0.3.7           - 037000
+
+0.3z R4         - 030700
+0.3z R3         - 030700
+0.3z R2-1       - 030700
+0.3z R1-2       - 030700
+0.3z            - 030700
+0.3x R2 patch 1 - 030621
+0.3x R2         - 030620
+0.3x R1-2       - 030612
+0.3x            - 030600
+0.3e            - 030500
+0.3d            - 030400
+0.3c            - 030300
+0.3b            - 030200
+0.3a            - 030100
+
+0.2X            - 02A000
+0.2.2 R3        - 022300
+
+Rough rules:
+
+Uses (roughtly) BCD.  Special versions are denoted outside 0-9.
+
+0.1.2c R4-5
+| | ||  | |
+0 1 23  4 5
+=
+0x012345
+
+(assuming c is the third revision)
+
+0.2X becomes 02A000 because it is basically 0.2.3, but not, while higher than
+0.2.2 so can't be 020400 (for example).  Also, its a capital letter, so doesn't
+use the revision method.
+
+P.S.  Making a consistent scheme for SA:MP versions is REALLY hard.
+
+open.mp releases can use `A` as the first digit.
+
+*/
 
 // --------------------------------------------------
 // Natives
@@ -482,13 +758,6 @@ native Float:GetSVarFloat(const varname[]);
 /// </returns>
 native DeleteSVar(const varname[]);
 
-// SVar enumeration
-#define	SERVER_VARTYPE_NONE			0
-#define SERVER_VARTYPE_INT			1
-#define SERVER_VARTYPE_STRING		2
-#define SERVER_VARTYPE_FLOAT		3
-
-
 /// <summary>Each SVar (server-variable) has its own unique identification number for lookup, this function returns the highest ID.</summary>
 /// <seealso name="GetSVarNameAtIndex"/>
 /// <seealso name="GetSVarType"/>
@@ -781,7 +1050,7 @@ native SetWeather(weatherid);
 /// <summary>Get the currently set gravity.</summary>
 /// <seealso name="SetGravity"/>
 /// <returns>The current set gravity (as a float).</returns>
-native GetGravity();
+native Float:GetGravity();
 
 /// <summary>Set the gravity for all players.</summary>
 /// <param name="gravity">The value that the gravity should be set to (between -50 and 50)</param>
@@ -885,11 +1154,6 @@ native ConnectNPC(const name[], const script[]);
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <returns><b><c>1</c></b> if the player is an NPC, <b><c>0</c></b> if not.</returns>
 native IsPlayerNPC(playerid);
-
-// Artwork/NetModels
-#define DOWNLOAD_REQUEST_EMPTY			0
-#define DOWNLOAD_REQUEST_MODEL_FILE		1
-#define DOWNLOAD_REQUEST_TEXTURE_FILE	2
 
 native AddCharModel(baseid, newid, const dffname[], const txdname[]);
 native AddSimpleModel(virtualworld, baseid, newid, const dffname[], const txdname[]);
@@ -1403,11 +1667,6 @@ native DisableMenuRow(Menu:menuid, row);
 /// <returns>The ID of the player's currently shown menu, or <b><c>INVALID_MENU</c></b> (<b><c>255</c></b>) if no menu shown.</returns>
 native Menu:GetPlayerMenu(playerid);
 
-// Text Draw
-#define TEXT_DRAW_FONT_SPRITE_DRAW	 4
-#define TEXT_DRAW_FONT_MODEL_PREVIEW 5
-
-
 /// <summary>Creates a textdraw. Textdraws are, as the name implies, text (mainly - there can be boxes, sprites and model previews (skins/vehicles/weapons/objects too) that is drawn on a player's screens.</summary>
 /// <param name="x">The X (left/right) coordinate to create the textdraw at</param>
 /// <param name="y">The Y (up/down) coordinate to create the textdraw at</param>
@@ -1915,15 +2174,6 @@ native DeletePlayer3DTextLabel(playerid, PlayerText3D:id);
 /// <remarks>If <paramref name="text"/> is empty, the server/clients next to the text might crash!</remarks>
 native UpdatePlayer3DTextLabelText(playerid, PlayerText3D:id, color, const text[]);
 
-// Player GUI Dialog
-#define DIALOG_STYLE_MSGBOX				0
-#define DIALOG_STYLE_INPUT				1
-#define DIALOG_STYLE_LIST				2
-#define DIALOG_STYLE_PASSWORD			3
-#define DIALOG_STYLE_TABLIST			4
-#define DIALOG_STYLE_TABLIST_HEADERS	5
-
-
 /// <summary>Shows the player a synchronous (only one at a time) dialog box.</summary>
 /// <param name="playerid">The ID of the player to show the dialog to</param>
 /// <param name="dialogid">An ID to assign this dialog to, so responses can be processed. Max dialogid is <b><c>32767</c></b>. Using negative values will close any open dialog</param>
@@ -1943,98 +2193,11 @@ native UpdatePlayer3DTextLabelText(playerid, PlayerText3D:id, color, const text[
 /// </returns>
 native ShowPlayerDialog(playerid, dialogid, style, const caption[], const info[], const button1[], const button2[]);
 
-// --------------------------------------------------
-// Defines
-// --------------------------------------------------
-
-// States
-#define PLAYER_STATE_NONE						(0)
-#define PLAYER_STATE_ONFOOT						(1)
-#define PLAYER_STATE_DRIVER						(2)
-#define PLAYER_STATE_PASSENGER					(3)
-#define PLAYER_STATE_EXIT_VEHICLE				(4) // (used internally)
-#define PLAYER_STATE_ENTER_VEHICLE_DRIVER		(5) // (used internally)
-#define PLAYER_STATE_ENTER_VEHICLE_PASSENGER	(6) // (used internally)
-#define PLAYER_STATE_WASTED						(7)
-#define PLAYER_STATE_SPAWNED					(8)
-#define PLAYER_STATE_SPECTATING					(9)
-
-// Marker modes used by ShowPlayerMarkers()
-#define PLAYER_MARKERS_MODE_OFF			(0)
-#define PLAYER_MARKERS_MODE_GLOBAL		(1)
-#define PLAYER_MARKERS_MODE_STREAMED	(2)
-
-// Weapons
-#define WEAPON_BRASSKNUCKLE				(1)
-#define WEAPON_GOLFCLUB					(2)
-#define WEAPON_NITESTICK				(3)
-#define WEAPON_KNIFE					(4)
-#define WEAPON_BAT						(5)
-#define WEAPON_SHOVEL					(6)
-#define WEAPON_POOLSTICK				(7)
-#define WEAPON_KATANA					(8)
-#define WEAPON_CHAINSAW					(9)
-#define WEAPON_DILDO					(10)
-#define WEAPON_DILDO2					(11)
-#define WEAPON_VIBRATOR					(12)
-#define WEAPON_VIBRATOR2				(13)
-#define WEAPON_FLOWER					(14)
-#define WEAPON_CANE						(15)
-#define WEAPON_GRENADE					(16)
-#define WEAPON_TEARGAS					(17)
-#define WEAPON_MOLTOV					(18)
-#define WEAPON_COLT45					(22)
-#define WEAPON_SILENCED					(23)
-#define WEAPON_DEAGLE					(24)
-#define WEAPON_SHOTGUN					(25)
-#define WEAPON_SAWEDOFF					(26)
-#define WEAPON_SHOTGSPA					(27)
-#define WEAPON_UZI						(28)
-#define WEAPON_MP5						(29)
-#define WEAPON_AK47						(30)
-#define WEAPON_M4						(31)
-#define WEAPON_TEC9						(32)
-#define WEAPON_RIFLE					(33)
-#define WEAPON_SNIPER					(34)
-#define WEAPON_ROCKETLAUNCHER			(35)
-#define WEAPON_HEATSEEKER				(36)
-#define WEAPON_FLAMETHROWER				(37)
-#define WEAPON_MINIGUN					(38)
-#define WEAPON_SATCHEL					(39)
-#define WEAPON_BOMB						(40)
-#define WEAPON_SPRAYCAN					(41)
-#define WEAPON_FIREEXTINGUISHER			(42)
-#define WEAPON_CAMERA					(43)
-#define WEAPON_PARACHUTE				(46)
-#define WEAPON_VEHICLE					(49)
-#define WEAPON_DROWN					(53)
-#define WEAPON_COLLISION				(54)
-
-// Keys
-#define KEY_ACTION				(1)
-#define KEY_CROUCH				(2)
-#define KEY_FIRE				(4)
-#define KEY_SPRINT				(8)
-#define KEY_SECONDARY_ATTACK	(16)
-#define KEY_JUMP				(32)
-#define KEY_LOOK_RIGHT			(64)
-#define KEY_HANDBRAKE			(128)
-#define KEY_LOOK_LEFT			(256)
-#define KEY_SUBMISSION			(512)
-#define KEY_LOOK_BEHIND			(512)
-#define KEY_WALK				(1024)
-#define KEY_ANALOG_UP			(2048)
-#define KEY_ANALOG_DOWN			(4096)
-#define KEY_ANALOG_LEFT			(8192)
-#define KEY_ANALOG_RIGHT		(16384)
-#define KEY_YES					(65536)
-#define KEY_NO					(131072)
-#define KEY_CTRL_BACK			(262144)
-
-#define KEY_UP					(-128)
-#define KEY_DOWN				(128)
-#define KEY_LEFT				(-128)
-#define KEY_RIGHT				(128)
+/// <summary>Get a players unique ID.</summary>
+/// <param name="playerid">The player to get the unique ID of</param>
+/// <param name="serial">Where to save the unique ID</param>
+/// <param name="maxlen">The size of "serial"</param>
+native gpci(playerid, serial[], maxlen);
 
 // --------------------------------------------------
 // Forwards (Callback declarations)
@@ -2882,8 +3045,6 @@ forward OnVehicleSirenStateChange(playerid, vehicleid, newstate);
 forward OnPlayerFinishedDownloading(playerid, virtualworld);
 forward OnPlayerRequestDownload(playerid, type, crc);
 
-#define CLICK_SOURCE_SCOREBOARD		0
-
 /// <summary>Called when a player double-clicks on a player on the scoreboard.</summary>
 /// <param name="playerid">The ID of the player that clicked on a player on the scoreboard</param>
 /// <param name="clickedplayerid">The ID of the player that was clicked on</param>
@@ -2897,11 +3058,6 @@ forward OnPlayerRequestDownload(playerid, type, crc);
 ///   It is always called first in filterscripts.
 /// </returns>
 forward OnPlayerClickPlayer(playerid, clickedplayerid, source);
-
-#define EDIT_RESPONSE_CANCEL		0
-#define EDIT_RESPONSE_FINAL			1
-#define EDIT_RESPONSE_UPDATE		2
-
 
 /// <summary>This callback is called when a player finishes editing an object (<a href="#EditObject">EditObject</a>/<a href="#EditPlayerObject">EditPlayerObject</a>).</summary>
 /// <param name="playerid">The ID of the player that edited an object</param>
@@ -2958,10 +3114,6 @@ Float:fOffsetX, Float:fOffsetY, Float:fOffsetZ,
 Float:fRotX, Float:fRotY, Float:fRotZ,
 Float:fScaleX, Float:fScaleY, Float:fScaleZ );
 
-#define SELECT_OBJECT_GLOBAL_OBJECT	1
-#define SELECT_OBJECT_PLAYER_OBJECT 2
-
-
 /// <summary>This callback is called when a player selects an object after <a href="#SelectObject">SelectObject</a> has been used.</summary>
 /// <param name="playerid">The ID of the player that selected an object</param>
 /// <param name="type">The type of selection</param>
@@ -2978,13 +3130,6 @@ Float:fScaleX, Float:fScaleY, Float:fScaleZ );
 ///   It is always called first in filterscripts.
 /// </returns>
 forward OnPlayerSelectObject(playerid, type, objectid, modelid, Float:fX, Float:fY, Float:fZ);
-
-#define BULLET_HIT_TYPE_NONE			0
-#define BULLET_HIT_TYPE_PLAYER			1
-#define BULLET_HIT_TYPE_VEHICLE			2
-#define BULLET_HIT_TYPE_OBJECT			3
-#define BULLET_HIT_TYPE_PLAYER_OBJECT	4
-
 
 /// <summary>This callback is called when a player fires a shot from a weapon. Only bullet weapons are supported. Only <b>passenger</b> drive-by is supported (not driver drive-by, and not sea sparrow / hunter shots).</summary>
 /// <param name="playerid">The ID of the player that shot a weapon</param>
@@ -3028,4 +3173,20 @@ forward OnPlayerSelectObject(playerid, type, objectid, modelid, Float:fX, Float:
 /// </returns>
 forward OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY, Float:fZ);
 
+/// <summary>This callback is called when a SendClientCheck request comletes</summary>
+/// <param name="playerid">The ID of the player checked</param>
+/// <param name="actionid">The type of check performed</param>
+/// <param name="memaddr">The address requested</param>
+/// <param name="retndata">The result of the check</param>
+/// <seealso name="SendClientCheck"/>
+forward OnClientCheckResponse(playerid, actionid, memaddr, retndata);
+
+/// <summary>This callback is called when a SendClientCheck request comletes</summary>
+/// <param name="playerid">The ID of the player who got cash from the game</param>
+/// <param name="amount">The amount of cash given</param>
+/// <param name="source">Where the money came from</param>
+/// <remarks>Doesn't work</remarks>
+forward OnScriptCash(playerid, amount, source);
+
 // --------------------------------------------------
+

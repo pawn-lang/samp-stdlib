@@ -4,11 +4,38 @@
  *
  */
 
-#if defined _objects_included
+#if defined _INC_a_objects
 	#endinput
 #endif
+#define _INC_a_objects
 #define _objects_included
-#pragma library objects
+
+#define SAMP_CONST_CORRECT
+
+#pragma tabsize 4
+
+// --------------------------------------------------
+// Defines
+// --------------------------------------------------
+
+#define OBJECT_MATERIAL_SIZE_32x32             (10)
+#define OBJECT_MATERIAL_SIZE_64x32             (20)
+#define OBJECT_MATERIAL_SIZE_64x64             (30)
+#define OBJECT_MATERIAL_SIZE_128x32            (40)
+#define OBJECT_MATERIAL_SIZE_128x64            (50)
+#define OBJECT_MATERIAL_SIZE_128x128           (60)
+#define OBJECT_MATERIAL_SIZE_256x32            (70)
+#define OBJECT_MATERIAL_SIZE_256x64            (80)
+#define OBJECT_MATERIAL_SIZE_256x128           (90)
+#define OBJECT_MATERIAL_SIZE_256x256           (100)
+#define OBJECT_MATERIAL_SIZE_512x64            (110)
+#define OBJECT_MATERIAL_SIZE_512x128           (120)
+#define OBJECT_MATERIAL_SIZE_512x256           (130)
+#define OBJECT_MATERIAL_SIZE_512x512           (140)
+
+#define OBJECT_MATERIAL_TEXT_ALIGN_LEFT        (0)
+#define OBJECT_MATERIAL_TEXT_ALIGN_CENTER      (1)
+#define OBJECT_MATERIAL_TEXT_ALIGN_RIGHT       (2)
 
 // Objects
 
@@ -479,26 +506,6 @@ native IsPlayerObjectMoving(playerid, objectid);
 /// <remarks><b>This function was removed in SA-MP 0.3.</b></remarks>
 native AttachPlayerObjectToPlayer(objectplayer, objectid, attachplayer, Float:OffsetX, Float:OffsetY, Float:OffsetZ, Float:rX, Float:rY, Float:rZ);
 
-#define OBJECT_MATERIAL_SIZE_32x32		10
-#define OBJECT_MATERIAL_SIZE_64x32		20
-#define OBJECT_MATERIAL_SIZE_64x64		30
-#define OBJECT_MATERIAL_SIZE_128x32		40
-#define OBJECT_MATERIAL_SIZE_128x64		50
-#define OBJECT_MATERIAL_SIZE_128x128	60
-#define OBJECT_MATERIAL_SIZE_256x32		70
-#define OBJECT_MATERIAL_SIZE_256x64		80
-#define OBJECT_MATERIAL_SIZE_256x128	90
-#define OBJECT_MATERIAL_SIZE_256x256	100
-#define OBJECT_MATERIAL_SIZE_512x64		110
-#define OBJECT_MATERIAL_SIZE_512x128	120
-#define OBJECT_MATERIAL_SIZE_512x256	130
-#define OBJECT_MATERIAL_SIZE_512x512	140
-
-#define OBJECT_MATERIAL_TEXT_ALIGN_LEFT		0
-#define OBJECT_MATERIAL_TEXT_ALIGN_CENTER	1
-#define OBJECT_MATERIAL_TEXT_ALIGN_RIGHT	2
-
-
 /// <summary>Replace the texture of an object with the texture from another model in the game.</summary>
 /// <param name="objectid">The ID of the object to change the texture of</param>
 /// <param name="materialindex">The material index on the object to change (<b><c>0</c></b> to <b><c>15</c></b>)</param>
@@ -633,3 +640,4 @@ native SetPlayerObjectMaterialText(playerid, objectid, const text[], materialind
 /// <remarks>This function only affects the camera collision of objects created AFTER its use - it does not toggle existing objects' camera collisions.</remarks>
 /// <remarks>This only works outside the map boundaries (past <b><c>-3000</c></b>/<b><c>3000</c></b> units on the x and/or y axis).</remarks>
 native SetObjectsDefaultCameraCol(disable);
+

@@ -4,20 +4,33 @@
  *
  */
 
+#if defined _INC_a_http
+	#endinput
+#endif
+#define _INC_a_http
+
+#define SAMP_CONST_CORRECT
+
+#pragma tabsize 4
+
+// --------------------------------------------------
+// Defines
+// --------------------------------------------------
+
 // HTTP requests
-#define HTTP_GET						1
-#define HTTP_POST						2
-#define HTTP_HEAD						3
+#define HTTP_GET                               (1)
+#define HTTP_POST                              (2)
+#define HTTP_HEAD                              (3)
 
 // HTTP error response codes
 // These codes compliment ordinary HTTP response codes returned in 'response_code'
 // (10x) (20x OK) (30x Moved) (40x Unauthorised) (50x Server Error)  
-#define HTTP_ERROR_BAD_HOST				1
-#define HTTP_ERROR_NO_SOCKET			2
-#define HTTP_ERROR_CANT_CONNECT			3
-#define HTTP_ERROR_CANT_WRITE			4
-#define HTTP_ERROR_CONTENT_TOO_BIG		5
-#define HTTP_ERROR_MALFORMED_RESPONSE	6
+#define HTTP_ERROR_BAD_HOST                    (1)
+#define HTTP_ERROR_NO_SOCKET                   (2)
+#define HTTP_ERROR_CANT_CONNECT                (3)
+#define HTTP_ERROR_CANT_WRITE                  (4)
+#define HTTP_ERROR_CONTENT_TOO_BIG             (5)
+#define HTTP_ERROR_MALFORMED_RESPONSE          (6)
 
 /// <summary>Sends a threaded HTTP request.</summary>
 /// <param name="index">ID used to differentiate requests that are sent to the same callback (useful for playerids)</param>
@@ -50,3 +63,4 @@
 native HTTP(index, type, const url[], const data[], const callback[]);
 
 // example HTTP callback: public MyHttpResponse(index, response_code, data[]) { ... }
+
