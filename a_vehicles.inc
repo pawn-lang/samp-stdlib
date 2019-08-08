@@ -206,7 +206,7 @@ native SetVehicleZAngle(vehicleid, Float:z_angle);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. The player and/or vehicle specified do not exist.
 /// </returns>
-native SetVehicleParamsForPlayer(vehicleid,playerid,objective,doorslocked);
+native SetVehicleParamsForPlayer(vehicleid, playerid, objective, doorslocked);
 
 /// <summary>Use this function before any player connects (<a href="#OnGameModeInit">OnGameModeInit</a>) to tell all clients that the script will control vehicle engines and lights. This prevents the game automatically turning the engine on/off when players enter/exit vehicles and headlights automatically coming on when it is dark.</summary>
 /// <seealso name="SetVehicleParamsEx"/>

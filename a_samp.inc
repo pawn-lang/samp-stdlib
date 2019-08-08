@@ -465,7 +465,7 @@ native SendDeathMessageToPlayer(playerid, killer, killee, weapon);
 /// <seealso name="GameTextForPlayer"/>
 /// <seealso name="TextDrawShowForAll"/>
 /// <returns>This function always returns <b><c>1</c></b>.</returns>
-native GameTextForAll(const string[],time,style);
+native GameTextForAll(const string[], time, style);
 
 /// <summary>Shows 'game text' (on-screen text) for a certain length of time for a specific player.</summary>
 /// <param name="playerid">The ID of the player to show the gametext for</param>
@@ -478,7 +478,7 @@ native GameTextForAll(const string[],time,style);
 ///   <b><c>1</c></b>: The function executed successfully. Success is reported when the style and/or time is invalid. Nothing will happen though (no text displayed). May also cause game crashes.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. This means either the string is null or the player is not connected.
 /// </returns>
-native GameTextForPlayer(playerid,const string[],time,style);
+native GameTextForPlayer(playerid, const string[], time, style);
 
 /// <summary>Sets a 'timer' to call a function after some time. Can be set to repeat.</summary>
 /// <param name="funcname">Name of the function to call as a string. This must be a public function (forwarded). A null string here will crash the server</param>

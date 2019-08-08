@@ -182,7 +182,7 @@ native GetPlayerPos(playerid, &Float:x, &Float:y, &Float:z);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. The player specified does not exist.
 /// </returns>
-native SetPlayerFacingAngle(playerid,Float:ang);
+native SetPlayerFacingAngle(playerid, Float:ang);
 
 /// <summary>Gets the angle a player is facing.</summary>
 /// <param name="playerid">The player you want to get the angle of</param>
@@ -191,7 +191,7 @@ native SetPlayerFacingAngle(playerid,Float:ang);
 /// <seealso name="SetPlayerFacingAngle"/>
 /// <remarks>Angles are reversed in GTA:SA; 90 degrees would be East in the real world, but in GTA:SA 90 degrees is in fact West. North and South are still 0/360 and 180. To convert this, simply do <b>360 - angle</b>.</remarks>
 /// <remarks>Angles returned when inside a vehicle is rarely correct. To get the correct facing angle while inside a vehicle, use <a href="#GetVehicleZAngle">GetVehicleZAngle</a>.</remarks>
-native GetPlayerFacingAngle(playerid,&Float:ang);
+native GetPlayerFacingAngle(playerid, &Float:ang);
 
 /// <summary>Checks if a player is in range of a point. This native function is faster than the PAWN implementation using distance formula.</summary>
 /// <param name="playerid">The ID of the player</param>
@@ -243,7 +243,7 @@ native IsPlayerStreamedIn(playerid, forplayerid);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. This means the player is not connected.
 /// </returns>
-native SetPlayerInterior(playerid,interiorid);
+native SetPlayerInterior(playerid, interiorid);
 
 /// <summary>Retrieves the player's current interior. A list of currently known interiors with their positions can be found on <a href="http://wiki.sa-mp.com/wiki/InteriorIDs">this</a> page.</summary>
 /// <param name="playerid">The player to get the interior ID of</param>
@@ -404,7 +404,7 @@ native GetPlayerTeam(playerid);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. This means the player specified does not exist.
 /// </returns>
-native SetPlayerScore(playerid,score);
+native SetPlayerScore(playerid, score);
 
 /// <summary>This function returns a player's score as it was set using <a href="#SetPlayerScore">SetPlayerScore</a>.</summary>
 /// <param name="playerid">The player to get the score of</param>
@@ -448,7 +448,7 @@ native SetPlayerDrunkLevel(playerid, level);
 /// <seealso name="ChangeVehicleColor"/>
 /// <remarks>This function will change player's color for everyone, even if player's color was changed with <a href="#SetPlayerMarkerForPlayer">SetPlayerMarkerForPlayer</a> for any other player. </remarks>
 /// <remarks>If used under <a href="#OnPlayerConnect">OnPlayerConnect</a>, the affecting player will not see the color in the TAB menu. </remarks>
-native SetPlayerColor(playerid,color);
+native SetPlayerColor(playerid, color);
 
 /// <summary>Gets the color of the player's name and radar marker. Only works after <a href="#SetPlayerColor">SetPlayerColor</a>.</summary>
 /// <param name="playerid">The ID of the player to get the color of</param>
@@ -541,7 +541,7 @@ native GetPlayerWeaponData(playerid, slot, &weapons, &ammo);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. This means the player is not connected.
 /// </returns>
-native GivePlayerMoney(playerid,money);
+native GivePlayerMoney(playerid, money);
 
 /// <summary>Reset a player's money to $0.</summary>
 /// <param name="playerid">The ID of the player to reset the money of</param>
@@ -1862,7 +1862,7 @@ native GetPlayerSpecialAction(playerid);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. This means the player is not connected.
 /// </returns>
-native SetPlayerSpecialAction(playerid,actionid);
+native SetPlayerSpecialAction(playerid, actionid);
 
 /// <summary>Disables collisions between occupied vehicles for a player.</summary>
 /// <param name="playerid">The ID of the player for whom you want to disable collisions</param>
@@ -1963,7 +1963,7 @@ native DisablePlayerRaceCheckpoint(playerid);
 /// <remarks>This function does not work if used in <a href="#OnPlayerConnect">OnPlayerConnect</a></remarks>
 /// <remarks>A player's world boundaries can be reset by setting them to <b><c>20000.0</c></b>, <b><c>-20000.0</c></b>, <b><c>20000.0</c></b>, <b><c>-20000.0</c></b>. These are the default values.</remarks>
 /// <remarks>This function doesn't work in interiors!</remarks>
-native SetPlayerWorldBounds(playerid,Float:x_max,Float:x_min,Float:y_max,Float:y_min);
+native SetPlayerWorldBounds(playerid, Float:x_max,Float:x_min,Float:y_max,Float:y_min);
 
 /// <summary>Change the colour of a player's <b>nametag</b> and <b>radar blip</b> for another player.</summary>
 /// <param name="playerid">The player that will see the player's changed blip/nametag color</param>
@@ -2048,7 +2048,7 @@ native AllowPlayerTeleport(playerid, allow);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. The player specified doesn't exist.
 /// </returns>
-native SetPlayerCameraPos(playerid,Float:x, Float:y, Float:z);
+native SetPlayerCameraPos(playerid, Float:x, Float:y, Float:z);
 
 /// <summary>Set the direction a player's camera looks at. Generally meant to be used in combination with <a href="#SetPlayerCameraPos">SetPlayerCameraPos</a>.</summary>
 /// <param name="playerid">The ID of the player whose camera to set</param>
