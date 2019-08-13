@@ -1545,7 +1545,7 @@ native SetPVarString(playerid, const varname[], const string_value[]);
 /// <seealso name="DeletePVar"/>
 /// <remarks>If length of string is zero (value not set), string_return text will not be updated or set to anything and will remain with old data, neccesying that you clear the variable to blank value if <a href="#GetPVarString">GetPVarString</a> returns <b><c>0</c></b> if that behavior is undesired </remarks>
 /// <returns>The length of the string.</returns>
-native GetPVarString(playerid, const varname[], string_return[], len = string_return);
+native GetPVarString(playerid, const varname[], string_return[], len = sizeof string_return);
 
 /// <summary>Set a float player variable's value.</summary>
 /// <param name="playerid">The ID of the player whose player variable will be set</param>
