@@ -653,7 +653,7 @@ native GetActorPoolSize();
 /// <remarks>This function was added in <b>SA-MP 0.3.7-R1</b> and will not work in earlier versions!</remarks>
 /// <remarks>The salt is appended to the end of the password, meaning password 'foo' and salt 'bar' would form 'foobar'. </remarks>
 /// <remarks>The salt should be random, unique for each player and at least as long as the hashed password. It is to be stored alongside the actual hash in the player's account. </remarks>
-native SHA256_PassHash(const password[], const salt[], ret_hash[], ret_hash_len); // SHA256 for password hashing
+native SHA256_PassHash(const password[], const salt[], ret_hash[], ret_hash_len = sizeof ret_hash_len); // SHA256 for password hashing
 
 // Server wide persistent variable system (SVars)
 
@@ -772,7 +772,7 @@ native GetSVarsUpperIndex();
 /// <seealso name="GetSVarInt"/>
 /// <seealso name="GetSVarFloat"/>
 /// <seealso name="GetSVarString"/>
-native GetSVarNameAtIndex(index, ret_varname[], ret_len);
+native GetSVarNameAtIndex(index, ret_varname[], ret_len = sizeof ret_varname);
 
 /// <summary>Gets the type (integer, float or string) of a server variable.</summary>
 /// <param name="varname">The name of the server variable to get the type of</param>
@@ -1158,8 +1158,8 @@ native IsPlayerNPC(playerid);
 native AddCharModel(baseid, newid, const dffname[], const txdname[]);
 native AddSimpleModel(virtualworld, baseid, newid, const dffname[], const txdname[]);
 native AddSimpleModelTimed(virtualworld, baseid, newid, const dffname[], const txdname[], timeon, timeoff);
-native FindModelFileNameFromCRC(crc, retstr[], retstr_size);
-native FindTextureFileNameFromCRC(crc, retstr[], retstr_size);
+native FindModelFileNameFromCRC(crc, retstr[], retstr_size = sizeof retstr);
+native FindTextureFileNameFromCRC(crc, retstr[], retstr_size = sizeof retstr);
 native RedirectDownload(playerid, const url[]);
 
 // Admin
@@ -1528,7 +1528,7 @@ native NetStats_ConnectionStatus(playerid);
 /// <seealso name="NetStats_PacketLossPercent"/>
 /// <seealso name="NetStats_ConnectionStatus"/>
 /// <remarks>This function was added in <b>SA-MP 0.3z</b> and will not work in earlier versions!</remarks>
-native NetStats_GetIpPort(playerid, ip_port[], ip_port_len);
+native NetStats_GetIpPort(playerid, ip_port[], ip_port_len = sizeof ip_port);
 
 // Menu
 
