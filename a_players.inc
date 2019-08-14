@@ -611,7 +611,7 @@ native GetPlayerState(playerid);
 /// <seealso name="OnPlayerDisconnect"/>
 /// <remarks>This function does not work when used in <a href="#OnPlayerDisconnect">OnPlayerDisconnect</a> because the player is already disconnected. It will return an invalid IP (<b><c>255.255.255.255</c></b>). Save players' IPs under <a href="#OnPlayerConnect">OnPlayerConnect</a> if they need to be used under <a href="#OnPlayerDisconnect">OnPlayerDisconnect</a>. </remarks>
 /// <returns><b><c>1</c></b> on success and <b><c>0</c></b> on failure.</returns>
-native GetPlayerIp(playerid, name[], len);
+native GetPlayerIp(playerid, ip[], len = sizeof ip);
 
 /// <summary>Get the ping of a player. The ping measures the amount of time it takes for the server to 'ping' the client and for the client to send the message back.</summary>
 /// <param name="playerid">The ID of the player to get the ping of</param>
@@ -653,7 +653,7 @@ native GetPlayerKeys(playerid, &keys, &updown, &leftright);
 /// <seealso name="GetPlayerVersion"/>
 /// <remarks>A player's name can be up to 24 characters long (as of <b>0.3d R2</b>) by using <a href="#SetPlayerName">SetPlayerName</a>. This is defined in <c>a_samp.inc</c> as <b><c>MAX_PLAYER_NAME</c></b>. However, the client can only join with a nickname between 3 and 20 characters, otherwise the connection will be rejected and the player has to quit to choose a valid name.</remarks>
 /// <returns>The length of the player's name. <b><c>0</c></b> if player specified doesn't exist.</returns>
-native GetPlayerName(playerid, name[], len);
+native GetPlayerName(playerid, name[], len = sizeof name);
 
 /// <summary>Sets the game time for a player. If a player's clock is enabled (<a href="#TogglePlayerClock">TogglePlayerClock</a>) the time displayed by it will update automatically.</summary>
 /// <param name="playerid">The ID of the player to set the game time of</param>
@@ -1545,7 +1545,7 @@ native SetPVarString(playerid, const varname[], const string_value[]);
 /// <seealso name="DeletePVar"/>
 /// <remarks>If length of string is zero (value not set), string_return text will not be updated or set to anything and will remain with old data, neccesying that you clear the variable to blank value if <a href="#GetPVarString">GetPVarString</a> returns <b><c>0</c></b> if that behavior is undesired </remarks>
 /// <returns>The length of the string.</returns>
-native GetPVarString(playerid, const varname[], string_return[], len);
+native GetPVarString(playerid, const varname[], string_return[], len = sizeof string_return);
 
 /// <summary>Set a float player variable's value.</summary>
 /// <param name="playerid">The ID of the player whose player variable will be set</param>
@@ -1607,7 +1607,7 @@ native GetPVarsUpperIndex(playerid);
 /// <seealso name="GetPVarInt"/>
 /// <seealso name="GetPVarFloat"/>
 /// <seealso name="GetPVarString"/>
-native GetPVarNameAtIndex(playerid, index, ret_varname[], ret_len);
+native GetPVarNameAtIndex(playerid, index, ret_varname[], ret_len = sizeof ret_varname);
 
 /// <summary>Gets the type (integer, float or string) of a player variable.</summary>
 /// <param name="playerid">The ID of the player whose player variable to get the type of</param>
@@ -1775,7 +1775,7 @@ native GetPlayerAnimationIndex(playerid); // return the index of any running app
 /// <seealso name="GetPlayerAnimationIndex"/>
 /// <remarks>This function was added in <b>SA-MP 0.3b</b> and will not work in earlier versions!</remarks>
 /// <returns><b><c>1</c></b> on success, <b><c>0</c></b> on failure.</returns>
-native GetAnimationName(index, animlib[], len1, animname[], len2); // get the animation lib/name for the index
+native GetAnimationName(index, animlib[], len1 = sizeof animlib, animname[], len2 = sizeof animname); // get the animation lib/name for the index
 
 /// <summary>Retrieves a player's current <a href="http://wiki.sa-mp.com/wiki/SpecialActions">special action</a>.</summary>
 /// <param name="playerid">The ID of the player to get the <a href="http://wiki.sa-mp.com/wiki/SpecialActions">special action</a> of</param>

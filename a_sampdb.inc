@@ -70,7 +70,7 @@ native db_num_fields(DBResult:dbresult);
 /// <param name="maxlength">The max length of the field</param>
 /// <remarks>Using an <b>invalid handle</b> will crash your server! Get a <b>valid handle</b> by using <a href="#db_open">db_open</a>. But it's protected against <b><c>NULL</c></b> references</remarks>
 /// <returns>Returns <b><c>1</c></b>, if the function was successful, otherwise <b><c>0</c></b> if <b><c>DBResult:dbresult</c></b> is a <b><c>NULL</c></b> reference or the column index not available.</returns>
-native db_field_name(DBResult:dbresult, field, result[], maxlength);
+native db_field_name(DBResult:dbresult, field, result[], maxlength = sizeof result);
 
 /// <summary>Get the content of a field from <a href="#db_query">db_query</a>.</summary>
 /// <param name="dbresult">The result to get the data from</param>
@@ -79,7 +79,7 @@ native db_field_name(DBResult:dbresult, field, result[], maxlength);
 /// <param name="maxlength">The max length of the field</param>
 /// <remarks>Using an <b>invalid handle</b> will crash your server! Get a <b>valid handle</b> by using <a href="#db_open">db_open</a>. But it's protected against <b><c>NULL</c></b> references</remarks>
 /// <returns>Returns <b><c>1</c></b> if successful, otherwise <b><c>0</c></b> if <b><c>DBResult:dbresult</c></b> is a <b><c>NULL</c></b> reference or the column index not available.</returns>
-native db_get_field(DBResult:dbresult, field, result[], maxlength);
+native db_get_field(DBResult:dbresult, field, result[], maxlength = sizeof result);
 
 /// <summary>Get the content of a field as an integer from <a href="#db_query">db_query</a>.</summary>
 /// <param name="result">The result to get the data from</param>
@@ -102,7 +102,7 @@ native Float:db_get_field_float(DBResult:result, field = 0);
 /// <param name="maxlength">The max length of the field</param>
 /// <remarks>Using an <b>invalid handle</b> will crash your server! Get a <b>valid handle</b> by using <a href="#db_open">db_open</a>. But it's protected against <b><c>NULL</c></b> references</remarks>
 /// <returns>Returns <b><c>1</c></b> if successful, otherwise <b><c>0</c></b> if <b><c>DBResult:dbresult</c></b> is a <b><c>NULL</c></b> reference or the column index not available.</returns>
-native db_get_field_assoc(DBResult:dbresult, const field[], result[], maxlength);
+native db_get_field_assoc(DBResult:dbresult, const field[], result[], maxlength = sizeof result);
 
 /// <summary>Get the contents of field as an integer with specified name.</summary>
 /// <param name="result">The result to get the data from</param>
