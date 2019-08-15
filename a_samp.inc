@@ -653,7 +653,7 @@ native GetActorPoolSize();
 /// <remarks>This function was added in <b>SA-MP 0.3.7-R1</b> and will not work in earlier versions!</remarks>
 /// <remarks>The salt is appended to the end of the password, meaning password 'foo' and salt 'bar' would form 'foobar'. </remarks>
 /// <remarks>The salt should be random, unique for each player and at least as long as the hashed password. It is to be stored alongside the actual hash in the player's account. </remarks>
-native SHA256_PassHash(const password[], const salt[], ret_hash[], ret_hash_len = sizeof ret_hash_len); // SHA256 for password hashing
+native SHA256_PassHash(const password[], const salt[], ret_hash[], ret_hash_len = sizeof ret_hash); // SHA256 for password hashing
 
 // Server wide persistent variable system (SVars)
 
@@ -767,7 +767,7 @@ native GetSVarsUpperIndex();
 /// <summary>Retrieve the name of a sVar via the index.</summary>
 /// <param name="index">The index of the sVar</param>
 /// <param name="ret_varname">A string to store the sVar's name in, passed by reference</param>
-/// <param name="ret_len">The max length of the returned string, use sizeof()</param>
+/// <param name="ret_len">The max length of the returned string</param>
 /// <seealso name="GetSVarType"/>
 /// <seealso name="GetSVarInt"/>
 /// <seealso name="GetSVarFloat"/>
@@ -1012,7 +1012,7 @@ native SetWorldTime(hour);
 /// <summary>Get the name of a weapon.</summary>
 /// <param name="weaponid">The ID of the weapon to get the name of</param>
 /// <param name="weapon">An array to store the weapon's name in, passed by reference</param>
-/// <param name="len">The maximum length of the weapon name to store. Should be <c>sizeof(name)</c></param>
+/// <param name="len">The maximum length of the weapon name to store.</param>
 /// <seealso name="GetPlayerWeapon"/>
 /// <seealso name="AllowInteriorWeapons"/>
 /// <seealso name="GivePlayerWeapon"/>
