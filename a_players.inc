@@ -600,7 +600,7 @@ native GetPlayerState(playerid);
 
 /// <summary>Get the specified player's IP address and store it in a string.</summary>
 /// <param name="playerid">The ID of the player to get the IP address of</param>
-/// <param name="name">The string to store the player's IP address in, passed by reference</param>
+/// <param name="ip">An array into which to store the player's IP address, passed by reference</param>
 /// <param name="len">The maximum length of the IP address (recommended 16)</param>
 /// <seealso name="NetStats_GetIpPort"/>
 /// <seealso name="GetPlayerName"/>
@@ -1602,7 +1602,7 @@ native GetPVarsUpperIndex(playerid);
 /// <param name="playerid">The ID of the player whose player variable to get the name of</param>
 /// <param name="index">The index of the player's pVar</param>
 /// <param name="ret_varname">A string to store the pVar's name in, passed by reference</param>
-/// <param name="ret_len">The max length of the returned string, use sizeof()</param>
+/// <param name="ret_len">The max length of the returned string</param>
 /// <seealso name="GetPVarType"/>
 /// <seealso name="GetPVarInt"/>
 /// <seealso name="GetPVarFloat"/>
