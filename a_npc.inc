@@ -7,6 +7,9 @@
 #if defined _INC_a_npc
 	#endinput
 #endif
+#if defined _INC_a_samp
+	#error Include `<a_samp>` or `<a_npc>`, not both.
+#endif
 #define _INC_a_npc
 #define _samp_included
 
