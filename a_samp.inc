@@ -333,6 +333,8 @@ open.mp releases can use `A` as the first digit.
 // Util
 
 #if !defined _console_included
+	#define _console_included
+
 	/// <summary>Prints a string to the server console (not in-game chat) and logs (server_log.txt).</summary>
 	/// <param name="string">The string to print</param>
 	/// <seealso name="printf"/>
