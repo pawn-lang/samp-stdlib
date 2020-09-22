@@ -160,7 +160,7 @@
 #define KEY_HANDBRAKE                          (128)
 #define KEY_LOOK_LEFT                          (256)
 #define KEY_SUBMISSION                         (512)
-#define KEY_LOOK_BEHIND                        (512)
+#define KEY_LOOK_BEHIND                        (320)
 #define KEY_WALK                               (1024)
 #define KEY_ANALOG_UP                          (2048)
 #define KEY_ANALOG_DOWN                        (4096)
