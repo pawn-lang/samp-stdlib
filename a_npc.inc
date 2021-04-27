@@ -312,11 +312,11 @@ native format(output[], len = sizeof (output), const format[], {Float,_}:...);
 native SetTimer(const funcname[], interval, repeating);
 
 /// <summary>Kills (stops) a running timer.</summary>
-/// <param name="timerid">The ID of the timer to kill (returned by <a href="#SetTimer">SetTimer</a> or <a href="#SetTimerEx">SetTimerEx</a>)</param>
+/// <param name="timerID">The ID of the timer to kill (returned by <a href="#SetTimer">SetTimer</a> or <a href="#SetTimerEx">SetTimerEx</a>)</param>
 /// <seealso name="SetTimer"/>
 /// <seealso name="SetTimerEx"/>
 /// <returns>This function always returns <b><c>0</c></b>.</returns>
-native KillTimer(timerid);
+native KillTimer(timerID);
 
 /// <summary>Returns the uptime of the actual server (not the SA-MP server) in milliseconds.</summary>
 /// <seealso name="tickcount"/>
@@ -365,7 +365,7 @@ native SendChat(const msg[]);
 native SendCommand(const commandtext[]);
 
 /// <summary>Get a player's current state.</summary>
-/// <param name="playerid">The ID of the player to get the current state of</param>
+/// <param name="playerID">The ID of the player to get the current state of</param>
 /// <seealso name="GetPlayerSpecialAction"/>
 /// <seealso name="SetPlayerSpecialAction"/>
 /// <seealso name="OnPlayerStateChange"/>
@@ -385,10 +385,10 @@ native SendCommand(const commandtext[]);
 ///   </ul>
 /// </remarks>
 /// <returns>The player's current state as an integer.</returns>
-native GetPlayerState(playerid);
+native GetPlayerState(playerID);
 
 /// <summary>Get the position of a player, represented by x, y and z coordinates.</summary>
-/// <param name="playerid">The ID of the player to get the position of</param>
+/// <param name="playerID">The ID of the player to get the position of</param>
 /// <param name="x">A float variable in which to store the x coordinate in, passed by reference</param>
 /// <param name="y">A float variable in which to store the y coordinate in, passed by reference</param>
 /// <param name="z">A float variable in which to store the z coordinate in, passed by reference</param>
@@ -398,44 +398,44 @@ native GetPlayerState(playerid);
 /// <seealso name="GetPlayerDistanceFromPoint"/>
 /// <remarks>This function is known to return unreliable values when used in <a href="#OnPlayerDisconnect">OnPlayerDisconnect</a> and <a href="#OnPlayerRequestClass">OnPlayerRequestClass</a>. This is because the player is not spawned.</remarks>
 /// <returns><b><c>true</c></b> on success, <b><c>false</c></b> on failure (i.e. player not connected).</returns>
-native GetPlayerPos(playerid, &Float:x, &Float:y, &Float:z);
+native GetPlayerPos(playerID, &Float:x, &Float:y, &Float:z);
 
-/// <summary>This function gets the ID of the vehicle the player is currently in. Note: <b>NOT</b> the model id of the vehicle. See <a href="#GetVehicleModel">GetVehicleModel</a> for that.</summary>
-/// <param name="playerid">The ID of the player in the vehicle that you want to get the ID of</param>
+/// <summary>This function gets the ID of the vehicle the player is currently in. Note: <b>NOT</b> the model ID of the vehicle. See <a href="#GetVehicleModel">GetVehicleModel</a> for that.</summary>
+/// <param name="playerID">The ID of the player in the vehicle that you want to get the ID of</param>
 /// <seealso name="IsPlayerInVehicle"/>
 /// <seealso name="IsPlayerInAnyVehicle"/>
 /// <seealso name="GetPlayerVehicleSeat"/>
 /// <seealso name="GetVehicleModel"/>
 /// <returns>ID of the vehicle or <b><c>0</c></b> if not in a vehicle.</returns>
-native GetPlayerVehicleID(playerid);
-native GetPlayerArmedWeapon(playerid);
+native GetPlayerVehicleID(playerID);
+native GetPlayerArmedWeapon(playerID);
 
-native GetPlayerHealth(playerid);
-native GetPlayerArmour(playerid);
+native GetPlayerHealth(playerID);
+native GetPlayerArmour(playerID);
 
 /// <summary>Retrieves a player's current <a href="http://wiki.sa-mp.com/wiki/SpecialActions">special action</a>.</summary>
-/// <param name="playerid">The ID of the player to get the <a href="http://wiki.sa-mp.com/wiki/SpecialActions">special action</a> of</param>
+/// <param name="playerID">The ID of the player to get the <a href="http://wiki.sa-mp.com/wiki/SpecialActions">special action</a> of</param>
 /// <seealso name="SetPlayerSpecialAction"/>
 /// <seealso name="GetPlayerState"/>
 /// <returns>The <a href="http://wiki.sa-mp.com/wiki/SpecialActions">special action</a> of the player.</returns>
-native GetPlayerSpecialAction(playerid);
+native GetPlayerSpecialAction(playerID);
 
 /// <summary>Checks if a player is streamed in for an NPC. Only nearby players are streamed in.</summary>
-/// <param name="playerid">The ID of the player to check</param>
+/// <param name="playerID">The ID of the player to check</param>
 /// <seealso name="IsVehicleStreamedIn"/>
 /// <remarks>This NPC function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <returns><b><c>1</c></b> if the player is streamed in, <b><c>0</c></b> if not.</returns>
-native IsPlayerStreamedIn(playerid);
+native IsPlayerStreamedIn(playerID);
 
 /// <summary>Checks if a vehicle is streamed in for an NPC. Only nearby vehicles are streamed in.</summary>
-/// <param name="vehicleid">The ID of the vehicle to check</param>
+/// <param name="vehicleID">The ID of the vehicle to check</param>
 /// <seealso name="IsPlayerStreamedIn"/>
 /// <remarks>This NPC function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <returns><b><c>1</c></b> if the vehicle is streamed in, <b><c>0</c></b> if not.</returns>
-native IsVehicleStreamedIn(vehicleid);
+native IsVehicleStreamedIn(vehicleID);
 
 /// <summary>Check which keys a player is pressing.</summary>
-/// <param name="playerid">The ID of the player to get the keys of</param>
+/// <param name="playerID">The ID of the player to get the keys of</param>
 /// <param name="keys">Bitmask containing the player's key states. <a href="http://wiki.sa-mp.com/wiki/Keys">List of keys</a></param>
 /// <param name="updown">Up/down state</param>
 /// <param name="leftright">Left/right state</param>
@@ -443,14 +443,14 @@ native IsVehicleStreamedIn(vehicleid);
 /// <remarks>Only the FUNCTION of keys can be detected; not actual keys. For example, it is not possible to detect if a player presses <b>SPACE</b>, but you can detect if they press <b>SPRINT</b> (which can be mapped (assigned/binded) to ANY key (but is space by default)). </remarks>
 /// <remarks>As of update 0.3.7, the keys "A" and "D" are not recognized when in a vehicle. However, keys "W" and "S" can be detected with the "keys" parameter. </remarks>
 /// <returns>The keys are stored in the specified variables.</returns>
-native GetPlayerKeys(playerid, &keys, &updown, &leftright);
+native GetPlayerKeys(playerID, &keys, &updown, &leftright);
 
 /// <summary>Gets the angle a player is facing.</summary>
-/// <param name="playerid">The player you want to get the angle of</param>
+/// <param name="playerID">The player you want to get the angle of</param>
 /// <param name="ang">The Float to store the angle in, passed by reference</param>
 /// <remarks>Angles are reversed in GTA:SA; 90 degrees would be East in the real world, but in GTA:SA 90 degrees is in fact West. North and South are still 0/360 and 180. To convert this, simply do <b>360 - angle</b>.</remarks>
 /// <remarks>Angles returned when inside a vehicle is rarely correct. To get the correct facing angle while inside a vehicle, use <a href="#GetVehicleZAngle">GetVehicleZAngle</a>.</remarks>
-native GetPlayerFacingAngle(playerid, &Float:ang);
+native GetPlayerFacingAngle(playerID, &Float:ang);
 
 /// <summary>Get the current location of the NPC.</summary>
 /// <param name="x">A float to save the x coordinate, passed by reference</param>
@@ -495,7 +495,7 @@ native SetMyFacingAngle(Float:ang);
 native GetDistanceFromMeToPoint(Float:x, Float:y, Float:z, &Float:distance);
 
 /// <summary>Checks if a player is in range of a point. This native function is faster than the PAWN implementation using distance formula.</summary>
-/// <param name="playerid">The ID of the player</param>
+/// <param name="playerID">The ID of the player</param>
 /// <param name="range">The furthest distance the player can be from the point to be in range</param>
 /// <param name="x">The x coordinate of the point to check the range to</param>
 /// <param name="y">The y coordinate of the point to check the range to</param>
@@ -505,10 +505,10 @@ native GetDistanceFromMeToPoint(Float:x, Float:y, Float:z, &Float:distance);
 /// <seealso name="GetPlayerPos"/>
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <returns><b><c>1</c></b> if the player is in range, <b><c>0</c></b> if not.</returns>
-native IsPlayerInRangeOfPoint(playerid, Float:range, Float:x, Float:y, Float:z);
+native IsPlayerInRangeOfPoint(playerID, Float:range, Float:x, Float:y, Float:z);
 
 /// <summary>Get a player's name.</summary>
-/// <param name="playerid">The ID of the player to get the name of</param>
+/// <param name="playerID">The ID of the player to get the name of</param>
 /// <param name="name">An array into which to store the name, passed by reference</param>
 /// <param name="len">The length of the string that should be stored. Recommended to be <b><c>MAX_PLAYER_NAME</c></b></param>
 /// <seealso name="SetPlayerName"/>
@@ -518,16 +518,16 @@ native IsPlayerInRangeOfPoint(playerid, Float:range, Float:x, Float:y, Float:z);
 /// <seealso name="GetPlayerVersion"/>
 /// <remarks>A player's name can be up to 24 characters long (as of <b>0.3d R2</b>) by using <a href="#SetPlayerName">SetPlayerName</a>. This is defined in <c>a_samp.inc</c> as <b><c>MAX_PLAYER_NAME</c></b>. However, the client can only join with a nickname between 3 and 20 characters, otherwise the connection will be rejected and the player has to quit to choose a valid name.</remarks>
 /// <returns>The length of the player's name. <b><c>0</c></b> if player specified doesn't exist.</returns>
-native GetPlayerName(playerid, name[], len = sizeof (name));
+native GetPlayerName(playerID, name[], len = sizeof (name));
 
 /// <summary>Checks if a player is connected (if an ID is taken by a connected player).</summary>
-/// <param name="playerid">The ID of the player to check</param>
+/// <param name="playerID">The ID of the player to check</param>
 /// <seealso name="IsPlayerAdmin"/>
 /// <seealso name="OnPlayerConnect"/>
 /// <seealso name="OnPlayerDisconnect"/>
 /// <remarks>This function can be omitted in a lot of cases. Many other functions already have some sort of connection check built in.</remarks>
 /// <returns><b><c>1</c></b> if the player is connected, <b><c>0</c></b> if not.</returns>
-native IsPlayerConnected(playerid);
+native IsPlayerConnected(playerID);
 
 /// <summary>This will run a .rec file which has to be saved in the npcmodes/recordings folder. These files allow the NPC to follow certain actions. Their actions can be recorded manually. For more information, check the related functions.</summary>
 /// <param name="playbacktype">The type of recording to be loaded</param>
@@ -566,12 +566,12 @@ forward OnNPCModeInit();
 forward OnNPCModeExit();
 
 /// <summary>Gets called when a NPC successfully connects to the server.</summary>
-/// <param name="myplayerid">The playerid the NPC has been given</param>
+/// <param name="myplayerID">The playerID the NPC has been given</param>
 /// <seealso name="OnNPCDisconnect"/>
 /// <seealso name="OnPlayerConnect"/>
 /// <seealso name="OnPlayerDisconnect"/>
 /// <remarks>This NPC callback was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
-forward OnNPCConnect(myplayerid);
+forward OnNPCConnect(myplayerID);
 
 /// <summary>Gets called when the NPC gets disconnected from the server.</summary>
 /// <param name="reason">The reason why the bot has disconnected from the server</param>
@@ -586,11 +586,11 @@ forward OnNPCDisconnect(reason[]);
 forward OnNPCSpawn();
 
 /// <summary>Gets called when a NPC enters a vehicle.</summary>
-/// <param name="vehicleid">The vehicleid from the Vehicle the NPC enters</param>
-/// <param name="seatid">The seatid the NPC uses</param>
+/// <param name="vehicleID">The vehicleID from the Vehicle the NPC enters</param>
+/// <param name="seatID">The seatID the NPC uses</param>
 /// <seealso name="OnNPCExitVehicle"/>
 /// <remarks>This NPC callback was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
-forward OnNPCEnterVehicle(vehicleid, seatid);
+forward OnNPCEnterVehicle(vehicleID, seatID);
 
 /// <summary>Gets called when a NPC leaves a vehicle.</summary>
 /// <seealso name="OnNPCEnterVehicle"/>
@@ -598,42 +598,42 @@ forward OnNPCEnterVehicle(vehicleid, seatid);
 forward OnNPCExitVehicle();
 
 /// <summary>This callback gets called whenever the NPC sees a ClientMessage. This will be everytime a <a href="#SendClientMessageToAll">SendClientMessageToAll</a> function is used and everytime a <a href="#SendClientMessage">SendClientMessage</a> function is sent towards the NPC. This callback won't be called when someone says something. For a version of this with player text, see <a href="#OnPlayerText">OnPlayerText</a>.</summary>
-/// <param name="color">The color the ClientMessage is</param>
+/// <param name="colour">The colour the ClientMessage is</param>
 /// <param name="text">The actual message</param>
 /// <seealso name="OnPlayerText"/>
 /// <remarks>This NPC callback was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
-forward OnClientMessage(color, text[]);
+forward OnClientMessage(colour, text[]);
 
 /// <summary>Just as the player version of the callback, this callback is called when any player dies.</summary>
-/// <param name="playerid">The player who has died</param>
+/// <param name="playerID">The player who has died</param>
 /// <remarks>This NPC callback was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
-forward OnPlayerDeath(playerid);
+forward OnPlayerDeath(playerID);
 
 /// <summary>Opposed to the player version of this callback, this callback is called everytime anyone says anything in the chat. This includes any player, any other NPC, or the same NPC himself.</summary>
-/// <param name="playerid">The player who has written something in the chat</param>
-/// <param name="text">The text written by playerid</param>
+/// <param name="playerID">The player who has written something in the chat</param>
+/// <param name="text">The text written by playerID</param>
 /// <remarks>This NPC callback was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
-forward OnPlayerText(playerid, text[]);
+forward OnPlayerText(playerID, text[]);
 
 /// <summary>This callback is called when a player is streamed in for an NPC. Only nearby players are streamed in.</summary>
-/// <param name="playerid">The ID of the player that is now streamed in for the NPC</param>
+/// <param name="playerID">The ID of the player that is now streamed in for the NPC</param>
 /// <remarks>This NPC callback was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
-forward OnPlayerStreamIn(playerid);
+forward OnPlayerStreamIn(playerID);
 
 /// <summary>This callback is called when a player is streamed out the NPC.</summary>
-/// <param name="playerid">The player who has been destreamed</param>
+/// <param name="playerID">The player who has been destreamed</param>
 /// <remarks>This NPC callback was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
-forward OnPlayerStreamOut(playerid);
+forward OnPlayerStreamOut(playerID);
 
 /// <summary>This callback is called when a vehicle is streamed by the NPC. A simpler definition would be when the NPC sees the grey vehicle icon appear on his map.</summary>
-/// <param name="vehicleid">The vehicle that has been streamed</param>
+/// <param name="vehicleID">The vehicle that has been streamed</param>
 /// <remarks>This NPC callback was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
-forward OnVehicleStreamIn(vehicleid);
+forward OnVehicleStreamIn(vehicleID);
 
 /// <summary>This callback is called when a vehicle is streamed out for an NPC.</summary>
-/// <param name="vehicleid">The vehicle that was streamed out</param>
+/// <param name="vehicleID">The vehicle that was streamed out</param>
 /// <remarks>This NPC callback was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
-forward OnVehicleStreamOut(vehicleid);
+forward OnVehicleStreamOut(vehicleID);
 
 /// <summary>This callback is called when a recorded file being reproduced with <a href="#StartRecordingPlayback">StartRecordingPlayback</a> has reached to its end.</summary>
 /// <remarks>This NPC callback was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>

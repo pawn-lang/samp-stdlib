@@ -395,50 +395,50 @@ open.mp releases can use `A` as the first digit.
 /// <remarks>You may optionally put a number between the <b><c>%</c></b> and the letter of the placeholder code. This number indicates the field width; if the size of the parameter to print at the position of the placeholder is smaller than the field width, the field is expanded with spaces. To cut the number of decimal places beeing shown of a float, you can add <b><c>.&lt;max number&gt;</c></b> between the <b><c>%</c></b> and the <b><c>f</c></b>. (example: <b><c>%.2f</c></b>)</remarks>
 native format(output[], len = sizeof (output), const format[], {Float,_}:...);
 
-/// <summary>This function sends a message to a specific player with a chosen color in the chat. The whole line in the chatbox will be in the set color unless color embedding is used (since <b><c>0.3c</c></b>).</summary>
-/// <param name="playerid">The ID of the player to display the message to</param>
-/// <param name="color">The color of the message (<b>RGBA</b>)</param>
+/// <summary>This function sends a message to a specific player with a chosen colour in the chat. The whole line in the chatbox will be in the set colour unless colour embedding is used (since <b><c>0.3c</c></b>).</summary>
+/// <param name="playerID">The ID of the player to display the message to</param>
+/// <param name="colour">The colour of the message (<b>RGBA</b>)</param>
 /// <param name="message">The text that will be displayed <b>(max 144 characters)</b></param>
 /// <seealso name="SendClientMessageToAll"/>
 /// <seealso name="SendPlayerMessageToPlayer"/>
 /// <seealso name="SendPlayerMessageToAll"/>
 /// <remarks>If a message is longer than 144 characters, it will not be sent. Truncation can be used to prevent this. Displaying a message on multiple lines will also solve this issue. </remarks>
-/// <remarks>Avoid using the percent sign (or format specifiers) in the actual message text without properly escaping it (like <b><c>%%</c></b>). It will result in crashes otherwise. </remarks>
-/// <remarks>You can use color embedding for multiple colors in the message. </remarks>
+/// <remarks>AvoID using the percent sign (or format specifiers) in the actual message text without properly escaping it (like <b><c>%%</c></b>). It will result in crashes otherwise. </remarks>
+/// <remarks>You can use colour embedding for multiple colours in the message. </remarks>
 /// <returns>
 ///   <b><c>1</c></b>: The function executed successfully. Success is reported when the string is over 144 characters, but the message won't be sent.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. The player is not connected.
 /// </returns>
-native SendClientMessage(playerid, color, const message[]);
+native SendClientMessage(playerID, colour, const message[]);
 
 /// <summary>Displays a message in chat to all players. This is a multi-player equivalent of <a href="#SendClientMessage">SendClientMessage</a>.</summary>
-/// <param name="color">The color of the message (<b>RGBA</b>)</param>
+/// <param name="colour">The colour of the message (<b>RGBA</b>)</param>
 /// <param name="message">The message to show (<b>max 144 characters</b>)</param>
 /// <seealso name="SendClientMessage"/>
 /// <seealso name="SendPlayerMessageToAll"/>
-/// <remarks>Avoid using format specifiers in your messages without formatting the string that is sent. It will result in crashes otherwise.</remarks>
+/// <remarks>AvoID using format specifiers in your messages without formatting the string that is sent. It will result in crashes otherwise.</remarks>
 /// <returns>This function always returns <b><c>1</c></b>.</returns>
-native SendClientMessageToAll(color, const message[]);
+native SendClientMessageToAll(colour, const message[]);
 
-/// <summary>Sends a message in the name of a player to another player on the server. The message will appear in the chat box but can only be seen by the user specified with <paramref name="playerid"/>. The line will start with the sender's name in their color, followed by the message in white.</summary>
-/// <param name="playerid">The ID of the player who will receive the message</param>
-/// <param name="senderid">The sender's ID. If invalid, the message will not be sent</param>
+/// <summary>Sends a message in the name of a player to another player on the server. The message will appear in the chat box but can only be seen by the user specified with <paramref name="playerID"/>. The line will start with the sender's name in their colour, followed by the message in white.</summary>
+/// <param name="playerID">The ID of the player who will receive the message</param>
+/// <param name="senderID">The sender's ID. If invalid, the message will not be sent</param>
 /// <param name="message">The message that will be sent</param>
 /// <seealso name="SendPlayerMessageToAll"/>
 /// <seealso name="SendClientMessage"/>
 /// <seealso name="SendClientMessageToAll"/>
 /// <seealso name="OnPlayerText"/>
-/// <remarks>Avoid using format specifiers in your messages without formatting the string that is sent. It will result in crashes otherwise.</remarks>
-native SendPlayerMessageToPlayer(playerid, senderid, const message[]);
+/// <remarks>AvoID using format specifiers in your messages without formatting the string that is sent. It will result in crashes otherwise.</remarks>
+native SendPlayerMessageToPlayer(playerID, senderID, const message[]);
 
-/// <summary>Sends a message in the name of a player to all other players on the server. The line will start with the sender's name in their color, followed by the message in white.</summary>
-/// <param name="senderid">The ID of the sender. If invalid, the message will not be sent</param>
+/// <summary>Sends a message in the name of a player to all other players on the server. The line will start with the sender's name in their colour, followed by the message in white.</summary>
+/// <param name="senderID">The ID of the sender. If invalid, the message will not be sent</param>
 /// <param name="message">The message that will be sent</param>
 /// <seealso name="SendPlayerMessageToPlayer"/>
 /// <seealso name="SendClientMessageToAll"/>
 /// <seealso name="OnPlayerText"/>
-/// <remarks>Avoid using format specifiers in your messages without formatting the string that is sent. It will result in crashes otherwise.</remarks>
-native SendPlayerMessageToAll(senderid, const message[]);
+/// <remarks>AvoID using format specifiers in your messages without formatting the string that is sent. It will result in crashes otherwise.</remarks>
+native SendPlayerMessageToAll(senderID, const message[]);
 
 /// <summary>Adds a death to the 'killfeed' on the right-hand side of the screen for all players.</summary>
 /// <param name="killer">The ID of the killer (can be <b><c>INVALID_PLAYER_ID</c></b>)</param>
@@ -453,7 +453,7 @@ native SendPlayerMessageToAll(senderid, const message[]);
 native SendDeathMessage(killer, killee, weapon);
 
 /// <summary>Adds a death to the 'killfeed' on the right-hand side of the screen for a single player.</summary>
-/// <param name="playerid">The ID of the player to send the death message to</param>
+/// <param name="playerID">The ID of the player to send the death message to</param>
 /// <param name="killer">The ID of the killer (can be <b><c>INVALID_PLAYER_ID</c></b>)</param>
 /// <param name="killee">The ID of the player that died</param>
 /// <param name="weapon">The <a href="http://wiki.sa-mp.com/wiki/Weapons">reason</a> (not always a weapon) for the victim's death. Special icons can also be used (<b><c>ICON_CONNECT</c></b> and <b><c>ICON_DISCONNECT</c></b>)</param>
@@ -464,7 +464,7 @@ native SendDeathMessage(killer, killee, weapon);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute.
 /// </returns>
-native SendDeathMessageToPlayer(playerid, killer, killee, weapon);
+native SendDeathMessageToPlayer(playerID, killer, killee, weapon);
 
 /// <summary>Shows 'game text' (on-screen text) for a certain length of time for all players.</summary>
 /// <param name="string">The text to be displayed</param>
@@ -476,7 +476,7 @@ native SendDeathMessageToPlayer(playerid, killer, killee, weapon);
 native GameTextForAll(const string[], time, style);
 
 /// <summary>Shows 'game text' (on-screen text) for a certain length of time for a specific player.</summary>
-/// <param name="playerid">The ID of the player to show the gametext for</param>
+/// <param name="playerID">The ID of the player to show the gametext for</param>
 /// <param name="string">The text to be displayed</param>
 /// <param name="time">The duration of the text being shown in milliseconds</param>
 /// <param name="style">The style of text to be displayed</param>
@@ -486,7 +486,7 @@ native GameTextForAll(const string[], time, style);
 ///   <b><c>1</c></b>: The function executed successfully. Success is reported when the style and/or time is invalid. Nothing will happen though (no text displayed). May also cause game crashes.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. This means either the string is null or the player is not connected.
 /// </returns>
-native GameTextForPlayer(playerid, const string[], time, style);
+native GameTextForPlayer(playerID, const string[], time, style);
 
 /// <summary>Sets a 'timer' to call a function after some time. Can be set to repeat.</summary>
 /// <param name="funcname">Name of the function to call as a string. This must be a public function (forwarded). A null string here will crash the server</param>
@@ -530,11 +530,11 @@ native SetTimer(const funcname[], interval, repeating);
 native SetTimerEx(const funcname[], interval, repeating, const format[], {Float,_}:...);
 
 /// <summary>Kills (stops) a running timer.</summary>
-/// <param name="timerid">The ID of the timer to kill (returned by <a href="#SetTimer">SetTimer</a> or <a href="#SetTimerEx">SetTimerEx</a>)</param>
+/// <param name="timerID">The ID of the timer to kill (returned by <a href="#SetTimer">SetTimer</a> or <a href="#SetTimerEx">SetTimerEx</a>)</param>
 /// <seealso name="SetTimer"/>
 /// <seealso name="SetTimerEx"/>
 /// <returns>This function always returns <b><c>0</c></b>.</returns>
-native KillTimer(timerid);
+native KillTimer(timerID);
 
 /// <summary>Returns the uptime of the actual server (not the SA-MP server) in milliseconds.</summary>
 /// <seealso name="tickcount"/>
@@ -628,25 +628,25 @@ native Float:atan(Float:value);
 /// <returns>The angle in degrees.</returns>
 native Float:atan2(Float:y, Float:x);
 
-/// <summary>Gets the highest playerid currently in use on the server.</summary>
+/// <summary>Gets the highest playerID currently in use on the server.</summary>
 /// <seealso name="GetVehiclePoolSize"/>
 /// <seealso name="GetMaxPlayers"/>
 /// <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
-/// <returns>The highest playerid currently in use on the server or <b><c>0</c></b> if there are no connected players.</returns>
+/// <returns>The highest playerID currently in use on the server or <b><c>0</c></b> if there are no connected players.</returns>
 native GetPlayerPoolSize();
 
-/// <summary>Gets the highest vehicleid currently in use on the server.</summary>
+/// <summary>Gets the highest vehicleID currently in use on the server.</summary>
 /// <seealso name="GetPlayerPoolSize"/>
 /// <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
-/// <returns>The highest vehicleid currently in use on the server or <b><c>0</c></b> if there are no created vehicles.</returns>
+/// <returns>The highest vehicleID currently in use on the server or <b><c>0</c></b> if there are no created vehicles.</returns>
 native GetVehiclePoolSize();
 
-/// <summary>Gets the highest actorid created on the server.</summary>
+/// <summary>Gets the highest actorID created on the server.</summary>
 /// <seealso name="CreateActor"/>
 /// <seealso name="IsValidActor"/>
 /// <seealso name="SetActorHealth"/>
 /// <remarks>This function was added in <b><b>SA-MP 0.3.7</b></b> and will not work in earlier versions!</remarks>
-/// <returns>The highest actorid created on the server or <b><c>0</c></b> if there are no created actors.</returns>
+/// <returns>The highest actorID created on the server or <b><c>0</c></b> if there are no created actors.</returns>
 native GetActorPoolSize();
 
 // Hash
@@ -815,7 +815,7 @@ native SetGameModeText(const string[]);
 native SetTeamCount(count);
 
 /// <summary>Adds a class to class selection. Classes are used so players may spawn with a skin of their choice.</summary>
-/// <param name="modelid">The <a href="http://wiki.sa-mp.com/wiki/Skins">skin</a> which the player will spawn with</param>
+/// <param name="modelID">The <a href="http://wiki.sa-mp.com/wiki/Skins">skin</a> which the player will spawn with</param>
 /// <param name="spawnX">The x coordinate of the spawnpoint of this class</param>
 /// <param name="spawnY">The y coordinate of the spawnpoint of this class</param>
 /// <param name="spawnZ">The z coordinate of the spawnpoint of this class</param>
@@ -839,11 +839,11 @@ native SetTeamCount(count);
 /// <seealso name="AddPlayerClassEx"/>
 /// <seealso name="SetSpawnInfo"/>
 /// <seealso name="SetPlayerSkin"/>
-native AddPlayerClass(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, weapon1, ammo1, weapon2, ammo2, weapon3, ammo3);
+native AddPlayerClass(modelID, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, weapon1, ammo1, weapon2, ammo2, weapon3, ammo3);
 
 /// <summary>This function is exactly the same as the <a href="#AddPlayerClass">AddPlayerClass</a> function, with the addition of a team parameter.</summary>
-/// <param name="teamid">The team you want the player to spawn in</param>
-/// <param name="modelid">The <a href="http://wiki.sa-mp.com/wiki/Skins">skin</a> which the player will spawn with</param>
+/// <param name="teamID">The team you want the player to spawn in</param>
+/// <param name="modelID">The <a href="http://wiki.sa-mp.com/wiki/Skins">skin</a> which the player will spawn with</param>
 /// <param name="spawnX">The x coordinate of the spawnpoint of this class</param>
 /// <param name="spawnY">The y coordinate of the spawnpoint of this class</param>
 /// <param name="spawnZ">The z coordinate of the spawnpoint of this class</param>
@@ -865,16 +865,16 @@ native AddPlayerClass(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:a
 /// <seealso name="SetSpawnInfo"/>
 /// <seealso name="SetPlayerTeam"/>
 /// <seealso name="SetPlayerSkin"/>
-native AddPlayerClassEx(teamid, modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, weapon1, ammo1, weapon2, ammo2, weapon3, ammo3);
+native AddPlayerClassEx(teamID, modelID, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, weapon1, ammo1, weapon2, ammo2, weapon3, ammo3);
 
 /// <summary>Adds a 'static' vehicle (models are pre-loaded for players) to the gamemode.</summary>
-/// <param name="modelid">The <a href="http://wiki.sa-mp.com/wiki/Vehicle_Models">Model ID</a> for the vehicle</param>
+/// <param name="modelID">The <a href="http://wiki.sa-mp.com/wiki/Vehicle_Models">Model ID</a> for the vehicle</param>
 /// <param name="spawnX">The x coordinate of the spawnpoint of this vehicle</param>
 /// <param name="spawnY">The y coordinate of the spawnpoint of this vehicle</param>
 /// <param name="spawnZ">The z coordinate of the spawnpoint of this vehicle</param>
 /// <param name="angle">Direction of vehicle - angle</param>
-/// <param name="color1">The primary <a href="http://wiki.sa-mp.com/wiki/Color_ID">color ID</a>. <b><c>-1</c></b> for random (random color chosen by client)</param>
-/// <param name="color2">The secondary <a href="http://wiki.sa-mp.com/wiki/Color_ID">color ID</a>. <b><c>-1</c></b> for random (random color chosen by client)</param>
+/// <param name="colour1">The primary <a href="http://wiki.sa-mp.com/wiki/Color_ID">colour ID</a>. <b><c>-1</c></b> for random (random colour chosen by client)</param>
+/// <param name="colour2">The secondary <a href="http://wiki.sa-mp.com/wiki/Color_ID">colour ID</a>. <b><c>-1</c></b> for random (random colour chosen by client)</param>
 /// <returns>
 ///   <ul>
 ///     <li>The vehicle ID of the vehicle created (between <b><c>1</c></b> and <b><c>MAX_VEHICLES</c></b>).</li>
@@ -885,16 +885,16 @@ native AddPlayerClassEx(teamid, modelid, Float:spawnX, Float:spawnY, Float:spawn
 /// <seealso name="AddStaticVehicleEx"/>
 /// <seealso name="CreateVehicle"/>
 /// <seealso name="DestroyVehicle"/>
-native AddStaticVehicle(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, color1, color2);
+native AddStaticVehicle(modelID, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, colour1, colour2);
 
 /// <summary>Adds a 'static' vehicle (models are pre-loaded for players)to the gamemode. Differs from <a href="#AddStaticVehicle">AddStaticVehicle</a> in only one way: allows a respawn time to be set for when the vehicle is left unoccupied by the driver.</summary>
-/// <param name="modelid">The <a href="http://wiki.sa-mp.com/wiki/Vehicle_Models">Model ID</a> for the vehicle</param>
+/// <param name="modelID">The <a href="http://wiki.sa-mp.com/wiki/Vehicle_Models">Model ID</a> for the vehicle</param>
 /// <param name="spawnX">The x coordinate of the spawnpoint of this vehicle</param>
 /// <param name="spawnY">The y coordinate of the spawnpoint of this vehicle</param>
 /// <param name="spawnZ">The z coordinate of the spawnpoint of this vehicle</param>
 /// <param name="angle">Direction of vehicle - angle</param>
-/// <param name="color1">The primary <a href="http://wiki.sa-mp.com/wiki/Color_ID">color ID</a>. <b><c>-1</c></b> for random (random color chosen by client)</param>
-/// <param name="color2">The secondary <a href="http://wiki.sa-mp.com/wiki/Color_ID">color ID</a>. <b><c>-1</c></b> for random (random color chosen by client)</param>
+/// <param name="colour1">The primary <a href="http://wiki.sa-mp.com/wiki/Color_ID">colour ID</a>. <b><c>-1</c></b> for random (random colour chosen by client)</param>
+/// <param name="colour2">The secondary <a href="http://wiki.sa-mp.com/wiki/Color_ID">colour ID</a>. <b><c>-1</c></b> for random (random colour chosen by client)</param>
 /// <param name="respawnDelay">The delay until the car is respawned without a driver, in seconds</param>
 /// <param name="addSiren"><b>Added in 0.3.7; will not work in earlier versions.</b> Enables the vehicle to have a siren, providing the vehicle has a horn (optional=<b><c>0</c></b>)</param>
 /// <returns>
@@ -907,7 +907,7 @@ native AddStaticVehicle(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float
 /// <seealso name="AddStaticVehicle"/>
 /// <seealso name="CreateVehicle"/>
 /// <seealso name="DestroyVehicle"/>
-native AddStaticVehicleEx(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, color1, color2, respawnDelay, bool:addSiren = false);
+native AddStaticVehicleEx(modelID, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, colour1, colour2, respawnDelay, bool:addSiren = false);
 
 /// <summary>This function adds a 'static' pickup to the game. These pickups support weapons, health, armor etc., with the ability to function without scripting them (weapons/health/armor will be given automatically).</summary>
 /// <param name="model">The model of the pickup</param>
@@ -915,7 +915,7 @@ native AddStaticVehicleEx(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Flo
 /// <param name="x">The x coordinate to create the pickup at</param>
 /// <param name="y">The y coordinate to create the pickup at</param>
 /// <param name="z">The z coordinate to create the pickup at</param>
-/// <param name="virtualworld">The virtual world ID to put the pickup in. Use -1 to show the pickup in all worlds</param>
+/// <param name="virtualWorld">The virtual world ID to put the pickup in. Use -1 to show the pickup in all worlds</param>
 /// <returns>
 ///   <b><c>1</c></b> if the pickup is successfully created.
 ///   <p/>
@@ -925,7 +925,7 @@ native AddStaticVehicleEx(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Flo
 /// <seealso name="CreatePickup"/>
 /// <seealso name="DestroyPickup"/>
 /// <seealso name="OnPlayerPickUpPickup"/>
-native AddStaticPickup(model, type, Float:x, Float:y, Float:x, virtualworld = 0);
+native AddStaticPickup(model, type, Float:x, Float:y, Float:x, virtualWorld = 0);
 
 /// <summary>This function does exactly the same as AddStaticPickup, except it returns a pickup ID which can be used to destroy it afterwards and be tracked using <a href="#OnPlayerPickUpPickup">OnPlayerPickUpPickup</a>.</summary>
 /// <param name="model">The <a href="http://wiki.sa-mp.com/wiki/Pickup_IDs">model</a> of the pickup</param>
@@ -933,7 +933,7 @@ native AddStaticPickup(model, type, Float:x, Float:y, Float:x, virtualworld = 0)
 /// <param name="x">The x coordinate to create the pickup at</param>
 /// <param name="y">The y coordinate to create the pickup at</param>
 /// <param name="z">The z coordinate to create the pickup at</param>
-/// <param name="virtualworld">The virtual world ID of the pickup. Use <b><c>-1</c></b> to make the pickup show in all worlds (optional=<b><c>0</c></b>)</param>
+/// <param name="virtualWorld">The virtual world ID of the pickup. Use <b><c>-1</c></b> to make the pickup show in all worlds (optional=<b><c>0</c></b>)</param>
 /// <seealso name="AddStaticPickup"/>
 /// <seealso name="DestroyPickup"/>
 /// <seealso name="OnPlayerPickUpPickup"/>
@@ -969,7 +969,7 @@ native AddStaticPickup(model, type, Float:x, Float:y, Float:x, virtualworld = 0)
 ///   </ul>
 /// </remarks>
 /// <returns>The ID of the created pickup, <b><c>-1</c></b> on failure (<a href="http://wiki.sa-mp.com/wiki/Limits">pickup max limit</a>).</returns>
-native CreatePickup(model, type, Float:x, Float:y, Float:z, virtualworld = 0);
+native CreatePickup(model, type, Float:x, Float:y, Float:z, virtualWorld = 0);
 
 /// <summary>Destroys a pickup created with <a href="#CreatePickup">CreatePickup</a>.</summary>
 /// <param name="pickup">The ID of the pickup to destroy (returned by <a href="#CreatePickup">CreatePickup</a>)</param>
@@ -999,7 +999,7 @@ native ShowNameTags(show);
 ///     <li><b><c>PLAYER_MARKERS_MODE_STREAMED</c></b> 2</li>
 ///   </ul>
 /// </remarks>
-/// <remarks>It is also possible to set a player's color to a color that has full transparency (no alpha value). This makes it possible to show markers on a per-player basis.</remarks>
+/// <remarks>It is also possible to set a player's colour to a colour that has full transparency (no alpha value). This makes it possible to show markers on a per-player basis.</remarks>
 native ShowPlayerMarkers(mode);
 
 /// <summary>Ends the current gamemode.</summary>
@@ -1016,7 +1016,7 @@ native GameModeExit();
 native SetWorldTime(hour);
 
 /// <summary>Get the name of a weapon.</summary>
-/// <param name="weaponid">The ID of the weapon to get the name of</param>
+/// <param name="weaponID">The ID of the weapon to get the name of</param>
 /// <param name="weapon">An array to store the weapon's name in, passed by reference</param>
 /// <param name="len">The maximum length of the weapon name to store.</param>
 /// <seealso name="GetPlayerWeapon"/>
@@ -1026,7 +1026,7 @@ native SetWorldTime(hour);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. The weapon specified does not exist.
 /// </returns>
-native GetWeaponName(weaponid, weapon[], len = sizeof (weapon));
+native GetWeaponName(weaponID, weapon[], len = sizeof (weapon));
 
 /// <param name="enable"><b><c>1</c></b> to enable, <b><c>0</c></b> to disable tire popping</param>
 /// <remarks>This function was removed in <b>SA-MP 0.3</b>. Tire popping is enabled by default. If you want to disable tire popping, you'll have to manually script it using <a href="#OnVehicleDamageStatusUpdate">OnVehicleDamageStatusUpdate</a>.</remarks>
@@ -1046,11 +1046,11 @@ native EnableVehicleFriendlyFire();
 native AllowInteriorWeapons(allow);
 
 /// <summary>Set the world weather for all players.</summary>
-/// <param name="weatherid">The <a href="http://wiki.sa-mp.com/wiki/WeatherID">weather</a> to set</param>
+/// <param name="weatherID">The <a href="http://wiki.sa-mp.com/wiki/WeatherID">weather</a> to set</param>
 /// <seealso name="SetPlayerWeather"/>
 /// <seealso name="SetGravity"/>
 /// <remarks>If <a href="#TogglePlayerClock">TogglePlayerClock</a> is enabled, weather will slowly change over time, instead of changing instantly.</remarks>
-native SetWeather(weatherid);
+native SetWeather(weatherID);
 
 /// <summary>Get the currently set gravity.</summary>
 /// <seealso name="SetGravity"/>
@@ -1153,66 +1153,66 @@ native LimitPlayerMarkerRadius(Float:markerRadius);
 native ConnectNPC(const name[], const script[]);
 
 /// <summary>Check if a player is an actual player or an NPC.</summary>
-/// <param name="playerid">The ID of the player to check</param>
+/// <param name="playerID">The ID of the player to check</param>
 /// <seealso name="ConnectNPC"/>
 /// <seealso name="IsPlayerAdmin"/>
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <returns><b><c>1</c></b> if the player is an NPC, <b><c>0</c></b> if not.</returns>
-native IsPlayerNPC(playerid);
+native IsPlayerNPC(playerID);
 
-native AddCharModel(baseid, newid, const dffname[], const txdname[]);
-native AddSimpleModel(virtualworld, baseid, newid, const dffname[], const txdname[]);
-native AddSimpleModelTimed(virtualworld, baseid, newid, const dffname[], const txdname[], timeon, timeoff);
+native AddCharModel(baseID, newID, const dffname[], const txdname[]);
+native AddSimpleModel(virtualWorld, baseID, newID, const dffname[], const txdname[]);
+native AddSimpleModelTimed(virtualWorld, baseID, newID, const dffname[], const txdname[], timeon, timeoff);
 native FindModelFileNameFromCRC(crc, retstr[], retstr_size = sizeof (retstr));
 native FindTextureFileNameFromCRC(crc, retstr[], retstr_size = sizeof (retstr));
-native RedirectDownload(playerid, const url[]);
+native RedirectDownload(playerID, const url[]);
 
 // Admin
 
 /// <summary>Check if a player is logged in as an RCON admin.</summary>
-/// <param name="playerid">The ID of the player to check</param>
+/// <param name="playerID">The ID of the player to check</param>
 /// <seealso name="SendRconCommand"/>
 /// <seealso name="OnRconLoginAttempt"/>
 /// <returns><b><c>1</c></b> if the player is an RCON admin, <b><c>0</c></b> if not.</returns>
-native IsPlayerAdmin(playerid);
+native IsPlayerAdmin(playerID);
 
 /// <summary>Kicks a player from the server. They will have to quit the game and re-connect if they wish to continue playing.</summary>
-/// <param name="playerid">The ID of the player to kick</param>
+/// <param name="playerID">The ID of the player to kick</param>
 /// <seealso name="Ban"/>
 /// <seealso name="BanEx"/>
 /// <remarks>As of <b>SA-MP 0.3x</b>, any action taken directly before Kick() (such as sending a message with <a href="#SendClientMessage">SendClientMessage</a>) will not reach the player. A timer must be used to delay the kick.</remarks>
 /// <returns>This function always returns <b><c>1</c></b>, even if the function failed to execute (player specified doesn't exist).</returns>
-native Kick(playerid);
+native Kick(playerID);
 
 /// <summary>Ban a player who is currently in the server. They will be unable to join the server ever again. The ban will be IP-based, and be saved in the samp.ban file in the server's root directory. <a href="#BanEx">BanEx</a> can be used to give a reason for the ban. IP bans can be added/removed using the RCON banip and unbanip commands (<a href="#SendRconCommand">SendRconCommand</a>).</summary>
-/// <param name="playerid">The ID of the player to ban</param>
+/// <param name="playerID">The ID of the player to ban</param>
 /// <seealso name="BanEx"/>
 /// <seealso name="Kick"/>
 /// <remarks>As of <b>SA-MP 0.3x</b>, any action taken directly before Ban() (such as sending a message with SendClientMessage) will not reach the player. A timer must be used to delay the ban.</remarks>
 /// <remarks></remarks>
-native Ban(playerid);
+native Ban(playerID);
 
 /// <summary>Ban a player with a reason.</summary>
-/// <param name="playerid">The ID of the player to ban</param>
+/// <param name="playerID">The ID of the player to ban</param>
 /// <param name="reason">The reason for the ban</param>
 /// <seealso name="Ban"/>
 /// <seealso name="Kick"/>
 /// <remarks>As of <b>SA-MP 0.3x</b>, any action taken directly before Ban() (such as sending a message with SendClientMessage) will not reach the player. A timer must be used to delay the ban.</remarks>
-native BanEx(playerid, const reason[]);
+native BanEx(playerID, const reason[]);
 
 /// <summary>Sends an RCON (Remote Console) command.</summary>
 /// <param name="command">The RCON command to be executed</param>
 /// <seealso name="IsPlayerAdmin"/>
 /// <seealso name="OnRconCommand"/>
 /// <seealso name="OnRconLoginAttempt"/>
-/// <remarks>Does not support login, due to the lack of a 'playerid' parameter.</remarks>
+/// <remarks>Does not support login, due to the lack of a 'playerID' parameter.</remarks>
 /// <remarks>'password 0' will remove the server's password if one is set.</remarks>
 /// <returns>This function always returns <b><c>1</c></b>.</returns>
 /// <remarks>This function will result in <a href="#OnRconCommand">OnRconCommand</a> being called.</remarks>
 native SendRconCommand(const command[]);
 
 /// <summary>Gets a player's network stats and saves them into a string.</summary>
-/// <param name="playerid">The ID of the player you want to get the networkstats of</param>
+/// <param name="playerID">The ID of the player you want to get the networkstats of</param>
 /// <param name="output">The string to store the networkstats in, passed by reference</param>
 /// <param name="size">The length of the string that should be stored</param>
 /// <seealso name="GetNetworkStats"/>
@@ -1227,7 +1227,7 @@ native SendRconCommand(const command[]);
 /// <seealso name="NetStats_GetIpPort"/>
 /// <remarks>This function was added in <b>SA-MP 0.3c R4</b> and will not work in earlier versions!</remarks>
 /// <remarks>This function may not return accurate data when used under <a href="#OnPlayerDisconnect">OnPlayerDisconnect</a> if the player has quit normally. It usually returns accurate data if the player has been kicked or has timed out.</remarks>
-native GetPlayerNetworkStats(playerid, output[], size = sizeof (output));
+native GetPlayerNetworkStats(playerID, output[], size = sizeof (output));
 
 /// <summary>Gets the server's network stats and stores them in a string.</summary>
 /// <param name="output">The string to store the network stats in, passed by reference</param>
@@ -1269,16 +1269,16 @@ native GetPlayerNetworkStats(playerid, output[], size = sizeof (output));
 native GetNetworkStats(output[], size = sizeof (output));
 
 /// <summary>Returns the SA-MP client version, as reported by the player.</summary>
-/// <param name="playerid">The ID of the player to get the client version of</param>
+/// <param name="playerID">The ID of the player to get the client version of</param>
 /// <param name="version">The string to store the player's version in, passed by reference</param>
 /// <param name="len">The maximum length of the version</param>
 /// <seealso name="GetPlayerName"/>
 /// <seealso name="GetPlayerPing"/>
 /// <seealso name="GetPlayerIp"/>
 /// <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
-/// <remarks>The string the version gets stored in will be empty if playerid is an NPC.</remarks>
+/// <remarks>The string the version gets stored in will be empty if playerID is an NPC.</remarks>
 /// <returns><b><c>1</c></b> on success and <b><c>0</c></b> on failure (if player specified doesn't exist).</returns>
-native GetPlayerVersion(playerid, version[], len = sizeof (version)); // Returns the SA-MP client revision as reported by the player
+native GetPlayerVersion(playerID, version[], len = sizeof (version)); // Returns the SA-MP client revision as reported by the player
 
 /// <summary>Blocks an IP address from further communication with the server for a set amount of time (with wildcards allowed). Players trying to connect to the server with a blocked IP address will receive the generic "You are banned from this server." message. Players that are online on the specified IP before the block will timeout after a few seconds and, upon reconnect, will receive the same message.</summary>
 /// <param name="ipAddress">The IP to block</param>
@@ -1328,7 +1328,7 @@ native GetServerVarAsInt(const cvar[]);
 /// <remarks>Type 'varlist' in the server console to display a list of available server variables and their types.</remarks>
 /// <returns>The value of the specified server variable. <b><c>0</c></b> if the specified server variable is not a boolean or doesn't exist.</returns>
 native GetServerVarAsBool(const cvar[]);
-// These are the same 3 functions as above although they avoid the name ambiguity/conflict with the SVar system.
+// These are the same 3 functions as above although they avoID the name ambiguity/conflict with the SVar system.
 
 /// <summary>Get the string value of a console variable.</summary>
 /// <param name="cvar">The name of the string variable to get the value of</param>
@@ -1367,7 +1367,7 @@ native GetConsoleVarAsBool(const cvar[]);
 native GetServerTickRate();
 
 /// <summary>Gets the amount of time (in milliseconds) that a player has been connected to the server for.</summary>
-/// <param name="playerid">The ID of the player to get the connected time of</param>
+/// <param name="playerID">The ID of the player to get the connected time of</param>
 /// <seealso name="GetPlayerNetworkStats"/>
 /// <seealso name="GetNetworkStats"/>
 /// <seealso name="NetStats_MessagesReceived"/>
@@ -1381,10 +1381,10 @@ native GetServerTickRate();
 /// <remarks>This function was added in <b>SA-MP 0.3z</b> and will not work in earlier versions!</remarks>
 /// <remarks>The return value is not reset to zero after changing the game mode (using the RCON command "gmx").</remarks>
 /// <returns>This function returns the amount of time (in milliseconds) that a player has been connected to the server for. <b><c>0</c></b> is returned if the player is not connected.</returns>
-native NetStats_GetConnectedTime(playerid);
+native NetStats_GetConnectedTime(playerID);
 
 /// <summary>Gets the number of messages the server has received from the player.</summary>
-/// <param name="playerid">The ID of the player to get the data from</param>
+/// <param name="playerID">The ID of the player to get the data from</param>
 /// <seealso name="GetPlayerNetworkStats"/>
 /// <seealso name="GetNetworkStats"/>
 /// <seealso name="NetStats_GetConnectedTime"/>
@@ -1397,10 +1397,10 @@ native NetStats_GetConnectedTime(playerid);
 /// <seealso name="NetStats_GetIpPort"/>
 /// <remarks>This function was added in <b>SA-MP 0.3z</b> and will not work in earlier versions!</remarks>
 /// <returns>This function returns the number of messages the server has received from the player. <b><c>0</c></b> is returned if the player is not connected.</returns>
-native NetStats_MessagesReceived(playerid);
+native NetStats_MessagesReceived(playerID);
 
 /// <summary>Gets the amount of data (in bytes) that the server has received from the player.</summary>
-/// <param name="playerid">The ID of the player to get the data from</param>
+/// <param name="playerID">The ID of the player to get the data from</param>
 /// <seealso name="GetPlayerNetworkStats"/>
 /// <seealso name="GetNetworkStats"/>
 /// <seealso name="NetStats_GetConnectedTime"/>
@@ -1413,10 +1413,10 @@ native NetStats_MessagesReceived(playerid);
 /// <seealso name="NetStats_GetIpPort"/>
 /// <remarks>This function was added in <b>SA-MP 0.3z</b> and will not work in earlier versions!</remarks>
 /// <returns>This function returns the number of bytes the server has received from the player. <b><c>0</c></b> is returned if the player is not connected.</returns>
-native NetStats_BytesReceived(playerid);
+native NetStats_BytesReceived(playerID);
 
 /// <summary>Gets the number of messages the server has sent to the player.</summary>
-/// <param name="playerid">The ID of the player to get the data from</param>
+/// <param name="playerID">The ID of the player to get the data from</param>
 /// <seealso name="GetPlayerNetworkStats"/>
 /// <seealso name="GetNetworkStats"/>
 /// <seealso name="NetStats_GetConnectedTime"/>
@@ -1429,10 +1429,10 @@ native NetStats_BytesReceived(playerid);
 /// <seealso name="NetStats_GetIpPort"/>
 /// <remarks>This function was added in <b>SA-MP 0.3z</b> and will not work in earlier versions!</remarks>
 /// <returns>The number of messages the server has sent to the player.</returns>
-native NetStats_MessagesSent(playerid);
+native NetStats_MessagesSent(playerID);
 
 /// <summary>Gets the amount of data (in bytes) that the server has sent to the player.</summary>
-/// <param name="playerid">The ID of the player to get the data from</param>
+/// <param name="playerID">The ID of the player to get the data from</param>
 /// <seealso name="GetPlayerNetworkStats"/>
 /// <seealso name="GetNetworkStats"/>
 /// <seealso name="NetStats_GetConnectedTime"/>
@@ -1445,10 +1445,10 @@ native NetStats_MessagesSent(playerid);
 /// <seealso name="NetStats_GetIpPort"/>
 /// <remarks>This function was added in <b>SA-MP 0.3z</b> and will not work in earlier versions!</remarks>
 /// <returns>This function returns the number of bytes the server has sent to the player. <b><c>0</c></b> is returned if the player is not connected.</returns>
-native NetStats_BytesSent(playerid);
+native NetStats_BytesSent(playerID);
 
 /// <summary>Gets the number of messages the player has received in the last second.</summary>
-/// <param name="playerid">The ID of the player to get the data from</param>
+/// <param name="playerID">The ID of the player to get the data from</param>
 /// <seealso name="GetPlayerNetworkStats"/>
 /// <seealso name="GetNetworkStats"/>
 /// <seealso name="NetStats_GetConnectedTime"/>
@@ -1461,10 +1461,10 @@ native NetStats_BytesSent(playerid);
 /// <seealso name="NetStats_GetIpPort"/>
 /// <remarks>This function was added in <b>SA-MP 0.3z</b> and will not work in earlier versions!</remarks>
 /// <returns>the number of messages the player has received in the last second.</returns>
-native NetStats_MessagesRecvPerSecond(playerid);
+native NetStats_MessagesRecvPerSecond(playerID);
 
 /// <summary>Gets the packet loss percentage of a player. Packet loss means data the player is sending to the server is being lost (or vice-versa).</summary>
-/// <param name="playerid">The ID of the player to get the data from</param>
+/// <param name="playerID">The ID of the player to get the data from</param>
 /// <seealso name="GetPlayerNetworkStats"/>
 /// <seealso name="GetNetworkStats"/>
 /// <seealso name="NetStats_GetConnectedTime"/>
@@ -1480,10 +1480,10 @@ native NetStats_MessagesRecvPerSecond(playerid);
 /// <remarks>This function has been found to be currently unreliable the output is not as expected when compared to the client. Therefore this function should not be used as a packet loss kicker. </remarks>
 /// <remarks>A more accurate packetloss function can be found here: <a href="http://forum.sa-mp.com/showpost.php?p=2488911&amp;postcount=984">http://forum.sa-mp.com/showpost.php?p=2488911&amp;postcount=984</a></remarks>
 /// <returns>The percentage packet loss as a float. <b><c>0.0</c></b> if player not connected.</returns>
-native Float:NetStats_PacketLossPercent(playerid);
+native Float:NetStats_PacketLossPercent(playerID);
 
 /// <summary>Gets the player's current connection status.</summary>
-/// <param name="playerid">The ID of the player to get the connection status of</param>
+/// <param name="playerID">The ID of the player to get the connection status of</param>
 /// <seealso name="GetPlayerNetworkStats"/>
 /// <seealso name="GetNetworkStats"/>
 /// <seealso name="NetStats_GetConnectedTime"/>
@@ -1513,10 +1513,10 @@ native Float:NetStats_PacketLossPercent(playerid);
 ///   </ul>
 /// </remarks>
 /// <returns>The player's connection status, as an integer value.</returns>
-native NetStats_ConnectionStatus(playerid);
+native NetStats_ConnectionStatus(playerID);
 
 /// <summary>Get a player's IP and port.</summary>
-/// <param name="playerid">The ID of the player to get the IP and port of</param>
+/// <param name="playerID">The ID of the player to get the IP and port of</param>
 /// <param name="output">A string array to store the IP and port in, passed by reference</param>
 /// <param name="size">The maximum length of the IP/port. 22 is recommended</param>
 /// <seealso name="GetPlayerIp"/>
@@ -1531,7 +1531,7 @@ native NetStats_ConnectionStatus(playerid);
 /// <seealso name="NetStats_PacketLossPercent"/>
 /// <seealso name="NetStats_ConnectionStatus"/>
 /// <remarks>This function was added in <b>SA-MP 0.3z</b> and will not work in earlier versions!</remarks>
-native NetStats_GetIpPort(playerid, output[], size = sizeof (output));
+native NetStats_GetIpPort(playerID, output[], size = sizeof (output));
 
 // Menu
 
@@ -1559,25 +1559,25 @@ native NetStats_GetIpPort(playerid, output[], size = sizeof (output));
 native Menu:CreateMenu(const title[], columns, Float:x, Float:y, Float:col1width, Float:col2width = 0.0);
 
 /// <summary>Destroys the specified menu.</summary>
-/// <param name="menuid">The menu ID to destroy</param>
+/// <param name="menuID">The menu ID to destroy</param>
 /// <seealso name="CreateMenu"/>
 /// <seealso name="SetMenuColumnHeader"/>
 /// <seealso name="AddMenuItem"/>
 /// <seealso name="OnPlayerSelectedMenuRow"/>
 /// <seealso name="OnPlayerExitedMenu"/>
 /// <returns><b><c>1</c></b> if the destroying was successful, otherwise <b><c>0</c></b>.</returns>
-native DestroyMenu(Menu:menuid);
+native DestroyMenu(Menu:menuID);
 
 /// <summary>Adds an item to a specified menu.</summary>
-/// <param name="menuid">The menu id to add an item to</param>
+/// <param name="menuID">The menu ID to add an item to</param>
 /// <param name="column">The column to add the item to</param>
 /// <param name="menutext">The text for the new menu item</param>
 /// <remarks>
 ///   <ul>
 ///     <li>Crashes when passed an invalid menu ID.</li>
-///     <li>You can only have <b><c>12</c></b> items per menu (13th goes to the right side of the header of column name (colored), 14th and higher not display at all).</li>
+///     <li>You can only have <b><c>12</c></b> items per menu (13th goes to the right side of the header of column name (coloured), 14th and higher not display at all).</li>
 ///     <li>You can only use <b><c>2</c></b> columns (<b><c>0</c></b> and <b><c>1</c></b>).</li>
-///     <li>You can only add <b><c>8</c></b> color codes per one item (<b><c>~r~</c></b>, <b><c>~g~</c></b> etc.).</li>
+///     <li>You can only add <b><c>8</c></b> colour codes per one item (<b><c>~r~</c></b>, <b><c>~g~</c></b> etc.).</li>
 ///     <li>Maximum length of menu item is <b><c>31</c></b> symbols. </li>
 ///   </ul>
 /// </remarks>
@@ -1587,10 +1587,10 @@ native DestroyMenu(Menu:menuid);
 /// <seealso name="DestroyMenu"/>
 /// <seealso name="OnPlayerSelectedMenuRow"/>
 /// <seealso name="OnPlayerExitedMenu"/>
-native AddMenuItem(Menu:menuid, column, const menutext[]);
+native AddMenuItem(Menu:menuID, column, const menutext[]);
 
 /// <summary>Sets the caption of a column in a menu.</summary>
-/// <param name="menuid">ID of the menu to change</param>
+/// <param name="menuID">ID of the menu to change</param>
 /// <param name="column">The column (<b><c>0</c></b> or <b><c>1</c></b>) to set the header of</param>
 /// <param name="columnheader">The caption text for the column</param>
 /// <seealso name="AddMenuItem"/>
@@ -1598,11 +1598,11 @@ native AddMenuItem(Menu:menuid, column, const menutext[]);
 /// <seealso name="OnPlayerSelectedMenuRow"/>
 /// <remarks>Crashes when passed an invalid menu ID.</remarks>
 /// <remarks>Note that you can add only <b><c>12</c></b> items with <a href="#AddMenuItem">AddMenuItem</a>. The 13th object of a menu would replace the header of the column which is correctly set with this function.</remarks>
-native SetMenuColumnHeader(Menu:menuid, column, const columnheader[]);
+native SetMenuColumnHeader(Menu:menuID, column, const columnheader[]);
 
 /// <summary>Shows a previously created menu for a player.</summary>
-/// <param name="menuid">The ID of the menu to show. Returned by CreateMenu</param>
-/// <param name="playerid">The ID of the player to whom the menu will be shown</param>
+/// <param name="menuID">The ID of the menu to show. Returned by CreateMenu</param>
+/// <param name="playerID">The ID of the player to whom the menu will be shown</param>
 /// <seealso name="CreateMenu"/>
 /// <seealso name="AddMenuItem"/>
 /// <seealso name="SetMenuColumnHeader"/>
@@ -1614,11 +1614,11 @@ native SetMenuColumnHeader(Menu:menuid, column, const columnheader[]);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. Menu and/or player doesn't exist.
 /// </returns>
-native ShowMenuForPlayer(Menu:menuid, playerid);
+native ShowMenuForPlayer(Menu:menuID, playerID);
 
 /// <summary>Hides a menu for a player.</summary>
-/// <param name="menuid">The ID of the menu to hide. Returned by <a href="#CreateMenu">CreateMenu</a> and passed to <a href="#OnPlayerSelectedMenuRow">OnPlayerSelectedMenuRow</a></param>
-/// <param name="playerid">The ID of the player that the menu will be hidden for</param>
+/// <param name="menuID">The ID of the menu to hide. Returned by <a href="#CreateMenu">CreateMenu</a> and passed to <a href="#OnPlayerSelectedMenuRow">OnPlayerSelectedMenuRow</a></param>
+/// <param name="playerID">The ID of the player that the menu will be hidden for</param>
 /// <seealso name="ShowMenuForPlayer"/>
 /// <seealso name="AddMenuItem"/>
 /// <seealso name="SetMenuColumnHeader"/>
@@ -1627,25 +1627,25 @@ native ShowMenuForPlayer(Menu:menuid, playerid);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute.
 /// </returns>
-native HideMenuForPlayer(Menu:menuid, playerid);
+native HideMenuForPlayer(Menu:menuID, playerID);
 
 /// <summary>Check if a menu ID is vliad.</summary>
-/// <param name="menuid">The menu to check for existance</param>
+/// <param name="menuID">The menu to check for existance</param>
 /// <seealso name="CreateMenu"/>
 /// <seealso name="DestroyMenu"/>
 /// <returns><b><c>1</c></b> if the menu is valid, otherwise <b><c>0</c></b>.</returns>
-native IsValidMenu(Menu:menuid);
+native IsValidMenu(Menu:menuID);
 
 /// <summary>Disable a menu.</summary>
-/// <param name="menuid">The ID of the menu to disable</param>
+/// <param name="menuID">The ID of the menu to disable</param>
 /// <seealso name="CreateMenu"/>
 /// <seealso name="DestroyMenu"/>
 /// <seealso name="AddMenuItem"/>
 /// <remarks>Crashes when passed an invalid menu ID.</remarks>
-native DisableMenu(Menu:menuid);
+native DisableMenu(Menu:menuID);
 
 /// <summary>Disable a specific row in a menu <b>for all players</b>. It will be greyed-out and can't be selected by players.</summary>
-/// <param name="menuid">The ID of the menu to disable a row of. Ensure this is valid, as an invalid menu ID will crash the entire server</param>
+/// <param name="menuID">The ID of the menu to disable a row of. Ensure this is valid, as an invalid menu ID will crash the entire server</param>
 /// <param name="row">The ID of the row to disable (rows start at 0)</param>
 /// <seealso name="CreateMenu"/>
 /// <seealso name="DestroyMenu"/>
@@ -1655,10 +1655,10 @@ native DisableMenu(Menu:menuid);
 ///   This function disabled the specified menu row for <b>all players</b>. There is no function to disable a menu row for a specific player. You'd have to create two menus - one with a row disabled, and one without. Or one per player.
 /// </remarks>
 /// <returns>This function always returns <b><c>1</c></b>, even if the function fails. If an invalid row is specified, nothing will happen. If an invalid menu ID is specified, the server will crash.</returns>
-native DisableMenuRow(Menu:menuid, row);
+native DisableMenuRow(Menu:menuID, row);
 
 /// <summary>Gets the ID of the menu the player is currently viewing (shown by <a href="#ShowMenuForPlayer">ShowMenuForPlayer</a>).</summary>
-/// <param name="playerid">The ID of the player to get the current menu of</param>
+/// <param name="playerID">The ID of the player to get the current menu of</param>
 /// <seealso name="ShowMenuForPlayer"/>
 /// <seealso name="HideMenuForPlayer"/>
 /// <seealso name="CreateMenu"/>
@@ -1668,7 +1668,7 @@ native DisableMenuRow(Menu:menuid, row);
 /// <seealso name="OnPlayerExitedMenu"/>
 /// <remarks>Returns previous menu when none is displayed.</remarks>
 /// <returns>The ID of the player's currently shown menu, or <b><c>INVALID_MENU</c></b> (<b><c>255</c></b>) if no menu shown.</returns>
-native Menu:GetPlayerMenu(playerid);
+native Menu:GetPlayerMenu(playerID);
 
 /// <summary>Creates a textdraw. Textdraws are, as the name implies, text (mainly - there can be boxes, sprites and model previews (skins/vehicles/weapons/objects too) that is drawn on a player's screens.</summary>
 /// <param name="x">The x (left/right) coordinate to create the textdraw at</param>
@@ -1678,12 +1678,12 @@ native Menu:GetPlayerMenu(playerid);
 ///   If you choose values for y that are less than 1, the first text row will be invisible and only the shadow is visible.<p/>
 ///   text[] must not be empty or the server will crash! If you need a textdraw that shows nothing, use a space underscore. <b>Now it's fixed</b>.<p/>
 ///   If the last character in the text is a space, the text will all be blank.<p/>
-///   If part of the text is off-screen, the color of the text will not show, only the shadow (if enabled) will.
+///   If part of the text is off-screen, the colour of the text will not show, only the shadow (if enabled) will.
 /// </remarks>
 /// <remarks>
 ///   <em>This applies ONLY to sa-mp versions before 0.3z:</em><p/>
 ///   Maximum length of textdraw is <b>800</b> characters. Longer text will crash the client in older versions.<p/>
-///   If you use color codes (such as <b><c>~R~ ~G~</c></b>) beyond 255th character the client will crash trying to display the textdraw.
+///   If you use colour codes (such as <b><c>~R~ ~G~</c></b>) beyond 255th character the client will crash trying to display the textdraw.
 /// </remarks>
 /// <remarks>
 ///   The x,y coordinate is the top left coordinate for the text draw area based on a 640x480 "canvas" (irrespective of screen resolution). If you plan on using <a href="#TextDrawAlignment">TextDrawAlignment</a> with alignment <b><c>3</c></b> (right), the x,y coordinate is the top right coordinate for the text draw.<p/>
@@ -1733,12 +1733,12 @@ native TextDrawTextSize(Text:text, Float:x, Float:y);
 /// <remarks>For alignment <b><c>2</c></b> (center) the x and y values of <a href="#TextSize">TextSize</a> need to be swapped, see notes at <a href="#TextDrawTextSize">TextDrawTextSize</a>, also position coordinate become position of center of textdraw and not left/top edges. </remarks>
 native TextDrawAlignment(Text:text, alignment);
 
-/// <summary>Sets the text color of a textdraw.</summary>
-/// <param name="text">The ID of the textdraw to change the color of.</param>
-/// <param name="color">The color to set the textdraw to</param>
+/// <summary>Sets the text colour of a textdraw.</summary>
+/// <param name="text">The ID of the textdraw to change the colour of.</param>
+/// <param name="colour">The colour to set the textdraw to</param>
 /// <remarks>You can also use GameText Colors in TextDraws.</remarks>
 /// <remarks>If the TextDraw is already shown, it must be re-shown (<a href="#TextDrawShowForAll">TextDrawShowForAll</a>/<a href="#TextDrawShowForPlayer">TextDrawShowForPlayer</a>) for the changes of this function to take effect.</remarks>
-native TextDrawColor(Text:text, color);
+native TextDrawColor(Text:text, colour);
 
 /// <summary>Toggle whether a textdraw uses a box or not.</summary>
 /// <param name="text">The ID of the text textdraw to toggle the box of</param>
@@ -1752,9 +1752,9 @@ native TextDrawUseBox(Text:text, use);
 
 /// <summary>Adjusts the text box colour (only used if <a href="#TextDrawUseBox">TextDrawUseBox</a> 'use' parameter is <b><c>1</c></b>).</summary>
 /// <param name="text">The TextDraw to change</param>
-/// <param name="color">The colour (<b>RGBA</b>)</param>
+/// <param name="colour">The colour (<b>RGBA</b>)</param>
 /// <remarks>If you want to change the boxcolour of a textdraw that is already shown, you don't have to recreate it. Simply use <a href="#TextDrawShowForPlayer">TextDrawShowForPlayer</a>/<a href="#TextDrawShowForAll">TextDrawShowForAll</a> after modifying the textdraw and the change will be visible.</remarks>
-native TextDrawBoxColor(Text:text, color);
+native TextDrawBoxColor(Text:text, colour);
 
 /// <summary>Sets the size of a textdraw's text's shadow.</summary>
 /// <param name="text">The ID of the textdraw to set the shadow size of</param>
@@ -1767,18 +1767,18 @@ native TextDrawBoxColor(Text:text, color);
 /// </returns>
 native TextDrawSetShadow(Text:text, size);
 
-/// <summary>Sets the thickness of a textdraw's text's outline. <a href="#TextDrawBackgroundColor">TextDrawBackgroundColor</a> can be used to change the color.</summary>
+/// <summary>Sets the thickness of a textdraw's text's outline. <a href="#TextDrawBackgroundColor">TextDrawBackgroundColor</a> can be used to change the colour.</summary>
 /// <param name="text">The ID of the text draw to set the outline thickness of</param>
 /// <param name="size">The thickness of the outline, as an integer. <b><c>0</c></b> for no outline</param>
 /// <remarks>If you want to change the outline of a textdraw that is already shown, you don't have to recreate it. Simply use <a href="#TextDrawShowForPlayer">TextDrawShowForPlayer</a>/<a href="#TextDrawShowForAll">TextDrawShowForAll</a> after modifying the textdraw and the change will be visible.</remarks>
 native TextDrawSetOutline(Text:text, size);
 
-/// <summary>Adjusts the text draw area background color (the outline/shadow - NOT the box. For box color, see <a href="#TextDrawBoxColor">TextDrawBoxColor</a>).</summary>
-/// <param name="text">The ID of the textdraw to set the background color of</param>
-/// <param name="color">The color that the textdraw should be set to</param>
-/// <remarks>If <a href="#TextDrawSetOutline">TextDrawSetOutline</a> is used with size &gt; <b><c>0</c></b>, the outline color will match the color used in <a href="#TextDrawBackgroundColor">TextDrawBackgroundColor</a>. Changing the value of color seems to alter the color used in <a href="#TextDrawColor">TextDrawColor</a></remarks>
+/// <summary>Adjusts the text draw area background colour (the outline/shadow - NOT the box. For box colour, see <a href="#TextDrawBoxColor">TextDrawBoxColor</a>).</summary>
+/// <param name="text">The ID of the textdraw to set the background colour of</param>
+/// <param name="colour">The colour that the textdraw should be set to</param>
+/// <remarks>If <a href="#TextDrawSetOutline">TextDrawSetOutline</a> is used with size &gt; <b><c>0</c></b>, the outline colour will match the colour used in <a href="#TextDrawBackgroundColor">TextDrawBackgroundColor</a>. Changing the value of colour seems to alter the colour used in <a href="#TextDrawColor">TextDrawColor</a></remarks>
 /// <remarks>If you want to change the background colour of a textdraw that is already shown, you don't have to recreate it. Simply use <a href="#TextDrawShowForPlayer">TextDrawShowForPlayer</a>/<a href="#TextDrawShowForAll">TextDrawShowForAll</a> after modifying the textdraw and the change will be visible.</remarks>
-native TextDrawBackgroundColor(Text:text, color);
+native TextDrawBackgroundColor(Text:text, colour);
 
 /// <summary>Changes the text font.</summary>
 /// <param name="text">The TextDraw to change</param>
@@ -1802,22 +1802,22 @@ native TextDrawSetProportional(Text:text, set);
 native TextDrawSetSelectable(Text:text, set);
 
 /// <summary>Shows a textdraw for a specific player.</summary>
-/// <param name="playerid">The ID of the player to show the textdraw for</param>
+/// <param name="playerID">The ID of the player to show the textdraw for</param>
 /// <param name="text">The ID of the textdraw to show. Returned by <a href="#TextDrawCreate">TextDrawCreate</a></param>
 /// <remarks>If only a single player will see a textdraw, it might be wise to use player-textdraws instead. This is also useful for textdraws that need to show information specific for an individual player.</remarks>
 /// <returns>
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. This means either the player and/or textdraw specified does not exist.
 /// </returns>
-native TextDrawShowForPlayer(playerid, Text:text);
+native TextDrawShowForPlayer(playerID, Text:text);
 
 /// <summary>Hides a textdraw for a specific player.</summary>
-/// <param name="playerid">The ID of the player that the textdraw should be hidden for</param>
+/// <param name="playerID">The ID of the player that the textdraw should be hidden for</param>
 /// <param name="text">The ID of the textdraw to hide</param>
 /// <seealso name="TextDrawHideForAll"/>
 /// <seealso name="TextDrawShowForPlayer"/>
 /// <seealso name="TextDrawShowForAll"/>
-native TextDrawHideForPlayer(playerid, Text:text);
+native TextDrawHideForPlayer(playerID, Text:text);
 
 /// <summary>Shows a textdraw for all players.</summary>
 /// <param name="text">The ID of the textdraw to show. Returned by <a href="#TextDrawCreate">TextDrawCreate</a></param>
@@ -1844,11 +1844,11 @@ native TextDrawHideForAll(Text:text);
 native TextDrawSetString(Text:text, const string[]);
 
 /// <summary>Set the model for a textdraw model preview. Click <a href="http://www.sa-mp.com/stuff/03xShots/pmenu.png">here</a> to see this function's effect.</summary>
-/// <param name="text">The textdraw id that will display the 3D preview</param>
+/// <param name="text">The textdraw ID that will display the 3D preview</param>
 /// <param name="modelindex">The GTA SA or SA:MP model ID to display</param>
 /// <remarks>This function was added in <b>SA-MP 0.3x</b> and will not work in earlier versions!</remarks>
 /// <remarks>The textdraw MUST use the font type <b><c>TEXT_DRAW_FONT_MODEL_PREVIEW</c></b> in order for this function to have effect.</remarks>
-/// <remarks>Use <a href="#TextDrawBackgroundColor">TextDrawBackgroundColor</a> to set the background color behind the model.</remarks>
+/// <remarks>Use <a href="#TextDrawBackgroundColor">TextDrawBackgroundColor</a> to set the background colour behind the model.</remarks>
 native TextDrawSetPreviewModel(Text:text, modelindex);
 
 /// <summary>Sets the rotation and zoom of a 3D model preview textdraw.</summary>
@@ -1861,16 +1861,16 @@ native TextDrawSetPreviewModel(Text:text, modelindex);
 native TextDrawSetPreviewRot(Text:text, Float:rotX, Float:rotY, Float:rotZ, Float:zoom = 1.0);
 
 /// <summary>If a vehicle model is used in a 3D preview textdraw, this sets the two colour values for that vehicle.</summary>
-/// <param name="text">The textdraw id that is set to display a 3D vehicle model preview</param>
-/// <param name="color1">The primary Color ID to set the vehicle to</param>
-/// <param name="color2">The secondary Color ID to set the vehicle to</param>
+/// <param name="text">The textdraw ID that is set to display a 3D vehicle model preview</param>
+/// <param name="colour1">The primary Color ID to set the vehicle to</param>
+/// <param name="colour2">The secondary Color ID to set the vehicle to</param>
 /// <remarks>This function was added in <b>SA-MP 0.3x</b> and will not work in earlier versions!</remarks>
 /// <remarks>The textdraw MUST use the font type <b><c>TEXT_DRAW_FONT_MODEL_PREVIEW</c></b> in order for this function to have effect.</remarks>
-native TextDrawSetPreviewVehCol(Text:text, color1, color2);
+native TextDrawSetPreviewVehCol(Text:text, colour1, colour2);
 
 // Gang Zones
 
-/// <summary>Create a gangzone (colored radar area).</summary>
+/// <summary>Create a gangzone (coloured radar area).</summary>
 /// <param name="minx">The x coordinate for the west side of the gangzone</param>
 /// <param name="miny">The y coordinate for the south side of the gangzone</param>
 /// <param name="maxx">The x coordinate for the east side of the gangzone</param>
@@ -1906,9 +1906,9 @@ native GangZoneCreate(Float:minx, Float:miny, Float:maxx, Float:maxy);
 native GangZoneDestroy(zone);
 
 /// <summary>Show a gangzone for a player. Must be created with <a href="#GangZoneCreate">GangZoneCreate</a> first.</summary>
-/// <param name="playerid">The ID of the player you would like to show the gangzone for.</param>
+/// <param name="playerID">The ID of the player you would like to show the gangzone for.</param>
 /// <param name="zone">The ID of the gang zone to show for the player. Returned by <a href="#GangZoneCreate">GangZoneCreate</a></param>
-/// <param name="color">The color to show the gang zone, as an integer or hex in <b>RGBA</b> color format. Alpha transparency supported</param>
+/// <param name="colour">The colour to show the gang zone, as an integer or hex in <b>RGBA</b> colour format. Alpha transparency supported</param>
 /// <seealso name="GangZoneCreate"/>
 /// <seealso name="GangZoneDestroy"/>
 /// <seealso name="GangZoneShowForAll"/>
@@ -1919,11 +1919,11 @@ native GangZoneDestroy(zone);
 /// <seealso name="GangZoneStopFlashForPlayer"/>
 /// <seealso name="GangZoneStopFlashForAll"/>
 /// <returns><b><c>1</c></b> if the gangzone was shown, otherwise <b><c>0</c></b> (non-existant).</returns>
-native GangZoneShowForPlayer(playerid, zone, color);
+native GangZoneShowForPlayer(playerID, zone, colour);
 
-/// <summary>Shows a gangzone with the desired color to all players.</summary>
+/// <summary>Shows a gangzone with the desired colour to all players.</summary>
 /// <param name="zone">The ID of the gangzone to show (returned by <a href="# GangZoneCreate">GangZoneCreate</a>)</param>
-/// <param name="color">The color to show the gang zone, as an integer or hex in <b>RGBA</b> color format. Alpha transparency supported</param>
+/// <param name="colour">The colour to show the gang zone, as an integer or hex in <b>RGBA</b> colour format. Alpha transparency supported</param>
 /// <seealso name="GangZoneCreate"/>
 /// <seealso name="GangZoneDestroy"/>
 /// <seealso name="GangZoneShowForPlayer"/>
@@ -1937,10 +1937,10 @@ native GangZoneShowForPlayer(playerid, zone, color);
 ///   <b><c>1</c></b>: The function executed successfully. The gang zone was shown for all players.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. The gangzone does not exist.
 /// </returns>
-native GangZoneShowForAll(zone, color);
+native GangZoneShowForAll(zone, colour);
 
 /// <summary>Hides a gangzone for a player.</summary>
-/// <param name="playerid">The ID of the player to hide the gangzone for</param>
+/// <param name="playerID">The ID of the player to hide the gangzone for</param>
 /// <param name="zone">The ID of the zone to hide</param>
 /// <seealso name="GangZoneCreate"/>
 /// <seealso name="GangZoneDestroy"/>
@@ -1951,7 +1951,7 @@ native GangZoneShowForAll(zone, color);
 /// <seealso name="GangZoneFlashForAll"/>
 /// <seealso name="GangZoneStopFlashForPlayer"/>
 /// <seealso name="GangZoneStopFlashForAll"/>
-native GangZoneHideForPlayer(playerid, zone);
+native GangZoneHideForPlayer(playerID, zone);
 
 /// <summary>GangZoneHideForAll hides a gangzone from all players.</summary>
 /// <param name="zone">The zone to hide</param>
@@ -1967,9 +1967,9 @@ native GangZoneHideForPlayer(playerid, zone);
 native GangZoneHideForAll(zone);
 
 /// <summary>Makes a gangzone flash for a player.</summary>
-/// <param name="playerid">The ID of the player to flash the gangzone for</param>
+/// <param name="playerID">The ID of the player to flash the gangzone for</param>
 /// <param name="zone">The ID of the zone to flash</param>
-/// <param name="flashcolor">The color to flash the gang zone, as an integer or hex in <b>RGBA</b> color format. Alpha transparency supported</param>
+/// <param name="flashColour">The colour to flash the gang zone, as an integer or hex in <b>RGBA</b> colour format. Alpha transparency supported</param>
 /// <seealso name="GangZoneCreate"/>
 /// <seealso name="GangZoneDestroy"/>
 /// <seealso name="GangZoneShowForPlayer"/>
@@ -1979,11 +1979,11 @@ native GangZoneHideForAll(zone);
 /// <seealso name="GangZoneFlashForAll"/>
 /// <seealso name="GangZoneStopFlashForPlayer"/>
 /// <seealso name="GangZoneStopFlashForAll"/>
-native GangZoneFlashForPlayer(playerid, zone, flashcolor);
+native GangZoneFlashForPlayer(playerID, zone, flashColour);
 
 /// <summary>GangZoneFlashForAll flashes a gangzone for all players.</summary>
 /// <param name="zone">The zone to flash</param>
-/// <param name="flashcolor">The color to flash the gang zone, as an integer or hex in <b>RGBA</b> color format. Alpha transparency supported</param>
+/// <param name="flashColour">The colour to flash the gang zone, as an integer or hex in <b>RGBA</b> colour format. Alpha transparency supported</param>
 /// <seealso name="GangZoneCreate"/>
 /// <seealso name="GangZoneDestroy"/>
 /// <seealso name="GangZoneShowForPlayer"/>
@@ -1993,10 +1993,10 @@ native GangZoneFlashForPlayer(playerid, zone, flashcolor);
 /// <seealso name="GangZoneFlashForPlayer"/>
 /// <seealso name="GangZoneStopFlashForPlayer"/>
 /// <seealso name="GangZoneStopFlashForAll"/>
-native GangZoneFlashForAll(zone, flashcolor);
+native GangZoneFlashForAll(zone, flashColour);
 
 /// <summary>Stops a gangzone flashing for a player.</summary>
-/// <param name="playerid">The ID of the player to stop the gangzone flashing for</param>
+/// <param name="playerID">The ID of the player to stop the gangzone flashing for</param>
 /// <param name="zone">The ID of the gangzonezone to stop flashing</param>
 /// <seealso name="GangZoneCreate"/>
 /// <seealso name="GangZoneDestroy"/>
@@ -2007,7 +2007,7 @@ native GangZoneFlashForAll(zone, flashcolor);
 /// <seealso name="GangZoneFlashForPlayer"/>
 /// <seealso name="GangZoneFlashForAll"/>
 /// <seealso name="GangZoneStopFlashForAll"/>
-native GangZoneStopFlashForPlayer(playerid, zone);
+native GangZoneStopFlashForPlayer(playerID, zone);
 
 /// <summary>Stops a gangzone flashing for all players.</summary>
 /// <param name="zone">The ID of the zone to stop flashing. Returned by <a href="#GangZoneCreate">GangZoneCreate</a></param>
@@ -2030,12 +2030,12 @@ native GangZoneStopFlashForAll(zone);
 
 /// <summary>Creates a 3D Text Label at a specific location in the world.</summary>
 /// <param name="text">The initial text string</param>
-/// <param name="color">The text Color, as an integer or hex in <b>RGBA</b> color format</param>
+/// <param name="colour">The text Color, as an integer or hex in <b>RGBA</b> colour format</param>
 /// <param name="x">x-Coordinate</param>
 /// <param name="y">y-Coordinate</param>
 /// <param name="z">z-Coordinate</param>
 /// <param name="drawDistance">The distance from where you are able to see the 3D Text Label</param>
-/// <param name="virtualworld">The virtual world in which you are able to see the 3D Text</param>
+/// <param name="virtualWorld">The virtual world in which you are able to see the 3D Text</param>
 /// <param name="testLOS">Test the line-of-sight so this text can't be seen through objects (optional=<b><c>0</c></b>)</param>
 /// <seealso name="Delete3DTextLabel"/>
 /// <seealso name="Attach3DTextLabelToPlayer"/>
@@ -2047,15 +2047,15 @@ native GangZoneStopFlashForAll(zone);
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <remarks>
 ///   If <paramref name="text"/> is empty, the server/clients next to the text might crash!<p/>
-///   If the virtualworld is set as <b><c>-1</c></b> the text will not appear.
+///   If the virtualWorld is set as <b><c>-1</c></b> the text will not appear.
 /// </remarks>
 /// <remarks>drawdistance seems to be a lot smaller when spectating.</remarks>
-/// <remarks>Use <a href="http://wiki.sa-mp.com/wiki/Colors_List#Inline_color_embedding">color embedding</a> for multiple colors in the text.</remarks>
+/// <remarks>Use <a href="http://wiki.sa-mp.com/wiki/Colors_List#Inline_colour_embedding">colour embedding</a> for multiple colours in the text.</remarks>
 /// <returns>The ID of the newly created 3D Text Label, or <b><c>INVALID_3DTEXT_ID</c></b> if the 3D Text Label limit (<b><c>MAX_3DTEXT_GLOBAL</c></b>) was reached.</returns>
-native Text3D:Create3DTextLabel(const text[], color, Float:x, Float:y, Float:z, Float:drawDistance, virtualworld, bool:testLOS = false);
+native Text3D:Create3DTextLabel(const text[], colour, Float:x, Float:y, Float:z, Float:drawDistance, virtualWorld, bool:testLOS = false);
 
 /// <summary>Delete a 3D text label (created with <a href="#Create3DTextLabel">Create3DTextLabel</a>).</summary>
-/// <param name="id">The ID of the 3D text label to delete</param>
+/// <param name="textID">The ID of the 3D text label to delete</param>
 /// <seealso name="Create3DTextLabel"/>
 /// <seealso name="Attach3DTextLabelToPlayer"/>
 /// <seealso name="Attach3DTextLabelToVehicle"/>
@@ -2065,11 +2065,11 @@ native Text3D:Create3DTextLabel(const text[], color, Float:x, Float:y, Float:z, 
 /// <seealso name="UpdatePlayer3DTextLabelText"/>
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <returns><b><c>1</c></b> if the 3D text label was deleted, otherwise <b><c>0</c></b>.</returns>
-native Delete3DTextLabel(Text3D:id);
+native Delete3DTextLabel(Text3D:textID);
 
 /// <summary>Attach a 3D text label to a player.</summary>
-/// <param name="id">The ID of the 3D text label to attach. Returned by <a href="#Create3DTextLabel">Create3DTextLabel</a></param>
-/// <param name="playerid">The ID of the player to attach the label to</param>
+/// <param name="textID">The ID of the 3D text label to attach. Returned by <a href="#Create3DTextLabel">Create3DTextLabel</a></param>
+/// <param name="playerID">The ID of the player to attach the label to</param>
 /// <param name="offsetX">The x offset from the player</param>
 /// <param name="offsetY">The y offset from the player</param>
 /// <param name="offsetZ">The z offset from the player</param>
@@ -2085,11 +2085,11 @@ native Delete3DTextLabel(Text3D:id);
 /// <b><c>1</c></b>: The function executed successfully.<p/>
 /// <b><c>0</c></b>: The function failed to execute. This means the player and/or label do not exist.
 /// </returns>
-native Attach3DTextLabelToPlayer(Text3D:id, playerid, Float:offsetX, Float:offsetY, Float:offsetZ);
+native Attach3DTextLabelToPlayer(Text3D:textID, playerID, Float:offsetX, Float:offsetY, Float:offsetZ);
 
 /// <summary>Attaches a 3D Text Label to a specific vehicle.</summary>
-/// <param name="id">The ID of the 3D text label to attach. Returned by <a href="#Create3DTextLabel">Create3DTextLabel</a></param>
-/// <param name="vehicleid">The vehicle you want to attach the 3D Text Label to</param>
+/// <param name="textID">The ID of the 3D text label to attach. Returned by <a href="#Create3DTextLabel">Create3DTextLabel</a></param>
+/// <param name="vehicleID">The vehicle you want to attach the 3D Text Label to</param>
 /// <param name="offsetX">The offset-x coordinate of the player vehicle (the vehicle is 0.0,0.0,0.0).</param>
 /// <param name="offsetY">The offset-y coordinate of the player vehicle (the vehicle is 0.0,0.0,0.0).</param>
 /// <param name="offsetZ">The offset-z coordinate of the player vehicle (the vehicle is 0.0,0.0,0.0).</param>
@@ -2101,11 +2101,11 @@ native Attach3DTextLabelToPlayer(Text3D:id, playerid, Float:offsetX, Float:offse
 /// <seealso name="DeletePlayer3DTextLabel"/>
 /// <seealso name="UpdatePlayer3DTextLabelText"/>
 /// <remarks>Attach3DTextLabelToPlayer was added in SA-MP 0.3a 	This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
-native Attach3DTextLabelToVehicle(Text3D:id, vehicleid, Float:offsetX, Float:offsetY, Float:offsetZ);
+native Attach3DTextLabelToVehicle(Text3D:textID, vehicleID, Float:offsetX, Float:offsetY, Float:offsetZ);
 
-/// <summary>Updates a 3D Text Label text and color.</summary>
-/// <param name="id">The 3D Text Label you want to update</param>
-/// <param name="color">The color the 3D Text Label should have from now on</param>
+/// <summary>Updates a 3D Text Label text and colour.</summary>
+/// <param name="textID">The 3D Text Label you want to update</param>
+/// <param name="colour">The colour the 3D Text Label should have from now on</param>
 /// <param name="text">The new text which the 3D Text Label should have from now on</param>
 /// <seealso name="Create3DTextLabel"/>
 /// <seealso name="Delete3DTextLabel"/>
@@ -2116,14 +2116,14 @@ native Attach3DTextLabelToVehicle(Text3D:id, vehicleid, Float:offsetX, Float:off
 /// <seealso name="UpdatePlayer3DTextLabelText"/>
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <remarks>If <paramref name="text"/> is empty, the server/clients next to the text might crash!</remarks>
-native Update3DTextLabelText(Text3D:id, color, const text[]);
+native Update3DTextLabelText(Text3D:textID, colour, const text[]);
 
 // Per-player 3D Text Labels
 
 /// <summary>Creates a 3D Text Label only for a specific player.</summary>
-/// <param name="playerid">The player which should see the newly created 3DText Label</param>
+/// <param name="playerID">The player which should see the newly created 3DText Label</param>
 /// <param name="text">The text to display</param>
-/// <param name="color">The text color</param>
+/// <param name="colour">The text colour</param>
 /// <param name="x">x Coordinate (or offset if attached)</param>
 /// <param name="y">y Coordinate (or offset if attached)</param>
 /// <param name="z">z Coordinate (or offset if attached)</param>
@@ -2142,11 +2142,11 @@ native Update3DTextLabelText(Text3D:id, color, const text[]);
 /// <remarks>If <paramref name="text"/> is empty, the server/clients next to the text might crash!</remarks>
 /// <remarks>drawdistance seems to be a lot smaller when spectating.</remarks>
 /// <returns>The ID of the newly created Player 3D Text Label, or <b><c>INVALID_3DTEXT_ID</c></b> if the Player 3D Text Label limit (<b><c>MAX_3DTEXT_PLAYER</c></b>) was reached.</returns>
-native PlayerText3D:CreatePlayer3DTextLabel(playerid, const text[], color, Float:x, Float:y, Float:z, Float:drawDistance, parentPlayer = INVALID_PLAYER_ID, parentVehicle = INVALID_VEHICLE_ID, bool:testLOS = false);
+native PlayerText3D:CreatePlayer3DTextLabel(playerID, const text[], colour, Float:x, Float:y, Float:z, Float:drawDistance, parentPlayer = INVALID_PLAYER_ID, parentVehicle = INVALID_VEHICLE_ID, bool:testLOS = false);
 
 /// <summary>Destroy a 3D text label that was created using <a href="#CreatePlayer3DTextLabel">CreatePlayer3DTextLabel</a>.</summary>
-/// <param name="playerid">The ID of the player whose 3D text label to delete</param>
-/// <param name="id">The ID of the player's 3D text label to delete</param>
+/// <param name="playerID">The ID of the player whose 3D text label to delete</param>
+/// <param name="textID">The ID of the player's 3D text label to delete</param>
 /// <seealso name="Create3DTextLabel"/>
 /// <seealso name="Attach3DTextLabelToPlayer"/>
 /// <seealso name="Attach3DTextLabelToVehicle"/>
@@ -2158,12 +2158,12 @@ native PlayerText3D:CreatePlayer3DTextLabel(playerid, const text[], color, Float
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. This means the label specified doesn't exist.
 /// </returns>
-native DeletePlayer3DTextLabel(playerid, PlayerText3D:id);
+native DeletePlayer3DTextLabel(playerID, PlayerText3D:textID);
 
-/// <summary>Updates a player 3D Text Label's text and color.</summary>
-/// <param name="playerid">The ID of the player for which the 3D Text Label was created</param>
-/// <param name="id">The 3D Text Label you want to update</param>
-/// <param name="color">The color the 3D Text Label should have from now on</param>
+/// <summary>Updates a player 3D Text Label's text and colour.</summary>
+/// <param name="playerID">The ID of the player for which the 3D Text Label was created</param>
+/// <param name="textID">The 3D Text Label you want to update</param>
+/// <param name="colour">The colour the 3D Text Label should have from now on</param>
 /// <param name="text">The new text which the 3D Text Label should have from now on</param>
 /// <seealso name="Create3DTextLabel"/>
 /// <seealso name="Delete3DTextLabel"/>
@@ -2174,11 +2174,11 @@ native DeletePlayer3DTextLabel(playerid, PlayerText3D:id);
 /// <seealso name="DeletePlayer3DTextLabel"/>
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <remarks>If <paramref name="text"/> is empty, the server/clients next to the text might crash!</remarks>
-native UpdatePlayer3DTextLabelText(playerid, PlayerText3D:id, color, const text[]);
+native UpdatePlayer3DTextLabelText(playerID, PlayerText3D:textID, colour, const text[]);
 
 /// <summary>Shows the player a synchronous (only one at a time) dialog box.</summary>
-/// <param name="playerid">The ID of the player to show the dialog to</param>
-/// <param name="dialogid">An ID to assign this dialog to, so responses can be processed. Max dialogid is <b><c>32767</c></b>. Using negative values will close any open dialog</param>
+/// <param name="playerID">The ID of the player to show the dialog to</param>
+/// <param name="dialogID">An ID to assign this dialog to, so responses can be processed. Max dialogID is <b><c>32767</c></b>. Using negative values will close any open dialog</param>
 /// <param name="style">The style of the dialog</param>
 /// <param name="caption">The title at the top of the dialog. The length of the caption can not exceed more than 64 characters before it starts to cut off</param>
 /// <param name="info">The text to display in the main dialog. Use <b><c>\n</c></b> to start a new line and <b><c>\t</c></b> to tabulate</param>
@@ -2187,19 +2187,19 @@ native UpdatePlayer3DTextLabelText(playerid, PlayerText3D:id, color, const text[
 /// <seealso name="TextDrawShowForPlayer"/>
 /// <seealso name="OnDialogResponse"/>
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
-/// <remarks>Use color embedding for multiple colors in the text. </remarks>
-/// <remarks>Using <b><c>-1</c></b> as dialogid closes all dialogs currently shown on the client's screen. </remarks>
+/// <remarks>Use colour embedding for multiple colours in the text. </remarks>
+/// <remarks>Using <b><c>-1</c></b> as dialogID closes all dialogs currently shown on the client's screen. </remarks>
 /// <returns>
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. This means the player is not connected.<p/>
 /// </returns>
-native ShowPlayerDialog(playerid, dialogid, style, const caption[], const info[], const button1[], const button2[]);
+native ShowPlayerDialog(playerID, dialogID, style, const caption[], const info[], const button1[], const button2[]);
 
 /// <summary>Get a players unique ID.</summary>
-/// <param name="playerid">The player to get the unique ID of</param>
+/// <param name="playerID">The player to get the unique ID of</param>
 /// <param name="serial">Where to save the unique ID</param>
 /// <param name="maxlen">The size of "serial"</param>
-native gpci(playerid, serial[], maxlen);
+native gpci(playerID, serial[], maxlen);
 
 // --------------------------------------------------
 // Forwards (Callback declarations)
@@ -2247,7 +2247,7 @@ forward OnFilterScriptInit();
 forward OnFilterScriptExit();
 
 /// <summary>This callback is called when a player connects to the server.</summary>
-/// <param name="playerid">The ID of the player that connected</param>
+/// <param name="playerID">The ID of the player that connected</param>
 /// <seealso name="OnPlayerDisconnect"/>
 /// <seealso name="OnIncomingConnection"/>
 /// <seealso name="OnPlayerFinishedDownloading"/>
@@ -2257,10 +2257,10 @@ forward OnFilterScriptExit();
 ///   <b><c>1</c></b> - Indicates that this callback will be passed to the next filterscript.<p/>
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnPlayerConnect(playerid);
+forward OnPlayerConnect(playerID);
 
 /// <summary>This callback is called when a player disconnects from the server.</summary>
-/// <param name="playerid">The ID of the player that disconnected</param>
+/// <param name="playerID">The ID of the player that disconnected</param>
 /// <param name="reason">The reason for the disconnection. See table below</param>
 /// <seealso name="OnPlayerConnect"/>
 /// <seealso name="OnIncomingConnection"/>
@@ -2280,10 +2280,10 @@ forward OnPlayerConnect(playerid);
 ///   <b><c>1</c></b> - Indicates that this callback will be passed to the next filterscript.<p/>
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnPlayerDisconnect(playerid, reason);
+forward OnPlayerDisconnect(playerID, reason);
 
 /// <summary>This callback is called when a player spawns.(i.e. after caling <a href="#SpawnPlayer">SpawnPlayer</a> function).</summary>
-/// <param name="playerid">The ID of the player that spawned</param>
+/// <param name="playerID">The ID of the player that spawned</param>
 /// <seealso name="OnPlayerDeath"/>
 /// <seealso name="OnVehicleSpawn"/>
 /// <seealso name="SpawnPlayer"/>
@@ -2296,11 +2296,11 @@ forward OnPlayerDisconnect(playerid, reason);
 ///   <b><c>1</c></b> - Indicates that this callback will be passed to the next filterscript.<p/>
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnPlayerSpawn(playerid);
+forward OnPlayerSpawn(playerID);
 
 /// <summary>This callback is called when a player dies, either by suicide or by being killed by another player.</summary>
-/// <param name="playerid">The ID of the player that died</param>
-/// <param name="killerid">The ID of the player that killed the player who died, or <b><c>INVALID_PLAYER_ID</c></b> if there was none</param>
+/// <param name="playerID">The ID of the player that died</param>
+/// <param name="killerID">The ID of the player that killed the player who died, or <b><c>INVALID_PLAYER_ID</c></b> if there was none</param>
 /// <param name="reason">The ID of the <a href="http://wiki.sa-mp.com/wiki/Weapons">reason</a> for the player's death</param>
 /// <seealso name="OnPlayerSpawn"/>
 /// <seealso name="SendDeathMessage"/>
@@ -2308,18 +2308,18 @@ forward OnPlayerSpawn(playerid);
 /// <remarks>
 ///   The reason will return 37 (flame thrower) from any fire sources (e.g. molotov, 18)<p/>
 ///   The reason will return 51 from any weapon that creates an explosion (e.g. RPG, grenade)<p/>
-///   You do not need to check whether killerid is valid before using it in <a href="#SendDeathMessage">SendDeathMessage</a>. <b><c>INVALID_PLAYER_ID</c></b> is a valid killerid ID parameter in that function.<p/>
-///   <b>playerid</b> is the only one who can call the callback. (good to know for anti fake death)
+///   You do not need to check whether killerID is valid before using it in <a href="#SendDeathMessage">SendDeathMessage</a>. <b><c>INVALID_PLAYER_ID</c></b> is a valid killerID ID parameter in that function.<p/>
+///   <b>playerID</b> is the only one who can call the callback. (good to know for anti fake death)
 /// </remarks>
 /// <returns>
 ///   <b><c>0</c></b> - Will prevent other filterscripts from receiving this callback.<p/>
 ///   <b><c>1</c></b> - Indicates that this callback will be passed to the next filterscript.<p/>
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnPlayerDeath(playerid, killerid, reason);
+forward OnPlayerDeath(playerID, killerID, reason);
 
 /// <summary>This callback is called when a vehicle <b>re</b>spawns.</summary>
-/// <param name="vehicleid">The ID of the vehicle that spawned</param>
+/// <param name="vehicleID">The ID of the vehicle that spawned</param>
 /// <seealso name="OnVehicleDeath"/>
 /// <seealso name="OnPlayerSpawn"/>
 /// <seealso name="SetVehicleToRespawn"/>
@@ -2329,11 +2329,11 @@ forward OnPlayerDeath(playerid, killerid, reason);
 ///   <b><c>1</c></b> - Indicates that this callback will be passed to the next filterscript.<p/>
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnVehicleSpawn(vehicleid);
+forward OnVehicleSpawn(vehicleID);
 
 /// <summary>This callback is called when a vehicle is destroyed - either by exploding or becoming submerged in water.</summary>
-/// <param name="vehicleid">The ID of the vehicle that was destroyed</param>
-/// <param name="killerid">The ID of the player that reported (synced) the vehicle's destruction (name is misleading). Generally the driver or a passenger (if any) or the closest player</param>
+/// <param name="vehicleID">The ID of the vehicle that was destroyed</param>
+/// <param name="killerID">The ID of the player that reported (synced) the vehicle's destruction (name is misleading). Generally the driver or a passenger (if any) or the closest player</param>
 /// <seealso name="OnVehicleSpawn"/>
 /// <seealso name="SetVehicleHealth"/>
 /// <remarks>This callback can also be called by NPC.</remarks>
@@ -2342,10 +2342,10 @@ forward OnVehicleSpawn(vehicleid);
 ///   This callback does not handle returns.<p/>
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnVehicleDeath(vehicleid, killerid);
+forward OnVehicleDeath(vehicleID, killerID);
 
 /// <summary>Called when a player sends a chat message.</summary>
-/// <param name="playerid">The ID of the player who typed the text</param>
+/// <param name="playerID">The ID of the player who typed the text</param>
 /// <param name="text">The text the player typed</param>
 /// <seealso name="OnPlayerCommandText"/>
 /// <seealso name="SendPlayerMessageToPlayer"/>
@@ -2355,10 +2355,10 @@ forward OnVehicleDeath(vehicleid, killerid);
 ///   Returning <b><c>0</c></b> in this callback will stop the text from being sent to all players.<p/>
 ///   It is always called first in filterscripts so returning <b><c>0</c></b> there blocks other scripts from seeing it.
 /// </returns>
-forward OnPlayerText(playerid, text[]);
+forward OnPlayerText(playerID, text[]);
 
 /// <summary>This callback is called when a player enters a command into the client chat window. Commands are anything that start with a forward slash, e.g. <c>/help</c>.</summary>
-/// <param name="playerid">The ID of the player that entered a command</param>
+/// <param name="playerID">The ID of the player that entered a command</param>
 /// <param name="cmdtext">The command that was entered (including the forward slash)</param>
 /// <seealso name="OnPlayerText"/>
 /// <seealso name="OnRconCommand"/>
@@ -2368,11 +2368,11 @@ forward OnPlayerText(playerid, text[]);
 ///   Return <b><c>1</c></b> if the command was processed, otherwise <b><c>0</c></b>; If the command was not found both in filterscripts and in gamemode, the player will be received a message: <em>SERVER: Unknown command</em>.<p/>
 ///   It is always called first in filterscripts so returning <b><c>1</c></b> there blocks other scripts from seeing it.
 /// </returns>
-forward OnPlayerCommandText(playerid, cmdtext[]);
+forward OnPlayerCommandText(playerID, cmdtext[]);
 
 /// <summary>Called when a player changes class at class selection (and when class selection first appears).</summary>
-/// <param name="playerid">The ID of the player that changed class</param>
-/// <param name="classid">The ID of the current class being viewed (returned by <a href="#AddPlayerClass">AddPlayerClass</a>)</param>
+/// <param name="playerID">The ID of the player that changed class</param>
+/// <param name="classID">The ID of the current class being viewed (returned by <a href="#AddPlayerClass">AddPlayerClass</a>)</param>
 /// <seealso name="OnPlayerRequestSpawn"/>
 /// <seealso name="AddPlayerClass"/>
 /// <remarks>This callback can also be called by NPC.</remarks>
@@ -2381,11 +2381,11 @@ forward OnPlayerCommandText(playerid, cmdtext[]);
 ///   Returning <b><c>0</c></b> in this callback will prevent the player from spawning. The player can be forced to spawn when <a href="#SpawnPlayer">SpawnPlayer</a> is used.<p/>
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnPlayerRequestClass(playerid, classid);
+forward OnPlayerRequestClass(playerID, classID);
 
 /// <summary>This callback is called when a player <b><c>starts</c></b> to enter a vehicle, meaning the player is not in vehicle yet at the time this callback is called.</summary>
-/// <param name="playerid">ID of the player who attempts to enter a vehicle</param>
-/// <param name="vehicleid">ID of the vehicle the player is attempting to enter</param>
+/// <param name="playerID">ID of the player who attempts to enter a vehicle</param>
+/// <param name="vehicleID">ID of the vehicle the player is attempting to enter</param>
 /// <param name="ispassenger"><b><c>0</c></b> if entering as driver. <b><c>1</c></b> if entering as passenger</param>
 /// <seealso name="OnPlayerExitVehicle"/>
 /// <seealso name="OnPlayerStateChange"/>
@@ -2397,11 +2397,11 @@ forward OnPlayerRequestClass(playerid, classid);
 ///   This callback does not handle returns.<p/>
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnPlayerEnterVehicle(playerid, vehicleid, ispassenger);
+forward OnPlayerEnterVehicle(playerID, vehicleID, ispassenger);
 
 /// <summary>This callback is called when a player <b>starts</b> to exit a vehicle.</summary>
-/// <param name="playerid">The ID of the player that is exiting a vehicle</param>
-/// <param name="vehicleid">The ID of the vehicle the player is exiting</param>
+/// <param name="playerID">The ID of the player that is exiting a vehicle</param>
+/// <param name="vehicleID">The ID of the vehicle the player is exiting</param>
 /// <seealso name="OnPlayerEnterVehicle"/>
 /// <seealso name="OnPlayerStateChange"/>
 /// <seealso name="RemovePlayerFromVehicle"/>
@@ -2412,10 +2412,10 @@ forward OnPlayerEnterVehicle(playerid, vehicleid, ispassenger);
 ///   This callback does not handle returns.<p/>
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnPlayerExitVehicle(playerid, vehicleid);
+forward OnPlayerExitVehicle(playerID, vehicleID);
 
 /// <summary>This callback is called when a player changes state. For example, when a player changes from being the driver of a vehicle to being on-foot.</summary>
-/// <param name="playerid">The ID of the player that changed state</param>
+/// <param name="playerID">The ID of the player that changed state</param>
 /// <param name="newstate">The player's new state</param>
 /// <param name="oldstate">The player's previous state</param>
 /// <seealso name="OnPlayerInteriorChange"/>
@@ -2442,10 +2442,10 @@ forward OnPlayerExitVehicle(playerid, vehicleid);
 ///   This callback does not handle returns.<p/>
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnPlayerStateChange(playerid, newstate, oldstate);
+forward OnPlayerStateChange(playerID, newstate, oldstate);
 
 /// <summary>This callback is called when a player enters the checkpoint set for that player.</summary>
-/// <param name="playerid">The player who entered the checkpoint</param>
+/// <param name="playerID">The player who entered the checkpoint</param>
 /// <seealso name="OnPlayerLeaveCheckpoint"/>
 /// <seealso name="OnPlayerEnterRaceCheckpoint"/>
 /// <seealso name="OnPlayerLeaveRaceCheckpoint"/>
@@ -2460,10 +2460,10 @@ forward OnPlayerStateChange(playerid, newstate, oldstate);
 ///   This callback does not handle returns.<p/>
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnPlayerEnterCheckpoint(playerid);
+forward OnPlayerEnterCheckpoint(playerID);
 
 /// <summary>This callback is called when a player leaves the checkpoint set for them by <a href="#SetPlayerCheckpoint">SetPlayerCheckpoint</a>. Only one checkpoint can be set at a time.</summary>
-/// <param name="playerid">The ID of the player that left their checkpoint</param>
+/// <param name="playerID">The ID of the player that left their checkpoint</param>
 /// <seealso name="OnPlayerEnterCheckpoint"/>
 /// <seealso name="OnPlayerEnterRaceCheckpoint"/>
 /// <seealso name="OnPlayerLeaveRaceCheckpoint"/>
@@ -2478,10 +2478,10 @@ forward OnPlayerEnterCheckpoint(playerid);
 ///   This callback does not handle returns.<p/>
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnPlayerLeaveCheckpoint(playerid);
+forward OnPlayerLeaveCheckpoint(playerID);
 
 /// <summary>This callback is called when a player enters a race checkpoint.</summary>
-/// <param name="playerid">The ID of the player who entered the race checkpoint</param>
+/// <param name="playerID">The ID of the player who entered the race checkpoint</param>
 /// <seealso name="OnPlayerEnterCheckpoint"/>
 /// <seealso name="OnPlayerLeaveCheckpoint"/>
 /// <seealso name="OnPlayerLeaveRaceCheckpoint"/>
@@ -2496,10 +2496,10 @@ forward OnPlayerLeaveCheckpoint(playerid);
 ///   This callback does not handle returns.<p/>
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnPlayerEnterRaceCheckpoint(playerid);
+forward OnPlayerEnterRaceCheckpoint(playerID);
 
 /// <summary>This callback is called when a player leaves the race checkpoint.</summary>
-/// <param name="playerid">The ID of the player that left the race checkpoint</param>
+/// <param name="playerID">The ID of the player that left the race checkpoint</param>
 /// <seealso name="OnPlayerEnterCheckpoint"/>
 /// <seealso name="OnPlayerLeaveCheckpoint"/>
 /// <seealso name="OnPlayerEnterRaceCheckpoint"/>
@@ -2514,7 +2514,7 @@ forward OnPlayerEnterRaceCheckpoint(playerid);
 ///   This callback does not handle returns.<p/>
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnPlayerLeaveRaceCheckpoint(playerid);
+forward OnPlayerLeaveRaceCheckpoint(playerID);
 
 /// <summary>This callback is called when a command is sent through the server console, remote RCON, or via the in-game "/rcon command".</summary>
 /// <param name="cmd">A string containing the command that was typed, as well as any passed parameters</param>
@@ -2532,7 +2532,7 @@ forward OnPlayerLeaveRaceCheckpoint(playerid);
 forward OnRconCommand(cmd[]);
 
 /// <summary>Called when a player attempts to spawn via class selection either by pressing SHIFT or clicking the 'Spawn' button.</summary>
-/// <param name="playerid">The ID of the player that requested to spawn</param>
+/// <param name="playerID">The ID of the player that requested to spawn</param>
 /// <seealso name="OnPlayerSpawn"/>
 /// <seealso name="OnPlayerRequestClass"/>
 /// <remarks>This callback can also be called by NPC.</remarks>
@@ -2541,10 +2541,10 @@ forward OnRconCommand(cmd[]);
 ///   Returning <b><c>0</c></b> in this callback will prevent the player from spawning.<p/>
 ///   It is always called first in filterscripts so returning <b><c>0</c></b> there also blocks other scripts from seeing it.
 /// </returns>
-forward OnPlayerRequestSpawn(playerid);
+forward OnPlayerRequestSpawn(playerID);
 
 /// <summary>This callback is called when an object is moved after <a href="#MoveObject">MoveObject</a> (when it stops moving).</summary>
-/// <param name="objectid">The ID of the object that was moved</param>
+/// <param name="objectID">The ID of the object that was moved</param>
 /// <seealso name="MoveObject"/>
 /// <seealso name="IsObjectMoving"/>
 /// <seealso name="StopObject"/>
@@ -2554,11 +2554,11 @@ forward OnPlayerRequestSpawn(playerid);
 ///   This callback does not handle returns.<p/>
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnObjectMoved(objectid);
+forward OnObjectMoved(objectID);
 
 /// <summary>This callback is called when a player object is moved after <a href="#MovePlayerObject">MovePlayerObject</a> (when it stops moving).</summary>
-/// <param name="playerid">The playerid the object is assigned to</param>
-/// <param name="objectid">The ID of the player object that was moved</param>
+/// <param name="playerID">The playerID the object is assigned to</param>
+/// <param name="objectID">The ID of the player object that was moved</param>
 /// <seealso name="OnObjectMoved"/>
 /// <seealso name="MovePlayerObject"/>
 /// <seealso name="IsPlayerObjectMoving"/>
@@ -2568,23 +2568,23 @@ forward OnObjectMoved(objectid);
 ///   This callback does not handle returns.<p/>
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnPlayerObjectMoved(playerid, objectid);
+forward OnPlayerObjectMoved(playerID, objectID);
 
 /// <summary>Called when a player picks up a pickup created with <a href="#CreatePickup">CreatePickup</a>.</summary>
-/// <param name="playerid">The ID of the player that picked up the pickup</param>
-/// <param name="pickupid">The ID of the pickup, returned by CreatePickup</param>
+/// <param name="playerID">The ID of the player that picked up the pickup</param>
+/// <param name="pickupID">The ID of the pickup, returned by CreatePickup</param>
 /// <seealso name="CreatePickup"/>
 /// <seealso name="DestroyPickup"/>
 /// <returns>
 ///   This callback does not handle returns.<p/>
 ///   It is always called first in gamemode.
 /// </returns>
-forward OnPlayerPickUpPickup(playerid, pickupid);
+forward OnPlayerPickUpPickup(playerID, pickupID);
 
 /// <summary>This callback is called when a vehicle is modded.</summary>
-/// <param name="playerid">The ID of the driver of the vehicle</param>
-/// <param name="vehicleid">The ID of the vehicle which is modded</param>
-/// <param name="componentid">The ID of the component which was added to the vehicle</param>
+/// <param name="playerID">The ID of the driver of the vehicle</param>
+/// <param name="vehicleID">The ID of the vehicle which is modded</param>
+/// <param name="componentID">The ID of the component which was added to the vehicle</param>
 /// <seealso name="AddVehicleComponent"/>
 /// <seealso name="OnEnterExitModShop"/>
 /// <seealso name="OnVehiclePaintjob"/>
@@ -2594,12 +2594,12 @@ forward OnPlayerPickUpPickup(playerid, pickupid);
 ///   Return <b><c>0</c></b> to desync the mod (or an invalid mod) from propagating and / or crashing players.<p/>
 ///   It is always called first in gamemode so returning <b><c>0</c></b> there also blocks other filterscripts from seeing it.
 /// </returns>
-forward OnVehicleMod(playerid, vehicleid, componentid);
+forward OnVehicleMod(playerID, vehicleID, componentID);
 
 /// <summary>This callback is called when a player enters or exits a mod shop.</summary>
-/// <param name="playerid">The ID of the player that entered or exited the modshop</param>
+/// <param name="playerID">The ID of the player that entered or exited the modshop</param>
 /// <param name="enterexit"><b><c>1</c></b> if the player entered or <b><c>0</c></b> if they exited</param>
-/// <param name="interiorid">The interior ID of the modshop that the player is entering (or 0 if exiting)</param>
+/// <param name="interiorID">The interior ID of the modshop that the player is entering (or 0 if exiting)</param>
 /// <seealso name="OnVehicleMod"/>
 /// <seealso name="OnVehicleRespray"/>
 /// <seealso name="OnVehiclePaintjob"/>
@@ -2610,12 +2610,12 @@ forward OnVehicleMod(playerid, vehicleid, componentid);
 ///   This callback does not handle returns.<p/>
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnEnterExitModShop(playerid, enterexit, interiorid);
+forward OnEnterExitModShop(playerID, enterexit, interiorID);
 
 /// <summary>Called when a player previews a vehicle paintjob inside a mod shop. Watch out, this callback is not called when the player buys the paintjob.</summary>
-/// <param name="playerid">The ID of the player that changed the paintjob of their vehicle</param>
-/// <param name="vehicleid">The ID of the vehicle that had its paintjob changed</param>
-/// <param name="paintjobid">The ID of the new paintjob</param>
+/// <param name="playerID">The ID of the player that changed the paintjob of their vehicle</param>
+/// <param name="vehicleID">The ID of the vehicle that had its paintjob changed</param>
+/// <param name="paintJobID">The ID of the new paintjob</param>
 /// <seealso name="ChangeVehiclePaintjob"/>
 /// <seealso name="ChangeVehicleColor"/>
 /// <seealso name="OnVehicleRespray"/>
@@ -2625,13 +2625,13 @@ forward OnEnterExitModShop(playerid, enterexit, interiorid);
 ///   This callback does not handle returns. Returning <b><c>0</c></b> won't deny the paintjob change.<p/>
 ///   It is always called first in gamemode so returning <b><c>0</c></b> there blocks other filterscripts from seeing it.
 /// </returns>
-forward OnVehiclePaintjob(playerid, vehicleid, paintjobid);
+forward OnVehiclePaintjob(playerID, vehicleID, paintJobID);
 
-/// <summary>This callback is called when a player exits a mod shop, even if the colors weren't changed. Watch out, the name is ambiguous, Pay 'n' Spray shops don't call this callback.</summary>
-/// <param name="playerid">The ID of the player that is driving the vehicle</param>
-/// <param name="vehicleid">The ID of the vehicle that was resprayed</param>
-/// <param name="color1">The color that the vehicle's primary color was changed to</param>
-/// <param name="color2">The color that the vehicle's secondary color was changed to</param>
+/// <summary>This callback is called when a player exits a mod shop, even if the colours weren't changed. Watch out, the name is ambiguous, Pay 'n' Spray shops don't call this callback.</summary>
+/// <param name="playerID">The ID of the player that is driving the vehicle</param>
+/// <param name="vehicleID">The ID of the vehicle that was resprayed</param>
+/// <param name="colour1">The colour that the vehicle's primary colour was changed to</param>
+/// <param name="colour2">The colour that the vehicle's secondary colour was changed to</param>
 /// <seealso name="ChangeVehicleColor"/>
 /// <seealso name="ChangeVehiclePaintjob"/>
 /// <seealso name="OnVehiclePaintjob"/>
@@ -2643,11 +2643,11 @@ forward OnVehiclePaintjob(playerid, vehicleid, paintjobid);
 ///   Returning <b><c>0</c></b> in this callback will deny the colour change. Returning <b><c>1</c></b> will allow it. This can be used to prevent hackers from changing vehicle colours using cheats.<p/>
 ///   It is always called first in gamemode so returning <b><c>0</c></b> there also blocks other filterscripts from seeing it.
 /// </returns>
-forward OnVehicleRespray(playerid, vehicleid, color1, color2);
+forward OnVehicleRespray(playerID, vehicleID, colour1, colour2);
 
 /// <summary>This callback is called when a vehicle element such as doors, tires, panels, or lights change their damage status.</summary>
-/// <param name="vehicleid">The ID of the vehicle that was changed its damage status</param>
-/// <param name="playerid">The ID of the player who synced the change in the damage status (who had the car damaged or repaired)</param>
+/// <param name="vehicleID">The ID of the vehicle that was changed its damage status</param>
+/// <param name="playerID">The ID of the player who synced the change in the damage status (who had the car damaged or repaired)</param>
 /// <seealso name="GetVehicleDamageStatus"/>
 /// <seealso name="UpdateVehicleDamageStatus"/>
 /// <remarks>This callback was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
@@ -2657,12 +2657,12 @@ forward OnVehicleRespray(playerid, vehicleid, color1, color2);
 ///   <b><c>0</c></b> - Indicates that this callback will be passed to the next filterscript.<p/>
 ///   It is always called first in filterscripts.<p/>
 /// </returns>
-forward OnVehicleDamageStatusUpdate(vehicleid, playerid);
+forward OnVehicleDamageStatusUpdate(vehicleID, playerID);
 
 /// <summary>This callback is called when a player's client updates/syncs the position of a vehicle they're not driving. This can happen outside of the vehicle or when the player is a passenger of a vehicle that has no driver.</summary>
-/// <param name="vehicleid">The ID of the vehicle that's position was updated</param>
-/// <param name="playerid">The ID of the player that sent a vehicle position sync update</param>
-/// <param name="passenger_seat">The ID of the seat if the player is a passenger. 0=not in vehicle, 1=front passenger, 2=backleft 3=backright 4+ is for coach/bus etc. with many passenger seats</param>
+/// <param name="vehicleID">The ID of the vehicle that's position was updated</param>
+/// <param name="playerID">The ID of the player that sent a vehicle position sync update</param>
+/// <param name="passenger_seat">The ID of the seat if the player is a passenger. 0=not in vehicle, 1=front passenger, 2=rearLeft 3=rearRight 4+ is for coach/bus etc. with many passenger seats</param>
 /// <param name="new_x">The new x coordinate of the vehicle. This parameter was added in <b>0.3z</b>. Leave it out if using an earlier version</param>
 /// <param name="new_y">The new y coordinate of the vehicle. This parameter was added in <b>0.3z</b>. Leave it out if using an earlier version</param>
 /// <param name="new_z">The new z coordinate of the vehicle. This parameter was added in <b>0.3z</b>. Leave it out if using an earlier version</param>
@@ -2677,10 +2677,10 @@ forward OnVehicleDamageStatusUpdate(vehicleid, playerid);
 ///   Returning <b><c>0</c></b> in this callback will stop the vehicle's position being synced to other players. Update is still sent to the updating player. Useful for combating vehicle teleport hacks.<p/>
 ///   It is always called first in filterscripts so returning <b><c>0</c></b> there also blocks other scripts from seeing it.
 /// </returns>
-forward OnUnoccupiedVehicleUpdate(vehicleid, playerid, passenger_seat, Float:new_x, Float:new_y, Float:new_z, Float:vel_x, Float:vel_y, Float:vel_z);
+forward OnUnoccupiedVehicleUpdate(vehicleID, playerID, passenger_seat, Float:new_x, Float:new_y, Float:new_z, Float:vel_x, Float:vel_y, Float:vel_z);
 
 /// <summary>This callback is called when a player selects an item from a menu (<a href="#ShowMenuForPlayer">ShowMenuForPlayer</a>).</summary>
-/// <param name="playerid">The ID of the player that selected a menu item</param>
+/// <param name="playerID">The ID of the player that selected a menu item</param>
 /// <param name="row">The ID of the row that was selected. The first row is ID <b><c>0</c></b></param>
 /// <seealso name="OnPlayerExitedMenu"/>
 /// <seealso name="OnDialogResponse"/>
@@ -2694,10 +2694,10 @@ forward OnUnoccupiedVehicleUpdate(vehicleid, playerid, passenger_seat, Float:new
 ///   This callback does not handle returns.<p/>
 ///   It is always called first in gamemode.
 /// </returns>
-forward OnPlayerSelectedMenuRow(playerid, row);
+forward OnPlayerSelectedMenuRow(playerID, row);
 
 /// <summary>Called when a player exits a menu.</summary>
-/// <param name="playerid">The ID of the player that exited the menu</param>
+/// <param name="playerID">The ID of the player that exited the menu</param>
 /// <seealso name="OnPlayerSelectedMenuRow"/>
 /// <seealso name="CreateMenu"/>
 /// <seealso name="DestroyMenu"/>
@@ -2705,12 +2705,12 @@ forward OnPlayerSelectedMenuRow(playerid, row);
 ///   This callback does not handle returns.<p/>
 ///   It is always called first in gamemode.
 /// </returns>
-forward OnPlayerExitedMenu(playerid);
+forward OnPlayerExitedMenu(playerID);
 
 /// <summary>Called when a player changes interior. Can be triggered by SetPlayerInterior or when a player enter/exits a building.</summary>
-/// <param name="playerid">The playerid who changed interior</param>
-/// <param name="newinteriorid">The interior the player is now in</param>
-/// <param name="oldinteriorid">The interior the player was in before</param>
+/// <param name="playerID">The playerID who changed interior</param>
+/// <param name="newinteriorID">The interior the player is now in</param>
+/// <param name="oldinteriorID">The interior the player was in before</param>
 /// <seealso name="SetPlayerInterior"/>
 /// <seealso name="GetPlayerInterior"/>
 /// <seealso name="LinkVehicleToInterior"/>
@@ -2719,10 +2719,10 @@ forward OnPlayerExitedMenu(playerid);
 ///   This callback does not handle returns.<p/>
 ///   It is always called first in gamemode.
 /// </returns>
-forward OnPlayerInteriorChange(playerid, newinteriorid, oldinteriorid);
+forward OnPlayerInteriorChange(playerID, newinteriorID, oldinteriorID);
 
 /// <summary>This callback is called when the state of any supported key is changed (pressed/released). Directional keys do not trigger OnPlayerKeyStateChange (up/down/left/right).</summary>
-/// <param name="playerid">The ID of the player that pressed or released a key</param>
+/// <param name="playerID">The ID of the player that pressed or released a key</param>
 /// <param name="newkeys">A map (bitmask) of the keys currently held - see <a href="http://wiki.sa-mp.com/wiki/Keys">here</a></param>
 /// <param name="oldkeys">A map (bitmask) of the keys held prior to the current change - see <a href="http://wiki.sa-mp.com/wiki/Keys">here</a></param>
 /// <seealso name="GetPlayerKeys"/>
@@ -2747,7 +2747,7 @@ forward OnPlayerInteriorChange(playerid, newinteriorid, oldinteriorid);
 ///   This callback does not handle returns.<p/>
 ///   It is always called first in gamemode.
 /// </returns>
-forward OnPlayerKeyStateChange(playerid, newkeys, oldkeys);
+forward OnPlayerKeyStateChange(playerID, newkeys, oldkeys);
 
 /// <summary>This callback is called when someone attempts to log in to RCON in-game; successful or not.</summary>
 /// <param name="ip">The IP of the player that tried to log in to RCON</param>
@@ -2766,7 +2766,7 @@ forward OnPlayerKeyStateChange(playerid, newkeys, oldkeys);
 forward OnRconLoginAttempt(ip[], password[], success);
 
 /// <summary>This callback is called every time a client/player updates the server with their status. It is often used to create custom callbacks for client updates that aren't actively tracked by the server, such as health or armor updates or players switching weapons.</summary>
-/// <param name="playerid">ID of the player sending an update packet</param>
+/// <param name="playerID">ID of the player sending an update packet</param>
 /// <remarks>This callback can also be called by NPC.</remarks>
 /// <remarks>This callback is called, on average, 30 times per second, per player; only use it when you know what it's meant for (or more importantly what it's NOT meant for). </remarks>
 /// <remarks>The frequency with which this callback is called for each player varies, depending on what the player is doing. Driving or shooting will trigger a lot more updates than idling. </remarks>
@@ -2775,11 +2775,11 @@ forward OnRconLoginAttempt(ip[], password[], success);
 ///   <b><c>1</c></b> - Indicates that this update can be processed normally and sent to other players.<p/>
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnPlayerUpdate(playerid);
+forward OnPlayerUpdate(playerID);
 
 /// <summary>This callback is called when a player is streamed by some other player's client.</summary>
-/// <param name="playerid">The ID of the player who has been streamed</param>
-/// <param name="forplayerid">The ID of the player that streamed the other player in</param>
+/// <param name="playerID">The ID of the player who has been streamed</param>
+/// <param name="forplayerID">The ID of the player that streamed the other player in</param>
 /// <seealso name="OnPlayerStreamOut"/>
 /// <seealso name="OnActorStreamIn"/>
 /// <seealso name="OnVehicleStreamIn"/>
@@ -2789,11 +2789,11 @@ forward OnPlayerUpdate(playerid);
 ///   This callback does not handle returns.<p/>
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnPlayerStreamIn(playerid, forplayerid);
+forward OnPlayerStreamIn(playerID, forplayerID);
 
 /// <summary>This callback is called when a player is streamed out from some other player's client.</summary>
-/// <param name="playerid">The player who has been destreamed</param>
-/// <param name="forplayerid">The player who has destreamed the other player</param>
+/// <param name="playerID">The player who has been destreamed</param>
+/// <param name="forplayerID">The player who has destreamed the other player</param>
 /// <seealso name="OnPlayerStreamIn"/>
 /// <seealso name="OnActorStreamOut"/>
 /// <seealso name="OnVehicleStreamOut"/>
@@ -2803,11 +2803,11 @@ forward OnPlayerStreamIn(playerid, forplayerid);
 ///   This callback does not handle returns.<p/>
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnPlayerStreamOut(playerid, forplayerid);
+forward OnPlayerStreamOut(playerID, forplayerID);
 
 /// <summary>Called when a vehicle is streamed to a player's client.</summary>
-/// <param name="vehicleid">The ID of the vehicle that streamed in for the player</param>
-/// <param name="forplayerid">The ID of the player who the vehicle streamed in for</param>
+/// <param name="vehicleID">The ID of the vehicle that streamed in for the player</param>
+/// <param name="forplayerID">The ID of the player who the vehicle streamed in for</param>
 /// <seealso name="OnVehicleStreamOut"/>
 /// <seealso name="OnPlayerStreamIn"/>
 /// <seealso name="OnPlayerStreamOut"/>
@@ -2817,11 +2817,11 @@ forward OnPlayerStreamOut(playerid, forplayerid);
 ///   This callback does not handle returns.<p/>
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnVehicleStreamIn(vehicleid, forplayerid);
+forward OnVehicleStreamIn(vehicleID, forplayerID);
 
 /// <summary>This callback is called when a vehicle is streamed out for a player's client (it's so far away that they can't see it).</summary>
-/// <param name="vehicleid">The ID of the vehicle that streamed out</param>
-/// <param name="forplayerid">The ID of the player who is no longer streaming the vehicle</param>
+/// <param name="vehicleID">The ID of the vehicle that streamed out</param>
+/// <param name="forplayerID">The ID of the player who is no longer streaming the vehicle</param>
 /// <seealso name="OnVehicleStreamIn"/>
 /// <seealso name="OnPlayerStreamIn"/>
 /// <seealso name="OnPlayerStreamOut"/>
@@ -2831,33 +2831,33 @@ forward OnVehicleStreamIn(vehicleid, forplayerid);
 ///   This callback does not handle returns.<p/>
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnVehicleStreamOut(vehicleid, forplayerid);
+forward OnVehicleStreamOut(vehicleID, forplayerID);
 
 /// <summary>This callback is called when an actor is streamed in by a player's client.</summary>
-/// <param name="actorid">The ID of the actor that has been streamed in for the player</param>
-/// <param name="forplayerid">The ID of the player that streamed the actor in</param>
+/// <param name="actorID">The ID of the actor that has been streamed in for the player</param>
+/// <param name="forplayerID">The ID of the player that streamed the actor in</param>
 /// <seealso name="OnActorStreamOut"/>
 /// <seealso name="OnPlayerStreamIn"/>
 /// <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
 /// <remarks>This callback can also be called by NPC.</remarks>
 /// <remarks>It is always called first in filterscripts.</remarks>
 /// <returns>This callback does not handle returns.</returns>
-forward OnActorStreamIn(actorid, forplayerid);
+forward OnActorStreamIn(actorID, forplayerID);
 
 /// <summary>This callback is called when an actor is streamed out by a player's client.</summary>
-/// <param name="actorid">The ID of the actor that has been streamed out for the player</param>
-/// <param name="forplayerid">The ID of the player that streamed the actor out</param>
+/// <param name="actorID">The ID of the actor that has been streamed out for the player</param>
+/// <param name="forplayerID">The ID of the player that streamed the actor out</param>
 /// <seealso name="OnActorStreamIn"/>
 /// <seealso name="OnPlayerStreamOut"/>
 /// <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
 /// <remarks>This callback can also be called by NPC.</remarks>
 /// <remarks>It is always called first in filterscripts.</remarks>
 /// <returns>This callback does not handle returns.</returns>
-forward OnActorStreamOut(actorid, forplayerid);
+forward OnActorStreamOut(actorID, forplayerID);
 
 /// <summary>This callback is called when a player responds to a dialog shown using <a href="#ShowPlayerDialog">ShowPlayerDialog</a> by either clicking a button, pressing ENTER/ESC or double-clicking a list item (if using a list style dialog).</summary>
-/// <param name="playerid">The ID of the player that responded to the dialog</param>
-/// <param name="dialogid">The ID of the dialog the player responded to, assigned in ShowPlayerDialog</param>
+/// <param name="playerID">The ID of the player that responded to the dialog</param>
+/// <param name="dialogID">The ID of the dialog the player responded to, assigned in ShowPlayerDialog</param>
 /// <param name="response"><b><c>1</c></b> for left button and <b><c>0</c></b> for right button (if only one button shown, always <b><c>1</c></b>)</param>
 /// <param name="listitem">The ID of the list item selected by the player (starts at <b><c>0</c></b>) (only if using a list style dialog)</param>
 /// <param name="inputtext">The text entered into the input box by the player or the selected list item text</param>
@@ -2869,59 +2869,59 @@ forward OnActorStreamOut(actorid, forplayerid);
 ///   Returning <b><c>0</c></b> in this callback will pass the dialog to another script in case no matching code were found in your gamemode's callback.<p/>
 ///   It is always called first in filterscripts so returning <b><c>1</c></b> there blocks other filterscripts from seeing it.
 /// </returns>
-forward OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]);
+forward OnDialogResponse(playerID, dialogID, response, listitem, inputtext[]);
 
 /// <summary>This callback is called when a player takes damage.</summary>
-/// <param name="playerid">The ID of the player that took damage</param>
-/// <param name="issuerid">The ID of the player that caused the damage. <b><c>INVALID_PLAYER_ID</c></b> if self-inflicted</param>
+/// <param name="playerID">The ID of the player that took damage</param>
+/// <param name="issuerID">The ID of the player that caused the damage. <b><c>INVALID_PLAYER_ID</c></b> if self-inflicted</param>
 /// <param name="amount">The amount of damage the player took (health and armour combined)</param>
-/// <param name="weaponid">The ID of the <a href="http://wiki.sa-mp.com/wiki/Weapons">weapon/reason</a> for the damage</param>
+/// <param name="weaponID">The ID of the <a href="http://wiki.sa-mp.com/wiki/Weapons">weapon/reason</a> for the damage</param>
 /// <param name="bodypart">The body part that was hit. (NOTE: This parameter was added in <b>0.3z</b>. Leave it out if using an older version!)</param>
 /// <seealso name="OnPlayerGiveDamage"/>
 /// <seealso name="OnPlayerWeaponShot"/>
 /// <remarks>This callback was added in <b>SA-MP 0.3d</b> and will not work in earlier versions!</remarks>
 /// <remarks><a href="#GetPlayerHealth">GetPlayerHealth</a> and <a href="#GetPlayerArmour">GetPlayerArmour</a> will return the old amounts of the player before this callback. </remarks>
 /// <remarks>
-///   The weaponid will return <b><c>37</c></b> (flame thrower) from any fire sources (e.g. molotov, <b><c>18</c></b>).<p/>
-///   The weaponid will return <b><c>51</c></b> from any weapon that creates an explosion (e.g. RPG, grenade)<p/>
-///   <b>playerid</b> is the only one who can call the callback.<p/>
-///   The amount is always the maximum damage the weaponid can do, even when the health left is less than that maximum damage. So when a player has <b><c>100.0</c></b> health and gets shot with a Desert Eagle which has a damage value of <b><c>46.2</c></b>, it takes 3 shots to kill that player. All 3 shots will show an amount of <b><c>46.2</c></b>, even though when the last shot hits, the player only has <b><c>7.6</c></b> health left.
+///   The weaponID will return <b><c>37</c></b> (flame thrower) from any fire sources (e.g. molotov, <b><c>18</c></b>).<p/>
+///   The weaponID will return <b><c>51</c></b> from any weapon that creates an explosion (e.g. RPG, grenade)<p/>
+///   <b>playerID</b> is the only one who can call the callback.<p/>
+///   The amount is always the maximum damage the weaponID can do, even when the health left is less than that maximum damage. So when a player has <b><c>100.0</c></b> health and gets shot with a Desert Eagle which has a damage value of <b><c>46.2</c></b>, it takes 3 shots to kill that player. All 3 shots will show an amount of <b><c>46.2</c></b>, even though when the last shot hits, the player only has <b><c>7.6</c></b> health left.
 /// </remarks>
 /// <returns>
 ///   <b><c>1</c></b> - Callback will not be called in other filterscripts.<p/>
 ///   <b><c>0</c></b> - Allows this callback to be called in other filterscripts.<p/>
 ///   It is always called first in filterscripts so returning <b><c>1</c></b> there blocks other filterscripts from seeing it.
 /// </returns>
-forward OnPlayerTakeDamage(playerid, issuerid, Float:amount, weaponid, bodypart);
+forward OnPlayerTakeDamage(playerID, issuerID, Float:amount, weaponID, bodypart);
 
 /// <summary>This callback is called when a player gives damage to another player.</summary>
-/// <param name="playerid">The ID of the player that gave damage</param>
-/// <param name="damagedid">The ID of the player that received damage</param>
-/// <param name="amount">The amount of health/armour damagedid has lost (combined)</param>
-/// <param name="weaponid">The <a href="http://wiki.sa-mp.com/wiki/Weapons">reason</a> that caused the damage</param>
+/// <param name="playerID">The ID of the player that gave damage</param>
+/// <param name="damagedID">The ID of the player that received damage</param>
+/// <param name="amount">The amount of health/armour damagedID has lost (combined)</param>
+/// <param name="weaponID">The <a href="http://wiki.sa-mp.com/wiki/Weapons">reason</a> that caused the damage</param>
 /// <param name="bodypart">The body part that was hit. (NOTE: This parameter was added in <b>0.3z</b>. Leave it out if using an older version!)</param>
 /// <seealso name="OnPlayerTakeDamage"/>
 /// <remarks>This callback was added in <b>SA-MP 0.3d</b> and will not work in earlier versions!</remarks>
 /// <remarks>
 ///   Keep in mind this function can be inaccurate in some cases.<p/>
 ///   If you want to prevent certain players from damaging eachother, use <a href="#SetPlayerTeam">SetPlayerTeam</a>.<p/>
-///   The weaponid will return <b><c>37</c></b> (flame thrower) from any fire sources (e.g. molotov, 18)<p/>
-///   The weaponid will return <b><c>51</c></b> from any weapon that creates an explosion (e.g. RPG, grenade)<p/>
-///   <b>playerid</b> is the only one who can call the callback.<p/>
-///   The amount is always the maximum damage the weaponid can do, even when the health left is less than that maximum damage. So when a player has <b><c>100.0</c></b> health and gets shot with a Desert Eagle which has a damage value of <b><c>46.2</c></b>, it takes 3 shots to kill that player. All 3 shots will show an amount of <b><c>46.2</c></b>, even though when the last shot hits, the player only has <b><c>7.6</c></b> health left.
+///   The weaponID will return <b><c>37</c></b> (flame thrower) from any fire sources (e.g. molotov, 18)<p/>
+///   The weaponID will return <b><c>51</c></b> from any weapon that creates an explosion (e.g. RPG, grenade)<p/>
+///   <b>playerID</b> is the only one who can call the callback.<p/>
+///   The amount is always the maximum damage the weaponID can do, even when the health left is less than that maximum damage. So when a player has <b><c>100.0</c></b> health and gets shot with a Desert Eagle which has a damage value of <b><c>46.2</c></b>, it takes 3 shots to kill that player. All 3 shots will show an amount of <b><c>46.2</c></b>, even though when the last shot hits, the player only has <b><c>7.6</c></b> health left.
 /// </remarks>
 /// <returns>
 ///   <b><c>1</c></b> - Callback will not be called in other filterscripts.<p/>
 ///   <b><c>0</c></b> - Allows this callback to be called in other filterscripts.<p/>
 ///   It is always called first in filterscripts so returning <b><c>1</c></b> there blocks other filterscripts from seeing it.
 /// </returns>
-forward OnPlayerGiveDamage(playerid, damagedid, Float:amount, weaponid, bodypart);
+forward OnPlayerGiveDamage(playerID, damagedID, Float:amount, weaponID, bodypart);
 
 /// <summary>This callback is called when a player gives damage to an actor.</summary>
-/// <param name="playerid">The ID of the player that gave damage</param>
-/// <param name="damaged_actorid">The ID of the actor that received damage</param>
-/// <param name="amount">The amount of health/armour damaged_actorid has lost</param>
-/// <param name="weaponid">The reason that caused the damage</param>
+/// <param name="playerID">The ID of the player that gave damage</param>
+/// <param name="damaged_actorID">The ID of the actor that received damage</param>
+/// <param name="amount">The amount of health/armour damaged_actorID has lost</param>
+/// <param name="weaponID">The reason that caused the damage</param>
 /// <param name="bodypart">The body part that was hit</param>
 /// <seealso name="CreateActor"/>
 /// <seealso name="SetActorInvulnerable"/>
@@ -2938,10 +2938,10 @@ forward OnPlayerGiveDamage(playerid, damagedid, Float:amount, weaponid, bodypart
 ///   <b><c>0</c></b> - Allows this callback to be called in other filterscripts.<p/>
 ///   It is always called first in filterscripts so returning <b><c>1</c></b> there blocks other filterscripts from seeing it.
 /// </returns>
-forward OnPlayerGiveDamageActor(playerid, damaged_actorid, Float:amount, weaponid, bodypart);
+forward OnPlayerGiveDamageActor(playerID, damaged_actorID, Float:amount, weaponID, bodypart);
 
 /// <summary>OnPlayerClickMap is called when a player places a target/waypoint on the pause menu map (by right-clicking).</summary>
-/// <param name="playerid">The ID of the player that placed a target/waypoint</param>
+/// <param name="playerID">The ID of the player that placed a target/waypoint</param>
 /// <param name="fX">The x float coordinate where the player clicked</param>
 /// <param name="fY">The y float coordinate where the player clicked</param>
 /// <param name="fZ">The z float coordinate where the player clicked (inaccurate - see note below)</param>
@@ -2955,11 +2955,11 @@ forward OnPlayerGiveDamageActor(playerid, damaged_actorid, Float:amount, weaponi
 ///   <b><c>0</c></b> - Indicates that this callback will be passed to the next filterscript.<p/>
 ///   It is always called first in gamemode.
 /// </returns>
-forward OnPlayerClickMap(playerid, Float:fX, Float:fY, Float:fZ);
+forward OnPlayerClickMap(playerID, Float:fX, Float:fY, Float:fZ);
 
 /// <summary>This callback is called when a player clicks on a textdraw or cancels the select mode with the Escape key.</summary>
-/// <param name="playerid">The ID of the player that clicked on the textdraw</param>
-/// <param name="clickedid">The ID of the clicked textdraw. <b><c>INVALID_TEXT_DRAW</c></b> if selection was cancelled</param>
+/// <param name="playerID">The ID of the player that clicked on the textdraw</param>
+/// <param name="clickedID">The ID of the clicked textdraw. <b><c>INVALID_TEXT_DRAW</c></b> if selection was cancelled</param>
 /// <seealso name="OnPlayerClickPlayerTextDraw"/>
 /// <seealso name="OnPlayerClickPlayer"/>
 /// <remarks>This callback was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
@@ -2969,11 +2969,11 @@ forward OnPlayerClickMap(playerid, Float:fX, Float:fY, Float:fZ);
 ///   Returning <b><c>1</c></b> in this callback will prevent it being called in other scripts. This should be used to signal that the textdraw on which they clicked was 'found' and no further processing is needed. You should return <b><c>0</c></b> if the textdraw on which they clicked wasn't found, just like in <a href="#OnPlayerCommandText">OnPlayerCommandText</a>.<p/>
 ///   It is always called first in filterscripts so returning <b><c>1</c></b> there also blocks other scripts from seeing it.
 /// </returns>
-forward OnPlayerClickTextDraw(playerid, Text:clickedid);
+forward OnPlayerClickTextDraw(playerID, Text:clickedID);
 
 /// <summary>This callback is called when a player clicks on a player-textdraw. It is not called when player cancels the select mode (ESC) - however, <a href="#OnPlayerClickTextDraw">OnPlayerClickTextDraw</a> is.</summary>
-/// <param name="playerid">The ID of the player that selected a textdraw</param>
-/// <param name="playertextid">The ID of the player-textdraw that the player selected</param>
+/// <param name="playerID">The ID of the player that selected a textdraw</param>
+/// <param name="playertextID">The ID of the player-textdraw that the player selected</param>
 /// <seealso name="PlayerTextDrawSetSelectable"/>
 /// <seealso name="OnPlayerClickTextDraw"/>
 /// <seealso name="OnPlayerClickPlayer"/>
@@ -2983,10 +2983,10 @@ forward OnPlayerClickTextDraw(playerid, Text:clickedid);
 ///   Returning <b><c>1</c></b> in this callback will prevent it being called in other scripts. This should be used to signal that the textdraw on which they clicked was 'found' and no further processing is needed. You should return <b><c>0</c></b> if the textdraw on which they clicked wasn't found, just like in <a href="#OnPlayerCommandText">OnPlayerCommandText</a>.<p/>
 ///   It is always called first in filterscripts so returning <b><c>1</c></b> there also blocks other scripts from seeing it.
 /// </returns>
-forward OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid);
+forward OnPlayerClickPlayerTextDraw(playerID, PlayerText:playertextID);
 
 /// <summary>This callback is called when an IP address attempts a connection to the server. To block incoming connections, use <a href="#BlockIpAddress">BlockIpAddress</a>.</summary>
-/// <param name="playerid">The ID of the player attempting to connect</param>
+/// <param name="playerID">The ID of the player attempting to connect</param>
 /// <param name="ip_address">The IP address of the player attempting to connect</param>
 /// <param name="port">The port of the attempted connection</param>
 /// <seealso name="OnPlayerConnect"/>
@@ -3000,11 +3000,11 @@ forward OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid);
 ///   <b><c>0</c></b> - Indicates that this callback will be passed to the next filterscript.<p/>
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnIncomingConnection(playerid, ip_address[], port);
+forward OnIncomingConnection(playerID, ip_address[], port);
 
 /// <summary>This callback is called when a player sent a trailer update.</summary>
-/// <param name="playerid">The ID of the player who sent a trailer update</param>
-/// <param name="vehicleid">The Trailer being updated</param>
+/// <param name="playerID">The ID of the player who sent a trailer update</param>
+/// <param name="vehicleID">The Trailer being updated</param>
 /// <seealso name="OnUnoccupiedVehicleUpdate"/>
 /// <seealso name="GetVehicleTrailer"/>
 /// <seealso name="IsTrailerAttachedToVehicle"/>
@@ -3017,11 +3017,11 @@ forward OnIncomingConnection(playerid, ip_address[], port);
 ///   <b><c>1</c></b> - Processes the trailer update as normal and synchronizes it between all players.<p/>
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnTrailerUpdate(playerid, vehicleid);
+forward OnTrailerUpdate(playerID, vehicleID);
 
 /// <summary>This callback is called when a vehicle's siren is toggled.</summary>
-/// <param name="playerid">The ID of the player that toggled the siren (driver)</param>
-/// <param name="vehicleid">The ID of the vehicle of which the siren was toggled for</param>
+/// <param name="playerID">The ID of the player that toggled the siren (driver)</param>
+/// <param name="vehicleID">The ID of the vehicle of which the siren was toggled for</param>
 /// <param name="newstate"><b><c>0</c></b> if siren was turned off, <b><c>1</c></b> if siren was turned on</param>
 /// <seealso name="GetVehicleParamsSirenState"/>
 /// <remarks>This callback was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
@@ -3032,23 +3032,23 @@ forward OnTrailerUpdate(playerid, vehicleid);
 ///   <b><c>0</c></b> - Indicates that this callback will be passed to the gamemode.<p/>
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnVehicleSirenStateChange(playerid, vehicleid, newstate);
+forward OnVehicleSirenStateChange(playerID, vehicleID, newstate);
 
 /// <summary>This callback is called when a player finishes downloading custom models. For more information on how to add custom models to your server, see <a href="http://forum.sa-mp.com/showthread.php?t=644105">the release thread</a> and <a href="http://forum.sa-mp.com/showthread.php?t=644123">this tutorial</a>.</summary>
-/// <param name="playerid">The ID of the player that finished downloading custom models</param>
-/// <param name="virtualworld">The ID of the virtual world the player finished downloading custom models for</param>
+/// <param name="playerID">The ID of the player that finished downloading custom models</param>
+/// <param name="virtualWorld">The ID of the virtual world the player finished downloading custom models for</param>
 /// <seealso name="OnPlayerConnect"/>
 /// <seealso name="OnPlayerDisconnect"/>
 /// <seealso name="OnIncomingConnection"/>
 /// <remarks>This callback was added in <b>SA-MP 0.3DL</b> and will not work in earlier versions!</remarks>
 /// <remarks>This callback is called every time a player changes virtual worlds, even if there are no custom models present in that world.</remarks>
 /// <returns>This callback does not handle returns.</returns>
-forward OnPlayerFinishedDownloading(playerid, virtualworld);
-forward OnPlayerRequestDownload(playerid, type, crc);
+forward OnPlayerFinishedDownloading(playerID, virtualWorld);
+forward OnPlayerRequestDownload(playerID, type, crc);
 
 /// <summary>Called when a player double-clicks on a player on the scoreboard.</summary>
-/// <param name="playerid">The ID of the player that clicked on a player on the scoreboard</param>
-/// <param name="clickedplayerid">The ID of the player that was clicked on</param>
+/// <param name="playerID">The ID of the player that clicked on a player on the scoreboard</param>
+/// <param name="clickedplayerID">The ID of the player that was clicked on</param>
 /// <param name="source">The source of the player's click</param>
 /// <seealso name="OnPlayerClickTextDraw"/>
 /// <remarks>This callback was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
@@ -3058,12 +3058,12 @@ forward OnPlayerRequestDownload(playerid, type, crc);
 ///   <b><c>0</c></b> - Indicates that this callback will be passed to the next filterscript.<p/>
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnPlayerClickPlayer(playerid, clickedplayerid, source);
+forward OnPlayerClickPlayer(playerID, clickedplayerID, source);
 
 /// <summary>This callback is called when a player finishes editing an object (<a href="#EditObject">EditObject</a>/<a href="#EditPlayerObject">EditPlayerObject</a>).</summary>
-/// <param name="playerid">The ID of the player that edited an object</param>
+/// <param name="playerID">The ID of the player that edited an object</param>
 /// <param name="playerobject"><b><c>0</c></b> if it is a global object or <b><c>1</c></b> if it is a playerobject</param>
-/// <param name="objectid">The ID of the edited object</param>
+/// <param name="objectID">The ID of the edited object</param>
 /// <param name="response">The type of response</param>
 /// <param name="fX">The x offset for the object that was edited</param>
 /// <param name="fY">The y offset for the object that was edited</param>
@@ -3082,14 +3082,14 @@ forward OnPlayerClickPlayer(playerid, clickedplayerid, source);
 ///   <b><c>0</c></b> - Indicates that this callback will be passed to the next script.<p/>
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnPlayerEditObject(playerid, playerobject, objectid, response, Float:fX, Float:fY, Float:fZ, Float:fRotX, Float:fRotY, Float:fRotZ);
+forward OnPlayerEditObject(playerID, playerobject, objectID, response, Float:fX, Float:fY, Float:fZ, Float:fRotX, Float:fRotY, Float:fRotZ);
 
 /// <summary>This callback is called when a player ends attached object edition mode.</summary>
-/// <param name="playerid">The ID of the player that ended edition mode</param>
+/// <param name="playerID">The ID of the player that ended edition mode</param>
 /// <param name="response"><b><c>0</c></b> if they cancelled (ESC) or <b><c>1</c></b> if they clicked the save icon</param>
 /// <param name="index">The index of the attached object</param>
-/// <param name="modelid">The model of the attached object that was edited</param>
-/// <param name="boneid">The bone of the attached object that was edited</param>
+/// <param name="modelID">The model of the attached object that was edited</param>
+/// <param name="boneID">The bone of the attached object that was edited</param>
 /// <param name="fOffsetX">The x offset for the attached object that was edited</param>
 /// <param name="fOffsetY">The y offset for the attached object that was edited</param>
 /// <param name="fOffsetZ">The z offset for the attached object that was edited</param>
@@ -3108,13 +3108,13 @@ forward OnPlayerEditObject(playerid, playerobject, objectid, response, Float:fX,
 ///   <b><c>0</c></b> - Indicates that this callback will be passed to the next script.<p/>
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnPlayerEditAttachedObject(playerid, response, index, modelid, boneid, Float:fOffsetX, Float:fOffsetY, Float:fOffsetZ, Float:fRotX, Float:fRotY, Float:fRotZ, Float:fScaleX, Float:fScaleY, Float:fScaleZ);
+forward OnPlayerEditAttachedObject(playerID, response, index, modelID, boneID, Float:fOffsetX, Float:fOffsetY, Float:fOffsetZ, Float:fRotX, Float:fRotY, Float:fRotZ, Float:fScaleX, Float:fScaleY, Float:fScaleZ);
 
 /// <summary>This callback is called when a player selects an object after <a href="#SelectObject">SelectObject</a> has been used.</summary>
-/// <param name="playerid">The ID of the player that selected an object</param>
+/// <param name="playerID">The ID of the player that selected an object</param>
 /// <param name="type">The type of selection</param>
-/// <param name="objectid">The ID of the selected object</param>
-/// <param name="modelid">The model ID of the selected object</param>
+/// <param name="objectID">The ID of the selected object</param>
+/// <param name="modelID">The model ID of the selected object</param>
 /// <param name="fX">The x position of the selected object</param>
 /// <param name="fY">The y position of the selected object</param>
 /// <param name="fZ">The z position of the selected object</param>
@@ -3125,13 +3125,13 @@ forward OnPlayerEditAttachedObject(playerid, response, index, modelid, boneid, F
 ///   <b><c>0</c></b> - Indicates that this callback will be passed to the next script.<p/>
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnPlayerSelectObject(playerid, type, objectid, modelid, Float:fX, Float:fY, Float:fZ);
+forward OnPlayerSelectObject(playerID, type, objectID, modelID, Float:fX, Float:fY, Float:fZ);
 
 /// <summary>This callback is called when a player fires a shot from a weapon. Only bullet weapons are supported. Only <b>passenger</b> drive-by is supported (not driver drive-by, and not sea sparrow / hunter shots).</summary>
-/// <param name="playerid">The ID of the player that shot a weapon</param>
-/// <param name="weaponid">The ID of the <a href="http://wiki.sa-mp.com/wiki/Weapons">weapon</a> shot by the player</param>
+/// <param name="playerID">The ID of the player that shot a weapon</param>
+/// <param name="weaponID">The ID of the <a href="http://wiki.sa-mp.com/wiki/Weapons">weapon</a> shot by the player</param>
 /// <param name="hittype">The type of thing the shot hit (none, player, vehicle, or (player)object)</param>
-/// <param name="hitid">The ID of the player, vehicle or object that was hit</param>
+/// <param name="hitID">The ID of the player, vehicle or object that was hit</param>
 /// <param name="fX">The x coordinate that the shot hit</param>
 /// <param name="fY">The y coordinate that the shot hit</param>
 /// <param name="fZ">The z coordinate that the shot hit</param>
@@ -3151,13 +3151,13 @@ forward OnPlayerSelectObject(playerid, type, objectid, modelid, Float:fX, Float:
 ///   If hittype is:<p/>
 ///   <ul>
 ///     <li>- <b><c>BULLET_HIT_TYPE_NONE</c></b>: the fX, fY and fZ parameters are normal coordinates, will give 0.0 for coordinates if nothing was hit (e.g. far object that the bullet can't reach);</li>
-///     <li>- Others: the fX, fY and fZ are offsets relative to the hitid.</li>
+///     <li>- Others: the fX, fY and fZ are offsets relative to the hitID.</li>
 ///   </ul>
 /// </remarks>
 /// <remarks>
 ///   Isn't called if you fired in vehicle as driver or if you are looking behind with the aim enabled (shooting in air).<p/>
-///   It is called as <b><c>BULLET_HIT_TYPE_VEHICLE</c></b> with the correct hitid (the hit player's vehicleid) if you are shooting a player which is in a vehicle. It won't be called as <b><c>BULLET_HIT_TYPE_PLAYER</c></b> at all.<p/>
-///   <b>Partially fixed in SA-MP 0.3.7:</b> If fake weapon data is sent by a malicious user, other player clients may freeze or crash. To combat this, check if the reported weaponid can actually fire bullets.
+///   It is called as <b><c>BULLET_HIT_TYPE_VEHICLE</c></b> with the correct hitID (the hit player's vehicleID) if you are shooting a player which is in a vehicle. It won't be called as <b><c>BULLET_HIT_TYPE_PLAYER</c></b> at all.<p/>
+///   <b>Partially fixed in SA-MP 0.3.7:</b> If fake weapon data is sent by a malicious user, other player clients may freeze or crash. To combat this, check if the reported weaponID can actually fire bullets.
 /// </remarks>
 /// <remarks>
 /// </remarks>
@@ -3167,22 +3167,22 @@ forward OnPlayerSelectObject(playerid, type, objectid, modelid, Float:fX, Float:
 ///   <b><c>1</c></b> - Allow the bullet to cause damage.<p/>
 ///   It is always called first in filterscripts so returning <b><c>0</c></b> there also blocks other scripts from seeing it.
 /// </returns>
-forward OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY, Float:fZ);
+forward OnPlayerWeaponShot(playerID, weaponID, hittype, hitID, Float:fX, Float:fY, Float:fZ);
 
 /// <summary>This callback is called when a SendClientCheck request comletes</summary>
-/// <param name="playerid">The ID of the player checked</param>
-/// <param name="actionid">The type of check performed</param>
+/// <param name="playerID">The ID of the player checked</param>
+/// <param name="actionID">The type of check performed</param>
 /// <param name="memaddr">The address requested</param>
 /// <param name="retndata">The result of the check</param>
 /// <seealso name="SendClientCheck"/>
-forward OnClientCheckResponse(playerid, actionid, memaddr, retndata);
+forward OnClientCheckResponse(playerID, actionID, memaddr, retndata);
 
 /// <summary>This callback is called when a SendClientCheck request comletes</summary>
-/// <param name="playerid">The ID of the player who got cash from the game</param>
+/// <param name="playerID">The ID of the player who got cash from the game</param>
 /// <param name="amount">The amount of cash given</param>
 /// <param name="source">Where the money came from</param>
 /// <remarks>Doesn't work</remarks>
-forward OnScriptCash(playerid, amount, source);
+forward OnScriptCash(playerID, amount, source);
 
 // --------------------------------------------------
 
