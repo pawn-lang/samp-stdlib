@@ -41,13 +41,13 @@
 
 /// <summary>Creates an object at specified coordinates in the game world.</summary>
 /// <param name="modelid">The model to create</param>
-/// <param name="X">The X coordinate to create the object at</param>
-/// <param name="Y">The Y coordinate to create the object at</param>
-/// <param name="Z">The Z coordinate to create the object at</param>
-/// <param name="rX">The X rotation of the object</param>
-/// <param name="rY">The Y rotation of the object</param>
-/// <param name="rZ">The Z rotation of the object</param>
-/// <param name="DrawDistance">The distance that San Andreas renders objects at. <b><c>0.0</c></b> will cause objects to render at their default distances. <b>Usable since 0.3b, limited to <c>300</c> prior to 0.3x</b> (optional=<b><c>0.0</c></b>)</param>
+/// <param name="x">The x coordinate to create the object at</param>
+/// <param name="y">The y coordinate to create the object at</param>
+/// <param name="z">The z coordinate to create the object at</param>
+/// <param name="rX">The x rotation of the object</param>
+/// <param name="rY">The y rotation of the object</param>
+/// <param name="rZ">The z rotation of the object</param>
+/// <param name="drawDistance">The distance that San Andreas renders objects at. <b><c>0.0</c></b> will cause objects to render at their default distances. <b>Usable since 0.3b, limited to <c>300</c> prior to 0.3x</b> (optional=<b><c>0.0</c></b>)</param>
 /// <seealso name="DestroyObject"/>
 /// <seealso name="IsValidObject"/>
 /// <seealso name="CreatePlayerObject"/>
@@ -60,23 +60,23 @@
 /// <seealso name="SetObjectMaterialText"/>
 /// <seealso name="SetObjectMaterial"/>
 /// <remarks>
-///   Objects that emit light (lampposts, police lights, bollard lights, neons etc.) that have a greater rotation than <b><c>16.26</c></b> degrees (or <b><c>-16.26</c></b>) on either the X or Y axis will stop shining. This effect also applies to light objects attached to other objects, players and vehicles.
+///   Objects that emit light (lampposts, police lights, bollard lights, neons etc.) that have a greater rotation than <b><c>16.26</c></b> degrees (or <b><c>-16.26</c></b>) on either the x or y axis will stop shining. This effect also applies to light objects attached to other objects, players and vehicles.
 ///   If a light object is attached to a car and the car is rotated over <b><c>16.26</c></b> degrees (like in a rollover), the object will also stop emitting light. This is a GTA:SA issue and is not caused by a bug in SA-MP.
 /// </remarks>
 /// <remarks>In case the light is attached to another object, one fix for this is to set <b>SyncRotation</b> to false in <a href="#AttachObjectToObject">AttachObjectToObject</a>. This will ensure the light stays at <b><c>0</c></b> rotation. This would only really work for objects that consist ONLY of light, so wouldn't work for the police light for example. </remarks>
 /// <remarks>There is a limit of <a href="http://wiki.sa-mp.com/wiki/Limits"><b><c>1000</c></b> objects (<b><c>MAX_OBJECTS</c></b>)</a>. To circumvent this limit, you can use a <a href="http://forum.sa-mp.com/showthread.php?t=102865">streamer</a></remarks>
 /// <returns>The ID of the object that was created, or <b><c>INVALID_OBJECT_ID</c></b> if the object limit (<b><c>MAX_OBJECTS</c></b>) was reached.</returns>
-native CreateObject(modelid, Float:X, Float:Y, Float:Z, Float:rX, Float:rY, Float:rZ, Float:DrawDistance = 0.0);
+native CreateObject(modelid, Float:x, Float:y, Float:z, Float:rX, Float:rY, Float:rZ, Float:drawDistance = 0.0);
 
 /// <summary>Attach an object to a vehicle.</summary>
 /// <param name="objectid">The ID of the object to attach to the vehicle. Note that this is an object ID, not a model ID. The object must be CreateObject created first</param>
 /// <param name="vehicleid">The ID of the vehicle to attach the object to</param>
-/// <param name="OffsetX">The X axis offset from the vehicle to attach the object to</param>
-/// <param name="OffsetY">The Y axis offset from the vehicle to attach the object to</param>
-/// <param name="OffsetZ">The Z axis offset from the vehicle to attach the object to</param>
-/// <param name="RotX">The X rotation offset for the object</param>
-/// <param name="RotY">The Y rotation offset for the object</param>
-/// <param name="RotZ">The Z rotation offset for the object</param>
+/// <param name="offsetX">The x axis offset from the vehicle to attach the object to</param>
+/// <param name="offsetY">The y axis offset from the vehicle to attach the object to</param>
+/// <param name="offsetZ">The z axis offset from the vehicle to attach the object to</param>
+/// <param name="rotX">The x rotation offset for the object</param>
+/// <param name="rotY">The y rotation offset for the object</param>
+/// <param name="rotZ">The z rotation offset for the object</param>
 /// <seealso name="AttachObjectToPlayer"/>
 /// <seealso name="AttachObjectToObject"/>
 /// <seealso name="AttachPlayerObjectToVehicle"/>
@@ -84,18 +84,18 @@ native CreateObject(modelid, Float:X, Float:Y, Float:Z, Float:rX, Float:rY, Floa
 /// <remarks>This function was added in <b>SA-MP 0.3c</b> and will not work in earlier versions!</remarks>
 /// <remarks>The object must be created first.</remarks>
 /// <remarks>When the vehicle is destroyed or respawned, the attached objects won't be destroyed with it; they will remain stationary at the position the vehicle disappeared and be reattached to the next vehicle to claim the vehicle ID that the objects were attached to.</remarks>
-native AttachObjectToVehicle(objectid, vehicleid, Float:OffsetX, Float:OffsetY, Float:OffsetZ, Float:RotX, Float:RotY, Float:RotZ);
+native AttachObjectToVehicle(objectid, vehicleid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotX, Float:rotY, Float:rotZ);
 
 /// <summary>You can use this function to attach objects to other objects. The objects will folow the main object.</summary>
 /// <param name="objectid">The object to attach to another object</param>
 /// <param name="attachtoid">The object to attach the object to</param>
-/// <param name="OffsetX">The distance between the main object and the object in the X direction</param>
-/// <param name="OffsetY">The distance between the main object and the object in the Y direction</param>
-/// <param name="OffsetZ">The distance between the main object and the object in the Z direction</param>
-/// <param name="RotX">The X rotation between the object and the main object</param>
-/// <param name="RotY">The Y rotation between the object and the main object</param>
-/// <param name="RotZ">The Z rotation between the object and the main object</param>
-/// <param name="SyncRotation">If set to <b><c>0</c></b>, objectid's rotation will not change with <paramref name="attachtoid"/>'s (optional=<b><c>1</c></b>)</param>
+/// <param name="offsetX">The distance between the main object and the object in the x direction</param>
+/// <param name="offsetY">The distance between the main object and the object in the y direction</param>
+/// <param name="offsetZ">The distance between the main object and the object in the z direction</param>
+/// <param name="rotX">The x rotation between the object and the main object</param>
+/// <param name="rotY">The y rotation between the object and the main object</param>
+/// <param name="rotZ">The z rotation between the object and the main object</param>
+/// <param name="syncRotation">If set to <b><c>0</c></b>, objectid's rotation will not change with <paramref name="attachtoid"/>'s (optional=<b><c>1</c></b>)</param>
 /// <seealso name="AttachObjectToPlayer"/>
 /// <seealso name="AttachObjectToVehicle"/>
 /// <seealso name="CreateObject"/>
@@ -110,42 +110,42 @@ native AttachObjectToVehicle(objectid, vehicleid, Float:OffsetX, Float:OffsetY, 
 /// <b><c>1</c></b>: The function executed successfully.<p/>
 /// <b><c>0</c></b>: The function failed to execute. This means the first object (<paramref name="objectid"/>) does not exist. There are no internal checks to verify that the second object (<paramref name="attachtoid"/>) exists.
 /// </returns>
-native AttachObjectToObject(objectid, attachtoid, Float:OffsetX, Float:OffsetY, Float:OffsetZ, Float:RotX, Float:RotY, Float:RotZ, SyncRotation = 1);
+native AttachObjectToObject(objectid, attachtoid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotX, Float:rotY, Float:rotZ, bool:syncRotation = true);
 
 /// <summary>Attach an object to a player.</summary>
 /// <param name="objectid">The ID of the object to attach to the player</param>
 /// <param name="playerid">The ID of the player to attach the object to</param>
-/// <param name="OffsetX">The distance between the player and the object in the X direction</param>
-/// <param name="OffsetY">The distance between the player and the object in the Y direction</param>
-/// <param name="OffsetZ">The distance between the player and the object in the Z direction</param>
-/// <param name="RotX">The X rotation between the object and the player</param>
-/// <param name="RotY">The Y rotation between the object and the player</param>
-/// <param name="RotZ">The Z rotation between the object and the player</param>
+/// <param name="offsetX">The distance between the player and the object in the x direction</param>
+/// <param name="offsetY">The distance between the player and the object in the y direction</param>
+/// <param name="offsetZ">The distance between the player and the object in the z direction</param>
+/// <param name="rotX">The x rotation between the object and the player</param>
+/// <param name="rotY">The y rotation between the object and the player</param>
+/// <param name="rotZ">The z rotation between the object and the player</param>
 /// <seealso name="AttachObjectToVehicle"/>
 /// <seealso name="AttachObjectToObject"/>
 /// <seealso name="AttachPlayerObjectToPlayer"/>
 /// <seealso name="SetPlayerAttachedObject"/>
 /// <seealso name="CreateObject"/>
 /// <returns>This function always returns <b><c>0</c></b>.</returns>
-native AttachObjectToPlayer(objectid, playerid, Float:OffsetX, Float:OffsetY, Float:OffsetZ, Float:RotX, Float:RotY, Float:RotZ);
+native AttachObjectToPlayer(objectid, playerid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotX, Float:rotY, Float:rotZ);
 
 /// <summary>Change the position of an object.</summary>
 /// <param name="objectid">The ID of the object to set the position of. Returned by <a href="#CreateObject">CreateObject</a></param>
-/// <param name="X">The X coordinate to position the object at</param>
-/// <param name="Y">The Y coordinate to position the object at</param>
-/// <param name="Z">The Z coordinate to position the object at</param>
+/// <param name="x">The x coordinate to position the object at</param>
+/// <param name="y">The y coordinate to position the object at</param>
+/// <param name="z">The z coordinate to position the object at</param>
 /// <seealso name="GetObjectPos"/>
 /// <seealso name="SetObjectRot"/>
 /// <seealso name="GetPlayerObjectPos"/>
 /// <seealso name="CreateObject"/>
 /// <returns>This function always returns <b><c>1</c></b>, even if the object specified does not exist.</returns>
-native SetObjectPos(objectid, Float:X, Float:Y, Float:Z);
+native SetObjectPos(objectid, Float:x, Float:y, Float:z);
 
 /// <summary>Get the position of an object.</summary>
 /// <param name="objectid">The ID of the object to get the position of.</param>
-/// <param name="X">A variable in which to store the X coordinate, passed by reference</param>
-/// <param name="Y">A variable in which to store the Y coordinate, passed by reference</param>
-/// <param name="Z">A variable in which to store the Z coordinate, passed by reference</param>
+/// <param name="x">A variable in which to store the x coordinate, passed by reference</param>
+/// <param name="y">A variable in which to store the y coordinate, passed by reference</param>
+/// <param name="z">A variable in which to store the z coordinate, passed by reference</param>
 /// <seealso name="SetObjectPos"/>
 /// <seealso name="GetObjectRot"/>
 /// <seealso name="SetPlayerObjectPos"/>
@@ -154,31 +154,31 @@ native SetObjectPos(objectid, Float:X, Float:Y, Float:Z);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. The specified object does not exist.
 /// </returns>
-native GetObjectPos(objectid, &Float:X, &Float:Y, &Float:Z);
+native GetObjectPos(objectid, &Float:x, &Float:y, &Float:z);
 
-/// <summary>Set the rotation of an object on the three axes (X, Y and Z).</summary>
+/// <summary>Set the rotation of an object on the three axes (x, y and z).</summary>
 /// <param name="objectid">The ID of the object to set the rotation of</param>
-/// <param name="RotX">The X rotation</param>
-/// <param name="RotY">The Y rotation</param>
-/// <param name="RotZ">The Z rotation</param>
+/// <param name="rotX">The x rotation</param>
+/// <param name="rotY">The y rotation</param>
+/// <param name="rotZ">The z rotation</param>
 /// <seealso name="GetObjectRot"/>
 /// <seealso name="GetObjectPos"/>
 /// <seealso name="CreateObject"/>
 /// <seealso name="SetPlayerObjectRot"/>
 /// <returns>This function always returns <b><c>1</c></b>, even if the object doesn't exist.</returns>
-native SetObjectRot(objectid, Float:RotX, Float:RotY, Float:RotZ);
+native SetObjectRot(objectid, Float:rotX, Float:rotY, Float:rotZ);
 
-/// <summary>Use this function to get the objects current rotation. The rotation is saved by reference in three RotX/RotY/RotZ variables.</summary>
+/// <summary>Use this function to get the objects current rotation. The rotation is saved by reference in three rotX/rotY/rotZ variables.</summary>
 /// <param name="objectid">The objectid of the object you want to get the rotation from</param>
-/// <param name="RotX">The variable to store the X rotation, passed by reference</param>
-/// <param name="RotY">The variable to store the Y rotation, passed by reference</param>
-/// <param name="RotZ">The variable to store the Z rotation, passed by reference</param>
+/// <param name="rotX">The variable to store the x rotation, passed by reference</param>
+/// <param name="rotY">The variable to store the y rotation, passed by reference</param>
+/// <param name="rotZ">The variable to store the z rotation, passed by reference</param>
 /// <seealso name="SetObjectRot"/>
 /// <seealso name="SetObjectPos"/>
 /// <seealso name="SetPlayerObjectRot"/>
 /// <seealso name="CreateObject"/>
 /// <returns>The object's rotation is stored in the referenced variables, not in the return value.</returns>
-native GetObjectRot(objectid, &Float:RotX, &Float:RotY, &Float:RotZ);
+native GetObjectRot(objectid, &Float:rotX, &Float:rotY, &Float:rotZ);
 
 /// <summary>Get the model ID of an object.</summary>
 /// <param name="objectid">The ID of the object to get the model of</param>
@@ -218,13 +218,13 @@ native DestroyObject(objectid);
 
 /// <summary>Move an object to a new position with a set speed. Players/vehicles will 'surf' the object as it moves.</summary>
 /// <param name="objectid">The ID of the object to move</param>
-/// <param name="X">The X coordinate to move the object to</param>
-/// <param name="Y">The Y coordinate to move the object to</param>
-/// <param name="Z">The Z coordinate to move the object to</param>
-/// <param name="Speed">The speed at which to move the object (units per second)</param>
-/// <param name="RotX">The FINAL X rotation (optional=<b><c>-1000.0</c></b>)</param>
-/// <param name="RotY">The FINAL Y rotation (optional=<b><c>-1000.0</c></b>)</param>
-/// <param name="RotZ">The FINAL Z rotation (optional=<b><c>-1000.0</c></b>)</param>
+/// <param name="x">The x coordinate to move the object to</param>
+/// <param name="y">The y coordinate to move the object to</param>
+/// <param name="z">The z coordinate to move the object to</param>
+/// <param name="speed">The speed at which to move the object (units per second)</param>
+/// <param name="rotX">The FINAL x rotation (optional=<b><c>-1000.0</c></b>)</param>
+/// <param name="rotY">The FINAL y rotation (optional=<b><c>-1000.0</c></b>)</param>
+/// <param name="rotZ">The FINAL z rotation (optional=<b><c>-1000.0</c></b>)</param>
 /// <seealso name="OnObjectMoved"/>
 /// <seealso name="IsObjectMoving"/>
 /// <seealso name="StopObject"/>
@@ -233,9 +233,9 @@ native DestroyObject(objectid);
 /// <seealso name="SetObjectRot"/>
 /// <seealso name="CreateObject"/>
 /// <remarks>This function can be used to make objects rotate smoothly. In order to achieve this however, the object must also be <b>moved</b>. The specified rotation is the rotation the object will have after the movement. Hence the object will not rotate when no movement is applied. For a script example take a look at the ferriswheel.pwn filterscript made by Kye included in the server package (SA-MP 0.3d and above). </remarks>
-/// <remarks>To fully understand the above note, you can (but not limited to) increase the z position by <b><c>(+0.001</c></b>) and then (<b><c>-0.001</c></b>) after moving it again, as not changing the X, Y or Z will not rotate the object. </remarks>
+/// <remarks>To fully understand the above note, you can (but not limited to) increase the z position by <b><c>(+0.001</c></b>) and then (<b><c>-0.001</c></b>) after moving it again, as not changing the x, y or z will not rotate the object. </remarks>
 /// <returns>The time it will take for the object to move in milliseconds.</returns>
-native MoveObject(objectid, Float:X, Float:Y, Float:Z, Float:Speed, Float:RotX = -1000.0, Float:RotY = -1000.0, Float:RotZ = -1000.0);
+native MoveObject(objectid, Float:x, Float:y, Float:z, Float:speed, Float:rotX = -1000.0, Float:rotY = -1000.0, Float:rotZ = -1000.0);
 
 /// <summary>Stop a moving object after <a href="#MoveObject">MoveObject</a> has been used.</summary>
 /// <param name="objectid">The ID of the object to stop moving</param>
@@ -307,13 +307,13 @@ native CancelEdit(playerid);
 /// <summary>Creates an object which will be visible to only one player.</summary>
 /// <param name="playerid">The ID of the player to create the object for</param>
 /// <param name="modelid">The model to create</param>
-/// <param name="X">The X coordinate to create the object at</param>
-/// <param name="Y">The Y coordinate to create the object at</param>
-/// <param name="Z">The Z coordinate to create the object at</param>
-/// <param name="rX">The X rotation of the object</param>
-/// <param name="rY">The Y rotation of the object</param>
-/// <param name="rZ">The Z rotation of the object</param>
-/// <param name="DrawDistance">The distance from which objects will appear to players. <b><c>0.0</c></b> will cause an object to render at its default distance. Leaving this parameter out will cause objects to be rendered at their default distance. <b>The maximum usable distance is <c>300</c> in versions prior to 0.3x</b>, in which drawdistance can be unlimited (optional=<b><c>0.0</c></b>)</param>
+/// <param name="x">The x coordinate to create the object at</param>
+/// <param name="y">The y coordinate to create the object at</param>
+/// <param name="z">The z coordinate to create the object at</param>
+/// <param name="rX">The x rotation of the object</param>
+/// <param name="rY">The y rotation of the object</param>
+/// <param name="rZ">The z rotation of the object</param>
+/// <param name="drawDistance">The distance from which objects will appear to players. <b><c>0.0</c></b> will cause an object to render at its default distance. Leaving this parameter out will cause objects to be rendered at their default distance. <b>The maximum usable distance is <c>300</c> in versions prior to 0.3x</b>, in which drawdistance can be unlimited (optional=<b><c>0.0</c></b>)</param>
 /// <seealso name="CreateObject"/>
 /// <seealso name="IsValidPlayerObject"/>
 /// <seealso name="DestroyPlayerObject"/>
@@ -327,31 +327,31 @@ native CancelEdit(playerid);
 /// <seealso name="AttachObjectToPlayer"/>
 /// <remarks>The 'DrawDistance' parameter was added in <b>0.3b</b>. It must be left out in scripts for older versions of SA:MP.</remarks>
 /// <returns>The ID of the object that was created, or <b><c>INVALID_OBJECT_ID</c></b> if the object limit (<b><c>MAX_OBJECTS</c></b>) was reached.</returns>
-native CreatePlayerObject(playerid, modelid, Float:X, Float:Y, Float:Z, Float:rX, Float:rY, Float:rZ, Float:DrawDistance = 0.0);
+native CreatePlayerObject(playerid, modelid, Float:x, Float:y, Float:z, Float:rX, Float:rY, Float:rZ, Float:drawDistance = 0.0);
 
 /// <summary>Attach a player object to a vehicle.</summary>
 /// <param name="playerid">The ID of the player the object was created for</param>
 /// <param name="objectid">The ID of the object to attach to the vehicle</param>
 /// <param name="vehicleid">The ID of the vehicle to attach the object to</param>
-/// <param name="offsetX">The X position offset for attachment</param>
-/// <param name="offsetY">The Y position offset for attachment</param>
-/// <param name="offsetZ">The Z position offset for attachment</param>
-/// <param name="rotX">The X rotation offset for attachment</param>
-/// <param name="rotY">The Y rotation offset for attachment</param>
-/// <param name="RotZ">The Z rotation offset for attachment</param>
+/// <param name="offsetX">The x position offset for attachment</param>
+/// <param name="offsetY">The y position offset for attachment</param>
+/// <param name="offsetZ">The z position offset for attachment</param>
+/// <param name="rotX">The x rotation offset for attachment</param>
+/// <param name="rotY">The y rotation offset for attachment</param>
+/// <param name="rotZ">The z rotation offset for attachment</param>
 /// <seealso name="CreatePlayerObject"/>
 /// <seealso name="AttachPlayerObjectToPlayer"/>
 /// <seealso name="AttachObjectToVehicle"/>
 /// <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <remarks>You need to create the object before attempting to attach it to a vehicle.</remarks>
-native AttachPlayerObjectToVehicle(playerid, objectid, vehicleid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotX, Float:rotY, Float:RotZ);
+native AttachPlayerObjectToVehicle(playerid, objectid, vehicleid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotX, Float:rotY, Float:rotZ);
 
 /// <summary>Sets the position of a player-object to the specified coordinates.</summary>
 /// <param name="playerid">The ID of the player whose player-object to set the position of</param>
 /// <param name="objectid">The ID of the player-object to set the position of. Returned by <a href="#CreatePlayerObject">CreatePlayerObject</a></param>
-/// <param name="X">The X coordinate to put the object at</param>
-/// <param name="Y">The Y coordinate to put the object at</param>
-/// <param name="Z">The Z coordinate to put the object at</param>
+/// <param name="x">The x coordinate to put the object at</param>
+/// <param name="y">The y coordinate to put the object at</param>
+/// <param name="z">The z coordinate to put the object at</param>
 /// <seealso name="GetPlayerObjectPos"/>
 /// <seealso name="SetPlayerObjectRot"/>
 /// <seealso name="SetObjectPos"/>
@@ -360,14 +360,14 @@ native AttachPlayerObjectToVehicle(playerid, objectid, vehicleid, Float:offsetX,
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. Player and/or object do not exist.
 /// </returns>
-native SetPlayerObjectPos(playerid, objectid, Float:X, Float:Y, Float:Z);
+native SetPlayerObjectPos(playerid, objectid, Float:x, Float:y, Float:z);
 
 /// <summary>Get the position of a player object (<a href="#CreatePlayerObject">CreatePlayerObject</a>).</summary>
 /// <param name="playerid">The ID of the player whose player object to get the position of</param>
 /// <param name="objectid">The object's id of which you want the current location</param>
-/// <param name="X">A float variable in which to store the X coordinate, passed by reference</param>
-/// <param name="Y">A float variable in which to store the Y coordinate, passed by reference</param>
-/// <param name="Z">A float variable in which to store the Z coordinate, passed by reference</param>
+/// <param name="x">A float variable in which to store the x coordinate, passed by reference</param>
+/// <param name="y">A float variable in which to store the y coordinate, passed by reference</param>
+/// <param name="z">A float variable in which to store the z coordinate, passed by reference</param>
 /// <seealso name=""/>
 /// <seealso name="SetPlayerObjectPos"/>
 /// <seealso name="GetPlayerObjectRot"/>
@@ -378,14 +378,14 @@ native SetPlayerObjectPos(playerid, objectid, Float:X, Float:Y, Float:Z);
 ///   <b><c>0</c></b>: The function failed to execute. The player and/or the object don't exist.<p/>
 ///   The object's position is stored in the specified variables.
 /// </returns>
-native GetPlayerObjectPos(playerid, objectid, &Float:X, &Float:Y, &Float:Z);
+native GetPlayerObjectPos(playerid, objectid, &Float:x, &Float:y, &Float:z);
 
-/// <summary>Set the rotation of an object on the X, Y and Z axis.</summary>
+/// <summary>Set the rotation of an object on the x, y and z axis.</summary>
 /// <param name="playerid">The ID of the player whose player-object to rotate</param>
 /// <param name="objectid">The ID of the player-object to rotate</param>
-/// <param name="RotX">The X rotation to set</param>
-/// <param name="RotY">The Y rotation to set</param>
-/// <param name="RotZ">The Z rotation to set</param>
+/// <param name="rotX">The x rotation to set</param>
+/// <param name="rotY">The y rotation to set</param>
+/// <param name="rotZ">The z rotation to set</param>
 /// <seealso name="GetPlayerObjectRot"/>
 /// <seealso name="SetPlayerObjectPos"/>
 /// <seealso name="SetObjectRot"/>
@@ -395,20 +395,20 @@ native GetPlayerObjectPos(playerid, objectid, &Float:X, &Float:Y, &Float:Z);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute.
 /// </returns>
-native SetPlayerObjectRot(playerid, objectid, Float:RotX, Float:RotY, Float:RotZ);
+native SetPlayerObjectRot(playerid, objectid, Float:rotX, Float:rotY, Float:rotZ);
 
-/// <summary>Use this function to get the object's current rotation. The rotation is saved by reference in three RotX/RotY/RotZ variables.</summary>
+/// <summary>Use this function to get the object's current rotation. The rotation is saved by reference in three rotX/rotY/rotZ variables.</summary>
 /// <param name="playerid">The player you associated this object to</param>
 /// <param name="objectid">The objectid of the object you want to get the rotation from</param>
-/// <param name="RotX">The variable to store the X rotation, passed by reference</param>
-/// <param name="RotY">The variable to store the Y rotation, passed by reference</param>
-/// <param name="RotZ">The variable to store the Z rotation, passed by reference</param>
+/// <param name="rotX">The variable to store the x rotation, passed by reference</param>
+/// <param name="rotY">The variable to store the y rotation, passed by reference</param>
+/// <param name="rotZ">The variable to store the z rotation, passed by reference</param>
 /// <seealso name="SetPlayerObjectRot"/>
 /// <seealso name="GetPlayerObjectPos"/>
 /// <seealso name="GetObjectRot"/>
 /// <seealso name="CreatePlayerObject"/>
 /// <returns>The object's rotation is stored in the specified variables.</returns>
-native GetPlayerObjectRot(playerid, objectid, &Float:RotX, &Float:RotY, &Float:RotZ);
+native GetPlayerObjectRot(playerid, objectid, &Float:rotX, &Float:rotY, &Float:rotZ);
 
 /// <summary>Retrieve the model ID of a player-object.</summary>
 /// <param name="playerid">The ID of the player whose player-object to get the model of</param>
@@ -449,13 +449,13 @@ native DestroyPlayerObject(playerid, objectid);
 /// <summary>Move a player object with a set speed. Also supports rotation. Players/vehicles will surf moving objects.</summary>
 /// <param name="playerid">The ID of the player whose player-object to move</param>
 /// <param name="objectid">The ID of the object to move</param>
-/// <param name="X">The X coordinate to move the object to</param>
-/// <param name="Y">The Y coordinate to move the object to</param>
-/// <param name="Z">The Z coordinate to move the object to</param>
-/// <param name="Speed">The speed at which to move the object</param>
-/// <param name="RotX">The final X rotation (optional=<b><c>-1000.0</c></b>)</param>
-/// <param name="RotY">The final Y rotation (optional=<b><c>-1000.0</c></b>)</param>
-/// <param name="RotZ">The final Z rotation (optional=<b><c>-1000.0</c></b>)</param>
+/// <param name="x">The x coordinate to move the object to</param>
+/// <param name="y">The y coordinate to move the object to</param>
+/// <param name="z">The z coordinate to move the object to</param>
+/// <param name="speed">The speed at which to move the object</param>
+/// <param name="rotX">The final x rotation (optional=<b><c>-1000.0</c></b>)</param>
+/// <param name="rotY">The final y rotation (optional=<b><c>-1000.0</c></b>)</param>
+/// <param name="rotZ">The final z rotation (optional=<b><c>-1000.0</c></b>)</param>
 /// <seealso name="OnPlayerObjectMoved"/>
 /// <seealso name="IsPlayerObjectMoving"/>
 /// <seealso name="StopPlayerObject"/>
@@ -465,7 +465,7 @@ native DestroyPlayerObject(playerid, objectid);
 /// <seealso name="CreatePlayerObject"/>
 /// <remarks><b>0.3d R2</b> and older versions do not have the rotational parameters.</remarks>
 /// <returns>The time it will take for the object to move in milliseconds.</returns>
-native MovePlayerObject(playerid, objectid, Float:X, Float:Y, Float:Z, Float:Speed, Float:RotX = -1000.0, Float:RotY = -1000.0, Float:RotZ = -1000.0);
+native MovePlayerObject(playerid, objectid, Float:x, Float:y, Float:z, Float:speed, Float:rotX = -1000.0, Float:rotY = -1000.0, Float:rotZ = -1000.0);
 
 /// <summary>Stop a moving player-object after <a href="#MovePlayerObject">MovePlayerObject</a> has been used.</summary>
 /// <param name="playerid">The ID of the player whose player-object to stop</param>
@@ -491,18 +491,18 @@ native IsPlayerObjectMoving(playerid, objectid);
 /// <param name="objectplayer">The id of the player which is linked with the object</param>
 /// <param name="objectid">The objectid you want to attach to the player</param>
 /// <param name="attachplayer">The id of the player you want to attach to the object</param>
-/// <param name="OffsetX">The distance between the player and the object in the X direction</param>
-/// <param name="OffsetY">The distance between the player and the object in the Y direction</param>
-/// <param name="OffsetZ">The distance between the player and the object in the Z direction</param>
-/// <param name="rX">The X rotation</param>
-/// <param name="rY">The Y rotation</param>
-/// <param name="rZ">The Z rotation</param>
+/// <param name="offsetX">The distance between the player and the object in the x direction</param>
+/// <param name="offsetY">The distance between the player and the object in the y direction</param>
+/// <param name="offsetZ">The distance between the player and the object in the z direction</param>
+/// <param name="rX">The x rotation</param>
+/// <param name="rY">The y rotation</param>
+/// <param name="rZ">The z rotation</param>
 /// <seealso name="SetPlayerAttachedObject"/>
 /// <seealso name="AttachPlayerObjectToVehicle"/>
 /// <seealso name="AttachObjectToPlayer"/>
 /// <seealso name="CreatePlayerObject"/>
 /// <remarks><b>This function was removed in SA-MP 0.3.</b></remarks>
-native AttachPlayerObjectToPlayer(objectplayer, objectid, attachplayer, Float:OffsetX, Float:OffsetY, Float:OffsetZ, Float:rX, Float:rY, Float:rZ);
+native AttachPlayerObjectToPlayer(objectplayer, objectid, attachplayer, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rX, Float:rY, Float:rZ);
 
 /// <summary>Replace the texture of an object with the texture from another model in the game.</summary>
 /// <param name="objectid">The ID of the object to change the texture of</param>

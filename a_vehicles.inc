@@ -51,9 +51,9 @@
 
 /// <summary>Creates a vehicle in the world. Can be used in place of <a href="#AddStaticVehicleEx">AddStaticVehicleEx</a> at any time in the script.</summary>
 /// <param name="vehicletype">The <a href="http://wiki.sa-mp.com/wiki/Vehicle_Models">model</a> for the vehicle</param>
-/// <param name="x">The X coordinate for the vehicle</param>
-/// <param name="y">The Y coordinate for the vehicle</param>
-/// <param name="z">The Z coordinate for the vehicle</param>
+/// <param name="x">The x coordinate for the vehicle</param>
+/// <param name="y">The y coordinate for the vehicle</param>
+/// <param name="z">The z coordinate for the vehicle</param>
 /// <param name="rotation">The facing angle for the vehicle</param>
 /// <param name="color1">The primary <a href="http://wiki.sa-mp.com/wiki/Color_ID">color ID</a></param>
 /// <param name="color2">The secondary <a href="http://wiki.sa-mp.com/wiki/Color_ID">color ID</a></param>
@@ -100,9 +100,9 @@ native IsVehicleStreamedIn(vehicleid, forplayerid);
 
 /// <summary>Gets the position of a vehicle.</summary>
 /// <param name="vehicleid">The ID of the vehicle to get the position of</param>
-/// <param name="x">A float variable in which to store the X coordinate, passed by reference</param>
-/// <param name="y">A float variable in which to store the Y coordinate, passed by reference</param>
-/// <param name="z">A float variable in which to store the Z coordinate, passed by reference</param>
+/// <param name="x">A float variable in which to store the x coordinate, passed by reference</param>
+/// <param name="y">A float variable in which to store the y coordinate, passed by reference</param>
+/// <param name="z">A float variable in which to store the z coordinate, passed by reference</param>
 /// <seealso name="GetVehicleDistanceFromPoint"/>
 /// <seealso name="SetVehiclePos"/>
 /// <seealso name="GetVehicleZAngle"/>
@@ -114,9 +114,9 @@ native GetVehiclePos(vehicleid, &Float:x, &Float:y, &Float:z);
 
 /// <summary>Set a vehicle's position.</summary>
 /// <param name="vehicleid">Vehicle ID that you want set new position</param>
-/// <param name="x">The X coordinate to position the vehicle at</param>
-/// <param name="y">The Y coordinate to position the vehicle at</param>
-/// <param name="z">The Z coordinate to position the vehicle at</param>
+/// <param name="x">The x coordinate to position the vehicle at</param>
+/// <param name="y">The y coordinate to position the vehicle at</param>
+/// <param name="z">The z coordinate to position the vehicle at</param>
 /// <seealso name="SetPlayerPos"/>
 /// <seealso name="GetVehiclePos"/>
 /// <seealso name="SetVehicleZAngle"/>
@@ -127,9 +127,9 @@ native GetVehiclePos(vehicleid, &Float:x, &Float:y, &Float:z);
 /// </returns>
 native SetVehiclePos(vehicleid, Float:x, Float:y, Float:z);
 
-/// <summary>Get the rotation of a vehicle on the Z axis (yaw).</summary>
-/// <param name="vehicleid">The ID of the vehicle to get the Z angle of</param>
-/// <param name="z_angle">A float variable in which to store the Z rotation, passed by reference</param>
+/// <summary>Get the rotation of a vehicle on the z axis (yaw).</summary>
+/// <param name="vehicleid">The ID of the vehicle to get the z angle of</param>
+/// <param name="z_angle">A float variable in which to store the z rotation, passed by reference</param>
 /// <seealso name="GetVehicleRotationQuat"/>
 /// <seealso name="GetVehicleRotation"/>
 /// <seealso name="SetVehicleZAngle"/>
@@ -162,7 +162,7 @@ native GetVehicleZAngle(vehicleid, &Float:z_angle);
 ///     }
 ///   </code>
 /// </remarks>
-/// <remarks>There is no 'set' variation of this function; you can not SET a vehicle's rotation (apart from the <a href="#SetVehicleZAngle">Z angle</a>) </remarks>
+/// <remarks>There is no 'set' variation of this function; you can not SET a vehicle's rotation (apart from the <a href="#SetVehicleZAngle">z angle</a>) </remarks>
 /// <remarks>This function may return incorrect values for unoccupied vehicles. The reason is that the third row of the vehicle's internal rotation matrix gets corrupted if it gets updated while unoccupied. </remarks>
 /// <returns>
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
@@ -172,21 +172,21 @@ native GetVehicleRotationQuat(vehicleid, &Float:w, &Float:x, &Float:y, &Float:z)
 
 /// <summary>This function can be used to calculate the distance (as a float) between a vehicle and another map coordinate. This can be useful to detect how far a vehicle away is from a location.</summary>
 /// <param name="vehicleid">The ID of the vehicle to calculate the distance for</param>
-/// <param name="X">The X map coordinate</param>
-/// <param name="Y">The Y map coordinate</param>
-/// <param name="Z">The Z map coordinate</param>
+/// <param name="x">The x map coordinate</param>
+/// <param name="y">The y map coordinate</param>
+/// <param name="z">The z map coordinate</param>
 /// <seealso name="GetPlayerDistanceFromPoint"/>
 /// <seealso name="GetVehiclePos"/>
 /// <remarks>This function was added in <b>SA-MP 0.3c R3</b> and will not work in earlier versions!</remarks>
 /// <returns>A float containing the distance from the point specified in the coordinates.</returns>
-native Float:GetVehicleDistanceFromPoint(vehicleid, Float:X, Float:Y, Float:Z);
+native Float:GetVehicleDistanceFromPoint(vehicleid, Float:x, Float:y, Float:z);
 
-/// <summary>Set the Z rotation (yaw) of a vehicle.</summary>
+/// <summary>Set the z rotation (yaw) of a vehicle.</summary>
 /// <param name="vehicleid">The ID of the vehicle to set the rotation of</param>
-/// <param name="angle">The Z angle to set</param>
+/// <param name="angle">The z angle to set</param>
 /// <seealso name="GetVehicleZAngle"/>
 /// <seealso name="SetVehiclePos"/>
-/// <remarks>A vehicle's X and Y (pitch and roll) rotation will be reset when this function is used. The X and Y rotations can not be set.</remarks>
+/// <remarks>A vehicle's x and y (pitch and roll) rotation will be reset when this function is used. The x and y rotations can not be set.</remarks>
 /// <remarks>This function does not work on unoccupied vehicles.</remarks>
 /// <returns>
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
@@ -557,11 +557,11 @@ native GetVehicleComponentType(component); // Find CARMODTYPE_* for component id
 /// </returns>
 native RepairVehicle(vehicleid); // Repairs the damage model and resets the health
 
-/// <summary>Get the velocity of a vehicle on the X, Y and Z axes.</summary>
+/// <summary>Get the velocity of a vehicle on the x, y and z axes.</summary>
 /// <param name="vehicleid">The ID of the vehicle to get the velocity of</param>
-/// <param name="X">A float variable in to which to store the vehicle's X velocity, passed by reference</param>
-/// <param name="Y">A float variable in to which to store the vehicle's Y velocity, passed by reference</param>
-/// <param name="Z">A float variable in to which to store the vehicle's Z velocity, passed by reference</param>
+/// <param name="x">A float variable in to which to store the vehicle's x velocity, passed by reference</param>
+/// <param name="y">A float variable in to which to store the vehicle's y velocity, passed by reference</param>
+/// <param name="z">A float variable in to which to store the vehicle's z velocity, passed by reference</param>
 /// <seealso name="GetPlayerVelocity"/>
 /// <seealso name="SetVehicleVelocity"/>
 /// <seealso name="SetPlayerVelocity"/>
@@ -571,26 +571,26 @@ native RepairVehicle(vehicleid); // Repairs the damage model and resets the heal
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. This means the vehicle specified does not exist.<p/>
 /// </returns>
-native GetVehicleVelocity(vehicleid, &Float:X, &Float:Y, &Float:Z);
+native GetVehicleVelocity(vehicleid, &Float:x, &Float:y, &Float:z);
 
-/// <summary>Sets the X, Y and Z velocity of a vehicle.</summary>
+/// <summary>Sets the x, y and z velocity of a vehicle.</summary>
 /// <param name="vehicleid">The ID of the vehicle to set the velocity of</param>
-/// <param name="X">The velocity in the X direction</param>
-/// <param name="Y">The velocity in the Y direction </param>
-/// <param name="Z">The velocity in the Z direction</param>
+/// <param name="x">The velocity in the x direction</param>
+/// <param name="y">The velocity in the y direction </param>
+/// <param name="z">The velocity in the z direction</param>
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <remarks>This function has no affect on un-occupied vehicles and does not affect trains.</remarks>
 /// <returns>
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. The vehicle does not exist.
 /// </returns>
-native SetVehicleVelocity(vehicleid, Float:X, Float:Y, Float:Z);
+native SetVehicleVelocity(vehicleid, Float:x, Float:y, Float:z);
 
-/// <summary>Sets the angular X, Y and Z velocity of a vehicle.</summary>
+/// <summary>Sets the angular x, y and z velocity of a vehicle.</summary>
 /// <param name="vehicleid">The ID of the vehicle to set the velocity of</param>
-/// <param name="X">The amount of velocity in the angular X direction</param>
-/// <param name="Y">The amount of velocity in the angular Y direction </param>
-/// <param name="Z">The amount of velocity in the angular Z direction</param>
+/// <param name="x">The amount of velocity in the angular x direction</param>
+/// <param name="y">The amount of velocity in the angular y direction </param>
+/// <param name="z">The amount of velocity in the angular z direction</param>
 /// <seealso name="SetVehicleVelocity"/>
 /// <seealso name="GetVehicleVelocity"/>
 /// <remarks>This function was added in <b>SA-MP 0.3b</b> and will not work in earlier versions!</remarks>
@@ -599,7 +599,7 @@ native SetVehicleVelocity(vehicleid, Float:X, Float:Y, Float:Z);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. The vehicle does not exist.
 /// </returns>
-native SetVehicleAngularVelocity(vehicleid, Float:X, Float:Y, Float:Z);
+native SetVehicleAngularVelocity(vehicleid, Float:x, Float:y, Float:z);
 
 /// <summary>Retrieve the damage statuses of a vehicle.</summary>
 /// <param name="vehicleid">The ID of the vehicle to get the damage statuses of</param>
@@ -700,9 +700,9 @@ native UpdateVehicleDamageStatus(vehicleid, panels, doors, lights, tires);
 /// <summary>Retrieve information about a specific vehicle model such as the size or position of seats.</summary>
 /// <param name="vehiclemodel">The vehicle <a href="http://wiki.sa-mp.com/wiki/Vehicles:All">model</a> to get info of</param>
 /// <param name="infotype">The type of information to retrieve</param>
-/// <param name="X">A float to store the X value</param>
-/// <param name="Y">A float to store the Y value</param>
-/// <param name="Z">A float to store the Z value</param>
+/// <param name="x">A float to store the x value</param>
+/// <param name="y">A float to store the y value</param>
+/// <param name="z">A float to store the z value</param>
 /// <seealso name="GetVehicleModel"/>
 /// <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <remarks>
@@ -719,7 +719,7 @@ native UpdateVehicleDamageStatus(vehicleid, panels, doors, lights, tires);
 ///     <li><b><c>VEHICLE_MODEL_INFO_REAR_BUMPER_Z </c></b> - height of the rear bumper</li>
 ///   </ul>
 /// </remarks>
-native GetVehicleModelInfo(vehiclemodel, infotype, &Float:X, &Float:Y, &Float:Z);
+native GetVehicleModelInfo(vehiclemodel, infotype, &Float:x, &Float:y, &Float:z);
 
 // Virtual Worlds
 

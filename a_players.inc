@@ -99,9 +99,9 @@
 /// <param name="playerid">The PlayerID of who you want to set the spawn information</param>
 /// <param name="team">The Team-ID of the chosen player</param>
 /// <param name="skin">The skin which the player will spawn with</param>
-/// <param name="x">The X-coordinate of the player's spawn position</param>
-/// <param name="y">The Y-coordinate of the player's spawn position</param>
-/// <param name="z">The Z-coordinate of the player's spawn position</param>
+/// <param name="x">The x-coordinate of the player's spawn position</param>
+/// <param name="y">The y-coordinate of the player's spawn position</param>
+/// <param name="z">The z-coordinate of the player's spawn position</param>
 /// <param name="rotation">The direction in which the player needs to be facing after spawning</param>
 /// <param name="weapon1">The first spawn-<a href="http://wiki.sa-mp.com/wiki/Weapons">weapon</a> for the player</param>
 /// <param name="weapon1_ammo">The amount of ammunition for the primary spawnweapon</param>
@@ -130,9 +130,9 @@ native SpawnPlayer(playerid);
 
 /// <summary>Set a player's position.</summary>
 /// <param name="playerid">The ID of the player to set the position of</param>
-/// <param name="x">The X coordinate to position the player at</param>
-/// <param name="y">The Y coordinate to position the player at</param>
-/// <param name="z">The Z coordinate to position the player at</param>
+/// <param name="x">The x coordinate to position the player at</param>
+/// <param name="y">The y coordinate to position the player at</param>
+/// <param name="z">The z coordinate to position the player at</param>
 /// <seealso name="SetPlayerPosFindZ"/>
 /// <seealso name="SetPlayerFacingAngle"/>
 /// <seealso name="GetPlayerPos"/>
@@ -147,23 +147,23 @@ native SetPlayerPos(playerid, Float:x, Float:y, Float:z);
 
 /// <summary>This sets the players position then adjusts the players z-coordinate to the nearest solid ground under the position.</summary>
 /// <param name="playerid">The ID of the player to set the position of</param>
-/// <param name="x">The X coordinate to position the player at</param>
-/// <param name="y">The X coordinate to position the player at</param>
-/// <param name="z">The Z coordinate to position the player at</param>
+/// <param name="x">The x coordinate to position the player at</param>
+/// <param name="y">The x coordinate to position the player at</param>
+/// <param name="z">The z coordinate to position the player at</param>
 /// <seealso name="SetPlayerPos"/>
 /// <seealso name="OnPlayerClickMap"/>
-/// <remarks>This function does not work if the new coordinates are far away from where the player currently is. The Z height will be <b><c>0</c></b>, which will likely put them underground. It is highly recommended that the <a href="http://forum.sa-mp.com/showthread.php?t=275492">MapAndreas plugin</a> be used instead.</remarks>
+/// <remarks>This function does not work if the new coordinates are far away from where the player currently is. The z height will be <b><c>0</c></b>, which will likely put them underground. It is highly recommended that the <a href="http://forum.sa-mp.com/showthread.php?t=275492">MapAndreas plugin</a> be used instead.</remarks>
 /// <returns>
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. This means the player specified does not exist.
 /// </returns>
 native SetPlayerPosFindZ(playerid, Float:x, Float:y, Float:z);
 
-/// <summary>Get the position of a player, represented by X, Y and Z coordinates.</summary>
+/// <summary>Get the position of a player, represented by x, y and z coordinates.</summary>
 /// <param name="playerid">The ID of the player to get the position of</param>
-/// <param name="x">A float variable in which to store the X coordinate in, passed by reference</param>
-/// <param name="y">A float variable in which to store the Y coordinate in, passed by reference</param>
-/// <param name="z">A float variable in which to store the Z coordinate in, passed by reference</param>
+/// <param name="x">A float variable in which to store the x coordinate in, passed by reference</param>
+/// <param name="y">A float variable in which to store the y coordinate in, passed by reference</param>
+/// <param name="z">A float variable in which to store the z coordinate in, passed by reference</param>
 /// <seealso name="SetPlayerPos"/>
 /// <seealso name="GetVehiclePos"/>
 /// <seealso name="IsPlayerInRangeOfPoint"/>
@@ -172,7 +172,7 @@ native SetPlayerPosFindZ(playerid, Float:x, Float:y, Float:z);
 /// <returns><b><c>true</c></b> on success, <b><c>false</c></b> on failure (i.e. player not connected).</returns>
 native GetPlayerPos(playerid, &Float:x, &Float:y, &Float:z);
 
-/// <summary>Set a player's facing angle (Z rotation).</summary>
+/// <summary>Set a player's facing angle (z rotation).</summary>
 /// <param name="playerid">The ID of the player to set the facing angle of</param>
 /// <param name="ang">The angle the player should face</param>
 /// <seealso name="GetPlayerFacingAngle"/>
@@ -196,9 +196,9 @@ native GetPlayerFacingAngle(playerid, &Float:ang);
 /// <summary>Checks if a player is in range of a point. This native function is faster than the PAWN implementation using distance formula.</summary>
 /// <param name="playerid">The ID of the player</param>
 /// <param name="range">The furthest distance the player can be from the point to be in range</param>
-/// <param name="x">The X coordinate of the point to check the range to</param>
-/// <param name="y">The Y coordinate of the point to check the range to</param>
-/// <param name="z">The Z coordinate of the point to check the range to</param>
+/// <param name="x">The x coordinate of the point to check the range to</param>
+/// <param name="y">The y coordinate of the point to check the range to</param>
+/// <param name="z">The z coordinate of the point to check the range to</param>
 /// <seealso name="GetPlayerDistanceFromPoint"/>
 /// <seealso name="GetVehicleDistanceFromPoint"/>
 /// <seealso name="GetPlayerPos"/>
@@ -208,15 +208,15 @@ native IsPlayerInRangeOfPoint(playerid, Float:range, Float:x, Float:y, Float:z);
 
 /// <summary>Calculate the distance between a player and a map coordinate.</summary>
 /// <param name="playerid">The ID of the player to calculate the distance from</param>
-/// <param name="X">The X map coordinate</param>
-/// <param name="Y">The Y map coordinate</param>
-/// <param name="Z">The Z map coordinate</param>
+/// <param name="x">The x map coordinate</param>
+/// <param name="y">The y map coordinate</param>
+/// <param name="z">The z map coordinate</param>
 /// <seealso name="IsPlayerInRangeOfPoint"/>
 /// <seealso name="GetVehicleDistanceFromPoint"/>
 /// <seealso name="GetPlayerPos"/>
 /// <remarks>This function was added in <b>SA-MP 0.3c R3</b> and will not work in earlier versions!</remarks>
 /// <returns>The distance between the player and the point as a float.</returns>
-native Float:GetPlayerDistanceFromPoint(playerid, Float:X, Float:Y, Float:Z);
+native Float:GetPlayerDistanceFromPoint(playerid, Float:x, Float:y, Float:z);
 
 /// <summary>Checks if a player is streamed in another player's client.</summary>
 /// <param name="playerid">The ID of the player to check is streamed in</param>
@@ -554,7 +554,7 @@ native ResetPlayerMoney(playerid);
 
 /// <summary>Sets the name of a player.</summary>
 /// <param name="playerid">The ID of the player to set the name of</param>
-/// <param name="name">The name to set. Must be 1-24 characters long and only contain valid characters (<b>0-9</b>, <b>a-z</b>, <b>A-Z</b>, <b>[]</b>, <b>()</b>, <b>$</b>, <b>@</b>, <b>.</b>, <b>_</b>, <b>=</b>)</param>
+/// <param name="name">The name to set. Must be 1-24 characters long and only contain valid characters (<b>0-9</b>, <b>a-z</b>, <b>A-z</b>, <b>[]</b>, <b>()</b>, <b>$</b>, <b>@</b>, <b>.</b>, <b>_</b>, <b>=</b>)</param>
 /// <seealso name="GetPlayerName"/>
 /// <remarks>Changing the players' name to the same name but with different character cases (e.g. "John" to "JOHN") will not work. </remarks>
 /// <remarks>If used in <a href="#OnPlayerConnect">OnPlayerConnect</a>, the new name will <b>not</b> be shown for the connecting player. </remarks>
@@ -764,11 +764,11 @@ native SetPlayerFightingStyle(playerid, style);
 /// <returns>The ID of the fighting style of the player.</returns>
 native GetPlayerFightingStyle(playerid);
 
-/// <summary>Set a player's velocity on the X, Y and Z axes.</summary>
+/// <summary>Set a player's velocity on the x, y and z axes.</summary>
 /// <param name="playerid">The player to apply the speed to</param>
-/// <param name="X">The velocity (speed) on the X axis</param>
-/// <param name="Y">The velocity (speed) on the Y axis</param>
-/// <param name="Z">The velocity (speed) on the Z axis</param>
+/// <param name="x">The velocity (speed) on the x axis</param>
+/// <param name="y">The velocity (speed) on the y axis</param>
+/// <param name="z">The velocity (speed) on the z axis</param>
 /// <seealso name="GetPlayerVelocity"/>
 /// <seealso name="SetVehicleVelocity"/>
 /// <seealso name="GetVehicleVelocity"/>
@@ -777,18 +777,18 @@ native GetPlayerFightingStyle(playerid);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. This means the player is not connected.
 /// </returns>
-native SetPlayerVelocity(playerid, Float:X, Float:Y, Float:Z);
+native SetPlayerVelocity(playerid, Float:x, Float:y, Float:z);
 
-/// <summary>Get the velocity (speed) of a player on the X, Y and Z axes.</summary>
+/// <summary>Get the velocity (speed) of a player on the x, y and z axes.</summary>
 /// <param name="playerid">The player to get the speed from</param>
-/// <param name="X">A float variable in which to store the velocity on the X axis, passed by reference</param>
-/// <param name="Y">A float variable in which to store the velocity on the Y axis, passed by reference</param>
-/// <param name="Z">A float variable in which to store the velocity on the Z axis, passed by reference</param>
+/// <param name="x">A float variable in which to store the velocity on the x axis, passed by reference</param>
+/// <param name="y">A float variable in which to store the velocity on the y axis, passed by reference</param>
+/// <param name="z">A float variable in which to store the velocity on the z axis, passed by reference</param>
 /// <seealso name="SetPlayerVelocity"/>
 /// <seealso name="SetVehicleVelocity"/>
 /// <seealso name="GetVehicleVelocity"/>
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
-native GetPlayerVelocity(playerid, &Float:X, &Float:Y, &Float:Z);
+native GetPlayerVelocity(playerid, &Float:x, &Float:y, &Float:z);
 
 /// <summary>This function plays a crime report for a player - just like in single-player when CJ commits a crime.</summary>
 /// <param name="playerid">The ID of the player that will hear the crime report</param>
@@ -825,9 +825,9 @@ native PlayCrimeReportForPlayer(playerid, suspectid, crime);
 /// <summary>Play an 'audio stream' for a player. Normal audio files also work (e.g. MP3).</summary>
 /// <param name="playerid">The ID of the player to play the audio for</param>
 /// <param name="url">The url to play. Valid formats are mp3 and ogg/vorbis. A link to a .pls (playlist) file will play that playlist</param>
-/// <param name="posX">The X position at which to play the audio. Has no effect unless usepos is set to 1 (optional=<b><c>0.0</c></b>)</param>
-/// <param name="posY">The Y position at which to play the audio. Has no effect unless usepos is set to 1 (optional=<b><c>0.0</c></b>)</param>
-/// <param name="posZ">The Z position at which to play the audio. Has no effect unless usepos is set to 1 (optional=<b><c>0.0</c></b>)</param>
+/// <param name="posX">The x position at which to play the audio. Has no effect unless usepos is set to 1 (optional=<b><c>0.0</c></b>)</param>
+/// <param name="posY">The y position at which to play the audio. Has no effect unless usepos is set to 1 (optional=<b><c>0.0</c></b>)</param>
+/// <param name="posZ">The z position at which to play the audio. Has no effect unless usepos is set to 1 (optional=<b><c>0.0</c></b>)</param>
 /// <param name="distance">The distance over which the audio will be heard. Has no effect unless usepos is set to 1 (optional=<b><c>50.0</c></b>)</param>
 /// <param name="usepos">Use the positions and distance specified. (optional=<b><c>0</c></b>)</param>
 /// <seealso name="StopAudioStreamForPlayer"/>
@@ -837,7 +837,7 @@ native PlayCrimeReportForPlayer(playerid, suspectid, crime);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. The player specified does not exist.
 /// </returns>
-native PlayAudioStreamForPlayer(playerid, const url[], Float:posX = 0.0, Float:posY = 0.0, Float:posZ = 0.0, Float:distance = 50.0, usepos = 0);
+native PlayAudioStreamForPlayer(playerid, const url[], Float:posX = 0.0, Float:posY = 0.0, Float:posZ = 0.0, Float:distance = 50.0, bool:usepos = false);
 
 /// <summary>Stops the current audio stream for a player.</summary>
 /// <param name="playerid">The player you want to stop the audio stream for</param>
@@ -910,9 +910,9 @@ native GetPlayerSurfingObjectID(playerid);
 /// <summary>Removes a standard San Andreas model for a single player within a specified range.</summary>
 /// <param name="playerid">The ID of the player to remove the objects for</param>
 /// <param name="modelid">The model to remove</param>
-/// <param name="centerX">The X coordinate around which the objects will be removed</param>
-/// <param name="centerY">The Y coordinate around which the objects will be removed</param>
-/// <param name="centerZ">The Z coordinate around which the objects will be removed</param>
+/// <param name="centerX">The x coordinate around which the objects will be removed</param>
+/// <param name="centerY">The y coordinate around which the objects will be removed</param>
+/// <param name="centerZ">The z coordinate around which the objects will be removed</param>
 /// <param name="radius">The radius around the specified point to remove objects with the specified model</param>
 /// <seealso name="DestroyObject"/>
 /// <seealso name="DestroyPlayerObject"/>
@@ -924,12 +924,12 @@ native RemoveBuildingForPlayer(playerid, modelid, Float:centerX, Float:centerY, 
 
 /// <summary>Retrieves the start and end (hit) position of the last bullet a player fired.</summary>
 /// <param name="playerid">The ID of the player to get the last bullet shot information of</param>
-/// <param name="originX">A float variable in which to save the X coordinate of where the bullet originated from</param>
-/// <param name="originY">A float variable in which to save the Y coordinate of where the bullet originated from</param>
-/// <param name="originZ">A float variable in which to save the Z coordinate of where the bullet originated from</param>
-/// <param name="hitPosX">A float variable in which to save the X coordinate of where the bullet hit</param>
-/// <param name="hitPosY">A float variable in which to save the Y coordinate of where the bullet hit</param>
-/// <param name="hitPosZ">A float variable in which to save the Z coordinate of where the bullet hit</param>
+/// <param name="originX">A float variable in which to save the x coordinate of where the bullet originated from</param>
+/// <param name="originY">A float variable in which to save the y coordinate of where the bullet originated from</param>
+/// <param name="originZ">A float variable in which to save the z coordinate of where the bullet originated from</param>
+/// <param name="hitPosX">A float variable in which to save the x coordinate of where the bullet hit</param>
+/// <param name="hitPosY">A float variable in which to save the y coordinate of where the bullet hit</param>
+/// <param name="hitPosZ">A float variable in which to save the z coordinate of where the bullet hit</param>
 /// <seealso name="GetPlayerWeaponData"/>
 /// <seealso name="GetPlayerWeapon"/>
 /// <seealso name="VectorSize"/>
@@ -953,15 +953,15 @@ native GetPlayerLastShotVectors(playerid, &Float:originX, &Float:originY, &Float
 /// <param name="index">The index (slot) to assign the object to (0-9 since 0.3d, 0-4 in previous versions)</param>
 /// <param name="modelid">The <a href="http://wiki.sa-mp.com/wiki/Objects">model</a> to attach</param>
 /// <param name="bone">The bone to attach the object to</param>
-/// <param name="offsetX">X axis offset for the object position (optional=<b><c>0.0</c></b>)</param>
-/// <param name="offsetY">Y axis offset for the object position (optional=<b><c>0.0</c></b>)</param>
-/// <param name="offsetZ">Z axis offset for the object position (optional=<b><c>0.0</c></b>)</param>
-/// <param name="rotX">X axis rotation of the object (optional=<b><c>0.0</c></b>)</param>
-/// <param name="rotY">Y axis rotation of the object (optional=<b><c>0.0</c></b>)</param>
-/// <param name="rotZ">Z axis rotation of the object (optional=<b><c>0.0</c></b>)</param>
-/// <param name="scaleX">X axis scale of the object (optional=<b><c>1.0</c></b>)</param>
-/// <param name="scaleY">Y axis scale of the object (optional=<b><c>1.0</c></b>)</param>
-/// <param name="scaleZ">Z axis scale of the object (optional=<b><c>1.0</c></b>)</param>
+/// <param name="offsetX">x axis offset for the object position (optional=<b><c>0.0</c></b>)</param>
+/// <param name="offsetY">y axis offset for the object position (optional=<b><c>0.0</c></b>)</param>
+/// <param name="offsetZ">z axis offset for the object position (optional=<b><c>0.0</c></b>)</param>
+/// <param name="rotX">x axis rotation of the object (optional=<b><c>0.0</c></b>)</param>
+/// <param name="rotY">y axis rotation of the object (optional=<b><c>0.0</c></b>)</param>
+/// <param name="rotZ">z axis rotation of the object (optional=<b><c>0.0</c></b>)</param>
+/// <param name="scaleX">x axis scale of the object (optional=<b><c>1.0</c></b>)</param>
+/// <param name="scaleY">y axis scale of the object (optional=<b><c>1.0</c></b>)</param>
+/// <param name="scaleZ">z axis scale of the object (optional=<b><c>1.0</c></b>)</param>
 /// <param name="materialcolor1">The first object color to set <b>ARGB</b> (optional=<b><c>0</c></b>)</param>
 /// <param name="materialcolor2">The second object color to set <b>ARGB</b> (optional=<b><c>0</c></b>)</param>
 /// <seealso name="RemovePlayerAttachedObject"/>
@@ -1029,7 +1029,7 @@ native IsPlayerAttachedObjectSlotUsed(playerid, index);
 /// <remarks>You can move the camera while editing by pressing and holding the <b>spacebar</b> (or <b>W</b> in vehicle) and moving your mouse.</remarks>
 /// <remarks>
 ///   There are 7 clickable buttons in edition mode.<p/>
-///   The three single icons that have X/Y/Z on them can be dragged to edit position/rotation/scale.<p/>
+///   The three single icons that have x/y/z on them can be dragged to edit position/rotation/scale.<p/>
 ///   The four buttons in a row are to select the edition mode and save edition: [Move] [Rotate] [Scale] [Save].<p/>
 ///   Clicking save will call <a href="#OnPlayerEditAttachedObject">OnPlayerEditAttachedObject</a>.
 /// </remarks>
@@ -1041,8 +1041,8 @@ native EditAttachedObject(playerid, index);
 
 /// <summary>Creates a textdraw for a single player. This can be used as a way around the <a href="#TextDrawCreate">global</a> text-draw limit.</summary>
 /// <param name="playerid">The ID of the player to create the textdraw for</param>
-/// <param name="x">X-Coordinate</param>
-/// <param name="y">Y-Coordinate</param>
+/// <param name="x">x-Coordinate</param>
+/// <param name="y">y-Coordinate</param>
 /// <param name="text">The text in the textdraw</param>
 /// <seealso name="PlayerTextDrawDestroy"/>
 /// <seealso name="PlayerTextDrawColor"/>
@@ -1123,15 +1123,15 @@ native PlayerTextDrawDestroy(playerid, PlayerText:text);
 /// <seealso name="PlayerTextDrawShow"/>
 /// <seealso name="PlayerTextDrawHide"/>
 /// <remarks>This feature (player-textdraws) was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
-/// <remarks>When using this function purely for the benefit of affecting the textdraw box, multiply 'Y' by <b><c>0.135</c></b> to convert to <a href="#TextDrawTextSize">TextDrawTextSize</a>-like measurements</remarks>
-/// <remarks>Fonts appear to look the best with an X to Y ratio of <b><c>1</c></b> to <b><c>4</c></b> (e.g. if x is <b><c>0.5</c></b> then y should be <b><c>2</c></b>).</remarks>
+/// <remarks>When using this function purely for the benefit of affecting the textdraw box, multiply 'y' by <b><c>0.135</c></b> to convert to <a href="#TextDrawTextSize">TextDrawTextSize</a>-like measurements</remarks>
+/// <remarks>Fonts appear to look the best with an x to y ratio of <b><c>1</c></b> to <b><c>4</c></b> (e.g. if x is <b><c>0.5</c></b> then y should be <b><c>2</c></b>).</remarks>
 native PlayerTextDrawLetterSize(playerid, PlayerText:text, Float:x, Float:y);
 
 /// <summary>Change the size of a player-textdraw (box if <a href="#PlayerTextDrawUseBox">PlayerTextDrawUseBox</a> is enabled and/or clickable area for use with <a href="#PlayerTextDrawSetSelectable">PlayerTextDrawSetSelectable</a>).</summary>
 /// <param name="playerid">The ID of the player whose player-textdraw to set the size of</param>
 /// <param name="text">The ID of the player-textdraw to set the size of</param>
-/// <param name="x">The size on the X axis (left/right) following the same 640x480 grid as <a href="#TextDrawCreate">TextDrawCreate</a></param>
-/// <param name="y">The size on the Y axis (up/down) following the same 640x480 grid as <a href="#TextDrawCreate">TextDrawCreate</a></param>
+/// <param name="x">The size on the x axis (left/right) following the same 640x480 grid as <a href="#TextDrawCreate">TextDrawCreate</a></param>
+/// <param name="y">The size on the y axis (up/down) following the same 640x480 grid as <a href="#TextDrawCreate">TextDrawCreate</a></param>
 /// <seealso name="CreatePlayerTextDraw"/>
 /// <seealso name="PlayerTextDrawDestroy"/>
 /// <seealso name="PlayerTextDrawColor"/>
@@ -1157,7 +1157,7 @@ native PlayerTextDrawLetterSize(playerid, PlayerText:text, Float:x, Float:y);
 ///   </ul>
 /// </remarks>
 /// <remarks>
-///   Using font type <b><c>4</c></b> (sprite) and <b><c>5</c></b> (model preview) converts X and Y of this function from corner coordinates to WIDTH and HEIGHT (offsets).<p/>
+///   Using font type <b><c>4</c></b> (sprite) and <b><c>5</c></b> (model preview) converts x and y of this function from corner coordinates to WIDTH and HEIGHT (offsets).<p/>
 ///   The TextDraw box starts <b><c>10.0</c></b> units up and <b><c>5.0</c></b> to the left as the origin (<a href="#TextDrawCreate">TextDrawCreate</a> coordinate).<p/>
 ///   This function defines the clickable area for use with <a href="#PlayerTextDrawSetSelectable">PlayerTextDrawSetSelectable</a>, whether a box is shown or not.
 /// </remarks>
@@ -1462,9 +1462,9 @@ native PlayerTextDrawSetPreviewModel(playerid, PlayerText:text, modelindex);
 /// <summary>Sets the rotation and zoom of a 3D model preview player-textdraw.</summary>
 /// <param name="playerid">The ID of the player whose player-textdraw to change</param>
 /// <param name="text">The ID of the player-textdraw to change</param>
-/// <param name="rotX">The X rotation value</param>
-/// <param name="rotY">The Y rotation value</param>
-/// <param name="rotZ">The Z rotation value</param>
+/// <param name="rotX">The x rotation value</param>
+/// <param name="rotY">The y rotation value</param>
+/// <param name="rotZ">The z rotation value</param>
 /// <param name="zoom">The zoom value, smaller values make the camera closer and larger values make the camera further away (optional=<b><c>1.0</c></b>)</param>
 /// <seealso name="TextDrawSetPreviewRot"/>
 /// <seealso name="PlayerTextDrawSetPreviewModel"/>
@@ -1718,9 +1718,9 @@ native TogglePlayerControllable(playerid, toggle);
 /// <summary>Plays the specified sound for a player.</summary>
 /// <param name="playerid">The ID of the player for whom to play the sound</param>
 /// <param name="soundid">The sound to play</param>
-/// <param name="x">X coordinate for the sound to play at. (0 for no position)</param>
-/// <param name="y">Y coordinate for the sound to play at. (0 for no position)</param>
-/// <param name="z">Z coordinate for the sound to play at. (0 for no position)</param>
+/// <param name="x">x coordinate for the sound to play at. (0 for no position)</param>
+/// <param name="y">y coordinate for the sound to play at. (0 for no position)</param>
+/// <param name="z">z coordinate for the sound to play at. (0 for no position)</param>
 /// <seealso name="PlayCrimeReportForPlayer"/>
 /// <seealso name="PlayAudioStreamForPlayer"/>
 /// <seealso name="StopAudioStreamForPlayer"/>
@@ -1733,30 +1733,30 @@ native PlayerPlaySound(playerid, soundid, Float:x, Float:y, Float:z);
 
 /// <summary>Apply an animation to a player.</summary>
 /// <param name="playerid">The ID of the player to apply the animation to</param>
-/// <param name="animlib">The animation library from which to apply an animation</param>
-/// <param name="animname">The name of the animation to apply, within the specified library</param>
+/// <param name="animationLibrary">The animation library from which to apply an animation</param>
+/// <param name="animationName">The name of the animation to apply, within the specified library</param>
 /// <param name="delta">The speed to play the animation (use 4.1)</param>
 /// <param name="loop">If set to <b><c>1</c></b>, the animation will loop. If set to <b><c>0</c></b>, the animation will play once</param>
-/// <param name="lockX">If set to <b><c>0</c></b>, the player is returned to their old X coordinate once the animation is complete (for animations that move the player such as walking). <b><c>1</c></b> will not return them to their old position</param>
-/// <param name="lockY">Same as above but for the Y axis. Should be kept the same as the previous parameter</param>
+/// <param name="lockX">If set to <b><c>0</c></b>, the player is returned to their old x coordinate once the animation is complete (for animations that move the player such as walking). <b><c>1</c></b> will not return them to their old position</param>
+/// <param name="lockY">Same as above but for the y axis. Should be kept the same as the previous parameter</param>
 /// <param name="freeze">Setting this to <b><c>1</c></b> will freeze the player at the end of the animation. <b><c>0</c></b> will not</param>
 /// <param name="time">Timer in milliseconds. For a never-ending loop it should be <b><c>0</c></b></param>
-/// <param name="forcesync">Set to <b><c>1</c></b> to make server sync the animation with all other players in streaming radius. <b><c>2</c></b> works same as <b><c>1</c></b>, but will ONLY apply the animation to streamed-in players, but NOT the actual player being animated (useful for npc animations and persistent animations when players are being streamed) (optional=<b><c>0</c></b>)</param>
+/// <param name="forceSync">Set to <b><c>1</c></b> to make server sync the animation with all other players in streaming radius. <b><c>2</c></b> works same as <b><c>1</c></b>, but will ONLY apply the animation to streamed-in players, but NOT the actual player being animated (useful for npc animations and persistent animations when players are being streamed) (optional=<b><c>0</c></b>)</param>
 /// <seealso name="ClearAnimations"/>
 /// <seealso name="SetPlayerSpecialAction"/>
-/// <remarks>The <paramref name="forcesync"/> optional parameter, which defaults to <b><c>0</c></b>, in most cases is not needed since players sync animations themselves. The <paramref name="forcesync"/> parameter can force all players who can see <paramref name="playerid"/> to play the animation regardless of whether the player is performing that animation. This is useful in circumstances where the player can't sync the animation themselves. For example, they may be paused.</remarks>
+/// <remarks>The <paramref name="forceSync"/> optional parameter, which defaults to <b><c>0</c></b>, in most cases is not needed since players sync animations themselves. The <paramref name="forceSync"/> parameter can force all players who can see <paramref name="playerid"/> to play the animation regardless of whether the player is performing that animation. This is useful in circumstances where the player can't sync the animation themselves. For example, they may be paused.</remarks>
 /// <remarks>An invalid animation library will crash the player's game.</remarks>
 /// <returns>This function always returns <b><c>1</c></b>, even if the player specified does not exist, or any of the parameters are invalid (e.g. invalid library).</returns>
-native ApplyAnimation(playerid, const animlib[], const animname[], Float:delta, bool:loop, bool:lockX, bool:lockY, bool:freeze, time, bool:forcesync = false);
+native ApplyAnimation(playerid, const animationLibrary[], const animationName[], Float:delta, bool:loop, bool:lockX, bool:lockY, bool:freeze, time, bool:forceSync = false);
 
 /// <summary>Clears all animations for the given player (it also cancels all current tasks such as jetpacking,parachuting,entering vehicles, driving (removes player out of vehicle), swimming, etc.. ).</summary>
 /// <param name="playerid">The ID of the player to clear the animations of</param>
-/// <param name="forcesync">Set to <b><c>1</c></b> to force playerid to sync the animation with other players in streaming radius (optional=<b><c>0</c></b>)</param>
+/// <param name="forceSync">Set to <b><c>1</c></b> to force playerid to sync the animation with other players in streaming radius (optional=<b><c>0</c></b>)</param>
 /// <seealso name="ApplyAnimation"/>
 /// <remarks>ClearAnimations doesn't do anything when the animation ends if we pass 1 for the freeze parameter in <a href="#ApplyAnimation">ApplyAnimation</a>.</remarks>
 /// <remarks>Unlike some other ways to remove player from a vehicle, this will also reset the vehicle's velocity to zero, instantly stopping the car. Player will appear on top of the vehicle with the same location as he was in his car seat.</remarks>
 /// <returns>This function always returns <b><c>1</c></b>, even when the player specified is not connected.</returns>
-native ClearAnimations(playerid, forcesync = 0);
+native ClearAnimations(playerid, bool:forceSync = false);
 
 /// <summary>Returns the index of any running applied animations.</summary>
 /// <param name="playerid">ID of the player of whom you want to get the animation index of</param>
@@ -1767,14 +1767,14 @@ native GetPlayerAnimationIndex(playerid); // return the index of any running app
 
 /// <summary>Get the animation library/name for the index.</summary>
 /// <param name="index">The animation index, returned by <a href="#GetPlayerAnimationIndex">GetPlayerAnimationIndex</a></param>
-/// <param name="animlib">String variable that stores the animation library</param>
+/// <param name="animationLibrary">String variable that stores the animation library</param>
 /// <param name="len1">Size of the string that stores the animation library</param>
-/// <param name="animname">String variable that stores the animation name</param>
+/// <param name="animationName">String variable that stores the animation name</param>
 /// <param name="len2">Size of the string that stores the animation name</param>
 /// <seealso name="GetPlayerAnimationIndex"/>
 /// <remarks>This function was added in <b>SA-MP 0.3b</b> and will not work in earlier versions!</remarks>
 /// <returns><b><c>1</c></b> on success, <b><c>0</c></b> on failure.</returns>
-native GetAnimationName(index, animlib[], len1 = sizeof (animlib), animname[], len2 = sizeof (animname)); // get the animation lib/name for the index
+native GetAnimationName(index, animationLibrary[], len1 = sizeof (animationLibrary), animationName[], len2 = sizeof (animationName)); // get the animation lib/name for the index
 
 /// <summary>Retrieves a player's current <a href="http://wiki.sa-mp.com/wiki/SpecialActions">special action</a>.</summary>
 /// <param name="playerid">The ID of the player to get the <a href="http://wiki.sa-mp.com/wiki/SpecialActions">special action</a> of</param>
@@ -1877,9 +1877,9 @@ native DisableRemoteVehicleCollisions(playerid, disable);
 
 /// <summary>Sets a checkpoint (red cylinder) for a player. Also shows a red blip on the radar. When players enter a checkpoint, <a href="#OnPlayerEnterCheckpoint">OnPlayerEnterCheckpoint</a> is called and actions can be performed.</summary>
 /// <param name="playerid">The ID of the player for whom to set a checkpoint</param>
-/// <param name="x">The X coordinate to set the checkpoint at</param>
-/// <param name="y">The Y coordinate to set the checkpoint at</param>
-/// <param name="z">The Z coordinate to set the checkpoint at</param>
+/// <param name="x">The x coordinate to set the checkpoint at</param>
+/// <param name="y">The y coordinate to set the checkpoint at</param>
+/// <param name="z">The z coordinate to set the checkpoint at</param>
 /// <param name="size">The size of the checkpoint</param>
 /// <remarks>
 ///   If a checkpoint is already set it will use the size of that checkpoint instead of the new one.<p/>
@@ -1912,12 +1912,12 @@ native DisablePlayerCheckpoint(playerid);
 /// <summary>Creates a race checkpoint. When the player enters it, the <a href="#OnPlayerEnterRaceCheckpoint">OnPlayerEnterRaceCheckpoint</a> callback is called.</summary>
 /// <param name="playerid">The ID of the player to set the checkpoint for</param>
 /// <param name="type">Type of checkpoint. <b><c>0</c></b>-Normal, <b><c>1</c></b>-Finish, <b><c>2</c></b>-Nothing(Only the checkpoint without anything on it), <b><c>3</c></b>-Air normal, <b><c>4</c></b>-Air finish, <b><c>5</c></b>-Air (rotates and stops), <b><c>6</c></b>-Air (increases, decreases and disappears), <b><c>7</c></b>-Air (swings down and up), <b><c>8</c></b>-Air (swings up and down)</param>
-/// <param name="x">X-Coordinate</param>
-/// <param name="y">Y-Coordinate</param>
-/// <param name="z">Z-Coordinate</param>
-/// <param name="nextx">X-Coordinate of the next point, for the arrow facing direction</param>
-/// <param name="nexty">Y-Coordinate of the next point, for the arrow facing direction</param>
-/// <param name="nextz">Z-Coordinate of the next point, for the arrow facing direction</param>
+/// <param name="x">x-Coordinate</param>
+/// <param name="y">y-Coordinate</param>
+/// <param name="z">z-Coordinate</param>
+/// <param name="nextx">x-Coordinate of the next point, for the arrow facing direction</param>
+/// <param name="nexty">y-Coordinate of the next point, for the arrow facing direction</param>
+/// <param name="nextz">z-Coordinate of the next point, for the arrow facing direction</param>
 /// <param name="size">Size (diameter) of the checkpoint</param>
 /// <seealso name="SetPlayerCheckpoint"/>
 /// <seealso name="DisablePlayerCheckpoint"/>
@@ -1954,10 +1954,10 @@ native DisablePlayerRaceCheckpoint(playerid);
 
 /// <summary>Set the world boundaries for a player. Players can not go out of the boundaries (they will be pushed back in).</summary>
 /// <param name="playerid">The ID of the player to set the world boundaries of</param>
-/// <param name="maxX">The maximum X coordinate the player can go to</param>
-/// <param name="minX">The minimum X coordinate the player can go to</param>
-/// <param name="maxY">The maximum Y coordinate the player can go to</param>
-/// <param name="minY">The minimum Y coordinate the player can go to</param>
+/// <param name="maxX">The maximum x coordinate the player can go to</param>
+/// <param name="minX">The minimum x coordinate the player can go to</param>
+/// <param name="maxY">The maximum y coordinate the player can go to</param>
+/// <param name="minY">The minimum y coordinate the player can go to</param>
 /// <seealso name="GangZoneCreate"/>
 /// <remarks>This function does not work if used in <a href="#OnPlayerConnect">OnPlayerConnect</a></remarks>
 /// <remarks>A player's world boundaries can be reset by setting them to <b><c>20000.0</c></b>, <b><c>-20000.0</c></b>, <b><c>20000.0</c></b>, <b><c>-20000.0</c></b>. These are the default values.</remarks>
@@ -1987,9 +1987,9 @@ native ShowPlayerNameTagForPlayer(playerid, showplayerid, show);
 /// <summary>Place an icon/marker on a player's map. Can be used to mark locations such as banks and hospitals to players.</summary>
 /// <param name="playerid">The ID of the player to set the map icon for</param>
 /// <param name="iconid">The player's icon ID, ranging from <b><c>0</c></b> to <b><c>99</c></b>. This means there is a maximum of <b><c>100</c></b> map icons. ID can be used in <a href="#RemovePlayerMapIcon">RemovePlayerMapIcon</a></param>
-/// <param name="x">The X coordinate to place the map icon at</param>
-/// <param name="y">The Y coordinate to place the map icon at</param>
-/// <param name="z">The Z coordinate to place the map icon at</param>
+/// <param name="x">The x coordinate to place the map icon at</param>
+/// <param name="y">The y coordinate to place the map icon at</param>
+/// <param name="z">The z coordinate to place the map icon at</param>
 /// <param name="markertype">The icon to set</param>
 /// <param name="color">The color of the icon (<b>RGBA</b>). This should only be used with the square icon (ID: <b><c>0</c></b>)</param>
 /// <param name="style">The style of icon (optional=<b><c>MAPICON_LOCAL</c></b>)</param>
@@ -2035,9 +2035,9 @@ native AllowPlayerTeleport(playerid, allow);
 
 /// <summary>Sets the camera to a specific position for a player.</summary>
 /// <param name="playerid">ID of the player</param>
-/// <param name="x">The X coordinate to place the camera at</param>
-/// <param name="y">The Y coordinate to place the camera at</param>
-/// <param name="z">The Z coordinate to place the camera at</param>
+/// <param name="x">The x coordinate to place the camera at</param>
+/// <param name="y">The y coordinate to place the camera at</param>
+/// <param name="z">The z coordinate to place the camera at</param>
 /// <seealso name="SetPlayerCameraLookAt"/>
 /// <seealso name="SetCameraBehindPlayer"/>
 /// <remarks>You may also have to use <a href="#SetPlayerCameraLookAt">SetPlayerCameraLookAt</a> with this function in order to work properly.</remarks>
@@ -2051,9 +2051,9 @@ native SetPlayerCameraPos(playerid, Float:x, Float:y, Float:z);
 
 /// <summary>Set the direction a player's camera looks at. Generally meant to be used in combination with <a href="#SetPlayerCameraPos">SetPlayerCameraPos</a>.</summary>
 /// <param name="playerid">The ID of the player whose camera to set</param>
-/// <param name="x">The X coordinate for the player's camera to look at</param>
-/// <param name="y">The Y coordinate for the player's camera to look at</param>
-/// <param name="z">The Z coordinate for the player's camera to look at</param>
+/// <param name="x">The x coordinate for the player's camera to look at</param>
+/// <param name="y">The y coordinate for the player's camera to look at</param>
+/// <param name="z">The z coordinate for the player's camera to look at</param>
 /// <param name="cut">The style of the change. Can be used to interpolate (change slowly) from old pos to new pos using <b><c>CAMERA_MOVE</c></b>. Added in <b>0.3e</b>. Leave out for older versions (optional=<b><c>CAMERA_CUT</c></b>)</param>
 /// <seealso name="SetPlayerCameraPos"/>
 /// <seealso name="SetCameraBehindPlayer"/>
@@ -2074,9 +2074,9 @@ native SetCameraBehindPlayer(playerid);
 
 /// <summary>Get the position of the player's camera.</summary>
 /// <param name="playerid">The ID of the player to get the camera position of</param>
-/// <param name="x">A float variable to store the X coordinate in, passed by reference</param>
-/// <param name="y">A float variable to store the Y coordinate in, passed by reference</param>
-/// <param name="z">A float variable to store the Z coordinate in, passed by reference</param>
+/// <param name="x">A float variable to store the x coordinate in, passed by reference</param>
+/// <param name="y">A float variable to store the y coordinate in, passed by reference</param>
+/// <param name="z">A float variable to store the z coordinate in, passed by reference</param>
 /// <seealso name="SetPlayerCameraPos"/>
 /// <seealso name="GetPlayerCameraZoom"/>
 /// <seealso name="GetPlayerCameraAspectRatio"/>
@@ -2089,9 +2089,9 @@ native GetPlayerCameraPos(playerid, &Float:x, &Float:y, &Float:z);
 
 /// <summary>This function will return the current direction of player's aiming in 3-D space, the coords are relative to the camera position, see <a href="#GetPlayerCameraPos">GetPlayerCameraPos</a>.</summary>
 /// <param name="playerid">The ID of the player you want to obtain the camera front vector of</param>
-/// <param name="x">A float to store the X coordinate, passed by reference</param>
-/// <param name="y">A float to store the Y coordinate, passed by reference</param>
-/// <param name="z">A float to store the Z coordinate, passed by reference</param>
+/// <param name="x">A float to store the x coordinate, passed by reference</param>
+/// <param name="y">A float to store the y coordinate, passed by reference</param>
+/// <param name="z">A float to store the z coordinate, passed by reference</param>
 /// <seealso name="GetPlayerCameraPos"/>
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <remarks>In <b>0.3a</b> the camera front vector is only obtainable when player is inside a rhino, S.W.A.T tank, fire truck, or on foot. </remarks>
@@ -2210,12 +2210,12 @@ native AttachCameraToPlayerObject(playerid, playerobjectid);
 
 /// <summary>Move a player's camera from one position to another, within the set time. Useful for scripted cut scenes.</summary>
 /// <param name="playerid">The ID of the player the camera should be moved for</param>
-/// <param name="FromX">The X position the camera should start to move from</param>
-/// <param name="FromY">The Y position the camera should start to move from</param>
-/// <param name="FromZ">The Z position the camera should start to move from</param>
-/// <param name="ToX">The X position the camera should move to</param>
-/// <param name="ToY">The Y position the camera should move to</param>
-/// <param name="ToZ">The Z position the camera should move to</param>
+/// <param name="fromX">The x position the camera should start to move from</param>
+/// <param name="fromY">The y position the camera should start to move from</param>
+/// <param name="fromZ">The z position the camera should start to move from</param>
+/// <param name="toX">The x position the camera should move to</param>
+/// <param name="toY">The y position the camera should move to</param>
+/// <param name="toZ">The z position the camera should move to</param>
 /// <param name="time">Time in milliseconds</param>
 /// <param name="cut">The jumpcut to use. Set to <b><c>CAMERA_MOVE</c></b> for a smooth movement (optional=<b><c>CAMERA_CUT</c></b>)</param>
 /// <seealso name="InterpolateCameraLookAt"/>
@@ -2223,16 +2223,16 @@ native AttachCameraToPlayerObject(playerid, playerobjectid);
 /// <seealso name="SetPlayerCameraLookAt"/>
 /// <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <remarks>Use <b><c>TogglePlayerSpectating</c></b> to make objects stream in for the player while the camera is moving. You can reset the camera behind the player with <b><c>SetCameraBehindPlayer</c></b>.</remarks>
-native InterpolateCameraPos(playerid, Float:FromX, Float:FromY, Float:FromZ, Float:ToX, Float:ToY, Float:ToZ, time, cut = CAMERA_CUT);
+native InterpolateCameraPos(playerid, Float:fromX, Float:fromY, Float:fromZ, Float:toX, Float:toY, Float:toZ, time, cut = CAMERA_CUT);
 
 /// <summary>Interpolate a player's camera's 'look at' point between two coordinates with a set speed. Can be be used with <a href="#InterpolateCameraPos">InterpolateCameraPos</a>.</summary>
 /// <param name="playerid">The ID of the player the camera should be moved for</param>
-/// <param name="FromX">The X position the camera should start to move from</param>
-/// <param name="FromY">The Y position the camera should start to move from</param>
-/// <param name="FromZ">The Z position the camera should start to move from</param>
-/// <param name="ToX">The X position the camera should move to</param>
-/// <param name="ToY">The Y position the camera should move to</param>
-/// <param name="ToZ">The Z position the camera should move to</param>
+/// <param name="fromX">The x position the camera should start to move from</param>
+/// <param name="fromY">The y position the camera should start to move from</param>
+/// <param name="fromZ">The z position the camera should start to move from</param>
+/// <param name="toX">The x position the camera should move to</param>
+/// <param name="toY">The y position the camera should move to</param>
+/// <param name="toZ">The z position the camera should move to</param>
 /// <param name="time">Time in milliseconds to complete interpolation</param>
 /// <param name="cut">The 'jumpcut' to use. Set to <b><c>CAMERA_MOVE</c></b> for interpolation (optional=<b><c>CAMERA_CUT</c></b>)</param>
 /// <seealso name="InterpolateCameraPos"/>
@@ -2240,7 +2240,7 @@ native InterpolateCameraPos(playerid, Float:FromX, Float:FromY, Float:FromZ, Flo
 /// <seealso name="SetPlayerCameraPos"/>
 /// <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <remarks>Use <b><c>TogglePlayerSpectating</c></b> to make objects stream in for the player while the camera is moving. You can reset the camera behind the player with <b><c>SetCameraBehindPlayer</c></b>.</remarks>
-native InterpolateCameraLookAt(playerid, Float:FromX, Float:FromY, Float:FromZ, Float:ToX, Float:ToY, Float:ToZ, time, cut = CAMERA_CUT);
+native InterpolateCameraLookAt(playerid, Float:fromX, Float:fromY, Float:fromZ, Float:toX, Float:toY, Float:toZ, time, cut = CAMERA_CUT);
 
 // Player conditionals
 
@@ -2328,7 +2328,7 @@ native GetPlayerVirtualWorld(playerid);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. The player is not connected.
 /// </returns>
-native EnableStuntBonusForPlayer(playerid, enable);
+native EnableStuntBonusForPlayer(playerid, bool:enable);
 
 /// <summary>Enables or disables stunt bonuses for all players. If enabled, players will receive monetary rewards when performing a stunt in a vehicle (e.g. a wheelie).</summary>
 /// <param name="enable"><b><c>1</c></b> to enable stunt bonuses or <b><c>0</c></b> to disable them</param>
@@ -2425,16 +2425,16 @@ native CancelSelectTextDraw(playerid);	// cancel textdraw selection with the mou
 
 /// <summary>Creates an explosion that is only visible to a single player. This can be used to isolate explosions from other players or to make them only appear in specific <a href="http://wiki.sa-mp.com/wiki/SetPlayerVirtualWorld">virtual worlds</a>.</summary>
 /// <param name="playerid">The ID of the player to create the explosion for</param>
-/// <param name="X">The X coordinate of the explosion</param>
-/// <param name="Y">The Y coordinate of the explosion</param>
-/// <param name="Z">The Z coordinate of the explosion</param>
+/// <param name="x">The x coordinate of the explosion</param>
+/// <param name="y">The y coordinate of the explosion</param>
+/// <param name="z">The z coordinate of the explosion</param>
 /// <param name="type">The explosion type</param>
-/// <param name="Radius">The radius of the explosion</param>
+/// <param name="radius">The radius of the explosion</param>
 /// <seealso name="CreateExplosion"/>
 /// <remarks>This function was added in <b>SA-MP 0.3z R2-2</b> and will not work in earlier versions!</remarks>
 /// <remarks>There is a limit as to how many explosions can be seen at once by a player. This is roughly 10.</remarks>
 /// <returns>This function always returns <b><c>1</c></b>, even if the function failed to excute (player doesn't exist, invalid radius, or invalid explosion type).</returns>
-native CreateExplosionForPlayer(playerid, Float:X, Float:Y, Float:Z, type, Float:Radius);
+native CreateExplosionForPlayer(playerid, Float:x, Float:y, Float:z, type, Float:radius);
 
 /// <summary>Perform a memory check on the client.</summary>
 /// <param name="playerid">The ID of the player to check</param>

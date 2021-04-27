@@ -16,10 +16,10 @@
 
 /// <summary>Create a static 'actor' in the world. These 'actors' are like NPCs, however they have limited functionality. They do not take up server player slots.</summary>
 /// <param name="modelid">The model ID (skin ID) the actor should have</param>
-/// <param name="X">The X coordinate to create the actor at</param>
-/// <param name="Y">The Y coordinate to create the actor at</param>
-/// <param name="Z">The Z coordinate to create the actor at</param>
-/// <param name="Rotation">The facing angle (rotation) for the actor to have</param>
+/// <param name="x">The x coordinate to create the actor at</param>
+/// <param name="y">The y coordinate to create the actor at</param>
+/// <param name="z">The z coordinate to create the actor at</param>
+/// <param name="angle">The facing angle (rotation) for the actor to have</param>
 /// <seealso name="DestroyActor"/>
 /// <seealso name="SetActorPos"/>
 /// <seealso name="GetActorPos"/>
@@ -52,7 +52,7 @@
 ///   The created Actor ID (start at <b><c>0</c></b>).<p/>
 ///   <b><c>INVALID_ACTOR_ID</c></b> (<b><c>65535</c></b>) If the actor limit (<b><c>1000</c></b>) is reached.
 /// </returns>
-native CreateActor(modelid, Float:X, Float:Y, Float:Z, Float:Rotation);
+native CreateActor(modelid, Float:x, Float:y, Float:z, Float:angle);
 
 /// <summary>Destroy an actor which was created with <a href="#CreateActor">CreateActor</a>.</summary>
 /// <param name="actorid">The ID of the actor to destroy. Returned by <a href="#CreateActor">CreateActor</a></param>
@@ -94,12 +94,12 @@ native GetActorVirtualWorld(actorid);
 
 /// <summary>Apply an animation to an actor.</summary>
 /// <param name="actorid">The ID of the actor to apply the animation to</param>
-/// <param name="animlib">The animation library from which to apply an animation</param>
-/// <param name="animname">The name of the animation to apply, within the specified library</param>
+/// <param name="animationLibrary">The animation library from which to apply an animation</param>
+/// <param name="animationName">The name of the animation to apply, within the specified library</param>
 /// <param name="delta">The speed to play the animation (use <b><c>4.1</c></b>)</param>
 /// <param name="loop">If set to <b><c>1</c></b>, the animation will loop. If set to <b><c>0</c></b>, the animation will play once</param>
-/// <param name="lockX">If set to <b><c>0</c></b>, the actor is returned to their old X coordinate once the animation is complete (for animations that move the actor such as walking). <b><c>1</c></b> will not return them to their old position</param>
-/// <param name="lockY">Same as above but for the Y axis. Should be kept the same as the previous parameter</param>
+/// <param name="lockX">If set to <b><c>0</c></b>, the actor is returned to their old x coordinate once the animation is complete (for animations that move the actor such as walking). <b><c>1</c></b> will not return them to their old position</param>
+/// <param name="lockY">Same as above but for the y axis. Should be kept the same as the previous parameter</param>
 /// <param name="freeze">Setting this to <b><c>1</c></b> will freeze an actor at the end of the animation. <b><c>0</c></b> will not</param>
 /// <param name="time">Timer in milliseconds. For a never-ending loop it should be <b><c>0</c></b></param>
 /// <seealso name="ClearActorAnimations"/>
@@ -109,7 +109,7 @@ native GetActorVirtualWorld(actorid);
 /// <b><c>1</c></b>: The function executed successfully.<p/>
 /// <b><c>0</c></b>: The function failed to execute. The actor specified does not exist.
 /// </returns>
-native ApplyActorAnimation(actorid, const animlib[], const animname[], Float:delta, bool:loop, bool:lockX, bool:lockY, bool:freeze, time);
+native ApplyActorAnimation(actorid, const animationLibrary[], const animationName[], Float:delta, bool:loop, bool:lockX, bool:lockY, bool:freeze, time);
 
 /// <summary>Clear any animations applied to an actor.</summary>
 /// <param name="actorid">The ID of the actor (returned by <a href="#CreateActor">CreateActor</a>) to clear the animations for</param>
@@ -123,9 +123,9 @@ native ClearActorAnimations(actorid);
 
 /// <summary>Set the position of an actor.</summary>
 /// <param name="actorid">The ID of the actor to set the position of. Returned by <a href="#CreateActor">CreateActor</a></param>
-/// <param name="X">The X coordinate to position the actor at</param>
-/// <param name="Y">The Y coordinate to position the actor at</param>
-/// <param name="Z">The Z coordinate to position the actor at</param>
+/// <param name="x">The x coordinate to position the actor at</param>
+/// <param name="y">The y coordinate to position the actor at</param>
+/// <param name="z">The z coordinate to position the actor at</param>
 /// <seealso name="GetActorPos"/>
 /// <seealso name="CreateActor"/>
 /// <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
@@ -134,20 +134,20 @@ native ClearActorAnimations(actorid);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. The actor specified does not exist.
 /// </returns>
-native SetActorPos(actorid, Float:X, Float:Y, Float:Z);
+native SetActorPos(actorid, Float:x, Float:y, Float:z);
 
 /// <summary>Get the position of an actor.</summary>
 /// <param name="actorid">The ID of the actor to get the position of. Returned by <a href="# CreateActor">CreateActor</a></param>
-/// <param name="X">A float variable, passed by reference, in which to store the X coordinate of the actor</param>
-/// <param name="Y">A float variable, passed by reference, in which to store the Y coordinate of the actor</param>
-/// <param name="Z">A float variable, passed by reference, in which to store the Z coordinate of the actor</param>
+/// <param name="x">A float variable, passed by reference, in which to store the x coordinate of the actor</param>
+/// <param name="y">A float variable, passed by reference, in which to store the y coordinate of the actor</param>
+/// <param name="z">A float variable, passed by reference, in which to store the z coordinate of the actor</param>
 /// <seealso name="SetActorPos"/>
 /// <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
 /// <returns>
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. The actor specified does not exist.<p/>
 /// </returns>
-native GetActorPos(actorid, &Float:X, &Float:Y, &Float:Z);
+native GetActorPos(actorid, &Float:x, &Float:y, &Float:z);
 
 /// <summary>Set the facing angle of an actor.</summary>
 /// <param name="actorid">The ID of the actor to set the facing angle of. Returned by <a href="#CreateActor">CreateActor</a></param>

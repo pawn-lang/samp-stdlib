@@ -591,9 +591,9 @@ native CallRemoteFunction(const function[], const format[], {Float,_}:...);
 native CallLocalFunction(const function[], const format[], {Float,_}:...);
 
 /// <summary>Returns the norm (length) of the provided vector.</summary>
-/// <param name="x">The vector's magnitude on the X axis</param>
-/// <param name="y">The vector's magnitude on the Y axis</param>
-/// <param name="z">The vector's magnitude on the Z axis</param>
+/// <param name="x">The vector's magnitude on the x axis</param>
+/// <param name="y">The vector's magnitude on the y axis</param>
+/// <param name="z">The vector's magnitude on the z axis</param>
 /// <seealso name="GetPlayerDistanceFromPoint"/>
 /// <seealso name="GetVehicleDistanceFromPoint"/>
 /// <seealso name="floatsqroot"/>
@@ -816,9 +816,9 @@ native SetTeamCount(count);
 
 /// <summary>Adds a class to class selection. Classes are used so players may spawn with a skin of their choice.</summary>
 /// <param name="modelid">The <a href="http://wiki.sa-mp.com/wiki/Skins">skin</a> which the player will spawn with</param>
-/// <param name="spawnX">The X coordinate of the spawnpoint of this class</param>
-/// <param name="spawnY">The Y coordinate of the spawnpoint of this class</param>
-/// <param name="spawnZ">The Z coordinate of the spawnpoint of this class</param>
+/// <param name="spawnX">The x coordinate of the spawnpoint of this class</param>
+/// <param name="spawnY">The y coordinate of the spawnpoint of this class</param>
+/// <param name="spawnZ">The z coordinate of the spawnpoint of this class</param>
 /// <param name="angle">The direction in which the player should face after spawning</param>
 /// <param name="weapon1">The first spawn-<a href="http://wiki.sa-mp.com/wiki/Weapons">weapon</a> for the player</param>
 /// <param name="ammo1">The amount of ammunition for the primary spawn weapon</param>
@@ -844,9 +844,9 @@ native AddPlayerClass(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:a
 /// <summary>This function is exactly the same as the <a href="#AddPlayerClass">AddPlayerClass</a> function, with the addition of a team parameter.</summary>
 /// <param name="teamid">The team you want the player to spawn in</param>
 /// <param name="modelid">The <a href="http://wiki.sa-mp.com/wiki/Skins">skin</a> which the player will spawn with</param>
-/// <param name="spawnX">The X coordinate of the spawnpoint of this class</param>
-/// <param name="spawnY">The Y coordinate of the spawnpoint of this class</param>
-/// <param name="spawnZ">The Z coordinate of the spawnpoint of this class</param>
+/// <param name="spawnX">The x coordinate of the spawnpoint of this class</param>
+/// <param name="spawnY">The y coordinate of the spawnpoint of this class</param>
+/// <param name="spawnZ">The z coordinate of the spawnpoint of this class</param>
 /// <param name="angle">The direction in which the player should face after spawning</param>
 /// <param name="weapon1">The first spawn-<a href="http://wiki.sa-mp.com/wiki/Weapons">weapon</a> for the player</param>
 /// <param name="ammo1">The amount of ammunition for the primary spawn weapon</param>
@@ -869,9 +869,9 @@ native AddPlayerClassEx(teamid, modelid, Float:spawnX, Float:spawnY, Float:spawn
 
 /// <summary>Adds a 'static' vehicle (models are pre-loaded for players) to the gamemode.</summary>
 /// <param name="modelid">The <a href="http://wiki.sa-mp.com/wiki/Vehicle_Models">Model ID</a> for the vehicle</param>
-/// <param name="spawnX">The X coordinate of the spawnpoint of this vehicle</param>
-/// <param name="spawnY">The Y coordinate of the spawnpoint of this vehicle</param>
-/// <param name="spawnZ">The Z coordinate of the spawnpoint of this vehicle</param>
+/// <param name="spawnX">The x coordinate of the spawnpoint of this vehicle</param>
+/// <param name="spawnY">The y coordinate of the spawnpoint of this vehicle</param>
+/// <param name="spawnZ">The z coordinate of the spawnpoint of this vehicle</param>
 /// <param name="angle">Direction of vehicle - angle</param>
 /// <param name="color1">The primary <a href="http://wiki.sa-mp.com/wiki/Color_ID">color ID</a>. <b><c>-1</c></b> for random (random color chosen by client)</param>
 /// <param name="color2">The secondary <a href="http://wiki.sa-mp.com/wiki/Color_ID">color ID</a>. <b><c>-1</c></b> for random (random color chosen by client)</param>
@@ -889,9 +889,9 @@ native AddStaticVehicle(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float
 
 /// <summary>Adds a 'static' vehicle (models are pre-loaded for players)to the gamemode. Differs from <a href="#AddStaticVehicle">AddStaticVehicle</a> in only one way: allows a respawn time to be set for when the vehicle is left unoccupied by the driver.</summary>
 /// <param name="modelid">The <a href="http://wiki.sa-mp.com/wiki/Vehicle_Models">Model ID</a> for the vehicle</param>
-/// <param name="spawnX">The X coordinate of the spawnpoint of this vehicle</param>
-/// <param name="spawnY">The Y coordinate of the spawnpoint of this vehicle</param>
-/// <param name="spawnZ">The Z coordinate of the spawnpoint of this vehicle</param>
+/// <param name="spawnX">The x coordinate of the spawnpoint of this vehicle</param>
+/// <param name="spawnY">The y coordinate of the spawnpoint of this vehicle</param>
+/// <param name="spawnZ">The z coordinate of the spawnpoint of this vehicle</param>
 /// <param name="angle">Direction of vehicle - angle</param>
 /// <param name="color1">The primary <a href="http://wiki.sa-mp.com/wiki/Color_ID">color ID</a>. <b><c>-1</c></b> for random (random color chosen by client)</param>
 /// <param name="color2">The secondary <a href="http://wiki.sa-mp.com/wiki/Color_ID">color ID</a>. <b><c>-1</c></b> for random (random color chosen by client)</param>
@@ -912,9 +912,9 @@ native AddStaticVehicleEx(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Flo
 /// <summary>This function adds a 'static' pickup to the game. These pickups support weapons, health, armor etc., with the ability to function without scripting them (weapons/health/armor will be given automatically).</summary>
 /// <param name="model">The model of the pickup</param>
 /// <param name="type">The pickup type. Determines how the pickup responds when picked up</param>
-/// <param name="x">The X coordinate to create the pickup at</param>
-/// <param name="y">The Y coordinate to create the pickup at</param>
-/// <param name="z">The Z coordinate to create the pickup at</param>
+/// <param name="x">The x coordinate to create the pickup at</param>
+/// <param name="y">The y coordinate to create the pickup at</param>
+/// <param name="z">The z coordinate to create the pickup at</param>
 /// <param name="virtualworld">The virtual world ID to put the pickup in. Use -1 to show the pickup in all worlds</param>
 /// <returns>
 ///   <b><c>1</c></b> if the pickup is successfully created.
@@ -930,16 +930,16 @@ native AddStaticPickup(model, type, Float:x, Float:y, Float:x, virtualworld = 0)
 /// <summary>This function does exactly the same as AddStaticPickup, except it returns a pickup ID which can be used to destroy it afterwards and be tracked using <a href="#OnPlayerPickUpPickup">OnPlayerPickUpPickup</a>.</summary>
 /// <param name="model">The <a href="http://wiki.sa-mp.com/wiki/Pickup_IDs">model</a> of the pickup</param>
 /// <param name="type">The pickup spawn type (see table under remarks)</param>
-/// <param name="X">The X coordinate to create the pickup at</param>
-/// <param name="Y">The Y coordinate to create the pickup at</param>
-/// <param name="Z">The Z coordinate to create the pickup at</param>
+/// <param name="x">The x coordinate to create the pickup at</param>
+/// <param name="y">The y coordinate to create the pickup at</param>
+/// <param name="z">The z coordinate to create the pickup at</param>
 /// <param name="virtualworld">The virtual world ID of the pickup. Use <b><c>-1</c></b> to make the pickup show in all worlds (optional=<b><c>0</c></b>)</param>
 /// <seealso name="AddStaticPickup"/>
 /// <seealso name="DestroyPickup"/>
 /// <seealso name="OnPlayerPickUpPickup"/>
 /// <remarks>
 ///   <b>Known Bugs:</b><p/>
-///   Pickups that have a X or Y lower than <b><c>-4096.0</c></b> or bigger than <b><c>4096.0</c></b> won't show up and won't trigger <a href="#OnPlayerPickUpPickup">OnPlayerPickUpPickup</a> either.
+///   Pickups that have a x or y lower than <b><c>-4096.0</c></b> or bigger than <b><c>4096.0</c></b> won't show up and won't trigger <a href="#OnPlayerPickUpPickup">OnPlayerPickUpPickup</a> either.
 /// </remarks>
 /// <remarks>
 ///   The only type of pickup that can be picked up from inside a vehicle is <b><c>14</c></b> (except for special pickups such as bribes).<p/>
@@ -969,7 +969,7 @@ native AddStaticPickup(model, type, Float:x, Float:y, Float:x, virtualworld = 0)
 ///   </ul>
 /// </remarks>
 /// <returns>The ID of the created pickup, <b><c>-1</c></b> on failure (<a href="http://wiki.sa-mp.com/wiki/Limits">pickup max limit</a>).</returns>
-native CreatePickup(model, type, Float:X, Float:Y, Float:Z, virtualworld = 0);
+native CreatePickup(model, type, Float:x, Float:y, Float:z, virtualworld = 0);
 
 /// <summary>Destroys a pickup created with <a href="#CreatePickup">CreatePickup</a>.</summary>
 /// <param name="pickup">The ID of the pickup to destroy (returned by <a href="#CreatePickup">CreatePickup</a>)</param>
@@ -1080,15 +1080,15 @@ native AllowAdminTeleport(allow);
 native SetDeathDropAmount(amount);
 
 /// <summary>Create an explosion at the specified coordinates.</summary>
-/// <param name="X">The X coordinate of the explosion</param>
-/// <param name="Y">The Y coordinate of the explosion</param>
-/// <param name="Z">The Z coordinate of the explosion</param>
+/// <param name="x">The x coordinate of the explosion</param>
+/// <param name="y">The y coordinate of the explosion</param>
+/// <param name="z">The z coordinate of the explosion</param>
 /// <param name="type">The type of explosion</param>
-/// <param name="Radius">The explosion radius</param>
+/// <param name="radius">The explosion radius</param>
 /// <seealso name="CreateExplosionForPlayer"/>
 /// <remarks>There is a limit as to how many explosions can be seen at once by a player. This is roughly 10.</remarks>
 /// <returns>This function always returns <b><c>1</c></b>, even when the explosion type and/or radius values are invalid.</returns>
-native CreateExplosion(Float:X, Float:Y, Float:Z, type, Float:Radius);
+native CreateExplosion(Float:x, Float:y, Float:z, type, Float:radius);
 
 /// <summary>This function allows to turn on zone / area names such as the "Vinewood" or "Doherty" text at the bottom-right of the screen as they enter the area. This is a gamemode option and should be set in the callback <a href="#OnGameModeInit">OnGameModeInit</a>.</summary>
 /// <param name="enable">A toggle option for whether or not you'd like zone names on or off</param>
@@ -1538,8 +1538,8 @@ native NetStats_GetIpPort(playerid, output[], size = sizeof (output));
 /// <summary>Creates a menu.</summary>
 /// <param name="title">The title for the new menu</param>
 /// <param name="columns">How many colums shall the new menu have</param>
-/// <param name="x">The X position of the menu (640x460 canvas - <b><c>0</c></b> would put the menu at the far left)</param>
-/// <param name="y">The Y position of the menu (640x460 canvas - <b><c>0</c></b> would put the menu at the far top)</param>
+/// <param name="x">The x position of the menu (640x460 canvas - <b><c>0</c></b> would put the menu at the far left)</param>
+/// <param name="y">The y position of the menu (640x460 canvas - <b><c>0</c></b> would put the menu at the far top)</param>
 /// <param name="col1width">The width for the first column</param>
 /// <param name="col2width">The width for the second column (optional=<b><c>0.0</c></b>)</param>
 /// <seealso name="AddMenuItem"/>
@@ -1671,8 +1671,8 @@ native DisableMenuRow(Menu:menuid, row);
 native Menu:GetPlayerMenu(playerid);
 
 /// <summary>Creates a textdraw. Textdraws are, as the name implies, text (mainly - there can be boxes, sprites and model previews (skins/vehicles/weapons/objects too) that is drawn on a player's screens.</summary>
-/// <param name="x">The X (left/right) coordinate to create the textdraw at</param>
-/// <param name="y">The Y (up/down) coordinate to create the textdraw at</param>
+/// <param name="x">The x (left/right) coordinate to create the textdraw at</param>
+/// <param name="y">The y (up/down) coordinate to create the textdraw at</param>
 /// <param name="text">The text that will appear in the textdraw</param>
 /// <remarks>
 ///   If you choose values for y that are less than 1, the first text row will be invisible and only the shadow is visible.<p/>
@@ -1702,15 +1702,15 @@ native TextDrawDestroy(Text:text);
 /// <param name="text">The TextDraw to change</param>
 /// <param name="x">Width of a char</param>
 /// <param name="y">Height of a char</param>
-/// <remarks>When using this function purely for the benefit of affecting the TextDraw box, multiply 'Y' by <b><c>0.135</c></b> to convert to <a href="#TextDrawTextSize">TextDrawTextSize</a>-like measurements. <b>Hint</b>: it is easier and extremely precise to use <b><c>LD_SPAC:white</c></b> sprite for box-only textdraws, <a href="#TextDrawTextSize">TextDrawTextSize</a> will have regular offsets.</remarks>
+/// <remarks>When using this function purely for the benefit of affecting the TextDraw box, multiply 'y' by <b><c>0.135</c></b> to convert to <a href="#TextDrawTextSize">TextDrawTextSize</a>-like measurements. <b>Hint</b>: it is easier and extremely precise to use <b><c>LD_SPAC:white</c></b> sprite for box-only textdraws, <a href="#TextDrawTextSize">TextDrawTextSize</a> will have regular offsets.</remarks>
 /// <remarks>If you want to change the letter size of a textdraw that is already shown, you don't have to recreate it. Simply use <a href="#TextDrawShowForPlayer">TextDrawShowForPlayer</a>/<a href="#TextDrawShowForAll">TextDrawShowForAll</a> after modifying the textdraw and the change will be visible. </remarks>
-/// <remarks>Fonts appear to look the best with an X to Y ratio of <b><c>1</c></b> to <b><c>4</c></b> (e.g. if x is <b><c>0.5</c></b> then y should be <b><c>2</c></b>). </remarks>
+/// <remarks>Fonts appear to look the best with an x to y ratio of <b><c>1</c></b> to <b><c>4</c></b> (e.g. if x is <b><c>0.5</c></b> then y should be <b><c>2</c></b>). </remarks>
 native TextDrawLetterSize(Text:text, Float:x, Float:y);
 
 /// <summary>Change the size of a textdraw (box if <a href="#TextDrawUseBox">TextDrawUseBox</a> is enabled and/or clickable area for use with <a href="#TextDrawSetSelectable">TextDrawSetSelectable</a>).</summary>
 /// <param name="text">The TextDraw to set the size of</param>
-/// <param name="x">The size on the X axis (left/right) following the same 640x480 grid as <a href="#TextDrawCreate">TextDrawCreate</a></param>
-/// <param name="y">The size on the Y axis (up/down) following the same 640x480 grid as <a href="#TextDrawCreate">TextDrawCreate</a></param>
+/// <param name="x">The size on the x axis (left/right) following the same 640x480 grid as <a href="#TextDrawCreate">TextDrawCreate</a></param>
+/// <param name="y">The size on the y axis (up/down) following the same 640x480 grid as <a href="#TextDrawCreate">TextDrawCreate</a></param>
 /// <remarks>
 ///   The x and y have different meanings with different TextDrawAlignment values:<p/>
 ///   <ul>
@@ -1720,7 +1720,7 @@ native TextDrawLetterSize(Text:text, Float:x, Float:y);
 ///   </ul>
 /// </remarks>
 /// <remarks>
-///   Using font type <b><c>4</c></b> (sprite) and <b><c>5</c></b> (model preview) converts X and Y of this function from corner coordinates to WIDTH and HEIGHT (offsets).<p/>
+///   Using font type <b><c>4</c></b> (sprite) and <b><c>5</c></b> (model preview) converts x and y of this function from corner coordinates to WIDTH and HEIGHT (offsets).<p/>
 ///   The TextDraw box starts <b><c>10.0</c></b> units up and <b><c>5.0</c></b> to the left as the origin (<a href="#TextDrawCreate">TextDrawCreate</a> coordinate).<p/>
 ///   This function defines the clickable area for use with <a href="#TextDrawSetSelectable">TextDrawSetSelectable</a>, whether a box is shown or not.
 /// </remarks>
@@ -1852,9 +1852,9 @@ native TextDrawSetString(Text:text, const string[]);
 native TextDrawSetPreviewModel(Text:text, modelindex);
 
 /// <summary>Sets the rotation and zoom of a 3D model preview textdraw.</summary>
-/// <param name="rotX">The X rotation value</param>
-/// <param name="rotY">The Y rotation value</param>
-/// <param name="rotZ">The Z rotation value</param>
+/// <param name="rotX">The x rotation value</param>
+/// <param name="rotY">The y rotation value</param>
+/// <param name="rotZ">The z rotation value</param>
 /// <param name="zoom">The zoom value, smaller values make the camera closer and larger values make the camera further away (optional=<b><c>1.0</c></b>)</param>
 /// <remarks>This function was added in <b>SA-MP 0.3x</b> and will not work in earlier versions!</remarks>
 /// <remarks>The textdraw MUST use the font type <b><c>TEXT_DRAW_FONT_MODEL_PREVIEW</c></b> in order for this function to have effect.</remarks>
@@ -1871,10 +1871,10 @@ native TextDrawSetPreviewVehCol(Text:text, color1, color2);
 // Gang Zones
 
 /// <summary>Create a gangzone (colored radar area).</summary>
-/// <param name="minx">The X coordinate for the west side of the gangzone</param>
-/// <param name="miny">The Y coordinate for the south side of the gangzone</param>
-/// <param name="maxx">The X coordinate for the east side of the gangzone</param>
-/// <param name="maxy">The Y coordinate for the north side of the gangzone</param>
+/// <param name="minx">The x coordinate for the west side of the gangzone</param>
+/// <param name="miny">The y coordinate for the south side of the gangzone</param>
+/// <param name="maxx">The x coordinate for the east side of the gangzone</param>
+/// <param name="maxy">The y coordinate for the north side of the gangzone</param>
 /// <seealso name="GangZoneDestroy"/>
 /// <seealso name="GangZoneShowForPlayer"/>
 /// <seealso name="GangZoneShowForAll"/>
@@ -2031,10 +2031,10 @@ native GangZoneStopFlashForAll(zone);
 /// <summary>Creates a 3D Text Label at a specific location in the world.</summary>
 /// <param name="text">The initial text string</param>
 /// <param name="color">The text Color, as an integer or hex in <b>RGBA</b> color format</param>
-/// <param name="X">X-Coordinate</param>
-/// <param name="Y">Y-Coordinate</param>
-/// <param name="Z">Z-Coordinate</param>
-/// <param name="DrawDistance">The distance from where you are able to see the 3D Text Label</param>
+/// <param name="x">x-Coordinate</param>
+/// <param name="y">y-Coordinate</param>
+/// <param name="z">z-Coordinate</param>
+/// <param name="drawDistance">The distance from where you are able to see the 3D Text Label</param>
 /// <param name="virtualworld">The virtual world in which you are able to see the 3D Text</param>
 /// <param name="testLOS">Test the line-of-sight so this text can't be seen through objects (optional=<b><c>0</c></b>)</param>
 /// <seealso name="Delete3DTextLabel"/>
@@ -2052,7 +2052,7 @@ native GangZoneStopFlashForAll(zone);
 /// <remarks>drawdistance seems to be a lot smaller when spectating.</remarks>
 /// <remarks>Use <a href="http://wiki.sa-mp.com/wiki/Colors_List#Inline_color_embedding">color embedding</a> for multiple colors in the text.</remarks>
 /// <returns>The ID of the newly created 3D Text Label, or <b><c>INVALID_3DTEXT_ID</c></b> if the 3D Text Label limit (<b><c>MAX_3DTEXT_GLOBAL</c></b>) was reached.</returns>
-native Text3D:Create3DTextLabel(const text[], color, Float:X, Float:Y, Float:Z, Float:DrawDistance, virtualworld, testLOS = 0);
+native Text3D:Create3DTextLabel(const text[], color, Float:x, Float:y, Float:z, Float:drawDistance, virtualworld, bool:testLOS = false);
 
 /// <summary>Delete a 3D text label (created with <a href="#Create3DTextLabel">Create3DTextLabel</a>).</summary>
 /// <param name="id">The ID of the 3D text label to delete</param>
@@ -2070,9 +2070,9 @@ native Delete3DTextLabel(Text3D:id);
 /// <summary>Attach a 3D text label to a player.</summary>
 /// <param name="id">The ID of the 3D text label to attach. Returned by <a href="#Create3DTextLabel">Create3DTextLabel</a></param>
 /// <param name="playerid">The ID of the player to attach the label to</param>
-/// <param name="OffsetX">The X offset from the player</param>
-/// <param name="OffsetY">The Y offset from the player</param>
-/// <param name="OffsetZ">The Z offset from the player</param>
+/// <param name="offsetX">The x offset from the player</param>
+/// <param name="offsetY">The y offset from the player</param>
+/// <param name="offsetZ">The z offset from the player</param>
 /// <seealso name="Create3DTextLabel"/>
 /// <seealso name="Delete3DTextLabel"/>
 /// <seealso name="Attach3DTextLabelToVehicle"/>
@@ -2085,14 +2085,14 @@ native Delete3DTextLabel(Text3D:id);
 /// <b><c>1</c></b>: The function executed successfully.<p/>
 /// <b><c>0</c></b>: The function failed to execute. This means the player and/or label do not exist.
 /// </returns>
-native Attach3DTextLabelToPlayer(Text3D:id, playerid, Float:OffsetX, Float:OffsetY, Float:OffsetZ);
+native Attach3DTextLabelToPlayer(Text3D:id, playerid, Float:offsetX, Float:offsetY, Float:offsetZ);
 
 /// <summary>Attaches a 3D Text Label to a specific vehicle.</summary>
 /// <param name="id">The ID of the 3D text label to attach. Returned by <a href="#Create3DTextLabel">Create3DTextLabel</a></param>
 /// <param name="vehicleid">The vehicle you want to attach the 3D Text Label to</param>
-/// <param name="OffsetX">The Offset-X coordinate of the player vehicle (the vehicle is 0.0,0.0,0.0).</param>
-/// <param name="OffsetY">The Offset-Y coordinate of the player vehicle (the vehicle is 0.0,0.0,0.0).</param>
-/// <param name="OffsetZ">The Offset-Z coordinate of the player vehicle (the vehicle is 0.0,0.0,0.0).</param>
+/// <param name="offsetX">The offset-x coordinate of the player vehicle (the vehicle is 0.0,0.0,0.0).</param>
+/// <param name="offsetY">The offset-y coordinate of the player vehicle (the vehicle is 0.0,0.0,0.0).</param>
+/// <param name="offsetZ">The offset-z coordinate of the player vehicle (the vehicle is 0.0,0.0,0.0).</param>
 /// <seealso name="Create3DTextLabel"/>
 /// <seealso name="Delete3DTextLabel"/>
 /// <seealso name="Attach3DTextLabelToPlayer"/>
@@ -2101,7 +2101,7 @@ native Attach3DTextLabelToPlayer(Text3D:id, playerid, Float:OffsetX, Float:Offse
 /// <seealso name="DeletePlayer3DTextLabel"/>
 /// <seealso name="UpdatePlayer3DTextLabelText"/>
 /// <remarks>Attach3DTextLabelToPlayer was added in SA-MP 0.3a 	This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
-native Attach3DTextLabelToVehicle(Text3D:id, vehicleid, Float:OffsetX, Float:OffsetY, Float:OffsetZ);
+native Attach3DTextLabelToVehicle(Text3D:id, vehicleid, Float:offsetX, Float:offsetY, Float:offsetZ);
 
 /// <summary>Updates a 3D Text Label text and color.</summary>
 /// <param name="id">The 3D Text Label you want to update</param>
@@ -2124,12 +2124,12 @@ native Update3DTextLabelText(Text3D:id, color, const text[]);
 /// <param name="playerid">The player which should see the newly created 3DText Label</param>
 /// <param name="text">The text to display</param>
 /// <param name="color">The text color</param>
-/// <param name="X">X Coordinate (or offset if attached)</param>
-/// <param name="Y">Y Coordinate (or offset if attached)</param>
-/// <param name="Z">Z Coordinate (or offset if attached)</param>
-/// <param name="DrawDistance">The distance where you are able to see the 3D Text Label</param>
-/// <param name="attachedplayer">The player you want to attach the 3D Text Label to. (optional=<b><c>INVALID_PLAYER_ID</c></b>)</param>
-/// <param name="attachedvehicle">The vehicle you want to attach the 3D Text Label to. (optional=<b><c>INVALID_VEHICLE_ID</c></b>)</param>
+/// <param name="x">x Coordinate (or offset if attached)</param>
+/// <param name="y">y Coordinate (or offset if attached)</param>
+/// <param name="z">z Coordinate (or offset if attached)</param>
+/// <param name="drawDistance">The distance where you are able to see the 3D Text Label</param>
+/// <param name="parentPlayer">The player you want to attach the 3D Text Label to. (optional=<b><c>INVALID_PLAYER_ID</c></b>)</param>
+/// <param name="parentVehicle">The vehicle you want to attach the 3D Text Label to. (optional=<b><c>INVALID_VEHICLE_ID</c></b>)</param>
 /// <param name="testLOS">Test the line-of-sight so this text can't be seen through walls (optional=<b><c>0</c></b>)</param>
 /// <seealso name="Create3DTextLabel"/>
 /// <seealso name="Delete3DTextLabel"/>
@@ -2142,7 +2142,7 @@ native Update3DTextLabelText(Text3D:id, color, const text[]);
 /// <remarks>If <paramref name="text"/> is empty, the server/clients next to the text might crash!</remarks>
 /// <remarks>drawdistance seems to be a lot smaller when spectating.</remarks>
 /// <returns>The ID of the newly created Player 3D Text Label, or <b><c>INVALID_3DTEXT_ID</c></b> if the Player 3D Text Label limit (<b><c>MAX_3DTEXT_PLAYER</c></b>) was reached.</returns>
-native PlayerText3D:CreatePlayer3DTextLabel(playerid, const text[], color, Float:X, Float:Y, Float:Z, Float:DrawDistance, attachedplayer = INVALID_PLAYER_ID, attachedvehicle = INVALID_VEHICLE_ID, testLOS = 0);
+native PlayerText3D:CreatePlayer3DTextLabel(playerid, const text[], color, Float:x, Float:y, Float:z, Float:drawDistance, parentPlayer = INVALID_PLAYER_ID, parentVehicle = INVALID_VEHICLE_ID, bool:testLOS = false);
 
 /// <summary>Destroy a 3D text label that was created using <a href="#CreatePlayer3DTextLabel">CreatePlayer3DTextLabel</a>.</summary>
 /// <param name="playerid">The ID of the player whose 3D text label to delete</param>
@@ -2663,12 +2663,12 @@ forward OnVehicleDamageStatusUpdate(vehicleid, playerid);
 /// <param name="vehicleid">The ID of the vehicle that's position was updated</param>
 /// <param name="playerid">The ID of the player that sent a vehicle position sync update</param>
 /// <param name="passenger_seat">The ID of the seat if the player is a passenger. 0=not in vehicle, 1=front passenger, 2=backleft 3=backright 4+ is for coach/bus etc. with many passenger seats</param>
-/// <param name="new_x">The new X coordinate of the vehicle. This parameter was added in <b>0.3z</b>. Leave it out if using an earlier version</param>
-/// <param name="new_y">The new Y coordinate of the vehicle. This parameter was added in <b>0.3z</b>. Leave it out if using an earlier version</param>
-/// <param name="new_z">The new Z coordinate of the vehicle. This parameter was added in <b>0.3z</b>. Leave it out if using an earlier version</param>
-/// <param name="vel_x">The new X velocity of the vehicle. This parameter was added in <b>0.3z R4</b>. Leave it out if using an earlier version</param>
-/// <param name="vel_y">The new Y velocity of the vehicle. This parameter was added in <b>0.3z R4</b>. Leave it out if using an earlier version</param>
-/// <param name="vel_z">The new Z velocity of the vehicle. This parameter was added in <b>0.3z R4</b>. Leave it out if using an earlier version</param>
+/// <param name="new_x">The new x coordinate of the vehicle. This parameter was added in <b>0.3z</b>. Leave it out if using an earlier version</param>
+/// <param name="new_y">The new y coordinate of the vehicle. This parameter was added in <b>0.3z</b>. Leave it out if using an earlier version</param>
+/// <param name="new_z">The new z coordinate of the vehicle. This parameter was added in <b>0.3z</b>. Leave it out if using an earlier version</param>
+/// <param name="vel_x">The new x velocity of the vehicle. This parameter was added in <b>0.3z R4</b>. Leave it out if using an earlier version</param>
+/// <param name="vel_y">The new y velocity of the vehicle. This parameter was added in <b>0.3z R4</b>. Leave it out if using an earlier version</param>
+/// <param name="vel_z">The new z velocity of the vehicle. This parameter was added in <b>0.3z R4</b>. Leave it out if using an earlier version</param>
 /// <seealso name="OnTrailerUpdate"/>
 /// <remarks>This callback was added in <b>SA-MP 0.3c R3</b> and will not work in earlier versions!</remarks>
 /// <remarks>This callback is called very frequently per second per unoccupied vehicle. You should refrain from implementing intensive calculations or intensive file writing/reading operations in this callback.</remarks>
@@ -2942,14 +2942,14 @@ forward OnPlayerGiveDamageActor(playerid, damaged_actorid, Float:amount, weaponi
 
 /// <summary>OnPlayerClickMap is called when a player places a target/waypoint on the pause menu map (by right-clicking).</summary>
 /// <param name="playerid">The ID of the player that placed a target/waypoint</param>
-/// <param name="fX">The X float coordinate where the player clicked</param>
-/// <param name="fY">The Y float coordinate where the player clicked</param>
-/// <param name="fZ">The Z float coordinate where the player clicked (inaccurate - see note below)</param>
+/// <param name="fX">The x float coordinate where the player clicked</param>
+/// <param name="fY">The y float coordinate where the player clicked</param>
+/// <param name="fZ">The z float coordinate where the player clicked (inaccurate - see note below)</param>
 /// <seealso name="SetPlayerPos"/>
 /// <seealso name="SetPlayerPosFindZ"/>
 /// <seealso name="GetPlayerPos"/>
 /// <remarks>This callback was added in <b>SA-MP 0.3d</b> and will not work in earlier versions!</remarks>
-/// <remarks>The Z value returned will be <b><c>0</c></b> (invalid) if it is far away from the player; use the <a href="http://forum.sa-mp.com/showthread.php?t=275492">MapAndreas plugin</a> to get a more accurate Z coordinate.</remarks>
+/// <remarks>The z value returned will be <b><c>0</c></b> (invalid) if it is far away from the player; use the <a href="http://forum.sa-mp.com/showthread.php?t=275492">MapAndreas plugin</a> to get a more accurate z coordinate.</remarks>
 /// <returns>
 ///   <b><c>1</c></b> - Will prevent other filterscripts from receiving this callback.<p/>
 ///   <b><c>0</c></b> - Indicates that this callback will be passed to the next filterscript.<p/>
@@ -3065,12 +3065,12 @@ forward OnPlayerClickPlayer(playerid, clickedplayerid, source);
 /// <param name="playerobject"><b><c>0</c></b> if it is a global object or <b><c>1</c></b> if it is a playerobject</param>
 /// <param name="objectid">The ID of the edited object</param>
 /// <param name="response">The type of response</param>
-/// <param name="fX">The X offset for the object that was edited</param>
-/// <param name="fY">The Y offset for the object that was edited</param>
-/// <param name="fZ">The Z offset for the object that was edited</param>
-/// <param name="fRotX">The X rotation for the object that was edited</param>
-/// <param name="fRotY">The Y rotation for the object that was edited</param>
-/// <param name="fRotZ">The Z rotation for the object that was edited</param>
+/// <param name="fX">The x offset for the object that was edited</param>
+/// <param name="fY">The y offset for the object that was edited</param>
+/// <param name="fZ">The z offset for the object that was edited</param>
+/// <param name="fRotX">The x rotation for the object that was edited</param>
+/// <param name="fRotY">The y rotation for the object that was edited</param>
+/// <param name="fRotZ">The z rotation for the object that was edited</param>
 /// <seealso name="EditObject"/>
 /// <seealso name="CreateObject"/>
 /// <seealso name="DestroyObject"/>
@@ -3090,15 +3090,15 @@ forward OnPlayerEditObject(playerid, playerobject, objectid, response, Float:fX,
 /// <param name="index">The index of the attached object</param>
 /// <param name="modelid">The model of the attached object that was edited</param>
 /// <param name="boneid">The bone of the attached object that was edited</param>
-/// <param name="fOffsetX">The X offset for the attached object that was edited</param>
-/// <param name="fOffsetY">The Y offset for the attached object that was edited</param>
-/// <param name="fOffsetZ">The Z offset for the attached object that was edited</param>
-/// <param name="fRotX">The X rotation for the attached object that was edited</param>
-/// <param name="fRotY">The Y rotation for the attached object that was edited</param>
-/// <param name="fRotZ">The Z rotation for the attached object that was edited</param>
-/// <param name="fScaleX">The X scale for the attached object that was edited</param>
-/// <param name="fScaleY">The Y scale for the attached object that was edited</param>
-/// <param name="fScaleZ">The Z scale for the attached object that was edited</param>
+/// <param name="fOffsetX">The x offset for the attached object that was edited</param>
+/// <param name="fOffsetY">The y offset for the attached object that was edited</param>
+/// <param name="fOffsetZ">The z offset for the attached object that was edited</param>
+/// <param name="fRotX">The x rotation for the attached object that was edited</param>
+/// <param name="fRotY">The y rotation for the attached object that was edited</param>
+/// <param name="fRotZ">The z rotation for the attached object that was edited</param>
+/// <param name="fScaleX">The x scale for the attached object that was edited</param>
+/// <param name="fScaleY">The y scale for the attached object that was edited</param>
+/// <param name="fScaleZ">The z scale for the attached object that was edited</param>
 /// <seealso name="EditAttachedObject"/>
 /// <seealso name="SetPlayerAttachedObject"/>
 /// <remarks>This callback was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
@@ -3115,9 +3115,9 @@ forward OnPlayerEditAttachedObject(playerid, response, index, modelid, boneid, F
 /// <param name="type">The type of selection</param>
 /// <param name="objectid">The ID of the selected object</param>
 /// <param name="modelid">The model ID of the selected object</param>
-/// <param name="fX">The X position of the selected object</param>
-/// <param name="fY">The Y position of the selected object</param>
-/// <param name="fZ">The Z position of the selected object</param>
+/// <param name="fX">The x position of the selected object</param>
+/// <param name="fY">The y position of the selected object</param>
+/// <param name="fZ">The z position of the selected object</param>
 /// <seealso name="SelectObject"/>
 /// <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <returns>
@@ -3132,9 +3132,9 @@ forward OnPlayerSelectObject(playerid, type, objectid, modelid, Float:fX, Float:
 /// <param name="weaponid">The ID of the <a href="http://wiki.sa-mp.com/wiki/Weapons">weapon</a> shot by the player</param>
 /// <param name="hittype">The type of thing the shot hit (none, player, vehicle, or (player)object)</param>
 /// <param name="hitid">The ID of the player, vehicle or object that was hit</param>
-/// <param name="fX">The X coordinate that the shot hit</param>
-/// <param name="fY">The Y coordinate that the shot hit</param>
-/// <param name="fZ">The Z coordinate that the shot hit</param>
+/// <param name="fX">The x coordinate that the shot hit</param>
+/// <param name="fY">The y coordinate that the shot hit</param>
+/// <param name="fZ">The z coordinate that the shot hit</param>
 /// <seealso name="OnPlayerGiveDamage"/>
 /// <seealso name="GetPlayerLastShotVectors"/>
 /// <remarks>This callback was added in <b>SA-MP 0.3z</b> and will not work in earlier versions!</remarks>

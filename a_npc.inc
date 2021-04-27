@@ -387,11 +387,11 @@ native SendCommand(const commandtext[]);
 /// <returns>The player's current state as an integer.</returns>
 native GetPlayerState(playerid);
 
-/// <summary>Get the position of a player, represented by X, Y and Z coordinates.</summary>
+/// <summary>Get the position of a player, represented by x, y and z coordinates.</summary>
 /// <param name="playerid">The ID of the player to get the position of</param>
-/// <param name="x">A float variable in which to store the X coordinate in, passed by reference</param>
-/// <param name="y">A float variable in which to store the Y coordinate in, passed by reference</param>
-/// <param name="z">A float variable in which to store the Z coordinate in, passed by reference</param>
+/// <param name="x">A float variable in which to store the x coordinate in, passed by reference</param>
+/// <param name="y">A float variable in which to store the y coordinate in, passed by reference</param>
+/// <param name="z">A float variable in which to store the z coordinate in, passed by reference</param>
 /// <seealso name="SetPlayerPos"/>
 /// <seealso name="GetVehiclePos"/>
 /// <seealso name="IsPlayerInRangeOfPoint"/>
@@ -453,18 +453,18 @@ native GetPlayerKeys(playerid, &keys, &updown, &leftright);
 native GetPlayerFacingAngle(playerid, &Float:ang);
 
 /// <summary>Get the current location of the NPC.</summary>
-/// <param name="x">A float to save the X coordinate, passed by reference</param>
-/// <param name="y">A float to save the Y coordinate, passed by reference</param>
-/// <param name="z">A float to save the Z coordinate, passed by reference</param>
+/// <param name="x">A float to save the x coordinate, passed by reference</param>
+/// <param name="y">A float to save the y coordinate, passed by reference</param>
+/// <param name="z">A float to save the z coordinate, passed by reference</param>
 /// <seealso name="SetMyPos"/>
 /// <seealso name="GetDistanceFromMeToPoint"/>
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 native GetMyPos(&Float:x, &Float:y, &Float:z);
 
 /// <summary>Set the position of the NPC.</summary>
-/// <param name="x">The X coordinate to put the NPC at</param>
-/// <param name="y">The Y coordinate to put the NPC at</param>
-/// <param name="z">The Z coordinate to put the NPC at</param>
+/// <param name="x">The x coordinate to put the NPC at</param>
+/// <param name="y">The y coordinate to put the NPC at</param>
+/// <param name="z">The z coordinate to put the NPC at</param>
 /// <seealso name="GetMyPos"/>
 /// <seealso name="GetDistanceFromMeToPoint"/>
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
@@ -484,28 +484,28 @@ native GetMyFacingAngle(&Float:ang);
 native SetMyFacingAngle(Float:ang);
 
 /// <summary>Get the distance between the NPC and a point.</summary>
-/// <param name="X">The X coordinate of the point</param>
-/// <param name="Y">The Y coordinate of the point</param>
-/// <param name="Z">The Z coordinate of the point</param>
-/// <param name="Distance">A float to save the distance in, passed by reference</param>
+/// <param name="x">The x coordinate of the point</param>
+/// <param name="y">The y coordinate of the point</param>
+/// <param name="z">The z coordinate of the point</param>
+/// <param name="distance">A float to save the distance in, passed by reference</param>
 /// <seealso name="GetMyPos"/>
 /// <seealso name="SetMyPos"/>
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <returns>This function does not return any specific values.</returns>
-native GetDistanceFromMeToPoint(Float:X, Float:Y, Float:Z, &Float:Distance);
+native GetDistanceFromMeToPoint(Float:x, Float:y, Float:z, &Float:distance);
 
 /// <summary>Checks if a player is in range of a point. This native function is faster than the PAWN implementation using distance formula.</summary>
 /// <param name="playerid">The ID of the player</param>
 /// <param name="range">The furthest distance the player can be from the point to be in range</param>
-/// <param name="X">The X coordinate of the point to check the range to</param>
-/// <param name="Y">The Y coordinate of the point to check the range to</param>
-/// <param name="Z">The Z coordinate of the point to check the range to</param>
+/// <param name="x">The x coordinate of the point to check the range to</param>
+/// <param name="y">The y coordinate of the point to check the range to</param>
+/// <param name="z">The z coordinate of the point to check the range to</param>
 /// <seealso name="GetPlayerDistanceFromPoint"/>
 /// <seealso name="GetVehicleDistanceFromPoint"/>
 /// <seealso name="GetPlayerPos"/>
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <returns><b><c>1</c></b> if the player is in range, <b><c>0</c></b> if not.</returns>
-native IsPlayerInRangeOfPoint(playerid, Float:range, Float:X, Float:Y, Float:Z);
+native IsPlayerInRangeOfPoint(playerid, Float:range, Float:x, Float:y, Float:z);
 
 /// <summary>Get a player's name.</summary>
 /// <param name="playerid">The ID of the player to get the name of</param>
