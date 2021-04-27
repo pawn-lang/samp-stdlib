@@ -129,7 +129,6 @@ native AttachObjectToObject(objectid, attachtoid, Float:OffsetX, Float:OffsetY, 
 /// <returns>This function always returns <b><c>0</c></b>.</returns>
 native AttachObjectToPlayer(objectid, playerid, Float:OffsetX, Float:OffsetY, Float:OffsetZ, Float:RotX, Float:RotY, Float:RotZ);
 
-
 /// <summary>Change the position of an object.</summary>
 /// <param name="objectid">The ID of the object to set the position of. Returned by <a href="#CreateObject">CreateObject</a></param>
 /// <param name="X">The X coordinate to position the object at</param>
@@ -334,19 +333,18 @@ native CreatePlayerObject(playerid, modelid, Float:X, Float:Y, Float:Z, Float:rX
 /// <param name="playerid">The ID of the player the object was created for</param>
 /// <param name="objectid">The ID of the object to attach to the vehicle</param>
 /// <param name="vehicleid">The ID of the vehicle to attach the object to</param>
-/// <param name="fOffsetX">The X position offset for attachment</param>
-/// <param name="fOffsetY">The Y position offset for attachment</param>
-/// <param name="fOffsetZ">The Z position offset for attachment</param>
-/// <param name="fRotX">The X rotation offset for attachment</param>
-/// <param name="fRotY">The Y rotation offset for attachment</param>
+/// <param name="offsetX">The X position offset for attachment</param>
+/// <param name="offsetY">The Y position offset for attachment</param>
+/// <param name="offsetZ">The Z position offset for attachment</param>
+/// <param name="rotX">The X rotation offset for attachment</param>
+/// <param name="rotY">The Y rotation offset for attachment</param>
 /// <param name="RotZ">The Z rotation offset for attachment</param>
 /// <seealso name="CreatePlayerObject"/>
 /// <seealso name="AttachPlayerObjectToPlayer"/>
 /// <seealso name="AttachObjectToVehicle"/>
 /// <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <remarks>You need to create the object before attempting to attach it to a vehicle.</remarks>
-native AttachPlayerObjectToVehicle(playerid, objectid, vehicleid, Float:fOffsetX, Float:fOffsetY, Float:fOffsetZ, Float:fRotX, Float:fRotY, Float:RotZ);
-
+native AttachPlayerObjectToVehicle(playerid, objectid, vehicleid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotX, Float:rotY, Float:RotZ);
 
 /// <summary>Sets the position of a player-object to the specified coordinates.</summary>
 /// <param name="playerid">The ID of the player whose player-object to set the position of</param>
@@ -521,7 +519,7 @@ native AttachPlayerObjectToPlayer(objectplayer, objectid, attachplayer, Float:Of
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute.
 /// </returns>
-native SetObjectMaterial(objectid, materialindex, modelid, const txdname[], const texturename[], materialcolor=0);
+native SetObjectMaterial(objectid, materialindex, modelid, const txdname[], const texturename[], materialcolor = 0);
 
 /// <summary>Replace the texture of a player-object with the texture from another model in the game.</summary>
 /// <param name="playerid">The ID of the player the object is associated to</param>
@@ -535,8 +533,7 @@ native SetObjectMaterial(objectid, materialindex, modelid, const txdname[], cons
 /// <seealso name="SetPlayerObjectMaterialText"/>
 /// <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <remarks>Vertex lightning of the object will disappear if material color is changed.</remarks>
-native SetPlayerObjectMaterial(playerid, objectid, materialindex, modelid, const txdname[], const texturename[], materialcolor=0);
-
+native SetPlayerObjectMaterial(playerid, objectid, materialindex, modelid, const txdname[], const texturename[], materialcolor = 0);
 
 /// <summary>Replace the texture of an object with text.</summary>
 /// <param name="objectid">The ID of the object to replace the texture of with text</param>
@@ -630,7 +627,6 @@ native SetObjectMaterialText(objectid, const text[], materialindex = 0, material
 ///   </ul>
 /// </remarks>
 native SetPlayerObjectMaterialText(playerid, objectid, const text[], materialindex = 0, materialsize = OBJECT_MATERIAL_SIZE_256x128, const fontface[] = "Arial", fontsize = 24, bold = 1, fontcolor = 0xFFFFFFFF, backcolor = 0, textalignment = 0);
-
 
 /// <summary>Allows camera collisions with newly created objects to be disabled by default.</summary>
 /// <param name="disable"><b><c>1</c></b> to disable camera collisions for newly created objects and <b><c>0</c></b> to enable them (enabled by default)</param>

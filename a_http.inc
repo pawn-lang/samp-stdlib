@@ -23,7 +23,7 @@
 #define HTTP_HEAD                              (3)
 
 // HTTP error response codes
-// These codes compliment ordinary HTTP response codes returned in 'response_code'
+// These codes compliment ordinary HTTP response codes returned in 'responseCode'
 // (10x) (20x OK) (30x Moved) (40x Unauthorised) (50x Server Error)  
 #define HTTP_ERROR_BAD_HOST                    (1)
 #define HTTP_ERROR_NO_SOCKET                   (2)
@@ -62,5 +62,5 @@
 /// </remarks>
 native HTTP(index, type, const url[], const data[], const callback[]);
 
-// example HTTP callback: public MyHttpResponse(index, response_code, const data[]) { ... }
+// example HTTP callback: public MyHttpResponse(index, responseCode, const data[]) { ... }
 

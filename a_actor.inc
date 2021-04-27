@@ -64,7 +64,6 @@ native CreateActor(modelid, Float:X, Float:Y, Float:Z, Float:Rotation);
 /// </returns>
 native DestroyActor(actorid);
 
-
 /// <summary>Checks if an actor is streamed in for a player.</summary>
 /// <param name="actorid">The ID of the actor</param>
 /// <param name="forplayerid">The ID of the player</param>
@@ -73,7 +72,6 @@ native DestroyActor(actorid);
 /// <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
 /// <returns><b><c>1</c></b> if the actor is streamed in for the player, or <b><c>0</c></b> if it is not.</returns>
 native IsActorStreamedIn(actorid, forplayerid);
-
 
 /// <summary>Set the virtual world of an actor. Only players in the same world will see the actor.</summary>
 /// <param name="actorid">The ID of the actor (returned by <a href="#CreateActor">CreateActor</a>) to set the virtual world of</param>
@@ -98,10 +96,10 @@ native GetActorVirtualWorld(actorid);
 /// <param name="actorid">The ID of the actor to apply the animation to</param>
 /// <param name="animlib">The animation library from which to apply an animation</param>
 /// <param name="animname">The name of the animation to apply, within the specified library</param>
-/// <param name="fDelta">The speed to play the animation (use <b><c>4.1</c></b>)</param>
+/// <param name="delta">The speed to play the animation (use <b><c>4.1</c></b>)</param>
 /// <param name="loop">If set to <b><c>1</c></b>, the animation will loop. If set to <b><c>0</c></b>, the animation will play once</param>
-/// <param name="lockx">If set to <b><c>0</c></b>, the actor is returned to their old X coordinate once the animation is complete (for animations that move the actor such as walking). <b><c>1</c></b> will not return them to their old position</param>
-/// <param name="locky">Same as above but for the Y axis. Should be kept the same as the previous parameter</param>
+/// <param name="lockX">If set to <b><c>0</c></b>, the actor is returned to their old X coordinate once the animation is complete (for animations that move the actor such as walking). <b><c>1</c></b> will not return them to their old position</param>
+/// <param name="lockY">Same as above but for the Y axis. Should be kept the same as the previous parameter</param>
 /// <param name="freeze">Setting this to <b><c>1</c></b> will freeze an actor at the end of the animation. <b><c>0</c></b> will not</param>
 /// <param name="time">Timer in milliseconds. For a never-ending loop it should be <b><c>0</c></b></param>
 /// <seealso name="ClearActorAnimations"/>
@@ -111,7 +109,7 @@ native GetActorVirtualWorld(actorid);
 /// <b><c>1</c></b>: The function executed successfully.<p/>
 /// <b><c>0</c></b>: The function failed to execute. The actor specified does not exist.
 /// </returns>
-native ApplyActorAnimation(actorid, const animlib[], const animname[], Float:fDelta, loop, lockx, locky, freeze, time);
+native ApplyActorAnimation(actorid, const animlib[], const animname[], Float:delta, bool:loop, bool:lockX, bool:lockY, bool:freeze, time);
 
 /// <summary>Clear any animations applied to an actor.</summary>
 /// <param name="actorid">The ID of the actor (returned by <a href="#CreateActor">CreateActor</a>) to clear the animations for</param>
@@ -122,7 +120,6 @@ native ApplyActorAnimation(actorid, const animlib[], const animname[], Float:fDe
 ///   <b><c>0</c></b>: The function failed to execute. The actor specified does not exist.
 /// </returns>
 native ClearActorAnimations(actorid);
-
 
 /// <summary>Set the position of an actor.</summary>
 /// <param name="actorid">The ID of the actor to set the position of. Returned by <a href="#CreateActor">CreateActor</a></param>
@@ -178,7 +175,6 @@ native SetActorFacingAngle(actorid, Float:ang);
 /// </returns>
 native GetActorFacingAngle(actorid, &Float:ang);
 
-
 /// <summary>Set the health of an actor.</summary>
 /// <param name="actorid">The ID of the actor to set the health of</param>
 /// <param name="health">The value to set the actors's health to</param>
@@ -219,7 +215,6 @@ native SetActorInvulnerable(actorid, invulnerable = true);
 /// <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
 /// <returns><b><c>1</c></b> if the actor is invulnerable, <b><c>0</c></b> otherwise.</returns>
 native IsActorInvulnerable(actorid);
-
 
 /// <summary>Checks if an actor ID is valid.</summary>
 /// <param name="actorid">The ID of the actor to check</param>

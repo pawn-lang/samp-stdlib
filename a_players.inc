@@ -253,7 +253,6 @@ native SetPlayerInterior(playerid, interiorid);
 /// <returns>The interior ID the player is currently in.</returns>
 native GetPlayerInterior(playerid);
 
-
 /// <summary>Set the health of a player.</summary>
 /// <param name="playerid">The ID of the player to set the health of</param>
 /// <param name="health">The value to set the player's health to. Max health that can be displayed in the HUD is <b><c>100</c></b>, though higher values are valid</param>
@@ -611,7 +610,7 @@ native GetPlayerState(playerid);
 /// <seealso name="OnPlayerDisconnect"/>
 /// <remarks>This function does not work when used in <a href="#OnPlayerDisconnect">OnPlayerDisconnect</a> because the player is already disconnected. It will return an invalid IP (<b><c>255.255.255.255</c></b>). Save players' IPs under <a href="#OnPlayerConnect">OnPlayerConnect</a> if they need to be used under <a href="#OnPlayerDisconnect">OnPlayerDisconnect</a>. </remarks>
 /// <returns><b><c>1</c></b> on success and <b><c>0</c></b> on failure.</returns>
-native GetPlayerIp(playerid, ip[], len = sizeof ip);
+native GetPlayerIp(playerid, ip[], len = sizeof (ip));
 
 /// <summary>Get the ping of a player. The ping measures the amount of time it takes for the server to 'ping' the client and for the client to send the message back.</summary>
 /// <param name="playerid">The ID of the player to get the ping of</param>
@@ -653,7 +652,7 @@ native GetPlayerKeys(playerid, &keys, &updown, &leftright);
 /// <seealso name="GetPlayerVersion"/>
 /// <remarks>A player's name can be up to 24 characters long (as of <b>0.3d R2</b>) by using <a href="#SetPlayerName">SetPlayerName</a>. This is defined in <c>a_samp.inc</c> as <b><c>MAX_PLAYER_NAME</c></b>. However, the client can only join with a nickname between 3 and 20 characters, otherwise the connection will be rejected and the player has to quit to choose a valid name.</remarks>
 /// <returns>The length of the player's name. <b><c>0</c></b> if player specified doesn't exist.</returns>
-native GetPlayerName(playerid, name[], len = sizeof name);
+native GetPlayerName(playerid, name[], len = sizeof (name));
 
 /// <summary>Sets the game time for a player. If a player's clock is enabled (<a href="#TogglePlayerClock">TogglePlayerClock</a>) the time displayed by it will update automatically.</summary>
 /// <param name="playerid">The ID of the player to set the game time of</param>
@@ -789,7 +788,7 @@ native SetPlayerVelocity(playerid, Float:X, Float:Y, Float:Z);
 /// <seealso name="SetVehicleVelocity"/>
 /// <seealso name="GetVehicleVelocity"/>
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
-native GetPlayerVelocity( playerid, &Float:X, &Float:Y, &Float:Z );
+native GetPlayerVelocity(playerid, &Float:X, &Float:Y, &Float:Z);
 
 /// <summary>This function plays a crime report for a player - just like in single-player when CJ commits a crime.</summary>
 /// <param name="playerid">The ID of the player that will hear the crime report</param>
@@ -911,26 +910,26 @@ native GetPlayerSurfingObjectID(playerid);
 /// <summary>Removes a standard San Andreas model for a single player within a specified range.</summary>
 /// <param name="playerid">The ID of the player to remove the objects for</param>
 /// <param name="modelid">The model to remove</param>
-/// <param name="fX">The X coordinate around which the objects will be removed</param>
-/// <param name="fY">The Y coordinate around which the objects will be removed</param>
-/// <param name="fZ">The Z coordinate around which the objects will be removed</param>
-/// <param name="fRadius">The radius around the specified point to remove objects with the specified model</param>
+/// <param name="centerX">The X coordinate around which the objects will be removed</param>
+/// <param name="centerY">The Y coordinate around which the objects will be removed</param>
+/// <param name="centerZ">The Z coordinate around which the objects will be removed</param>
+/// <param name="radius">The radius around the specified point to remove objects with the specified model</param>
 /// <seealso name="DestroyObject"/>
 /// <seealso name="DestroyPlayerObject"/>
 /// <remarks>This function was added in <b>SA-MP 0.3d</b> and will not work in earlier versions!</remarks>
 /// <remarks>There appears to be a limit of around <b><c>1000</c></b> lines/objects. There is no workaround. </remarks>
 /// <remarks>When removing the same object for a player, they will crash. Commonly, players crash when reconnecting to the server because the server removes buildings on <a href="#OnPlayerConnect">OnPlayerConnect</a>. </remarks>
 /// <remarks>In <b>SA-MP 0.3.7</b> you can use <b><c>-1</c></b> for the modelid to remove all objects within the specified radius.</remarks>
-native RemoveBuildingForPlayer(playerid, modelid, Float:fX, Float:fY, Float:fZ, Float:fRadius);
+native RemoveBuildingForPlayer(playerid, modelid, Float:centerX, Float:centerY, Float:centerZ, Float:radius);
 
 /// <summary>Retrieves the start and end (hit) position of the last bullet a player fired.</summary>
 /// <param name="playerid">The ID of the player to get the last bullet shot information of</param>
-/// <param name="fOriginX">A float variable in which to save the X coordinate of where the bullet originated from</param>
-/// <param name="fOriginY">A float variable in which to save the Y coordinate of where the bullet originated from</param>
-/// <param name="fOriginZ">A float variable in which to save the Z coordinate of where the bullet originated from</param>
-/// <param name="fHitPosX">A float variable in which to save the X coordinate of where the bullet hit</param>
-/// <param name="fHitPosY">A float variable in which to save the Y coordinate of where the bullet hit</param>
-/// <param name="fHitPosZ">A float variable in which to save the Z coordinate of where the bullet hit</param>
+/// <param name="originX">A float variable in which to save the X coordinate of where the bullet originated from</param>
+/// <param name="originY">A float variable in which to save the Y coordinate of where the bullet originated from</param>
+/// <param name="originZ">A float variable in which to save the Z coordinate of where the bullet originated from</param>
+/// <param name="hitPosX">A float variable in which to save the X coordinate of where the bullet hit</param>
+/// <param name="hitPosY">A float variable in which to save the Y coordinate of where the bullet hit</param>
+/// <param name="hitPosZ">A float variable in which to save the Z coordinate of where the bullet hit</param>
 /// <seealso name="GetPlayerWeaponData"/>
 /// <seealso name="GetPlayerWeapon"/>
 /// <seealso name="VectorSize"/>
@@ -942,7 +941,7 @@ native RemoveBuildingForPlayer(playerid, modelid, Float:fX, Float:fY, Float:fZ, 
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. The player specified does not exist.<p/>
 /// </returns>
-native GetPlayerLastShotVectors(playerid, &Float:fOriginX, &Float:fOriginY, &Float:fOriginZ, &Float:fHitPosX, &Float:fHitPosY, &Float:fHitPosZ);
+native GetPlayerLastShotVectors(playerid, &Float:originX, &Float:originY, &Float:originZ, &Float:hitPosX, &Float:hitPosY, &Float:hitPosZ);
 
 // Attached to bone objects
 #if MAX_PLAYER_ATTACHED_OBJECTS < 1 || MAX_PLAYER_ATTACHED_OBJECTS > 10
@@ -954,15 +953,15 @@ native GetPlayerLastShotVectors(playerid, &Float:fOriginX, &Float:fOriginY, &Flo
 /// <param name="index">The index (slot) to assign the object to (0-9 since 0.3d, 0-4 in previous versions)</param>
 /// <param name="modelid">The <a href="http://wiki.sa-mp.com/wiki/Objects">model</a> to attach</param>
 /// <param name="bone">The bone to attach the object to</param>
-/// <param name="fOffsetX">X axis offset for the object position (optional=<b><c>0.0</c></b>)</param>
-/// <param name="fOffsetY">Y axis offset for the object position (optional=<b><c>0.0</c></b>)</param>
-/// <param name="fOffsetZ">Z axis offset for the object position (optional=<b><c>0.0</c></b>)</param>
-/// <param name="fRotX">X axis rotation of the object (optional=<b><c>0.0</c></b>)</param>
-/// <param name="fRotY">Y axis rotation of the object (optional=<b><c>0.0</c></b>)</param>
-/// <param name="fRotZ">Z axis rotation of the object (optional=<b><c>0.0</c></b>)</param>
-/// <param name="fScaleX">X axis scale of the object (optional=<b><c>1.0</c></b>)</param>
-/// <param name="fScaleY">Y axis scale of the object (optional=<b><c>1.0</c></b>)</param>
-/// <param name="fScaleZ">Z axis scale of the object (optional=<b><c>1.0</c></b>)</param>
+/// <param name="offsetX">X axis offset for the object position (optional=<b><c>0.0</c></b>)</param>
+/// <param name="offsetY">Y axis offset for the object position (optional=<b><c>0.0</c></b>)</param>
+/// <param name="offsetZ">Z axis offset for the object position (optional=<b><c>0.0</c></b>)</param>
+/// <param name="rotX">X axis rotation of the object (optional=<b><c>0.0</c></b>)</param>
+/// <param name="rotY">Y axis rotation of the object (optional=<b><c>0.0</c></b>)</param>
+/// <param name="rotZ">Z axis rotation of the object (optional=<b><c>0.0</c></b>)</param>
+/// <param name="scaleX">X axis scale of the object (optional=<b><c>1.0</c></b>)</param>
+/// <param name="scaleY">Y axis scale of the object (optional=<b><c>1.0</c></b>)</param>
+/// <param name="scaleZ">Z axis scale of the object (optional=<b><c>1.0</c></b>)</param>
 /// <param name="materialcolor1">The first object color to set <b>ARGB</b> (optional=<b><c>0</c></b>)</param>
 /// <param name="materialcolor2">The second object color to set <b>ARGB</b> (optional=<b><c>0</c></b>)</param>
 /// <seealso name="RemovePlayerAttachedObject"/>
@@ -995,7 +994,7 @@ native GetPlayerLastShotVectors(playerid, &Float:fOriginX, &Float:fOriginY, &Flo
 ///   </ul>
 /// </remarks>
 /// <returns><b><c>1</c></b> on success, <b><c>0</c></b> on failure.</returns>
-native SetPlayerAttachedObject(playerid, index, modelid, bone, Float:fOffsetX = 0.0, Float:fOffsetY = 0.0, Float:fOffsetZ = 0.0, Float:fRotX = 0.0, Float:fRotY = 0.0, Float:fRotZ = 0.0, Float:fScaleX = 1.0, Float:fScaleY = 1.0, Float:fScaleZ = 1.0, materialcolor1 = 0, materialcolor2 = 0);
+native SetPlayerAttachedObject(playerid, index, modelid, bone, Float:offsetX = 0.0, Float:offsetY = 0.0, Float:offsetZ = 0.0, Float:rotX = 0.0, Float:rotY = 0.0, Float:rotZ = 0.0, Float:scaleX = 1.0, Float:scaleY = 1.0, Float:scaleZ = 1.0, materialcolor1 = 0, materialcolor2 = 0);
 
 /// <summary>Remove an attached object from a player.</summary>
 /// <param name="playerid">The ID of the player to remove the object from</param>
@@ -1463,10 +1462,10 @@ native PlayerTextDrawSetPreviewModel(playerid, PlayerText:text, modelindex);
 /// <summary>Sets the rotation and zoom of a 3D model preview player-textdraw.</summary>
 /// <param name="playerid">The ID of the player whose player-textdraw to change</param>
 /// <param name="text">The ID of the player-textdraw to change</param>
-/// <param name="fRotX">The X rotation value</param>
-/// <param name="fRotY">The Y rotation value</param>
-/// <param name="fRotZ">The Z rotation value</param>
-/// <param name="fZoom">The zoom value, smaller values make the camera closer and larger values make the camera further away (optional=<b><c>1.0</c></b>)</param>
+/// <param name="rotX">The X rotation value</param>
+/// <param name="rotY">The Y rotation value</param>
+/// <param name="rotZ">The Z rotation value</param>
+/// <param name="zoom">The zoom value, smaller values make the camera closer and larger values make the camera further away (optional=<b><c>1.0</c></b>)</param>
 /// <seealso name="TextDrawSetPreviewRot"/>
 /// <seealso name="PlayerTextDrawSetPreviewModel"/>
 /// <seealso name="PlayerTextDrawSetPreviewVehCol"/>
@@ -1474,7 +1473,7 @@ native PlayerTextDrawSetPreviewModel(playerid, PlayerText:text, modelindex);
 /// <seealso name="OnPlayerClickPlayerTextDraw"/>
 /// <remarks>This function was added in <b>SA-MP 0.3x</b> and will not work in earlier versions!</remarks>
 /// <remarks>The textdraw MUST use the font type <b><c>TEXT_DRAW_FONT_MODEL_PREVIEW</c></b> and already have a model set in order for this function to have effect.</remarks>
-native PlayerTextDrawSetPreviewRot(playerid, PlayerText:text, Float:fRotX, Float:fRotY, Float:fRotZ, Float:fZoom = 1.0);
+native PlayerTextDrawSetPreviewRot(playerid, PlayerText:text, Float:rotX, Float:rotY, Float:rotZ, Float:zoom = 1.0);
 
 /// <summary>Set the color of a vehicle in a player-textdraw model preview (if a vehicle is shown).</summary>
 /// <param name="playerid">The ID of the player whose player-textdraw to change</param>
@@ -1493,8 +1492,8 @@ native PlayerTextDrawSetPreviewVehCol(playerid, PlayerText:text, color1, color2)
 
 /// <summary>Set an integer player variable.</summary>
 /// <param name="playerid">The ID of the player whose player variable will be set</param>
-/// <param name="varname">The name of the player variable</param>
-/// <param name="int_value">The integer to be set</param>
+/// <param name="pvar">The name of the player variable</param>
+/// <param name="value">The integer to be set</param>
 /// <seealso name="GetPVarInt"/>
 /// <seealso name="SetPVarString"/>
 /// <seealso name="GetPVarString"/>
@@ -1506,11 +1505,11 @@ native PlayerTextDrawSetPreviewVehCol(playerid, PlayerText:text, color1, color2)
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. Either the player specified is not connected, or the variable name is null or over 40 characters.
 /// </returns>
-native SetPVarInt(playerid, const varname[], int_value);
+native SetPVarInt(playerid, const pvar[], value);
 
 /// <summary>Gets an integer player variable's value.</summary>
 /// <param name="playerid">The ID of the player whose player variable to get</param>
-/// <param name="varname">The name of the player variable (case-insensitive). Assigned in SetPVarInt</param>
+/// <param name="pvar">The name of the player variable (case-insensitive). Assigned in SetPVarInt</param>
 /// <seealso name="SetPVarInt"/>
 /// <seealso name="SetPVarString"/>
 /// <seealso name="GetPVarString"/>
@@ -1518,24 +1517,24 @@ native SetPVarInt(playerid, const varname[], int_value);
 /// <seealso name="GetPVarFloat"/>
 /// <seealso name="DeletePVar"/>
 /// <returns>The integer value of the specified player variable. It will still return <b><c>0</c></b> if the variable is not set, or the player does not exist.</returns>
-native GetPVarInt(playerid, const varname[]);
+native GetPVarInt(playerid, const pvar[]);
 
 /// <summary>Saves a string into a player variable.</summary>
 /// <param name="playerid">The ID of the player whose player variable will be set</param>
-/// <param name="varname">The name of the player variable</param>
-/// <param name="string_value">The string you want to save in the player variable</param>
+/// <param name="pvar">The name of the player variable</param>
+/// <param name="value">The string you want to save in the player variable</param>
 /// <seealso name="SetPVarInt"/>
 /// <seealso name="GetPVarInt"/>
 /// <seealso name="GetPVarString"/>
 /// <seealso name="SetPVarFloat"/>
 /// <seealso name="GetPVarFloat"/>
 /// <seealso name="DeletePVar"/>
-native SetPVarString(playerid, const varname[], const string_value[]);
+native SetPVarString(playerid, const pvar[], const value[]);
 
 /// <summary>Gets a player variable as a string.</summary>
 /// <param name="playerid">The ID of the player whose player variable to get</param>
-/// <param name="varname">The name of the player variable, set by <a href="#SetPVarString">SetPVarString</a></param>
-/// <param name="string_return">The array in which to store the string value in, passed by reference</param>
+/// <param name="pvar">The name of the player variable, set by <a href="#SetPVarString">SetPVarString</a></param>
+/// <param name="output">The array in which to store the string value in, passed by reference</param>
 /// <param name="len">The maximum length of the returned string</param>
 /// <seealso name="SetPVarString"/>
 /// <seealso name="SetPVarInt"/>
@@ -1543,14 +1542,14 @@ native SetPVarString(playerid, const varname[], const string_value[]);
 /// <seealso name="SetPVarFloat"/>
 /// <seealso name="GetPVarFloat"/>
 /// <seealso name="DeletePVar"/>
-/// <remarks>If length of string is zero (value not set), string_return text will not be updated or set to anything and will remain with old data, neccesying that you clear the variable to blank value if <a href="#GetPVarString">GetPVarString</a> returns <b><c>0</c></b> if that behavior is undesired </remarks>
+/// <remarks>If length of string is zero (value not set), output text will not be updated or set to anything and will remain with old data, neccesying that you clear the variable to blank value if <a href="#GetPVarString">GetPVarString</a> returns <b><c>0</c></b> if that behavior is undesired </remarks>
 /// <returns>The length of the string.</returns>
-native GetPVarString(playerid, const varname[], string_return[], len = sizeof string_return);
+native GetPVarString(playerid, const pvar[], output[], len = sizeof (output));
 
 /// <summary>Set a float player variable's value.</summary>
 /// <param name="playerid">The ID of the player whose player variable will be set</param>
-/// <param name="varname">The name of the player variable</param>
-/// <param name="float_value">The float you want to save in the player variable</param>
+/// <param name="pvar">The name of the player variable</param>
+/// <param name="value">The float you want to save in the player variable</param>
 /// <seealso name="SetPVarInt"/>
 /// <seealso name="GetPVarInt"/>
 /// <seealso name="SetPVarString"/>
@@ -1561,11 +1560,11 @@ native GetPVarString(playerid, const varname[], string_return[], len = sizeof st
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. Either the player specified is not connected, or the variable name is null or over 40 characters.
 /// </returns>
-native SetPVarFloat(playerid, const varname[], Float:float_value);
+native SetPVarFloat(playerid, const pvar[], Float:value);
 
 /// <summary>Gets a player variable as a float.</summary>
 /// <param name="playerid">The ID of the player whose player variable you want to get</param>
-/// <param name="varname">The name of the player variable</param>
+/// <param name="pvar">The name of the player variable</param>
 /// <seealso name="SetPVarInt"/>
 /// <seealso name="GetPVarInt"/>
 /// <seealso name="SetPVarString"/>
@@ -1573,11 +1572,11 @@ native SetPVarFloat(playerid, const varname[], Float:float_value);
 /// <seealso name="SetPVarFloat"/>
 /// <seealso name="DeletePVar"/>
 /// <returns>The float from the specified player variable.</returns>
-native Float:GetPVarFloat(playerid, const varname[]);
+native Float:GetPVarFloat(playerid, const pvar[]);
 
 /// <summary>Deletes a previously set player variable.</summary>
 /// <param name="playerid">The ID of the player whose player variable to delete</param>
-/// <param name="varname">The name of the player variable to delete</param>
+/// <param name="pvar">The name of the player variable to delete</param>
 /// <seealso name="SetPVarInt"/>
 /// <seealso name="GetPVarInt"/>
 /// <seealso name="SetPVarString"/>
@@ -1589,7 +1588,7 @@ native Float:GetPVarFloat(playerid, const varname[]);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. Either the player specified isn't connected or there is no variable set with the given name.
 /// </returns>
-native DeletePVar(playerid, const varname[]);
+native DeletePVar(playerid, const pvar[]);
 
 /// <summary>Each PVar (player-variable) has its own unique identification number for lookup, this function returns the highest ID set for a player.</summary>
 /// <param name="playerid">The ID of the player to get the upper PVar index of</param>
@@ -1601,17 +1600,17 @@ native GetPVarsUpperIndex(playerid);
 /// <summary>Retrieve the name of a player's pVar via the index.</summary>
 /// <param name="playerid">The ID of the player whose player variable to get the name of</param>
 /// <param name="index">The index of the player's pVar</param>
-/// <param name="ret_varname">A string to store the pVar's name in, passed by reference</param>
-/// <param name="ret_len">The max length of the returned string</param>
+/// <param name="output">A string to store the pVar's name in, passed by reference</param>
+/// <param name="size">The max length of the returned string</param>
 /// <seealso name="GetPVarType"/>
 /// <seealso name="GetPVarInt"/>
 /// <seealso name="GetPVarFloat"/>
 /// <seealso name="GetPVarString"/>
-native GetPVarNameAtIndex(playerid, index, ret_varname[], ret_len = sizeof ret_varname);
+native GetPVarNameAtIndex(playerid, index, output[], size = sizeof (output));
 
 /// <summary>Gets the type (integer, float or string) of a player variable.</summary>
 /// <param name="playerid">The ID of the player whose player variable to get the type of</param>
-/// <param name="varname">The name of the player variable to get the type of</param>
+/// <param name="pvar">The name of the player variable to get the type of</param>
 /// <seealso name="SetPVarInt"/>
 /// <seealso name="GetPVarInt"/>
 /// <seealso name="SetPVarString"/>
@@ -1629,7 +1628,7 @@ native GetPVarNameAtIndex(playerid, index, ret_varname[], ret_len = sizeof ret_v
 ///   </ul>
 /// </remarks>
 /// <returns>Returns the type of the PVar. See table below.</returns>
-native GetPVarType(playerid, const varname[]);
+native GetPVarType(playerid, const pvar[]);
 
 #if MAX_CHATBUBBLE_LENGTH < 1 || MAX_CHATBUBBLE_LENGTH > 144
 	#error MAX_CHATBUBBLE_LENGTH must be >= 1 and <= 144
@@ -1736,10 +1735,10 @@ native PlayerPlaySound(playerid, soundid, Float:x, Float:y, Float:z);
 /// <param name="playerid">The ID of the player to apply the animation to</param>
 /// <param name="animlib">The animation library from which to apply an animation</param>
 /// <param name="animname">The name of the animation to apply, within the specified library</param>
-/// <param name="fDelta">The speed to play the animation (use 4.1)</param>
+/// <param name="delta">The speed to play the animation (use 4.1)</param>
 /// <param name="loop">If set to <b><c>1</c></b>, the animation will loop. If set to <b><c>0</c></b>, the animation will play once</param>
-/// <param name="lockx">If set to <b><c>0</c></b>, the player is returned to their old X coordinate once the animation is complete (for animations that move the player such as walking). <b><c>1</c></b> will not return them to their old position</param>
-/// <param name="locky">Same as above but for the Y axis. Should be kept the same as the previous parameter</param>
+/// <param name="lockX">If set to <b><c>0</c></b>, the player is returned to their old X coordinate once the animation is complete (for animations that move the player such as walking). <b><c>1</c></b> will not return them to their old position</param>
+/// <param name="lockY">Same as above but for the Y axis. Should be kept the same as the previous parameter</param>
 /// <param name="freeze">Setting this to <b><c>1</c></b> will freeze the player at the end of the animation. <b><c>0</c></b> will not</param>
 /// <param name="time">Timer in milliseconds. For a never-ending loop it should be <b><c>0</c></b></param>
 /// <param name="forcesync">Set to <b><c>1</c></b> to make server sync the animation with all other players in streaming radius. <b><c>2</c></b> works same as <b><c>1</c></b>, but will ONLY apply the animation to streamed-in players, but NOT the actual player being animated (useful for npc animations and persistent animations when players are being streamed) (optional=<b><c>0</c></b>)</param>
@@ -1748,7 +1747,7 @@ native PlayerPlaySound(playerid, soundid, Float:x, Float:y, Float:z);
 /// <remarks>The <paramref name="forcesync"/> optional parameter, which defaults to <b><c>0</c></b>, in most cases is not needed since players sync animations themselves. The <paramref name="forcesync"/> parameter can force all players who can see <paramref name="playerid"/> to play the animation regardless of whether the player is performing that animation. This is useful in circumstances where the player can't sync the animation themselves. For example, they may be paused.</remarks>
 /// <remarks>An invalid animation library will crash the player's game.</remarks>
 /// <returns>This function always returns <b><c>1</c></b>, even if the player specified does not exist, or any of the parameters are invalid (e.g. invalid library).</returns>
-native ApplyAnimation(playerid, const animlib[], const animname[], Float:fDelta, loop, lockx, locky, freeze, time, forcesync = 0);
+native ApplyAnimation(playerid, const animlib[], const animname[], Float:delta, bool:loop, bool:lockX, bool:lockY, bool:freeze, time, bool:forcesync = false);
 
 /// <summary>Clears all animations for the given player (it also cancels all current tasks such as jetpacking,parachuting,entering vehicles, driving (removes player out of vehicle), swimming, etc.. ).</summary>
 /// <param name="playerid">The ID of the player to clear the animations of</param>
@@ -1775,7 +1774,7 @@ native GetPlayerAnimationIndex(playerid); // return the index of any running app
 /// <seealso name="GetPlayerAnimationIndex"/>
 /// <remarks>This function was added in <b>SA-MP 0.3b</b> and will not work in earlier versions!</remarks>
 /// <returns><b><c>1</c></b> on success, <b><c>0</c></b> on failure.</returns>
-native GetAnimationName(index, animlib[], len1 = sizeof animlib, animname[], len2 = sizeof animname); // get the animation lib/name for the index
+native GetAnimationName(index, animlib[], len1 = sizeof (animlib), animname[], len2 = sizeof (animname)); // get the animation lib/name for the index
 
 /// <summary>Retrieves a player's current <a href="http://wiki.sa-mp.com/wiki/SpecialActions">special action</a>.</summary>
 /// <param name="playerid">The ID of the player to get the <a href="http://wiki.sa-mp.com/wiki/SpecialActions">special action</a> of</param>
@@ -1955,15 +1954,15 @@ native DisablePlayerRaceCheckpoint(playerid);
 
 /// <summary>Set the world boundaries for a player. Players can not go out of the boundaries (they will be pushed back in).</summary>
 /// <param name="playerid">The ID of the player to set the world boundaries of</param>
-/// <param name="x_max">The maximum X coordinate the player can go to</param>
-/// <param name="x_min">The minimum X coordinate the player can go to</param>
-/// <param name="y_max">The maximum Y coordinate the player can go to</param>
-/// <param name="y_min">The minimum Y coordinate the player can go to</param>
+/// <param name="maxX">The maximum X coordinate the player can go to</param>
+/// <param name="minX">The minimum X coordinate the player can go to</param>
+/// <param name="maxY">The maximum Y coordinate the player can go to</param>
+/// <param name="minY">The minimum Y coordinate the player can go to</param>
 /// <seealso name="GangZoneCreate"/>
 /// <remarks>This function does not work if used in <a href="#OnPlayerConnect">OnPlayerConnect</a></remarks>
 /// <remarks>A player's world boundaries can be reset by setting them to <b><c>20000.0</c></b>, <b><c>-20000.0</c></b>, <b><c>20000.0</c></b>, <b><c>-20000.0</c></b>. These are the default values.</remarks>
 /// <remarks>This function doesn't work in interiors!</remarks>
-native SetPlayerWorldBounds(playerid, Float:x_max,Float:x_min,Float:y_max,Float:y_min);
+native SetPlayerWorldBounds(playerid, Float:maxX,Float:minX,Float:maxY,Float:minY);
 
 /// <summary>Change the colour of a player's <b>nametag</b> and <b>radar blip</b> for another player.</summary>
 /// <param name="playerid">The player that will see the player's changed blip/nametag color</param>
@@ -2208,7 +2207,6 @@ native AttachCameraToObject(playerid, objectid);
 /// <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <remarks>The player-object must be created before attempting to attach the player's camera to it.</remarks>
 native AttachCameraToPlayerObject(playerid, playerobjectid);
-
 
 /// <summary>Move a player's camera from one position to another, within the set time. Useful for scripted cut scenes.</summary>
 /// <param name="playerid">The ID of the player the camera should be moved for</param>

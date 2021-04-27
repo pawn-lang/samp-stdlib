@@ -57,8 +57,8 @@
 /// <param name="rotation">The facing angle for the vehicle</param>
 /// <param name="color1">The primary <a href="http://wiki.sa-mp.com/wiki/Color_ID">color ID</a></param>
 /// <param name="color2">The secondary <a href="http://wiki.sa-mp.com/wiki/Color_ID">color ID</a></param>
-/// <param name="respawn_delay">The delay until the car is respawned without a driver in <b>seconds</b>. Using <b><c>-1</c></b> will prevent the vehicle from respawning</param>
-/// <param name="addsiren"><b>Added in 0.3.7; will not work in earlier versions</b>. Enables the vehicle to have a siren, providing the vehicle has a horn (optional=<b><c>0</c></b>)</param>
+/// <param name="respawnDelay">The delay until the car is respawned without a driver in <b>seconds</b>. Using <b><c>-1</c></b> will prevent the vehicle from respawning</param>
+/// <param name="addSiren"><b>Added in 0.3.7; will not work in earlier versions</b>. Enables the vehicle to have a siren, providing the vehicle has a horn (optional=<b><c>false</c></b>)</param>
 /// <seealso name="DestroyVehicle"/>
 /// <seealso name="AddStaticVehicle"/>
 /// <seealso name="AddStaticVehicleEx"/>
@@ -70,7 +70,7 @@
 ///   The vehicle ID of the vehicle created (<b><c>1</c></b> to <b><c>MAX_VEHICLES</c></b>).<p/>
 ///   <b><c>INVALID_VEHICLE_ID (65535)</c></b> if vehicle was not created (vehicle limit reached or invalid vehicle model ID passed).
 /// </returns>
-native CreateVehicle(vehicletype, Float:x, Float:y, Float:z, Float:rotation, color1, color2, respawn_delay, addsiren=0);
+native CreateVehicle(vehicletype, Float:x, Float:y, Float:z, Float:rotation, color1, color2, respawnDelay, bool:addSiren = false);
 
 /// <summary>Destroy a vehicle. It will disappear instantly.</summary>
 /// <param name="vehicleid">The ID of the vehicle to destroy</param>
@@ -183,7 +183,7 @@ native Float:GetVehicleDistanceFromPoint(vehicleid, Float:X, Float:Y, Float:Z);
 
 /// <summary>Set the Z rotation (yaw) of a vehicle.</summary>
 /// <param name="vehicleid">The ID of the vehicle to set the rotation of</param>
-/// <param name="z_angle">The Z angle to set</param>
+/// <param name="angle">The Z angle to set</param>
 /// <seealso name="GetVehicleZAngle"/>
 /// <seealso name="SetVehiclePos"/>
 /// <remarks>A vehicle's X and Y (pitch and roll) rotation will be reset when this function is used. The X and Y rotations can not be set.</remarks>
@@ -192,7 +192,7 @@ native Float:GetVehicleDistanceFromPoint(vehicleid, Float:X, Float:Y, Float:Z);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. The vehicle specified does not exist.
 /// </returns>
-native SetVehicleZAngle(vehicleid, Float:z_angle);
+native SetVehicleZAngle(vehicleid, Float:angle);
 
 /// <summary>Set the parameters of a vehicle for a player.</summary>
 /// <param name="vehicle">The ID of the vehicle to set the parameters of</param>
@@ -384,7 +384,6 @@ native ChangeVehicleColor(vehicleid, color1, color2);
 /// </remarks>
 /// <returns>This function always returns <b><c>1</c></b> (success), even if the vehicle passed is not created.</returns>
 native ChangeVehiclePaintjob(vehicleid, paintjobid);
-
 
 /// <summary>Set a vehicle's health. When a vehicle's health decreases the engine will produce smoke, and finally fire when it decreases to less than 250 (25%).</summary>
 /// <param name="vehicleid">The ID of the vehicle to set the health of</param>

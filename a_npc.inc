@@ -296,7 +296,7 @@ open.mp releases can use `A` as the first digit.
 /// </remarks>
 /// <remarks>The values for the placeholders follow in the exact same order as parameters in the call. For example, <b><c>"I am %i years old"</c></b> - the <b><c>%i</c></b> will be replaced with an Integer variable, which is the person's age.</remarks>
 /// <remarks>You may optionally put a number between the <b><c>%</c></b> and the letter of the placeholder code. This number indicates the field width; if the size of the parameter to print at the position of the placeholder is smaller than the field width, the field is expanded with spaces. To cut the number of decimal places beeing shown of a float, you can add <b><c>.&lt;max number&gt;</c></b> between the <b><c>%</c></b> and the <b><c>f</c></b>. (example: <b><c>%.2f</c></b>)</remarks>
-native format(output[], len = sizeof output, const format[], {Float,_}:...);
+native format(output[], len = sizeof (output), const format[], {Float,_}:...);
 
 /// <summary>Sets a 'timer' to call a function after some time. Can be set to repeat.</summary>
 /// <param name="funcname">Name of the function to call as a string. This must be a public function (forwarded). A null string here will crash the server</param>
@@ -351,7 +351,6 @@ native Float:atan(Float:value);
 /// <seealso name="floattan"/>
 /// <returns>The angle in degrees.</returns>
 native Float:atan2(Float:y, Float:x);
-
 
 /// <summary>This will send a player text by the bot, just like using <a href="#SendPlayerMessageToAll">SendPlayerMessageToAll</a>, but this function is to be used inside the NPC scripts.</summary>
 /// <param name="msg">The text to be sent by the NPC</param>
@@ -484,7 +483,6 @@ native GetMyFacingAngle(&Float:ang);
 /// <returns>This function does not return any specific values.</returns>
 native SetMyFacingAngle(Float:ang);
 
-
 /// <summary>Get the distance between the NPC and a point.</summary>
 /// <param name="X">The X coordinate of the point</param>
 /// <param name="Y">The Y coordinate of the point</param>
@@ -520,7 +518,7 @@ native IsPlayerInRangeOfPoint(playerid, Float:range, Float:X, Float:Y, Float:Z);
 /// <seealso name="GetPlayerVersion"/>
 /// <remarks>A player's name can be up to 24 characters long (as of <b>0.3d R2</b>) by using <a href="#SetPlayerName">SetPlayerName</a>. This is defined in <c>a_samp.inc</c> as <b><c>MAX_PLAYER_NAME</c></b>. However, the client can only join with a nickname between 3 and 20 characters, otherwise the connection will be rejected and the player has to quit to choose a valid name.</remarks>
 /// <returns>The length of the player's name. <b><c>0</c></b> if player specified doesn't exist.</returns>
-native GetPlayerName(playerid, name[], len = sizeof name);
+native GetPlayerName(playerid, name[], len = sizeof (name));
 
 /// <summary>Checks if a player is connected (if an ID is taken by a connected player).</summary>
 /// <param name="playerid">The ID of the player to check</param>
@@ -556,7 +554,6 @@ native ResumeRecordingPlayback();
 // --------------------------------------------------
 // Forwards (Callback declarations)
 // --------------------------------------------------
-
 
 /// <summary>Gets called when a NPC script is loaded.</summary>
 /// <seealso name="OnNPCModeExit"/>
