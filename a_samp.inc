@@ -2662,13 +2662,13 @@ forward OnVehicleDamageStatusUpdate(vehicleid, playerid);
 /// <summary>This callback is called when a player's client updates/syncs the position of a vehicle they're not driving. This can happen outside of the vehicle or when the player is a passenger of a vehicle that has no driver.</summary>
 /// <param name="vehicleid">The ID of the vehicle that's position was updated</param>
 /// <param name="playerid">The ID of the player that sent a vehicle position sync update</param>
-/// <param name="passengerSeat">The ID of the seat if the player is a passenger. 0=not in vehicle, 1=front passenger, 2=backleft 3=backright 4+ is for coach/bus etc. with many passenger seats</param>
-/// <param name="newX">The new X coordinate of the vehicle. This parameter was added in <b>0.3z</b>. Leave it out if using an earlier version</param>
-/// <param name="newY">The new Y coordinate of the vehicle. This parameter was added in <b>0.3z</b>. Leave it out if using an earlier version</param>
-/// <param name="newZ">The new Z coordinate of the vehicle. This parameter was added in <b>0.3z</b>. Leave it out if using an earlier version</param>
-/// <param name="velX">The new X velocity of the vehicle. This parameter was added in <b>0.3z R4</b>. Leave it out if using an earlier version</param>
-/// <param name="velY">The new Y velocity of the vehicle. This parameter was added in <b>0.3z R4</b>. Leave it out if using an earlier version</param>
-/// <param name="velZ">The new Z velocity of the vehicle. This parameter was added in <b>0.3z R4</b>. Leave it out if using an earlier version</param>
+/// <param name="passenger_seat">The ID of the seat if the player is a passenger. 0=not in vehicle, 1=front passenger, 2=backleft 3=backright 4+ is for coach/bus etc. with many passenger seats</param>
+/// <param name="new_x">The new X coordinate of the vehicle. This parameter was added in <b>0.3z</b>. Leave it out if using an earlier version</param>
+/// <param name="new_y">The new Y coordinate of the vehicle. This parameter was added in <b>0.3z</b>. Leave it out if using an earlier version</param>
+/// <param name="new_z">The new Z coordinate of the vehicle. This parameter was added in <b>0.3z</b>. Leave it out if using an earlier version</param>
+/// <param name="vel_x">The new X velocity of the vehicle. This parameter was added in <b>0.3z R4</b>. Leave it out if using an earlier version</param>
+/// <param name="vel_y">The new Y velocity of the vehicle. This parameter was added in <b>0.3z R4</b>. Leave it out if using an earlier version</param>
+/// <param name="vel_z">The new Z velocity of the vehicle. This parameter was added in <b>0.3z R4</b>. Leave it out if using an earlier version</param>
 /// <seealso name="OnTrailerUpdate"/>
 /// <remarks>This callback was added in <b>SA-MP 0.3c R3</b> and will not work in earlier versions!</remarks>
 /// <remarks>This callback is called very frequently per second per unoccupied vehicle. You should refrain from implementing intensive calculations or intensive file writing/reading operations in this callback.</remarks>
@@ -2677,7 +2677,7 @@ forward OnVehicleDamageStatusUpdate(vehicleid, playerid);
 ///   Returning <b><c>0</c></b> in this callback will stop the vehicle's position being synced to other players. Update is still sent to the updating player. Useful for combating vehicle teleport hacks.<p/>
 ///   It is always called first in filterscripts so returning <b><c>0</c></b> there also blocks other scripts from seeing it.
 /// </returns>
-forward OnUnoccupiedVehicleUpdate(vehicleid, playerid, passengerSeat, Float:newX, Float:newY, Float:newZ, Float:velX, Float:velY, Float:velZ);
+forward OnUnoccupiedVehicleUpdate(vehicleid, playerid, passenger_seat, Float:new_x, Float:new_y, Float:new_z, Float:vel_x, Float:vel_y, Float:vel_z);
 
 /// <summary>This callback is called when a player selects an item from a menu (<a href="#ShowMenuForPlayer">ShowMenuForPlayer</a>).</summary>
 /// <param name="playerid">The ID of the player that selected a menu item</param>
@@ -2919,8 +2919,8 @@ forward OnPlayerGiveDamage(playerid, damagedid, Float:amount, weaponid, bodypart
 
 /// <summary>This callback is called when a player gives damage to an actor.</summary>
 /// <param name="playerid">The ID of the player that gave damage</param>
-/// <param name="damagedActorid">The ID of the actor that received damage</param>
-/// <param name="amount">The amount of health/armour damagedActorid has lost</param>
+/// <param name="damaged_actorid">The ID of the actor that received damage</param>
+/// <param name="amount">The amount of health/armour damaged_actorid has lost</param>
 /// <param name="weaponid">The reason that caused the damage</param>
 /// <param name="bodypart">The body part that was hit</param>
 /// <seealso name="CreateActor"/>
@@ -2938,13 +2938,13 @@ forward OnPlayerGiveDamage(playerid, damagedid, Float:amount, weaponid, bodypart
 ///   <b><c>0</c></b> - Allows this callback to be called in other filterscripts.<p/>
 ///   It is always called first in filterscripts so returning <b><c>1</c></b> there blocks other filterscripts from seeing it.
 /// </returns>
-forward OnPlayerGiveDamageActor(playerid, damagedActorid, Float:amount, weaponid, bodypart);
+forward OnPlayerGiveDamageActor(playerid, damaged_actorid, Float:amount, weaponid, bodypart);
 
 /// <summary>OnPlayerClickMap is called when a player places a target/waypoint on the pause menu map (by right-clicking).</summary>
 /// <param name="playerid">The ID of the player that placed a target/waypoint</param>
-/// <param name="x">The X float coordinate where the player clicked</param>
-/// <param name="y">The Y float coordinate where the player clicked</param>
-/// <param name="z">The Z float coordinate where the player clicked (inaccurate - see note below)</param>
+/// <param name="fX">The X float coordinate where the player clicked</param>
+/// <param name="fY">The Y float coordinate where the player clicked</param>
+/// <param name="fZ">The Z float coordinate where the player clicked (inaccurate - see note below)</param>
 /// <seealso name="SetPlayerPos"/>
 /// <seealso name="SetPlayerPosFindZ"/>
 /// <seealso name="GetPlayerPos"/>
@@ -2955,7 +2955,7 @@ forward OnPlayerGiveDamageActor(playerid, damagedActorid, Float:amount, weaponid
 ///   <b><c>0</c></b> - Indicates that this callback will be passed to the next filterscript.<p/>
 ///   It is always called first in gamemode.
 /// </returns>
-forward OnPlayerClickMap(playerid, Float:x, Float:y, Float:z);
+forward OnPlayerClickMap(playerid, Float:fX, Float:fY, Float:fZ);
 
 /// <summary>This callback is called when a player clicks on a textdraw or cancels the select mode with the Escape key.</summary>
 /// <param name="playerid">The ID of the player that clicked on the textdraw</param>
@@ -2987,7 +2987,7 @@ forward OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid);
 
 /// <summary>This callback is called when an IP address attempts a connection to the server. To block incoming connections, use <a href="#BlockIpAddress">BlockIpAddress</a>.</summary>
 /// <param name="playerid">The ID of the player attempting to connect</param>
-/// <param name="ipAddress">The IP address of the player attempting to connect</param>
+/// <param name="ip_address">The IP address of the player attempting to connect</param>
 /// <param name="port">The port of the attempted connection</param>
 /// <seealso name="OnPlayerConnect"/>
 /// <seealso name="OnPlayerDisconnect"/>
@@ -3000,7 +3000,7 @@ forward OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid);
 ///   <b><c>0</c></b> - Indicates that this callback will be passed to the next filterscript.<p/>
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnIncomingConnection(playerid, ipAddress[], port);
+forward OnIncomingConnection(playerid, ip_address[], port);
 
 /// <summary>This callback is called when a player sent a trailer update.</summary>
 /// <param name="playerid">The ID of the player who sent a trailer update</param>
@@ -3065,12 +3065,12 @@ forward OnPlayerClickPlayer(playerid, clickedplayerid, source);
 /// <param name="playerobject"><b><c>0</c></b> if it is a global object or <b><c>1</c></b> if it is a playerobject</param>
 /// <param name="objectid">The ID of the edited object</param>
 /// <param name="response">The type of response</param>
-/// <param name="offsetX">The X offset for the object that was edited</param>
-/// <param name="offsetY">The Y offset for the object that was edited</param>
-/// <param name="offsetZ">The Z offset for the object that was edited</param>
-/// <param name="rotX">The X rotation for the object that was edited</param>
-/// <param name="rotY">The Y rotation for the object that was edited</param>
-/// <param name="rotZ">The Z rotation for the object that was edited</param>
+/// <param name="fX">The X offset for the object that was edited</param>
+/// <param name="fY">The Y offset for the object that was edited</param>
+/// <param name="fZ">The Z offset for the object that was edited</param>
+/// <param name="fRotX">The X rotation for the object that was edited</param>
+/// <param name="fRotY">The Y rotation for the object that was edited</param>
+/// <param name="fRotZ">The Z rotation for the object that was edited</param>
 /// <seealso name="EditObject"/>
 /// <seealso name="CreateObject"/>
 /// <seealso name="DestroyObject"/>
@@ -3082,7 +3082,7 @@ forward OnPlayerClickPlayer(playerid, clickedplayerid, source);
 ///   <b><c>0</c></b> - Indicates that this callback will be passed to the next script.<p/>
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnPlayerEditObject(playerid, playerobject, objectid, response, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotX, Float:rotY, Float:rotZ);
+forward OnPlayerEditObject(playerid, playerobject, objectid, response, Float:fX, Float:fY, Float:fZ, Float:fRotX, Float:fRotY, Float:fRotZ);
 
 /// <summary>This callback is called when a player ends attached object edition mode.</summary>
 /// <param name="playerid">The ID of the player that ended edition mode</param>
@@ -3090,15 +3090,15 @@ forward OnPlayerEditObject(playerid, playerobject, objectid, response, Float:off
 /// <param name="index">The index of the attached object</param>
 /// <param name="modelid">The model of the attached object that was edited</param>
 /// <param name="boneid">The bone of the attached object that was edited</param>
-/// <param name="offsetX">The X offset for the attached object that was edited</param>
-/// <param name="offsetY">The Y offset for the attached object that was edited</param>
-/// <param name="offsetZ">The Z offset for the attached object that was edited</param>
-/// <param name="rotX">The X rotation for the attached object that was edited</param>
-/// <param name="rotY">The Y rotation for the attached object that was edited</param>
-/// <param name="rotZ">The Z rotation for the attached object that was edited</param>
-/// <param name="scaleX">The X scale for the attached object that was edited</param>
-/// <param name="scaleY">The Y scale for the attached object that was edited</param>
-/// <param name="scaleZ">The Z scale for the attached object that was edited</param>
+/// <param name="fOffsetX">The X offset for the attached object that was edited</param>
+/// <param name="fOffsetY">The Y offset for the attached object that was edited</param>
+/// <param name="fOffsetZ">The Z offset for the attached object that was edited</param>
+/// <param name="fRotX">The X rotation for the attached object that was edited</param>
+/// <param name="fRotY">The Y rotation for the attached object that was edited</param>
+/// <param name="fRotZ">The Z rotation for the attached object that was edited</param>
+/// <param name="fScaleX">The X scale for the attached object that was edited</param>
+/// <param name="fScaleY">The Y scale for the attached object that was edited</param>
+/// <param name="fScaleZ">The Z scale for the attached object that was edited</param>
 /// <seealso name="EditAttachedObject"/>
 /// <seealso name="SetPlayerAttachedObject"/>
 /// <remarks>This callback was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
@@ -3108,16 +3108,16 @@ forward OnPlayerEditObject(playerid, playerobject, objectid, response, Float:off
 ///   <b><c>0</c></b> - Indicates that this callback will be passed to the next script.<p/>
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnPlayerEditAttachedObject(playerid, response, index, modelid, boneid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotX, Float:rotY, Float:rotZ, Float:scaleX, Float:scaleY, Float:scaleZ);
+forward OnPlayerEditAttachedObject(playerid, response, index, modelid, boneid, Float:fOffsetX, Float:fOffsetY, Float:fOffsetZ, Float:fRotX, Float:fRotY, Float:fRotZ, Float:fScaleX, Float:fScaleY, Float:fScaleZ);
 
 /// <summary>This callback is called when a player selects an object after <a href="#SelectObject">SelectObject</a> has been used.</summary>
 /// <param name="playerid">The ID of the player that selected an object</param>
 /// <param name="type">The type of selection</param>
 /// <param name="objectid">The ID of the selected object</param>
 /// <param name="modelid">The model ID of the selected object</param>
-/// <param name="x">The X position of the selected object</param>
-/// <param name="y">The Y position of the selected object</param>
-/// <param name="z">The Z position of the selected object</param>
+/// <param name="fX">The X position of the selected object</param>
+/// <param name="fY">The Y position of the selected object</param>
+/// <param name="fZ">The Z position of the selected object</param>
 /// <seealso name="SelectObject"/>
 /// <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <returns>
@@ -3125,16 +3125,16 @@ forward OnPlayerEditAttachedObject(playerid, response, index, modelid, boneid, F
 ///   <b><c>0</c></b> - Indicates that this callback will be passed to the next script.<p/>
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnPlayerSelectObject(playerid, type, objectid, modelid, Float:x, Float:y, Float:z);
+forward OnPlayerSelectObject(playerid, type, objectid, modelid, Float:fX, Float:fY, Float:fZ);
 
 /// <summary>This callback is called when a player fires a shot from a weapon. Only bullet weapons are supported. Only <b>passenger</b> drive-by is supported (not driver drive-by, and not sea sparrow / hunter shots).</summary>
 /// <param name="playerid">The ID of the player that shot a weapon</param>
 /// <param name="weaponid">The ID of the <a href="http://wiki.sa-mp.com/wiki/Weapons">weapon</a> shot by the player</param>
 /// <param name="hittype">The type of thing the shot hit (none, player, vehicle, or (player)object)</param>
 /// <param name="hitid">The ID of the player, vehicle or object that was hit</param>
-/// <param name="x">The X coordinate that the shot hit</param>
-/// <param name="y">The Y coordinate that the shot hit</param>
-/// <param name="z">The Z coordinate that the shot hit</param>
+/// <param name="fX">The X coordinate that the shot hit</param>
+/// <param name="fY">The Y coordinate that the shot hit</param>
+/// <param name="fZ">The Z coordinate that the shot hit</param>
 /// <seealso name="OnPlayerGiveDamage"/>
 /// <seealso name="GetPlayerLastShotVectors"/>
 /// <remarks>This callback was added in <b>SA-MP 0.3z</b> and will not work in earlier versions!</remarks>
@@ -3150,8 +3150,8 @@ forward OnPlayerSelectObject(playerid, type, objectid, modelid, Float:x, Float:y
 /// <remarks>
 ///   If hittype is:<p/>
 ///   <ul>
-///     <li>- <b><c>BULLET_HIT_TYPE_NONE</c></b>: the x, y and z parameters are normal coordinates, will give 0.0 for coordinates if nothing was hit (e.g. far object that the bullet can't reach);</li>
-///     <li>- Others: the x, y and z are offsets relative to the hitid.</li>
+///     <li>- <b><c>BULLET_HIT_TYPE_NONE</c></b>: the fX, fY and fZ parameters are normal coordinates, will give 0.0 for coordinates if nothing was hit (e.g. far object that the bullet can't reach);</li>
+///     <li>- Others: the fX, fY and fZ are offsets relative to the hitid.</li>
 ///   </ul>
 /// </remarks>
 /// <remarks>
@@ -3167,7 +3167,7 @@ forward OnPlayerSelectObject(playerid, type, objectid, modelid, Float:x, Float:y
 ///   <b><c>1</c></b> - Allow the bullet to cause damage.<p/>
 ///   It is always called first in filterscripts so returning <b><c>0</c></b> there also blocks other scripts from seeing it.
 /// </returns>
-forward OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:x, Float:y, Float:z);
+forward OnPlayerWeaponShot(playerid, weaponid, hittype, hitid, Float:fX, Float:fY, Float:fZ);
 
 /// <summary>This callback is called when a SendClientCheck request comletes</summary>
 /// <param name="playerid">The ID of the player checked</param>
