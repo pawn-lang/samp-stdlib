@@ -396,49 +396,49 @@ open.mp releases can use `A` as the first digit.
 native format(output[], len = sizeof (output), const format[], {Float,_}:...);
 
 /// <summary>This function sends a message to a specific player with a chosen colour in the chat. The whole line in the chatbox will be in the set colour unless colour embedding is used (since <b><c>0.3c</c></b>).</summary>
-/// <param name="playerID">The ID of the player to display the message to</param>
+/// <param name="playerid">The ID of the player to display the message to</param>
 /// <param name="colour">The colour of the message (<b>RGBA</b>)</param>
 /// <param name="message">The text that will be displayed <b>(max 144 characters)</b></param>
 /// <seealso name="SendClientMessageToAll"/>
 /// <seealso name="SendPlayerMessageToPlayer"/>
 /// <seealso name="SendPlayerMessageToAll"/>
 /// <remarks>If a message is longer than 144 characters, it will not be sent. Truncation can be used to prevent this. Displaying a message on multiple lines will also solve this issue. </remarks>
-/// <remarks>AvoID using the percent sign (or format specifiers) in the actual message text without properly escaping it (like <b><c>%%</c></b>). It will result in crashes otherwise. </remarks>
+/// <remarks>Avoid using the percent sign (or format specifiers) in the actual message text without properly escaping it (like <b><c>%%</c></b>). It will result in crashes otherwise. </remarks>
 /// <remarks>You can use colour embedding for multiple colours in the message. </remarks>
 /// <returns>
 ///   <b><c>1</c></b>: The function executed successfully. Success is reported when the string is over 144 characters, but the message won't be sent.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. The player is not connected.
 /// </returns>
-native SendClientMessage(playerID, colour, const message[]);
+native SendClientMessage(playerid, colour, const message[]);
 
 /// <summary>Displays a message in chat to all players. This is a multi-player equivalent of <a href="#SendClientMessage">SendClientMessage</a>.</summary>
 /// <param name="colour">The colour of the message (<b>RGBA</b>)</param>
 /// <param name="message">The message to show (<b>max 144 characters</b>)</param>
 /// <seealso name="SendClientMessage"/>
 /// <seealso name="SendPlayerMessageToAll"/>
-/// <remarks>AvoID using format specifiers in your messages without formatting the string that is sent. It will result in crashes otherwise.</remarks>
+/// <remarks>Avoid using format specifiers in your messages without formatting the string that is sent. It will result in crashes otherwise.</remarks>
 /// <returns>This function always returns <b><c>1</c></b>.</returns>
 native SendClientMessageToAll(colour, const message[]);
 
-/// <summary>Sends a message in the name of a player to another player on the server. The message will appear in the chat box but can only be seen by the user specified with <paramref name="playerID"/>. The line will start with the sender's name in their colour, followed by the message in white.</summary>
-/// <param name="playerID">The ID of the player who will receive the message</param>
-/// <param name="senderID">The sender's ID. If invalid, the message will not be sent</param>
+/// <summary>Sends a message in the name of a player to another player on the server. The message will appear in the chat box but can only be seen by the user specified with <paramref name="playerid"/>. The line will start with the sender's name in their colour, followed by the message in white.</summary>
+/// <param name="playerid">The ID of the player who will receive the message</param>
+/// <param name="senderid">The sender's ID. If invalid, the message will not be sent</param>
 /// <param name="message">The message that will be sent</param>
 /// <seealso name="SendPlayerMessageToAll"/>
 /// <seealso name="SendClientMessage"/>
 /// <seealso name="SendClientMessageToAll"/>
 /// <seealso name="OnPlayerText"/>
-/// <remarks>AvoID using format specifiers in your messages without formatting the string that is sent. It will result in crashes otherwise.</remarks>
-native SendPlayerMessageToPlayer(playerID, senderID, const message[]);
+/// <remarks>Avoid using format specifiers in your messages without formatting the string that is sent. It will result in crashes otherwise.</remarks>
+native SendPlayerMessageToPlayer(playerid, senderid, const message[]);
 
 /// <summary>Sends a message in the name of a player to all other players on the server. The line will start with the sender's name in their colour, followed by the message in white.</summary>
-/// <param name="senderID">The ID of the sender. If invalid, the message will not be sent</param>
+/// <param name="senderid">The ID of the sender. If invalid, the message will not be sent</param>
 /// <param name="message">The message that will be sent</param>
 /// <seealso name="SendPlayerMessageToPlayer"/>
 /// <seealso name="SendClientMessageToAll"/>
 /// <seealso name="OnPlayerText"/>
-/// <remarks>AvoID using format specifiers in your messages without formatting the string that is sent. It will result in crashes otherwise.</remarks>
-native SendPlayerMessageToAll(senderID, const message[]);
+/// <remarks>Avoid using format specifiers in your messages without formatting the string that is sent. It will result in crashes otherwise.</remarks>
+native SendPlayerMessageToAll(senderid, const message[]);
 
 /// <summary>Adds a death to the 'killfeed' on the right-hand side of the screen for all players.</summary>
 /// <param name="killer">The ID of the killer (can be <b><c>INVALID_PLAYER_ID</c></b>)</param>
@@ -453,7 +453,7 @@ native SendPlayerMessageToAll(senderID, const message[]);
 native SendDeathMessage(killer, killee, weapon);
 
 /// <summary>Adds a death to the 'killfeed' on the right-hand side of the screen for a single player.</summary>
-/// <param name="playerID">The ID of the player to send the death message to</param>
+/// <param name="playerid">The ID of the player to send the death message to</param>
 /// <param name="killer">The ID of the killer (can be <b><c>INVALID_PLAYER_ID</c></b>)</param>
 /// <param name="killee">The ID of the player that died</param>
 /// <param name="weapon">The <a href="http://wiki.sa-mp.com/wiki/Weapons">reason</a> (not always a weapon) for the victim's death. Special icons can also be used (<b><c>ICON_CONNECT</c></b> and <b><c>ICON_DISCONNECT</c></b>)</param>
@@ -464,7 +464,7 @@ native SendDeathMessage(killer, killee, weapon);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute.
 /// </returns>
-native SendDeathMessageToPlayer(playerID, killer, killee, weapon);
+native SendDeathMessageToPlayer(playerid, killer, killee, weapon);
 
 /// <summary>Shows 'game text' (on-screen text) for a certain length of time for all players.</summary>
 /// <param name="string">The text to be displayed</param>
@@ -476,7 +476,7 @@ native SendDeathMessageToPlayer(playerID, killer, killee, weapon);
 native GameTextForAll(const string[], time, style);
 
 /// <summary>Shows 'game text' (on-screen text) for a certain length of time for a specific player.</summary>
-/// <param name="playerID">The ID of the player to show the gametext for</param>
+/// <param name="playerid">The ID of the player to show the gametext for</param>
 /// <param name="string">The text to be displayed</param>
 /// <param name="time">The duration of the text being shown in milliseconds</param>
 /// <param name="style">The style of text to be displayed</param>
@@ -486,7 +486,7 @@ native GameTextForAll(const string[], time, style);
 ///   <b><c>1</c></b>: The function executed successfully. Success is reported when the style and/or time is invalid. Nothing will happen though (no text displayed). May also cause game crashes.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. This means either the string is null or the player is not connected.
 /// </returns>
-native GameTextForPlayer(playerID, const string[], time, style);
+native GameTextForPlayer(playerid, const string[], time, style);
 
 /// <summary>Sets a 'timer' to call a function after some time. Can be set to repeat.</summary>
 /// <param name="funcname">Name of the function to call as a string. This must be a public function (forwarded). A null string here will crash the server</param>
@@ -530,11 +530,11 @@ native SetTimer(const funcname[], interval, repeating);
 native SetTimerEx(const funcname[], interval, repeating, const format[], {Float,_}:...);
 
 /// <summary>Kills (stops) a running timer.</summary>
-/// <param name="timerID">The ID of the timer to kill (returned by <a href="#SetTimer">SetTimer</a> or <a href="#SetTimerEx">SetTimerEx</a>)</param>
+/// <param name="timerid">The ID of the timer to kill (returned by <a href="#SetTimer">SetTimer</a> or <a href="#SetTimerEx">SetTimerEx</a>)</param>
 /// <seealso name="SetTimer"/>
 /// <seealso name="SetTimerEx"/>
 /// <returns>This function always returns <b><c>0</c></b>.</returns>
-native KillTimer(timerID);
+native KillTimer(timerid);
 
 /// <summary>Returns the uptime of the actual server (not the SA-MP server) in milliseconds.</summary>
 /// <seealso name="tickcount"/>
@@ -628,25 +628,25 @@ native Float:atan(Float:value);
 /// <returns>The angle in degrees.</returns>
 native Float:atan2(Float:y, Float:x);
 
-/// <summary>Gets the highest playerID currently in use on the server.</summary>
+/// <summary>Gets the highest playerid currently in use on the server.</summary>
 /// <seealso name="GetVehiclePoolSize"/>
 /// <seealso name="GetMaxPlayers"/>
 /// <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
-/// <returns>The highest playerID currently in use on the server or <b><c>0</c></b> if there are no connected players.</returns>
+/// <returns>The highest playerid currently in use on the server or <b><c>0</c></b> if there are no connected players.</returns>
 native GetPlayerPoolSize();
 
-/// <summary>Gets the highest vehicleID currently in use on the server.</summary>
+/// <summary>Gets the highest vehicleid currently in use on the server.</summary>
 /// <seealso name="GetPlayerPoolSize"/>
 /// <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
-/// <returns>The highest vehicleID currently in use on the server or <b><c>0</c></b> if there are no created vehicles.</returns>
+/// <returns>The highest vehicleid currently in use on the server or <b><c>0</c></b> if there are no created vehicles.</returns>
 native GetVehiclePoolSize();
 
-/// <summary>Gets the highest actorID created on the server.</summary>
+/// <summary>Gets the highest actorid created on the server.</summary>
 /// <seealso name="CreateActor"/>
 /// <seealso name="IsValidActor"/>
 /// <seealso name="SetActorHealth"/>
 /// <remarks>This function was added in <b><b>SA-MP 0.3.7</b></b> and will not work in earlier versions!</remarks>
-/// <returns>The highest actorID created on the server or <b><c>0</c></b> if there are no created actors.</returns>
+/// <returns>The highest actorid created on the server or <b><c>0</c></b> if there are no created actors.</returns>
 native GetActorPoolSize();
 
 // Hash
@@ -815,7 +815,7 @@ native SetGameModeText(const string[]);
 native SetTeamCount(count);
 
 /// <summary>Adds a class to class selection. Classes are used so players may spawn with a skin of their choice.</summary>
-/// <param name="modelID">The <a href="http://wiki.sa-mp.com/wiki/Skins">skin</a> which the player will spawn with</param>
+/// <param name="modelid">The <a href="http://wiki.sa-mp.com/wiki/Skins">skin</a> which the player will spawn with</param>
 /// <param name="spawnX">The x coordinate of the spawnpoint of this class</param>
 /// <param name="spawnY">The y coordinate of the spawnpoint of this class</param>
 /// <param name="spawnZ">The z coordinate of the spawnpoint of this class</param>
@@ -839,11 +839,11 @@ native SetTeamCount(count);
 /// <seealso name="AddPlayerClassEx"/>
 /// <seealso name="SetSpawnInfo"/>
 /// <seealso name="SetPlayerSkin"/>
-native AddPlayerClass(modelID, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, weapon1, ammo1, weapon2, ammo2, weapon3, ammo3);
+native AddPlayerClass(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, weapon1, ammo1, weapon2, ammo2, weapon3, ammo3);
 
 /// <summary>This function is exactly the same as the <a href="#AddPlayerClass">AddPlayerClass</a> function, with the addition of a team parameter.</summary>
-/// <param name="teamID">The team you want the player to spawn in</param>
-/// <param name="modelID">The <a href="http://wiki.sa-mp.com/wiki/Skins">skin</a> which the player will spawn with</param>
+/// <param name="teamid">The team you want the player to spawn in</param>
+/// <param name="modelid">The <a href="http://wiki.sa-mp.com/wiki/Skins">skin</a> which the player will spawn with</param>
 /// <param name="spawnX">The x coordinate of the spawnpoint of this class</param>
 /// <param name="spawnY">The y coordinate of the spawnpoint of this class</param>
 /// <param name="spawnZ">The z coordinate of the spawnpoint of this class</param>
@@ -865,10 +865,10 @@ native AddPlayerClass(modelID, Float:spawnX, Float:spawnY, Float:spawnZ, Float:a
 /// <seealso name="SetSpawnInfo"/>
 /// <seealso name="SetPlayerTeam"/>
 /// <seealso name="SetPlayerSkin"/>
-native AddPlayerClassEx(teamID, modelID, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, weapon1, ammo1, weapon2, ammo2, weapon3, ammo3);
+native AddPlayerClassEx(teamid, modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, weapon1, ammo1, weapon2, ammo2, weapon3, ammo3);
 
 /// <summary>Adds a 'static' vehicle (models are pre-loaded for players) to the gamemode.</summary>
-/// <param name="modelID">The <a href="http://wiki.sa-mp.com/wiki/Vehicle_Models">Model ID</a> for the vehicle</param>
+/// <param name="modelid">The <a href="http://wiki.sa-mp.com/wiki/Vehicle_Models">Model ID</a> for the vehicle</param>
 /// <param name="spawnX">The x coordinate of the spawnpoint of this vehicle</param>
 /// <param name="spawnY">The y coordinate of the spawnpoint of this vehicle</param>
 /// <param name="spawnZ">The z coordinate of the spawnpoint of this vehicle</param>
@@ -885,10 +885,10 @@ native AddPlayerClassEx(teamID, modelID, Float:spawnX, Float:spawnY, Float:spawn
 /// <seealso name="AddStaticVehicleEx"/>
 /// <seealso name="CreateVehicle"/>
 /// <seealso name="DestroyVehicle"/>
-native AddStaticVehicle(modelID, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, colour1, colour2);
+native AddStaticVehicle(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, colour1, colour2);
 
 /// <summary>Adds a 'static' vehicle (models are pre-loaded for players)to the gamemode. Differs from <a href="#AddStaticVehicle">AddStaticVehicle</a> in only one way: allows a respawn time to be set for when the vehicle is left unoccupied by the driver.</summary>
-/// <param name="modelID">The <a href="http://wiki.sa-mp.com/wiki/Vehicle_Models">Model ID</a> for the vehicle</param>
+/// <param name="modelid">The <a href="http://wiki.sa-mp.com/wiki/Vehicle_Models">Model ID</a> for the vehicle</param>
 /// <param name="spawnX">The x coordinate of the spawnpoint of this vehicle</param>
 /// <param name="spawnY">The y coordinate of the spawnpoint of this vehicle</param>
 /// <param name="spawnZ">The z coordinate of the spawnpoint of this vehicle</param>
@@ -907,7 +907,7 @@ native AddStaticVehicle(modelID, Float:spawnX, Float:spawnY, Float:spawnZ, Float
 /// <seealso name="AddStaticVehicle"/>
 /// <seealso name="CreateVehicle"/>
 /// <seealso name="DestroyVehicle"/>
-native AddStaticVehicleEx(modelID, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, colour1, colour2, respawnDelay, bool:addSiren = false);
+native AddStaticVehicleEx(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, colour1, colour2, respawnDelay, bool:addSiren = false);
 
 /// <summary>This function adds a 'static' pickup to the game. These pickups support weapons, health, armor etc., with the ability to function without scripting them (weapons/health/armor will be given automatically).</summary>
 /// <param name="model">The model of the pickup</param>
@@ -1016,7 +1016,7 @@ native GameModeExit();
 native SetWorldTime(hour);
 
 /// <summary>Get the name of a weapon.</summary>
-/// <param name="weaponID">The ID of the weapon to get the name of</param>
+/// <param name="weaponid">The ID of the weapon to get the name of</param>
 /// <param name="weapon">An array to store the weapon's name in, passed by reference</param>
 /// <param name="len">The maximum length of the weapon name to store.</param>
 /// <seealso name="GetPlayerWeapon"/>
@@ -1026,7 +1026,7 @@ native SetWorldTime(hour);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. The weapon specified does not exist.
 /// </returns>
-native GetWeaponName(weaponID, weapon[], len = sizeof (weapon));
+native GetWeaponName(weaponid, weapon[], len = sizeof (weapon));
 
 /// <param name="enable"><b><c>1</c></b> to enable, <b><c>0</c></b> to disable tire popping</param>
 /// <remarks>This function was removed in <b>SA-MP 0.3</b>. Tire popping is enabled by default. If you want to disable tire popping, you'll have to manually script it using <a href="#OnVehicleDamageStatusUpdate">OnVehicleDamageStatusUpdate</a>.</remarks>
@@ -1046,11 +1046,11 @@ native EnableVehicleFriendlyFire();
 native AllowInteriorWeapons(allow);
 
 /// <summary>Set the world weather for all players.</summary>
-/// <param name="weatherID">The <a href="http://wiki.sa-mp.com/wiki/WeatherID">weather</a> to set</param>
+/// <param name="weatherid">The <a href="http://wiki.sa-mp.com/wiki/Weatherid">weather</a> to set</param>
 /// <seealso name="SetPlayerWeather"/>
 /// <seealso name="SetGravity"/>
 /// <remarks>If <a href="#TogglePlayerClock">TogglePlayerClock</a> is enabled, weather will slowly change over time, instead of changing instantly.</remarks>
-native SetWeather(weatherID);
+native SetWeather(weatherid);
 
 /// <summary>Get the currently set gravity.</summary>
 /// <seealso name="SetGravity"/>
@@ -1153,66 +1153,66 @@ native LimitPlayerMarkerRadius(Float:markerRadius);
 native ConnectNPC(const name[], const script[]);
 
 /// <summary>Check if a player is an actual player or an NPC.</summary>
-/// <param name="playerID">The ID of the player to check</param>
+/// <param name="playerid">The ID of the player to check</param>
 /// <seealso name="ConnectNPC"/>
 /// <seealso name="IsPlayerAdmin"/>
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <returns><b><c>1</c></b> if the player is an NPC, <b><c>0</c></b> if not.</returns>
-native IsPlayerNPC(playerID);
+native IsPlayerNPC(playerid);
 
-native AddCharModel(baseID, newID, const dffname[], const txdname[]);
-native AddSimpleModel(virtualWorld, baseID, newID, const dffname[], const txdname[]);
-native AddSimpleModelTimed(virtualWorld, baseID, newID, const dffname[], const txdname[], timeon, timeoff);
+native AddCharModel(baseid, newid, const dffname[], const txdname[]);
+native AddSimpleModel(virtualWorld, baseid, newid, const dffname[], const txdname[]);
+native AddSimpleModelTimed(virtualWorld, baseid, newid, const dffname[], const txdname[], timeon, timeoff);
 native FindModelFileNameFromCRC(crc, retstr[], retstr_size = sizeof (retstr));
 native FindTextureFileNameFromCRC(crc, retstr[], retstr_size = sizeof (retstr));
-native RedirectDownload(playerID, const url[]);
+native RedirectDownload(playerid, const url[]);
 
 // Admin
 
 /// <summary>Check if a player is logged in as an RCON admin.</summary>
-/// <param name="playerID">The ID of the player to check</param>
+/// <param name="playerid">The ID of the player to check</param>
 /// <seealso name="SendRconCommand"/>
 /// <seealso name="OnRconLoginAttempt"/>
 /// <returns><b><c>1</c></b> if the player is an RCON admin, <b><c>0</c></b> if not.</returns>
-native IsPlayerAdmin(playerID);
+native IsPlayerAdmin(playerid);
 
 /// <summary>Kicks a player from the server. They will have to quit the game and re-connect if they wish to continue playing.</summary>
-/// <param name="playerID">The ID of the player to kick</param>
+/// <param name="playerid">The ID of the player to kick</param>
 /// <seealso name="Ban"/>
 /// <seealso name="BanEx"/>
 /// <remarks>As of <b>SA-MP 0.3x</b>, any action taken directly before Kick() (such as sending a message with <a href="#SendClientMessage">SendClientMessage</a>) will not reach the player. A timer must be used to delay the kick.</remarks>
 /// <returns>This function always returns <b><c>1</c></b>, even if the function failed to execute (player specified doesn't exist).</returns>
-native Kick(playerID);
+native Kick(playerid);
 
 /// <summary>Ban a player who is currently in the server. They will be unable to join the server ever again. The ban will be IP-based, and be saved in the samp.ban file in the server's root directory. <a href="#BanEx">BanEx</a> can be used to give a reason for the ban. IP bans can be added/removed using the RCON banip and unbanip commands (<a href="#SendRconCommand">SendRconCommand</a>).</summary>
-/// <param name="playerID">The ID of the player to ban</param>
+/// <param name="playerid">The ID of the player to ban</param>
 /// <seealso name="BanEx"/>
 /// <seealso name="Kick"/>
 /// <remarks>As of <b>SA-MP 0.3x</b>, any action taken directly before Ban() (such as sending a message with SendClientMessage) will not reach the player. A timer must be used to delay the ban.</remarks>
 /// <remarks></remarks>
-native Ban(playerID);
+native Ban(playerid);
 
 /// <summary>Ban a player with a reason.</summary>
-/// <param name="playerID">The ID of the player to ban</param>
+/// <param name="playerid">The ID of the player to ban</param>
 /// <param name="reason">The reason for the ban</param>
 /// <seealso name="Ban"/>
 /// <seealso name="Kick"/>
 /// <remarks>As of <b>SA-MP 0.3x</b>, any action taken directly before Ban() (such as sending a message with SendClientMessage) will not reach the player. A timer must be used to delay the ban.</remarks>
-native BanEx(playerID, const reason[]);
+native BanEx(playerid, const reason[]);
 
 /// <summary>Sends an RCON (Remote Console) command.</summary>
 /// <param name="command">The RCON command to be executed</param>
 /// <seealso name="IsPlayerAdmin"/>
 /// <seealso name="OnRconCommand"/>
 /// <seealso name="OnRconLoginAttempt"/>
-/// <remarks>Does not support login, due to the lack of a 'playerID' parameter.</remarks>
+/// <remarks>Does not support login, due to the lack of a 'playerid' parameter.</remarks>
 /// <remarks>'password 0' will remove the server's password if one is set.</remarks>
 /// <returns>This function always returns <b><c>1</c></b>.</returns>
 /// <remarks>This function will result in <a href="#OnRconCommand">OnRconCommand</a> being called.</remarks>
 native SendRconCommand(const command[]);
 
 /// <summary>Gets a player's network stats and saves them into a string.</summary>
-/// <param name="playerID">The ID of the player you want to get the networkstats of</param>
+/// <param name="playerid">The ID of the player you want to get the networkstats of</param>
 /// <param name="output">The string to store the networkstats in, passed by reference</param>
 /// <param name="size">The length of the string that should be stored</param>
 /// <seealso name="GetNetworkStats"/>
@@ -1227,7 +1227,7 @@ native SendRconCommand(const command[]);
 /// <seealso name="NetStats_GetIpPort"/>
 /// <remarks>This function was added in <b>SA-MP 0.3c R4</b> and will not work in earlier versions!</remarks>
 /// <remarks>This function may not return accurate data when used under <a href="#OnPlayerDisconnect">OnPlayerDisconnect</a> if the player has quit normally. It usually returns accurate data if the player has been kicked or has timed out.</remarks>
-native GetPlayerNetworkStats(playerID, output[], size = sizeof (output));
+native GetPlayerNetworkStats(playerid, output[], size = sizeof (output));
 
 /// <summary>Gets the server's network stats and stores them in a string.</summary>
 /// <param name="output">The string to store the network stats in, passed by reference</param>
@@ -1269,16 +1269,16 @@ native GetPlayerNetworkStats(playerID, output[], size = sizeof (output));
 native GetNetworkStats(output[], size = sizeof (output));
 
 /// <summary>Returns the SA-MP client version, as reported by the player.</summary>
-/// <param name="playerID">The ID of the player to get the client version of</param>
+/// <param name="playerid">The ID of the player to get the client version of</param>
 /// <param name="version">The string to store the player's version in, passed by reference</param>
 /// <param name="len">The maximum length of the version</param>
 /// <seealso name="GetPlayerName"/>
 /// <seealso name="GetPlayerPing"/>
 /// <seealso name="GetPlayerIp"/>
 /// <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
-/// <remarks>The string the version gets stored in will be empty if playerID is an NPC.</remarks>
+/// <remarks>The string the version gets stored in will be empty if playerid is an NPC.</remarks>
 /// <returns><b><c>1</c></b> on success and <b><c>0</c></b> on failure (if player specified doesn't exist).</returns>
-native GetPlayerVersion(playerID, version[], len = sizeof (version)); // Returns the SA-MP client revision as reported by the player
+native GetPlayerVersion(playerid, version[], len = sizeof (version)); // Returns the SA-MP client revision as reported by the player
 
 /// <summary>Blocks an IP address from further communication with the server for a set amount of time (with wildcards allowed). Players trying to connect to the server with a blocked IP address will receive the generic "You are banned from this server." message. Players that are online on the specified IP before the block will timeout after a few seconds and, upon reconnect, will receive the same message.</summary>
 /// <param name="ipAddress">The IP to block</param>
@@ -1328,7 +1328,7 @@ native GetServerVarAsInt(const cvar[]);
 /// <remarks>Type 'varlist' in the server console to display a list of available server variables and their types.</remarks>
 /// <returns>The value of the specified server variable. <b><c>0</c></b> if the specified server variable is not a boolean or doesn't exist.</returns>
 native GetServerVarAsBool(const cvar[]);
-// These are the same 3 functions as above although they avoID the name ambiguity/conflict with the SVar system.
+// These are the same 3 functions as above although they avoid the name ambiguity/conflict with the SVar system.
 
 /// <summary>Get the string value of a console variable.</summary>
 /// <param name="cvar">The name of the string variable to get the value of</param>
@@ -1367,7 +1367,7 @@ native GetConsoleVarAsBool(const cvar[]);
 native GetServerTickRate();
 
 /// <summary>Gets the amount of time (in milliseconds) that a player has been connected to the server for.</summary>
-/// <param name="playerID">The ID of the player to get the connected time of</param>
+/// <param name="playerid">The ID of the player to get the connected time of</param>
 /// <seealso name="GetPlayerNetworkStats"/>
 /// <seealso name="GetNetworkStats"/>
 /// <seealso name="NetStats_MessagesReceived"/>
@@ -1381,10 +1381,10 @@ native GetServerTickRate();
 /// <remarks>This function was added in <b>SA-MP 0.3z</b> and will not work in earlier versions!</remarks>
 /// <remarks>The return value is not reset to zero after changing the game mode (using the RCON command "gmx").</remarks>
 /// <returns>This function returns the amount of time (in milliseconds) that a player has been connected to the server for. <b><c>0</c></b> is returned if the player is not connected.</returns>
-native NetStats_GetConnectedTime(playerID);
+native NetStats_GetConnectedTime(playerid);
 
 /// <summary>Gets the number of messages the server has received from the player.</summary>
-/// <param name="playerID">The ID of the player to get the data from</param>
+/// <param name="playerid">The ID of the player to get the data from</param>
 /// <seealso name="GetPlayerNetworkStats"/>
 /// <seealso name="GetNetworkStats"/>
 /// <seealso name="NetStats_GetConnectedTime"/>
@@ -1397,10 +1397,10 @@ native NetStats_GetConnectedTime(playerID);
 /// <seealso name="NetStats_GetIpPort"/>
 /// <remarks>This function was added in <b>SA-MP 0.3z</b> and will not work in earlier versions!</remarks>
 /// <returns>This function returns the number of messages the server has received from the player. <b><c>0</c></b> is returned if the player is not connected.</returns>
-native NetStats_MessagesReceived(playerID);
+native NetStats_MessagesReceived(playerid);
 
 /// <summary>Gets the amount of data (in bytes) that the server has received from the player.</summary>
-/// <param name="playerID">The ID of the player to get the data from</param>
+/// <param name="playerid">The ID of the player to get the data from</param>
 /// <seealso name="GetPlayerNetworkStats"/>
 /// <seealso name="GetNetworkStats"/>
 /// <seealso name="NetStats_GetConnectedTime"/>
@@ -1413,10 +1413,10 @@ native NetStats_MessagesReceived(playerID);
 /// <seealso name="NetStats_GetIpPort"/>
 /// <remarks>This function was added in <b>SA-MP 0.3z</b> and will not work in earlier versions!</remarks>
 /// <returns>This function returns the number of bytes the server has received from the player. <b><c>0</c></b> is returned if the player is not connected.</returns>
-native NetStats_BytesReceived(playerID);
+native NetStats_BytesReceived(playerid);
 
 /// <summary>Gets the number of messages the server has sent to the player.</summary>
-/// <param name="playerID">The ID of the player to get the data from</param>
+/// <param name="playerid">The ID of the player to get the data from</param>
 /// <seealso name="GetPlayerNetworkStats"/>
 /// <seealso name="GetNetworkStats"/>
 /// <seealso name="NetStats_GetConnectedTime"/>
@@ -1429,10 +1429,10 @@ native NetStats_BytesReceived(playerID);
 /// <seealso name="NetStats_GetIpPort"/>
 /// <remarks>This function was added in <b>SA-MP 0.3z</b> and will not work in earlier versions!</remarks>
 /// <returns>The number of messages the server has sent to the player.</returns>
-native NetStats_MessagesSent(playerID);
+native NetStats_MessagesSent(playerid);
 
 /// <summary>Gets the amount of data (in bytes) that the server has sent to the player.</summary>
-/// <param name="playerID">The ID of the player to get the data from</param>
+/// <param name="playerid">The ID of the player to get the data from</param>
 /// <seealso name="GetPlayerNetworkStats"/>
 /// <seealso name="GetNetworkStats"/>
 /// <seealso name="NetStats_GetConnectedTime"/>
@@ -1445,10 +1445,10 @@ native NetStats_MessagesSent(playerID);
 /// <seealso name="NetStats_GetIpPort"/>
 /// <remarks>This function was added in <b>SA-MP 0.3z</b> and will not work in earlier versions!</remarks>
 /// <returns>This function returns the number of bytes the server has sent to the player. <b><c>0</c></b> is returned if the player is not connected.</returns>
-native NetStats_BytesSent(playerID);
+native NetStats_BytesSent(playerid);
 
 /// <summary>Gets the number of messages the player has received in the last second.</summary>
-/// <param name="playerID">The ID of the player to get the data from</param>
+/// <param name="playerid">The ID of the player to get the data from</param>
 /// <seealso name="GetPlayerNetworkStats"/>
 /// <seealso name="GetNetworkStats"/>
 /// <seealso name="NetStats_GetConnectedTime"/>
@@ -1461,10 +1461,10 @@ native NetStats_BytesSent(playerID);
 /// <seealso name="NetStats_GetIpPort"/>
 /// <remarks>This function was added in <b>SA-MP 0.3z</b> and will not work in earlier versions!</remarks>
 /// <returns>the number of messages the player has received in the last second.</returns>
-native NetStats_MessagesRecvPerSecond(playerID);
+native NetStats_MessagesRecvPerSecond(playerid);
 
 /// <summary>Gets the packet loss percentage of a player. Packet loss means data the player is sending to the server is being lost (or vice-versa).</summary>
-/// <param name="playerID">The ID of the player to get the data from</param>
+/// <param name="playerid">The ID of the player to get the data from</param>
 /// <seealso name="GetPlayerNetworkStats"/>
 /// <seealso name="GetNetworkStats"/>
 /// <seealso name="NetStats_GetConnectedTime"/>
@@ -1480,10 +1480,10 @@ native NetStats_MessagesRecvPerSecond(playerID);
 /// <remarks>This function has been found to be currently unreliable the output is not as expected when compared to the client. Therefore this function should not be used as a packet loss kicker. </remarks>
 /// <remarks>A more accurate packetloss function can be found here: <a href="http://forum.sa-mp.com/showpost.php?p=2488911&amp;postcount=984">http://forum.sa-mp.com/showpost.php?p=2488911&amp;postcount=984</a></remarks>
 /// <returns>The percentage packet loss as a float. <b><c>0.0</c></b> if player not connected.</returns>
-native Float:NetStats_PacketLossPercent(playerID);
+native Float:NetStats_PacketLossPercent(playerid);
 
 /// <summary>Gets the player's current connection status.</summary>
-/// <param name="playerID">The ID of the player to get the connection status of</param>
+/// <param name="playerid">The ID of the player to get the connection status of</param>
 /// <seealso name="GetPlayerNetworkStats"/>
 /// <seealso name="GetNetworkStats"/>
 /// <seealso name="NetStats_GetConnectedTime"/>
@@ -1513,10 +1513,10 @@ native Float:NetStats_PacketLossPercent(playerID);
 ///   </ul>
 /// </remarks>
 /// <returns>The player's connection status, as an integer value.</returns>
-native NetStats_ConnectionStatus(playerID);
+native NetStats_ConnectionStatus(playerid);
 
 /// <summary>Get a player's IP and port.</summary>
-/// <param name="playerID">The ID of the player to get the IP and port of</param>
+/// <param name="playerid">The ID of the player to get the IP and port of</param>
 /// <param name="output">A string array to store the IP and port in, passed by reference</param>
 /// <param name="size">The maximum length of the IP/port. 22 is recommended</param>
 /// <seealso name="GetPlayerIp"/>
@@ -1531,7 +1531,7 @@ native NetStats_ConnectionStatus(playerID);
 /// <seealso name="NetStats_PacketLossPercent"/>
 /// <seealso name="NetStats_ConnectionStatus"/>
 /// <remarks>This function was added in <b>SA-MP 0.3z</b> and will not work in earlier versions!</remarks>
-native NetStats_GetIpPort(playerID, output[], size = sizeof (output));
+native NetStats_GetIpPort(playerid, output[], size = sizeof (output));
 
 // Menu
 
@@ -1559,17 +1559,17 @@ native NetStats_GetIpPort(playerID, output[], size = sizeof (output));
 native Menu:CreateMenu(const title[], columns, Float:x, Float:y, Float:col1width, Float:col2width = 0.0);
 
 /// <summary>Destroys the specified menu.</summary>
-/// <param name="menuID">The menu ID to destroy</param>
+/// <param name="menuid">The menu ID to destroy</param>
 /// <seealso name="CreateMenu"/>
 /// <seealso name="SetMenuColumnHeader"/>
 /// <seealso name="AddMenuItem"/>
 /// <seealso name="OnPlayerSelectedMenuRow"/>
 /// <seealso name="OnPlayerExitedMenu"/>
 /// <returns><b><c>1</c></b> if the destroying was successful, otherwise <b><c>0</c></b>.</returns>
-native DestroyMenu(Menu:menuID);
+native DestroyMenu(Menu:menuid);
 
 /// <summary>Adds an item to a specified menu.</summary>
-/// <param name="menuID">The menu ID to add an item to</param>
+/// <param name="menuid">The menu ID to add an item to</param>
 /// <param name="column">The column to add the item to</param>
 /// <param name="menutext">The text for the new menu item</param>
 /// <remarks>
@@ -1587,10 +1587,10 @@ native DestroyMenu(Menu:menuID);
 /// <seealso name="DestroyMenu"/>
 /// <seealso name="OnPlayerSelectedMenuRow"/>
 /// <seealso name="OnPlayerExitedMenu"/>
-native AddMenuItem(Menu:menuID, column, const menutext[]);
+native AddMenuItem(Menu:menuid, column, const menutext[]);
 
 /// <summary>Sets the caption of a column in a menu.</summary>
-/// <param name="menuID">ID of the menu to change</param>
+/// <param name="menuid">ID of the menu to change</param>
 /// <param name="column">The column (<b><c>0</c></b> or <b><c>1</c></b>) to set the header of</param>
 /// <param name="columnheader">The caption text for the column</param>
 /// <seealso name="AddMenuItem"/>
@@ -1598,11 +1598,11 @@ native AddMenuItem(Menu:menuID, column, const menutext[]);
 /// <seealso name="OnPlayerSelectedMenuRow"/>
 /// <remarks>Crashes when passed an invalid menu ID.</remarks>
 /// <remarks>Note that you can add only <b><c>12</c></b> items with <a href="#AddMenuItem">AddMenuItem</a>. The 13th object of a menu would replace the header of the column which is correctly set with this function.</remarks>
-native SetMenuColumnHeader(Menu:menuID, column, const columnheader[]);
+native SetMenuColumnHeader(Menu:menuid, column, const columnheader[]);
 
 /// <summary>Shows a previously created menu for a player.</summary>
-/// <param name="menuID">The ID of the menu to show. Returned by CreateMenu</param>
-/// <param name="playerID">The ID of the player to whom the menu will be shown</param>
+/// <param name="menuid">The ID of the menu to show. Returned by CreateMenu</param>
+/// <param name="playerid">The ID of the player to whom the menu will be shown</param>
 /// <seealso name="CreateMenu"/>
 /// <seealso name="AddMenuItem"/>
 /// <seealso name="SetMenuColumnHeader"/>
@@ -1614,11 +1614,11 @@ native SetMenuColumnHeader(Menu:menuID, column, const columnheader[]);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. Menu and/or player doesn't exist.
 /// </returns>
-native ShowMenuForPlayer(Menu:menuID, playerID);
+native ShowMenuForPlayer(Menu:menuid, playerid);
 
 /// <summary>Hides a menu for a player.</summary>
-/// <param name="menuID">The ID of the menu to hide. Returned by <a href="#CreateMenu">CreateMenu</a> and passed to <a href="#OnPlayerSelectedMenuRow">OnPlayerSelectedMenuRow</a></param>
-/// <param name="playerID">The ID of the player that the menu will be hidden for</param>
+/// <param name="menuid">The ID of the menu to hide. Returned by <a href="#CreateMenu">CreateMenu</a> and passed to <a href="#OnPlayerSelectedMenuRow">OnPlayerSelectedMenuRow</a></param>
+/// <param name="playerid">The ID of the player that the menu will be hidden for</param>
 /// <seealso name="ShowMenuForPlayer"/>
 /// <seealso name="AddMenuItem"/>
 /// <seealso name="SetMenuColumnHeader"/>
@@ -1627,25 +1627,25 @@ native ShowMenuForPlayer(Menu:menuID, playerID);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute.
 /// </returns>
-native HideMenuForPlayer(Menu:menuID, playerID);
+native HideMenuForPlayer(Menu:menuid, playerid);
 
 /// <summary>Check if a menu ID is vliad.</summary>
-/// <param name="menuID">The menu to check for existance</param>
+/// <param name="menuid">The menu to check for existance</param>
 /// <seealso name="CreateMenu"/>
 /// <seealso name="DestroyMenu"/>
 /// <returns><b><c>1</c></b> if the menu is valid, otherwise <b><c>0</c></b>.</returns>
-native IsValidMenu(Menu:menuID);
+native IsValidMenu(Menu:menuid);
 
 /// <summary>Disable a menu.</summary>
-/// <param name="menuID">The ID of the menu to disable</param>
+/// <param name="menuid">The ID of the menu to disable</param>
 /// <seealso name="CreateMenu"/>
 /// <seealso name="DestroyMenu"/>
 /// <seealso name="AddMenuItem"/>
 /// <remarks>Crashes when passed an invalid menu ID.</remarks>
-native DisableMenu(Menu:menuID);
+native DisableMenu(Menu:menuid);
 
 /// <summary>Disable a specific row in a menu <b>for all players</b>. It will be greyed-out and can't be selected by players.</summary>
-/// <param name="menuID">The ID of the menu to disable a row of. Ensure this is valid, as an invalid menu ID will crash the entire server</param>
+/// <param name="menuid">The ID of the menu to disable a row of. Ensure this is valid, as an invalid menu ID will crash the entire server</param>
 /// <param name="row">The ID of the row to disable (rows start at 0)</param>
 /// <seealso name="CreateMenu"/>
 /// <seealso name="DestroyMenu"/>
@@ -1655,10 +1655,10 @@ native DisableMenu(Menu:menuID);
 ///   This function disabled the specified menu row for <b>all players</b>. There is no function to disable a menu row for a specific player. You'd have to create two menus - one with a row disabled, and one without. Or one per player.
 /// </remarks>
 /// <returns>This function always returns <b><c>1</c></b>, even if the function fails. If an invalid row is specified, nothing will happen. If an invalid menu ID is specified, the server will crash.</returns>
-native DisableMenuRow(Menu:menuID, row);
+native DisableMenuRow(Menu:menuid, row);
 
 /// <summary>Gets the ID of the menu the player is currently viewing (shown by <a href="#ShowMenuForPlayer">ShowMenuForPlayer</a>).</summary>
-/// <param name="playerID">The ID of the player to get the current menu of</param>
+/// <param name="playerid">The ID of the player to get the current menu of</param>
 /// <seealso name="ShowMenuForPlayer"/>
 /// <seealso name="HideMenuForPlayer"/>
 /// <seealso name="CreateMenu"/>
@@ -1668,7 +1668,7 @@ native DisableMenuRow(Menu:menuID, row);
 /// <seealso name="OnPlayerExitedMenu"/>
 /// <remarks>Returns previous menu when none is displayed.</remarks>
 /// <returns>The ID of the player's currently shown menu, or <b><c>INVALID_MENU</c></b> (<b><c>255</c></b>) if no menu shown.</returns>
-native Menu:GetPlayerMenu(playerID);
+native Menu:GetPlayerMenu(playerid);
 
 /// <summary>Creates a textdraw. Textdraws are, as the name implies, text (mainly - there can be boxes, sprites and model previews (skins/vehicles/weapons/objects too) that is drawn on a player's screens.</summary>
 /// <param name="x">The x (left/right) coordinate to create the textdraw at</param>
@@ -1802,22 +1802,22 @@ native TextDrawSetProportional(Text:text, set);
 native TextDrawSetSelectable(Text:text, set);
 
 /// <summary>Shows a textdraw for a specific player.</summary>
-/// <param name="playerID">The ID of the player to show the textdraw for</param>
+/// <param name="playerid">The ID of the player to show the textdraw for</param>
 /// <param name="text">The ID of the textdraw to show. Returned by <a href="#TextDrawCreate">TextDrawCreate</a></param>
 /// <remarks>If only a single player will see a textdraw, it might be wise to use player-textdraws instead. This is also useful for textdraws that need to show information specific for an individual player.</remarks>
 /// <returns>
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. This means either the player and/or textdraw specified does not exist.
 /// </returns>
-native TextDrawShowForPlayer(playerID, Text:text);
+native TextDrawShowForPlayer(playerid, Text:text);
 
 /// <summary>Hides a textdraw for a specific player.</summary>
-/// <param name="playerID">The ID of the player that the textdraw should be hidden for</param>
+/// <param name="playerid">The ID of the player that the textdraw should be hidden for</param>
 /// <param name="text">The ID of the textdraw to hide</param>
 /// <seealso name="TextDrawHideForAll"/>
 /// <seealso name="TextDrawShowForPlayer"/>
 /// <seealso name="TextDrawShowForAll"/>
-native TextDrawHideForPlayer(playerID, Text:text);
+native TextDrawHideForPlayer(playerid, Text:text);
 
 /// <summary>Shows a textdraw for all players.</summary>
 /// <param name="text">The ID of the textdraw to show. Returned by <a href="#TextDrawCreate">TextDrawCreate</a></param>
@@ -1906,7 +1906,7 @@ native GangZoneCreate(Float:minx, Float:miny, Float:maxx, Float:maxy);
 native GangZoneDestroy(zone);
 
 /// <summary>Show a gangzone for a player. Must be created with <a href="#GangZoneCreate">GangZoneCreate</a> first.</summary>
-/// <param name="playerID">The ID of the player you would like to show the gangzone for.</param>
+/// <param name="playerid">The ID of the player you would like to show the gangzone for.</param>
 /// <param name="zone">The ID of the gang zone to show for the player. Returned by <a href="#GangZoneCreate">GangZoneCreate</a></param>
 /// <param name="colour">The colour to show the gang zone, as an integer or hex in <b>RGBA</b> colour format. Alpha transparency supported</param>
 /// <seealso name="GangZoneCreate"/>
@@ -1919,7 +1919,7 @@ native GangZoneDestroy(zone);
 /// <seealso name="GangZoneStopFlashForPlayer"/>
 /// <seealso name="GangZoneStopFlashForAll"/>
 /// <returns><b><c>1</c></b> if the gangzone was shown, otherwise <b><c>0</c></b> (non-existant).</returns>
-native GangZoneShowForPlayer(playerID, zone, colour);
+native GangZoneShowForPlayer(playerid, zone, colour);
 
 /// <summary>Shows a gangzone with the desired colour to all players.</summary>
 /// <param name="zone">The ID of the gangzone to show (returned by <a href="# GangZoneCreate">GangZoneCreate</a>)</param>
@@ -1940,7 +1940,7 @@ native GangZoneShowForPlayer(playerID, zone, colour);
 native GangZoneShowForAll(zone, colour);
 
 /// <summary>Hides a gangzone for a player.</summary>
-/// <param name="playerID">The ID of the player to hide the gangzone for</param>
+/// <param name="playerid">The ID of the player to hide the gangzone for</param>
 /// <param name="zone">The ID of the zone to hide</param>
 /// <seealso name="GangZoneCreate"/>
 /// <seealso name="GangZoneDestroy"/>
@@ -1951,7 +1951,7 @@ native GangZoneShowForAll(zone, colour);
 /// <seealso name="GangZoneFlashForAll"/>
 /// <seealso name="GangZoneStopFlashForPlayer"/>
 /// <seealso name="GangZoneStopFlashForAll"/>
-native GangZoneHideForPlayer(playerID, zone);
+native GangZoneHideForPlayer(playerid, zone);
 
 /// <summary>GangZoneHideForAll hides a gangzone from all players.</summary>
 /// <param name="zone">The zone to hide</param>
@@ -1967,7 +1967,7 @@ native GangZoneHideForPlayer(playerID, zone);
 native GangZoneHideForAll(zone);
 
 /// <summary>Makes a gangzone flash for a player.</summary>
-/// <param name="playerID">The ID of the player to flash the gangzone for</param>
+/// <param name="playerid">The ID of the player to flash the gangzone for</param>
 /// <param name="zone">The ID of the zone to flash</param>
 /// <param name="flashColour">The colour to flash the gang zone, as an integer or hex in <b>RGBA</b> colour format. Alpha transparency supported</param>
 /// <seealso name="GangZoneCreate"/>
@@ -1979,7 +1979,7 @@ native GangZoneHideForAll(zone);
 /// <seealso name="GangZoneFlashForAll"/>
 /// <seealso name="GangZoneStopFlashForPlayer"/>
 /// <seealso name="GangZoneStopFlashForAll"/>
-native GangZoneFlashForPlayer(playerID, zone, flashColour);
+native GangZoneFlashForPlayer(playerid, zone, flashColour);
 
 /// <summary>GangZoneFlashForAll flashes a gangzone for all players.</summary>
 /// <param name="zone">The zone to flash</param>
@@ -1996,7 +1996,7 @@ native GangZoneFlashForPlayer(playerID, zone, flashColour);
 native GangZoneFlashForAll(zone, flashColour);
 
 /// <summary>Stops a gangzone flashing for a player.</summary>
-/// <param name="playerID">The ID of the player to stop the gangzone flashing for</param>
+/// <param name="playerid">The ID of the player to stop the gangzone flashing for</param>
 /// <param name="zone">The ID of the gangzonezone to stop flashing</param>
 /// <seealso name="GangZoneCreate"/>
 /// <seealso name="GangZoneDestroy"/>
@@ -2007,7 +2007,7 @@ native GangZoneFlashForAll(zone, flashColour);
 /// <seealso name="GangZoneFlashForPlayer"/>
 /// <seealso name="GangZoneFlashForAll"/>
 /// <seealso name="GangZoneStopFlashForAll"/>
-native GangZoneStopFlashForPlayer(playerID, zone);
+native GangZoneStopFlashForPlayer(playerid, zone);
 
 /// <summary>Stops a gangzone flashing for all players.</summary>
 /// <param name="zone">The ID of the zone to stop flashing. Returned by <a href="#GangZoneCreate">GangZoneCreate</a></param>
@@ -2055,7 +2055,7 @@ native GangZoneStopFlashForAll(zone);
 native Text3D:Create3DTextLabel(const text[], colour, Float:x, Float:y, Float:z, Float:drawDistance, virtualWorld, bool:testLOS = false);
 
 /// <summary>Delete a 3D text label (created with <a href="#Create3DTextLabel">Create3DTextLabel</a>).</summary>
-/// <param name="textID">The ID of the 3D text label to delete</param>
+/// <param name="textid">The ID of the 3D text label to delete</param>
 /// <seealso name="Create3DTextLabel"/>
 /// <seealso name="Attach3DTextLabelToPlayer"/>
 /// <seealso name="Attach3DTextLabelToVehicle"/>
@@ -2065,11 +2065,11 @@ native Text3D:Create3DTextLabel(const text[], colour, Float:x, Float:y, Float:z,
 /// <seealso name="UpdatePlayer3DTextLabelText"/>
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <returns><b><c>1</c></b> if the 3D text label was deleted, otherwise <b><c>0</c></b>.</returns>
-native Delete3DTextLabel(Text3D:textID);
+native Delete3DTextLabel(Text3D:textid);
 
 /// <summary>Attach a 3D text label to a player.</summary>
-/// <param name="textID">The ID of the 3D text label to attach. Returned by <a href="#Create3DTextLabel">Create3DTextLabel</a></param>
-/// <param name="playerID">The ID of the player to attach the label to</param>
+/// <param name="textid">The ID of the 3D text label to attach. Returned by <a href="#Create3DTextLabel">Create3DTextLabel</a></param>
+/// <param name="playerid">The ID of the player to attach the label to</param>
 /// <param name="offsetX">The x offset from the player</param>
 /// <param name="offsetY">The y offset from the player</param>
 /// <param name="offsetZ">The z offset from the player</param>
@@ -2085,11 +2085,11 @@ native Delete3DTextLabel(Text3D:textID);
 /// <b><c>1</c></b>: The function executed successfully.<p/>
 /// <b><c>0</c></b>: The function failed to execute. This means the player and/or label do not exist.
 /// </returns>
-native Attach3DTextLabelToPlayer(Text3D:textID, playerID, Float:offsetX, Float:offsetY, Float:offsetZ);
+native Attach3DTextLabelToPlayer(Text3D:textid, playerid, Float:offsetX, Float:offsetY, Float:offsetZ);
 
 /// <summary>Attaches a 3D Text Label to a specific vehicle.</summary>
-/// <param name="textID">The ID of the 3D text label to attach. Returned by <a href="#Create3DTextLabel">Create3DTextLabel</a></param>
-/// <param name="vehicleID">The vehicle you want to attach the 3D Text Label to</param>
+/// <param name="textid">The ID of the 3D text label to attach. Returned by <a href="#Create3DTextLabel">Create3DTextLabel</a></param>
+/// <param name="vehicleid">The vehicle you want to attach the 3D Text Label to</param>
 /// <param name="offsetX">The offset-x coordinate of the player vehicle (the vehicle is 0.0,0.0,0.0).</param>
 /// <param name="offsetY">The offset-y coordinate of the player vehicle (the vehicle is 0.0,0.0,0.0).</param>
 /// <param name="offsetZ">The offset-z coordinate of the player vehicle (the vehicle is 0.0,0.0,0.0).</param>
@@ -2101,10 +2101,10 @@ native Attach3DTextLabelToPlayer(Text3D:textID, playerID, Float:offsetX, Float:o
 /// <seealso name="DeletePlayer3DTextLabel"/>
 /// <seealso name="UpdatePlayer3DTextLabelText"/>
 /// <remarks>Attach3DTextLabelToPlayer was added in SA-MP 0.3a 	This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
-native Attach3DTextLabelToVehicle(Text3D:textID, vehicleID, Float:offsetX, Float:offsetY, Float:offsetZ);
+native Attach3DTextLabelToVehicle(Text3D:textid, vehicleid, Float:offsetX, Float:offsetY, Float:offsetZ);
 
 /// <summary>Updates a 3D Text Label text and colour.</summary>
-/// <param name="textID">The 3D Text Label you want to update</param>
+/// <param name="textid">The 3D Text Label you want to update</param>
 /// <param name="colour">The colour the 3D Text Label should have from now on</param>
 /// <param name="text">The new text which the 3D Text Label should have from now on</param>
 /// <seealso name="Create3DTextLabel"/>
@@ -2116,12 +2116,12 @@ native Attach3DTextLabelToVehicle(Text3D:textID, vehicleID, Float:offsetX, Float
 /// <seealso name="UpdatePlayer3DTextLabelText"/>
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <remarks>If <paramref name="text"/> is empty, the server/clients next to the text might crash!</remarks>
-native Update3DTextLabelText(Text3D:textID, colour, const text[]);
+native Update3DTextLabelText(Text3D:textid, colour, const text[]);
 
 // Per-player 3D Text Labels
 
 /// <summary>Creates a 3D Text Label only for a specific player.</summary>
-/// <param name="playerID">The player which should see the newly created 3DText Label</param>
+/// <param name="playerid">The player which should see the newly created 3DText Label</param>
 /// <param name="text">The text to display</param>
 /// <param name="colour">The text colour</param>
 /// <param name="x">x Coordinate (or offset if attached)</param>
@@ -2142,11 +2142,11 @@ native Update3DTextLabelText(Text3D:textID, colour, const text[]);
 /// <remarks>If <paramref name="text"/> is empty, the server/clients next to the text might crash!</remarks>
 /// <remarks>drawdistance seems to be a lot smaller when spectating.</remarks>
 /// <returns>The ID of the newly created Player 3D Text Label, or <b><c>INVALID_3DTEXT_ID</c></b> if the Player 3D Text Label limit (<b><c>MAX_3DTEXT_PLAYER</c></b>) was reached.</returns>
-native PlayerText3D:CreatePlayer3DTextLabel(playerID, const text[], colour, Float:x, Float:y, Float:z, Float:drawDistance, parentPlayer = INVALID_PLAYER_ID, parentVehicle = INVALID_VEHICLE_ID, bool:testLOS = false);
+native PlayerText3D:CreatePlayer3DTextLabel(playerid, const text[], colour, Float:x, Float:y, Float:z, Float:drawDistance, parentPlayer = INVALID_PLAYER_ID, parentVehicle = INVALID_VEHICLE_ID, bool:testLOS = false);
 
 /// <summary>Destroy a 3D text label that was created using <a href="#CreatePlayer3DTextLabel">CreatePlayer3DTextLabel</a>.</summary>
-/// <param name="playerID">The ID of the player whose 3D text label to delete</param>
-/// <param name="textID">The ID of the player's 3D text label to delete</param>
+/// <param name="playerid">The ID of the player whose 3D text label to delete</param>
+/// <param name="textid">The ID of the player's 3D text label to delete</param>
 /// <seealso name="Create3DTextLabel"/>
 /// <seealso name="Attach3DTextLabelToPlayer"/>
 /// <seealso name="Attach3DTextLabelToVehicle"/>
@@ -2158,11 +2158,11 @@ native PlayerText3D:CreatePlayer3DTextLabel(playerID, const text[], colour, Floa
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. This means the label specified doesn't exist.
 /// </returns>
-native DeletePlayer3DTextLabel(playerID, PlayerText3D:textID);
+native DeletePlayer3DTextLabel(playerid, PlayerText3D:textid);
 
 /// <summary>Updates a player 3D Text Label's text and colour.</summary>
-/// <param name="playerID">The ID of the player for which the 3D Text Label was created</param>
-/// <param name="textID">The 3D Text Label you want to update</param>
+/// <param name="playerid">The ID of the player for which the 3D Text Label was created</param>
+/// <param name="textid">The 3D Text Label you want to update</param>
 /// <param name="colour">The colour the 3D Text Label should have from now on</param>
 /// <param name="text">The new text which the 3D Text Label should have from now on</param>
 /// <seealso name="Create3DTextLabel"/>
@@ -2174,11 +2174,11 @@ native DeletePlayer3DTextLabel(playerID, PlayerText3D:textID);
 /// <seealso name="DeletePlayer3DTextLabel"/>
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <remarks>If <paramref name="text"/> is empty, the server/clients next to the text might crash!</remarks>
-native UpdatePlayer3DTextLabelText(playerID, PlayerText3D:textID, colour, const text[]);
+native UpdatePlayer3DTextLabelText(playerid, PlayerText3D:textid, colour, const text[]);
 
 /// <summary>Shows the player a synchronous (only one at a time) dialog box.</summary>
-/// <param name="playerID">The ID of the player to show the dialog to</param>
-/// <param name="dialogID">An ID to assign this dialog to, so responses can be processed. Max dialogID is <b><c>32767</c></b>. Using negative values will close any open dialog</param>
+/// <param name="playerid">The ID of the player to show the dialog to</param>
+/// <param name="dialogid">An ID to assign this dialog to, so responses can be processed. Max dialogid is <b><c>32767</c></b>. Using negative values will close any open dialog</param>
 /// <param name="style">The style of the dialog</param>
 /// <param name="caption">The title at the top of the dialog. The length of the caption can not exceed more than 64 characters before it starts to cut off</param>
 /// <param name="info">The text to display in the main dialog. Use <b><c>\n</c></b> to start a new line and <b><c>\t</c></b> to tabulate</param>
@@ -2188,18 +2188,18 @@ native UpdatePlayer3DTextLabelText(playerID, PlayerText3D:textID, colour, const 
 /// <seealso name="OnDialogResponse"/>
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <remarks>Use colour embedding for multiple colours in the text. </remarks>
-/// <remarks>Using <b><c>-1</c></b> as dialogID closes all dialogs currently shown on the client's screen. </remarks>
+/// <remarks>Using <b><c>-1</c></b> as dialogid closes all dialogs currently shown on the client's screen. </remarks>
 /// <returns>
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. This means the player is not connected.<p/>
 /// </returns>
-native ShowPlayerDialog(playerID, dialogID, style, const caption[], const info[], const button1[], const button2[]);
+native ShowPlayerDialog(playerid, dialogid, style, const caption[], const info[], const button1[], const button2[]);
 
 /// <summary>Get a players unique ID.</summary>
-/// <param name="playerID">The player to get the unique ID of</param>
+/// <param name="playerid">The player to get the unique ID of</param>
 /// <param name="serial">Where to save the unique ID</param>
 /// <param name="maxlen">The size of "serial"</param>
-native gpci(playerID, serial[], maxlen);
+native gpci(playerid, serial[], maxlen);
 
 // --------------------------------------------------
 // Forwards (Callback declarations)

@@ -96,7 +96,7 @@
 // Player
 
 /// <summary>This function can be used to change the spawn information of a specific player. It allows you to automatically set someone's spawn weapons, their team, skin and spawn position, normally used in case of minigames or automatic-spawn systems. This function is more crash-safe then using <a href="#SetPlayerSkin">SetPlayerSkin</a> in <a href="#OnPlayerSpawn">OnPlayerSpawn</a> and/or <a href="#OnPlayerRequestClass">OnPlayerRequestClass</a>, even though this has been fixed in 0.2.</summary>
-/// <param name="playerID">The PlayerID of who you want to set the spawn information</param>
+/// <param name="playerid">The Playerid of who you want to set the spawn information</param>
 /// <param name="team">The Team-ID of the chosen player</param>
 /// <param name="skin">The skin which the player will spawn with</param>
 /// <param name="x">The x-coordinate of the player's spawn position</param>
@@ -112,10 +112,10 @@
 /// <seealso name="SetPlayerSkin"/>
 /// <seealso name="SetPlayerTeam"/>
 /// <seealso name="SpawnPlayer"/>
-native SetSpawnInfo(playerID, team, skin, Float:x, Float:y, Float:z, Float:rotation, weapon1, weapon1_ammo, weapon2, weapon2_ammo, weapon3, weapon3_ammo);
+native SetSpawnInfo(playerid, team, skin, Float:x, Float:y, Float:z, Float:rotation, weapon1, weapon1_ammo, weapon2, weapon2_ammo, weapon3, weapon3_ammo);
 
 /// <summary>(Re)Spawns a player.</summary>
-/// <param name="playerID">The ID of the player to spawn</param>
+/// <param name="playerid">The ID of the player to spawn</param>
 /// <seealso name="SetSpawnInfo"/>
 /// <seealso name="AddPlayerClass"/>
 /// <seealso name="OnPlayerSpawn"/>
@@ -124,12 +124,12 @@ native SetSpawnInfo(playerID, team, skin, Float:x, Float:y, Float:z, Float:rotat
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. This means the player is not connected.
 /// </returns>
-native SpawnPlayer(playerID);
+native SpawnPlayer(playerid);
 
 // Player info
 
 /// <summary>Set a player's position.</summary>
-/// <param name="playerID">The ID of the player to set the position of</param>
+/// <param name="playerid">The ID of the player to set the position of</param>
 /// <param name="x">The x coordinate to position the player at</param>
 /// <param name="y">The y coordinate to position the player at</param>
 /// <param name="z">The z coordinate to position the player at</param>
@@ -143,10 +143,10 @@ native SpawnPlayer(playerID);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. This means the player specified does not exist.
 /// </returns>
-native SetPlayerPos(playerID, Float:x, Float:y, Float:z);
+native SetPlayerPos(playerid, Float:x, Float:y, Float:z);
 
 /// <summary>This sets the players position then adjusts the players z-coordinate to the nearest solid ground under the position.</summary>
-/// <param name="playerID">The ID of the player to set the position of</param>
+/// <param name="playerid">The ID of the player to set the position of</param>
 /// <param name="x">The x coordinate to position the player at</param>
 /// <param name="y">The x coordinate to position the player at</param>
 /// <param name="z">The z coordinate to position the player at</param>
@@ -157,10 +157,10 @@ native SetPlayerPos(playerID, Float:x, Float:y, Float:z);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. This means the player specified does not exist.
 /// </returns>
-native SetPlayerPosFindZ(playerID, Float:x, Float:y, Float:z);
+native SetPlayerPosFindZ(playerid, Float:x, Float:y, Float:z);
 
 /// <summary>Get the position of a player, represented by x, y and z coordinates.</summary>
-/// <param name="playerID">The ID of the player to get the position of</param>
+/// <param name="playerid">The ID of the player to get the position of</param>
 /// <param name="x">A float variable in which to store the x coordinate in, passed by reference</param>
 /// <param name="y">A float variable in which to store the y coordinate in, passed by reference</param>
 /// <param name="z">A float variable in which to store the z coordinate in, passed by reference</param>
@@ -170,10 +170,10 @@ native SetPlayerPosFindZ(playerID, Float:x, Float:y, Float:z);
 /// <seealso name="GetPlayerDistanceFromPoint"/>
 /// <remarks>This function is known to return unreliable values when used in <a href="#OnPlayerDisconnect">OnPlayerDisconnect</a> and <a href="#OnPlayerRequestClass">OnPlayerRequestClass</a>. This is because the player is not spawned.</remarks>
 /// <returns><b><c>true</c></b> on success, <b><c>false</c></b> on failure (i.e. player not connected).</returns>
-native GetPlayerPos(playerID, &Float:x, &Float:y, &Float:z);
+native GetPlayerPos(playerid, &Float:x, &Float:y, &Float:z);
 
 /// <summary>Set a player's facing angle (z rotation).</summary>
-/// <param name="playerID">The ID of the player to set the facing angle of</param>
+/// <param name="playerid">The ID of the player to set the facing angle of</param>
 /// <param name="ang">The angle the player should face</param>
 /// <seealso name="GetPlayerFacingAngle"/>
 /// <seealso name="SetPlayerPos"/>
@@ -182,19 +182,19 @@ native GetPlayerPos(playerID, &Float:x, &Float:y, &Float:z);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. The player specified does not exist.
 /// </returns>
-native SetPlayerFacingAngle(playerID, Float:ang);
+native SetPlayerFacingAngle(playerid, Float:ang);
 
 /// <summary>Gets the angle a player is facing.</summary>
-/// <param name="playerID">The player you want to get the angle of</param>
+/// <param name="playerid">The player you want to get the angle of</param>
 /// <param name="ang">The Float to store the angle in, passed by reference</param>
 /// <seealso name="GetVehicleZAngle"/>
 /// <seealso name="SetPlayerFacingAngle"/>
 /// <remarks>Angles are reversed in GTA:SA; 90 degrees would be East in the real world, but in GTA:SA 90 degrees is in fact West. North and South are still 0/360 and 180. To convert this, simply do <b>360 - angle</b>.</remarks>
 /// <remarks>Angles returned when inside a vehicle is rarely correct. To get the correct facing angle while inside a vehicle, use <a href="#GetVehicleZAngle">GetVehicleZAngle</a>.</remarks>
-native GetPlayerFacingAngle(playerID, &Float:ang);
+native GetPlayerFacingAngle(playerid, &Float:ang);
 
 /// <summary>Checks if a player is in range of a point. This native function is faster than the PAWN implementation using distance formula.</summary>
-/// <param name="playerID">The ID of the player</param>
+/// <param name="playerid">The ID of the player</param>
 /// <param name="range">The furthest distance the player can be from the point to be in range</param>
 /// <param name="x">The x coordinate of the point to check the range to</param>
 /// <param name="y">The y coordinate of the point to check the range to</param>
@@ -204,10 +204,10 @@ native GetPlayerFacingAngle(playerID, &Float:ang);
 /// <seealso name="GetPlayerPos"/>
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <returns><b><c>1</c></b> if the player is in range, <b><c>0</c></b> if not.</returns>
-native IsPlayerInRangeOfPoint(playerID, Float:range, Float:x, Float:y, Float:z);
+native IsPlayerInRangeOfPoint(playerid, Float:range, Float:x, Float:y, Float:z);
 
 /// <summary>Calculate the distance between a player and a map coordinate.</summary>
-/// <param name="playerID">The ID of the player to calculate the distance from</param>
+/// <param name="playerid">The ID of the player to calculate the distance from</param>
 /// <param name="x">The x map coordinate</param>
 /// <param name="y">The y map coordinate</param>
 /// <param name="z">The z map coordinate</param>
@@ -216,11 +216,11 @@ native IsPlayerInRangeOfPoint(playerID, Float:range, Float:x, Float:y, Float:z);
 /// <seealso name="GetPlayerPos"/>
 /// <remarks>This function was added in <b>SA-MP 0.3c R3</b> and will not work in earlier versions!</remarks>
 /// <returns>The distance between the player and the point as a float.</returns>
-native Float:GetPlayerDistanceFromPoint(playerID, Float:x, Float:y, Float:z);
+native Float:GetPlayerDistanceFromPoint(playerid, Float:x, Float:y, Float:z);
 
 /// <summary>Checks if a player is streamed in another player's client.</summary>
-/// <param name="playerID">The ID of the player to check is streamed in</param>
-/// <param name="forplayerID">The ID of the player to check if playerID is streamed in for</param>
+/// <param name="playerid">The ID of the player to check is streamed in</param>
+/// <param name="forplayerid">The ID of the player to check if playerid is streamed in for</param>
 /// <seealso name="IsActorStreamedIn"/>
 /// <seealso name="IsVehicleStreamedIn"/>
 /// <seealso name="OnPlayerStreamIn"/>
@@ -228,14 +228,14 @@ native Float:GetPlayerDistanceFromPoint(playerID, Float:x, Float:y, Float:z);
 /// <seealso name="OnVehicleStreamIn"/>
 /// <seealso name="OnVehicleStreamOut"/>
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
-/// <remarks>Players aren't streamed in on their own client, so if playerID is the same as forplayerID it will return false!</remarks>
+/// <remarks>Players aren't streamed in on their own client, so if playerid is the same as forplayerid it will return false!</remarks>
 /// <remarks>Players stream out if they are more than <b><c>150</c></b> meters away (see <c>server.cfg</c> - <c>stream_distance</c>)</remarks>
 /// <returns><b><c>1</c></b> if the player is streamed in, <b><c>0</c></b> if not.</returns>
-native IsPlayerStreamedIn(playerID, forplayerID);
+native IsPlayerStreamedIn(playerid, forplayerid);
 
-/// <summary>Set a player's interior. A list of currently known interiors and their positions can be found <a href="http://wiki.sa-mp.com/wiki/InteriorIDs">here</a>.</summary>
-/// <param name="playerID">The ID of the player to set the interior of</param>
-/// <param name="interiorID">The <a href="http://wiki.sa-mp.com/wiki/InteriorIDs">interior ID</a> to set the player in</param>
+/// <summary>Set a player's interior. A list of currently known interiors and their positions can be found <a href="http://wiki.sa-mp.com/wiki/Interiorids">here</a>.</summary>
+/// <param name="playerid">The ID of the player to set the interior of</param>
+/// <param name="interiorid">The <a href="http://wiki.sa-mp.com/wiki/Interiorids">interior ID</a> to set the player in</param>
 /// <seealso name="GetPlayerInterior"/>
 /// <seealso name="LinkVehicleToInterior"/>
 /// <seealso name="OnPlayerInteriorChange"/>
@@ -243,18 +243,18 @@ native IsPlayerStreamedIn(playerID, forplayerID);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. This means the player is not connected.
 /// </returns>
-native SetPlayerInterior(playerID, interiorID);
+native SetPlayerInterior(playerid, interiorid);
 
-/// <summary>Retrieves the player's current interior. A list of currently known interiors with their positions can be found on <a href="http://wiki.sa-mp.com/wiki/InteriorIDs">this</a> page.</summary>
-/// <param name="playerID">The player to get the interior ID of</param>
+/// <summary>Retrieves the player's current interior. A list of currently known interiors with their positions can be found on <a href="http://wiki.sa-mp.com/wiki/Interiorids">this</a> page.</summary>
+/// <param name="playerid">The player to get the interior ID of</param>
 /// <seealso name="SetPlayerInterior"/>
 /// <seealso name="GetPlayerVirtualWorld"/>
 /// <remarks>Always returns <b><c>0</c></b> for NPCs.</remarks>
 /// <returns>The interior ID the player is currently in.</returns>
-native GetPlayerInterior(playerID);
+native GetPlayerInterior(playerid);
 
 /// <summary>Set the health of a player.</summary>
-/// <param name="playerID">The ID of the player to set the health of</param>
+/// <param name="playerid">The ID of the player to set the health of</param>
 /// <param name="health">The value to set the player's health to. Max health that can be displayed in the HUD is <b><c>100</c></b>, though higher values are valid</param>
 /// <seealso name="GetPlayerHealth"/>
 /// <seealso name="GetPlayerArmour"/>
@@ -266,10 +266,10 @@ native GetPlayerInterior(playerID);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. This means the player specified does not exist.
 /// </returns>
-native SetPlayerHealth(playerID, Float:health);
+native SetPlayerHealth(playerid, Float:health);
 
 /// <summary>The function GetPlayerHealth allows you to retrieve the health of a player. Useful for cheat detection, among other things.</summary>
-/// <param name="playerID">The ID of the player</param>
+/// <param name="playerid">The ID of the player</param>
 /// <param name="health">Float to store health, passed by reference</param>
 /// <seealso name="SetPlayerHealth"/>
 /// <seealso name="GetVehicleHealth"/>
@@ -282,10 +282,10 @@ native SetPlayerHealth(playerID, Float:health);
 ///   <b><c>1</c></b> - success.<p/>
 ///   <b><c>0</c></b> - failure (i.e. player not connected).<p/>
 /// </returns>
-native GetPlayerHealth(playerID, &Float:health);
+native GetPlayerHealth(playerid, &Float:health);
 
 /// <summary>Set a player's armor level.</summary>
-/// <param name="playerID">The ID of the player to set the armour of</param>
+/// <param name="playerid">The ID of the player to set the armour of</param>
 /// <param name="armour">The amount of armour to set, as a percentage (float). Values larger than <b><c>100</c></b> are valid, but won't be displayed in the HUD's armour bar</param>
 /// <seealso name="GetPlayerArmour"/>
 /// <seealso name="SetPlayerHealth"/>
@@ -296,10 +296,10 @@ native GetPlayerHealth(playerID, &Float:health);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. This means the player specified does not exist.
 /// </returns>
-native SetPlayerArmour(playerID, Float:armour);
+native SetPlayerArmour(playerid, Float:armour);
 
 /// <summary>This function stores the armour of a player into a variable.</summary>
-/// <param name="playerID">The ID of the player that you want to get the armour of</param>
+/// <param name="playerid">The ID of the player that you want to get the armour of</param>
 /// <param name="armour">The float to to store the armour in, passed by reference</param>
 /// <seealso name="SetPlayerArmour"/>
 /// <seealso name="GetPlayerHealth"/>
@@ -311,10 +311,10 @@ native SetPlayerArmour(playerID, Float:armour);
 ///   <b><c>1</c></b> - success.<p/>
 ///   <b><c>0</c></b> - failure (i.e. player not connected).<p/>
 /// </returns>
-native GetPlayerArmour(playerID, &Float:armour);
+native GetPlayerArmour(playerid, &Float:armour);
 
 /// <summary>Set the ammo of a player's weapon.</summary>
-/// <param name="playerID">The ID of the player to set the weapon ammo of</param>
+/// <param name="playerid">The ID of the player to set the weapon ammo of</param>
 /// <param name="weaponslot">The ID of the <a href="http://wiki.sa-mp.com/wiki/Weapons">weapon slot</a> to set the ammo of.</param>
 /// <param name="ammo">The amount of ammo to set</param>
 /// <seealso name="GetPlayerAmmo"/>
@@ -325,18 +325,18 @@ native GetPlayerArmour(playerID, &Float:armour);
 ///   <b><c>1</c></b>: The function executed successfully. Success is also returned when the weapon slot specified is invalid (not 0-12).<p/>
 ///   <b><c>0</c></b>: The function failed to execute. The player isn't connected.<p/>
 /// </returns>
-native SetPlayerAmmo(playerID, weaponslot, ammo);
+native SetPlayerAmmo(playerid, weaponslot, ammo);
 
 /// <summary>Gets the amount of ammo in a player's current weapon.</summary>
-/// <param name="playerID">The ID of the player whose ammo to get</param>
+/// <param name="playerid">The ID of the player whose ammo to get</param>
 /// <seealso name="SetPlayerAmmo"/>
 /// <seealso name="GetPlayerWeaponData"/>
 /// <remarks>The ammo can hold 16-bit values, therefore values over <b><c>32767</c></b> will return erroneous values.</remarks>
 /// <returns>The amount of ammo in the player's current weapon.</returns>
-native GetPlayerAmmo(playerID);
+native GetPlayerAmmo(playerid);
 
 /// <summary>Check the state of a player's weapon.</summary>
-/// <param name="playerID">The ID of the player to obtain the weapon state of</param>
+/// <param name="playerid">The ID of the player to obtain the weapon state of</param>
 /// <seealso name="GivePlayerWeapon"/>
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <remarks>
@@ -350,10 +350,10 @@ native GetPlayerAmmo(playerID);
 ///   </ul>
 /// </remarks>
 /// <returns>The state of the player's weapon. <b><c>0</c></b> if player specified does not exist.</returns>
-native GetPlayerWeaponState(playerID);
+native GetPlayerWeaponState(playerid);
 
 /// <summary>Check who a player is aiming at.</summary>
-/// <param name="playerID">The ID of the player to get the target of</param>
+/// <param name="playerid">The ID of the player to get the target of</param>
 /// <seealso name="GetPlayerCameraFrontVector"/>
 /// <seealso name="OnPlayerGiveDamage"/>
 /// <seealso name="OnPlayerTakeDamage"/>
@@ -361,10 +361,10 @@ native GetPlayerWeaponState(playerID);
 /// <remarks>Does not work for joypads/controllers, and after a certain distance. </remarks>
 /// <remarks>Does not work for the sniper rifle, as it doesn't lock on to anything and as such can't and won't return a player. </remarks>
 /// <returns>The ID of the target player, or <b><c>INVALID_PLAYER_ID</c></b> if none.</returns>
-native GetPlayerTargetPlayer(playerID);
+native GetPlayerTargetPlayer(playerid);
 
 /// <summary>Gets ID of an actor which is aimed by certain player.</summary>
-/// <param name="playerID">The ID of the player to get the target of</param>
+/// <param name="playerid">The ID of the player to get the target of</param>
 /// <seealso name="GetPlayerCameraTargetActor"/>
 /// <seealso name="GetPlayerCameraFrontVector"/>
 /// <seealso name="OnPlayerGiveDamageActor"/>
@@ -372,20 +372,20 @@ native GetPlayerTargetPlayer(playerID);
 /// <remarks>Does not work for joypads/controllers, and after a certain distance. </remarks>
 /// <remarks>Does not work for the sniper rifle, as it doesn't lock on to anything and as such can't and won't return a player. </remarks>
 /// <returns>The ID of the targeted actor, or <b><c>INVALID_ACTOR_ID</c></b> if none.</returns>
-native GetPlayerTargetActor(playerID);
+native GetPlayerTargetActor(playerid);
 
 /// <summary>Set the team of a player.</summary>
-/// <param name="playerID">The ID of the player you want to set the team of</param>
-/// <param name="teamID">The team to put the player in. Use <b><c>NO_TEAM</c></b> to remove the player from any team</param>
+/// <param name="playerid">The ID of the player you want to set the team of</param>
+/// <param name="teamid">The team to put the player in. Use <b><c>NO_TEAM</c></b> to remove the player from any team</param>
 /// <seealso name="GetPlayerTeam"/>
 /// <seealso name="SetTeamCount"/>
 /// <seealso name="EnableVehicleFriendlyFire"/>
 /// <remarks>Players can not damage/kill players on the same team unless they use a knife to slit their throat. As of <b>SA-MP 0.3x</b>, players are also unable to damage vehicles driven by a player from the same team. This can be enabled with <a href="#EnableVehicleFriendlyFire">EnableVehicleFriendlyFire</a>.</remarks>
 /// <remarks><b><c>255</c></b> (or <b><c>NO_TEAM</c></b>) is the default team to be able to shoot other players, not <b><c>0</c></b>.</remarks>
-native SetPlayerTeam(playerID, teamID);
+native SetPlayerTeam(playerid, teamid);
 
 /// <summary>Get the ID of the team the player is on.</summary>
-/// <param name="playerID">The ID of the player to get the team of</param>
+/// <param name="playerid">The ID of the player to get the team of</param>
 /// <seealso name="SetPlayerTeam"/>
 /// <seealso name="SetTeamCount"/>
 /// <returns>
@@ -393,37 +393,37 @@ native SetPlayerTeam(playerID, teamID);
 ///   <b><c>255</c></b>: Defined as <b><c>NO_TEAM</c></b>. The player is not on any team.<p/>
 ///   <b><c>-1</c></b>: The function failed to execute. Player is not connected.
 /// </returns>
-native GetPlayerTeam(playerID);
+native GetPlayerTeam(playerid);
 
 /// <summary>Set a player's score. Players' scores are shown in the scoreboard (shown by holding the TAB key).</summary>
-/// <param name="playerID">The ID of the player to set the score of</param>
+/// <param name="playerid">The ID of the player to set the score of</param>
 /// <param name="score">The value to set the player's score to</param>
 /// <seealso name="GetPlayerScore"/>
 /// <returns>
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. This means the player specified does not exist.
 /// </returns>
-native SetPlayerScore(playerID, score);
+native SetPlayerScore(playerid, score);
 
 /// <summary>This function returns a player's score as it was set using <a href="#SetPlayerScore">SetPlayerScore</a>.</summary>
-/// <param name="playerID">The player to get the score of</param>
+/// <param name="playerid">The player to get the score of</param>
 /// <seealso name="SetPlayerScore"/>
 /// <seealso name="GetPlayerPing"/>
 /// <returns>The player's score.</returns>
-native GetPlayerScore(playerID);
+native GetPlayerScore(playerid);
 
 /// <summary>
 ///   Checks the player's level of drunkenness. If the level is less than <b><c>2000</c></b>, the player is sober. The player's level of drunkness goes down slowly automatically (1 level per frame) but will always reach <b><c>2000</c></b> at the end (in <b>0.3b</b> it will stop at <b><c>0</c></b>).
 ///   The higher drunkenness levels affect the player's camera, and the car driving handling. The level of drunkenness increases when the player drinks from a bottle (You can use <a href="#SetPlayerSpecialAction">SetPlayerSpecialAction</a> to give them bottles).
 /// </summary>
-/// <param name="playerID">The player you want to check the drunkenness level of</param>
+/// <param name="playerid">The player you want to check the drunkenness level of</param>
 /// <seealso name="SetPlayerDrunkLevel"/>
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <returns>An integer with the level of drunkenness of the player.</returns>
-native GetPlayerDrunkLevel(playerID);
+native GetPlayerDrunkLevel(playerid);
 
 /// <summary>Sets the drunk level of a player which makes the player's camera sway and vehicles hard to control.</summary>
-/// <param name="playerID">The ID of the player to set the drunkenness of</param>
+/// <param name="playerid">The ID of the player to set the drunkenness of</param>
 /// <param name="level">The level of drunkenness to set</param>
 /// <seealso name="GetPlayerDrunkLevel"/>
 /// <remarks>
@@ -437,29 +437,29 @@ native GetPlayerDrunkLevel(playerID);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. This means the player is not connected.
 /// </returns>
-native SetPlayerDrunkLevel(playerID, level);
+native SetPlayerDrunkLevel(playerid, level);
 
 /// <summary>Set the colour of a player's nametag and marker (radar blip).</summary>
-/// <param name="playerID">The ID of the player whose colour to set</param>
+/// <param name="playerid">The ID of the player whose colour to set</param>
 /// <param name="colour">The colour to set. Supports alpha values (<b>RGBA</b>)</param>
 /// <seealso name="SetPlayerMarkerForPlayer"/>
 /// <seealso name="GetPlayerColor"/>
 /// <seealso name="ChangeVehicleColor"/>
 /// <remarks>This function will change player's colour for everyone, even if player's colour was changed with <a href="#SetPlayerMarkerForPlayer">SetPlayerMarkerForPlayer</a> for any other player. </remarks>
 /// <remarks>If used under <a href="#OnPlayerConnect">OnPlayerConnect</a>, the affecting player will not see the colour in the TAB menu. </remarks>
-native SetPlayerColor(playerID, colour);
+native SetPlayerColor(playerid, colour);
 
 /// <summary>Gets the colour of the player's name and radar marker. Only works after <a href="#SetPlayerColor">SetPlayerColor</a>.</summary>
-/// <param name="playerID">The ID of the player to get the colour of</param>
+/// <param name="playerid">The ID of the player to get the colour of</param>
 /// <seealso name="SetPlayerColor"/>
 /// <seealso name="ChangeVehicleColor"/>
 /// <remarks>GetPlayerColor will return <b><c>0</c></b> unless <a href="#SetPlayerColor">SetPlayerColor</a> has been used first.</remarks>
 /// <returns>The player's colour. <b><c>0</c></b> if no colour set or player not connected.</returns>
-native GetPlayerColor(playerID);
+native GetPlayerColor(playerid);
 
 /// <summary>Set the skin of a player. A player's skin is their character model.</summary>
-/// <param name="playerID">The ID of the player to set the skin of</param>
-/// <param name="skinID">The <a href="http://wiki.sa-mp.com/wiki/Skins">skin</a> the player should use</param>
+/// <param name="playerid">The ID of the player to set the skin of</param>
+/// <param name="skinid">The <a href="http://wiki.sa-mp.com/wiki/Skins">skin</a> the player should use</param>
 /// <seealso name="GetPlayerSkin"/>
 /// <seealso name="SetSpawnInfo"/>
 /// <remarks>If a player's skin is set when they are crouching, in a vehicle, or performing certain animations, they will become frozen or otherwise glitched. This can be fixed by using <a href="#TogglePlayerControllable">TogglePlayerControllable</a>. Players can be detected as being crouched through <a href="#GetPlayerSpecialAction">GetPlayerSpecialAction</a> (<b><c>SPECIAL_ACTION_DUCK</c></b>).</remarks>
@@ -469,21 +469,21 @@ native GetPlayerColor(playerID);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. This means the player specified does not exist.<p/>
 /// </returns>
-native SetPlayerSkin(playerID, skinID);
+native SetPlayerSkin(playerid, skinid);
 
 /// <summary>Returns the class of the players skin.</summary>
-/// <param name="playerID">The player you want to get the skin from</param>
+/// <param name="playerid">The player you want to get the skin from</param>
 /// <seealso name="SetPlayerSkin"/>
 /// <remarks>Returns the new skin after <a href="#SetSpawnInfo">SetSpawnInfo</a> is called but before the player actually respawns to get the new skin. </remarks>
 /// <remarks>Returns the old skin if the player was spawned through <a href="#SpawnPlayer">SpawnPlayer</a> function. </remarks>
 /// <returns>The skin ID (<b><c>0</c></b> if invalid).</returns>
-native GetPlayerSkin(playerID);
+native GetPlayerSkin(playerid);
 
-native GetPlayerCustomSkin(playerID);
+native GetPlayerCustomSkin(playerid);
 
 /// <summary>Give a player a weapon with a specified amount of ammo.</summary>
-/// <param name="playerID">The ID of the player to give a weapon to</param>
-/// <param name="weaponID">The ID of the weapon to give to the player</param>
+/// <param name="playerid">The ID of the player to give a weapon to</param>
+/// <param name="weaponid">The ID of the weapon to give to the player</param>
 /// <param name="ammo">The amount of ammo to give to the player</param>
 /// <seealso name="SetPlayerArmedWeapon"/>
 /// <seealso name="GetPlayerWeapon"/>
@@ -491,10 +491,10 @@ native GetPlayerCustomSkin(playerID);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. This means the player is not connected.<p/>
 /// </returns>
-native GivePlayerWeapon(playerID, weaponID, ammo);
+native GivePlayerWeapon(playerid, weaponid, ammo);
 
 /// <summary>Removes all weapons from a player.</summary>
-/// <param name="playerID">The ID of the player whose weapons to remove</param>
+/// <param name="playerid">The ID of the player whose weapons to remove</param>
 /// <seealso name="GivePlayerWeapon"/>
 /// <seealso name="GetPlayerWeapon"/>
 /// <remarks>To remove individual weapons from a player, set their ammo to <b><c>0</c></b> using <a href="#SetPlayerAmmo">SetPlayerAmmo</a>.</remarks>
@@ -502,11 +502,11 @@ native GivePlayerWeapon(playerID, weaponID, ammo);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. This means the player specified does not exist.
 /// </returns>
-native ResetPlayerWeapons(playerID);
+native ResetPlayerWeapons(playerid);
 
 /// <summary>Sets which weapon (that a player already has) the player is holding.</summary>
-/// <param name="playerID">The ID of the player to arm with a weapon</param>
-/// <param name="weaponID">The ID of the weapon that the player should be armed with</param>
+/// <param name="playerid">The ID of the player to arm with a weapon</param>
+/// <param name="weaponid">The ID of the weapon that the player should be armed with</param>
 /// <seealso name="GivePlayerWeapon"/>
 /// <seealso name="GetPlayerWeapon"/>
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
@@ -515,10 +515,10 @@ native ResetPlayerWeapons(playerID);
 ///   <b><c>1</c></b>: The function executed successfully. Success is returned even when the function fails to execute (the player doesn't have the weapon specified, or it is an invalid weapon).<p/>
 ///   <b><c>0</c></b>: The function failed to execute. The player is not connected.
 /// </returns>
-native SetPlayerArmedWeapon(playerID, weaponID);
+native SetPlayerArmedWeapon(playerid, weaponid);
 
 /// <summary>Get the weapon and ammo in a specific player's weapon slot (e.g. the weapon in the 'SMG' slot).</summary>
-/// <param name="playerID">The ID of the player whose weapon data to retrieve</param>
+/// <param name="playerid">The ID of the player whose weapon data to retrieve</param>
 /// <param name="slot">The weapon slot to get data for (<b><c>0-12</c></b>)</param>
 /// <param name="weapons">A variable in which to store the weapon ID, passed by reference</param>
 /// <param name="ammo">A variable in which to store the ammo, passed by reference</param>
@@ -529,10 +529,10 @@ native SetPlayerArmedWeapon(playerID, weaponID);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. The player isn't connected and/or the weapon slot specified is invalid (valid is <b><c>0-12</c></b>).
 /// </returns>
-native GetPlayerWeaponData(playerID, slot, &weapons, &ammo);
+native GetPlayerWeaponData(playerid, slot, &weapons, &ammo);
 
 /// <summary>Give money to or take money from a player.</summary>
-/// <param name="playerID">The ID of the player to give money to or take money from</param>
+/// <param name="playerid">The ID of the player to give money to or take money from</param>
 /// <param name="money">The amount of money to give the player. Use a minus value to take money</param>
 /// <seealso name="ResetPlayerMoney"/>
 /// <seealso name="GetPlayerMoney"/>
@@ -540,20 +540,20 @@ native GetPlayerWeaponData(playerID, slot, &weapons, &ammo);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. This means the player is not connected.
 /// </returns>
-native GivePlayerMoney(playerID, money);
+native GivePlayerMoney(playerid, money);
 
 /// <summary>Reset a player's money to $0.</summary>
-/// <param name="playerID">The ID of the player to reset the money of</param>
+/// <param name="playerid">The ID of the player to reset the money of</param>
 /// <seealso name="GetPlayerMoney"/>
 /// <seealso name="GivePlayerMoney"/>
 /// <returns>
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. This means the player is not connected.
 /// </returns>
-native ResetPlayerMoney(playerID);
+native ResetPlayerMoney(playerid);
 
 /// <summary>Sets the name of a player.</summary>
-/// <param name="playerID">The ID of the player to set the name of</param>
+/// <param name="playerid">The ID of the player to set the name of</param>
 /// <param name="name">The name to set. Must be 1-24 characters long and only contain valid characters (<b>0-9</b>, <b>a-z</b>, <b>A-z</b>, <b>[]</b>, <b>()</b>, <b>$</b>, <b>@</b>, <b>.</b>, <b>_</b>, <b>=</b>)</param>
 /// <seealso name="GetPlayerName"/>
 /// <remarks>Changing the players' name to the same name but with different character cases (e.g. "John" to "JOHN") will not work. </remarks>
@@ -565,17 +565,17 @@ native ResetPlayerMoney(playerID);
 ///   <b><c>0</c></b> The player already has that name.<p/>
 ///   <b><c>-1</c></b> The name can not be changed (it's already in use, too long or has invalid characters).
 /// </returns>
-native SetPlayerName(playerID, const name[]);
+native SetPlayerName(playerid, const name[]);
 
 /// <summary>Retrieves the amount of money a player has.</summary>
-/// <param name="playerID">The ID of the player to get the money of</param>
+/// <param name="playerid">The ID of the player to get the money of</param>
 /// <seealso name="GivePlayerMoney"/>
 /// <seealso name="ResetPlayerMoney"/>
 /// <returns>The amount of money the player has.</returns>
-native GetPlayerMoney(playerID);
+native GetPlayerMoney(playerid);
 
 /// <summary>Get a player's current state.</summary>
-/// <param name="playerID">The ID of the player to get the current state of</param>
+/// <param name="playerid">The ID of the player to get the current state of</param>
 /// <seealso name="GetPlayerSpecialAction"/>
 /// <seealso name="SetPlayerSpecialAction"/>
 /// <seealso name="OnPlayerStateChange"/>
@@ -595,10 +595,10 @@ native GetPlayerMoney(playerID);
 ///   </ul>
 /// </remarks>
 /// <returns>The player's current state as an integer.</returns>
-native GetPlayerState(playerID);
+native GetPlayerState(playerid);
 
 /// <summary>Get the specified player's IP address and store it in a string.</summary>
-/// <param name="playerID">The ID of the player to get the IP address of</param>
+/// <param name="playerid">The ID of the player to get the IP address of</param>
 /// <param name="ip">An array into which to store the player's IP address, passed by reference</param>
 /// <param name="len">The maximum length of the IP address (recommended 16)</param>
 /// <seealso name="NetStats_GetIpPort"/>
@@ -610,28 +610,28 @@ native GetPlayerState(playerID);
 /// <seealso name="OnPlayerDisconnect"/>
 /// <remarks>This function does not work when used in <a href="#OnPlayerDisconnect">OnPlayerDisconnect</a> because the player is already disconnected. It will return an invalid IP (<b><c>255.255.255.255</c></b>). Save players' IPs under <a href="#OnPlayerConnect">OnPlayerConnect</a> if they need to be used under <a href="#OnPlayerDisconnect">OnPlayerDisconnect</a>. </remarks>
 /// <returns><b><c>1</c></b> on success and <b><c>0</c></b> on failure.</returns>
-native GetPlayerIp(playerID, ip[], len = sizeof (ip));
+native GetPlayerIp(playerid, ip[], len = sizeof (ip));
 
 /// <summary>Get the ping of a player. The ping measures the amount of time it takes for the server to 'ping' the client and for the client to send the message back.</summary>
-/// <param name="playerID">The ID of the player to get the ping of</param>
+/// <param name="playerid">The ID of the player to get the ping of</param>
 /// <seealso name="GetPlayerIp"/>
 /// <seealso name="GetPlayerName"/>
 /// <seealso name="GetPlayerVersion"/>
 /// <remarks>Player's ping may be <b><c>65535</c></b> for a while after a player connects</remarks>
 /// <returns>The current ping of the player (expressed in milliseconds).</returns>
-native GetPlayerPing(playerID);
+native GetPlayerPing(playerid);
 
 /// <summary>Returns the ID of the weapon a player is currently holding.</summary>
-/// <param name="playerID">The ID of the player to get the currently held weapon of</param>
+/// <param name="playerid">The ID of the player to get the currently held weapon of</param>
 /// <seealso name="GetPlayerWeaponData"/>
 /// <seealso name="GivePlayerWeapon"/>
 /// <seealso name="ResetPlayerWeapons"/>
 /// <remarks>Prior to version <b>0.3z R1-2</b>, when the player state is <b>PLAYER_STATE_PASSENGER</b> this function returns the weapon held by the player before they entered the vehicle. If a cheat is used to spawn a weapon inside a vehicle, this function will not report it.</remarks>
 /// <returns>The ID of the player's current weapon. Returns <b><c>-1</c></b> if the player specified does not exist.</returns>
-native GetPlayerWeapon(playerID);
+native GetPlayerWeapon(playerid);
 
 /// <summary>Check which keys a player is pressing.</summary>
-/// <param name="playerID">The ID of the player to get the keys of</param>
+/// <param name="playerid">The ID of the player to get the keys of</param>
 /// <param name="keys">Bitmask containing the player's key states. <a href="http://wiki.sa-mp.com/wiki/Keys">List of keys</a></param>
 /// <param name="updown">Up/down state</param>
 /// <param name="leftright">Left/right state</param>
@@ -639,10 +639,10 @@ native GetPlayerWeapon(playerID);
 /// <remarks>Only the FUNCTION of keys can be detected; not actual keys. For example, it is not possible to detect if a player presses <b>SPACE</b>, but you can detect if they press <b>SPRINT</b> (which can be mapped (assigned/binded) to ANY key (but is space by default)). </remarks>
 /// <remarks>As of update <b>0.3.7</b>, the keys "A" and "D" are not recognized when in a vehicle. However, keys "W" and "S" can be detected with the "keys" parameter. </remarks>
 /// <returns>The keys are stored in the specified variables.</returns>
-native GetPlayerKeys(playerID, &keys, &updown, &leftright);
+native GetPlayerKeys(playerid, &keys, &updown, &leftright);
 
 /// <summary>Get a player's name.</summary>
-/// <param name="playerID">The ID of the player to get the name of</param>
+/// <param name="playerid">The ID of the player to get the name of</param>
 /// <param name="name">An array into which to store the name, passed by reference</param>
 /// <param name="len">The length of the string that should be stored. Recommended to be <b><c>MAX_PLAYER_NAME</c></b></param>
 /// <seealso name="SetPlayerName"/>
@@ -652,10 +652,10 @@ native GetPlayerKeys(playerID, &keys, &updown, &leftright);
 /// <seealso name="GetPlayerVersion"/>
 /// <remarks>A player's name can be up to 24 characters long (as of <b>0.3d R2</b>) by using <a href="#SetPlayerName">SetPlayerName</a>. This is defined in <c>a_samp.inc</c> as <b><c>MAX_PLAYER_NAME</c></b>. However, the client can only join with a nickname between 3 and 20 characters, otherwise the connection will be rejected and the player has to quit to choose a valid name.</remarks>
 /// <returns>The length of the player's name. <b><c>0</c></b> if player specified doesn't exist.</returns>
-native GetPlayerName(playerID, name[], len = sizeof (name));
+native GetPlayerName(playerid, name[], len = sizeof (name));
 
 /// <summary>Sets the game time for a player. If a player's clock is enabled (<a href="#TogglePlayerClock">TogglePlayerClock</a>) the time displayed by it will update automatically.</summary>
-/// <param name="playerID">The ID of the player to set the game time of</param>
+/// <param name="playerid">The ID of the player to set the game time of</param>
 /// <param name="hour">Hour to set (0-23)</param>
 /// <param name="minute">Minutes to set (0-59)</param>
 /// <seealso name="SetWorldTime"/>
@@ -666,10 +666,10 @@ native GetPlayerName(playerID, name[], len = sizeof (name));
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. The player specified does not exist.
 /// </returns>
-native SetPlayerTime(playerID, hour, minute);
+native SetPlayerTime(playerid, hour, minute);
 
 /// <summary>Get the player's current game time. Set by <a href="#SetWorldTime">SetWorldTime</a> or <a href="#SetPlayerTime">SetPlayerTime</a>, or by the game automatically if <a href="#TogglePlayerClock">TogglePlayerClock</a> is used.</summary>
-/// <param name="playerID">The ID of the player to get the game time of</param>
+/// <param name="playerid">The ID of the player to get the game time of</param>
 /// <param name="hour">A variable in which to store the hour, passed by reference</param>
 /// <param name="minute">A variable in which to store the minutes, passed by reference</param>
 /// <seealso name="SetPlayerTime"/>
@@ -679,10 +679,10 @@ native SetPlayerTime(playerID, hour, minute);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. The player specified does not exist.<p/>
 /// </returns>
-native GetPlayerTime(playerID, &hour, &minute);
+native GetPlayerTime(playerid, &hour, &minute);
 
 /// <summary>Toggle the in-game clock (top-right corner) for a specific player. When this is enabled, time will progress at 1 minute per second. Weather will also interpolate (slowly change over time) when set using <a href="#SetWeather">SetWeather</a>/<a href="#SetPlayerWeather">SetPlayerWeather</a>.</summary>
-/// <param name="playerID">The player whose clock you want to enable/disable</param>
+/// <param name="playerid">The player whose clock you want to enable/disable</param>
 /// <param name="toggle"><b><c>1</c></b> to show and <b><c>0</c></b> to hide. Hidden by default</param>
 /// <remarks>Time is not synced with other players! Time can be synced using <a href="#SetPlayerTime">SetPlayerTime</a>.</remarks>
 /// <remarks>Time will automatically advance 6 hours when the player dies.</remarks>
@@ -690,27 +690,27 @@ native GetPlayerTime(playerID, &hour, &minute);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. The specified player does not exist.
 /// </returns>
-native TogglePlayerClock(playerID, toggle);
+native TogglePlayerClock(playerid, toggle);
 
 /// <summary>Set a player's weather.</summary>
-/// <param name="playerID">The ID of the player whose weather to set</param>
-/// <param name="weather">The <a href="http://wiki.sa-mp.com/wiki/WeatherID">weather</a> to set</param>
+/// <param name="playerid">The ID of the player whose weather to set</param>
+/// <param name="weather">The <a href="http://wiki.sa-mp.com/wiki/Weatherid">weather</a> to set</param>
 /// <seealso name="SetWeather"/>
 /// <seealso name="SetGravity"/>
 /// <remarks>If <a href="#TogglePlayerClock">TogglePlayerClock</a> is enabled, weather will slowly change over time, instead of changing instantly.</remarks>
-native SetPlayerWeather(playerID, weather);
+native SetPlayerWeather(playerid, weather);
 
 /// <summary>Forces a player to go back to class selection.</summary>
-/// <param name="playerID">The player to send back to class selection</param>
+/// <param name="playerid">The player to send back to class selection</param>
 /// <seealso name="AddPlayerClass"/>
 /// <seealso name="SetPlayerSkin"/>
 /// <seealso name="GetPlayerSkin"/>
 /// <seealso name="OnPlayerRequestClass"/>
 /// <remarks>The player will not return to class selection until they re-spawn. This can be achieved with <a href="#TogglePlayerSpectating">TogglePlayerSpectating</a>, as seen in the below example.</remarks>
-native ForceClassSelection(playerID);
+native ForceClassSelection(playerid);
 
 /// <summary>Set a player's wanted level (6 brown stars under HUD).</summary>
-/// <param name="playerID">The ID of the player to set the wanted level of</param>
+/// <param name="playerid">The ID of the player to set the wanted level of</param>
 /// <param name="level">The wanted level to set for the player (0-6)</param>
 /// <seealso name="GetPlayerWantedLevel"/>
 /// <seealso name="PlayCrimeReportForPlayer"/>
@@ -718,17 +718,17 @@ native ForceClassSelection(playerID);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. The player specified does not exist.
 /// </returns>
-native SetPlayerWantedLevel(playerID, level);
+native SetPlayerWantedLevel(playerid, level);
 
 /// <summary>Gets the wanted level of a player.</summary>
-/// <param name="playerID">The ID of the player that you want to get the wanted level of</param>
+/// <param name="playerid">The ID of the player that you want to get the wanted level of</param>
 /// <seealso name="SetPlayerWantedLevel"/>
 /// <seealso name="PlayCrimeReportForPlayer"/>
 /// <returns>The player's wanted level.</returns>
-native GetPlayerWantedLevel(playerID);
+native GetPlayerWantedLevel(playerid);
 
 /// <summary>Set a player's special fighting style. To use in-game, aim and press the 'secondary attack' key (<b>ENTER</b> by default).</summary>
-/// <param name="playerID">The ID of player to set the fighting style of</param>
+/// <param name="playerid">The ID of player to set the fighting style of</param>
 /// <param name="style">The fighting style that should be set</param>
 /// <seealso name="GetPlayerFightingStyle"/>
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
@@ -744,10 +744,10 @@ native GetPlayerWantedLevel(playerID);
 ///     <li><b><c>FIGHT_STYLE_ELBOW</c></b></li>
 ///   </ul>
 /// </remarks>
-native SetPlayerFightingStyle(playerID, style);
+native SetPlayerFightingStyle(playerid, style);
 
 /// <summary>Get the fighting style the player currently using.</summary>
-/// <param name="playerID">The ID of the player to get the fighting style of</param>
+/// <param name="playerid">The ID of the player to get the fighting style of</param>
 /// <seealso name="SetPlayerFightingStyle"/>
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <remarks>
@@ -762,10 +762,10 @@ native SetPlayerFightingStyle(playerID, style);
 ///   </ul>
 /// </remarks>
 /// <returns>The ID of the fighting style of the player.</returns>
-native GetPlayerFightingStyle(playerID);
+native GetPlayerFightingStyle(playerid);
 
 /// <summary>Set a player's velocity on the x, y and z axes.</summary>
-/// <param name="playerID">The player to apply the speed to</param>
+/// <param name="playerid">The player to apply the speed to</param>
 /// <param name="x">The velocity (speed) on the x axis</param>
 /// <param name="y">The velocity (speed) on the y axis</param>
 /// <param name="z">The velocity (speed) on the z axis</param>
@@ -777,10 +777,10 @@ native GetPlayerFightingStyle(playerID);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. This means the player is not connected.
 /// </returns>
-native SetPlayerVelocity(playerID, Float:x, Float:y, Float:z);
+native SetPlayerVelocity(playerid, Float:x, Float:y, Float:z);
 
 /// <summary>Get the velocity (speed) of a player on the x, y and z axes.</summary>
-/// <param name="playerID">The player to get the speed from</param>
+/// <param name="playerid">The player to get the speed from</param>
 /// <param name="x">A float variable in which to store the velocity on the x axis, passed by reference</param>
 /// <param name="y">A float variable in which to store the velocity on the y axis, passed by reference</param>
 /// <param name="z">A float variable in which to store the velocity on the z axis, passed by reference</param>
@@ -788,11 +788,11 @@ native SetPlayerVelocity(playerID, Float:x, Float:y, Float:z);
 /// <seealso name="SetVehicleVelocity"/>
 /// <seealso name="GetVehicleVelocity"/>
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
-native GetPlayerVelocity(playerID, &Float:x, &Float:y, &Float:z);
+native GetPlayerVelocity(playerid, &Float:x, &Float:y, &Float:z);
 
 /// <summary>This function plays a crime report for a player - just like in single-player when CJ commits a crime.</summary>
-/// <param name="playerID">The ID of the player that will hear the crime report</param>
-/// <param name="suspectID">The ID of the suspect player whom will be described in the crime report</param>
+/// <param name="playerid">The ID of the player that will hear the crime report</param>
+/// <param name="suspectid">The ID of the suspect player whom will be described in the crime report</param>
 /// <param name="crime">The crime ID, which will be reported as a 10-code (i.e. 10-16 if 16 was passed as the crime)</param>
 /// <seealso name="PlayerPlaySound"/>
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
@@ -820,10 +820,10 @@ native GetPlayerVelocity(playerID, &Float:x, &Float:y, &Float:z);
 ///     <li><b><c>22</c></b> 10-7 Out of service </li>
 ///   </ul>
 /// </remarks>
-native PlayCrimeReportForPlayer(playerID, suspectID, crime);
+native PlayCrimeReportForPlayer(playerid, suspectid, crime);
 
 /// <summary>Play an 'audio stream' for a player. Normal audio files also work (e.g. MP3).</summary>
-/// <param name="playerID">The ID of the player to play the audio for</param>
+/// <param name="playerid">The ID of the player to play the audio for</param>
 /// <param name="url">The url to play. Valid formats are mp3 and ogg/vorbis. A link to a .pls (playlist) file will play that playlist</param>
 /// <param name="posX">The x position at which to play the audio. Has no effect unless usepos is set to 1 (optional=<b><c>0.0</c></b>)</param>
 /// <param name="posY">The y position at which to play the audio. Has no effect unless usepos is set to 1 (optional=<b><c>0.0</c></b>)</param>
@@ -837,17 +837,17 @@ native PlayCrimeReportForPlayer(playerID, suspectID, crime);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. The player specified does not exist.
 /// </returns>
-native PlayAudioStreamForPlayer(playerID, const url[], Float:posX = 0.0, Float:posY = 0.0, Float:posZ = 0.0, Float:distance = 50.0, bool:usepos = false);
+native PlayAudioStreamForPlayer(playerid, const url[], Float:posX = 0.0, Float:posY = 0.0, Float:posZ = 0.0, Float:distance = 50.0, bool:usepos = false);
 
 /// <summary>Stops the current audio stream for a player.</summary>
-/// <param name="playerID">The player you want to stop the audio stream for</param>
+/// <param name="playerid">The player you want to stop the audio stream for</param>
 /// <seealso name="PlayAudioStreamForPlayer"/>
 /// <seealso name="PlayerPlaySound"/>
 /// <remarks>This function was added in <b>SA-MP 0.3d</b> and will not work in earlier versions!</remarks>
-native StopAudioStreamForPlayer(playerID);
+native StopAudioStreamForPlayer(playerid);
 
 /// <summary>Loads or unloads an interior script for a player (for example the ammunation menu).</summary>
-/// <param name="playerID">The ID of the player to load the interior script for</param>
+/// <param name="playerid">The ID of the player to load the interior script for</param>
 /// <param name="shopname">The shop script to load. Leave blank ("") to unload scripts</param>
 /// <seealso name="DisableInteriorEnterExits"/>
 /// <seealso name="SetPlayerInterior"/>
@@ -866,10 +866,10 @@ native StopAudioStreamForPlayer(playerID);
 ///     <li><b><c>"AMMUN5"</c></b> Ammunation 5</li>
 ///   </ul>
 /// </remarks>
-native SetPlayerShopName(playerID, const shopname[]);
+native SetPlayerShopName(playerid, const shopname[]);
 
 /// <summary>Set the skill level of a certain weapon type for a player.</summary>
-/// <param name="playerID">The ID of the player to set the weapon skill of</param>
+/// <param name="playerid">The ID of the player to set the weapon skill of</param>
 /// <param name="skill">The weapon to set the skill of</param>
 /// <param name="level">The skill level to set for that weapon, ranging from <b><c>0</c></b> to <b><c>999</c></b>. A level out of range will max it out</param>
 /// <seealso name="SetPlayerArmedWeapon"/>
@@ -891,25 +891,25 @@ native SetPlayerShopName(playerID, const shopname[]);
 ///     <li><b><c>WEAPONSKILL_SNIPERRIFLE(10)</c></b></li>
 ///   </ul>
 /// </remarks>
-native SetPlayerSkillLevel(playerID, skill, level);
+native SetPlayerSkillLevel(playerid, skill, level);
 
 /// <summary>Get the ID of the vehicle that the player is surfing (stuck to the roof of).</summary>
-/// <param name="playerID">The ID of the player you want to know the surfing vehicle ID of</param>
-/// <seealso name="GetPlayerVehicleID"/>
+/// <param name="playerid">The ID of the player you want to know the surfing vehicle ID of</param>
+/// <seealso name="GetPlayerVehicleid"/>
 /// <seealso name="GetPlayerVehicleSeat"/>
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <returns>The ID of the vehicle that the player is surfing. If they are not surfing a vehicle or the vehicle they are surfing has no driver, <b><c>INVALID_VEHICLE_ID</c></b>. If the player specified is not connected, <b><c>INVALID_VEHICLE_ID</c></b> also.</returns>
-native GetPlayerSurfingVehicleID(playerID);
+native GetPlayerSurfingVehicleid(playerid);
 
 /// <summary>Returns the ID of the object the player is surfing on.</summary>
-/// <param name="playerID">The ID of the player surfing the object</param>
+/// <param name="playerid">The ID of the player surfing the object</param>
 /// <remarks>This function was added in <b>SA-MP 0.3c R3</b> and will not work in earlier versions!</remarks>
 /// <returns>The ID of the <b>moving</b> object the player is surfing. If the player isn't surfing a <b>moving</b> object, it will return <b><c>INVALID_OBJECT_ID</c></b>.</returns>
-native GetPlayerSurfingObjectID(playerID);
+native GetPlayerSurfingObjectid(playerid);
 
 /// <summary>Removes a standard San Andreas model for a single player within a specified range.</summary>
-/// <param name="playerID">The ID of the player to remove the objects for</param>
-/// <param name="modelID">The model to remove</param>
+/// <param name="playerid">The ID of the player to remove the objects for</param>
+/// <param name="modelid">The model to remove</param>
 /// <param name="centerX">The x coordinate around which the objects will be removed</param>
 /// <param name="centerY">The y coordinate around which the objects will be removed</param>
 /// <param name="centerZ">The z coordinate around which the objects will be removed</param>
@@ -919,11 +919,11 @@ native GetPlayerSurfingObjectID(playerID);
 /// <remarks>This function was added in <b>SA-MP 0.3d</b> and will not work in earlier versions!</remarks>
 /// <remarks>There appears to be a limit of around <b><c>1000</c></b> lines/objects. There is no workaround. </remarks>
 /// <remarks>When removing the same object for a player, they will crash. Commonly, players crash when reconnecting to the server because the server removes buildings on <a href="#OnPlayerConnect">OnPlayerConnect</a>. </remarks>
-/// <remarks>In <b>SA-MP 0.3.7</b> you can use <b><c>-1</c></b> for the modelID to remove all objects within the specified radius.</remarks>
-native RemoveBuildingForPlayer(playerID, modelID, Float:centerX, Float:centerY, Float:centerZ, Float:radius);
+/// <remarks>In <b>SA-MP 0.3.7</b> you can use <b><c>-1</c></b> for the modelid to remove all objects within the specified radius.</remarks>
+native RemoveBuildingForPlayer(playerid, modelid, Float:centerX, Float:centerY, Float:centerZ, Float:radius);
 
 /// <summary>Retrieves the start and end (hit) position of the last bullet a player fired.</summary>
-/// <param name="playerID">The ID of the player to get the last bullet shot information of</param>
+/// <param name="playerid">The ID of the player to get the last bullet shot information of</param>
 /// <param name="originX">A float variable in which to save the x coordinate of where the bullet originated from</param>
 /// <param name="originY">A float variable in which to save the y coordinate of where the bullet originated from</param>
 /// <param name="originZ">A float variable in which to save the z coordinate of where the bullet originated from</param>
@@ -941,7 +941,7 @@ native RemoveBuildingForPlayer(playerID, modelID, Float:centerX, Float:centerY, 
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. The player specified does not exist.<p/>
 /// </returns>
-native GetPlayerLastShotVectors(playerID, &Float:originX, &Float:originY, &Float:originZ, &Float:hitPosX, &Float:hitPosY, &Float:hitPosZ);
+native GetPlayerLastShotVectors(playerid, &Float:originX, &Float:originY, &Float:originZ, &Float:hitPosX, &Float:hitPosY, &Float:hitPosZ);
 
 // Attached to bone objects
 #if MAX_PLAYER_ATTACHED_OBJECTS < 1 || MAX_PLAYER_ATTACHED_OBJECTS > 10
@@ -949,9 +949,9 @@ native GetPlayerLastShotVectors(playerID, &Float:originX, &Float:originY, &Float
 #endif
 
 /// <summary>Attach an object to a specific bone on a player.</summary>
-/// <param name="playerID">The ID of the player to attach the object to</param>
+/// <param name="playerid">The ID of the player to attach the object to</param>
 /// <param name="index">The index (slot) to assign the object to (0-9 since 0.3d, 0-4 in previous versions)</param>
-/// <param name="modelID">The <a href="http://wiki.sa-mp.com/wiki/Objects">model</a> to attach</param>
+/// <param name="modelid">The <a href="http://wiki.sa-mp.com/wiki/Objects">model</a> to attach</param>
 /// <param name="bone">The bone to attach the object to</param>
 /// <param name="offsetX">x axis offset for the object position (optional=<b><c>0.0</c></b>)</param>
 /// <param name="offsetY">y axis offset for the object position (optional=<b><c>0.0</c></b>)</param>
@@ -994,28 +994,28 @@ native GetPlayerLastShotVectors(playerID, &Float:originX, &Float:originY, &Float
 ///   </ul>
 /// </remarks>
 /// <returns><b><c>1</c></b> on success, <b><c>0</c></b> on failure.</returns>
-native SetPlayerAttachedObject(playerID, index, modelID, bone, Float:offsetX = 0.0, Float:offsetY = 0.0, Float:offsetZ = 0.0, Float:rotX = 0.0, Float:rotY = 0.0, Float:rotZ = 0.0, Float:scaleX = 1.0, Float:scaleY = 1.0, Float:scaleZ = 1.0, materialColour1 = 0, materialColour2 = 0);
+native SetPlayerAttachedObject(playerid, index, modelid, bone, Float:offsetX = 0.0, Float:offsetY = 0.0, Float:offsetZ = 0.0, Float:rotX = 0.0, Float:rotY = 0.0, Float:rotZ = 0.0, Float:scaleX = 1.0, Float:scaleY = 1.0, Float:scaleZ = 1.0, materialColour1 = 0, materialColour2 = 0);
 
 /// <summary>Remove an attached object from a player.</summary>
-/// <param name="playerID">The ID of the player to remove the object from</param>
+/// <param name="playerid">The ID of the player to remove the object from</param>
 /// <param name="index">The index of the object to remove (set with <a href="#SetPlayerAttachedObject">SetPlayerAttachedObject</a>)</param>
 /// <seealso name="SetPlayerAttachedObject"/>
 /// <seealso name="IsPlayerAttachedObjectSlotUsed"/>
 /// <remarks>This function was added in <b>SA-MP 0.3c</b> and will not work in earlier versions!</remarks>
 /// <returns><b><c>1</c></b> on success, <b><c>0</c></b> on failure.</returns>
-native RemovePlayerAttachedObject(playerID, index);
+native RemovePlayerAttachedObject(playerid, index);
 
 /// <summary>Check if a player has an object attached in the specified index (slot).</summary>
-/// <param name="playerID">The ID of the player to check</param>
+/// <param name="playerid">The ID of the player to check</param>
 /// <param name="index">The index (slot) to check</param>
 /// <seealso name="SetPlayerAttachedObject"/>
 /// <seealso name="RemovePlayerAttachedObject"/>
 /// <remarks>This function was added in <b>SA-MP 0.3c</b> and will not work in earlier versions!</remarks>
 /// <returns><b><c>1</c></b> if used, <b><c>0</c></b> if not.</returns>
-native IsPlayerAttachedObjectSlotUsed(playerID, index);
+native IsPlayerAttachedObjectSlotUsed(playerid, index);
 
 /// <summary>Enter edition mode for an attached object.</summary>
-/// <param name="playerID">The ID of the player to enter in to edition mode</param>
+/// <param name="playerid">The ID of the player to enter in to edition mode</param>
 /// <param name="index">The index (slot) of the attached object to edit</param>
 /// <seealso name="SetPlayerAttachedObject"/>
 /// <seealso name="RemovePlayerAttachedObject"/>
@@ -1035,12 +1035,12 @@ native IsPlayerAttachedObjectSlotUsed(playerID, index);
 /// </remarks>
 /// <remarks>Players will be able to scale objects up to a very large or negative value size. Limits should be put in place using <a href="#OnPlayerEditAttachedObject">OnPlayerEditAttachedObject</a> to abort the edit.</remarks>
 /// <returns><b><c>1</c></b> on success and <b><c>0</c></b> on failure.</returns>
-native EditAttachedObject(playerID, index);
+native EditAttachedObject(playerid, index);
 
 // Per-player TextDraws
 
 /// <summary>Creates a textdraw for a single player. This can be used as a way around the <a href="#TextDrawCreate">global</a> text-draw limit.</summary>
-/// <param name="playerID">The ID of the player to create the textdraw for</param>
+/// <param name="playerid">The ID of the player to create the textdraw for</param>
 /// <param name="x">x-Coordinate</param>
 /// <param name="y">y-Coordinate</param>
 /// <param name="text">The text in the textdraw</param>
@@ -1079,10 +1079,10 @@ native EditAttachedObject(playerID, index);
 /// </remarks>
 /// <remarks>Player-textdraws are automatically destroyed when a player disconnects.</remarks>
 /// <returns>The ID of the created textdraw.</returns>
-native PlayerText:CreatePlayerTextDraw(playerID, Float:x, Float:y, const text[]);
+native PlayerText:CreatePlayerTextDraw(playerid, Float:x, Float:y, const text[]);
 
 /// <summary>Destroy a player-textdraw.</summary>
-/// <param name="playerID">The ID of the player who's player-textdraw to destroy</param>
+/// <param name="playerid">The ID of the player who's player-textdraw to destroy</param>
 /// <param name="text">The ID of the textdraw to destroy</param>
 /// <seealso name="CreatePlayerTextDraw"/>
 /// <seealso name="PlayerTextDrawColor"/>
@@ -1100,10 +1100,10 @@ native PlayerText:CreatePlayerTextDraw(playerID, Float:x, Float:y, const text[])
 /// <seealso name="PlayerTextDrawShow"/>
 /// <seealso name="PlayerTextDrawHide"/>
 /// <remarks>This feature (player-textdraws) was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
-native PlayerTextDrawDestroy(playerID, PlayerText:text);
+native PlayerTextDrawDestroy(playerid, PlayerText:text);
 
 /// <summary>Sets the width and height of the letters in a player-textdraw.</summary>
-/// <param name="playerID">The ID of the player whose player-textdraw to set the letter size of</param>
+/// <param name="playerid">The ID of the player whose player-textdraw to set the letter size of</param>
 /// <param name="text">The ID of the player-textdraw to change the letter size of</param>
 /// <param name="x">Width of a char</param>
 /// <param name="y">Height of a char</param>
@@ -1125,10 +1125,10 @@ native PlayerTextDrawDestroy(playerID, PlayerText:text);
 /// <remarks>This feature (player-textdraws) was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <remarks>When using this function purely for the benefit of affecting the textdraw box, multiply 'y' by <b><c>0.135</c></b> to convert to <a href="#TextDrawTextSize">TextDrawTextSize</a>-like measurements</remarks>
 /// <remarks>Fonts appear to look the best with an x to y ratio of <b><c>1</c></b> to <b><c>4</c></b> (e.g. if x is <b><c>0.5</c></b> then y should be <b><c>2</c></b>).</remarks>
-native PlayerTextDrawLetterSize(playerID, PlayerText:text, Float:x, Float:y);
+native PlayerTextDrawLetterSize(playerid, PlayerText:text, Float:x, Float:y);
 
 /// <summary>Change the size of a player-textdraw (box if <a href="#PlayerTextDrawUseBox">PlayerTextDrawUseBox</a> is enabled and/or clickable area for use with <a href="#PlayerTextDrawSetSelectable">PlayerTextDrawSetSelectable</a>).</summary>
-/// <param name="playerID">The ID of the player whose player-textdraw to set the size of</param>
+/// <param name="playerid">The ID of the player whose player-textdraw to set the size of</param>
 /// <param name="text">The ID of the player-textdraw to set the size of</param>
 /// <param name="x">The size on the x axis (left/right) following the same 640x480 grid as <a href="#TextDrawCreate">TextDrawCreate</a></param>
 /// <param name="y">The size on the y axis (up/down) following the same 640x480 grid as <a href="#TextDrawCreate">TextDrawCreate</a></param>
@@ -1161,10 +1161,10 @@ native PlayerTextDrawLetterSize(playerID, PlayerText:text, Float:x, Float:y);
 ///   The TextDraw box starts <b><c>10.0</c></b> units up and <b><c>5.0</c></b> to the left as the origin (<a href="#TextDrawCreate">TextDrawCreate</a> coordinate).<p/>
 ///   This function defines the clickable area for use with <a href="#PlayerTextDrawSetSelectable">PlayerTextDrawSetSelectable</a>, whether a box is shown or not.
 /// </remarks>
-native PlayerTextDrawTextSize(playerID, PlayerText:text, Float:x, Float:y);
+native PlayerTextDrawTextSize(playerid, PlayerText:text, Float:x, Float:y);
 
 /// <summary>Set the text alignment of a player-textdraw.</summary>
-/// <param name="playerID">The ID of the player whose player-textdraw to set the alignment of</param>
+/// <param name="playerid">The ID of the player whose player-textdraw to set the alignment of</param>
 /// <param name="text">The ID of the player-textdraw to set the alignment of</param>
 /// <param name="alignment"><b><c>1</c></b>-left <b><c>2</c></b>-centered <b><c>3</c></b>-right</param>
 /// <seealso name="CreatePlayerTextDraw"/>
@@ -1184,10 +1184,10 @@ native PlayerTextDrawTextSize(playerID, PlayerText:text, Float:x, Float:y);
 /// <seealso name="PlayerTextDrawHide"/>
 /// <remarks>This feature (player-textdraws) was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <remarks>For alignment <b><c>2</c></b> (center) the x and y values of TextSize need to be swapped, see notes at <a href="#PlayerTextDrawTextSize">PlayerTextDrawTextSize</a>. </remarks>
-native PlayerTextDrawAlignment(playerID, PlayerText:text, alignment);
+native PlayerTextDrawAlignment(playerid, PlayerText:text, alignment);
 
 /// <summary>Sets the text colour of a player-textdraw.</summary>
-/// <param name="playerID">The ID of the player who's textdraw to set the colour of</param>
+/// <param name="playerid">The ID of the player who's textdraw to set the colour of</param>
 /// <param name="text">The TextDraw to change</param>
 /// <param name="colour">The colour in hexadecimal format</param>
 /// <seealso name="CreatePlayerTextDraw"/>
@@ -1208,10 +1208,10 @@ native PlayerTextDrawAlignment(playerID, PlayerText:text, alignment);
 /// <remarks>This feature (player-textdraws) was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <remarks>You can also use Gametext colours in textdraws.</remarks>
 /// <remarks>The textdraw must be re-shown to the player in order to update the colour.</remarks>
-native PlayerTextDrawColor(playerID, PlayerText:text, colour);
+native PlayerTextDrawColor(playerid, PlayerText:text, colour);
 
 /// <summary>Toggle the box on a player-textdraw.</summary>
-/// <param name="playerID">The ID of the player whose textdraw to toggle the box of</param>
+/// <param name="playerid">The ID of the player whose textdraw to toggle the box of</param>
 /// <param name="text">The ID of the player-textdraw to toggle the box of</param>
 /// <param name="use"><b><c>1</c></b> to use a box or <b><c>0</c></b> to not use a box</param>
 /// <seealso name="CreatePlayerTextDraw"/>
@@ -1230,10 +1230,10 @@ native PlayerTextDrawColor(playerID, PlayerText:text, colour);
 /// <seealso name="PlayerTextDrawShow"/>
 /// <seealso name="PlayerTextDrawHide"/>
 /// <remarks>This feature (player-textdraws) was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
-native PlayerTextDrawUseBox(playerID, PlayerText:text, use);
+native PlayerTextDrawUseBox(playerid, PlayerText:text, use);
 
 /// <summary>Sets the colour of a textdraw's box (<a href="#PlayerTextDrawUseBox">PlayerTextDrawUseBox</a>).</summary>
-/// <param name="playerID">The ID of the player whose textdraw to set the box colour of</param>
+/// <param name="playerid">The ID of the player whose textdraw to set the box colour of</param>
 /// <param name="text">The ID of the player textdraw to set the box colour of</param>
 /// <param name="colour">The colour to set. Alpha (transparency) is supported</param>
 /// <seealso name="CreatePlayerTextDraw"/>
@@ -1252,10 +1252,10 @@ native PlayerTextDrawUseBox(playerID, PlayerText:text, use);
 /// <seealso name="PlayerTextDrawShow"/>
 /// <seealso name="PlayerTextDrawHide"/>
 /// <remarks>This feature (player-textdraws) was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
-native PlayerTextDrawBoxColor(playerID, PlayerText:text, colour);
+native PlayerTextDrawBoxColor(playerid, PlayerText:text, colour);
 
 /// <summary>Show a player-textdraw to the player it was created for.</summary>
-/// <param name="playerID">The ID of the player to show the textdraw for</param>
+/// <param name="playerid">The ID of the player to show the textdraw for</param>
 /// <param name="text">The ID of the textdraw to show</param>
 /// <param name="size">The size of the shadow. <b><c>0</c></b> will hide the shadow</param>
 /// <seealso name="PlayerTextDrawHide"/>
@@ -1274,10 +1274,10 @@ native PlayerTextDrawBoxColor(playerID, PlayerText:text, colour);
 /// <seealso name="PlayerTextDrawUseBox"/>
 /// <seealso name="PlayerTextDrawSetString"/>
 /// <remarks>This feature (player-textdraws) was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
-native PlayerTextDrawSetShadow(playerID, PlayerText:text, size);
+native PlayerTextDrawSetShadow(playerid, PlayerText:text, size);
 
 /// <summary>Set the outline of a player-textdraw. The outline colour cannot be changed unless <a href="#PlayerTextDrawBackgroundColor">PlayerTextDrawBackgroundColor</a> is used.</summary>
-/// <param name="playerID">The ID of the player whose player-textdraw to set the outline of</param>
+/// <param name="playerid">The ID of the player whose player-textdraw to set the outline of</param>
 /// <param name="text">The ID of the player-textdraw to set the outline of</param>
 /// <param name="size">The thickness of the outline</param>
 /// <seealso name="CreatePlayerTextDraw"/>
@@ -1296,10 +1296,10 @@ native PlayerTextDrawSetShadow(playerID, PlayerText:text, size);
 /// <seealso name="PlayerTextDrawShow"/>
 /// <seealso name="PlayerTextDrawHide"/>
 /// <remarks>This feature (player-textdraws) was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
-native PlayerTextDrawSetOutline(playerID, PlayerText:text, size);
+native PlayerTextDrawSetOutline(playerid, PlayerText:text, size);
 
 /// <summary>Adjust the background colour of a player-textdraw.</summary>
-/// <param name="playerID">The ID of the player whose player-textdraw to set the background colour of</param>
+/// <param name="playerid">The ID of the player whose player-textdraw to set the background colour of</param>
 /// <param name="text">The ID of the player-textdraw to set the background colour of</param>
 /// <param name="colour">The colour that the textdraw should be set to</param>
 /// <seealso name="CreatePlayerTextDraw"/>
@@ -1319,10 +1319,10 @@ native PlayerTextDrawSetOutline(playerID, PlayerText:text, size);
 /// <seealso name="PlayerTextDrawHide"/>
 /// <remarks>This feature (player-textdraws) was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <remarks>If <a href="#PlayerTextDrawSetOutline">PlayerTextDrawSetOutline</a> is used with size &gt; 0, the outline colour will match the colour used in <a href="#PlayerTextDrawBackgroundColor">PlayerTextDrawBackgroundColor</a>. Changing the value of colour seems to alter the colour used in <a href="#PlayerTextDrawColor">PlayerTextDrawColor</a></remarks>
-native PlayerTextDrawBackgroundColor(playerID, PlayerText:text, colour);
+native PlayerTextDrawBackgroundColor(playerid, PlayerText:text, colour);
 
 /// <summary>Change the font of a player-textdraw.</summary>
-/// <param name="playerID">The ID of the player whose player-textdraw to change the font of</param>
+/// <param name="playerid">The ID of the player whose player-textdraw to change the font of</param>
 /// <param name="text">The ID of the player-textdraw to change the font of</param>
 /// <param name="font">There are four font styles. A font value greater than <b><c>3</c></b> does not display, and anything greater than <b><c>16</c></b> crashes the client. See <a href="http://wiki.sa-mp.com/wiki/PlayerTextDrawFont">http://wiki.sa-mp.com/wiki/PlayerTextDrawFont</a></param>
 /// <seealso name="CreatePlayerTextDraw"/>
@@ -1341,10 +1341,10 @@ native PlayerTextDrawBackgroundColor(playerID, PlayerText:text, colour);
 /// <seealso name="PlayerTextDrawShow"/>
 /// <seealso name="PlayerTextDrawHide"/>
 /// <remarks>This feature (player-textdraws) was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
-native PlayerTextDrawFont(playerID, PlayerText:text, font);
+native PlayerTextDrawFont(playerid, PlayerText:text, font);
 
 /// <summary>Appears to scale text spacing to a proportional ratio. Useful when using <a href="#PlayerTextDrawLetterSize">PlayerTextDrawLetterSize</a> to ensure the text has even character spacing.</summary>
-/// <param name="playerID">The ID of the player whose player-textdraw to set the proportionality of</param>
+/// <param name="playerid">The ID of the player whose player-textdraw to set the proportionality of</param>
 /// <param name="text">The ID of the player-textdraw to set the proportionality of</param>
 /// <param name="set"><b><c>1</c></b> to enable proportionality, <b><c>0</c></b> to disable</param>
 /// <seealso name="CreatePlayerTextDraw"/>
@@ -1363,10 +1363,10 @@ native PlayerTextDrawFont(playerID, PlayerText:text, font);
 /// <seealso name="PlayerTextDrawShow"/>
 /// <seealso name="PlayerTextDrawHide"/>
 /// <remarks>This feature (player-textdraws) was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
-native PlayerTextDrawSetProportional(playerID, PlayerText:text, set);
+native PlayerTextDrawSetProportional(playerid, PlayerText:text, set);
 
 /// <summary>Toggles whether a player-textdraw can be selected or not.</summary>
-/// <param name="playerID">The ID of the player whose player-textdraw to set the selectability of</param>
+/// <param name="playerid">The ID of the player whose player-textdraw to set the selectability of</param>
 /// <param name="text">The ID of the player-textdraw to set the selectability of</param>
 /// <param name="set">Set the player-textdraw selectable (<b><c>1</c></b>) or non-selectable (<b><c>0</c></b>). By default this is <b><c>0</c></b></param>
 /// <seealso name="SelectTextDraw"/>
@@ -1375,10 +1375,10 @@ native PlayerTextDrawSetProportional(playerID, PlayerText:text, set);
 /// <remarks>This feature (player-textdraws) was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <remarks><a href="#PlayerTextDrawSetSelectable">PlayerTextDrawSetSelectable</a> MUST be used BEFORE the textdraw is shown to the player.</remarks>
 /// <remarks>Use <a href="#PlayerTextDrawTextSize">PlayerTextDrawTextSize</a> to define the clickable area.</remarks>
-native PlayerTextDrawSetSelectable(playerID, PlayerText:text, set);
+native PlayerTextDrawSetSelectable(playerid, PlayerText:text, set);
 
 /// <summary>Show a player-textdraw to the player it was created for.</summary>
-/// <param name="playerID">The ID of the player to show the textdraw for</param>
+/// <param name="playerid">The ID of the player to show the textdraw for</param>
 /// <param name="text">The ID of the textdraw to show</param>
 /// <seealso name="PlayerTextDrawHide"/>
 /// <seealso name="CreatePlayerTextDraw"/>
@@ -1396,10 +1396,10 @@ native PlayerTextDrawSetSelectable(playerID, PlayerText:text, set);
 /// <seealso name="PlayerTextDrawUseBox"/>
 /// <seealso name="PlayerTextDrawSetString"/>
 /// <remarks>This feature (player-textdraws) was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
-native PlayerTextDrawShow(playerID, PlayerText:text);
+native PlayerTextDrawShow(playerid, PlayerText:text);
 
 /// <summary>Hide a player-textdraw from the player it was created for.</summary>
-/// <param name="playerID">The ID of the player to hide the textdraw for</param>
+/// <param name="playerid">The ID of the player to hide the textdraw for</param>
 /// <param name="text">The ID of the textdraw to hide</param>
 /// <seealso name="PlayerTextDrawShow"/>
 /// <seealso name="CreatePlayerTextDraw"/>
@@ -1417,10 +1417,10 @@ native PlayerTextDrawShow(playerID, PlayerText:text);
 /// <seealso name="PlayerTextDrawUseBox"/>
 /// <seealso name="PlayerTextDrawSetString"/>
 /// <remarks>This feature (player-textdraws) was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
-native PlayerTextDrawHide(playerID, PlayerText:text);
+native PlayerTextDrawHide(playerid, PlayerText:text);
 
 /// <summary>Change the text of a player-textdraw.</summary>
-/// <param name="playerID">The ID of the player who's textdraw string to set</param>
+/// <param name="playerid">The ID of the player who's textdraw string to set</param>
 /// <param name="text">The ID of the textdraw to change</param>
 /// <param name="string">The new string for the TextDraw</param>
 /// <seealso name="CreatePlayerTextDraw"/>
@@ -1441,10 +1441,10 @@ native PlayerTextDrawHide(playerID, PlayerText:text);
 /// <remarks>This feature (player-textdraws) was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <remarks>There are limits to the length of textdraw strings! See <a href="http://wiki.sa-mp.com/wiki/Limits">Limits</a> for more info.</remarks>
 /// <remarks>You don't have to show the TextDraw again in order to apply the changes.</remarks>
-native PlayerTextDrawSetString(playerID, PlayerText:text, const string[]);
+native PlayerTextDrawSetString(playerid, PlayerText:text, const string[]);
 
 /// <summary>Sets a player textdraw 2D preview sprite of a specified model ID.</summary>
-/// <param name="playerID">The PlayerTextDraw player ID</param>
+/// <param name="playerid">The PlayerTextDraw player ID</param>
 /// <param name="text">The textdraw ID that will display the 3D preview</param>
 /// <param name="modelindex">The GTA SA or SA:MP model ID to display</param>
 /// <seealso name="PlayerTextDrawSetPreviewRot"/>
@@ -1457,10 +1457,10 @@ native PlayerTextDrawSetString(playerID, PlayerText:text, const string[]);
 ///   <b><c>1</c></b>: The function executed successfully. If an invalid model is passed 'success' is reported, but the model will appear as a yellow/black question mark.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. Player and/or textdraw do not exist.
 /// </returns>
-native PlayerTextDrawSetPreviewModel(playerID, PlayerText:text, modelindex);
+native PlayerTextDrawSetPreviewModel(playerid, PlayerText:text, modelindex);
 
 /// <summary>Sets the rotation and zoom of a 3D model preview player-textdraw.</summary>
-/// <param name="playerID">The ID of the player whose player-textdraw to change</param>
+/// <param name="playerid">The ID of the player whose player-textdraw to change</param>
 /// <param name="text">The ID of the player-textdraw to change</param>
 /// <param name="rotX">The x rotation value</param>
 /// <param name="rotY">The y rotation value</param>
@@ -1473,10 +1473,10 @@ native PlayerTextDrawSetPreviewModel(playerID, PlayerText:text, modelindex);
 /// <seealso name="OnPlayerClickPlayerTextDraw"/>
 /// <remarks>This function was added in <b>SA-MP 0.3x</b> and will not work in earlier versions!</remarks>
 /// <remarks>The textdraw MUST use the font type <b><c>TEXT_DRAW_FONT_MODEL_PREVIEW</c></b> and already have a model set in order for this function to have effect.</remarks>
-native PlayerTextDrawSetPreviewRot(playerID, PlayerText:text, Float:rotX, Float:rotY, Float:rotZ, Float:zoom = 1.0);
+native PlayerTextDrawSetPreviewRot(playerid, PlayerText:text, Float:rotX, Float:rotY, Float:rotZ, Float:zoom = 1.0);
 
 /// <summary>Set the colour of a vehicle in a player-textdraw model preview (if a vehicle is shown).</summary>
-/// <param name="playerID">The ID of the player whose player-textdraw to change</param>
+/// <param name="playerid">The ID of the player whose player-textdraw to change</param>
 /// <param name="text">The ID of the player's player-textdraw to change</param>
 /// <param name="colour1">The <a href="http://wiki.sa-mp.com/wiki/Vehicle_Color_IDs">colour</a> to set the vehicle's primary colour to</param>
 /// <param name="colour2">The <a href="http://wiki.sa-mp.com/wiki/Vehicle_Color_IDs">colour</a> to set the vehicle's secondary colour to</param>
@@ -1486,12 +1486,12 @@ native PlayerTextDrawSetPreviewRot(playerID, PlayerText:text, Float:rotX, Float:
 /// <seealso name="OnPlayerClickPlayerTextDraw"/>
 /// <remarks>This function was added in <b>SA-MP 0.3x</b> and will not work in earlier versions!</remarks>
 /// <remarks>The textdraw MUST use the font <b><c>TEXT_DRAW_FONT_MODEL_PREVIEW</c></b> and be showing a vehicle in order for this function to have effect.</remarks>
-native PlayerTextDrawSetPreviewVehCol(playerID, PlayerText:text, colour1, colour2);
+native PlayerTextDrawSetPreviewVehCol(playerid, PlayerText:text, colour1, colour2);
 
 // Per-player variable system (PVars)
 
 /// <summary>Set an integer player variable.</summary>
-/// <param name="playerID">The ID of the player whose player variable will be set</param>
+/// <param name="playerid">The ID of the player whose player variable will be set</param>
 /// <param name="pvar">The name of the player variable</param>
 /// <param name="value">The integer to be set</param>
 /// <seealso name="GetPVarInt"/>
@@ -1505,10 +1505,10 @@ native PlayerTextDrawSetPreviewVehCol(playerID, PlayerText:text, colour1, colour
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. Either the player specified is not connected, or the variable name is null or over 40 characters.
 /// </returns>
-native SetPVarInt(playerID, const pvar[], value);
+native SetPVarInt(playerid, const pvar[], value);
 
 /// <summary>Gets an integer player variable's value.</summary>
-/// <param name="playerID">The ID of the player whose player variable to get</param>
+/// <param name="playerid">The ID of the player whose player variable to get</param>
 /// <param name="pvar">The name of the player variable (case-insensitive). Assigned in SetPVarInt</param>
 /// <seealso name="SetPVarInt"/>
 /// <seealso name="SetPVarString"/>
@@ -1517,10 +1517,10 @@ native SetPVarInt(playerID, const pvar[], value);
 /// <seealso name="GetPVarFloat"/>
 /// <seealso name="DeletePVar"/>
 /// <returns>The integer value of the specified player variable. It will still return <b><c>0</c></b> if the variable is not set, or the player does not exist.</returns>
-native GetPVarInt(playerID, const pvar[]);
+native GetPVarInt(playerid, const pvar[]);
 
 /// <summary>Saves a string into a player variable.</summary>
-/// <param name="playerID">The ID of the player whose player variable will be set</param>
+/// <param name="playerid">The ID of the player whose player variable will be set</param>
 /// <param name="pvar">The name of the player variable</param>
 /// <param name="value">The string you want to save in the player variable</param>
 /// <seealso name="SetPVarInt"/>
@@ -1529,10 +1529,10 @@ native GetPVarInt(playerID, const pvar[]);
 /// <seealso name="SetPVarFloat"/>
 /// <seealso name="GetPVarFloat"/>
 /// <seealso name="DeletePVar"/>
-native SetPVarString(playerID, const pvar[], const value[]);
+native SetPVarString(playerid, const pvar[], const value[]);
 
 /// <summary>Gets a player variable as a string.</summary>
-/// <param name="playerID">The ID of the player whose player variable to get</param>
+/// <param name="playerid">The ID of the player whose player variable to get</param>
 /// <param name="pvar">The name of the player variable, set by <a href="#SetPVarString">SetPVarString</a></param>
 /// <param name="output">The array in which to store the string value in, passed by reference</param>
 /// <param name="len">The maximum length of the returned string</param>
@@ -1544,10 +1544,10 @@ native SetPVarString(playerID, const pvar[], const value[]);
 /// <seealso name="DeletePVar"/>
 /// <remarks>If length of string is zero (value not set), output text will not be updated or set to anything and will remain with old data, neccesying that you clear the variable to blank value if <a href="#GetPVarString">GetPVarString</a> returns <b><c>0</c></b> if that behavior is undesired </remarks>
 /// <returns>The length of the string.</returns>
-native GetPVarString(playerID, const pvar[], output[], len = sizeof (output));
+native GetPVarString(playerid, const pvar[], output[], len = sizeof (output));
 
 /// <summary>Set a float player variable's value.</summary>
-/// <param name="playerID">The ID of the player whose player variable will be set</param>
+/// <param name="playerid">The ID of the player whose player variable will be set</param>
 /// <param name="pvar">The name of the player variable</param>
 /// <param name="value">The float you want to save in the player variable</param>
 /// <seealso name="SetPVarInt"/>
@@ -1560,10 +1560,10 @@ native GetPVarString(playerID, const pvar[], output[], len = sizeof (output));
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. Either the player specified is not connected, or the variable name is null or over 40 characters.
 /// </returns>
-native SetPVarFloat(playerID, const pvar[], Float:value);
+native SetPVarFloat(playerid, const pvar[], Float:value);
 
 /// <summary>Gets a player variable as a float.</summary>
-/// <param name="playerID">The ID of the player whose player variable you want to get</param>
+/// <param name="playerid">The ID of the player whose player variable you want to get</param>
 /// <param name="pvar">The name of the player variable</param>
 /// <seealso name="SetPVarInt"/>
 /// <seealso name="GetPVarInt"/>
@@ -1572,10 +1572,10 @@ native SetPVarFloat(playerID, const pvar[], Float:value);
 /// <seealso name="SetPVarFloat"/>
 /// <seealso name="DeletePVar"/>
 /// <returns>The float from the specified player variable.</returns>
-native Float:GetPVarFloat(playerID, const pvar[]);
+native Float:GetPVarFloat(playerid, const pvar[]);
 
 /// <summary>Deletes a previously set player variable.</summary>
-/// <param name="playerID">The ID of the player whose player variable to delete</param>
+/// <param name="playerid">The ID of the player whose player variable to delete</param>
 /// <param name="pvar">The name of the player variable to delete</param>
 /// <seealso name="SetPVarInt"/>
 /// <seealso name="GetPVarInt"/>
@@ -1588,17 +1588,17 @@ native Float:GetPVarFloat(playerID, const pvar[]);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. Either the player specified isn't connected or there is no variable set with the given name.
 /// </returns>
-native DeletePVar(playerID, const pvar[]);
+native DeletePVar(playerid, const pvar[]);
 
 /// <summary>Each PVar (player-variable) has its own unique identification number for lookup, this function returns the highest ID set for a player.</summary>
-/// <param name="playerID">The ID of the player to get the upper PVar index of</param>
+/// <param name="playerid">The ID of the player to get the upper PVar index of</param>
 /// <seealso name="GetPVarNameAtIndex"/>
 /// <seealso name="GetPVarType"/>
 /// <returns>The highest set PVar ID.</returns>
-native GetPVarsUpperIndex(playerID);
+native GetPVarsUpperIndex(playerid);
 
 /// <summary>Retrieve the name of a player's pVar via the index.</summary>
-/// <param name="playerID">The ID of the player whose player variable to get the name of</param>
+/// <param name="playerid">The ID of the player whose player variable to get the name of</param>
 /// <param name="index">The index of the player's pVar</param>
 /// <param name="output">A string to store the pVar's name in, passed by reference</param>
 /// <param name="size">The max length of the returned string</param>
@@ -1606,10 +1606,10 @@ native GetPVarsUpperIndex(playerID);
 /// <seealso name="GetPVarInt"/>
 /// <seealso name="GetPVarFloat"/>
 /// <seealso name="GetPVarString"/>
-native GetPVarNameAtIndex(playerID, index, output[], size = sizeof (output));
+native GetPVarNameAtIndex(playerid, index, output[], size = sizeof (output));
 
 /// <summary>Gets the type (integer, float or string) of a player variable.</summary>
-/// <param name="playerID">The ID of the player whose player variable to get the type of</param>
+/// <param name="playerid">The ID of the player whose player variable to get the type of</param>
 /// <param name="pvar">The name of the player variable to get the type of</param>
 /// <seealso name="SetPVarInt"/>
 /// <seealso name="GetPVarInt"/>
@@ -1628,14 +1628,14 @@ native GetPVarNameAtIndex(playerID, index, output[], size = sizeof (output));
 ///   </ul>
 /// </remarks>
 /// <returns>Returns the type of the PVar. See table below.</returns>
-native GetPVarType(playerID, const pvar[]);
+native GetPVarType(playerid, const pvar[]);
 
 #if MAX_CHATBUBBLE_LENGTH < 1 || MAX_CHATBUBBLE_LENGTH > 144
 	#error MAX_CHATBUBBLE_LENGTH must be >= 1 and <= 144
 #endif
 
 /// <summary>Creates a chat bubble above a player's name tag.</summary>
-/// <param name="playerID">The player which should have the chat bubble</param>
+/// <param name="playerid">The player which should have the chat bubble</param>
 /// <param name="text">The text to display</param>
 /// <param name="colour">The text colour</param>
 /// <param name="drawdistance">The distance from where players are able to see the chat bubble</param>
@@ -1643,16 +1643,16 @@ native GetPVarType(playerID, const pvar[]);
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <remarks>You can't see your own chatbubbles. The same applies to attached 3D text labels.</remarks>
 /// <remarks>You can use colour embedding for multiple colours in the message.</remarks>
-native SetPlayerChatBubble(playerID, const text[], colour, Float:drawdistance, expiretime);
+native SetPlayerChatBubble(playerid, const text[], colour, Float:drawdistance, expiretime);
 
 // Player control
 
 /// <summary>Puts a player in a vehicle.</summary>
-/// <param name="playerID">The ID of the player to put in a vehicle</param>
-/// <param name="vehicleID">The ID of the vehicle to put the player in</param>
-/// <param name="seatID">The ID of the seat to put the player in</param>
+/// <param name="playerid">The ID of the player to put in a vehicle</param>
+/// <param name="vehicleid">The ID of the vehicle to put the player in</param>
+/// <param name="seatid">The ID of the seat to put the player in</param>
 /// <seealso name="RemovePlayerFromVehicle"/>
-/// <seealso name="GetPlayerVehicleID"/>
+/// <seealso name="GetPlayerVehicleid"/>
 /// <seealso name="GetPlayerVehicleSeat"/>
 /// <seealso name="OnPlayerEnterVehicle"/>
 /// <remarks>If this function is used on a player that is already in a vehicle, other players will still see them in their previous vehicle. To fix this, first remove the player from the vehicle.</remarks>
@@ -1672,28 +1672,28 @@ native SetPlayerChatBubble(playerID, const text[], colour, Float:drawdistance, e
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. The player or vehicle don't exist.
 /// </returns>
-native PutPlayerInVehicle(playerID, vehicleID, seatID);
+native PutPlayerInVehicle(playerid, vehicleid, seatid);
 
 /// <summary>This function gets the ID of the vehicle the player is currently in. Note: <b>NOT</b> the model ID of the vehicle. See <a href="#GetVehicleModel">GetVehicleModel</a> for that.</summary>
-/// <param name="playerID">The ID of the player in the vehicle that you want to get the ID of</param>
+/// <param name="playerid">The ID of the player in the vehicle that you want to get the ID of</param>
 /// <seealso name="IsPlayerInVehicle"/>
 /// <seealso name="IsPlayerInAnyVehicle"/>
 /// <seealso name="GetPlayerVehicleSeat"/>
 /// <seealso name="GetVehicleModel"/>
 /// <returns>ID of the vehicle or <b><c>0</c></b> if not in a vehicle.</returns>
-native GetPlayerVehicleID(playerID);
+native GetPlayerVehicleid(playerid);
 
 /// <summary>Find out which seat a player is in.</summary>
-/// <param name="playerID">The ID of the player you want to get the seat of</param>
-/// <seealso name="GetPlayerVehicleID"/>
+/// <param name="playerid">The ID of the player you want to get the seat of</param>
+/// <seealso name="GetPlayerVehicleid"/>
 /// <seealso name="PutPlayerInVehicle"/>
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <remarks>Sometimes the result can be <b><c>128</c></b> which is an invalid seat ID. Circumstances of this are not yet known, but it is best to discard information when returned seat number is <b><c>128</c></b>.</remarks>
 /// <returns>The ID of the seat the player is in. <b><c>-1</c></b> is not in vehicle, <b><c>0</c></b> is the driver, <b><c>1</c></b> is the front passenger, and <b><c>2</c></b> &amp; <b><c>3</c></b> are the rear passengers.</returns>
-native GetPlayerVehicleSeat(playerID);
+native GetPlayerVehicleSeat(playerid);
 
 /// <summary>Removes/ejects a player from their vehicle.</summary>
-/// <param name="playerID">The ID of the player to remove from their vehicle</param>
+/// <param name="playerid">The ID of the player to remove from their vehicle</param>
 /// <seealso name="PutPlayerInVehicle"/>
 /// <remarks>
 ///   The exiting animation is not synced for other players.<p/>
@@ -1704,20 +1704,20 @@ native GetPlayerVehicleSeat(playerID);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. This means the player is not connected.
 /// </returns>
-native RemovePlayerFromVehicle(playerID);
+native RemovePlayerFromVehicle(playerid);
 
 /// <summary>Toggles whether a player can control their character or not. The player will also be unable to move their camera.</summary>
-/// <param name="playerID">The ID of the player to toggle the controllability of</param>
+/// <param name="playerid">The ID of the player to toggle the controllability of</param>
 /// <param name="toggle"><b><c>0</c></b> to make them uncontrollable, <b><c>1</c></b> to make them controllable</param>
 /// <returns>
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. The player specified does not exist.
 /// </returns>
-native TogglePlayerControllable(playerID, toggle);
+native TogglePlayerControllable(playerid, toggle);
 
 /// <summary>Plays the specified sound for a player.</summary>
-/// <param name="playerID">The ID of the player for whom to play the sound</param>
-/// <param name="soundID">The sound to play</param>
+/// <param name="playerid">The ID of the player for whom to play the sound</param>
+/// <param name="soundid">The sound to play</param>
 /// <param name="x">x coordinate for the sound to play at. (0 for no position)</param>
 /// <param name="y">y coordinate for the sound to play at. (0 for no position)</param>
 /// <param name="z">z coordinate for the sound to play at. (0 for no position)</param>
@@ -1729,10 +1729,10 @@ native TogglePlayerControllable(playerID, toggle);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. This means the player is not connected.
 /// </returns>
-native PlayerPlaySound(playerID, soundID, Float:x, Float:y, Float:z);
+native PlayerPlaySound(playerid, soundid, Float:x, Float:y, Float:z);
 
 /// <summary>Apply an animation to a player.</summary>
-/// <param name="playerID">The ID of the player to apply the animation to</param>
+/// <param name="playerid">The ID of the player to apply the animation to</param>
 /// <param name="animationLibrary">The animation library from which to apply an animation</param>
 /// <param name="animationName">The name of the animation to apply, within the specified library</param>
 /// <param name="delta">The speed to play the animation (use 4.1)</param>
@@ -1744,26 +1744,26 @@ native PlayerPlaySound(playerID, soundID, Float:x, Float:y, Float:z);
 /// <param name="forceSync">Set to <b><c>1</c></b> to make server sync the animation with all other players in streaming radius. <b><c>2</c></b> works same as <b><c>1</c></b>, but will ONLY apply the animation to streamed-in players, but NOT the actual player being animated (useful for npc animations and persistent animations when players are being streamed) (optional=<b><c>0</c></b>)</param>
 /// <seealso name="ClearAnimations"/>
 /// <seealso name="SetPlayerSpecialAction"/>
-/// <remarks>The <paramref name="forceSync"/> optional parameter, which defaults to <b><c>0</c></b>, in most cases is not needed since players sync animations themselves. The <paramref name="forceSync"/> parameter can force all players who can see <paramref name="playerID"/> to play the animation regardless of whether the player is performing that animation. This is useful in circumstances where the player can't sync the animation themselves. For example, they may be paused.</remarks>
+/// <remarks>The <paramref name="forceSync"/> optional parameter, which defaults to <b><c>0</c></b>, in most cases is not needed since players sync animations themselves. The <paramref name="forceSync"/> parameter can force all players who can see <paramref name="playerid"/> to play the animation regardless of whether the player is performing that animation. This is useful in circumstances where the player can't sync the animation themselves. For example, they may be paused.</remarks>
 /// <remarks>An invalid animation library will crash the player's game.</remarks>
 /// <returns>This function always returns <b><c>1</c></b>, even if the player specified does not exist, or any of the parameters are invalid (e.g. invalid library).</returns>
-native ApplyAnimation(playerID, const animationLibrary[], const animationName[], Float:delta, bool:loop, bool:lockX, bool:lockY, bool:freeze, time, bool:forceSync = false);
+native ApplyAnimation(playerid, const animationLibrary[], const animationName[], Float:delta, bool:loop, bool:lockX, bool:lockY, bool:freeze, time, bool:forceSync = false);
 
 /// <summary>Clears all animations for the given player (it also cancels all current tasks such as jetpacking,parachuting,entering vehicles, driving (removes player out of vehicle), swimming, etc.. ).</summary>
-/// <param name="playerID">The ID of the player to clear the animations of</param>
-/// <param name="forceSync">Set to <b><c>1</c></b> to force playerID to sync the animation with other players in streaming radius (optional=<b><c>0</c></b>)</param>
+/// <param name="playerid">The ID of the player to clear the animations of</param>
+/// <param name="forceSync">Set to <b><c>1</c></b> to force playerid to sync the animation with other players in streaming radius (optional=<b><c>0</c></b>)</param>
 /// <seealso name="ApplyAnimation"/>
 /// <remarks>ClearAnimations doesn't do anything when the animation ends if we pass 1 for the freeze parameter in <a href="#ApplyAnimation">ApplyAnimation</a>.</remarks>
 /// <remarks>Unlike some other ways to remove player from a vehicle, this will also reset the vehicle's velocity to zero, instantly stopping the car. Player will appear on top of the vehicle with the same location as he was in his car seat.</remarks>
 /// <returns>This function always returns <b><c>1</c></b>, even when the player specified is not connected.</returns>
-native ClearAnimations(playerID, bool:forceSync = false);
+native ClearAnimations(playerid, bool:forceSync = false);
 
 /// <summary>Returns the index of any running applied animations.</summary>
-/// <param name="playerID">ID of the player of whom you want to get the animation index of</param>
+/// <param name="playerid">ID of the player of whom you want to get the animation index of</param>
 /// <seealso name="GetAnimationName"/>
 /// <remarks>This function was added in <b>SA-MP 0.3b</b> and will not work in earlier versions!</remarks>
 /// <returns><b><c>0</c></b> if there is no animation applied.</returns>
-native GetPlayerAnimationIndex(playerID); // return the index of any running applied animations (0 if none are running)
+native GetPlayerAnimationIndex(playerid); // return the index of any running applied animations (0 if none are running)
 
 /// <summary>Get the animation library/name for the index.</summary>
 /// <param name="index">The animation index, returned by <a href="#GetPlayerAnimationIndex">GetPlayerAnimationIndex</a></param>
@@ -1777,7 +1777,7 @@ native GetPlayerAnimationIndex(playerID); // return the index of any running app
 native GetAnimationName(index, animationLibrary[], len1 = sizeof (animationLibrary), animationName[], len2 = sizeof (animationName)); // get the animation lib/name for the index
 
 /// <summary>Retrieves a player's current <a href="http://wiki.sa-mp.com/wiki/SpecialActions">special action</a>.</summary>
-/// <param name="playerID">The ID of the player to get the <a href="http://wiki.sa-mp.com/wiki/SpecialActions">special action</a> of</param>
+/// <param name="playerid">The ID of the player to get the <a href="http://wiki.sa-mp.com/wiki/SpecialActions">special action</a> of</param>
 /// <seealso name="SetPlayerSpecialAction"/>
 /// <seealso name="GetPlayerState"/>
 /// <remarks>
@@ -1815,11 +1815,11 @@ native GetAnimationName(index, animationLibrary[], len1 = sizeof (animationLibra
 ///   </ul>
 /// </remarks>
 /// <returns>The <a href="http://wiki.sa-mp.com/wiki/SpecialActions">special action</a> of the player.</returns>
-native GetPlayerSpecialAction(playerID);
+native GetPlayerSpecialAction(playerid);
 
 /// <summary>This function allows to set players special action.</summary>
-/// <param name="playerID">The player that should perform the action</param>
-/// <param name="actionID">The action that should be performed</param>
+/// <param name="playerid">The player that should perform the action</param>
+/// <param name="actionid">The action that should be performed</param>
 /// <seealso name="GetPlayerSpecialAction"/>
 /// <seealso name="ApplyAnimation"/>
 /// <remarks>Removing jetpacks from players by setting their special action to <b><c>0</c></b> causes the sound to stay until death.</remarks>
@@ -1861,22 +1861,22 @@ native GetPlayerSpecialAction(playerID);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. This means the player is not connected.
 /// </returns>
-native SetPlayerSpecialAction(playerID, actionID);
+native SetPlayerSpecialAction(playerid, actionid);
 
 /// <summary>Disables collisions between occupied vehicles for a player.</summary>
-/// <param name="playerID">The ID of the player for whom you want to disable collisions</param>
+/// <param name="playerid">The ID of the player for whom you want to disable collisions</param>
 /// <param name="disable"><b><c>1</c></b> to disable collisions, <b><c>0</c></b> to enable collisions</param>
 /// <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
 /// <returns>
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. The player specified does not exist.
 /// </returns>
-native DisableRemoteVehicleCollisions(playerID, disable);
+native DisableRemoteVehicleCollisions(playerid, disable);
 
 // Player world/map related
 
 /// <summary>Sets a checkpoint (red cylinder) for a player. Also shows a red blip on the radar. When players enter a checkpoint, <a href="#OnPlayerEnterCheckpoint">OnPlayerEnterCheckpoint</a> is called and actions can be performed.</summary>
-/// <param name="playerID">The ID of the player for whom to set a checkpoint</param>
+/// <param name="playerid">The ID of the player for whom to set a checkpoint</param>
 /// <param name="x">The x coordinate to set the checkpoint at</param>
 /// <param name="y">The y coordinate to set the checkpoint at</param>
 /// <param name="z">The z coordinate to set the checkpoint at</param>
@@ -1890,10 +1890,10 @@ native DisableRemoteVehicleCollisions(playerID, disable);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. This means the player specified does not exist.
 /// </returns>
-native SetPlayerCheckpoint(playerID, Float:x, Float:y, Float:z, Float:size);
+native SetPlayerCheckpoint(playerid, Float:x, Float:y, Float:z, Float:size);
 
 /// <summary>Disables (hides/destroys) a player's set checkpoint. Players can only have a single checkpoint set at a time. Checkpoints don't need to be disabled before setting another one.</summary>
-/// <param name="playerID">The ID of the player whose checkpoint to disable</param>
+/// <param name="playerid">The ID of the player whose checkpoint to disable</param>
 /// <seealso name="SetPlayerCheckpoint"/>
 /// <seealso name="IsPlayerInCheckpoint"/>
 /// <seealso name="SetPlayerRaceCheckpoint"/>
@@ -1907,10 +1907,10 @@ native SetPlayerCheckpoint(playerID, Float:x, Float:y, Float:z, Float:size);
 ///   <b><c>1</c></b>: The function executed successfully. Success is also returned if the player doesn't have a checkpoint shown already.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. This means the player is not connected.
 /// </returns>
-native DisablePlayerCheckpoint(playerID);
+native DisablePlayerCheckpoint(playerid);
 
 /// <summary>Creates a race checkpoint. When the player enters it, the <a href="#OnPlayerEnterRaceCheckpoint">OnPlayerEnterRaceCheckpoint</a> callback is called.</summary>
-/// <param name="playerID">The ID of the player to set the checkpoint for</param>
+/// <param name="playerid">The ID of the player to set the checkpoint for</param>
 /// <param name="type">Type of checkpoint. <b><c>0</c></b>-Normal, <b><c>1</c></b>-Finish, <b><c>2</c></b>-Nothing(Only the checkpoint without anything on it), <b><c>3</c></b>-Air normal, <b><c>4</c></b>-Air finish, <b><c>5</c></b>-Air (rotates and stops), <b><c>6</c></b>-Air (increases, decreases and disappears), <b><c>7</c></b>-Air (swings down and up), <b><c>8</c></b>-Air (swings up and down)</param>
 /// <param name="x">x-Coordinate</param>
 /// <param name="y">y-Coordinate</param>
@@ -1937,10 +1937,10 @@ native DisablePlayerCheckpoint(playerID);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. This means the player specified does not exist.
 /// </returns>
-native SetPlayerRaceCheckpoint(playerID, type, Float:x, Float:y, Float:z, Float:nextx, Float:nexty, Float:nextz, Float:size);
+native SetPlayerRaceCheckpoint(playerid, type, Float:x, Float:y, Float:z, Float:nextx, Float:nexty, Float:nextz, Float:size);
 
 /// <summary>Disable any initialized race checkpoints for a specific player, since you can only have one at any given time.</summary>
-/// <param name="playerID">The player to disable the current checkpoint for</param>
+/// <param name="playerid">The player to disable the current checkpoint for</param>
 /// <seealso name="SetPlayerCheckpoint"/>
 /// <seealso name="DisablePlayerCheckpoint"/>
 /// <seealso name="IsPlayerInCheckpoint"/>
@@ -1950,10 +1950,10 @@ native SetPlayerRaceCheckpoint(playerID, type, Float:x, Float:y, Float:z, Float:
 /// <seealso name="OnPlayerLeaveCheckpoint"/>
 /// <seealso name="OnPlayerEnterRaceCheckpoint"/>
 /// <seealso name="OnPlayerLeaveRaceCheckpoint"/>
-native DisablePlayerRaceCheckpoint(playerID);
+native DisablePlayerRaceCheckpoint(playerid);
 
 /// <summary>Set the world boundaries for a player. Players can not go out of the boundaries (they will be pushed back in).</summary>
-/// <param name="playerID">The ID of the player to set the world boundaries of</param>
+/// <param name="playerid">The ID of the player to set the world boundaries of</param>
 /// <param name="maxX">The maximum x coordinate the player can go to</param>
 /// <param name="minX">The minimum x coordinate the player can go to</param>
 /// <param name="maxY">The maximum y coordinate the player can go to</param>
@@ -1962,31 +1962,31 @@ native DisablePlayerRaceCheckpoint(playerID);
 /// <remarks>This function does not work if used in <a href="#OnPlayerConnect">OnPlayerConnect</a></remarks>
 /// <remarks>A player's world boundaries can be reset by setting them to <b><c>20000.0</c></b>, <b><c>-20000.0</c></b>, <b><c>20000.0</c></b>, <b><c>-20000.0</c></b>. These are the default values.</remarks>
 /// <remarks>This function doesn't work in interiors!</remarks>
-native SetPlayerWorldBounds(playerID, Float:maxX,Float:minX,Float:maxY,Float:minY);
+native SetPlayerWorldBounds(playerid, Float:maxX,Float:minX,Float:maxY,Float:minY);
 
 /// <summary>Change the colour of a player's <b>nametag</b> and <b>radar blip</b> for another player.</summary>
-/// <param name="playerID">The player that will see the player's changed blip/nametag colour</param>
-/// <param name="showplayerID">The player whose colour will be changed</param>
+/// <param name="playerid">The player that will see the player's changed blip/nametag colour</param>
+/// <param name="showplayerid">The player whose colour will be changed</param>
 /// <param name="colour">New colour. (<b>RGBA</b>)</param>
 /// <seealso name="ShowPlayerMarkers"/>
 /// <seealso name="LimitPlayerMarkerRadius"/>
 /// <seealso name="SetPlayerColor"/>
 /// <seealso name="ShowPlayerNameTagForPlayer"/>
-native SetPlayerMarkerForPlayer(playerID, showplayerID, colour);
+native SetPlayerMarkerForPlayer(playerid, showplayerid, colour);
 
 /// <summary>This functions allows you to toggle the drawing of player nametags, healthbars and armor bars which display above their head. For use of a similar function like this on a global level, <a href="#ShowNameTags">ShowNameTags</a> function.</summary>
-/// <param name="playerID">Player who will see the results of this function</param>
-/// <param name="showplayerID">Player whose name tag will be shown or hidden</param>
+/// <param name="playerid">Player who will see the results of this function</param>
+/// <param name="showplayerid">Player whose name tag will be shown or hidden</param>
 /// <param name="show"><b><c>1</c></b>-show name tag, <b><c>0</c></b>-hide name tag</param>
 /// <seealso name="ShowNameTags"/>
 /// <seealso name="DisableNameTagLOS"/>
 /// <seealso name="SetPlayerMarkerForPlayer"/>
-/// <remarks><a href="#ShowNameTags">ShowNameTags</a> must be set to <b><c>1</c></b> to be able to show name tags with ShowPlayerNameTagForPlayer, that means that in order to be effective you need to <c>ShowPlayerNameTagForPlayer(forplayerID, playerID, 0)</c> ahead of time(<a href="#OnPlayerStreamIn">OnPlayerStreamIn</a> is a good spot).</remarks>
-native ShowPlayerNameTagForPlayer(playerID, showplayerID, show);
+/// <remarks><a href="#ShowNameTags">ShowNameTags</a> must be set to <b><c>1</c></b> to be able to show name tags with ShowPlayerNameTagForPlayer, that means that in order to be effective you need to <c>ShowPlayerNameTagForPlayer(forplayerid, playerid, 0)</c> ahead of time(<a href="#OnPlayerStreamIn">OnPlayerStreamIn</a> is a good spot).</remarks>
+native ShowPlayerNameTagForPlayer(playerid, showplayerid, show);
 
 /// <summary>Place an icon/marker on a player's map. Can be used to mark locations such as banks and hospitals to players.</summary>
-/// <param name="playerID">The ID of the player to set the map icon for</param>
-/// <param name="iconID">The player's icon ID, ranging from <b><c>0</c></b> to <b><c>99</c></b>. This means there is a maximum of <b><c>100</c></b> map icons. ID can be used in <a href="#RemovePlayerMapIcon">RemovePlayerMapIcon</a></param>
+/// <param name="playerid">The ID of the player to set the map icon for</param>
+/// <param name="iconid">The player's icon ID, ranging from <b><c>0</c></b> to <b><c>99</c></b>. This means there is a maximum of <b><c>100</c></b> map icons. ID can be used in <a href="#RemovePlayerMapIcon">RemovePlayerMapIcon</a></param>
 /// <param name="x">The x coordinate to place the map icon at</param>
 /// <param name="y">The y coordinate to place the map icon at</param>
 /// <param name="z">The z coordinate to place the map icon at</param>
@@ -2011,30 +2011,30 @@ native ShowPlayerNameTagForPlayer(playerID, showplayerID, show);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. Player is not connected.
 /// </returns>
-native SetPlayerMapIcon(playerID, iconID, Float:x, Float:y, Float:z, markertype, colour, style = MAPICON_LOCAL);
+native SetPlayerMapIcon(playerid, iconid, Float:x, Float:y, Float:z, markertype, colour, style = MAPICON_LOCAL);
 
 /// <summary>Removes a map icon that was set earlier for a player using <a href="#SetPlayerMapIcon">SetPlayerMapIcon</a>.</summary>
-/// <param name="playerID">The ID of the player whose icon to remove</param>
-/// <param name="iconID">The ID of the icon to remove. This is the second parameter of <a href="#SetPlayerMapIcon">SetPlayerMapIcon</a></param>
+/// <param name="playerid">The ID of the player whose icon to remove</param>
+/// <param name="iconid">The ID of the icon to remove. This is the second parameter of <a href="#SetPlayerMapIcon">SetPlayerMapIcon</a></param>
 /// <seealso name="SetPlayerMapIcon"/>
 /// <returns>
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute.
 /// </returns>
-native RemovePlayerMapIcon(playerID, iconID);
+native RemovePlayerMapIcon(playerid, iconid);
 
 /// <summary>Enable/Disable the teleporting ability for a player by right-clicking on the map.</summary>
-/// <param name="playerID">The ID of the player to allow teleport</param>
+/// <param name="playerid">The ID of the player to allow teleport</param>
 /// <param name="allow"><b><c>1</c></b> to allow, <b><c>0</c></b> to disallow</param>
 /// <remarks><b>This function, as of 0.3d, is deprecated. Check <a href="#OnPlayerClickMap">OnPlayerClickMap</a>.</b></remarks>
 /// <remarks>This function will work only if <a href="#AllowAdminTeleport">AllowAdminTeleport</a> is enabled, and you have to be an admin.</remarks>
 /// <seealso name="AllowAdminTeleport"/>
-native AllowPlayerTeleport(playerID, allow);
+native AllowPlayerTeleport(playerid, allow);
 
 // Player camera
 
 /// <summary>Sets the camera to a specific position for a player.</summary>
-/// <param name="playerID">ID of the player</param>
+/// <param name="playerid">ID of the player</param>
 /// <param name="x">The x coordinate to place the camera at</param>
 /// <param name="y">The y coordinate to place the camera at</param>
 /// <param name="z">The z coordinate to place the camera at</param>
@@ -2047,10 +2047,10 @@ native AllowPlayerTeleport(playerID, allow);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. The player specified doesn't exist.
 /// </returns>
-native SetPlayerCameraPos(playerID, Float:x, Float:y, Float:z);
+native SetPlayerCameraPos(playerid, Float:x, Float:y, Float:z);
 
 /// <summary>Set the direction a player's camera looks at. Generally meant to be used in combination with <a href="#SetPlayerCameraPos">SetPlayerCameraPos</a>.</summary>
-/// <param name="playerID">The ID of the player whose camera to set</param>
+/// <param name="playerid">The ID of the player whose camera to set</param>
 /// <param name="x">The x coordinate for the player's camera to look at</param>
 /// <param name="y">The y coordinate for the player's camera to look at</param>
 /// <param name="z">The z coordinate for the player's camera to look at</param>
@@ -2064,16 +2064,16 @@ native SetPlayerCameraPos(playerID, Float:x, Float:y, Float:z);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. The player specified does not exist.
 /// </returns>
-native SetPlayerCameraLookAt(playerID, Float:x, Float:y, Float:z, cut = CAMERA_CUT);
+native SetPlayerCameraLookAt(playerid, Float:x, Float:y, Float:z, cut = CAMERA_CUT);
 
 /// <summary>Restore the camera to a place behind the player, after using a function like <a href="#SetPlayerCameraPos">SetPlayerCameraPos</a>.</summary>
-/// <param name="playerID">The player you want to restore the camera for</param>
+/// <param name="playerid">The player you want to restore the camera for</param>
 /// <seealso name="SetPlayerCameraPos"/>
 /// <seealso name="SetPlayerCameraLookAt"/>
-native SetCameraBehindPlayer(playerID);
+native SetCameraBehindPlayer(playerid);
 
 /// <summary>Get the position of the player's camera.</summary>
-/// <param name="playerID">The ID of the player to get the camera position of</param>
+/// <param name="playerid">The ID of the player to get the camera position of</param>
 /// <param name="x">A float variable to store the x coordinate in, passed by reference</param>
 /// <param name="y">A float variable to store the y coordinate in, passed by reference</param>
 /// <param name="z">A float variable to store the z coordinate in, passed by reference</param>
@@ -2085,10 +2085,10 @@ native SetCameraBehindPlayer(playerID);
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <remarks>Player's camera positions are only updated once a second, <b>unless aiming</b>.</remarks>
 /// <remarks>It is recommended to set a 1 second timer if you wish to take action that relies on a player's camera position.</remarks>
-native GetPlayerCameraPos(playerID, &Float:x, &Float:y, &Float:z);
+native GetPlayerCameraPos(playerid, &Float:x, &Float:y, &Float:z);
 
 /// <summary>This function will return the current direction of player's aiming in 3-D space, the coords are relative to the camera position, see <a href="#GetPlayerCameraPos">GetPlayerCameraPos</a>.</summary>
-/// <param name="playerID">The ID of the player you want to obtain the camera front vector of</param>
+/// <param name="playerid">The ID of the player you want to obtain the camera front vector of</param>
 /// <param name="x">A float to store the x coordinate, passed by reference</param>
 /// <param name="y">A float to store the y coordinate, passed by reference</param>
 /// <param name="z">A float to store the z coordinate, passed by reference</param>
@@ -2097,10 +2097,10 @@ native GetPlayerCameraPos(playerID, &Float:x, &Float:y, &Float:z);
 /// <remarks>In <b>0.3a</b> the camera front vector is only obtainable when player is inside a rhino, S.W.A.T tank, fire truck, or on foot. </remarks>
 /// <remarks>Since <b>0.3b</b> the camera data can be obtained when the player is in any vehicle or on foot. </remarks>
 /// <returns>The position is stored in the specified variables.</returns>
-native GetPlayerCameraFrontVector(playerID, &Float:x, &Float:y, &Float:z);
+native GetPlayerCameraFrontVector(playerid, &Float:x, &Float:y, &Float:z);
 
 /// <summary>Returns the current GTA camera mode for the requested player. The camera modes are useful in determining whether a player is aiming, doing a passenger driveby etc.</summary>
-/// <param name="playerID">The ID of the player whose camera mode to retrieve</param>
+/// <param name="playerid">The ID of the player whose camera mode to retrieve</param>
 /// <seealso name="GetPlayerCameraPos"/>
 /// <seealso name="GetPlayerCameraFrontVector"/>
 /// <seealso name="SetPlayerCameraPos"/>
@@ -2108,10 +2108,10 @@ native GetPlayerCameraFrontVector(playerID, &Float:x, &Float:y, &Float:z);
 /// <seealso name="SetCameraBehindPlayer"/>
 /// <remarks>This function was added in <b>SA-MP 0.3c R3</b> and will not work in earlier versions!</remarks>
 /// <returns>The camera mode as an integer (or <b><c>-1</c></b> if player is not connected).</returns>
-native GetPlayerCameraMode(playerID);
+native GetPlayerCameraMode(playerid);
 
 /// <summary>Toggle camera targeting functions for a player. Disabled by default to save bandwidth.</summary>
-/// <param name="playerID">The ID of the player to toggle camera targeting functions for</param>
+/// <param name="playerid">The ID of the player to toggle camera targeting functions for</param>
 /// <param name="enable"><b><c>1</c></b> to enable camera targeting functions and <b><c>0</c></b> to disable them</param>
 /// <seealso name="GetPlayerCameraTargetVehicle"/>
 /// <seealso name="GetPlayerCameraTargetPlayer"/>
@@ -2121,20 +2121,20 @@ native GetPlayerCameraMode(playerID);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. The player is not connected.
 /// </returns>
-native EnablePlayerCameraTarget(playerID, enable);
+native EnablePlayerCameraTarget(playerid, enable);
 
 /// <summary>Allows you to retrieve the ID of the object the player is looking at.</summary>
-/// <param name="playerID">The ID of the player to check</param>
+/// <param name="playerid">The ID of the player to check</param>
 /// <seealso name="GetPlayerCameraTargetVehicle"/>
 /// <seealso name="GetPlayerCameraTargetPlayer"/>
 /// <seealso name="GetPlayerCameraFrontVector"/>
 /// <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
 /// <remarks>This function is disabled by default to save bandwidth. Use <a href="#EnablePlayerCameraTarget">EnablePlayerCameraTarget</a> to enable it for each player.</remarks>
-/// <returns>The ID of the object playerID is looking at. If <b><c>INVALID_OBJECT_ID (65535)</c></b> is returned, playerID isn't looking at any object.</returns>
-native GetPlayerCameraTargetObject(playerID);
+/// <returns>The ID of the object playerid is looking at. If <b><c>INVALID_OBJECT_ID (65535)</c></b> is returned, playerid isn't looking at any object.</returns>
+native GetPlayerCameraTargetObject(playerid);
 
 /// <summary>Get the ID of the vehicle the player is looking at.</summary>
-/// <param name="playerID">The ID of the player to check</param>
+/// <param name="playerid">The ID of the player to check</param>
 /// <seealso name="GetPlayerCameraTargetPlayer"/>
 /// <seealso name="GetPlayerCameraTargetObject"/>
 /// <seealso name="EnablePlayerCameraTarget"/>
@@ -2143,22 +2143,22 @@ native GetPlayerCameraTargetObject(playerID);
 /// <remarks>This function is disabled by default to save bandwidth. Use <a href="#EnablePlayerCameraTarget">EnablePlayerCameraTarget</a> to enable it for each player.</remarks>
 /// <remarks>This function can (obviously) only return one vehicle ID at a time, while the player may be looking at multiple. It generally seems to detect the closest vehicle first.</remarks>
 /// <returns>The vehicle ID of the vehicle the player is looking at. <b><c>INVALID_VEHICLE_ID</c></b> if none.</returns>
-native GetPlayerCameraTargetVehicle(playerID);
+native GetPlayerCameraTargetVehicle(playerid);
 
-/// <summary>Allows you to retrieve the ID of the player the playerID is looking at.</summary>
-/// <param name="playerID">The ID of the player to check</param>
+/// <summary>Allows you to retrieve the ID of the player the playerid is looking at.</summary>
+/// <param name="playerid">The ID of the player to check</param>
 /// <seealso name="GetPlayerCameraTargetActor"/>
 /// <seealso name="GetPlayerCameraTargetVehicle"/>
 /// <seealso name="GetPlayerCameraTargetObject"/>
 /// <seealso name="GetPlayerCameraFrontVector"/>
 /// <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
 /// <remarks>This function is disabled by default to save bandwidth. Use <a href="#EnablePlayerCameraTarget">EnablePlayerCameraTarget</a> to enable it for each player.</remarks>
-/// <remarks>Do not confuse this function with <a href="#GetPlayerTargetPlayer">GetPlayerTargetPlayer</a>. <a href="#GetPlayerTargetPlayer">GetPlayerTargetPlayer</a> returns the ID of the player playerID is aming at (with a weapon). <a href="#GetPlayerCameraTargetPlayer">GetPlayerCameraTargetPlayer</a> returns the ID of the player playerID is looking at (reference point is the <b>center of the screen</b>).</remarks>
-/// <returns>The ID of the player the playerID is looking at.</returns>
-native GetPlayerCameraTargetPlayer(playerID);
+/// <remarks>Do not confuse this function with <a href="#GetPlayerTargetPlayer">GetPlayerTargetPlayer</a>. <a href="#GetPlayerTargetPlayer">GetPlayerTargetPlayer</a> returns the ID of the player playerid is aming at (with a weapon). <a href="#GetPlayerCameraTargetPlayer">GetPlayerCameraTargetPlayer</a> returns the ID of the player playerid is looking at (reference point is the <b>center of the screen</b>).</remarks>
+/// <returns>The ID of the player the playerid is looking at.</returns>
+native GetPlayerCameraTargetPlayer(playerid);
 
 /// <summary>Allows you to retrieve the ID of the actor the player is looking at (if any).</summary>
-/// <param name="playerID">The ID of the player to get the target actor of</param>
+/// <param name="playerid">The ID of the player to get the target actor of</param>
 /// <seealso name="GetPlayerTargetActor"/>
 /// <seealso name="GetPlayerCameraTargetPlayer"/>
 /// <seealso name="GetPlayerCameraTargetVehicle"/>
@@ -2168,48 +2168,48 @@ native GetPlayerCameraTargetPlayer(playerID);
 /// <remarks>This function is disabled by default to save bandwidth. Use <a href="#EnablePlayerCameraTarget">EnablePlayerCameraTarget</a> to enable it for each player.</remarks>
 /// <remarks>This function only tells you which actor (if any) the player is <b>looking</b> at. To find out if they are <b>aiming</b> at them, you need to use <a href="#GetPlayerTargetActor">GetPlayerTargetActor</a>.</remarks>
 /// <returns>The ID of the actor the player is looking at.</returns>
-native GetPlayerCameraTargetActor(playerID);
+native GetPlayerCameraTargetActor(playerid);
 
 /// <summary>Retrieves the aspect ratio of a player's camera.</summary>
-/// <param name="playerID">The ID of the player to get the camera aspect ratio of</param>
+/// <param name="playerid">The ID of the player to get the camera aspect ratio of</param>
 /// <seealso name="GetPlayerCameraZoom"/>
 /// <seealso name="GetPlayerCameraPos"/>
 /// <seealso name="GetPlayerCameraFrontVector"/>
 /// <remarks>This function was added in <b>SA-MP 0.3z</b> and will not work in earlier versions! </remarks>
 /// <remarks>The return value of this function represents the value of the "widescreen" option in the game's display settings, not the actual aspect ratio of the player's display.</remarks>
 /// <returns>The aspect ratio of the player's camera, as a float. The aspect ratio can be one of three values: 4:3 (<b><c>1.3333334</c></b>, <b><c>Float:0x3FAAAAAB</c></b>) when widescreen is turned off, 5:4 (<b><c>1.2470589</c></b>, <b><c>Float:0x3F9F9FA0</c></b>) when letterbox mode is turned on, and 16:9 (<b><c>1.7764707</c></b>, <b><c>Float:0x3FE36364</c></b>) when widescreen is turned on regardless of the letterbox mode.</returns>
-native Float:GetPlayerCameraAspectRatio(playerID);
+native Float:GetPlayerCameraAspectRatio(playerid);
 
 /// <summary>Retrieves the game camera zoom level for a given player.</summary>
-/// <param name="playerID">The ID of the player to get the camera zoom level of</param>
+/// <param name="playerid">The ID of the player to get the camera zoom level of</param>
 /// <seealso name="GetPlayerCameraAspectRatio"/>
 /// <seealso name="GetPlayerCameraPos"/>
 /// <seealso name="GetPlayerCameraFrontVector"/>
 /// <remarks>This function was added in <b>SA-MP 0.3z</b> and will not work in earlier versions!</remarks>
 /// <remarks>This retrieves the zoom level of the GAME camera, not the camera WEAPON.</remarks>
 /// <returns>The player's camera zoom level (camera, sniper etc.), a float.</returns>
-native Float:GetPlayerCameraZoom(playerID);
+native Float:GetPlayerCameraZoom(playerid);
 
 /// <summary>You can use this function to attach the player camera to objects.</summary>
-/// <param name="playerID">The ID of the player which will have your camera attached on object</param>
-/// <param name="objectID">The object ID which you want to attach the player camera</param>
+/// <param name="playerid">The ID of the player which will have your camera attached on object</param>
+/// <param name="objectid">The object ID which you want to attach the player camera</param>
 /// <seealso name="AttachCameraToPlayerObject"/>
 /// <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <remarks>You need to create the object first, before attempting to attach a player camera for that.</remarks>
-native AttachCameraToObject(playerID, objectID);
+native AttachCameraToObject(playerid, objectid);
 
 /// <summary>Attaches a player's camera to a player-object. The player is able to move their camera while it is attached to an object. Can be used with MovePlayerObject and AttachPlayerObjectToVehicle.</summary>
-/// <param name="playerID">The ID of the player which will have their camera attached to a player-object</param>
-/// <param name="playerobjectID">The ID of the player-object to which the player's camera will be attached</param>
+/// <param name="playerid">The ID of the player which will have their camera attached to a player-object</param>
+/// <param name="playerobjectid">The ID of the player-object to which the player's camera will be attached</param>
 /// <seealso name="AttachCameraToObject"/>
 /// <seealso name="SetPlayerCameraPos"/>
 /// <seealso name="SetPlayerCameraLookAt"/>
 /// <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <remarks>The player-object must be created before attempting to attach the player's camera to it.</remarks>
-native AttachCameraToPlayerObject(playerID, playerobjectID);
+native AttachCameraToPlayerObject(playerid, playerobjectid);
 
 /// <summary>Move a player's camera from one position to another, within the set time. Useful for scripted cut scenes.</summary>
-/// <param name="playerID">The ID of the player the camera should be moved for</param>
+/// <param name="playerid">The ID of the player the camera should be moved for</param>
 /// <param name="fromX">The x position the camera should start to move from</param>
 /// <param name="fromY">The y position the camera should start to move from</param>
 /// <param name="fromZ">The z position the camera should start to move from</param>
@@ -2223,10 +2223,10 @@ native AttachCameraToPlayerObject(playerID, playerobjectID);
 /// <seealso name="SetPlayerCameraLookAt"/>
 /// <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <remarks>Use <b><c>TogglePlayerSpectating</c></b> to make objects stream in for the player while the camera is moving. You can reset the camera behind the player with <b><c>SetCameraBehindPlayer</c></b>.</remarks>
-native InterpolateCameraPos(playerID, Float:fromX, Float:fromY, Float:fromZ, Float:toX, Float:toY, Float:toZ, time, cut = CAMERA_CUT);
+native InterpolateCameraPos(playerid, Float:fromX, Float:fromY, Float:fromZ, Float:toX, Float:toY, Float:toZ, time, cut = CAMERA_CUT);
 
 /// <summary>Interpolate a player's camera's 'look at' point between two coordinates with a set speed. Can be be used with <a href="#InterpolateCameraPos">InterpolateCameraPos</a>.</summary>
-/// <param name="playerID">The ID of the player the camera should be moved for</param>
+/// <param name="playerid">The ID of the player the camera should be moved for</param>
 /// <param name="fromX">The x position the camera should start to move from</param>
 /// <param name="fromY">The y position the camera should start to move from</param>
 /// <param name="fromZ">The z position the camera should start to move from</param>
@@ -2240,36 +2240,36 @@ native InterpolateCameraPos(playerID, Float:fromX, Float:fromY, Float:fromZ, Flo
 /// <seealso name="SetPlayerCameraPos"/>
 /// <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <remarks>Use <b><c>TogglePlayerSpectating</c></b> to make objects stream in for the player while the camera is moving. You can reset the camera behind the player with <b><c>SetCameraBehindPlayer</c></b>.</remarks>
-native InterpolateCameraLookAt(playerID, Float:fromX, Float:fromY, Float:fromZ, Float:toX, Float:toY, Float:toZ, time, cut = CAMERA_CUT);
+native InterpolateCameraLookAt(playerid, Float:fromX, Float:fromY, Float:fromZ, Float:toX, Float:toY, Float:toZ, time, cut = CAMERA_CUT);
 
 // Player conditionals
 
 /// <summary>Checks if a player is connected (if an ID is taken by a connected player).</summary>
-/// <param name="playerID">The ID of the player to check</param>
+/// <param name="playerid">The ID of the player to check</param>
 /// <seealso name="IsPlayerAdmin"/>
 /// <seealso name="OnPlayerConnect"/>
 /// <seealso name="OnPlayerDisconnect"/>
 /// <remarks>This function can be omitted in a lot of cases. Many other functions already have some sort of connection check built in.</remarks>
 /// <returns><b><c>1</c></b> if the player is connected, <b><c>0</c></b> if not.</returns>
-native IsPlayerConnected(playerID);
+native IsPlayerConnected(playerid);
 
 /// <summary>Checks if a player is in a specific vehicle.</summary>
-/// <param name="playerID">ID of the player</param>
-/// <param name="vehicleID">ID of the vehicle</param>
+/// <param name="playerid">ID of the player</param>
+/// <param name="vehicleid">ID of the vehicle</param>
 /// <seealso name="IsPlayerInAnyVehicle"/>
 /// <seealso name="GetPlayerVehicleSeat"/>
 /// <returns><b><c>1</c></b> if the player is in the vehicle, <b><c>0</c></b> if not.</returns>
-native IsPlayerInVehicle(playerID, vehicleID);
+native IsPlayerInVehicle(playerid, vehicleid);
 
 /// <summary>Check if a player is inside any vehicle (as a driver or passenger).</summary>
-/// <param name="playerID">The ID of the player to check</param>
+/// <param name="playerid">The ID of the player to check</param>
 /// <seealso name="IsPlayerInVehicle"/>
 /// <seealso name="GetPlayerVehicleSeat"/>
 /// <returns><b><c>1</c></b> if the player is in a vehicle, <b><c>0</c></b> if not.</returns>
-native IsPlayerInAnyVehicle(playerID);
+native IsPlayerInAnyVehicle(playerid);
 
 /// <summary>Check if the player is currently inside a checkpoint, this could be used for properties or teleport points for example.</summary>
-/// <param name="playerID">The player you want to know the status of</param>
+/// <param name="playerid">The player you want to know the status of</param>
 /// <seealso name="SetPlayerCheckpoint"/>
 /// <seealso name="DisablePlayerCheckpoint"/>
 /// <seealso name="SetPlayerRaceCheckpoint"/>
@@ -2280,10 +2280,10 @@ native IsPlayerInAnyVehicle(playerID);
 /// <seealso name="OnPlayerEnterRaceCheckpoint"/>
 /// <seealso name="OnPlayerLeaveRaceCheckpoint"/>
 /// <returns><b><c>0</c></b> if player isn't in his checkpoint else <b><c>1</c></b>.</returns>
-native IsPlayerInCheckpoint(playerID);
+native IsPlayerInCheckpoint(playerid);
 
 /// <summary>Check if the player is inside their current set race checkpoint (<a href="#SetPlayerRaceCheckpoint">SetPlayerRaceCheckpoint</a>).</summary>
-/// <param name="playerID">The ID of the player to check</param>
+/// <param name="playerid">The ID of the player to check</param>
 /// <seealso name="SetPlayerCheckpoint"/>
 /// <seealso name="DisablePlayerCheckpoint"/>
 /// <seealso name="IsPlayerInCheckpoint"/>
@@ -2294,13 +2294,13 @@ native IsPlayerInCheckpoint(playerID);
 /// <seealso name="OnPlayerEnterRaceCheckpoint"/>
 /// <seealso name="OnPlayerLeaveRaceCheckpoint"/>
 /// <returns><b><c>1</c></b> is the player is in a race checkpoint, <b><c>0</c></b> if not.</returns>
-native IsPlayerInRaceCheckpoint(playerID);
+native IsPlayerInRaceCheckpoint(playerid);
 
 // Virtual Worlds
 
 /// <summary>Set the virtual world of a player. They can only see other players or vehicles that are in that same world.</summary>
-/// <param name="playerID">The ID of the player you want to set the virtual world of</param>
-/// <param name="worldID">The virtual world ID to put the player in</param>
+/// <param name="playerid">The ID of the player you want to set the virtual world of</param>
+/// <param name="worldid">The virtual world ID to put the player in</param>
 /// <seealso name="GetPlayerVirtualWorld"/>
 /// <seealso name="SetVehicleVirtualWorld"/>
 /// <remarks>The default virtual world is <b><c>0</c></b></remarks>
@@ -2308,27 +2308,27 @@ native IsPlayerInRaceCheckpoint(playerID);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. This means the player is not connected.
 /// </returns>
-native SetPlayerVirtualWorld(playerID, worldID);
+native SetPlayerVirtualWorld(playerid, worldid);
 
 /// <summary>Retrieves the current virtual world the player is in.</summary>
-/// <param name="playerID">The ID of the player to get the virtual world of</param>
+/// <param name="playerid">The ID of the player to get the virtual world of</param>
 /// <seealso name="SetPlayerVirtualWorld"/>
 /// <seealso name="GetVehicleVirtualWorld"/>
 /// <seealso name="GetPlayerInterior"/>
 /// <returns>The ID of the virtual world the player is currently in.</returns>
-native GetPlayerVirtualWorld(playerID);
+native GetPlayerVirtualWorld(playerid);
 
 // Insane Stunts
 
 /// <summary>Toggle stunt bonuses for a player. Enabled by default.</summary>
-/// <param name="playerID">The ID of the player to toggle stunt bonuses for</param>
+/// <param name="playerid">The ID of the player to toggle stunt bonuses for</param>
 /// <param name="enable"><b><c>1</c></b> to enable stunt bonuses and <b><c>0</c></b> to disable them</param>
 /// <seealso name="EnableStuntBonusForAll"/>
 /// <returns>
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. The player is not connected.
 /// </returns>
-native EnableStuntBonusForPlayer(playerID, bool:enable);
+native EnableStuntBonusForPlayer(playerid, bool:enable);
 
 /// <summary>Enables or disables stunt bonuses for all players. If enabled, players will receive monetary rewards when performing a stunt in a vehicle (e.g. a wheelie).</summary>
 /// <param name="enable"><b><c>1</c></b> to enable stunt bonuses or <b><c>0</c></b> to disable them</param>
@@ -2336,7 +2336,7 @@ native EnableStuntBonusForPlayer(playerID, bool:enable);
 native EnableStuntBonusForAll(enable);
 
 /// <summary>Toggle whether a player is in spectator mode or not. While in spectator mode a player can spectate (watch) other players and vehicles. After using this function, either <a href="#PlayerSpectatePlayer">PlayerSpectatePlayer</a> or <a href="#PlayerSpectateVehicle">PlayerSpectateVehicle</a> needs to be used.</summary>
-/// <param name="playerID">The ID of the player who should spectate</param>
+/// <param name="playerid">The ID of the player who should spectate</param>
 /// <param name="toggle"><b><c>1</c></b> to enable spectating and <b><c>0</c></b> to disable</param>
 /// <seealso name="PlayerSpectatePlayer"/>
 /// <seealso name="PlayerSpectateVehicle"/>
@@ -2347,16 +2347,16 @@ native EnableStuntBonusForAll(enable);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. The player does not exist.
 /// </returns>
-native TogglePlayerSpectating(playerID, toggle);
+native TogglePlayerSpectating(playerid, toggle);
 
 /// <summary>Makes a player spectate (watch) another player.</summary>
-/// <param name="playerID">The ID of the player that will spectate</param>
-/// <param name="targetplayerID">The ID of the player that should be spectated</param>
+/// <param name="playerid">The ID of the player that will spectate</param>
+/// <param name="targetplayerid">The ID of the player that should be spectated</param>
 /// <param name="mode">The mode to spectate with (optional=<b><c>SPECTATE_MODE_NORMAL</c></b>)</param>
 /// <seealso name="PlayerSpectateVehicle"/>
 /// <seealso name="TogglePlayerSpectating"/>
 /// <remarks>Order is CRITICAL! Ensure that you use <a href="#TogglePlayerSpectating">TogglePlayerSpectating</a> before <a href="#PlayerSpectatePlayer">PlayerSpectatePlayer</a>. </remarks>
-/// <remarks>playerID and targetplayerID's virtual world and interior must be the same for this function to work properly. </remarks>
+/// <remarks>playerid and targetplayerid's virtual world and interior must be the same for this function to work properly. </remarks>
 /// <remarks>
 ///   <b>Spectate modes:</b><p/>
 ///   <ul>
@@ -2369,38 +2369,38 @@ native TogglePlayerSpectating(playerID, toggle);
 ///   <b><c>1</c></b>: The function executed successfully.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. One of the players specified does not exist.
 /// </returns>
-native PlayerSpectatePlayer(playerID, targetplayerID, mode = SPECTATE_MODE_NORMAL);
+native PlayerSpectatePlayer(playerid, targetplayerid, mode = SPECTATE_MODE_NORMAL);
 
 /// <summary>Sets a player to spectate another vehicle. Their camera will be attached to the vehicle as if they are driving it.</summary>
-/// <param name="playerID">The ID of the player who should spectate a vehicle</param>
-/// <param name="targetvehicleID">The ID of the vehicle the player should spectate</param>
+/// <param name="playerid">The ID of the player who should spectate a vehicle</param>
+/// <param name="targetvehicleid">The ID of the vehicle the player should spectate</param>
 /// <param name="mode">The spectate mode. Can generally be left blank as it defaults to 'normal'</param>
 /// <seealso name="PlayerSpectatePlayer"/>
 /// <seealso name="TogglePlayerSpectating"/>
 /// <remarks>Order is CRITICAL! Ensure that you use <a href="#TogglePlayerSpectating">TogglePlayerSpectating</a> before <a href="#PlayerSpectatePlayer">PlayerSpectatePlayer</a>. </remarks>
-/// <remarks>playerID and targetvehicleID have to be in the same interior for this function to work properly. </remarks>
+/// <remarks>playerid and targetvehicleid have to be in the same interior for this function to work properly. </remarks>
 /// <returns>
 ///   <b><c>1</c></b>: The function executed successfully. Note that success is reported if the player is not in spectator mode (<a href="#TogglePlayerSpectating">TogglePlayerSpectating</a>), but nothing will happen. <a href="#TogglePlayerSpectating">TogglePlayerSpectating</a> MUST be used first.<p/>
 ///   <b><c>0</c></b>: The function failed to execute. The player, vehicle, or both don't exist.
 /// </returns>
-native PlayerSpectateVehicle(playerID, targetvehicleID, mode = SPECTATE_MODE_NORMAL);
+native PlayerSpectateVehicle(playerid, targetvehicleid, mode = SPECTATE_MODE_NORMAL);
 
 /// <summary>Starts recording a player's movements to a file, which can then be reproduced by an NPC.</summary>
-/// <param name="playerID">The ID of the player to record</param>
+/// <param name="playerid">The ID of the player to record</param>
 /// <param name="recordtype">The type of recording</param>
 /// <param name="recordname">The name of the file which will hold the recorded data. It will be saved in the scriptfiles directory, with an automatically added .rec extension, you will need to move the file to npcmodes/recordings to use for playback</param>
 /// <seealso name="StopRecordingPlayerData"/>
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
-native StartRecordingPlayerData(playerID, recordtype, const recordname[]);
+native StartRecordingPlayerData(playerid, recordtype, const recordname[]);
 
 /// <summary>Stops all the recordings that had been started with <a href="#StartRecordingPlayerData">StartRecordingPlayerData</a> for a specific player.</summary>
-/// <param name="playerID">The player you want to stop the recordings of</param>
+/// <param name="playerid">The player you want to stop the recordings of</param>
 /// <seealso name="StartRecordingPlayerData"/>
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
-native StopRecordingPlayerData(playerID);
+native StopRecordingPlayerData(playerid);
 
 /// <summary>Display the cursor and allow the player to select a textdraw.</summary>
-/// <param name="playerID">The ID of the player that should be able to select a textdraw</param>
+/// <param name="playerid">The ID of the player that should be able to select a textdraw</param>
 /// <param name="hoverColour">The colour of the textdraw when hovering over with mouse (<b>RGBA</b>)</param>
 /// <seealso name="CancelSelectTextDraw"/>
 /// <seealso name="TextDrawSetSelectable"/>
@@ -2410,21 +2410,21 @@ native StopRecordingPlayerData(playerID);
 /// <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <remarks><a href="#TextDrawSetSelectable">TextDrawSetSelectable</a> or <a href="#PlayerTextDrawSetSelectable">PlayerTextDrawSetSelectable</a> MUST be used first, to allow a textdraw to be selectable.</remarks>
 /// <remarks>It is the TEXT which will be highlighted when hovered over, NOT the box (if one is shown).</remarks>
-native SelectTextDraw(playerID, hoverColour); // enables the mouse so the player can select a textdraw
+native SelectTextDraw(playerid, hoverColour); // enables the mouse so the player can select a textdraw
 
 /// <summary>Cancel textdraw selection with the mouse.</summary>
-/// <param name="playerID">The ID of the player that should be the textdraw selection disabled</param>
+/// <param name="playerid">The ID of the player that should be the textdraw selection disabled</param>
 /// <seealso name="SelectTextDraw"/>
 /// <seealso name="TextDrawSetSelectable"/>
 /// <seealso name="OnPlayerClickTextDraw"/>
 /// <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <remarks>This function calls <a href="#OnPlayerClickTextDraw">OnPlayerClickTextDraw</a> with <b><c>INVALID_TEXT_DRAW</c></b> (<b><c>65535</c></b>). Using this function inside <a href="#OnPlayerClickTextDraw">OnPlayerClickTextDraw</a> without catching this case will cause clients to go into an infinite loop.</remarks>
-native CancelSelectTextDraw(playerID);	// cancel textdraw selection with the mouse
+native CancelSelectTextDraw(playerid);	// cancel textdraw selection with the mouse
 
 // Explosion
 
 /// <summary>Creates an explosion that is only visible to a single player. This can be used to isolate explosions from other players or to make them only appear in specific <a href="http://wiki.sa-mp.com/wiki/SetPlayerVirtualWorld">virtual worlds</a>.</summary>
-/// <param name="playerID">The ID of the player to create the explosion for</param>
+/// <param name="playerid">The ID of the player to create the explosion for</param>
 /// <param name="x">The x coordinate of the explosion</param>
 /// <param name="y">The y coordinate of the explosion</param>
 /// <param name="z">The z coordinate of the explosion</param>
@@ -2434,13 +2434,13 @@ native CancelSelectTextDraw(playerID);	// cancel textdraw selection with the mou
 /// <remarks>This function was added in <b>SA-MP 0.3z R2-2</b> and will not work in earlier versions!</remarks>
 /// <remarks>There is a limit as to how many explosions can be seen at once by a player. This is roughly 10.</remarks>
 /// <returns>This function always returns <b><c>1</c></b>, even if the function failed to excute (player doesn't exist, invalid radius, or invalid explosion type).</returns>
-native CreateExplosionForPlayer(playerID, Float:x, Float:y, Float:z, type, Float:radius);
+native CreateExplosionForPlayer(playerid, Float:x, Float:y, Float:z, type, Float:radius);
 
 /// <summary>Perform a memory check on the client.</summary>
-/// <param name="playerID">The ID of the player to check</param>
+/// <param name="playerid">The ID of the player to check</param>
 /// <param name="type">The type of check to perform</param>
 /// <param name="memAddr">The base address to check</param>
 /// <param name="memOffset">The offset from the base address</param>
 /// <param name="byteCount">The number of bytes to check</param>
-native SendClientCheck(playerID, type, memAddr, memOffset, byteCount);
+native SendClientCheck(playerid, type, memAddr, memOffset, byteCount);
 
