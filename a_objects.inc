@@ -44,9 +44,9 @@
 /// <param name="x">The x coordinate to create the object at</param>
 /// <param name="y">The y coordinate to create the object at</param>
 /// <param name="z">The z coordinate to create the object at</param>
-/// <param name="rX">The x rotation of the object</param>
-/// <param name="rY">The y rotation of the object</param>
-/// <param name="rZ">The z rotation of the object</param>
+/// <param name="rotX">The x rotation of the object</param>
+/// <param name="rotY">The y rotation of the object</param>
+/// <param name="rotZ">The z rotation of the object</param>
 /// <param name="drawDistance">The distance that San Andreas renders objects at. <b><c>0.0</c></b> will cause objects to render at their default distances. <b>Usable since 0.3b, limited to <c>300</c> prior to 0.3x</b> (optional=<b><c>0.0</c></b>)</param>
 /// <seealso name="DestroyObject"/>
 /// <seealso name="IsValidObject"/>
@@ -66,7 +66,7 @@
 /// <remarks>In case the light is attached to another object, one fix for this is to set <b>SyncRotation</b> to false in <a href="#AttachObjectToObject">AttachObjectToObject</a>. This will ensure the light stays at <b><c>0</c></b> rotation. This would only really work for objects that consist ONLY of light, so wouldn't work for the police light for example. </remarks>
 /// <remarks>There is a limit of <a href="http://wiki.sa-mp.com/wiki/Limits"><b><c>1000</c></b> objects (<b><c>MAX_OBJECTS</c></b>)</a>. To circumvent this limit, you can use a <a href="http://forum.sa-mp.com/showthread.php?t=102865">streamer</a></remarks>
 /// <returns>The ID of the object that was created, or <b><c>INVALID_OBJECT_ID</c></b> if the object limit (<b><c>MAX_OBJECTS</c></b>) was reached.</returns>
-native CreateObject(modelid, Float:x, Float:y, Float:z, Float:rX, Float:rY, Float:rZ, Float:drawDistance = 0.0);
+native CreateObject(modelid, Float:x, Float:y, Float:z, Float:rotX, Float:rotY, Float:rotZ, Float:drawDistance = 0.0);
 
 /// <summary>Attach an object to a vehicle.</summary>
 /// <param name="objectid">The ID of the object to attach to the vehicle. Note that this is an object ID, not a model ID. The object must be CreateObject created first</param>
@@ -107,7 +107,7 @@ native AttachObjectToVehicle(objectid, vehicleid, Float:offsetX, Float:offsetY, 
 ///   </ul>
 /// </remarks>
 /// <returns>
-/// <b><c>1</c></b>: The function executed successfully.<p/>
+/// <b><c>1</c></b>: The function executed successfully.<br />
 /// <b><c>0</c></b>: The function failed to execute. This means the first object (<paramref name="objectid"/>) does not exist. There are no internal checks to verify that the second object (<paramref name="attachtoid"/>) exists.
 /// </returns>
 native AttachObjectToObject(objectid, attachtoid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotX, Float:rotY, Float:rotZ, bool:syncRotation = true);
@@ -151,7 +151,7 @@ native SetObjectPos(objectid, Float:x, Float:y, Float:z);
 /// <seealso name="SetPlayerObjectPos"/>
 /// <seealso name="CreateObject"/>
 /// <returns>
-///   <b><c>1</c></b>: The function executed successfully.<p/>
+///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute. The specified object does not exist.
 /// </returns>
 native GetObjectPos(objectid, &Float:x, &Float:y, &Float:z);
@@ -195,7 +195,7 @@ native GetObjectModel(objectid);
 /// <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions! </remarks>
 /// <remarks>This only works outside the map boundaries (past <b><c>-3000</c></b>/<b><c>3000</c></b> units on the x and/or y axis).</remarks>
 /// <returns>
-///   <b><c>1</c></b>: The function executed successfully.<p/>
+///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute. The object specified does not exist.
 /// </returns>
 native SetObjectNoCameraCol(objectid);
@@ -207,7 +207,7 @@ native SetObjectNoCameraCol(objectid);
 /// <seealso name="DestroyObject"/>
 /// <remarks>This is to check if an object exists, not if a model is valid.</remarks>
 /// <returns><b><c>1</c></b> if the object exists, <b><c>0</c></b> if not.</returns>
-native IsValidObject(objectid);
+native bool:IsValidObject(objectid);
 
 /// <summary>Destroys (removes) an object that was created using <a href="#CreateObject">CreateObject</a>.</summary>
 /// <param name="objectid">The ID of the object to destroy. Returned by <a href="#CreateObject">CreateObject</a></param>
@@ -253,7 +253,7 @@ native StopObject(objectid);
 /// <seealso name="IsPlayerObjectMoving"/>
 /// <remarks>This function was added in <b>SA-MP 0.3d</b> and will not work in earlier versions!</remarks>
 /// <returns><b><c>1</c></b> if the object is moving, <b><c>0</c></b> if not.</returns>
-native IsObjectMoving(objectid);
+native bool:IsObjectMoving(objectid);
 
 /// <summary>Allows a player to edit an object (position and rotation) using their mouse on a GUI (Graphical User Interface).</summary>
 /// <param name="playerid">The ID of the player that should edit the object</param>
@@ -265,7 +265,7 @@ native IsObjectMoving(objectid);
 /// <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <remarks>You can move the camera while editing by pressing and holding the <b>spacebar</b> (or <b>W</b> in vehicle) and moving your mouse.</remarks>
 /// <returns>
-///   <b><c>1</c></b>: The function executed successfully. Success is reported when a non-existent object is specified, but nothing will happen.<p/>
+///   <b><c>1</c></b>: The function executed successfully. Success is reported when a non-existent object is specified, but nothing will happen.<br />
 ///   <b><c>0</c></b>: The function failed to execute. The player is not connected.
 /// </returns>
 native EditObject(playerid, objectid);
@@ -280,7 +280,7 @@ native EditObject(playerid, objectid);
 /// <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <remarks>You can move the camera while editing by pressing and holding the <b>spacebar</b> (or <b>W</b> in vehicle) and moving your mouse.</remarks>
 /// <returns>
-///   <b><c>1</c></b>: The function executed successfully.<p/>
+///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute. Player or object not valid.
 /// </returns>
 native EditPlayerObject(playerid, objectid);
@@ -310,9 +310,9 @@ native CancelEdit(playerid);
 /// <param name="x">The x coordinate to create the object at</param>
 /// <param name="y">The y coordinate to create the object at</param>
 /// <param name="z">The z coordinate to create the object at</param>
-/// <param name="rX">The x rotation of the object</param>
-/// <param name="rY">The y rotation of the object</param>
-/// <param name="rZ">The z rotation of the object</param>
+/// <param name="rotX">The x rotation of the object</param>
+/// <param name="rotY">The y rotation of the object</param>
+/// <param name="rotZ">The z rotation of the object</param>
 /// <param name="drawDistance">The distance from which objects will appear to players. <b><c>0.0</c></b> will cause an object to render at its default distance. Leaving this parameter out will cause objects to be rendered at their default distance. <b>The maximum usable distance is <c>300</c> in versions prior to 0.3x</b>, in which drawdistance can be unlimited (optional=<b><c>0.0</c></b>)</param>
 /// <seealso name="CreateObject"/>
 /// <seealso name="IsValidPlayerObject"/>
@@ -327,7 +327,7 @@ native CancelEdit(playerid);
 /// <seealso name="AttachObjectToPlayer"/>
 /// <remarks>The 'DrawDistance' parameter was added in <b>0.3b</b>. It must be left out in scripts for older versions of SA:MP.</remarks>
 /// <returns>The ID of the object that was created, or <b><c>INVALID_OBJECT_ID</c></b> if the object limit (<b><c>MAX_OBJECTS</c></b>) was reached.</returns>
-native CreatePlayerObject(playerid, modelid, Float:x, Float:y, Float:z, Float:rX, Float:rY, Float:rZ, Float:drawDistance = 0.0);
+native CreatePlayerObject(playerid, modelid, Float:x, Float:y, Float:z, Float:rotX, Float:rotY, Float:rotZ, Float:drawDistance = 0.0);
 
 /// <summary>Attach a player object to a vehicle.</summary>
 /// <param name="playerid">The ID of the player the object was created for</param>
@@ -357,7 +357,7 @@ native AttachPlayerObjectToVehicle(playerid, objectid, vehicleid, Float:offsetX,
 /// <seealso name="SetObjectPos"/>
 /// <seealso name="CreatePlayerObject"/>
 /// <returns>
-///   <b><c>1</c></b>: The function executed successfully.<p/>
+///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute. Player and/or object do not exist.
 /// </returns>
 native SetPlayerObjectPos(playerid, objectid, Float:x, Float:y, Float:z);
@@ -374,8 +374,8 @@ native SetPlayerObjectPos(playerid, objectid, Float:x, Float:y, Float:z);
 /// <seealso name="GetObjectPos"/>
 /// <seealso name="CreatePlayerObject"/>
 /// <returns>
-///   <b><c>1</c></b>: The function executed successfully.<p/>
-///   <b><c>0</c></b>: The function failed to execute. The player and/or the object don't exist.<p/>
+///   <b><c>1</c></b>: The function executed successfully.<br />
+///   <b><c>0</c></b>: The function failed to execute. The player and/or the object don't exist.<br />
 ///   The object's position is stored in the specified variables.
 /// </returns>
 native GetPlayerObjectPos(playerid, objectid, &Float:x, &Float:y, &Float:z);
@@ -392,7 +392,7 @@ native GetPlayerObjectPos(playerid, objectid, &Float:x, &Float:y, &Float:z);
 /// <seealso name="CreatePlayerObject"/>
 /// <remarks>To smoothly rotate an object, see <a href="#MovePlayerObject">MovePlayerObject</a>.</remarks>
 /// <returns>
-///   <b><c>1</c></b>: The function executed successfully.<p/>
+///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute.
 /// </returns>
 native SetPlayerObjectRot(playerid, objectid, Float:rotX, Float:rotY, Float:rotZ);
@@ -436,7 +436,7 @@ native SetPlayerObjectNoCameraCol(playerid, objectid);
 /// <seealso name="CreatePlayerObject"/>
 /// <seealso name="DestroyPlayerObject"/>
 /// <returns><b><c>1</c></b> if the object exists, <b><c>0</c></b> if not.</returns>
-native IsValidPlayerObject(playerid, objectid);
+native bool:IsValidPlayerObject(playerid, objectid);
 
 /// <summary>Destroy a player-object created using <a href="#CreatePlayerObject">CreatePlayerObject</a>.</summary>
 /// <param name="playerid">The ID of the player whose player-object to destroy</param>
@@ -485,73 +485,73 @@ native StopPlayerObject(playerid, objectid);
 /// <seealso name="IsObjectMoving"/>
 /// <remarks>This function was added in <b>SA-MP 0.3d</b> and will not work in earlier versions!</remarks>
 /// <returns><b><c>1</c></b> if the player object is moving, <b><c>0</c></b> if not.</returns>
-native IsPlayerObjectMoving(playerid, objectid);
+native bool:IsPlayerObjectMoving(playerid, objectid);
 
 /// <summary>The same as AttachObjectToPlayer but for objects which were created for player.</summary>
-/// <param name="objectplayer">The ID of the player which is linked with the object</param>
+/// <param name="playerid">The ID of the player which is linked with the object</param>
 /// <param name="objectid">The objectid you want to attach to the player</param>
-/// <param name="attachplayer">The ID of the player you want to attach to the object</param>
+/// <param name="parentid">The ID of the player you want to attach to the object</param>
 /// <param name="offsetX">The distance between the player and the object in the x direction</param>
 /// <param name="offsetY">The distance between the player and the object in the y direction</param>
 /// <param name="offsetZ">The distance between the player and the object in the z direction</param>
-/// <param name="rX">The x rotation</param>
-/// <param name="rY">The y rotation</param>
-/// <param name="rZ">The z rotation</param>
+/// <param name="rotX">The x rotation</param>
+/// <param name="rotY">The y rotation</param>
+/// <param name="rotZ">The z rotation</param>
 /// <seealso name="SetPlayerAttachedObject"/>
 /// <seealso name="AttachPlayerObjectToVehicle"/>
 /// <seealso name="AttachObjectToPlayer"/>
 /// <seealso name="CreatePlayerObject"/>
 /// <remarks><b>This function was removed in SA-MP 0.3.</b></remarks>
-native AttachPlayerObjectToPlayer(objectplayer, objectid, attachplayer, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rX, Float:rY, Float:rZ);
+native AttachPlayerObjectToPlayer(playerid, objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotX, Float:rotY, Float:rotZ);
 
 /// <summary>Replace the texture of an object with the texture from another model in the game.</summary>
 /// <param name="objectid">The ID of the object to change the texture of</param>
-/// <param name="materialindex">The material index on the object to change (<b><c>0</c></b> to <b><c>15</c></b>)</param>
+/// <param name="materialIndex">The material index on the object to change (<b><c>0</c></b> to <b><c>15</c></b>)</param>
 /// <param name="modelid">The modelid on which the replacement texture is located. Use <b><c>0</c></b> for alpha. Use <b><c>-1</c></b> to change the material colour without altering the texture</param>
-/// <param name="txdname">The name of the txd file which contains the replacement texture (use <b><c>"none"</c></b> if not required)</param>
-/// <param name="texturename">The name of the texture to use as the replacement (use <b><c>"none"</c></b> if not required)</param>
+/// <param name="textureLibrary">The name of the txd file which contains the replacement texture (use <b><c>"none"</c></b> if not required)</param>
+/// <param name="textureName">The name of the texture to use as the replacement (use <b><c>"none"</c></b> if not required)</param>
 /// <param name="materialColour">The object colour to set, as an integer or hex in <b>ARGB</b> colour format. Using <b><c>0</c></b> keeps the existing material colour (optional=<b><c>0</c></b>)</param>
 /// <seealso name="SetPlayerObjectMaterial"/>
 /// <seealso name="SetObjectMaterialText"/>
 /// <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <remarks>Vertex lightning of the object will disappear if material colour is changed.</remarks>
 /// <returns>
-///   <b><c>1</c></b>: The function executed successfully.<p/>
+///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute.
 /// </returns>
-native SetObjectMaterial(objectid, materialindex, modelid, const txdname[], const texturename[], materialColour = 0);
+native SetObjectMaterial(objectid, materialIndex, modelid, const textureLibrary[], const textureName[], materialColour = 0);
 
 /// <summary>Replace the texture of a player-object with the texture from another model in the game.</summary>
 /// <param name="playerid">The ID of the player the object is associated to</param>
 /// <param name="objectid">The ID of the object to replace the texture of</param>
-/// <param name="materialindex">The material index on the object to change (<b><c>0</c></b> to <b><c>15</c></b>)</param>
+/// <param name="materialIndex">The material index on the object to change (<b><c>0</c></b> to <b><c>15</c></b>)</param>
 /// <param name="modelid">The modelid on which replacement texture is located. Use <b><c>0</c></b> for alpha. Use <b><c>-1</c></b> to change the material colour without altering the existing texture</param>
-/// <param name="txdname">The name of the txd file which contains the replacement texture (use <b><c>"none"</c></b> if not required)</param>
-/// <param name="texturename">The name of the texture to use as the replacement (use <b><c>"none"</c></b> if not required)</param>
+/// <param name="textureLibrary">The name of the txd file which contains the replacement texture (use <b><c>"none"</c></b> if not required)</param>
+/// <param name="textureName">The name of the texture to use as the replacement (use <b><c>"none"</c></b> if not required)</param>
 /// <param name="materialColour">The object colour to set (<b>ARGB</b>). Using <b><c>0</c></b> keeps the existing material colour (optional=<b><c>0</c></b>)</param>
 /// <seealso name="SetObjectMaterial"/>
 /// <seealso name="SetPlayerObjectMaterialText"/>
 /// <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <remarks>Vertex lightning of the object will disappear if material colour is changed.</remarks>
-native SetPlayerObjectMaterial(playerid, objectid, materialindex, modelid, const txdname[], const texturename[], materialColour = 0);
+native SetPlayerObjectMaterial(playerid, objectid, materialIndex, modelid, const textureLibrary[], const textureName[], materialColour = 0);
 
 /// <summary>Replace the texture of an object with text.</summary>
 /// <param name="objectid">The ID of the object to replace the texture of with text</param>
 /// <param name="text">The text to show on the object. (MAX <b>2048</b> characters)</param>
-/// <param name="materialindex">The object's material index to replace with text (optional=<b><c>0</c></b>)</param>
-/// <param name="materialsize">The size of the material (optional=<b><c>OBJECT_MATERIAL_SIZE_256x128</c></b>)</param>
+/// <param name="materialIndex">The object's material index to replace with text (optional=<b><c>0</c></b>)</param>
+/// <param name="materialSize">The size of the material (optional=<b><c>OBJECT_MATERIAL_SIZE_256x128</c></b>)</param>
 /// <param name="fontface">The font to use (optional=<b><c>"Arial"</c></b>)</param>
 /// <param name="fontsize">The size of the text (MAX <b>255</b>) (optional=<b><c>24</c></b>)</param>
 /// <param name="bold">Bold text. Set to <b><c>1</c></b> for bold, <b><c>0</c></b> for not (optional=<b><c>1</c></b>)</param>
 /// <param name="fontColour">The colour of the text, in <b>ARGB</b> format (optional=<b><c>-1</c></b>)</param>
-/// <param name="backColour">The background colour, in <b>ARGB</b> format (optional=<b><c>0</c></b>)</param>
-/// <param name="textalignment">The alignment of the text (optional=<b><c>OBJECT_MATERIAL_TEXT_ALIGN_LEFT</c></b>)</param>
+/// <param name="backgroundColour">The background colour, in <b>ARGB</b> format (optional=<b><c>0</c></b>)</param>
+/// <param name="textAlignment">The alignment of the text (optional=<b><c>OBJECT_MATERIAL_TEXT_ALIGN_LEFT</c></b>)</param>
 /// <seealso name="SetPlayerObjectMaterialText"/>
 /// <seealso name="SetObjectMaterial"/>
 /// <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <remarks>Color embedding can be used for multiple colours in the text.</remarks>
 /// <remarks>
-///   <b>Alignment:</b><p/>
+///   <b>Alignment:</b><br />
 ///   <ul>
 ///     <li><b><c>OBJECT_MATERIAL_TEXT_ALIGN_LEFT</c></b> 0</li>
 ///     <li><b><c>OBJECT_MATERIAL_TEXT_ALIGN_CENTER</c></b> 1</li>
@@ -559,7 +559,7 @@ native SetPlayerObjectMaterial(playerid, objectid, materialindex, modelid, const
 ///   </ul>
 /// </remarks>
 /// <remarks>
-///   <b>Sizes:</b><p/>
+///   <b>Sizes:</b><br />
 ///   <ul>
 ///     <li><b><c>OBJECT_MATERIAL_SIZE_32x32</c></b> 10</li>
 ///     <li><b><c>OBJECT_MATERIAL_SIZE_64x32</c></b> 20</li>
@@ -578,29 +578,29 @@ native SetPlayerObjectMaterial(playerid, objectid, materialindex, modelid, const
 ///   </ul>
 /// </remarks>
 /// <returns>
-///   <b><c>1</c></b>: The function executed successfully.<p/>
+///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute.
 /// </returns>
-native SetObjectMaterialText(objectid, const text[], materialindex = 0, materialsize = OBJECT_MATERIAL_SIZE_256x128, const fontface[] = "Arial", fontsize = 24, bool:bold = true, fontColour = 0xFFFFFFFF, backColour = 0, textalignment = 0);
+native SetObjectMaterialText(objectid, const text[], materialIndex = 0, materialSize = OBJECT_MATERIAL_SIZE_256x128, const fontface[] = "Arial", fontsize = 24, bool:bold = true, fontColour = 0xFFFFFFFF, backgroundColour = 0, textAlignment = 0);
 
 /// <summary>Replace the texture of a player object with text.</summary>
 /// <param name="playerid">The ID of the player whose player object to set the text of</param>
 /// <param name="objectid">The ID of the object on which to place the text</param>
 /// <param name="text">The text to set</param>
-/// <param name="materialindex">The material index to replace with text (optional=<b><c>0</c></b>)</param>
-/// <param name="materialsize">The size of the material (optional=<b><c>OBJECT_MATERIAL_SIZE_256x128</c></b>)</param>
+/// <param name="materialIndex">The material index to replace with text (optional=<b><c>0</c></b>)</param>
+/// <param name="materialSize">The size of the material (optional=<b><c>OBJECT_MATERIAL_SIZE_256x128</c></b>)</param>
 /// <param name="fontface">The font to use (optional=<b><c>"Arial"</c></b>)</param>
 /// <param name="fontsize">The size of the text (MAX 255) (optional=<b><c>24</c></b>)</param>
 /// <param name="bold">Bold text. Set to <b><c>1</c></b> for bold, <b><c>0</c></b> for not (optional=<b><c>1</c></b>)</param>
 /// <param name="fontColour">The colour of the text (optional=<b><c>-1</c></b>)</param>
-/// <param name="backColour">The background colour (optional=<b><c>0</c></b>)</param>
-/// <param name="textalignment">The alignment of the text (optional=<b><c>OBJECT_MATERIAL_TEXT_ALIGN_LEFT</c></b>)</param>
+/// <param name="backgroundColour">The background colour (optional=<b><c>0</c></b>)</param>
+/// <param name="textAlignment">The alignment of the text (optional=<b><c>OBJECT_MATERIAL_TEXT_ALIGN_LEFT</c></b>)</param>
 /// <seealso name="SetObjectMaterialText"/>
 /// <seealso name="SetPlayerObjectMaterial"/>
 /// <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <remarks>Color embedding can be used for multiple colours in the text.</remarks>
 /// <remarks>
-///   <b>Alignment:</b><p/>
+///   <b>Alignment:</b><br />
 ///   <ul>
 ///     <li><b><c>OBJECT_MATERIAL_TEXT_ALIGN_LEFT</c></b> 0</li>
 ///     <li><b><c>OBJECT_MATERIAL_TEXT_ALIGN_CENTER</c></b> 1</li>
@@ -608,7 +608,7 @@ native SetObjectMaterialText(objectid, const text[], materialindex = 0, material
 ///   </ul>
 /// </remarks>
 /// <remarks>
-///   <b>Sizes:</b><p/>
+///   <b>Sizes:</b><br />
 ///   <ul>
 ///     <li><b><c>OBJECT_MATERIAL_SIZE_32x32</c></b> 10</li>
 ///     <li><b><c>OBJECT_MATERIAL_SIZE_64x32</c></b> 20</li>
@@ -626,7 +626,7 @@ native SetObjectMaterialText(objectid, const text[], materialindex = 0, material
 ///     <li><b><c>OBJECT_MATERIAL_SIZE_512x512</c></b> 140</li>
 ///   </ul>
 /// </remarks>
-native SetPlayerObjectMaterialText(playerid, objectid, const text[], materialindex = 0, materialsize = OBJECT_MATERIAL_SIZE_256x128, const fontface[] = "Arial", fontsize = 24, bool:bold = true, fontColour = 0xFFFFFFFF, backColour = 0, textalignment = 0);
+native SetPlayerObjectMaterialText(playerid, objectid, const text[], materialIndex = 0, materialSize = OBJECT_MATERIAL_SIZE_256x128, const fontface[] = "Arial", fontsize = 24, bool:bold = true, fontColour = 0xFFFFFFFF, backgroundColour = 0, textAlignment = 0);
 
 /// <summary>Allows camera collisions with newly created objects to be disabled by default.</summary>
 /// <param name="disable"><b><c>1</c></b> to disable camera collisions for newly created objects and <b><c>0</c></b> to enable them (enabled by default)</param>

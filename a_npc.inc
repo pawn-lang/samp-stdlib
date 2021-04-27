@@ -254,7 +254,7 @@ open.mp releases can use `A` as the first digit.
 	/// <remarks>The format string or its output should not exceed 1024 characters. Anything beyond that length can lead to a server to crash.</remarks>
 	/// <remarks>This function doesn't support <a href="#strpack">packed</a> strings.</remarks>
 	/// <remarks>
-	///   <b>Format Specifiers:</b><p/>
+	///   <b>Format Specifiers:</b><br />
 	///   <ul>
 	///     <li><b><c>%i</c></b> - integer (whole number)</li>
 	///     <li><b><c>%d</c></b> - integer (whole number).</li>
@@ -269,7 +269,7 @@ open.mp releases can use `A` as the first digit.
 	/// </remarks>
 	/// <remarks>The values for the placeholders follow in the exact same order as parameters in the call. For example, <b><c>"I am %i years old"</c></b> - the <b><c>%i</c></b> will be replaced with an Integer variable, which is the person's age.</remarks>
 	/// <remarks>You may optionally put a number between the <b><c>%</c></b> and the letter of the placeholder code. This number indicates the field width; if the size of the parameter to print at the position of the placeholder is smaller than the field width, the field is expanded with spaces. To cut the number of decimal places beeing shown of a float, you can add <b><c>.&lt;max number&gt;</c></b> between the <b><c>%</c></b> and the <b><c>f</c></b>. (example: <b><c>%.2f</c></b>)</remarks>
-	native printf(const format[], {Float,_}:...);
+	native printf(const format[], {Float, _}:...);
 #endif
 
 /// <summary>Formats a string to include variables and other strings inside it.</summary>
@@ -281,7 +281,7 @@ open.mp releases can use `A` as the first digit.
 /// <seealso name="printf"/>
 /// <remarks>This function doesn't support <a href="#strpack">packed strings</a>.</remarks>
 /// <remarks>
-///   <b>Format Specifiers:</b><p/>
+///   <b>Format Specifiers:</b><br />
 ///   <ul>
 ///     <li><b><c>%i</c></b> - integer (whole number)</li>
 ///     <li><b><c>%d</c></b> - integer (whole number).</li>
@@ -296,10 +296,10 @@ open.mp releases can use `A` as the first digit.
 /// </remarks>
 /// <remarks>The values for the placeholders follow in the exact same order as parameters in the call. For example, <b><c>"I am %i years old"</c></b> - the <b><c>%i</c></b> will be replaced with an Integer variable, which is the person's age.</remarks>
 /// <remarks>You may optionally put a number between the <b><c>%</c></b> and the letter of the placeholder code. This number indicates the field width; if the size of the parameter to print at the position of the placeholder is smaller than the field width, the field is expanded with spaces. To cut the number of decimal places beeing shown of a float, you can add <b><c>.&lt;max number&gt;</c></b> between the <b><c>%</c></b> and the <b><c>f</c></b>. (example: <b><c>%.2f</c></b>)</remarks>
-native format(output[], len = sizeof (output), const format[], {Float,_}:...);
+native format(output[], len = sizeof (output), const format[], {Float, _}:...);
 
 /// <summary>Sets a 'timer' to call a function after some time. Can be set to repeat.</summary>
-/// <param name="funcname">Name of the function to call as a string. This must be a public function (forwarded). A null string here will crash the server</param>
+/// <param name="functionName">Name of the function to call as a string. This must be a public function (forwarded). A null string here will crash the server</param>
 /// <param name="interval">Interval in milliseconds</param>
 /// <param name="repeating">Whether the timer should repeat or not</param>
 /// <seealso name="SetTimerEx"/>
@@ -309,7 +309,7 @@ native format(output[], len = sizeof (output), const format[], {Float,_}:...);
 /// <remarks>The function that should be called must be public. </remarks>
 /// <remarks>The use of many timers will result in increased memory/cpu usage. </remarks>
 /// <returns>The ID of the timer that was started. Timer IDs start at <b><c>1</c></b>.</returns>
-native SetTimer(const funcname[], interval, repeating);
+native SetTimer(const functionName[], interval, repeating);
 
 /// <summary>Kills (stops) a running timer.</summary>
 /// <param name="timerid">The ID of the timer to kill (returned by <a href="#SetTimer">SetTimer</a> or <a href="#SetTimerEx">SetTimerEx</a>)</param>
@@ -353,16 +353,16 @@ native Float:atan(Float:value);
 native Float:atan2(Float:y, Float:x);
 
 /// <summary>This will send a player text by the bot, just like using <a href="#SendPlayerMessageToAll">SendPlayerMessageToAll</a>, but this function is to be used inside the NPC scripts.</summary>
-/// <param name="msg">The text to be sent by the NPC</param>
+/// <param name="message">The text to be sent by the NPC</param>
 /// <seealso name="SendCommand"/>
 /// <remarks>This NPC function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
-native SendChat(const msg[]);
+native SendChat(const message[]);
 
 /// <summary>This will force the NPC to write a desired command, and this way, getting the effects it would produce.</summary>
-/// <param name="commandtext">The command text to be sent by the NPC</param>
+/// <param name="command">The command text to be sent by the NPC</param>
 /// <seealso name="SendChat"/>
 /// <remarks>This NPC function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
-native SendCommand(const commandtext[]);
+native SendCommand(const command[]);
 
 /// <summary>Get a player's current state.</summary>
 /// <param name="playerid">The ID of the player to get the current state of</param>
@@ -370,7 +370,7 @@ native SendCommand(const commandtext[]);
 /// <seealso name="SetPlayerSpecialAction"/>
 /// <seealso name="OnPlayerStateChange"/>
 /// <remarks>
-///   <b>States:</b><p/>
+///   <b>States:</b><br />
 ///   <ul>
 ///     <li><b><c>PLAYER_STATE_NONE</c></b> - empty (while initializing)</li>
 ///     <li><b><c>PLAYER_STATE_ONFOOT</c></b> - player is on foot</li>
@@ -425,14 +425,14 @@ native GetPlayerSpecialAction(playerid);
 /// <seealso name="IsVehicleStreamedIn"/>
 /// <remarks>This NPC function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <returns><b><c>1</c></b> if the player is streamed in, <b><c>0</c></b> if not.</returns>
-native IsPlayerStreamedIn(playerid);
+native bool:IsPlayerStreamedIn(playerid);
 
 /// <summary>Checks if a vehicle is streamed in for an NPC. Only nearby vehicles are streamed in.</summary>
 /// <param name="vehicleid">The ID of the vehicle to check</param>
 /// <seealso name="IsPlayerStreamedIn"/>
 /// <remarks>This NPC function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <returns><b><c>1</c></b> if the vehicle is streamed in, <b><c>0</c></b> if not.</returns>
-native IsVehicleStreamedIn(vehicleid);
+native bool:IsVehicleStreamedIn(vehicleid);
 
 /// <summary>Check which keys a player is pressing.</summary>
 /// <param name="playerid">The ID of the player to get the keys of</param>
@@ -505,7 +505,7 @@ native GetDistanceFromMeToPoint(Float:x, Float:y, Float:z, &Float:distance);
 /// <seealso name="GetPlayerPos"/>
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <returns><b><c>1</c></b> if the player is in range, <b><c>0</c></b> if not.</returns>
-native IsPlayerInRangeOfPoint(playerid, Float:range, Float:x, Float:y, Float:z);
+native bool:IsPlayerInRangeOfPoint(playerid, Float:range, Float:x, Float:y, Float:z);
 
 /// <summary>Get a player's name.</summary>
 /// <param name="playerid">The ID of the player to get the name of</param>
@@ -527,14 +527,14 @@ native GetPlayerName(playerid, name[], len = sizeof (name));
 /// <seealso name="OnPlayerDisconnect"/>
 /// <remarks>This function can be omitted in a lot of cases. Many other functions already have some sort of connection check built in.</remarks>
 /// <returns><b><c>1</c></b> if the player is connected, <b><c>0</c></b> if not.</returns>
-native IsPlayerConnected(playerid);
+native bool:IsPlayerConnected(playerid);
 
 /// <summary>This will run a .rec file which has to be saved in the npcmodes/recordings folder. These files allow the NPC to follow certain actions. Their actions can be recorded manually. For more information, check the related functions.</summary>
 /// <param name="playbacktype">The type of recording to be loaded</param>
-/// <param name="recordname">The filename to be loaded, without the .rec extension</param>
+/// <param name="recordFike">The filename to be loaded, without the .rec extension</param>
 /// <seealso name="StopRecordingPlayback"/>
 /// <remarks>This NPC function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
-native StartRecordingPlayback(playbacktype, const recordname[]);
+native StartRecordingPlayback(playbacktype, const recordFike[]);
 
 /// <summary>This will stop the current .rec file which is being ran by the NPC, making it stay idle until some other order is given.</summary>
 /// <seealso name="StartRecordingPlayback"/>
