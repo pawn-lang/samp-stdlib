@@ -466,9 +466,9 @@ native bool:IsTrailerAttachedToVehicle(vehicleid);
 /// <returns>The vehicle ID of the trailer or <b><c>0</c></b> if no trailer is attached.</returns>
 native GetVehicleTrailer(vehicleid);
 
-/// <summary>Set a vehicle numberplate.</summary>
+/// <summary>Set a vehicle numberPlate.</summary>
 /// <param name="vehicleid">The ID of the vehicle to set the number plate of</param>
-/// <param name="numberplate">The text that should be displayed on the number plate</param>
+/// <param name="numberPlate">The text that should be displayed on the number plate</param>
 /// <seealso name="SetVehicleToRespawn"/>
 /// <seealso name="ChangeVehicleColor"/>
 /// <seealso name="ChangeVehiclePaintjob"/>
@@ -486,7 +486,7 @@ native GetVehicleTrailer(vehicleid);
 ///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute. The vehicle does not exist.<br />
 /// </returns>
-native SetVehicleNumberPlate(vehicleid, const numberplate[]);
+native SetVehicleNumberPlate(vehicleid, const numberPlate[]);
 
 /// <summary>Gets the <a href="http://wiki.sa-mp.com/wiki/Vehicle_Models">model ID</a> of a vehicle.</summary>
 /// <param name="vehicleid">The ID of the vehicle to get the model of</param>

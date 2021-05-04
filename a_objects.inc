@@ -84,7 +84,7 @@ native CreateObject(modelid, Float:x, Float:y, Float:z, Float:rotX, Float:rotY, 
 /// <remarks>This function was added in <b>SA-MP 0.3c</b> and will not work in earlier versions!</remarks>
 /// <remarks>The object must be created first.</remarks>
 /// <remarks>When the vehicle is destroyed or respawned, the attached objects won't be destroyed with it; they will remain stationary at the position the vehicle disappeared and be reattached to the next vehicle to claim the vehicle ID that the objects were attached to.</remarks>
-native AttachObjectToVehicle(objectid, vehicleid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotX, Float:rotY, Float:rotZ);
+native AttachObjectToVehicle(objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotX, Float:rotY, Float:rotZ);
 
 /// <summary>You can use this function to attach objects to other objects. The objects will folow the main object.</summary>
 /// <param name="objectid">The object to attach to another object</param>
@@ -110,7 +110,7 @@ native AttachObjectToVehicle(objectid, vehicleid, Float:offsetX, Float:offsetY, 
 /// <b><c>1</c></b>: The function executed successfully.<br />
 /// <b><c>0</c></b>: The function failed to execute. This means the first object (<paramref name="objectid"/>) does not exist. There are no internal checks to verify that the second object (<paramref name="attachtoid"/>) exists.
 /// </returns>
-native AttachObjectToObject(objectid, attachtoid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotX, Float:rotY, Float:rotZ, bool:syncRotation = true);
+native AttachObjectToObject(objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotX, Float:rotY, Float:rotZ, bool:syncRotation = true);
 
 /// <summary>Attach an object to a player.</summary>
 /// <param name="objectid">The ID of the object to attach to the player</param>
@@ -127,7 +127,7 @@ native AttachObjectToObject(objectid, attachtoid, Float:offsetX, Float:offsetY, 
 /// <seealso name="SetPlayerAttachedObject"/>
 /// <seealso name="CreateObject"/>
 /// <returns>This function always returns <b><c>0</c></b>.</returns>
-native AttachObjectToPlayer(objectid, playerid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotX, Float:rotY, Float:rotZ);
+native AttachObjectToPlayer(objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotX, Float:rotY, Float:rotZ);
 
 /// <summary>Change the position of an object.</summary>
 /// <param name="objectid">The ID of the object to set the position of. Returned by <a href="#CreateObject">CreateObject</a></param>
@@ -344,7 +344,7 @@ native CreatePlayerObject(playerid, modelid, Float:x, Float:y, Float:z, Float:ro
 /// <seealso name="AttachObjectToVehicle"/>
 /// <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <remarks>You need to create the object before attempting to attach it to a vehicle.</remarks>
-native AttachPlayerObjectToVehicle(playerid, objectid, vehicleid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotX, Float:rotY, Float:rotZ);
+native AttachPlayerObjectToVehicle(playerid, objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotX, Float:rotY, Float:rotZ);
 
 /// <summary>Sets the position of a player-object to the specified coordinates.</summary>
 /// <param name="playerid">The ID of the player whose player-object to set the position of</param>
@@ -540,8 +540,8 @@ native SetPlayerObjectMaterial(playerid, objectid, materialIndex, modelid, const
 /// <param name="text">The text to show on the object. (MAX <b>2048</b> characters)</param>
 /// <param name="materialIndex">The object's material index to replace with text (optional=<b><c>0</c></b>)</param>
 /// <param name="materialSize">The size of the material (optional=<b><c>OBJECT_MATERIAL_SIZE_256x128</c></b>)</param>
-/// <param name="fontface">The font to use (optional=<b><c>"Arial"</c></b>)</param>
-/// <param name="fontsize">The size of the text (MAX <b>255</b>) (optional=<b><c>24</c></b>)</param>
+/// <param name="fontFace">The font to use (optional=<b><c>"Arial"</c></b>)</param>
+/// <param name="fontSize">The size of the text (MAX <b>255</b>) (optional=<b><c>24</c></b>)</param>
 /// <param name="bold">Bold text. Set to <b><c>1</c></b> for bold, <b><c>0</c></b> for not (optional=<b><c>1</c></b>)</param>
 /// <param name="fontColour">The colour of the text, in <b>ARGB</b> format (optional=<b><c>-1</c></b>)</param>
 /// <param name="backgroundColour">The background colour, in <b>ARGB</b> format (optional=<b><c>0</c></b>)</param>
@@ -581,7 +581,7 @@ native SetPlayerObjectMaterial(playerid, objectid, materialIndex, modelid, const
 ///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute.
 /// </returns>
-native SetObjectMaterialText(objectid, const text[], materialIndex = 0, materialSize = OBJECT_MATERIAL_SIZE_256x128, const fontface[] = "Arial", fontsize = 24, bool:bold = true, fontColour = 0xFFFFFFFF, backgroundColour = 0, textAlignment = 0);
+native SetObjectMaterialText(objectid, const text[], materialIndex = 0, materialSize = OBJECT_MATERIAL_SIZE_256x128, const fontFace[] = "Arial", fontSize = 24, bool:bold = true, fontColour = 0xFFFFFFFF, backgroundColour = 0, textAlignment = 0);
 
 /// <summary>Replace the texture of a player object with text.</summary>
 /// <param name="playerid">The ID of the player whose player object to set the text of</param>
@@ -589,8 +589,8 @@ native SetObjectMaterialText(objectid, const text[], materialIndex = 0, material
 /// <param name="text">The text to set</param>
 /// <param name="materialIndex">The material index to replace with text (optional=<b><c>0</c></b>)</param>
 /// <param name="materialSize">The size of the material (optional=<b><c>OBJECT_MATERIAL_SIZE_256x128</c></b>)</param>
-/// <param name="fontface">The font to use (optional=<b><c>"Arial"</c></b>)</param>
-/// <param name="fontsize">The size of the text (MAX 255) (optional=<b><c>24</c></b>)</param>
+/// <param name="fontFace">The font to use (optional=<b><c>"Arial"</c></b>)</param>
+/// <param name="fontSize">The size of the text (MAX 255) (optional=<b><c>24</c></b>)</param>
 /// <param name="bold">Bold text. Set to <b><c>1</c></b> for bold, <b><c>0</c></b> for not (optional=<b><c>1</c></b>)</param>
 /// <param name="fontColour">The colour of the text (optional=<b><c>-1</c></b>)</param>
 /// <param name="backgroundColour">The background colour (optional=<b><c>0</c></b>)</param>
@@ -626,7 +626,7 @@ native SetObjectMaterialText(objectid, const text[], materialIndex = 0, material
 ///     <li><b><c>OBJECT_MATERIAL_SIZE_512x512</c></b> 140</li>
 ///   </ul>
 /// </remarks>
-native SetPlayerObjectMaterialText(playerid, objectid, const text[], materialIndex = 0, materialSize = OBJECT_MATERIAL_SIZE_256x128, const fontface[] = "Arial", fontsize = 24, bool:bold = true, fontColour = 0xFFFFFFFF, backgroundColour = 0, textAlignment = 0);
+native SetPlayerObjectMaterialText(playerid, objectid, const text[], materialIndex = 0, materialSize = OBJECT_MATERIAL_SIZE_256x128, const fontFace[] = "Arial", fontSize = 24, bool:bold = true, fontColour = 0xFFFFFFFF, backgroundColour = 0, textAlignment = 0);
 
 /// <summary>Allows camera collisions with newly created objects to be disabled by default.</summary>
 /// <param name="disable"><b><c>1</c></b> to disable camera collisions for newly created objects and <b><c>0</c></b> to enable them (enabled by default)</param>

@@ -925,7 +925,7 @@ native AddStaticVehicleEx(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Flo
 /// <seealso name="CreatePickup"/>
 /// <seealso name="DestroyPickup"/>
 /// <seealso name="OnPlayerPickUpPickup"/>
-native AddStaticPickup(model, type, Float:x, Float:y, Float:x, virtualWorld = 0);
+native AddStaticPickup(model, type, Float:x, Float:y, Float:z, virtualWorld = 0);
 
 /// <summary>This function does exactly the same as AddStaticPickup, except it returns a pickup ID which can be used to destroy it afterwards and be tracked using <a href="#OnPlayerPickUpPickup">OnPlayerPickUpPickup</a>.</summary>
 /// <param name="model">The <a href="http://wiki.sa-mp.com/wiki/Pickup_IDs">model</a> of the pickup</param>
