@@ -899,13 +899,13 @@ native SetPlayerSkillLevel(playerid, skill, level);
 /// <seealso name="GetPlayerVehicleSeat"/>
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <returns>The ID of the vehicle that the player is surfing. If they are not surfing a vehicle or the vehicle they are surfing has no driver, <b><c>INVALID_VEHICLE_ID</c></b>. If the player specified is not connected, <b><c>INVALID_VEHICLE_ID</c></b> also.</returns>
-native GetPlayerSurfingVehicleid(playerid);
+native GetPlayerSurfingVehicleID(playerid);
 
 /// <summary>Returns the ID of the object the player is surfing on.</summary>
 /// <param name="playerid">The ID of the player surfing the object</param>
 /// <remarks>This function was added in <b>SA-MP 0.3c R3</b> and will not work in earlier versions!</remarks>
 /// <returns>The ID of the <b>moving</b> object the player is surfing. If the player isn't surfing a <b>moving</b> object, it will return <b><c>INVALID_OBJECT_ID</c></b>.</returns>
-native GetPlayerSurfingObjectid(playerid);
+native GetPlayerSurfingObjectID(playerid);
 
 /// <summary>Removes a standard San Andreas model for a single player within a specified range.</summary>
 /// <param name="playerid">The ID of the player to remove the objects for</param>
