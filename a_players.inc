@@ -1681,7 +1681,7 @@ native PutPlayerInVehicle(playerid, vehicleid, seatid);
 /// <seealso name="GetPlayerVehicleSeat"/>
 /// <seealso name="GetVehicleModel"/>
 /// <returns>ID of the vehicle or <b><c>0</c></b> if not in a vehicle.</returns>
-native GetPlayerVehicleid(playerid);
+native GetPlayerVehicleID(playerid);
 
 /// <summary>Find out which seat a player is in.</summary>
 /// <param name="playerid">The ID of the player you want to get the seat of</param>
@@ -2333,7 +2333,7 @@ native EnableStuntBonusForPlayer(playerid, bool:enable);
 /// <summary>Enables or disables stunt bonuses for all players. If enabled, players will receive monetary rewards when performing a stunt in a vehicle (e.g. a wheelie).</summary>
 /// <param name="enable"><b><c>1</c></b> to enable stunt bonuses or <b><c>0</c></b> to disable them</param>
 /// <seealso name="EnableStuntBonusForPlayer"/>
-native EnableStuntBonusForAll(enable);
+native EnableStuntBonusForAll(bool:enable);
 
 /// <summary>Toggle whether a player is in spectator mode or not. While in spectator mode a player can spectate (watch) other players and vehicles. After using this function, either <a href="#PlayerSpectatePlayer">PlayerSpectatePlayer</a> or <a href="#PlayerSpectateVehicle">PlayerSpectateVehicle</a> needs to be used.</summary>
 /// <param name="playerid">The ID of the player who should spectate</param>
