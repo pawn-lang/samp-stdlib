@@ -87,7 +87,7 @@
 #define INVALID_PLAYER_3DTEXT_ID               (PlayerText3D:0xFFFF)
 
 // States
-enum
+enum e_PLAYER_STATE
 {
 	PLAYER_STATE_NONE,
 	PLAYER_STATE_ONFOOT,
@@ -110,76 +110,82 @@ enum e_PLAYER_MARKERS
 }
 
 // Weapons
-#define WEAPON_BRASSKNUCKLE                    (1)
-#define WEAPON_GOLFCLUB                        (2)
-#define WEAPON_NITESTICK                       (3)
-#define WEAPON_KNIFE                           (4)
-#define WEAPON_BAT                             (5)
-#define WEAPON_SHOVEL                          (6)
-#define WEAPON_POOLSTICK                       (7)
-#define WEAPON_KATANA                          (8)
-#define WEAPON_CHAINSAW                        (9)
-#define WEAPON_DILDO                           (10)
-#define WEAPON_DILDO2                          (11)
-#define WEAPON_VIBRATOR                        (12)
-#define WEAPON_VIBRATOR2                       (13)
-#define WEAPON_FLOWER                          (14)
-#define WEAPON_CANE                            (15)
-#define WEAPON_GRENADE                         (16)
-#define WEAPON_TEARGAS                         (17)
-#define WEAPON_MOLTOV                          (18)
-#define WEAPON_COLT45                          (22)
-#define WEAPON_SILENCED                        (23)
-#define WEAPON_DEAGLE                          (24)
-#define WEAPON_SHOTGUN                         (25)
-#define WEAPON_SAWEDOFF                        (26)
-#define WEAPON_SHOTGSPA                        (27)
-#define WEAPON_UZI                             (28)
-#define WEAPON_MP5                             (29)
-#define WEAPON_AK47                            (30)
-#define WEAPON_M4                              (31)
-#define WEAPON_TEC9                            (32)
-#define WEAPON_RIFLE                           (33)
-#define WEAPON_SNIPER                          (34)
-#define WEAPON_ROCKETLAUNCHER                  (35)
-#define WEAPON_HEATSEEKER                      (36)
-#define WEAPON_FLAMETHROWER                    (37)
-#define WEAPON_MINIGUN                         (38)
-#define WEAPON_SATCHEL                         (39)
-#define WEAPON_BOMB                            (40)
-#define WEAPON_SPRAYCAN                        (41)
-#define WEAPON_FIREEXTINGUISHER                (42)
-#define WEAPON_CAMERA                          (43)
-#define WEAPON_PARACHUTE                       (46)
-#define WEAPON_VEHICLE                         (49)
-#define WEAPON_DROWN                           (53)
-#define WEAPON_COLLISION                       (54)
+enum e_WEAPON
+{
+	WEAPON_BRASSKNUCKLE    = 1,
+	WEAPON_GOLFCLUB,
+	WEAPON_NITESTICK,
+	WEAPON_KNIFE,
+	WEAPON_BAT,
+	WEAPON_SHOVEL,
+	WEAPON_POOLSTICK,
+	WEAPON_KATANA,
+	WEAPON_CHAINSAW,
+	WEAPON_DILDO,
+	WEAPON_DILDO2,
+	WEAPON_VIBRATOR,
+	WEAPON_VIBRATOR2,
+	WEAPON_FLOWER,
+	WEAPON_CANE,
+	WEAPON_GRENADE,
+	WEAPON_TEARGAS,
+	WEAPON_MOLTOV,
+	WEAPON_COLT45          = 22,
+	WEAPON_SILENCED,
+	WEAPON_DEAGLE,
+	WEAPON_SHOTGUN,
+	WEAPON_SAWEDOFF,
+	WEAPON_SHOTGSPA,
+	WEAPON_UZI,
+	WEAPON_MP5,
+	WEAPON_AK47,
+	WEAPON_M4,
+	WEAPON_TEC9,
+	WEAPON_RIFLE,
+	WEAPON_SNIPER,
+	WEAPON_ROCKETLAUNCHER,
+	WEAPON_HEATSEEKER,
+	WEAPON_FLAMETHROWER,
+	WEAPON_MINIGUN,
+	WEAPON_SATCHEL,
+	WEAPON_BOMB,
+	WEAPON_SPRAYCAN,
+	WEAPON_FIREEXTINGUISHER,
+	WEAPON_CAMERA,
+	WEAPON_PARACHUTE       = 46,
+	WEAPON_VEHICLE         = 49,
+	WEAPON_DROWN           = 53,
+	WEAPON_COLLISION,
+}
 
 // Keys
-#define KEY_ACTION                             (1)
-#define KEY_CROUCH                             (2)
-#define KEY_FIRE                               (4)
-#define KEY_SPRINT                             (8)
-#define KEY_SECONDARY_ATTACK                   (16)
-#define KEY_JUMP                               (32)
-#define KEY_LOOK_RIGHT                         (64)
-#define KEY_HANDBRAKE                          (128)
-#define KEY_LOOK_LEFT                          (256)
-#define KEY_SUBMISSION                         (512)
-#define KEY_LOOK_BEHIND                        (512)
-#define KEY_WALK                               (1024)
-#define KEY_ANALOG_UP                          (2048)
-#define KEY_ANALOG_DOWN                        (4096)
-#define KEY_ANALOG_LEFT                        (8192)
-#define KEY_ANALOG_RIGHT                       (16384)
-#define KEY_YES                                (65536)
-#define KEY_NO                                 (131072)
-#define KEY_CTRL_BACK                          (262144)
+enum e_KEY (<<= 1)
+{
+	KEY_ACTION             = 1,
+	KEY_CROUCH,
+	KEY_FIRE,
+	KEY_SPRINT,
+	KEY_SECONDARY_ATTACK,
+	KEY_JUMP,
+	KEY_LOOK_RIGHT,
+	KEY_HANDBRAKE,
+	KEY_LOOK_LEFT,
+	KEY_SUBMISSION,
+	KEY_LOOK_BEHIND        = KEY_SUBMISSION,
+	KEY_WALK,
+	KEY_ANALOG_UP,
+	KEY_ANALOG_DOWN,
+	KEY_ANALOG_LEFT,
+	KEY_ANALOG_RIGHT,
+	KEY_YES                = 65536,
+	KEY_NO,
+	KEY_CTRL_BACK,
 
-#define KEY_UP                                 (-128)
-#define KEY_DOWN                               (128)
-#define KEY_LEFT                               (-128)
-#define KEY_RIGHT                              (128)
+	KEY_UP                 = -128,
+	KEY_DOWN               =  128,
+	KEY_LEFT               = -128,
+	KEY_RIGHT              =  128,
+}
 
 // Player GUI Dialog
 enum e_DIALOG_STYLE
@@ -193,8 +199,11 @@ enum e_DIALOG_STYLE
 }
 
 // Text Draw
-#define TEXT_DRAW_FONT_SPRITE_DRAW	 (4)
-#define TEXT_DRAW_FONT_MODEL_PREVIEW (5)
+enum e_TEXT_DRAW_FONT
+{
+	TEXT_DRAW_FONT_SPRITE_DRAW	 = 4,
+	TEXT_DRAW_FONT_MODEL_PREVIEW = 5,
+}
 
 enum e_TEXT_DRAW_ALIGN
 {
@@ -2483,7 +2492,7 @@ forward OnPlayerExitVehicle(playerid, vehicleid);
 ///   This callback does not handle returns.<br />
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnPlayerStateChange(playerid, newstate, oldstate);
+forward OnPlayerStateChange(playerid, /*e_PLAYER_STATE:*/newstate, /*e_PLAYER_STATE:*/oldstate);
 
 /// <summary>This callback is called when a player enters the checkpoint set for that player.</summary>
 /// <param name="playerid">The player who entered the checkpoint</param>
@@ -3224,6 +3233,4 @@ forward OnClientCheckResponse(playerid, actionid, memaddr, retndata);
 /// <param name="source">Where the money came from</param>
 /// <remarks>Doesn't work</remarks>
 forward OnScriptCash(playerid, amount, source);
-
-// --------------------------------------------------
 

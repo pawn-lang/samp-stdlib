@@ -23,26 +23,29 @@
 	#define MAX_CHATBUBBLE_LENGTH              (144)
 #endif
 
-#define SPECIAL_ACTION_NONE                    (0)
-#define SPECIAL_ACTION_DUCK                    (1)
-#define SPECIAL_ACTION_USEJETPACK              (2)
-#define SPECIAL_ACTION_ENTER_VEHICLE           (3)
-#define SPECIAL_ACTION_EXIT_VEHICLE            (4)
-#define SPECIAL_ACTION_DANCE1                  (5)
-#define SPECIAL_ACTION_DANCE2                  (6)
-#define SPECIAL_ACTION_DANCE3                  (7)
-#define SPECIAL_ACTION_DANCE4                  (8)
-#define SPECIAL_ACTION_HANDSUP                 (10)
-#define SPECIAL_ACTION_USECELLPHONE            (11)
-#define SPECIAL_ACTION_SITTING                 (12)
-#define SPECIAL_ACTION_STOPUSECELLPHONE        (13)
-#define SPECIAL_ACTION_DRINK_BEER              (20)
-#define SPECIAL_ACTION_SMOKE_CIGGY             (21)
-#define SPECIAL_ACTION_DRINK_WINE              (22)
-#define SPECIAL_ACTION_DRINK_SPRUNK            (23)
-#define SPECIAL_ACTION_PISSING                 (68)
-#define SPECIAL_ACTION_CUFFED                  (24)
-#define SPECIAL_ACTION_CARRY                   (25)
+enum e_SPECIAL_ACTION
+{
+	SPECIAL_ACTION_NONE,
+	SPECIAL_ACTION_DUCK,
+	SPECIAL_ACTION_USEJETPACK,
+	SPECIAL_ACTION_ENTER_VEHICLE,
+	SPECIAL_ACTION_EXIT_VEHICLE,
+	SPECIAL_ACTION_DANCE1,
+	SPECIAL_ACTION_DANCE2,
+	SPECIAL_ACTION_DANCE3,
+	SPECIAL_ACTION_DANCE4,
+	SPECIAL_ACTION_HANDSUP = 10,
+	SPECIAL_ACTION_USECELLPHONE,
+	SPECIAL_ACTION_SITTING,
+	SPECIAL_ACTION_STOPUSECELLPHONE,
+	SPECIAL_ACTION_DRINK_BEER = 20,
+	SPECIAL_ACTION_SMOKE_CIGGY,
+	SPECIAL_ACTION_DRINK_WINE,
+	SPECIAL_ACTION_DRINK_SPRUNK,
+	SPECIAL_ACTION_CUFFED,
+	SPECIAL_ACTION_CARRY,
+	SPECIAL_ACTION_PISSING = 68,
+}
 
 enum e_FIGHT_STYLE
 {
@@ -54,23 +57,29 @@ enum e_FIGHT_STYLE
 	FIGHT_STYLE_ELBOW
 }
 
-#define WEAPONSKILL_PISTOL                     (0)
-#define WEAPONSKILL_PISTOL_SILENCED            (1)
-#define WEAPONSKILL_DESERT_EAGLE               (2)
-#define WEAPONSKILL_SHOTGUN                    (3)
-#define WEAPONSKILL_SAWNOFF_SHOTGUN            (4)
-#define WEAPONSKILL_SPAS12_SHOTGUN             (5)
-#define WEAPONSKILL_MICRO_UZI                  (6)
-#define WEAPONSKILL_MP5                        (7)
-#define WEAPONSKILL_AK47                       (8)
-#define WEAPONSKILL_M4                         (9)
-#define WEAPONSKILL_SNIPERRIFLE                (10)
+enum e_WEAPONSKILL
+{
+	WEAPONSKILL_PISTOL,
+	WEAPONSKILL_PISTOL_SILENCED,
+	WEAPONSKILL_DESERT_EAGLE,
+	WEAPONSKILL_SHOTGUN,
+	WEAPONSKILL_SAWNOFF_SHOTGUN,
+	WEAPONSKILL_SPAS12_SHOTGUN,
+	WEAPONSKILL_MICRO_UZI,
+	WEAPONSKILL_MP5,
+	WEAPONSKILL_AK47,
+	WEAPONSKILL_M4,
+	WEAPONSKILL_SNIPERRIFLE,
+}
 
-#define WEAPONSTATE_UNKNOWN                    (-1)
-#define WEAPONSTATE_NO_BULLETS                 (0)
-#define WEAPONSTATE_LAST_BULLET                (1)
-#define WEAPONSTATE_MORE_BULLETS               (2)
-#define WEAPONSTATE_RELOADING                  (3)
+enum e_WEAPONSTATE
+{
+	WEAPONSTATE_UNKNOWN = -1,
+	WEAPONSTATE_NO_BULLETS,
+	WEAPONSTATE_LAST_BULLET,
+	WEAPONSTATE_MORE_BULLETS,
+	WEAPONSTATE_RELOADING,
+}
 
 // PVar enumeration
 enum e_PLAYER_VARTYPE
@@ -368,7 +377,7 @@ native GetPlayerAmmo(playerid);
 ///   </ul>
 /// </remarks>
 /// <returns>The state of the player's weapon. <b><c>0</c></b> if player specified does not exist.</returns>
-native GetPlayerWeaponState(playerid);
+native e_WEAPONSTATE:GetPlayerWeaponState(playerid);
 
 /// <summary>Check who a player is aiming at.</summary>
 /// <param name="playerid">The ID of the player to get the target of</param>
@@ -619,7 +628,7 @@ native GetPlayerMoney(playerid);
 ///   </ul>
 /// </remarks>
 /// <returns>The player's current state as an integer.</returns>
-native GetPlayerState(playerid);
+native e_PLAYER_STATE:GetPlayerState(playerid);
 
 /// <summary>Get the specified player's IP address and store it in a string.</summary>
 /// <param name="playerid">The ID of the player to get the IP address of</param>
@@ -915,7 +924,7 @@ native SetPlayerShopName(playerid, const shopname[]);
 ///     <li><b><c>WEAPONSKILL_SNIPERRIFLE(10)</c></b></li>
 ///   </ul>
 /// </remarks>
-native SetPlayerSkillLevel(playerid, skill, level);
+native SetPlayerSkillLevel(playerid, e_WEAPONSKILL:skill, level);
 
 /// <summary>Get the ID of the vehicle that the player is surfing (stuck to the roof of).</summary>
 /// <param name="playerid">The ID of the player you want to know the surfing vehicle ID of</param>
@@ -1839,7 +1848,7 @@ native GetAnimationName(index, animationLibrary[], len1 = sizeof (animationLibra
 ///   </ul>
 /// </remarks>
 /// <returns>The <a href="http://wiki.sa-mp.com/wiki/SpecialActions">special action</a> of the player.</returns>
-native GetPlayerSpecialAction(playerid);
+native e_SPECIAL_ACTION:GetPlayerSpecialAction(playerid);
 
 /// <summary>This function allows to set players special action.</summary>
 /// <param name="playerid">The player that should perform the action</param>
@@ -1885,7 +1894,7 @@ native GetPlayerSpecialAction(playerid);
 ///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute. This means the player is not connected.
 /// </returns>
-native SetPlayerSpecialAction(playerid, actionid);
+native SetPlayerSpecialAction(playerid, e_SPECIAL_ACTION:actionid);
 
 /// <summary>Disables collisions between occupied vehicles for a player.</summary>
 /// <param name="playerid">The ID of the player for whom you want to disable collisions</param>

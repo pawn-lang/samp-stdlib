@@ -36,10 +36,12 @@ enum e_CARMODTYPE
 	CARMODTYPE_VENT_LEFT
 }
 
-#define VEHICLE_PARAMS_ON		(1)
-#define VEHICLE_PARAMS_UNSET                   (-1)
-#define VEHICLE_PARAMS_OFF                     (0)
-#define VEHICLE_PARAMS_ON                      (1)
+enum e_VEHICLE_PARAMS
+{
+	VEHICLE_PARAMS_UNSET = -1,
+	VEHICLE_PARAMS_OFF,
+	VEHICLE_PARAMS_ON,
+}
 
 enum e_VEHICLE_MODEL_INFO
 {
@@ -244,7 +246,7 @@ native ManualVehicleEngineAndLights();
 ///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute. This means the vehicle does not exist.
 /// </returns>
-native SetVehicleParamsEx(vehicleid, engine, lights, alarm, doors, bonnet, boot, objective);
+native SetVehicleParamsEx(vehicleid, e_VEHICLE_PARAMS:engine, e_VEHICLE_PARAMS:lights, e_VEHICLE_PARAMS:alarm, e_VEHICLE_PARAMS:doors, e_VEHICLE_PARAMS:bonnet, e_VEHICLE_PARAMS:boot, e_VEHICLE_PARAMS:objective);
 
 /// <summary>Gets a vehicle's parameters.</summary>
 /// <param name="vehicleid">The ID of the vehicle to get the parameters from</param>
@@ -258,7 +260,7 @@ native SetVehicleParamsEx(vehicleid, engine, lights, alarm, doors, bonnet, boot,
 /// <seealso name="SetVehicleParamsEx"/>
 /// <remarks>This function was added in <b>SA-MP 0.3c</b> and will not work in earlier versions!</remarks>
 /// <remarks>If a parameter is unset (SetVehicleParamsEx not used beforehand) the value will be <b><c>-1</c></b> ('unset').</remarks>
-native GetVehicleParamsEx(vehicleid, &engine, &lights, &alarm, &doors, &bonnet, &boot, &objective);
+native GetVehicleParamsEx(vehicleid, &e_VEHICLE_PARAMS:engine, &e_VEHICLE_PARAMS:lights, &e_VEHICLE_PARAMS:alarm, &e_VEHICLE_PARAMS:doors, &e_VEHICLE_PARAMS:bonnet, &e_VEHICLE_PARAMS:boot, &e_VEHICLE_PARAMS:objective);
 
 /// <summary>Returns a vehicle's siren state (on/off).</summary>
 /// <param name="vehicleid">The ID of the vehicle to get the siren state of</param>
@@ -269,8 +271,8 @@ native GetVehicleParamsSirenState(vehicleid);
 
 /// <summary>Allows you to open and close the doors of a vehicle.</summary>
 /// <param name="vehicleid">The ID of the vehicle to set the door state of</param>
-/// <param name="driver">The state of the driver's door. <b><c>1</c></b> to open, <b><c>0</c></b> to close</param>
-/// <param name="passenger">The state of the passenger door. <b><c>1</c></b> to open, <b><c>0</c></b> to close</param>
+/// <param name="frontLeft">The state of the driver's door. <b><c>1</c></b> to open, <b><c>0</c></b> to close</param>
+/// <param name="frontRight">The state of the passenger door. <b><c>1</c></b> to open, <b><c>0</c></b> to close</param>
 /// <param name="rearLeft">The state of the rear left door (if available). <b><c>1</c></b> to open, <b><c>0</c></b> to close</param>
 /// <param name="rearRight">The state of the rear right door (if available). <b><c>1</c></b> to open, <b><c>0</c></b> to close</param>
 /// <seealso name="GetVehicleParamsCarDoors"/>
@@ -278,12 +280,12 @@ native GetVehicleParamsSirenState(vehicleid);
 /// <seealso name="GetVehicleParamsCarWindows"/>
 /// <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
 /// <remarks><b><c>1</c></b> is open, <b><c>0</c></b> is closed</remarks>
-native SetVehicleParamsCarDoors(vehicleid, driver, passenger, rearLeft, rearRight);
+native SetVehicleParamsCarDoors(vehicleid, frontLeft, frontRight, rearLeft, rearRight);
 
 /// <summary>Allows you to retrieve the current state of a vehicle's doors.</summary>
 /// <param name="vehicleid">The ID of the vehicle</param>
-/// <param name="driver">The integer to save the state of the driver's door to</param>
-/// <param name="passenger">The integer to save the state of the passenger's door to</param>
+/// <param name="frontLeft">The integer to save the state of the driver's door to</param>
+/// <param name="frontRight">The integer to save the state of the passenger's door to</param>
 /// <param name="rearLeft">The integer to save the state of the rear left door to (if available)</param>
 /// <param name="rearRight">The integer to save the state of the rear right door to (if available)</param>
 /// <seealso name="SetVehicleParamsCarDoors"/>
@@ -291,24 +293,24 @@ native SetVehicleParamsCarDoors(vehicleid, driver, passenger, rearLeft, rearRigh
 /// <seealso name="GetVehicleParamsCarWindows"/>
 /// <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
 /// <remarks>The values returned in each variable are as follows: <b><c>-1</c></b> if not set, <b><c>0</c></b> if closed, <b><c>1</c></b> if open.</remarks>
-native GetVehicleParamsCarDoors(vehicleid, &driver, &passenger, &rearLeft, &rearRight);
+native GetVehicleParamsCarDoors(vehicleid, &frontLeft, &frontRight, &rearLeft, &rearRight);
 
 /// <summary>Allows you to open and close the windows of a vehicle.</summary>
 /// <param name="vehicleid">The ID of the vehicle to set the window state of</param>
-/// <param name="driver">The state of the driver's window. <b><c>0</c></b> to open, <b><c>1</c></b> to close</param>
-/// <param name="passenger">The state of the passenger window. <b><c>0</c></b> to open, <b><c>1</c></b> to close</param>
+/// <param name="frontLeft">The state of the driver's window. <b><c>0</c></b> to open, <b><c>1</c></b> to close</param>
+/// <param name="frontRight">The state of the passenger window. <b><c>0</c></b> to open, <b><c>1</c></b> to close</param>
 /// <param name="rearLeft">The state of the rear left window (if available). <b><c>0</c></b> to open, <b><c>1</c></b> to close</param>
 /// <param name="rearRight">The state of the rear right window (if available). <b><c>0</c></b> to open, <b><c>1</c></b> to close</param>
 /// <seealso name="SetVehicleParamsCarDoors"/>
 /// <seealso name="GetVehicleParamsCarDoors"/>
 /// <seealso name="GetVehicleParamsCarWindows"/>
 /// <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
-native SetVehicleParamsCarWindows(vehicleid, driver, passenger, rearLeft, rearRight);
+native SetVehicleParamsCarWindows(vehicleid, frontLeft, frontRight, rearLeft, rearRight);
 
 /// <summary>Allows you to retrieve the current state of a vehicle's windows.</summary>
 /// <param name="vehicleid">The ID of the vehicle</param>
-/// <param name="driver">The integer to save the state of the drivers window to</param>
-/// <param name="passenger">The integer to save the state of the passengers window to</param>
+/// <param name="frontLeft">The integer to save the state of the drivers window to</param>
+/// <param name="frontRight">The integer to save the state of the passengers window to</param>
 /// <param name="rearLeft">The integer to save the state of the rear left window to (if available)</param>
 /// <param name="rearRight">The integer to save the state of the rear right window to (if available)</param>
 /// <seealso name="SetVehicleParamsCarWindows"/>
@@ -317,7 +319,7 @@ native SetVehicleParamsCarWindows(vehicleid, driver, passenger, rearLeft, rearRi
 /// <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
 /// <remarks>The values returned in each variable are as follows: <b><c>-1</c></b> if not set, <b><c>0</c></b> if closed, <b><c>1</c></b> if open.</remarks>
 /// <returns>The vehicle's windows state is stored in the specified variables.</returns>
-native GetVehicleParamsCarWindows(vehicleid, &driver, &passenger, &rearLeft, &rearRight);
+native GetVehicleParamsCarWindows(vehicleid, &frontLeft, &frontRight, &rearLeft, &rearRight);
 
 /// <summary>Sets a vehicle back to the position at where it was created.</summary>
 /// <param name="vehicleid">The ID of the vehicle to respawn</param>
