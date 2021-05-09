@@ -18,9 +18,10 @@
 // --------------------------------------------------
 
 // HTTP requests
-enum e_HTTP_METHOD
+#define HTTP_METHOD: __TAG(HTTP_METHOD):
+enum HTTP_METHOD:
 {
-	HTTP_GET = 1,
+	HTTP_GET                                   = 1,
 	HTTP_POST,
 	HTTP_HEAD
 }
@@ -28,9 +29,10 @@ enum e_HTTP_METHOD
 // HTTP error response codes
 // These codes compliment ordinary HTTP response codes returned in 'responseCode'
 // (10x) (20x OK) (30x Moved) (40x Unauthorised) (50x Server Error)
-enum e_HTTP_ERROR
+#define HTTP_ERROR: __TAG(HTTP_ERROR):
+enum HTTP_ERROR:
 {
-	HTTP_ERROR_BAD_HOST = 1,
+	HTTP_ERROR_BAD_HOST                        = 1,
 	HTTP_ERROR_NO_SOCKET,
 	HTTP_ERROR_CANT_CONNECT,
 	HTTP_ERROR_CANT_WRITE,
@@ -66,7 +68,7 @@ enum e_HTTP_ERROR
 ///     <li>+ standard HTTP response codes</li>
 ///   </ul>
 /// </remarks>
-native HTTP(index, e_HTTP_METHOD:method, const url[], const data[], const callback[]);
+native HTTP(index, __TAG(HTTP_METHOD):method, const url[], const data[], const callback[]);
 
 // example HTTP callback: public MyHttpResponse(index, responseCode, const data[]) { ... }
 

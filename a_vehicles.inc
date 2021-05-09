@@ -18,7 +18,8 @@
 // Defines
 // --------------------------------------------------
 
-enum e_CARMODTYPE
+#define CARMODTYPE: __TAG(CARMODTYPE):
+enum CARMODTYPE:
 {
 	CARMODTYPE_SPOILER,
 	CARMODTYPE_HOOD,
@@ -36,25 +37,29 @@ enum e_CARMODTYPE
 	CARMODTYPE_VENT_LEFT
 }
 
-enum e_VEHICLE_PARAMS
+#define VEHICLE_PARAMS: __TAG(VEHICLE_PARAMS):
+enum VEHICLE_PARAMS:
 {
-	VEHICLE_PARAMS_UNSET = -1,
+	VEHICLE_PARAMS_UNSET                       = -1,
 	VEHICLE_PARAMS_OFF,
-	VEHICLE_PARAMS_ON,
+	VEHICLE_PARAMS_ON
 }
 
-enum e_VEHICLE_MODEL_INFO
+#define VEHICLE_MODEL_INFO: __TAG(VEHICLE_MODEL_INFO):
+enum VEHICLE_MODEL_INFO:
 {
-	VEHICLE_MODEL_INFO_SIZE = 1,
+	VEHICLE_MODEL_INFO_SIZE                    = 1,
 	VEHICLE_MODEL_INFO_FRONTSEAT,
 	VEHICLE_MODEL_INFO_REARSEAT,
 	VEHICLE_MODEL_INFO_PETROLCAP,
 	VEHICLE_MODEL_INFO_WHEELSFRONT,
 	VEHICLE_MODEL_INFO_WHEELSREAR,
 	VEHICLE_MODEL_INFO_WHEELSMID,
-	VEHICLE_MODEL_INFO_FRONT_BUMPER_Z,
-	VEHICLE_MODEL_INFO_REAR_BUMPER_Z
+	VEHICLE_MODEL_INFO_FRONT_BUMPER,
+	VEHICLE_MODEL_INFO_REAR_BUMPER
 }
+#define VEHICLE_MODEL_INFO_FRONT_BUMPER_Z VEHICLE_MODEL_INFO_FRONT_BUMPER
+#define VEHICLE_MODEL_INFO_REAR_BUMPER_Z  VEHICLE_MODEL_INFO_REAR_BUMPER
 
 // Vehicle
 
@@ -68,12 +73,12 @@ enum e_VEHICLE_MODEL_INFO
 /// <param name="colour2">The secondary <a href="http://wiki.sa-mp.com/wiki/Color_ID">colour ID</a></param>
 /// <param name="respawnDelay">The delay until the car is respawned without a driver in <b>seconds</b>. Using <b><c>-1</c></b> will prevent the vehicle from respawning</param>
 /// <param name="addSiren"><b>Added in 0.3.7; will not work in earlier versions</b>. Enables the vehicle to have a siren, providing the vehicle has a horn (optional=<b><c>false</c></b>)</param>
-/// <seealso name="DestroyVehicle"/>
-/// <seealso name="AddStaticVehicle"/>
-/// <seealso name="AddStaticVehicleEx"/>
-/// <seealso name="GetVehicleParamsSirenState"/>
-/// <seealso name="OnVehicleSpawn"/>
-/// <seealso name="OnVehicleSirenStateChange"/>
+/// <seealso name="DestroyVehicle" />
+/// <seealso name="AddStaticVehicle" />
+/// <seealso name="AddStaticVehicleEx" />
+/// <seealso name="GetVehicleParamsSirenState" />
+/// <seealso name="OnVehicleSpawn" />
+/// <seealso name="OnVehicleSirenStateChange" />
 /// <remarks>Trains can only be added with AddStaticVehicle and AddStaticVehicleEx.</remarks>
 /// <returns>
 ///   The vehicle ID of the vehicle created (<b><c>1</c></b> to <b><c>MAX_VEHICLES</c></b>).<br />
@@ -83,9 +88,9 @@ native CreateVehicle(modelid, Float:x, Float:y, Float:z, Float:rotation, colour1
 
 /// <summary>Destroy a vehicle. It will disappear instantly.</summary>
 /// <param name="vehicleid">The ID of the vehicle to destroy</param>
-/// <seealso name="CreateVehicle"/>
-/// <seealso name="RemovePlayerFromVehicle"/>
-/// <seealso name="SetVehicleToRespawn"/>
+/// <seealso name="CreateVehicle" />
+/// <seealso name="RemovePlayerFromVehicle" />
+/// <seealso name="SetVehicleToRespawn" />
 /// <returns>
 ///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute. The vehicle does not exist.
@@ -95,11 +100,11 @@ native DestroyVehicle(vehicleid);
 /// <summary>Checks if a vehicle is streamed in for a player. Only nearby vehicles are streamed in (visible) for a player.</summary>
 /// <param name="vehicleid">The ID of the vehicle to check</param>
 /// <param name="playerid">The ID of the player to check</param>
-/// <seealso name="IsPlayerStreamedIn"/>
-/// <seealso name="OnVehicleStreamIn"/>
-/// <seealso name="OnVehicleStreamOut"/>
-/// <seealso name="OnPlayerStreamIn"/>
-/// <seealso name="OnPlayerStreamOut"/>
+/// <seealso name="IsPlayerStreamedIn" />
+/// <seealso name="OnVehicleStreamIn" />
+/// <seealso name="OnVehicleStreamOut" />
+/// <seealso name="OnPlayerStreamIn" />
+/// <seealso name="OnPlayerStreamOut" />
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <returns>
 ///   <b><c>0</c></b>: Vehicle is not streamed in for the player, or the function failed to execute (player and/or vehicle do not exist).<br />
@@ -112,9 +117,9 @@ native bool:IsVehicleStreamedIn(vehicleid, playerid);
 /// <param name="x">A float variable in which to store the x coordinate, passed by reference</param>
 /// <param name="y">A float variable in which to store the y coordinate, passed by reference</param>
 /// <param name="z">A float variable in which to store the z coordinate, passed by reference</param>
-/// <seealso name="GetVehicleDistanceFromPoint"/>
-/// <seealso name="SetVehiclePos"/>
-/// <seealso name="GetVehicleZAngle"/>
+/// <seealso name="GetVehicleDistanceFromPoint" />
+/// <seealso name="SetVehiclePos" />
+/// <seealso name="GetVehicleZAngle" />
 /// <returns>
 ///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute. The vehicle specified does not exist.
@@ -126,9 +131,9 @@ native GetVehiclePos(vehicleid, &Float:x, &Float:y, &Float:z);
 /// <param name="x">The x coordinate to position the vehicle at</param>
 /// <param name="y">The y coordinate to position the vehicle at</param>
 /// <param name="z">The z coordinate to position the vehicle at</param>
-/// <seealso name="SetPlayerPos"/>
-/// <seealso name="GetVehiclePos"/>
-/// <seealso name="SetVehicleZAngle"/>
+/// <seealso name="SetPlayerPos" />
+/// <seealso name="GetVehiclePos" />
+/// <seealso name="SetVehicleZAngle" />
 /// <remarks>An empty vehicle will not fall after being teleported into the air.</remarks>
 /// <returns>
 ///   <b><c>1</c></b>: The function executed successfully.<br />
@@ -139,11 +144,11 @@ native SetVehiclePos(vehicleid, Float:x, Float:y, Float:z);
 /// <summary>Get the rotation of a vehicle on the z axis (yaw).</summary>
 /// <param name="vehicleid">The ID of the vehicle to get the z angle of</param>
 /// <param name="angle">A float variable in which to store the z rotation, passed by reference</param>
-/// <seealso name="GetVehicleRotationQuat"/>
-/// <seealso name="GetVehicleRotation"/>
-/// <seealso name="SetVehicleZAngle"/>
-/// <seealso name="GetVehiclePos"/>
-/// <seealso name="GetPlayerFacingAngle"/>
+/// <seealso name="GetVehicleRotationQuat" />
+/// <seealso name="GetVehicleRotation" />
+/// <seealso name="SetVehicleZAngle" />
+/// <seealso name="GetVehiclePos" />
+/// <seealso name="GetPlayerFacingAngle" />
 /// <returns>
 ///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute. This means the vehicle does not exist.
@@ -156,7 +161,7 @@ native GetVehicleZAngle(vehicleid, &Float:angle);
 /// <param name="x">A float variable in which to store the second quaternion angle, passed by reference</param>
 /// <param name="y">A float variable in which to store the third quaternion angle, passed by reference</param>
 /// <param name="z">A float variable in which to store the fourth quaternion angle, passed by reference</param>
-/// <seealso name="GetVehicleZAngle"/>
+/// <seealso name="GetVehicleZAngle" />
 /// <remarks>This function was added in <b>SA-MP 0.3b</b> and will not work in earlier versions!</remarks>
 /// <remarks>
 ///   <b>To euler:</b><br />
@@ -185,8 +190,8 @@ native GetVehicleRotationQuat(vehicleid, &Float:w, &Float:x, &Float:y, &Float:z)
 /// <param name="x">The x map coordinate</param>
 /// <param name="y">The y map coordinate</param>
 /// <param name="z">The z map coordinate</param>
-/// <seealso name="GetPlayerDistanceFromPoint"/>
-/// <seealso name="GetVehiclePos"/>
+/// <seealso name="GetPlayerDistanceFromPoint" />
+/// <seealso name="GetVehiclePos" />
 /// <remarks>This function was added in <b>SA-MP 0.3c R3</b> and will not work in earlier versions!</remarks>
 /// <returns>A float containing the distance from the point specified in the coordinates.</returns>
 native Float:GetVehicleDistanceFromPoint(vehicleid, Float:x, Float:y, Float:z);
@@ -194,8 +199,8 @@ native Float:GetVehicleDistanceFromPoint(vehicleid, Float:x, Float:y, Float:z);
 /// <summary>Set the z rotation (yaw) of a vehicle.</summary>
 /// <param name="vehicleid">The ID of the vehicle to set the rotation of</param>
 /// <param name="angle">The z angle to set</param>
-/// <seealso name="GetVehicleZAngle"/>
-/// <seealso name="SetVehiclePos"/>
+/// <seealso name="GetVehicleZAngle" />
+/// <seealso name="SetVehiclePos" />
 /// <remarks>A vehicle's x and y (pitch and roll) rotation will be reset when this function is used. The x and y rotations can not be set.</remarks>
 /// <remarks>This function does not work on unoccupied vehicles.</remarks>
 /// <returns>
@@ -209,7 +214,7 @@ native SetVehicleZAngle(vehicleid, Float:angle);
 /// <param name="playerid">The ID of the player to set the vehicle's parameters for</param>
 /// <param name="objective"><b><c>0</c></b> to disable the objective or <b><c>1</c></b> to show it. This is a bobbing yellow arrow above the vehicle</param>
 /// <param name="doors"><b><c>0</c></b> to unlock the doors or <b><c>1</c></b> to lock them</param>
-/// <seealso name="SetVehicleParamsEx"/>
+/// <seealso name="SetVehicleParamsEx" />
 /// <remarks>Vehicles must be respawned for the 'objective' to be removed. This can be circumvented somewhat using Get/SetVehicleParamsEx which do not require the vehicle to be respawned. It is worth noting however that the object will be disabled on a global scale, and this is only useful if only one player has the vehicle as an objective.</remarks>
 /// <remarks>Since <b>0.3a</b> you will have to reapply this function when <a href="#OnVehicleStreamIn">OnVehicleStreamIn</a> is called.</remarks>
 /// <returns>
@@ -219,9 +224,9 @@ native SetVehicleZAngle(vehicleid, Float:angle);
 native SetVehicleParamsForPlayer(vehicleid, playerid, objective, doors);
 
 /// <summary>Use this function before any player connects (<a href="#OnGameModeInit">OnGameModeInit</a>) to tell all clients that the script will control vehicle engines and lights. This prevents the game automatically turning the engine on/off when players enter/exit vehicles and headlights automatically coming on when it is dark.</summary>
-/// <seealso name="SetVehicleParamsEx"/>
-/// <seealso name="GetVehicleParamsEx"/>
-/// <seealso name="SetVehicleParamsForPlayer"/>
+/// <seealso name="SetVehicleParamsEx" />
+/// <seealso name="GetVehicleParamsEx" />
+/// <seealso name="SetVehicleParamsForPlayer" />
 /// <remarks>This Function was added in <b>SA-MP 0.3c</b> and will not work in earlier versions!</remarks>
 /// <remarks>Is it not possible to reverse this function after it has been used. You must either use it or not use it.</remarks>
 /// <returns>This function always returns <b><c>1</c></b>. It cannot fail to execute.</returns>
@@ -236,9 +241,9 @@ native ManualVehicleEngineAndLights();
 /// <param name="bonnet">Bonnet (hood) status. <b><c>0</c></b> - Closed, <b><c>1</c></b> - Open</param>
 /// <param name="boot">Boot/trunk status. <b><c>0</c></b> - Closed, <b><c>1</c></b> - Open</param>
 /// <param name="objective">Toggle the objective arrow above the vehicle. <b><c>0</c></b> - Off, <b><c>1</c></b> - On</param>
-/// <seealso name="GetVehicleParamsEx"/>
-/// <seealso name="SetVehicleParamsForPlayer"/>
-/// <seealso name="UpdateVehicleDamageStatus"/>
+/// <seealso name="GetVehicleParamsEx" />
+/// <seealso name="SetVehicleParamsForPlayer" />
+/// <seealso name="UpdateVehicleDamageStatus" />
 /// <remarks>This function was added in <b>SA-MP 0.3c</b> and will not work in earlier versions! </remarks>
 /// <remarks>The alarm will not reset when finished, you'll need to reset it by yourself with this function. </remarks>
 /// <remarks>Lights also operate during the day (Only when <a href="#ManualVehicleEngineAndLights">ManualVehicleEngineAndLights</a> is enabled). </remarks>
@@ -246,7 +251,7 @@ native ManualVehicleEngineAndLights();
 ///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute. This means the vehicle does not exist.
 /// </returns>
-native SetVehicleParamsEx(vehicleid, e_VEHICLE_PARAMS:engine, e_VEHICLE_PARAMS:lights, e_VEHICLE_PARAMS:alarm, e_VEHICLE_PARAMS:doors, e_VEHICLE_PARAMS:bonnet, e_VEHICLE_PARAMS:boot, e_VEHICLE_PARAMS:objective);
+native SetVehicleParamsEx(vehicleid, __TAG(VEHICLE_PARAMS):engine, __TAG(VEHICLE_PARAMS):lights, __TAG(VEHICLE_PARAMS):alarm, __TAG(VEHICLE_PARAMS):doors, __TAG(VEHICLE_PARAMS):bonnet, __TAG(VEHICLE_PARAMS):boot, __TAG(VEHICLE_PARAMS):objective);
 
 /// <summary>Gets a vehicle's parameters.</summary>
 /// <param name="vehicleid">The ID of the vehicle to get the parameters from</param>
@@ -257,14 +262,14 @@ native SetVehicleParamsEx(vehicleid, e_VEHICLE_PARAMS:engine, e_VEHICLE_PARAMS:l
 /// <param name="bonnet">Get the bonnet/hood status. If <b><c>1</c></b>, it's open</param>
 /// <param name="boot">Get the boot/trunk status. <b><c>1</c></b> means it is open</param>
 /// <param name="objective">Get the objective status. <b><c>1</c></b> means the objective is on</param>
-/// <seealso name="SetVehicleParamsEx"/>
+/// <seealso name="SetVehicleParamsEx" />
 /// <remarks>This function was added in <b>SA-MP 0.3c</b> and will not work in earlier versions!</remarks>
 /// <remarks>If a parameter is unset (SetVehicleParamsEx not used beforehand) the value will be <b><c>-1</c></b> ('unset').</remarks>
-native GetVehicleParamsEx(vehicleid, &e_VEHICLE_PARAMS:engine, &e_VEHICLE_PARAMS:lights, &e_VEHICLE_PARAMS:alarm, &e_VEHICLE_PARAMS:doors, &e_VEHICLE_PARAMS:bonnet, &e_VEHICLE_PARAMS:boot, &e_VEHICLE_PARAMS:objective);
+native GetVehicleParamsEx(vehicleid, &__TAG(VEHICLE_PARAMS):engine, &__TAG(VEHICLE_PARAMS):lights, &__TAG(VEHICLE_PARAMS):alarm, &__TAG(VEHICLE_PARAMS):doors, &__TAG(VEHICLE_PARAMS):bonnet, &__TAG(VEHICLE_PARAMS):boot, &__TAG(VEHICLE_PARAMS):objective);
 
 /// <summary>Returns a vehicle's siren state (on/off).</summary>
 /// <param name="vehicleid">The ID of the vehicle to get the siren state of</param>
-/// <seealso name="OnVehicleSirenStateChange"/>
+/// <seealso name="OnVehicleSirenStateChange" />
 /// <remarks>This function was added in <b>SA-MP 0.3c R3</b> and will not work in earlier versions!</remarks>
 /// <returns><b><c>-1</c></b> if unset (off), <b><c>0</c></b> if off, <b><c>1</c></b> if on</returns>
 native GetVehicleParamsSirenState(vehicleid);
@@ -275,9 +280,9 @@ native GetVehicleParamsSirenState(vehicleid);
 /// <param name="frontRight">The state of the passenger door. <b><c>1</c></b> to open, <b><c>0</c></b> to close</param>
 /// <param name="rearLeft">The state of the rear left door (if available). <b><c>1</c></b> to open, <b><c>0</c></b> to close</param>
 /// <param name="rearRight">The state of the rear right door (if available). <b><c>1</c></b> to open, <b><c>0</c></b> to close</param>
-/// <seealso name="GetVehicleParamsCarDoors"/>
-/// <seealso name="SetVehicleParamsCarWindows"/>
-/// <seealso name="GetVehicleParamsCarWindows"/>
+/// <seealso name="GetVehicleParamsCarDoors" />
+/// <seealso name="SetVehicleParamsCarWindows" />
+/// <seealso name="GetVehicleParamsCarWindows" />
 /// <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
 /// <remarks><b><c>1</c></b> is open, <b><c>0</c></b> is closed</remarks>
 native SetVehicleParamsCarDoors(vehicleid, frontLeft, frontRight, rearLeft, rearRight);
@@ -288,9 +293,9 @@ native SetVehicleParamsCarDoors(vehicleid, frontLeft, frontRight, rearLeft, rear
 /// <param name="frontRight">The integer to save the state of the passenger's door to</param>
 /// <param name="rearLeft">The integer to save the state of the rear left door to (if available)</param>
 /// <param name="rearRight">The integer to save the state of the rear right door to (if available)</param>
-/// <seealso name="SetVehicleParamsCarDoors"/>
-/// <seealso name="SetVehicleParamsCarWindows"/>
-/// <seealso name="GetVehicleParamsCarWindows"/>
+/// <seealso name="SetVehicleParamsCarDoors" />
+/// <seealso name="SetVehicleParamsCarWindows" />
+/// <seealso name="GetVehicleParamsCarWindows" />
 /// <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
 /// <remarks>The values returned in each variable are as follows: <b><c>-1</c></b> if not set, <b><c>0</c></b> if closed, <b><c>1</c></b> if open.</remarks>
 native GetVehicleParamsCarDoors(vehicleid, &frontLeft, &frontRight, &rearLeft, &rearRight);
@@ -301,9 +306,9 @@ native GetVehicleParamsCarDoors(vehicleid, &frontLeft, &frontRight, &rearLeft, &
 /// <param name="frontRight">The state of the passenger window. <b><c>0</c></b> to open, <b><c>1</c></b> to close</param>
 /// <param name="rearLeft">The state of the rear left window (if available). <b><c>0</c></b> to open, <b><c>1</c></b> to close</param>
 /// <param name="rearRight">The state of the rear right window (if available). <b><c>0</c></b> to open, <b><c>1</c></b> to close</param>
-/// <seealso name="SetVehicleParamsCarDoors"/>
-/// <seealso name="GetVehicleParamsCarDoors"/>
-/// <seealso name="GetVehicleParamsCarWindows"/>
+/// <seealso name="SetVehicleParamsCarDoors" />
+/// <seealso name="GetVehicleParamsCarDoors" />
+/// <seealso name="GetVehicleParamsCarWindows" />
 /// <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
 native SetVehicleParamsCarWindows(vehicleid, frontLeft, frontRight, rearLeft, rearRight);
 
@@ -313,9 +318,9 @@ native SetVehicleParamsCarWindows(vehicleid, frontLeft, frontRight, rearLeft, re
 /// <param name="frontRight">The integer to save the state of the passengers window to</param>
 /// <param name="rearLeft">The integer to save the state of the rear left window to (if available)</param>
 /// <param name="rearRight">The integer to save the state of the rear right window to (if available)</param>
-/// <seealso name="SetVehicleParamsCarWindows"/>
-/// <seealso name="GetVehicleParamsCarDoors"/>
-/// <seealso name="SetVehicleParamsCarDoors"/>
+/// <seealso name="SetVehicleParamsCarWindows" />
+/// <seealso name="GetVehicleParamsCarDoors" />
+/// <seealso name="SetVehicleParamsCarDoors" />
 /// <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
 /// <remarks>The values returned in each variable are as follows: <b><c>-1</c></b> if not set, <b><c>0</c></b> if closed, <b><c>1</c></b> if open.</remarks>
 /// <returns>The vehicle's windows state is stored in the specified variables.</returns>
@@ -323,8 +328,8 @@ native GetVehicleParamsCarWindows(vehicleid, &frontLeft, &frontRight, &rearLeft,
 
 /// <summary>Sets a vehicle back to the position at where it was created.</summary>
 /// <param name="vehicleid">The ID of the vehicle to respawn</param>
-/// <seealso name="CreateVehicle"/>
-/// <seealso name="DestroyVehicle"/>
+/// <seealso name="CreateVehicle" />
+/// <seealso name="DestroyVehicle" />
 /// <returns>
 ///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute. The vehicle does not exist.
@@ -334,8 +339,8 @@ native SetVehicleToRespawn(vehicleid);
 /// <summary>Links a vehicle to an interior. Vehicles can only be seen by players in the same interior (<a href="#SetPlayerInterior">SetPlayerInterior</a>).</summary>
 /// <param name="vehicleid">The ID of the vehicle to link to an interior</param>
 /// <param name="interiorid">The <a href="http://wiki.sa-mp.com/wiki/Interiorids">Interior ID</a> to link it to</param>
-/// <seealso name="SetVehicleVirtualWorld"/>
-/// <seealso name="SetPlayerInterior"/>
+/// <seealso name="SetVehicleVirtualWorld" />
+/// <seealso name="SetPlayerInterior" />
 /// <returns>
 ///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute. This means the vehicle does not exist.<br />
@@ -352,29 +357,29 @@ native LinkVehicleToInterior(vehicleid, interiorid);
 ///   </ul>
 /// </returns>
 /// <remarks>Using an invalid <a href="http://wiki.sa-mp.com/wiki/Car_Component_ID">component ID</a> crashes the player's game. There are no internal checks for this.</remarks>
-/// <seealso name="RemoveVehicleComponent"/>
-/// <seealso name="GetVehicleComponentInSlot"/>
-/// <seealso name="GetVehicleComponentType"/>
-/// <seealso name="OnVehicleMod"/>
-/// <seealso name="OnEnterExitModShop"/>
+/// <seealso name="RemoveVehicleComponent" />
+/// <seealso name="GetVehicleComponentInSlot" />
+/// <seealso name="GetVehicleComponentType" />
+/// <seealso name="OnVehicleMod" />
+/// <seealso name="OnEnterExitModShop" />
 native AddVehicleComponent(vehicleid, componentid);
 
 /// <summary>Remove a component from a vehicle.</summary>
 /// <param name="vehicleid">ID of the vehicle</param>
 /// <param name="componentid">ID of the <a href="http://wiki.sa-mp.com/wiki/Car_Component_ID">component</a> to remove</param>
-/// <seealso name="AddVehicleComponent"/>
-/// <seealso name="GetVehicleComponentInSlot"/>
-/// <seealso name="GetVehicleComponentType"/>
-/// <seealso name="OnVehicleMod"/>
-/// <seealso name="OnEnterExitModShop"/>
+/// <seealso name="AddVehicleComponent" />
+/// <seealso name="GetVehicleComponentInSlot" />
+/// <seealso name="GetVehicleComponentType" />
+/// <seealso name="OnVehicleMod" />
+/// <seealso name="OnEnterExitModShop" />
 native RemoveVehicleComponent(vehicleid, componentid);
 
 /// <summary>Change a vehicle's primary and secondary colours.</summary>
 /// <param name="vehicleid">The ID of the vehicle to change the colours of</param>
 /// <param name="colour1">The new vehicle's primary <a href="http://wiki.sa-mp.com/wiki/Color_ID">Color ID</a></param>
 /// <param name="colour2">The new vehicle's secondary <a href="http://wiki.sa-mp.com/wiki/Color_ID">Color ID</a></param>
-/// <seealso name="ChangeVehiclePaintjob"/>
-/// <seealso name="OnVehicleRespray"/>
+/// <seealso name="ChangeVehiclePaintjob" />
+/// <seealso name="OnVehicleRespray" />
 /// <remarks>Some vehicles have only a primary colour and some can not have the colour changed at all. A few (cement, squallo) have 4 colours, of which 2 can not be changed in SA:MP</remarks>
 /// <returns>
 ///   <b><c>1</c></b>: The function executed successfully. The vehicle's colour was successfully changed.<br />
@@ -385,8 +390,8 @@ native ChangeVehicleColor(vehicleid, colour1, colour2);
 /// <summary>Change a vehicle's paintjob (for plain colours see <a href="#ChangeVehicleColor">ChangeVehicleColor</a>).</summary>
 /// <param name="vehicleid">The ID of the vehicle to change the paintjob of</param>
 /// <param name="paintjobid">The ID of the Paintjob to apply. Use <b><c>3</c></b> to remove a paintjob</param>
-/// <seealso name="ChangeVehicleColor"/>
-/// <seealso name="OnVehiclePaintjob"/>
+/// <seealso name="ChangeVehicleColor" />
+/// <seealso name="OnVehiclePaintjob" />
 /// <remarks>
 ///   <b>Known Bugs:</b><br />
 ///   This function calls <a href="#OnVehicleRespray">OnVehicleRespray</a>.<br />
@@ -398,10 +403,10 @@ native ChangeVehiclePaintjob(vehicleid, paintjobid);
 /// <summary>Set a vehicle's health. When a vehicle's health decreases the engine will produce smoke, and finally fire when it decreases to less than 250 (25%).</summary>
 /// <param name="vehicleid">The ID of the vehicle to set the health of</param>
 /// <param name="health">The health, given as a float value</param>
-/// <seealso name="GetVehicleHealth"/>
-/// <seealso name="RepairVehicle"/>
-/// <seealso name="SetPlayerHealth"/>
-/// <seealso name="OnVehicleDeath"/>
+/// <seealso name="GetVehicleHealth" />
+/// <seealso name="RepairVehicle" />
+/// <seealso name="SetPlayerHealth" />
+/// <seealso name="OnVehicleDeath" />
 /// <remarks>Full vehicle health is <b><c>1000</c></b>, however higher values are possible and increase the health of the vehicle.</remarks>
 /// <remarks>
 ///   <b>Health:</b><br />
@@ -422,9 +427,9 @@ native SetVehicleHealth(vehicleid, Float:health);
 /// <summary>Get the health of a vehicle.</summary>
 /// <param name="vehicleid">The ID of the vehicle to get the health of</param>
 /// <param name="health">A float variable in which to store the vehicle's health, passed by reference</param>
-/// <seealso name="SetVehicleHealth"/>
-/// <seealso name="GetPlayerHealth"/>
-/// <seealso name="GetPlayerArmour"/>
+/// <seealso name="SetVehicleHealth" />
+/// <seealso name="GetPlayerHealth" />
+/// <seealso name="GetPlayerArmour" />
 /// <remarks>Full vehicle health is <b><c>1000</c></b>, however higher values are possible and increase the health of the vehicle.</remarks>
 /// <remarks>
 ///   <b>Health:</b><br />
@@ -445,42 +450,42 @@ native GetVehicleHealth(vehicleid, &Float:health);
 /// <summary>Attach a vehicle to another vehicle as a trailer.</summary>
 /// <param name="trailerid">The ID of the vehicle that will be pulled</param>
 /// <param name="vehicleid">The ID of the vehicle that will pull the trailer</param>
-/// <seealso name="DetachTrailerFromVehicle"/>
-/// <seealso name="IsTrailerAttachedToVehicle"/>
-/// <seealso name="GetVehicleTrailer"/>
+/// <seealso name="DetachTrailerFromVehicle" />
+/// <seealso name="IsTrailerAttachedToVehicle" />
+/// <seealso name="GetVehicleTrailer" />
 /// <remarks>This will only work if both vehicles are streamed in for a player (check <a href="#IsVehicleStreamedIn">IsVehicleStreamedIn</a>).</remarks>
 /// <returns>This function always returns <b><c>1</c></b>, even if neither of the vehicle IDs passed are valid.</returns>
 native AttachTrailerToVehicle(trailerid, vehicleid);
 
 /// <summary>Detach the connection between a vehicle and its trailer, if any.</summary>
 /// <param name="vehicleid">ID of the pulling vehicle</param>
-/// <seealso name="AttachTrailerToVehicle"/>
-/// <seealso name="IsTrailerAttachedToVehicle"/>
-/// <seealso name="GetVehicleTrailer"/>
+/// <seealso name="AttachTrailerToVehicle" />
+/// <seealso name="IsTrailerAttachedToVehicle" />
+/// <seealso name="GetVehicleTrailer" />
 native DetachTrailerFromVehicle(vehicleid);
 
 /// <summary>Checks if a vehicle has a trailer attached to it. Use <a href="#GetVehicleTrailer">GetVehicleTrailer</a> to get the vehicle ID of the trailer (if any).</summary>
 /// <param name="vehicleid">The ID of the vehicle to check for trailers</param>
-/// <seealso name="GetVehicleTrailer"/>
-/// <seealso name="AttachTrailerToVehicle"/>
-/// <seealso name="DetachTrailerFromVehicle"/>
+/// <seealso name="GetVehicleTrailer" />
+/// <seealso name="AttachTrailerToVehicle" />
+/// <seealso name="DetachTrailerFromVehicle" />
 /// <returns><b><c>1</c></b> if the vehicle has a trailer attached, <b><c>0</c></b> if not.</returns>
 native bool:IsTrailerAttachedToVehicle(vehicleid);
 
 /// <summary>Get the ID of the trailer attached to a vehicle.</summary>
 /// <param name="vehicleid">The ID of the vehicle to get the trailer of</param>
-/// <seealso name="AttachTrailerToVehicle"/>
-/// <seealso name="DetachTrailerFromVehicle"/>
-/// <seealso name="IsTrailerAttachedToVehicle"/>
+/// <seealso name="AttachTrailerToVehicle" />
+/// <seealso name="DetachTrailerFromVehicle" />
+/// <seealso name="IsTrailerAttachedToVehicle" />
 /// <returns>The vehicle ID of the trailer or <b><c>0</c></b> if no trailer is attached.</returns>
 native GetVehicleTrailer(vehicleid);
 
 /// <summary>Set a vehicle numberPlate.</summary>
 /// <param name="vehicleid">The ID of the vehicle to set the number plate of</param>
 /// <param name="numberPlate">The text that should be displayed on the number plate</param>
-/// <seealso name="SetVehicleToRespawn"/>
-/// <seealso name="ChangeVehicleColor"/>
-/// <seealso name="ChangeVehiclePaintjob"/>
+/// <seealso name="SetVehicleToRespawn" />
+/// <seealso name="ChangeVehicleColor" />
+/// <seealso name="ChangeVehiclePaintjob" />
 /// <remarks>This function was added in <b>SA-MP 0.3c</b> and will not work in earlier versions!</remarks>
 /// <remarks>You can use colour embedding on the number plate text.</remarks>
 /// <remarks>
@@ -499,20 +504,20 @@ native SetVehicleNumberPlate(vehicleid, const numberPlate[]);
 
 /// <summary>Gets the <a href="http://wiki.sa-mp.com/wiki/Vehicle_Models">model ID</a> of a vehicle.</summary>
 /// <param name="vehicleid">The ID of the vehicle to get the model of</param>
-/// <seealso name="GetPlayerVehicleid"/>
-/// <seealso name="GetVehiclePos"/>
-/// <seealso name="GetVehicleZAngle"/>
-/// <seealso name="GetPlayerVehicleSeat"/>
+/// <seealso name="GetPlayerVehicleid" />
+/// <seealso name="GetVehiclePos" />
+/// <seealso name="GetVehicleZAngle" />
+/// <seealso name="GetPlayerVehicleSeat" />
 /// <returns>The vehicle's <a href="http://wiki.sa-mp.com/wiki/Vehicle_Models">model ID</a>, or <b><c>0</c></b> if the vehicle doesn't exist.</returns>
 native GetVehicleModel(vehicleid);
 
 /// <summary>Retrieves the installed component ID (modshop mod(ification)) on a vehicle in a specific slot.</summary>
 /// <param name="vehicleid">The ID of the vehicle to check for the component</param>
 /// <param name="slot">The component slot to check for components (see below)</param>
-/// <seealso name="AddVehicleComponent"/>
-/// <seealso name="GetVehicleComponentType"/>
-/// <seealso name="OnVehicleMod"/>
-/// <seealso name="OnEnterExitModShop"/>
+/// <seealso name="AddVehicleComponent" />
+/// <seealso name="GetVehicleComponentType" />
+/// <seealso name="OnVehicleMod" />
+/// <seealso name="OnEnterExitModShop" />
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <remarks>
 ///   <b>Slots:</b><br />
@@ -543,23 +548,23 @@ native GetVehicleModel(vehicleid);
 ///   </ul>
 /// </remarks>
 /// <returns>The ID of the component installed in the specified slot. Returns <b><c>0</c></b> if no component in specified vehicle's specified slot, or if vehicle doesn't exist.</returns>
-native GetVehicleComponentInSlot(vehicleid, e_CARMODTYPE:slot); // There is 1 slot for each CARMODTYPE_*
+native GetVehicleComponentInSlot(vehicleid, __TAG(CARMODTYPE):slot); // There is 1 slot for each CARMODTYPE_*
 
 /// <summary>Find out what type of component a certain ID is.</summary>
 /// <param name="component">The component ID to check</param>
-/// <seealso name="AddVehicleComponent"/>
-/// <seealso name="RemoveVehicleComponent"/>
-/// <seealso name="GetVehicleComponentInSlot"/>
-/// <seealso name="OnVehicleMod"/>
-/// <seealso name="OnEnterExitModShop"/>
+/// <seealso name="AddVehicleComponent" />
+/// <seealso name="RemoveVehicleComponent" />
+/// <seealso name="GetVehicleComponentInSlot" />
+/// <seealso name="OnVehicleMod" />
+/// <seealso name="OnEnterExitModShop" />
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <returns>The component slot ID of the specified component or <b><c>-1</c></b> if the component is invalid.</returns>
-native e_CARMODTYPE:GetVehicleComponentType(component); // Find CARMODTYPE_* for component ID
+native __TAG(CARMODTYPE):GetVehicleComponentType(component); // Find CARMODTYPE_* for component ID
 
 /// <summary>Fully repairs a vehicle, including visual damage (bumps, dents, scratches, popped tires etc.).</summary>
 /// <param name="vehicleid">The ID of the vehicle to repair</param>
-/// <seealso name="SetVehicleHealth"/>
-/// <seealso name="GetVehicleHealth"/>
+/// <seealso name="SetVehicleHealth" />
+/// <seealso name="GetVehicleHealth" />
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <returns>
 ///   <b><c>1</c></b>: The function executed successfully.<br />
@@ -572,9 +577,9 @@ native RepairVehicle(vehicleid); // Repairs the damage model and resets the heal
 /// <param name="x">A float variable in to which to store the vehicle's x velocity, passed by reference</param>
 /// <param name="y">A float variable in to which to store the vehicle's y velocity, passed by reference</param>
 /// <param name="z">A float variable in to which to store the vehicle's z velocity, passed by reference</param>
-/// <seealso name="GetPlayerVelocity"/>
-/// <seealso name="SetVehicleVelocity"/>
-/// <seealso name="SetPlayerVelocity"/>
+/// <seealso name="GetPlayerVelocity" />
+/// <seealso name="SetVehicleVelocity" />
+/// <seealso name="SetPlayerVelocity" />
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <remarks>Multiply vector with <b><c>250.66667</c></b> for kmph or <b><c>199.416667</c></b> for mph or something...</remarks>
 /// <returns>
@@ -601,8 +606,8 @@ native SetVehicleVelocity(vehicleid, Float:x, Float:y, Float:z);
 /// <param name="x">The amount of velocity in the angular x direction</param>
 /// <param name="y">The amount of velocity in the angular y direction </param>
 /// <param name="z">The amount of velocity in the angular z direction</param>
-/// <seealso name="SetVehicleVelocity"/>
-/// <seealso name="GetVehicleVelocity"/>
+/// <seealso name="SetVehicleVelocity" />
+/// <seealso name="GetVehicleVelocity" />
 /// <remarks>This function was added in <b>SA-MP 0.3b</b> and will not work in earlier versions!</remarks>
 /// <remarks>This function has no effect on un-occupied vehicles and does not effect trains.</remarks>
 /// <returns>
@@ -617,11 +622,11 @@ native SetVehicleAngularVelocity(vehicleid, Float:x, Float:y, Float:z);
 /// <param name="doors">A variable to store the door damage data in, passed by reference</param>
 /// <param name="lights">A variable to store the light damage data in, passed by reference</param>
 /// <param name="tires">A variable to store the tire damage data in, passed by reference</param>
-/// <seealso name="UpdateVehicleDamageStatus"/>
-/// <seealso name="SetVehicleHealth"/>
-/// <seealso name="GetVehicleHealth"/>
-/// <seealso name="RepairVehicle"/>
-/// <seealso name="OnVehicleDamageStatusUpdate"/>
+/// <seealso name="UpdateVehicleDamageStatus" />
+/// <seealso name="SetVehicleHealth" />
+/// <seealso name="GetVehicleHealth" />
+/// <seealso name="RepairVehicle" />
+/// <seealso name="OnVehicleDamageStatusUpdate" />
 /// <remarks>This Callback was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <remarks>
 ///   <b>Door states:</b><br />
@@ -667,11 +672,11 @@ native GetVehicleDamageStatus(vehicleid, &panels, &doors, &lights, &tires);
 /// <param name="doors">A set of bits containing the door damage status</param>
 /// <param name="lights">A set of bits containing the light damage status</param>
 /// <param name="tires">A set of bits containing the tire damage status</param>
-/// <seealso name="SetVehicleHealth"/>
-/// <seealso name="GetVehicleHealth"/>
-/// <seealso name="RepairVehicle"/>
-/// <seealso name="GetVehicleDamageStatus"/>
-/// <seealso name="OnVehicleDamageStatusUpdate"/>
+/// <seealso name="SetVehicleHealth" />
+/// <seealso name="GetVehicleHealth" />
+/// <seealso name="RepairVehicle" />
+/// <seealso name="GetVehicleDamageStatus" />
+/// <seealso name="OnVehicleDamageStatusUpdate" />
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <remarks>
 ///   <b>Door states:</b><br />
@@ -713,7 +718,7 @@ native UpdateVehicleDamageStatus(vehicleid, panels, doors, lights, tires);
 /// <param name="x">A float to store the x value</param>
 /// <param name="y">A float to store the y value</param>
 /// <param name="z">A float to store the z value</param>
-/// <seealso name="GetVehicleModel"/>
+/// <seealso name="GetVehicleModel" />
 /// <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <remarks>
 ///   <b>Information types:</b><br />
@@ -729,28 +734,28 @@ native UpdateVehicleDamageStatus(vehicleid, panels, doors, lights, tires);
 ///     <li><b><c>VEHICLE_MODEL_INFO_REAR_BUMPER_Z </c></b> - height of the rear bumper</li>
 ///   </ul>
 /// </remarks>
-native GetVehicleModelInfo(vehiclemodel, e_VEHICLE_MODEL_INFO:infotype, &Float:x, &Float:y, &Float:z);
+native GetVehicleModelInfo(vehiclemodel, __TAG(VEHICLE_MODEL_INFO):infotype, &Float:x, &Float:y, &Float:z);
 
 // Virtual Worlds
 
 /// <summary>Sets the 'virtual world' of a vehicle. Players will only be able to see vehicles in their own virtual world.</summary>
 /// <param name="vehicleid">The ID of vehicle to set the virtual world of</param>
 /// <param name="virtualWorld">The ID of the virtual world to put the vehicle in</param>
-/// <seealso name="GetVehicleVirtualWorld"/>
-/// <seealso name="SetPlayerVirtualWorld"/>
+/// <seealso name="GetVehicleVirtualWorld" />
+/// <seealso name="SetPlayerVirtualWorld" />
 native SetVehicleVirtualWorld(vehicleid, virtualWorld);
 
 /// <summary>Get the virtual world of a vehicle.</summary>
 /// <param name="vehicleid">The ID of the vehicle to get the virtual world of</param>
-/// <seealso name="SetVehicleVirtualWorld"/>
-/// <seealso name="GetPlayerVirtualWorld"/>
+/// <seealso name="SetVehicleVirtualWorld" />
+/// <seealso name="GetPlayerVirtualWorld" />
 /// <returns>The virtual world that the vehicle is in.</returns>
 native GetVehicleVirtualWorld(vehicleid);
 
 /// <summary>Check if a vehicle ID is valid.</summary>
 /// <param name="vehicleid">The ID of the vehicle to check</param>
-/// <seealso name="CreateVehicle"/>
-/// <seealso name="DestroyVehicle"/>
+/// <seealso name="CreateVehicle" />
+/// <seealso name="DestroyVehicle" />
 /// <returns>true or false.</returns>
 native bool:IsValidVehicle(vehicleid);
 

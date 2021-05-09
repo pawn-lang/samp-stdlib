@@ -15,94 +15,162 @@
 
 #define SAMP_CONST_CORRECT
 
-#pragma tabsize 4
 // Ignores warning 217 for properly indented PAWNO code
 // It's tab size is 4 and often uses 4 spaces instead, PAWNCC's is 8
+#pragma tabsize 4
 
 // --------------------------------------------------
 // Defines
 // --------------------------------------------------
 
 // Limits
-#if !defined MAX_PLAYER_NAME
-	#define MAX_PLAYER_NAME                    (24)
+#if defined MAX_PLAYER_NAME
+	static const __MAX_PLAYER_NAME             = MAX_PLAYER_NAME;
+	#undef MAX_PLAYER_NAME
+	const MAX_PLAYER_NAME                      = __MAX_PLAYER_NAME;
+#else
+	const MAX_PLAYER_NAME                      = 24;
 #endif
 
-#if !defined MAX_PLAYERS
-	#define MAX_PLAYERS                        (1000)
+#if defined MAX_PLAYERS
+	static const __MAX_PLAYERS                 = MAX_PLAYERS;
+	#undef MAX_PLAYERS
+	const MAX_PLAYERS                          = __MAX_PLAYERS;
+#else
+	const MAX_PLAYERS                          = 1000;
 #endif
 
-#if !defined MAX_VEHICLES
-	#define MAX_VEHICLES                       (2000)
+#if defined MAX_VEHICLES
+	static const __MAX_VEHICLES                = MAX_VEHICLES;
+	#undef MAX_VEHICLES
+	const MAX_VEHICLES                         = __MAX_VEHICLES;
+#else
+	const MAX_VEHICLES                         = 2000;
 #endif
 
-#if !defined MAX_ACTORS
-	#define MAX_ACTORS                         (1000)
+#if defined MAX_ACTORS
+	static const __MAX_ACTORS                  = MAX_ACTORS;
+	#undef MAX_ACTORS
+	const MAX_ACTORS                           = __MAX_ACTORS;
+#else
+	const MAX_ACTORS                           = 1000;
 #endif
 
-#if !defined MAX_OBJECTS
-	#define MAX_OBJECTS                        (2000)
+#if defined MAX_OBJECTS
+	static const __MAX_OBJECTS                 = MAX_OBJECTS;
+	#undef MAX_OBJECTS
+	const MAX_OBJECTS                          = __MAX_OBJECTS;
+#else
+	const MAX_OBJECTS                          = 2000;
 #endif
 
-#if !defined MAX_GANG_ZONES
-	#define MAX_GANG_ZONES                     (1024)
+#if defined MAX_GANG_ZONES
+	static const __MAX_GANG_ZONES              = MAX_GANG_ZONES;
+	#undef MAX_GANG_ZONES
+	const MAX_GANG_ZONES                       = __MAX_GANG_ZONES;
+#else
+	const MAX_GANG_ZONES                       = 1024;
 #endif
 
-#if !defined MAX_TEXT_DRAWS
-	#define MAX_TEXT_DRAWS                     (Text:2048)
+#if defined MAX_TEXT_DRAWS
+	static const Text:__MAX_TEXT_DRAWS         = Text:MAX_TEXT_DRAWS;
+	#undef MAX_TEXT_DRAWS
+	const Text:MAX_TEXT_DRAWS                  = __MAX_TEXT_DRAWS;
+#else
+	const Text:MAX_TEXT_DRAWS                  = Text:2048;
 #endif
 
-#if !defined MAX_PLAYER_TEXT_DRAWS
-	#define MAX_PLAYER_TEXT_DRAWS              (PlayerText:256)
+#if defined MAX_PLAYER_TEXT_DRAWS
+	static const PlayerText:__MAX_PLAYER_TEXT_DRAWS = PlayerText:MAX_PLAYER_TEXT_DRAWS;
+	#undef MAX_PLAYER_TEXT_DRAWS
+	const PlayerText:MAX_PLAYER_TEXT_DRAWS     = PlayerText:__MAX_PLAYER_TEXT_DRAWS;
+#else
+	const PlayerText:MAX_PLAYER_TEXT_DRAWS     = PlayerText:256;
 #endif
 
-#if !defined MAX_MENUS
-	#define MAX_MENUS                          (Menu:128)
+#if defined MAX_MENUS
+	static const Menu:__MAX_MENUS              = Menu:MAX_MENUS;
+	#undef MAX_MENUS
+	const Menu:MAX_MENUS                       = Menu:__MAX_MENUS;
+#else
+	const Menu:MAX_MENUS                       = Menu:128;
 #endif
 
-#if !defined MAX_3DTEXT_GLOBAL
-	#define MAX_3DTEXT_GLOBAL                  (Text3D:1024)
+#if defined MAX_3DTEXT_GLOBAL
+	static const Text3D:__MAX_3DTEXT_GLOBAL    = Text3D:MAX_3DTEXT_GLOBAL;
+	#undef MAX_3DTEXT_GLOBAL
+	const Text3D:MAX_3DTEXT_GLOBAL             = Text3D:__MAX_3DTEXT_GLOBAL;
+#else
+	const Text3D:MAX_3DTEXT_GLOBAL             = Text3D:1024;
 #endif
 
-#if !defined MAX_3DTEXT_PLAYER
-	#define MAX_3DTEXT_PLAYER                  (PlayerText3D:1024)
+#if defined MAX_3DTEXT_PLAYER
+	static const PlayerText3D:__MAX_3DTEXT_PLAYER = PlayerText3D:MAX_3DTEXT_PLAYER;
+	#undef MAX_3DTEXT_PLAYER
+	const PlayerText3D:MAX_3DTEXT_PLAYER       = PlayerText3D:__MAX_3DTEXT_PLAYER;
+#else
+	const PlayerText3D:MAX_3DTEXT_PLAYER       = PlayerText3D:1024;
 #endif
 
-#if !defined MAX_PICKUPS
-	#define MAX_PICKUPS                        (4096)
+#if defined MAX_PICKUPS
+	static const __MAX_PICKUPS                 = MAX_PICKUPS;
+	#undef MAX_PICKUPS
+	const MAX_PICKUPS                          = __MAX_PICKUPS;
+#else
+	const MAX_PICKUPS                          = 4096;
 #endif
+
+#if defined NO_TAGS
+	#define __TAG(%0) _
+#elseif defined STRONG_TAGS
+	#define __TAG(%0) E_%0
+#else // if defined WEAK_TAGS
+	#define __TAG(%0) e_%0
+	#define WEAK_TAGS
+#endif
+#if defined MORE_TAGS
+	#define __MORE(%0) __TAG(%0)
+#else
+	#define __MORE(%0) _
+	#define LESS_TAGS
+#endif
+#define __LESS __TAG
 
 // Invalids
-#define NO_TEAM                                (255)
+const NO_TEAM = 0xFF;
 
-#define INVALID_PLAYER_ID                      (0xFFFF)
-#define INVALID_VEHICLE_ID                     (0xFFFF)
-#define INVALID_ACTOR_ID                       (0xFFFF)
-#define INVALID_OBJECT_ID                      (0xFFFF)
-#define INVALID_MENU                           (Menu:0xFF)
-#define INVALID_TEXT_DRAW                      (Text:0xFFFF)
-#define INVALID_PLAYER_TEXT_DRAW               (PlayerText:0xFFFF)
-#define INVALID_GANG_ZONE                      (-1)
-#define INVALID_3DTEXT_ID                      (Text3D:0xFFFF)
-#define INVALID_PLAYER_3DTEXT_ID               (PlayerText3D:0xFFFF)
+const INVALID_PLAYER_ID                        = 0xFFFF;
+const INVALID_VEHICLE_ID                       = 0xFFFF;
+const INVALID_ACTOR_ID                         = 0xFFFF;
+const INVALID_OBJECT_ID                        = 0xFFFF;
+const Menu:INVALID_MENU                        = Menu:0xFF;
+const Text:INVALID_TEXT_DRAW                   = Text:0xFFFF;
+const PlayerText:INVALID_PLAYER_TEXT_DRAW      = PlayerText:0xFFFF;
+const INVALID_GANG_ZONE                        = 0xFFFFFFFF;
+const Text3D:INVALID_3DTEXT_ID                 = Text3D:0xFFFF;
+const PlayerText3D:INVALID_PLAYER_3DTEXT_ID    = PlayerText3D:0xFFFF;
 
 // States
-enum e_PLAYER_STATE
+#define PLAYER_STATE: __TAG(PLAYER_STATE):
+enum PLAYER_STATE:
 {
 	PLAYER_STATE_NONE,
 	PLAYER_STATE_ONFOOT,
 	PLAYER_STATE_DRIVER,
 	PLAYER_STATE_PASSENGER,
-	PLAYER_STATE_EXIT_VEHICLE,            // (used internally)
-	PLAYER_STATE_ENTER_VEHICLE_DRIVER,    // (used internally)
-	PLAYER_STATE_ENTER_VEHICLE_PASSENGER, // (used internally)
-	PLAYER_STATE_WASTED,
+	PLAYER_STATE_WASTED                        = 7,
 	PLAYER_STATE_SPAWNED,
 	PLAYER_STATE_SPECTATING
 }
 
+// Deprecated.
+#define PLAYER_STATE_EXIT_VEHICLE              (4)
+#define PLAYER_STATE_ENTER_VEHICLE_DRIVER      (5)
+#define PLAYER_STATE_ENTER_VEHICLE_PASSENGER   (6)
+
 // Marker modes used by ShowPlayerMarkers()
-enum e_PLAYER_MARKERS
+#define PLAYER_MARKERS: __TAG(PLAYER_MARKERS):
+enum PLAYER_MARKERS:
 {
 	PLAYER_MARKERS_MODE_OFF,
 	PLAYER_MARKERS_MODE_GLOBAL,
@@ -110,9 +178,10 @@ enum e_PLAYER_MARKERS
 }
 
 // Weapons
-enum e_WEAPON
+#define WEAPON: __TAG(WEAPON):
+enum WEAPON:
 {
-	WEAPON_BRASSKNUCKLE    = 1,
+	WEAPON_BRASSKNUCKLE                        = 1,
 	WEAPON_GOLFCLUB,
 	WEAPON_NITESTICK,
 	WEAPON_KNIFE,
@@ -130,7 +199,7 @@ enum e_WEAPON
 	WEAPON_GRENADE,
 	WEAPON_TEARGAS,
 	WEAPON_MOLTOV,
-	WEAPON_COLT45          = 22,
+	WEAPON_COLT45                              = 22,
 	WEAPON_SILENCED,
 	WEAPON_DEAGLE,
 	WEAPON_SHOTGUN,
@@ -152,16 +221,17 @@ enum e_WEAPON
 	WEAPON_SPRAYCAN,
 	WEAPON_FIREEXTINGUISHER,
 	WEAPON_CAMERA,
-	WEAPON_PARACHUTE       = 46,
-	WEAPON_VEHICLE         = 49,
-	WEAPON_DROWN           = 53,
+	WEAPON_PARACHUTE                           = 46,
+	WEAPON_VEHICLE                             = 49,
+	WEAPON_DROWN                               = 53,
 	WEAPON_COLLISION,
 }
 
 // Keys
-enum e_KEY (<<= 1)
+#define KEY: __TAG(KEY):
+enum KEY: (<<= 1)
 {
-	KEY_ACTION             = 1,
+	KEY_ACTION                                 = 1,
 	KEY_CROUCH,
 	KEY_FIRE,
 	KEY_SPRINT,
@@ -171,24 +241,25 @@ enum e_KEY (<<= 1)
 	KEY_HANDBRAKE,
 	KEY_LOOK_LEFT,
 	KEY_SUBMISSION,
-	KEY_LOOK_BEHIND        = KEY_SUBMISSION,
+	KEY_LOOK_BEHIND                            = KEY_SUBMISSION,
 	KEY_WALK,
 	KEY_ANALOG_UP,
 	KEY_ANALOG_DOWN,
 	KEY_ANALOG_LEFT,
 	KEY_ANALOG_RIGHT,
-	KEY_YES                = 65536,
+	KEY_YES                                    = 65536,
 	KEY_NO,
 	KEY_CTRL_BACK,
 
-	KEY_UP                 = -128,
-	KEY_DOWN               =  128,
-	KEY_LEFT               = -128,
-	KEY_RIGHT              =  128,
+	KEY_UP                                     = -128,
+	KEY_DOWN                                   =  128,
+	KEY_LEFT                                   = -128,
+	KEY_RIGHT                                  =  128,
 }
 
 // Player GUI Dialog
-enum e_DIALOG_STYLE
+#define DIALOG_STYLE: __TAG(DIALOG_STYLE):
+enum DIALOG_STYLE:
 {
 	DIALOG_STYLE_MSGBOX,
 	DIALOG_STYLE_INPUT,
@@ -199,21 +270,24 @@ enum e_DIALOG_STYLE
 }
 
 // Text Draw
-enum e_TEXT_DRAW_FONT
+#define TEXT_DRAW_FONT: __TAG(TEXT_DRAW_FONT):
+enum TEXT_DRAW_FONT:
 {
-	TEXT_DRAW_FONT_SPRITE_DRAW	 = 4,
-	TEXT_DRAW_FONT_MODEL_PREVIEW = 5,
+	TEXT_DRAW_FONT_SPRITE_DRAW	               = 4,
+	TEXT_DRAW_FONT_MODEL_PREVIEW               = 5,
 }
 
-enum e_TEXT_DRAW_ALIGN
+#define TEXT_DRAW_ALIGN: __TAG(TEXT_DRAW_ALIGN):
+enum TEXT_DRAW_ALIGN:
 {
-	TEXT_DRAW_ALIGN_LEFT = 1,
+	TEXT_DRAW_ALIGN_LEFT                       = 1,
 	TEXT_DRAW_ALIGN_CENTER,
 	TEXT_DRAW_ALIGN_RIGHT
 }
 
 // SVar enumeration
-enum e_SERVER_VARTYPE
+#define SERVER_VARTYPE: __TAG(SERVER_VARTYPE):
+enum SERVER_VARTYPE:
 {
 	SERVER_VARTYPE_NONE,
 	SERVER_VARTYPE_INT,
@@ -222,32 +296,37 @@ enum e_SERVER_VARTYPE
 }
 
 // Artwork/NetModels
-enum e_DOWNLOAD_REQUEST
+#define DOWNLOAD_REQUEST: __TAG(DOWNLOAD_REQUEST):
+enum DOWNLOAD_REQUEST:
 {
 	DOWNLOAD_REQUEST_EMPTY,
 	DOWNLOAD_REQUEST_MODEL_FILE,
 	DOWNLOAD_REQUEST_TEXTURE_FILE
 }
 
-enum e_CLICK_SOURCE
+#define CLICK_SOURCE: __TAG(CLICK_SOURCE):
+enum CLICK_SOURCE:
 {
 	CLICK_SOURCE_SCOREBOARD
 }
 
-enum e_EDIT_RESPONSE
+#define EDIT_RESPONSE: __TAG(EDIT_RESPONSE):
+enum EDIT_RESPONSE:
 {
 	EDIT_RESPONSE_CANCEL,
 	EDIT_RESPONSE_FINAL,
 	EDIT_RESPONSE_UPDATE
 }
 
-enum e_SELECT_OBJECT
+#define SELECT_OBJECT: __TAG(SELECT_OBJECT):
+enum SELECT_OBJECT:
 {
-	SELECT_OBJECT_GLOBAL_OBJECT = 1,
+	SELECT_OBJECT_GLOBAL_OBJECT                = 1,
 	SELECT_OBJECT_PLAYER_OBJECT
 }
 
-enum e_BULLET_HIT_TYPE
+#define BULLET_HIT_TYPE: __TAG(BULLET_HIT_TYPE):
+enum BULLET_HIT_TYPE:
 {
 	BULLET_HIT_TYPE_NONE,
 	BULLET_HIT_TYPE_PLAYER,
@@ -306,6 +385,7 @@ enum e_BULLET_HIT_TYPE
 #endif
 
 public const SAMP_INCLUDES_VERSION = 0x037030;
+#pragma unused SAMP_INCLUDES_VERSION
 
 #include <core>
 #include <float>
@@ -383,14 +463,14 @@ open.mp releases can use `A` as the first digit.
 
 	/// <summary>Prints a string to the server console (not in-game chat) and logs (server_log.txt).</summary>
 	/// <param name="string">The string to print</param>
-	/// <seealso name="printf"/>
+	/// <seealso name="printf" />
 	native print(const string[]);
 
 	/// <summary>Outputs a formatted string on the console (the server window, not the in-game chat).</summary>
 	/// <param name="format">The format string</param>
 	/// <param name="">Indefinite number of arguments of any tag</param>
-	/// <seealso name="print"/>
-	/// <seealso name="format"/>
+	/// <seealso name="print" />
+	/// <seealso name="format" />
 	/// <remarks>The format string or its output should not exceed 1024 characters. Anything beyond that length can lead to a server to crash.</remarks>
 	/// <remarks>This function doesn't support <a href="#strpack">packed</a> strings.</remarks>
 	/// <remarks>
@@ -409,7 +489,7 @@ open.mp releases can use `A` as the first digit.
 	/// </remarks>
 	/// <remarks>The values for the placeholders follow in the exact same order as parameters in the call. For example, <b><c>"I am %i years old"</c></b> - the <b><c>%i</c></b> will be replaced with an Integer variable, which is the person's age.</remarks>
 	/// <remarks>You may optionally put a number between the <b><c>%</c></b> and the letter of the placeholder code. This number indicates the field width; if the size of the parameter to print at the position of the placeholder is smaller than the field width, the field is expanded with spaces. To cut the number of decimal places beeing shown of a float, you can add <b><c>.&lt;max number&gt;</c></b> between the <b><c>%</c></b> and the <b><c>f</c></b>. (example: <b><c>%.2f</c></b>)</remarks>
-	native printf(const format[], {Float,_}:...);
+	native printf(const format[], {Float, _}:...);
 #endif
 
 /// <summary>Formats a string to include variables and other strings inside it.</summary>
@@ -417,8 +497,8 @@ open.mp releases can use `A` as the first digit.
 /// <param name="len">The maximum length output can contain</param>
 /// <param name="format">The format string</param>
 /// <param name="">Indefinite number of arguments of any tag</param>
-/// <seealso name="print"/>
-/// <seealso name="printf"/>
+/// <seealso name="print" />
+/// <seealso name="printf" />
 /// <remarks>This function doesn't support <a href="#strpack">packed strings</a>.</remarks>
 /// <remarks>
 ///   <b>Format Specifiers:</b><br />
@@ -442,9 +522,9 @@ native format(output[], len = sizeof (output), const format[], {Float, _}:...);
 /// <param name="playerid">The ID of the player to display the message to</param>
 /// <param name="colour">The colour of the message (<b>RGBA</b>)</param>
 /// <param name="message">The text that will be displayed <b>(max 144 characters)</b></param>
-/// <seealso name="SendClientMessageToAll"/>
-/// <seealso name="SendPlayerMessageToPlayer"/>
-/// <seealso name="SendPlayerMessageToAll"/>
+/// <seealso name="SendClientMessageToAll" />
+/// <seealso name="SendPlayerMessageToPlayer" />
+/// <seealso name="SendPlayerMessageToAll" />
 /// <remarks>If a message is longer than 144 characters, it will not be sent. Truncation can be used to prevent this. Displaying a message on multiple lines will also solve this issue. </remarks>
 /// <remarks>Avoid using the percent sign (or format specifiers) in the actual message text without properly escaping it (like <b><c>%%</c></b>). It will result in crashes otherwise. </remarks>
 /// <remarks>You can use colour embedding for multiple colours in the message. </remarks>
@@ -457,29 +537,29 @@ native SendClientMessage(playerid, colour, const message[]);
 /// <summary>Displays a message in chat to all players. This is a multi-player equivalent of <a href="#SendClientMessage">SendClientMessage</a>.</summary>
 /// <param name="colour">The colour of the message (<b>RGBA</b>)</param>
 /// <param name="message">The message to show (<b>max 144 characters</b>)</param>
-/// <seealso name="SendClientMessage"/>
-/// <seealso name="SendPlayerMessageToAll"/>
+/// <seealso name="SendClientMessage" />
+/// <seealso name="SendPlayerMessageToAll" />
 /// <remarks>Avoid using format specifiers in your messages without formatting the string that is sent. It will result in crashes otherwise.</remarks>
 /// <returns>This function always returns <b><c>1</c></b>.</returns>
 native SendClientMessageToAll(colour, const message[]);
 
-/// <summary>Sends a message in the name of a player to another player on the server. The message will appear in the chat box but can only be seen by the user specified with <paramref name="playerid"/>. The line will start with the sender's name in their colour, followed by the message in white.</summary>
+/// <summary>Sends a message in the name of a player to another player on the server. The message will appear in the chat box but can only be seen by the user specified with <paramref name="playerid" />. The line will start with the sender's name in their colour, followed by the message in white.</summary>
 /// <param name="playerid">The ID of the player who will receive the message</param>
 /// <param name="senderid">The sender's ID. If invalid, the message will not be sent</param>
 /// <param name="message">The message that will be sent</param>
-/// <seealso name="SendPlayerMessageToAll"/>
-/// <seealso name="SendClientMessage"/>
-/// <seealso name="SendClientMessageToAll"/>
-/// <seealso name="OnPlayerText"/>
+/// <seealso name="SendPlayerMessageToAll" />
+/// <seealso name="SendClientMessage" />
+/// <seealso name="SendClientMessageToAll" />
+/// <seealso name="OnPlayerText" />
 /// <remarks>Avoid using format specifiers in your messages without formatting the string that is sent. It will result in crashes otherwise.</remarks>
 native SendPlayerMessageToPlayer(playerid, senderid, const message[]);
 
 /// <summary>Sends a message in the name of a player to all other players on the server. The line will start with the sender's name in their colour, followed by the message in white.</summary>
 /// <param name="senderid">The ID of the sender. If invalid, the message will not be sent</param>
 /// <param name="message">The message that will be sent</param>
-/// <seealso name="SendPlayerMessageToPlayer"/>
-/// <seealso name="SendClientMessageToAll"/>
-/// <seealso name="OnPlayerText"/>
+/// <seealso name="SendPlayerMessageToPlayer" />
+/// <seealso name="SendClientMessageToAll" />
+/// <seealso name="OnPlayerText" />
 /// <remarks>Avoid using format specifiers in your messages without formatting the string that is sent. It will result in crashes otherwise.</remarks>
 native SendPlayerMessageToAll(senderid, const message[]);
 
@@ -487,12 +567,12 @@ native SendPlayerMessageToAll(senderid, const message[]);
 /// <param name="killer">The ID of the killer (can be <b><c>INVALID_PLAYER_ID</c></b>)</param>
 /// <param name="killee">The ID of the player that died</param>
 /// <param name="weapon">The <a href="http://wiki.sa-mp.com/wiki/Weapons">reason</a> (not always a weapon) for the victim's death. Special icons can also be used (<b><c>ICON_CONNECT</c></b> and <b><c>ICON_DISCONNECT</c></b>)</param>
-/// <seealso name="SendDeathMessageToPlayer"/>
-/// <seealso name="OnPlayerDeath"/>
-/// <remarks>Death messages can be cleared by using a valid player ID for <paramref name="killee"/> that is not connected.</remarks>
+/// <seealso name="SendDeathMessageToPlayer" />
+/// <seealso name="OnPlayerDeath" />
+/// <remarks>Death messages can be cleared by using a valid player ID for <paramref name="killee" /> that is not connected.</remarks>
 /// <remarks>To show a death message for just a single player, use <a href="#SendDeathMessageToPlayer">SendDeathMessageToPlayer</a>. </remarks>
 /// <remarks>You can use NPCs to create your own custom death reasons. </remarks>
-/// <returns>This function always returns <b><c>1</c></b>, even if the function fails to execute. The function fails to execute (no death message shown) if <paramref name="killee"/> is invalid. If <paramref name="reason"/> is invalid, a generic skull-and-crossbones icon is shown. <paramref name="killer"/> being invalid (<b><c>INVALID_PLAYER_ID</c></b>) is valid.</returns>
+/// <returns>This function always returns <b><c>1</c></b>, even if the function fails to execute. The function fails to execute (no death message shown) if <paramref name="killee" /> is invalid. If <paramref name="reason" /> is invalid, a generic skull-and-crossbones icon is shown. <paramref name="killer" /> being invalid (<b><c>INVALID_PLAYER_ID</c></b>) is valid.</returns>
 native SendDeathMessage(killer, killee, weapon);
 
 /// <summary>Adds a death to the 'killfeed' on the right-hand side of the screen for a single player.</summary>
@@ -500,8 +580,8 @@ native SendDeathMessage(killer, killee, weapon);
 /// <param name="killer">The ID of the killer (can be <b><c>INVALID_PLAYER_ID</c></b>)</param>
 /// <param name="killee">The ID of the player that died</param>
 /// <param name="weapon">The <a href="http://wiki.sa-mp.com/wiki/Weapons">reason</a> (not always a weapon) for the victim's death. Special icons can also be used (<b><c>ICON_CONNECT</c></b> and <b><c>ICON_DISCONNECT</c></b>)</param>
-/// <seealso name="SendDeathMessage"/>
-/// <seealso name="OnPlayerDeath"/>
+/// <seealso name="SendDeathMessage" />
+/// <seealso name="OnPlayerDeath" />
 /// <remarks>This Function was added in <b>SA-MP 0.3z R2-2</b> and will not work in earlier versions!</remarks>
 /// <returns>
 ///   <b><c>1</c></b>: The function executed successfully.<br />
@@ -513,8 +593,8 @@ native SendDeathMessageToPlayer(playerid, killer, killee, weapon);
 /// <param name="string">The text to be displayed</param>
 /// <param name="time">The duration of the text being shown in milliseconds</param>
 /// <param name="style">The style of text to be displayed</param>
-/// <seealso name="GameTextForPlayer"/>
-/// <seealso name="TextDrawShowForAll"/>
+/// <seealso name="GameTextForPlayer" />
+/// <seealso name="TextDrawShowForAll" />
 /// <returns>This function always returns <b><c>1</c></b>.</returns>
 native GameTextForAll(const string[], time, style);
 
@@ -523,8 +603,8 @@ native GameTextForAll(const string[], time, style);
 /// <param name="string">The text to be displayed</param>
 /// <param name="time">The duration of the text being shown in milliseconds</param>
 /// <param name="style">The style of text to be displayed</param>
-/// <seealso name="GameTextForAll"/>
-/// <seealso name="TextDrawShowForPlayer"/>
+/// <seealso name="GameTextForAll" />
+/// <seealso name="TextDrawShowForPlayer" />
 /// <returns>
 ///   <b><c>1</c></b>: The function executed successfully. Success is reported when the style and/or time is invalid. Nothing will happen though (no text displayed). May also cause game crashes.<br />
 ///   <b><c>0</c></b>: The function failed to execute. This means either the string is null or the player is not connected.
@@ -535,8 +615,8 @@ native GameTextForPlayer(playerid, const string[], time, style);
 /// <param name="functionName">Name of the function to call as a string. This must be a public function (forwarded). A null string here will crash the server</param>
 /// <param name="interval">Interval in milliseconds</param>
 /// <param name="repeating">Whether the timer should repeat or not</param>
-/// <seealso name="SetTimerEx"/>
-/// <seealso name="KillTimer"/>
+/// <seealso name="SetTimerEx" />
+/// <seealso name="KillTimer" />
 /// <remarks>Timer intervals are not accurate (roughly 25% off). There's a fix available <a href="http://forum.sa-mp.com/showthread.php?t=289675">here</a>. </remarks>
 /// <remarks>Timer IDs are never used twice. You can use <a href="#KillTimer">KillTimer</a> on a timer ID and it won't matter if it's running or not. </remarks>
 /// <remarks>The function that should be called must be public. </remarks>
@@ -550,10 +630,10 @@ native SetTimer(const functionName[], interval, bool:repeating);
 /// <param name="repeating">Whether the timer should be called repeatedly (can only be stopped with <a href="#KillTimer">KillTimer</a>) or only once</param>
 /// <param name="format">Special format indicating the types of values the timer will pass</param>
 /// <param name="">Indefinite number of arguments to pass (must follow format specified in previous parameter)</param>
-/// <seealso name="SetTimer"/>
-/// <seealso name="KillTimer"/>
-/// <seealso name="CallLocalFunction"/>
-/// <seealso name="CallRemoteFunction"/>
+/// <seealso name="SetTimer" />
+/// <seealso name="KillTimer" />
+/// <seealso name="CallLocalFunction" />
+/// <seealso name="CallRemoteFunction" />
 /// <remarks>Timer intervals are not accurate (roughly 25% off). There's a fix available <a href="http://forum.sa-mp.com/showthread.php?t=289675">here</a>. </remarks>
 /// <remarks>Timer IDs are never used twice. You can use KillTimer() on a timer ID and it won't matter if it's running or not. </remarks>
 /// <remarks>The function that should be called must be public. </remarks>
@@ -574,21 +654,21 @@ native SetTimerEx(const functionName[], interval, bool:repeating, const format[]
 
 /// <summary>Kills (stops) a running timer.</summary>
 /// <param name="timerid">The ID of the timer to kill (returned by <a href="#SetTimer">SetTimer</a> or <a href="#SetTimerEx">SetTimerEx</a>)</param>
-/// <seealso name="SetTimer"/>
-/// <seealso name="SetTimerEx"/>
+/// <seealso name="SetTimer" />
+/// <seealso name="SetTimerEx" />
 /// <returns>This function always returns <b><c>0</c></b>.</returns>
 native KillTimer(timerid);
 
 /// <summary>Returns the uptime of the actual server (not the SA-MP server) in milliseconds.</summary>
-/// <seealso name="tickcount"/>
+/// <seealso name="tickcount" />
 /// <remarks>GetTickCount will cause problems on servers with uptime of over 24 days as GetTickCount will eventually warp past the integer size constraints. However using <a href="https://gist.github.com/ziggi/5d7d8dc42f54531feba7ae924c608e73">this</a> function fixes the problem.</remarks>
 /// <remarks>One common use for GetTickCount is for benchmarking. It can be used to calculate how much time some code takes to execute.</remarks>
 /// <returns>Uptime of the actual server (not the SA-MP server).</returns>
 native GetTickCount();
 
 /// <summary>Returns the maximum number of players that can join the server, as set by the server variable 'maxplayers' in server.cfg.</summary>
-/// <seealso name="GetPlayerPoolSize"/>
-/// <seealso name="IsPlayerConnected"/>
+/// <seealso name="GetPlayerPoolSize" />
+/// <seealso name="IsPlayerConnected" />
 /// <remarks>This function can not be used in place of <b><c>MAX_PLAYERS</c></b>. It can not be used at compile time (e.g. for array sizes). <b><c>MAX_PLAYERS</c></b> should always be re-defined to what the 'maxplayers' var will be, or higher.</remarks>
 /// <returns>The maximum number of players that can join the server.</returns>
 native GetMaxPlayers();
@@ -597,7 +677,7 @@ native GetMaxPlayers();
 /// <param name="function">Public function's name</param>
 /// <param name="format">Tag/format of each variable</param>
 /// <param name="">'Indefinite' number of arguments of any tag</param>
-/// <seealso name="CallLocalFunction"/>
+/// <seealso name="CallLocalFunction" />
 /// <returns>The value that the last public function returned.</returns>
 /// <remarks>CallRemoteFunction crashes the server if it's passing an empty string.</remarks>
 /// <remarks>
@@ -611,13 +691,13 @@ native GetMaxPlayers();
 ///     <li><b><c>s</c></b> - a string</li>
 ///   </ul>
 /// </remarks>
-native CallRemoteFunction(const function[], const format[], {Float,_}:...);
+native CallRemoteFunction(const function[], const format[] = "", {Float, _}:...);
 
 /// <summary>Calls a public function from the script in which it is used.</summary>
 /// <param name="function">Public function's name</param>
 /// <param name="format">Tag/format of each variable</param>
 /// <param name="">'Indefinite' number of arguments of any tag</param>
-/// <seealso name="CallRemoteFunction"/>
+/// <seealso name="CallRemoteFunction" />
 /// <returns>The value that the <b>only</b> public function returned.</returns>
 /// <remarks>CallLocalFunction crashes the server if it's passing an empty string.</remarks>
 /// <remarks>
@@ -631,63 +711,63 @@ native CallRemoteFunction(const function[], const format[], {Float,_}:...);
 ///     <li><b><c>s</c></b> - a string</li>
 ///   </ul>
 /// </remarks>
-native CallLocalFunction(const function[], const format[], {Float,_}:...);
+native CallLocalFunction(const function[], const format[] = "", {Float, _}:...);
 
 /// <summary>Returns the norm (length) of the provided vector.</summary>
 /// <param name="x">The vector's magnitude on the x axis</param>
 /// <param name="y">The vector's magnitude on the y axis</param>
 /// <param name="z">The vector's magnitude on the z axis</param>
-/// <seealso name="GetPlayerDistanceFromPoint"/>
-/// <seealso name="GetVehicleDistanceFromPoint"/>
-/// <seealso name="floatsqroot"/>
+/// <seealso name="GetPlayerDistanceFromPoint" />
+/// <seealso name="GetVehicleDistanceFromPoint" />
+/// <seealso name="floatsqroot" />
 /// <remarks>This function was added in <b>SA-MP 0.3z</b> and will not work in earlier versions!</remarks>
 /// <returns>The norm (length) of the provided vector as a float.</returns>
 native Float:VectorSize(Float:x, Float:y, Float:z);
 
 /// <summary>Get the inversed value of a sine in degrees.</summary>
 /// <param name="value">The sine for which to find the angle for</param>
-/// <seealso name="floatsin"/>
+/// <seealso name="floatsin" />
 /// <returns>The angle in degrees.</returns>
 native Float:asin(Float:value);
 
 /// <summary>Get the inversed value of a cosine in degrees.</summary>
 /// <param name="value">The cosine for which to find the angle for</param>
-/// <seealso name="floatcos"/>
+/// <seealso name="floatcos" />
 /// <returns>The angle in degrees.</returns>
 native Float:acos(Float:value);
 
 /// <summary>Get the inversed value of a tangent in degrees.</summary>
 /// <param name="value">The tangent for which to find the angle for</param>
-/// <seealso name="atan2"/>
-/// <seealso name="floattan"/>
+/// <seealso name="atan2" />
+/// <seealso name="floattan" />
 /// <returns>The angle in degrees.</returns>
 native Float:atan(Float:value);
 
 /// <summary>Get the multi-valued inversed value of a tangent in degrees.</summary>
 /// <param name="y">y size</param>
 /// <param name="x">x size</param>
-/// <seealso name="atan"/>
-/// <seealso name="floattan"/>
+/// <seealso name="atan" />
+/// <seealso name="floattan" />
 /// <returns>The angle in degrees.</returns>
 native Float:atan2(Float:y, Float:x);
 
 /// <summary>Gets the highest playerid currently in use on the server.</summary>
-/// <seealso name="GetVehiclePoolSize"/>
-/// <seealso name="GetMaxPlayers"/>
+/// <seealso name="GetVehiclePoolSize" />
+/// <seealso name="GetMaxPlayers" />
 /// <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
 /// <returns>The highest playerid currently in use on the server or <b><c>0</c></b> if there are no connected players.</returns>
 native GetPlayerPoolSize();
 
 /// <summary>Gets the highest vehicleid currently in use on the server.</summary>
-/// <seealso name="GetPlayerPoolSize"/>
+/// <seealso name="GetPlayerPoolSize" />
 /// <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
 /// <returns>The highest vehicleid currently in use on the server or <b><c>0</c></b> if there are no created vehicles.</returns>
 native GetVehiclePoolSize();
 
 /// <summary>Gets the highest actorid created on the server.</summary>
-/// <seealso name="CreateActor"/>
-/// <seealso name="IsValidActor"/>
-/// <seealso name="SetActorHealth"/>
+/// <seealso name="CreateActor" />
+/// <seealso name="IsValidActor" />
+/// <seealso name="SetActorHealth" />
 /// <remarks>This function was added in <b><b>SA-MP 0.3.7</b></b> and will not work in earlier versions!</remarks>
 /// <returns>The highest actorid created on the server or <b><c>0</c></b> if there are no created actors.</returns>
 native GetActorPoolSize();
@@ -710,12 +790,12 @@ native SHA256_PassHash(const password[], const salt[], output[], size = sizeof (
 /// <summary>Set an integer server variable.</summary>
 /// <param name="svar">The name of the server variable</param>
 /// <param name="value">The integer to be set</param>
-/// <seealso name="GetSVarInt"/>
-/// <seealso name="SetSVarString"/>
-/// <seealso name="GetSVarString"/>
-/// <seealso name="SetSVarFloat"/>
-/// <seealso name="GetSVarFloat"/>
-/// <seealso name="DeleteSVar"/>
+/// <seealso name="GetSVarInt" />
+/// <seealso name="SetSVarString" />
+/// <seealso name="GetSVarString" />
+/// <seealso name="SetSVarFloat" />
+/// <seealso name="GetSVarFloat" />
+/// <seealso name="DeleteSVar" />
 /// <remarks>This function was added in <b>SA-MP 0.3.7 R2</b> and will not work in earlier versions!</remarks>
 /// <returns>
 ///   <b><c>1</c></b>: The function executed successfully.<br />
@@ -725,12 +805,12 @@ native SetSVarInt(const svar[], value);
 
 /// <summary>Gets an integer server variable's value.</summary>
 /// <param name="svar">The name of the server variable (case-insensitive). Assigned in SetSVarInt</param>
-/// <seealso name="SetSVarInt"/>
-/// <seealso name="SetSVarString"/>
-/// <seealso name="GetSVarString"/>
-/// <seealso name="SetSVarFloat"/>
-/// <seealso name="GetSVarFloat"/>
-/// <seealso name="DeleteSVar"/>
+/// <seealso name="SetSVarInt" />
+/// <seealso name="SetSVarString" />
+/// <seealso name="GetSVarString" />
+/// <seealso name="SetSVarFloat" />
+/// <seealso name="GetSVarFloat" />
+/// <seealso name="DeleteSVar" />
 /// <remarks>This function was added in <b>SA-MP 0.3.7 R2</b> and will not work in earlier versions!</remarks>
 /// <returns>The integer value of the specified server variable. It will still return <b><c>0</c></b> if the variable is not set.</returns>
 native GetSVarInt(const svar[]);
@@ -738,12 +818,12 @@ native GetSVarInt(const svar[]);
 /// <summary>Set a string server variable.</summary>
 /// <param name="svar">The name of the server variable</param>
 /// <param name="value">The string to be set</param>
-/// <seealso name="SetSVarInt"/>
-/// <seealso name="GetSVarInt"/>
-/// <seealso name="GetSVarString"/>
-/// <seealso name="SetSVarFloat"/>
-/// <seealso name="GetSVarFloat"/>
-/// <seealso name="DeleteSVar"/>
+/// <seealso name="SetSVarInt" />
+/// <seealso name="GetSVarInt" />
+/// <seealso name="GetSVarString" />
+/// <seealso name="SetSVarFloat" />
+/// <seealso name="GetSVarFloat" />
+/// <seealso name="DeleteSVar" />
 /// <remarks>This function was added in <b>SA-MP 0.3.7 R2</b> and will not work in earlier versions!</remarks>
 /// <returns>
 ///   <b><c>1</c></b>: The function executed successfully.<br />
@@ -755,12 +835,12 @@ native SetSVarString(const svar[], const value[]);
 /// <param name="svar">The name of the server variable (case-insensitive). Assigned in <a href="#SetSVarString">SetSVarString</a></param>
 /// <param name="output">The array in which to store the string value in, passed by reference</param>
 /// <param name="len">The maximum length of the returned string</param>
-/// <seealso name="SetSVarInt"/>
-/// <seealso name="GetSVarInt"/>
-/// <seealso name="SetSVarString"/>
-/// <seealso name="SetSVarFloat"/>
-/// <seealso name="GetSVarFloat"/>
-/// <seealso name="DeleteSVar"/>
+/// <seealso name="SetSVarInt" />
+/// <seealso name="GetSVarInt" />
+/// <seealso name="SetSVarString" />
+/// <seealso name="SetSVarFloat" />
+/// <seealso name="GetSVarFloat" />
+/// <seealso name="DeleteSVar" />
 /// <remarks>This function was added in <b>SA-MP 0.3.7 R2</b> and will not work in earlier versions!</remarks>
 /// <returns>The length of the string.</returns>
 native GetSVarString(const svar[], output[], len = sizeof (output));
@@ -768,12 +848,12 @@ native GetSVarString(const svar[], output[], len = sizeof (output));
 /// <summary>Set a float server variable.</summary>
 /// <param name="svar">The name of the server variable</param>
 /// <param name="value">The float to be set</param>
-/// <seealso name="SetSVarInt"/>
-/// <seealso name="GetSVarInt"/>
-/// <seealso name="SetSVarString"/>
-/// <seealso name="GetSVarString"/>
-/// <seealso name="GetSVarFloat"/>
-/// <seealso name="DeleteSVar"/>
+/// <seealso name="SetSVarInt" />
+/// <seealso name="GetSVarInt" />
+/// <seealso name="SetSVarString" />
+/// <seealso name="GetSVarString" />
+/// <seealso name="GetSVarFloat" />
+/// <seealso name="DeleteSVar" />
 /// <remarks>This function was added in <b>SA-MP 0.3.7 R2</b> and will not work in earlier versions!</remarks>
 /// <returns>
 ///   <b><c>1</c></b>: The function executed successfully.<br />
@@ -783,24 +863,24 @@ native SetSVarFloat(const svar[], Float:value);
 
 /// <summary>Gets a float server variable's value.</summary>
 /// <param name="svar">The name of the server variable (case-insensitive). Assigned in <a href="#SetSVarFloat">SetSVarFloat</a></param>
-/// <seealso name="SetSVarInt"/>
-/// <seealso name="GetSVarInt"/>
-/// <seealso name="SetSVarString"/>
-/// <seealso name="GetSVarString"/>
-/// <seealso name="SetSVarFloat"/>
-/// <seealso name="DeleteSVar"/>
+/// <seealso name="SetSVarInt" />
+/// <seealso name="GetSVarInt" />
+/// <seealso name="SetSVarString" />
+/// <seealso name="GetSVarString" />
+/// <seealso name="SetSVarFloat" />
+/// <seealso name="DeleteSVar" />
 /// <remarks>This function was added in <b>SA-MP 0.3.7 R2</b> and will not work in earlier versions!</remarks>
 /// <returns>The float value of the specified server variable. It will still return <b><c>0</c></b> if the variable is not set.</returns>
 native Float:GetSVarFloat(const svar[]);
 
 /// <summary>Deletes a previously set server variable.</summary>
 /// <param name="svar">The name of the server variable to delete</param>
-/// <seealso name="SetSVarInt"/>
-/// <seealso name="GetSVarInt"/>
-/// <seealso name="SetSVarString"/>
-/// <seealso name="GetSVarString"/>
-/// <seealso name="SetSVarFloat"/>
-/// <seealso name="GetSVarFloat"/>
+/// <seealso name="SetSVarInt" />
+/// <seealso name="GetSVarInt" />
+/// <seealso name="SetSVarString" />
+/// <seealso name="GetSVarString" />
+/// <seealso name="SetSVarFloat" />
+/// <seealso name="GetSVarFloat" />
 /// <remarks>Once a variable is deleted, attempts to retrieve the value will return <b><c>0</c></b> (for integers and floats and <b><c>NULL</c></b> for strings.</remarks>
 /// <returns>
 ///   <b><c>1</c></b>: The function executed successfully.<br />
@@ -809,8 +889,8 @@ native Float:GetSVarFloat(const svar[]);
 native DeleteSVar(const svar[]);
 
 /// <summary>Each SVar (server-variable) has its own unique identification number for lookup, this function returns the highest ID.</summary>
-/// <seealso name="GetSVarNameAtIndex"/>
-/// <seealso name="GetSVarType"/>
+/// <seealso name="GetSVarNameAtIndex" />
+/// <seealso name="GetSVarType" />
 /// <returns>The highest set SVar ID.</returns>
 native GetSVarsUpperIndex();
 
@@ -818,21 +898,21 @@ native GetSVarsUpperIndex();
 /// <param name="index">The index of the sVar</param>
 /// <param name="output">A string to store the sVar's name in, passed by reference</param>
 /// <param name="size">The max length of the returned string</param>
-/// <seealso name="GetSVarType"/>
-/// <seealso name="GetSVarInt"/>
-/// <seealso name="GetSVarFloat"/>
-/// <seealso name="GetSVarString"/>
+/// <seealso name="GetSVarType" />
+/// <seealso name="GetSVarInt" />
+/// <seealso name="GetSVarFloat" />
+/// <seealso name="GetSVarString" />
 native GetSVarNameAtIndex(index, output[], size = sizeof (output));
 
 /// <summary>Gets the type (integer, float or string) of a server variable.</summary>
 /// <param name="svar">The name of the server variable to get the type of</param>
-/// <seealso name="SetSVarInt"/>
-/// <seealso name="GetSVarInt"/>
-/// <seealso name="SetSVarString"/>
-/// <seealso name="GetSVarString"/>
-/// <seealso name="SetSVarFloat"/>
-/// <seealso name="GetSVarFloat"/>
-/// <seealso name="DeleteSVar"/>
+/// <seealso name="SetSVarInt" />
+/// <seealso name="GetSVarInt" />
+/// <seealso name="SetSVarString" />
+/// <seealso name="GetSVarString" />
+/// <seealso name="SetSVarFloat" />
+/// <seealso name="GetSVarFloat" />
+/// <seealso name="DeleteSVar" />
 /// <remarks>
 ///   <b>Variable types:</b><br />
 ///   <ul>
@@ -843,7 +923,7 @@ native GetSVarNameAtIndex(index, output[], size = sizeof (output));
 ///   </ul>
 /// </remarks>
 /// <returns>Returns the type of the SVar. See table below.</returns>
-native e_SERVER_VARTYPE:GetSVarType(const svar[]);
+native __TAG(SERVER_VARTYPE):GetSVarType(const svar[]);
 
 // Game
 
@@ -853,8 +933,8 @@ native SetGameModeText(const string[]);
 
 /// <summary>This function is used to change the amount of teams used in the gamemode. It has no obvious way of being used, but can help to indicate the number of teams used for better (more effective) internal handling. This function should only be used in the <a href="#OnGameModeInit">OnGameModeInit</a> callback. Important: You can pass 2 billion here if you like, this function has no effect at all.</summary>
 /// <param name="count">Number of teams the gamemode knows</param>
-/// <seealso name="GetPlayerTeam"/>
-/// <seealso name="SetPlayerTeam"/>
+/// <seealso name="GetPlayerTeam" />
+/// <seealso name="SetPlayerTeam" />
 native SetTeamCount(count);
 
 /// <summary>Adds a class to class selection. Classes are used so players may spawn with a skin of their choice.</summary>
@@ -879,9 +959,9 @@ native SetTeamCount(count);
 ///    The maximum class ID is <b><c>319</c></b> (starting from <b><c>0</c></b>, so a total of <b><c>320</c></b> classes).
 ///    When this limit is reached, any more classes that are added will replace ID <b><c>319</c></b>.
 /// </remarks>
-/// <seealso name="AddPlayerClassEx"/>
-/// <seealso name="SetSpawnInfo"/>
-/// <seealso name="SetPlayerSkin"/>
+/// <seealso name="AddPlayerClassEx" />
+/// <seealso name="SetSpawnInfo" />
+/// <seealso name="SetPlayerSkin" />
 native AddPlayerClass(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, weapon1, ammo1, weapon2, ammo2, weapon3, ammo3);
 
 /// <summary>This function is exactly the same as the <a href="#AddPlayerClass">AddPlayerClass</a> function, with the addition of a team parameter.</summary>
@@ -904,10 +984,10 @@ native AddPlayerClass(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:a
 ///   </ul>
 /// </returns>
 /// <remarks>The maximum class ID is <b><c>319</c></b> (starting from <b><c>0</c></b>, so a total of <b><c>320</c></b> classes). When this limit is reached, any more classes that are added will replace ID <b><c>319</c></b>.</remarks>
-/// <seealso name="AddPlayerClass"/>
-/// <seealso name="SetSpawnInfo"/>
-/// <seealso name="SetPlayerTeam"/>
-/// <seealso name="SetPlayerSkin"/>
+/// <seealso name="AddPlayerClass" />
+/// <seealso name="SetSpawnInfo" />
+/// <seealso name="SetPlayerTeam" />
+/// <seealso name="SetPlayerSkin" />
 native AddPlayerClassEx(teamid, modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, weapon1, ammo1, weapon2, ammo2, weapon3, ammo3);
 
 /// <summary>Adds a 'static' vehicle (models are pre-loaded for players) to the gamemode.</summary>
@@ -925,9 +1005,9 @@ native AddPlayerClassEx(teamid, modelid, Float:spawnX, Float:spawnY, Float:spawn
 ///   </ul>
 /// </returns>
 /// <remarks>Can only be used when the server first starts (under <a href="#OnGameModeInit">OnGameModeInit</a>).</remarks>
-/// <seealso name="AddStaticVehicleEx"/>
-/// <seealso name="CreateVehicle"/>
-/// <seealso name="DestroyVehicle"/>
+/// <seealso name="AddStaticVehicleEx" />
+/// <seealso name="CreateVehicle" />
+/// <seealso name="DestroyVehicle" />
 native AddStaticVehicle(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, colour1, colour2);
 
 /// <summary>Adds a 'static' vehicle (models are pre-loaded for players)to the gamemode. Differs from <a href="#AddStaticVehicle">AddStaticVehicle</a> in only one way: allows a respawn time to be set for when the vehicle is left unoccupied by the driver.</summary>
@@ -947,9 +1027,9 @@ native AddStaticVehicle(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float
 ///   </ul>
 /// </returns>
 /// <remarks>Can only be used when the server first starts (under <a href="#OnGameModeInit">OnGameModeInit</a>).</remarks>
-/// <seealso name="AddStaticVehicle"/>
-/// <seealso name="CreateVehicle"/>
-/// <seealso name="DestroyVehicle"/>
+/// <seealso name="AddStaticVehicle" />
+/// <seealso name="CreateVehicle" />
+/// <seealso name="DestroyVehicle" />
 native AddStaticVehicleEx(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, colour1, colour2, respawnDelay, bool:addSiren = false);
 
 /// <summary>This function adds a 'static' pickup to the game. These pickups support weapons, health, armor etc., with the ability to function without scripting them (weapons/health/armor will be given automatically).</summary>
@@ -965,9 +1045,9 @@ native AddStaticVehicleEx(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Flo
 ///   <b><c>0</c></b> if failed to create.
 /// </returns>
 /// <remarks>This function doesn't return a pickup ID that you can use in, for example, <a href="#OnPlayerPickUpPickup">OnPlayerPickUpPickup</a>. Use <a href="#CreatePickup">CreatePickup</a> if you'd like to assign IDs.</remarks>
-/// <seealso name="CreatePickup"/>
-/// <seealso name="DestroyPickup"/>
-/// <seealso name="OnPlayerPickUpPickup"/>
+/// <seealso name="CreatePickup" />
+/// <seealso name="DestroyPickup" />
+/// <seealso name="OnPlayerPickUpPickup" />
 native AddStaticPickup(model, type, Float:x, Float:y, Float:z, virtualWorld = 0);
 
 /// <summary>This function does exactly the same as AddStaticPickup, except it returns a pickup ID which can be used to destroy it afterwards and be tracked using <a href="#OnPlayerPickUpPickup">OnPlayerPickUpPickup</a>.</summary>
@@ -977,9 +1057,9 @@ native AddStaticPickup(model, type, Float:x, Float:y, Float:z, virtualWorld = 0)
 /// <param name="y">The y coordinate to create the pickup at</param>
 /// <param name="z">The z coordinate to create the pickup at</param>
 /// <param name="virtualWorld">The virtual world ID of the pickup. Use <b><c>-1</c></b> to make the pickup show in all worlds (optional=<b><c>0</c></b>)</param>
-/// <seealso name="AddStaticPickup"/>
-/// <seealso name="DestroyPickup"/>
-/// <seealso name="OnPlayerPickUpPickup"/>
+/// <seealso name="AddStaticPickup" />
+/// <seealso name="DestroyPickup" />
+/// <seealso name="OnPlayerPickUpPickup" />
 /// <remarks>
 ///   <b>Known Bugs:</b><br />
 ///   Pickups that have a x or y lower than <b><c>-4096.0</c></b> or bigger than <b><c>4096.0</c></b> won't show up and won't trigger <a href="#OnPlayerPickUpPickup">OnPlayerPickUpPickup</a> either.
@@ -1016,24 +1096,24 @@ native CreatePickup(model, type, Float:x, Float:y, Float:z, virtualWorld = 0);
 
 /// <summary>Destroys a pickup created with <a href="#CreatePickup">CreatePickup</a>.</summary>
 /// <param name="pickup">The ID of the pickup to destroy (returned by <a href="#CreatePickup">CreatePickup</a>)</param>
-/// <seealso name="CreatePickup"/>
-/// <seealso name="OnPlayerPickUpPickup"/>
+/// <seealso name="CreatePickup" />
+/// <seealso name="OnPlayerPickUpPickup" />
 native DestroyPickup(pickup);
 
 /// <summary>Toggle the drawing of nametags, health bars and armor bars above players.</summary>
 /// <param name="show"><b><c>0</c></b> to disable, <b><c>1</c></b> to enable (enabled by default)</param>
-/// <seealso name="DisableNameTagLOS"/>
-/// <seealso name="ShowPlayerNameTagForPlayer"/>
-/// <seealso name="ShowPlayerMarkers"/>
+/// <seealso name="DisableNameTagLOS" />
+/// <seealso name="ShowPlayerNameTagForPlayer" />
+/// <seealso name="ShowPlayerMarkers" />
 /// <remarks>This function can only be used in <a href="#OnGameModeInit">OnGameModeInit</a>. For other times, see <a href="#ShowPlayerNameTagForPlayer">ShowPlayerNameTagForPlayer</a>.</remarks>
 native ShowNameTags(bool:show);
 
 /// <summary>Toggles player markers (blips on the radar). Must be used when the server starts (<a href="#OnGameModeInit">OnGameModeInit</a>). For other times, see <a href="#SetPlayerMarkerForPlayer">SetPlayerMarkerForPlayer</a>.</summary>
 /// <param name="mode">The mode to use for markers. They can be streamed, meaning they are only visible to nearby players. See table below</param>
-/// <seealso name="SetPlayerMarkerForPlayer"/>
-/// <seealso name="LimitPlayerMarkerRadius"/>
-/// <seealso name="ShowNameTags"/>
-/// <seealso name="SetPlayerColor"/>
+/// <seealso name="SetPlayerMarkerForPlayer" />
+/// <seealso name="LimitPlayerMarkerRadius" />
+/// <seealso name="ShowNameTags" />
+/// <seealso name="SetPlayerColor" />
 /// <remarks>
 ///   <b>Marker modes:</b><br />
 ///   <ul>
@@ -1043,17 +1123,17 @@ native ShowNameTags(bool:show);
 ///   </ul>
 /// </remarks>
 /// <remarks>It is also possible to set a player's colour to a colour that has full transparency (no alpha value). This makes it possible to show markers on a per-player basis.</remarks>
-native ShowPlayerMarkers(e_PLAYER_MARKERS:mode);
+native ShowPlayerMarkers(__TAG(PLAYER_MARKERS):mode);
 
 /// <summary>Ends the current gamemode.</summary>
-/// <seealso name="OnGameModeExit"/>
+/// <seealso name="OnGameModeExit" />
 native GameModeExit();
 
 /// <summary>Sets the world time (for all players) to a specific hour.</summary>
 /// <param name="hour">The hour to set (<b><c>0</c></b>-<b><c>23</c></b>)</param>
-/// <seealso name="SetPlayerTime"/>
-/// <seealso name="SetWeather"/>
-/// <seealso name="SetGravity"/>
+/// <seealso name="SetPlayerTime" />
+/// <seealso name="SetWeather" />
+/// <seealso name="SetGravity" />
 /// <remarks>To set the minutes and/or to set the time for individual players, see <a href="#SetPlayerTime">SetPlayerTime</a>.</remarks>
 /// <remarks>This function is only relevant for players that do not use a passing clock - see <a href="#TogglePlayerClock">TogglePlayerClock</a>.</remarks>
 native SetWorldTime(hour);
@@ -1062,9 +1142,9 @@ native SetWorldTime(hour);
 /// <param name="weaponid">The ID of the weapon to get the name of</param>
 /// <param name="weapon">An array to store the weapon's name in, passed by reference</param>
 /// <param name="len">The maximum length of the weapon name to store.</param>
-/// <seealso name="GetPlayerWeapon"/>
-/// <seealso name="AllowInteriorWeapons"/>
-/// <seealso name="GivePlayerWeapon"/>
+/// <seealso name="GetPlayerWeapon" />
+/// <seealso name="AllowInteriorWeapons" />
+/// <seealso name="GivePlayerWeapon" />
 /// <returns>
 ///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute. The weapon specified does not exist.
@@ -1077,36 +1157,36 @@ native GetWeaponName(weaponid, weapon[], len = sizeof (weapon));
 native EnableTirePopping(bool:enable); // deprecated function
 
 /// <summary>Enable friendly fire for team vehicles. Players will be unable to damage teammates' vehicles (<a href="#SetPlayerTeam">SetPlayerTeam</a> must be used!).</summary>
-/// <seealso name="SetPlayerTeam"/>
+/// <seealso name="SetPlayerTeam" />
 /// <remarks>This function was added in <b>SA-MP 0.3x</b> and will not work in earlier versions!</remarks>
 native EnableVehicleFriendlyFire();
 
 /// <summary>Toggle whether the usage of weapons in interiors is allowed or not.</summary>
 /// <param name="allow"><b><c>1</c></b> to enable weapons in interiors (enabled by default), <b><c>0</c></b> to disable weapons in interiors</param>
 /// <remarks>This function does not work in the current SA:MP version!</remarks>
-/// <seealso name="SetPlayerInterior"/>
-/// <seealso name="GetPlayerInterior"/>
-/// <seealso name="OnPlayerInteriorChange"/>
+/// <seealso name="SetPlayerInterior" />
+/// <seealso name="GetPlayerInterior" />
+/// <seealso name="OnPlayerInteriorChange" />
 #pragma deprecated Use `OnPlayerInteriorChange`.
 native AllowInteriorWeapons(bool:allow);
 
 /// <summary>Set the world weather for all players.</summary>
 /// <param name="weatherid">The <a href="http://wiki.sa-mp.com/wiki/Weatherid">weather</a> to set</param>
-/// <seealso name="SetPlayerWeather"/>
-/// <seealso name="SetGravity"/>
+/// <seealso name="SetPlayerWeather" />
+/// <seealso name="SetGravity" />
 /// <remarks>If <a href="#TogglePlayerClock">TogglePlayerClock</a> is enabled, weather will slowly change over time, instead of changing instantly.</remarks>
 native SetWeather(weatherid);
 
 /// <summary>Get the currently set gravity.</summary>
-/// <seealso name="SetGravity"/>
+/// <seealso name="SetGravity" />
 /// <returns>The current set gravity (as a float).</returns>
 native Float:GetGravity();
 
 /// <summary>Set the gravity for all players.</summary>
 /// <param name="gravity">The value that the gravity should be set to (between -50 and 50)</param>
-/// <seealso name="GetGravity"/>
-/// <seealso name="SetWeather"/>
-/// <seealso name="SetWorldTime"/>
+/// <seealso name="GetGravity" />
+/// <seealso name="SetWeather" />
+/// <seealso name="SetWorldTime" />
 /// <remarks>Default gravity is <b><c>0.008</c></b>.</remarks>
 /// <returns>This function always returns <b><c>1</c></b>, even when it fails to execute if the gravity is out of the limits (lower than <b><c>-50.0</c></b> or higher than <b><c>+50.0</c></b>).</returns>
 native SetGravity(Float:gravity);
@@ -1114,15 +1194,15 @@ native SetGravity(Float:gravity);
 /// <summary>This function will determine whether RCON admins will be teleported to their waypoint when they set one.</summary>
 /// <param name="allow"><b><c>0</c></b> to disable and <b><c>1</c></b> to enable</param>
 /// <remarks><b>This function, as of 0.3d, is deprecated. Please see <a href="#OnPlayerClickMap">OnPlayerClickMap</a>.</b></remarks>
-/// <seealso name="IsPlayerAdmin"/>
-/// <seealso name="AllowPlayerTeleport"/>
+/// <seealso name="IsPlayerAdmin" />
+/// <seealso name="AllowPlayerTeleport" />
 #pragma deprecated Use `OnPlayerClickMap`.
 native AllowAdminTeleport(bool:allow);
 
 /// <summary>This function does not work in the current SA:MP version! </summary>
-/// <seealso name="CreatePickup"/>
-/// <seealso name="GivePlayerMoney"/>
-/// <seealso name="OnPlayerDeath"/>
+/// <seealso name="CreatePickup" />
+/// <seealso name="GivePlayerMoney" />
+/// <seealso name="OnPlayerDeath" />
 #pragma deprecated Use `CreatePickup`.
 native SetDeathDropAmount(amount);
 
@@ -1132,7 +1212,7 @@ native SetDeathDropAmount(amount);
 /// <param name="z">The z coordinate of the explosion</param>
 /// <param name="type">The type of explosion</param>
 /// <param name="radius">The explosion radius</param>
-/// <seealso name="CreateExplosionForPlayer"/>
+/// <seealso name="CreateExplosionForPlayer" />
 /// <remarks>There is a limit as to how many explosions can be seen at once by a player. This is roughly 10.</remarks>
 /// <returns>This function always returns <b><c>1</c></b>, even when the explosion type and/or radius values are invalid.</returns>
 native CreateExplosion(Float:x, Float:y, Float:z, type, Float:radius);
@@ -1143,14 +1223,14 @@ native CreateExplosion(Float:x, Float:y, Float:z, type, Float:radius);
 native EnableZoneNames(bool:enable);
 
 /// <summary>Uses standard player walking animation (animation of the CJ skin) instead of custom animations for every skin (e.g. skating for skater skins).</summary>
-/// <seealso name="ApplyAnimation"/>
-/// <seealso name="ClearAnimations"/>
+/// <seealso name="ApplyAnimation" />
+/// <seealso name="ClearAnimations" />
 /// <remarks>Only works when placed under <a href="#OnGameModeInit">OnGameModeInit</a>.</remarks>
 /// <remarks>Not using this function causes two-handed weapons (not dual-handed - a single weapon that is held by both hands) to be held in only one hand.</remarks>
 native UsePlayerPedAnims(); // Will cause the players to use CJ running/walking animations
 
 /// <summary>Disable all the interior entrances and exits in the game (the yellow arrows at doors).</summary>
-/// <seealso name="AllowInteriorWeapons"/>
+/// <seealso name="AllowInteriorWeapons" />
 /// <remarks>If the gamemode is changed after this function has been used, and the new gamemode doesn't disable markers, the markers will NOT reappear for already-connected players (but will for newly connected players).</remarks>
 /// <remarks>This function will only work if it has been used BEFORE a player connects (it is recommended to use it in OnGameModeInit). It will not remove a connected player's markers.</remarks>
 /// <returns>This function always returns <b><c>1</c></b>.</returns>
@@ -1158,32 +1238,32 @@ native DisableInteriorEnterExits();  // will disable all interior enter/exits in
 
 /// <summary>Set the maximum distance to display the names of players.</summary>
 /// <param name="distance">The distance to set</param>
-/// <seealso name="LimitGlobalChatRadius"/>
-/// <seealso name="ShowNameTags"/>
-/// <seealso name="ShowPlayerNameTagForPlayer"/>
+/// <seealso name="LimitGlobalChatRadius" />
+/// <seealso name="ShowNameTags" />
+/// <seealso name="ShowPlayerNameTagForPlayer" />
 /// <remarks>Default distance is <b>70</b> SA units</remarks>
 native SetNameTagDrawDistance(Float:distance); // Distance at which nametags will start rendering on the client.
 
 /// <summary>Disables the nametag Line-Of-Sight checking so that players can see nametags through objects.</summary>
-/// <seealso name="ShowNameTags"/>
-/// <seealso name="ShowPlayerNameTagForPlayer"/>
+/// <seealso name="ShowNameTags" />
+/// <seealso name="ShowPlayerNameTagForPlayer" />
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <remarks>This can not be reversed until the server restarts.</remarks>
 native DisableNameTagLOS(); // Disables the nametag Line-Of-Sight checking
 
 /// <summary>Set a radius limitation for the chat. Only players at a certain distance from the player will see their message in the chat. Also changes the distance at which a player can see other players on the map at the same distance.</summary>
 /// <param name="chatRadius">The range in which players will be able to see chat</param>
-/// <seealso name="SetNameTagDrawDistance"/>
-/// <seealso name="SendPlayerMessageToPlayer"/>
-/// <seealso name="SendPlayerMessageToAll"/>
-/// <seealso name="OnPlayerText"/>
+/// <seealso name="SetNameTagDrawDistance" />
+/// <seealso name="SendPlayerMessageToPlayer" />
+/// <seealso name="SendPlayerMessageToAll" />
+/// <seealso name="OnPlayerText" />
 native LimitGlobalChatRadius(Float:chatRadius);
 
 /// <summary>Set the player marker radius.</summary>
 /// <param name="markerRadius">The radius that markers will show at</param>
-/// <seealso name="ShowPlayerMarkers"/>
-/// <seealso name="SetPlayerMarkerForPlayer"/>
-/// <seealso name="LimitGlobalChatRadius"/>
+/// <seealso name="ShowPlayerMarkers" />
+/// <seealso name="SetPlayerMarkerForPlayer" />
+/// <seealso name="LimitGlobalChatRadius" />
 /// <remarks>This Function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 native LimitPlayerMarkerRadius(Float:markerRadius);
 
@@ -1192,8 +1272,8 @@ native LimitPlayerMarkerRadius(Float:markerRadius);
 /// <summary>Connect an NPC to the server.</summary>
 /// <param name="name">The name the NPC should connect as. Must follow the same rules as normal player names</param>
 /// <param name="script">The NPC script name that is located in the <b>npcmodes</b> folder (without the .amx extension)</param>
-/// <seealso name="IsPlayerNPC"/>
-/// <seealso name="OnPlayerConnect"/>
+/// <seealso name="IsPlayerNPC" />
+/// <seealso name="OnPlayerConnect" />
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <remarks>NPCs do not have nametags. These can be scripted with <a href="#Attach3DTextLabelToPlayer">Attach3DTextLabelToPlayer</a>.</remarks>
 /// <returns>This function always return <b><c>1</c></b>.</returns>
@@ -1201,8 +1281,8 @@ native ConnectNPC(const name[], const script[]);
 
 /// <summary>Check if a player is an actual player or an NPC.</summary>
 /// <param name="playerid">The ID of the player to check</param>
-/// <seealso name="ConnectNPC"/>
-/// <seealso name="IsPlayerAdmin"/>
+/// <seealso name="ConnectNPC" />
+/// <seealso name="IsPlayerAdmin" />
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <returns><b><c>1</c></b> if the player is an NPC, <b><c>0</c></b> if not.</returns>
 native bool:IsPlayerNPC(playerid);
@@ -1218,23 +1298,23 @@ native RedirectDownload(playerid, const url[]);
 
 /// <summary>Check if a player is logged in as an RCON admin.</summary>
 /// <param name="playerid">The ID of the player to check</param>
-/// <seealso name="SendRconCommand"/>
-/// <seealso name="OnRconLoginAttempt"/>
+/// <seealso name="SendRconCommand" />
+/// <seealso name="OnRconLoginAttempt" />
 /// <returns><b><c>1</c></b> if the player is an RCON admin, <b><c>0</c></b> if not.</returns>
 native bool:IsPlayerAdmin(playerid);
 
 /// <summary>Kicks a player from the server. They will have to quit the game and re-connect if they wish to continue playing.</summary>
 /// <param name="playerid">The ID of the player to kick</param>
-/// <seealso name="Ban"/>
-/// <seealso name="BanEx"/>
+/// <seealso name="Ban" />
+/// <seealso name="BanEx" />
 /// <remarks>As of <b>SA-MP 0.3x</b>, any action taken directly before Kick() (such as sending a message with <a href="#SendClientMessage">SendClientMessage</a>) will not reach the player. A timer must be used to delay the kick.</remarks>
 /// <returns>This function always returns <b><c>1</c></b>, even if the function failed to execute (player specified doesn't exist).</returns>
 native Kick(playerid);
 
 /// <summary>Ban a player who is currently in the server. They will be unable to join the server ever again. The ban will be IP-based, and be saved in the samp.ban file in the server's root directory. <a href="#BanEx">BanEx</a> can be used to give a reason for the ban. IP bans can be added/removed using the RCON banip and unbanip commands (<a href="#SendRconCommand">SendRconCommand</a>).</summary>
 /// <param name="playerid">The ID of the player to ban</param>
-/// <seealso name="BanEx"/>
-/// <seealso name="Kick"/>
+/// <seealso name="BanEx" />
+/// <seealso name="Kick" />
 /// <remarks>As of <b>SA-MP 0.3x</b>, any action taken directly before Ban() (such as sending a message with SendClientMessage) will not reach the player. A timer must be used to delay the ban.</remarks>
 /// <remarks></remarks>
 native Ban(playerid);
@@ -1242,16 +1322,16 @@ native Ban(playerid);
 /// <summary>Ban a player with a reason.</summary>
 /// <param name="playerid">The ID of the player to ban</param>
 /// <param name="reason">The reason for the ban</param>
-/// <seealso name="Ban"/>
-/// <seealso name="Kick"/>
+/// <seealso name="Ban" />
+/// <seealso name="Kick" />
 /// <remarks>As of <b>SA-MP 0.3x</b>, any action taken directly before Ban() (such as sending a message with SendClientMessage) will not reach the player. A timer must be used to delay the ban.</remarks>
 native BanEx(playerid, const reason[]);
 
 /// <summary>Sends an RCON (Remote Console) command.</summary>
 /// <param name="command">The RCON command to be executed</param>
-/// <seealso name="IsPlayerAdmin"/>
-/// <seealso name="OnRconCommand"/>
-/// <seealso name="OnRconLoginAttempt"/>
+/// <seealso name="IsPlayerAdmin" />
+/// <seealso name="OnRconCommand" />
+/// <seealso name="OnRconLoginAttempt" />
 /// <remarks>Does not support login, due to the lack of a 'playerid' parameter.</remarks>
 /// <remarks>'password 0' will remove the server's password if one is set.</remarks>
 /// <returns>This function always returns <b><c>1</c></b>.</returns>
@@ -1262,16 +1342,16 @@ native SendRconCommand(const command[]);
 /// <param name="playerid">The ID of the player you want to get the networkstats of</param>
 /// <param name="output">The string to store the networkstats in, passed by reference</param>
 /// <param name="size">The length of the string that should be stored</param>
-/// <seealso name="GetNetworkStats"/>
-/// <seealso name="NetStats_GetConnectedTime"/>
-/// <seealso name="NetStats_MessagesReceived"/>
-/// <seealso name="NetStats_BytesReceived"/>
-/// <seealso name="NetStats_MessagesSent"/>
-/// <seealso name="NetStats_BytesSent"/>
-/// <seealso name="NetStats_MessagesRecvPerSecond"/>
-/// <seealso name="NetStats_PacketLossPercent"/>
-/// <seealso name="NetStats_ConnectionStatus"/>
-/// <seealso name="NetStats_GetIpPort"/>
+/// <seealso name="GetNetworkStats" />
+/// <seealso name="NetStats_GetConnectedTime" />
+/// <seealso name="NetStats_MessagesReceived" />
+/// <seealso name="NetStats_BytesReceived" />
+/// <seealso name="NetStats_MessagesSent" />
+/// <seealso name="NetStats_BytesSent" />
+/// <seealso name="NetStats_MessagesRecvPerSecond" />
+/// <seealso name="NetStats_PacketLossPercent" />
+/// <seealso name="NetStats_ConnectionStatus" />
+/// <seealso name="NetStats_GetIpPort" />
 /// <remarks>This function was added in <b>SA-MP 0.3c R4</b> and will not work in earlier versions!</remarks>
 /// <remarks>This function may not return accurate data when used under <a href="#OnPlayerDisconnect">OnPlayerDisconnect</a> if the player has quit normally. It usually returns accurate data if the player has been kicked or has timed out.</remarks>
 native GetPlayerNetworkStats(playerid, output[], size = sizeof (output));
@@ -1279,16 +1359,16 @@ native GetPlayerNetworkStats(playerid, output[], size = sizeof (output));
 /// <summary>Gets the server's network stats and stores them in a string.</summary>
 /// <param name="output">The string to store the network stats in, passed by reference</param>
 /// <param name="size">The length of the string to be stored</param>
-/// <seealso name="GetPlayerNetworkStats"/>
-/// <seealso name="NetStats_GetConnectedTime"/>
-/// <seealso name="NetStats_MessagesReceived"/>
-/// <seealso name="NetStats_BytesReceived"/>
-/// <seealso name="NetStats_MessagesSent"/>
-/// <seealso name="NetStats_BytesSent"/>
-/// <seealso name="NetStats_MessagesRecvPerSecond"/>
-/// <seealso name="NetStats_PacketLossPercent"/>
-/// <seealso name="NetStats_ConnectionStatus"/>
-/// <seealso name="NetStats_GetIpPort"/>
+/// <seealso name="GetPlayerNetworkStats" />
+/// <seealso name="NetStats_GetConnectedTime" />
+/// <seealso name="NetStats_MessagesReceived" />
+/// <seealso name="NetStats_BytesReceived" />
+/// <seealso name="NetStats_MessagesSent" />
+/// <seealso name="NetStats_BytesSent" />
+/// <seealso name="NetStats_MessagesRecvPerSecond" />
+/// <seealso name="NetStats_PacketLossPercent" />
+/// <seealso name="NetStats_ConnectionStatus" />
+/// <seealso name="NetStats_GetIpPort" />
 /// <remarks>This function was added in <b>SA-MP 0.3c R4</b> and will not work in earlier versions!</remarks>
 /// <remarks>
 ///   <b>Example output:</b><br />
@@ -1319,9 +1399,9 @@ native GetNetworkStats(output[], size = sizeof (output));
 /// <param name="playerid">The ID of the player to get the client version of</param>
 /// <param name="version">The string to store the player's version in, passed by reference</param>
 /// <param name="len">The maximum length of the version</param>
-/// <seealso name="GetPlayerName"/>
-/// <seealso name="GetPlayerPing"/>
-/// <seealso name="GetPlayerIp"/>
+/// <seealso name="GetPlayerName" />
+/// <seealso name="GetPlayerPing" />
+/// <seealso name="GetPlayerIp" />
 /// <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <remarks>The string the version gets stored in will be empty if playerid is an NPC.</remarks>
 /// <returns><b><c>1</c></b> on success and <b><c>0</c></b> on failure (if player specified doesn't exist).</returns>
@@ -1330,16 +1410,16 @@ native GetPlayerVersion(playerid, version[], len = sizeof (version)); // Returns
 /// <summary>Blocks an IP address from further communication with the server for a set amount of time (with wildcards allowed). Players trying to connect to the server with a blocked IP address will receive the generic "You are banned from this server." message. Players that are online on the specified IP before the block will timeout after a few seconds and, upon reconnect, will receive the same message.</summary>
 /// <param name="ipAddress">The IP to block</param>
 /// <param name="timeMS">The time (in milliseconds) that the connection will be blocked for. <b><c>0</c></b> can be used for an indefinite block</param>
-/// <seealso name="UnBlockIpAddress"/>
-/// <seealso name="OnIncomingConnection"/>
+/// <seealso name="UnBlockIpAddress" />
+/// <seealso name="OnIncomingConnection" />
 /// <remarks>This function was added in <b>SA-MP 0.3z R2-2</b> and will not work in earlier versions!</remarks>
 /// <remarks>Wildcards can be used with this function, for example blocking the IP <b><c>6.9.*.*</c></b> will block all IPs where the first two octets are <b><c>6</c></b> and <b><c>9</c></b> respectively. Any number can be in place of an asterisk.</remarks>
 native BlockIpAddress(const ipAddress[], timeMS);
 
 /// <summary>Unblock an IP address that was previously blocked using <a href="#BlockIpAddress">BlockIpAddress</a>.</summary>
 /// <param name="ipAddress">The IP address to unblock</param>
-/// <seealso name="BlockIpAddress"/>
-/// <seealso name="OnIncomingConnection"/>
+/// <seealso name="BlockIpAddress" />
+/// <seealso name="OnIncomingConnection" />
 /// <remarks>This function was added in <b>SA-MP 0.3z R2-2</b> and will not work in earlier versions!</remarks>
 native UnBlockIpAddress(const ipAddress[]);
 
@@ -1349,8 +1429,8 @@ native UnBlockIpAddress(const ipAddress[]);
 /// <param name="cvar">The name of the string variable to get the value of</param>
 /// <param name="buffer">An array into which to store the value, passed by reference</param>
 /// <param name="len">The length of the string that should be stored</param>
-/// <seealso name="GetServerVarAsInt"/>
-/// <seealso name="GetServerVarAsBool"/>
+/// <seealso name="GetServerVarAsInt" />
+/// <seealso name="GetServerVarAsBool" />
 /// <remarks>This function, as of <b>0.3.7 R2</b>, is deprecated. Please see <a href="#GetConsoleVarAsString">GetConsoleVarAsString</a></remarks>
 /// <remarks>Using this function on anything other than a <b>string</b> (int, bool or float) or a <b>nonexistent</b> server variable, will <b>crash</b> your server! This is a bug.</remarks>
 /// <remarks>Type 'varlist' in the server console to display a list of available server variables and their types.</remarks>
@@ -1361,8 +1441,8 @@ native GetServerVarAsString(const cvar[], buffer[], len = sizeof (buffer));
 
 /// <summary>Get the integer value of a server variable.</summary>
 /// <param name="cvar">The name of the integer variable to get the value of</param>
-/// <seealso name="GetServerVarAsString"/>
-/// <seealso name="GetServerVarAsBool"/>
+/// <seealso name="GetServerVarAsString" />
+/// <seealso name="GetServerVarAsBool" />
 /// <remarks>This function, as of <b>0.3.7 R2</b>, is deprecated. Please see <a href="#GetConsoleVarAsInt">GetConsoleVarAsInt</a></remarks>
 /// <remarks>Type 'varlist' in the server console to display a list of available server variables and their types.</remarks>
 /// <returns>The value of the specified server variable. 0 if the specified server variable is not an integer or doesn't exist.</returns>
@@ -1371,8 +1451,8 @@ native GetServerVarAsInt(const cvar[]);
 
 /// <summary>Get the boolean value of a server variable.</summary>
 /// <param name="cvar">The name of the boolean variable to get the value of</param>
-/// <seealso name="GetServerVarAsString"/>
-/// <seealso name="GetServerVarAsInt"/>
+/// <seealso name="GetServerVarAsString" />
+/// <seealso name="GetServerVarAsInt" />
 /// <remarks>This function, as of <b>0.3.7 R2</b>, is deprecated. Please see <a href="#GetConsoleVarAsBool">GetConsoleVarAsBool</a></remarks>
 /// <remarks>Type 'varlist' in the server console to display a list of available server variables and their types.</remarks>
 /// <returns>The value of the specified server variable. <b><c>0</c></b> if the specified server variable is not a boolean or doesn't exist.</returns>
@@ -1384,8 +1464,8 @@ native bool:GetServerVarAsBool(const cvar[]);
 /// <param name="cvar">The name of the string variable to get the value of</param>
 /// <param name="buffer">An array into which to store the value, passed by reference</param>
 /// <param name="len">The length of the string that should be stored</param>
-/// <seealso name="GetConsoleVarAsInt"/>
-/// <seealso name="GetConsoleVarAsBool"/>
+/// <seealso name="GetConsoleVarAsInt" />
+/// <seealso name="GetConsoleVarAsBool" />
 /// <remarks>Type <b><c>varlist</c></b> in the server console to display a list of available console variables and their types.</remarks>
 /// <remarks>When filterscripts or plugins are specified as the cvar, this function only returns the name of the first specified filterscript or plugin.</remarks>
 /// <remarks>Using this function with anything other than a <b>string</b> (integer, boolean or float) will cause your server to crash. Using it with a nonexistent console variable will also cause your server to crash.</remarks>
@@ -1394,16 +1474,16 @@ native GetConsoleVarAsString(const cvar[], buffer[], len = sizeof (buffer));
 
 /// <summary>Get the integer value of a console variable.</summary>
 /// <param name="cvar">The name of the integer variable to get the value of</param>
-/// <seealso name="GetConsoleVarAsString"/>
-/// <seealso name="GetConsoleVarAsBool"/>
+/// <seealso name="GetConsoleVarAsString" />
+/// <seealso name="GetConsoleVarAsBool" />
 /// <remarks>Type <b><c>varlist</c></b> in the server console to display a list of available console variables and their types.</remarks>
 /// <returns>The value of the specified console variable. <b><c>0</c></b> if the specified console variable is not an integer or doesn't exist.</returns>
 native GetConsoleVarAsInt(const cvar[]);
 
 /// <summary>Get the boolean value of a console variable.</summary>
 /// <param name="cvar">The name of the boolean variable to get the value of</param>
-/// <seealso name="GetConsoleVarAsString"/>
-/// <seealso name="GetConsoleVarAsInt"/>
+/// <seealso name="GetConsoleVarAsString" />
+/// <seealso name="GetConsoleVarAsInt" />
 /// <remarks>Type <b><c>varlist</c></b> in the server console to display a list of available console variables and their types.</remarks>
 /// <returns>The value of the specified console variable. <b><c>0</c></b> if the specified console variable is not a boolean or doesn't exist.</returns>
 native bool:GetConsoleVarAsBool(const cvar[]);
@@ -1411,23 +1491,23 @@ native bool:GetConsoleVarAsBool(const cvar[]);
 // Extended admin network stats
 
 /// <summary>Gets the tick rate (like FPS) of the server.</summary>
-/// <seealso name="GetNetworkStats"/>
+/// <seealso name="GetNetworkStats" />
 /// <remarks>This function was added in <b>SA-MP 0.3z</b> and will not work in earlier versions!</remarks>
 /// <returns>The server tick rate (per second). Returns <b><c>0</c></b> when the server is just started.</returns>
 native GetServerTickRate();
 
 /// <summary>Gets the amount of time (in milliseconds) that a player has been connected to the server for.</summary>
 /// <param name="playerid">The ID of the player to get the connected time of</param>
-/// <seealso name="GetPlayerNetworkStats"/>
-/// <seealso name="GetNetworkStats"/>
-/// <seealso name="NetStats_MessagesReceived"/>
-/// <seealso name="NetStats_BytesReceived"/>
-/// <seealso name="NetStats_MessagesSent"/>
-/// <seealso name="NetStats_BytesSent"/>
-/// <seealso name="NetStats_MessagesRecvPerSecond"/>
-/// <seealso name="NetStats_PacketLossPercent"/>
-/// <seealso name="NetStats_ConnectionStatus"/>
-/// <seealso name="NetStats_GetIpPort"/>
+/// <seealso name="GetPlayerNetworkStats" />
+/// <seealso name="GetNetworkStats" />
+/// <seealso name="NetStats_MessagesReceived" />
+/// <seealso name="NetStats_BytesReceived" />
+/// <seealso name="NetStats_MessagesSent" />
+/// <seealso name="NetStats_BytesSent" />
+/// <seealso name="NetStats_MessagesRecvPerSecond" />
+/// <seealso name="NetStats_PacketLossPercent" />
+/// <seealso name="NetStats_ConnectionStatus" />
+/// <seealso name="NetStats_GetIpPort" />
 /// <remarks>This function was added in <b>SA-MP 0.3z</b> and will not work in earlier versions!</remarks>
 /// <remarks>The return value is not reset to zero after changing the game mode (using the RCON command "gmx").</remarks>
 /// <returns>This function returns the amount of time (in milliseconds) that a player has been connected to the server for. <b><c>0</c></b> is returned if the player is not connected.</returns>
@@ -1435,96 +1515,96 @@ native NetStats_GetConnectedTime(playerid);
 
 /// <summary>Gets the number of messages the server has received from the player.</summary>
 /// <param name="playerid">The ID of the player to get the data from</param>
-/// <seealso name="GetPlayerNetworkStats"/>
-/// <seealso name="GetNetworkStats"/>
-/// <seealso name="NetStats_GetConnectedTime"/>
-/// <seealso name="NetStats_BytesReceived"/>
-/// <seealso name="NetStats_MessagesSent"/>
-/// <seealso name="NetStats_BytesSent"/>
-/// <seealso name="NetStats_MessagesRecvPerSecond"/>
-/// <seealso name="NetStats_PacketLossPercent"/>
-/// <seealso name="NetStats_ConnectionStatus"/>
-/// <seealso name="NetStats_GetIpPort"/>
+/// <seealso name="GetPlayerNetworkStats" />
+/// <seealso name="GetNetworkStats" />
+/// <seealso name="NetStats_GetConnectedTime" />
+/// <seealso name="NetStats_BytesReceived" />
+/// <seealso name="NetStats_MessagesSent" />
+/// <seealso name="NetStats_BytesSent" />
+/// <seealso name="NetStats_MessagesRecvPerSecond" />
+/// <seealso name="NetStats_PacketLossPercent" />
+/// <seealso name="NetStats_ConnectionStatus" />
+/// <seealso name="NetStats_GetIpPort" />
 /// <remarks>This function was added in <b>SA-MP 0.3z</b> and will not work in earlier versions!</remarks>
 /// <returns>This function returns the number of messages the server has received from the player. <b><c>0</c></b> is returned if the player is not connected.</returns>
 native NetStats_MessagesReceived(playerid);
 
 /// <summary>Gets the amount of data (in bytes) that the server has received from the player.</summary>
 /// <param name="playerid">The ID of the player to get the data from</param>
-/// <seealso name="GetPlayerNetworkStats"/>
-/// <seealso name="GetNetworkStats"/>
-/// <seealso name="NetStats_GetConnectedTime"/>
-/// <seealso name="NetStats_MessagesReceived"/>
-/// <seealso name="NetStats_MessagesSent"/>
-/// <seealso name="NetStats_BytesSent"/>
-/// <seealso name="NetStats_MessagesRecvPerSecond"/>
-/// <seealso name="NetStats_PacketLossPercent"/>
-/// <seealso name="NetStats_ConnectionStatus"/>
-/// <seealso name="NetStats_GetIpPort"/>
+/// <seealso name="GetPlayerNetworkStats" />
+/// <seealso name="GetNetworkStats" />
+/// <seealso name="NetStats_GetConnectedTime" />
+/// <seealso name="NetStats_MessagesReceived" />
+/// <seealso name="NetStats_MessagesSent" />
+/// <seealso name="NetStats_BytesSent" />
+/// <seealso name="NetStats_MessagesRecvPerSecond" />
+/// <seealso name="NetStats_PacketLossPercent" />
+/// <seealso name="NetStats_ConnectionStatus" />
+/// <seealso name="NetStats_GetIpPort" />
 /// <remarks>This function was added in <b>SA-MP 0.3z</b> and will not work in earlier versions!</remarks>
 /// <returns>This function returns the number of bytes the server has received from the player. <b><c>0</c></b> is returned if the player is not connected.</returns>
 native NetStats_BytesReceived(playerid);
 
 /// <summary>Gets the number of messages the server has sent to the player.</summary>
 /// <param name="playerid">The ID of the player to get the data from</param>
-/// <seealso name="GetPlayerNetworkStats"/>
-/// <seealso name="GetNetworkStats"/>
-/// <seealso name="NetStats_GetConnectedTime"/>
-/// <seealso name="NetStats_MessagesReceived"/>
-/// <seealso name="NetStats_BytesReceived"/>
-/// <seealso name="NetStats_BytesSent"/>
-/// <seealso name="NetStats_MessagesRecvPerSecond"/>
-/// <seealso name="NetStats_PacketLossPercent"/>
-/// <seealso name="NetStats_ConnectionStatus"/>
-/// <seealso name="NetStats_GetIpPort"/>
+/// <seealso name="GetPlayerNetworkStats" />
+/// <seealso name="GetNetworkStats" />
+/// <seealso name="NetStats_GetConnectedTime" />
+/// <seealso name="NetStats_MessagesReceived" />
+/// <seealso name="NetStats_BytesReceived" />
+/// <seealso name="NetStats_BytesSent" />
+/// <seealso name="NetStats_MessagesRecvPerSecond" />
+/// <seealso name="NetStats_PacketLossPercent" />
+/// <seealso name="NetStats_ConnectionStatus" />
+/// <seealso name="NetStats_GetIpPort" />
 /// <remarks>This function was added in <b>SA-MP 0.3z</b> and will not work in earlier versions!</remarks>
 /// <returns>The number of messages the server has sent to the player.</returns>
 native NetStats_MessagesSent(playerid);
 
 /// <summary>Gets the amount of data (in bytes) that the server has sent to the player.</summary>
 /// <param name="playerid">The ID of the player to get the data from</param>
-/// <seealso name="GetPlayerNetworkStats"/>
-/// <seealso name="GetNetworkStats"/>
-/// <seealso name="NetStats_GetConnectedTime"/>
-/// <seealso name="NetStats_MessagesReceived"/>
-/// <seealso name="NetStats_MessagesSent"/>
-/// <seealso name="NetStats_BytesReceived"/>
-/// <seealso name="NetStats_MessagesRecvPerSecond"/>
-/// <seealso name="NetStats_PacketLossPercent"/>
-/// <seealso name="NetStats_ConnectionStatus"/>
-/// <seealso name="NetStats_GetIpPort"/>
+/// <seealso name="GetPlayerNetworkStats" />
+/// <seealso name="GetNetworkStats" />
+/// <seealso name="NetStats_GetConnectedTime" />
+/// <seealso name="NetStats_MessagesReceived" />
+/// <seealso name="NetStats_MessagesSent" />
+/// <seealso name="NetStats_BytesReceived" />
+/// <seealso name="NetStats_MessagesRecvPerSecond" />
+/// <seealso name="NetStats_PacketLossPercent" />
+/// <seealso name="NetStats_ConnectionStatus" />
+/// <seealso name="NetStats_GetIpPort" />
 /// <remarks>This function was added in <b>SA-MP 0.3z</b> and will not work in earlier versions!</remarks>
 /// <returns>This function returns the number of bytes the server has sent to the player. <b><c>0</c></b> is returned if the player is not connected.</returns>
 native NetStats_BytesSent(playerid);
 
 /// <summary>Gets the number of messages the player has received in the last second.</summary>
 /// <param name="playerid">The ID of the player to get the data from</param>
-/// <seealso name="GetPlayerNetworkStats"/>
-/// <seealso name="GetNetworkStats"/>
-/// <seealso name="NetStats_GetConnectedTime"/>
-/// <seealso name="NetStats_MessagesReceived"/>
-/// <seealso name="NetStats_BytesReceived"/>
-/// <seealso name="NetStats_MessagesSent"/>
-/// <seealso name="NetStats_BytesSent"/>
-/// <seealso name="NetStats_PacketLossPercent"/>
-/// <seealso name="NetStats_ConnectionStatus"/>
-/// <seealso name="NetStats_GetIpPort"/>
+/// <seealso name="GetPlayerNetworkStats" />
+/// <seealso name="GetNetworkStats" />
+/// <seealso name="NetStats_GetConnectedTime" />
+/// <seealso name="NetStats_MessagesReceived" />
+/// <seealso name="NetStats_BytesReceived" />
+/// <seealso name="NetStats_MessagesSent" />
+/// <seealso name="NetStats_BytesSent" />
+/// <seealso name="NetStats_PacketLossPercent" />
+/// <seealso name="NetStats_ConnectionStatus" />
+/// <seealso name="NetStats_GetIpPort" />
 /// <remarks>This function was added in <b>SA-MP 0.3z</b> and will not work in earlier versions!</remarks>
 /// <returns>the number of messages the player has received in the last second.</returns>
 native NetStats_MessagesRecvPerSecond(playerid);
 
 /// <summary>Gets the packet loss percentage of a player. Packet loss means data the player is sending to the server is being lost (or vice-versa).</summary>
 /// <param name="playerid">The ID of the player to get the data from</param>
-/// <seealso name="GetPlayerNetworkStats"/>
-/// <seealso name="GetNetworkStats"/>
-/// <seealso name="NetStats_GetConnectedTime"/>
-/// <seealso name="NetStats_MessagesReceived"/>
-/// <seealso name="NetStats_BytesReceived"/>
-/// <seealso name="NetStats_MessagesSent"/>
-/// <seealso name="NetStats_BytesSent"/>
-/// <seealso name="NetStats_MessagesRecvPerSecond"/>
-/// <seealso name="NetStats_ConnectionStatus"/>
-/// <seealso name="NetStats_GetIpPort"/>
+/// <seealso name="GetPlayerNetworkStats" />
+/// <seealso name="GetNetworkStats" />
+/// <seealso name="NetStats_GetConnectedTime" />
+/// <seealso name="NetStats_MessagesReceived" />
+/// <seealso name="NetStats_BytesReceived" />
+/// <seealso name="NetStats_MessagesSent" />
+/// <seealso name="NetStats_BytesSent" />
+/// <seealso name="NetStats_MessagesRecvPerSecond" />
+/// <seealso name="NetStats_ConnectionStatus" />
+/// <seealso name="NetStats_GetIpPort" />
 /// <remarks>This function was added in <b>SA-MP 0.3z</b> and will not work in earlier versions!</remarks>
 /// <remarks>Anything greater than 0.0% should already be a cause of concern. Anything greater than 1.0% is outright bad.</remarks>
 /// <remarks>This function has been found to be currently unreliable the output is not as expected when compared to the client. Therefore this function should not be used as a packet loss kicker. </remarks>
@@ -1534,19 +1614,19 @@ native Float:NetStats_PacketLossPercent(playerid);
 
 /// <summary>Gets the player's current connection status.</summary>
 /// <param name="playerid">The ID of the player to get the connection status of</param>
-/// <seealso name="GetPlayerNetworkStats"/>
-/// <seealso name="GetNetworkStats"/>
-/// <seealso name="NetStats_GetConnectedTime"/>
-/// <seealso name="NetStats_MessagesReceived"/>
-/// <seealso name="NetStats_BytesReceived"/>
-/// <seealso name="NetStats_MessagesSent"/>
-/// <seealso name="NetStats_BytesSent"/>
-/// <seealso name="NetStats_MessagesRecvPerSecond"/>
-/// <seealso name="NetStats_PacketLossPercent"/>
-/// <seealso name="NetStats_GetIpPort"/>
-/// <seealso name="IsPlayerConnected"/>
-/// <seealso name="OnPlayerConnect"/>
-/// <seealso name="OnPlayerDisconnect"/>
+/// <seealso name="GetPlayerNetworkStats" />
+/// <seealso name="GetNetworkStats" />
+/// <seealso name="NetStats_GetConnectedTime" />
+/// <seealso name="NetStats_MessagesReceived" />
+/// <seealso name="NetStats_BytesReceived" />
+/// <seealso name="NetStats_MessagesSent" />
+/// <seealso name="NetStats_BytesSent" />
+/// <seealso name="NetStats_MessagesRecvPerSecond" />
+/// <seealso name="NetStats_PacketLossPercent" />
+/// <seealso name="NetStats_GetIpPort" />
+/// <seealso name="IsPlayerConnected" />
+/// <seealso name="OnPlayerConnect" />
+/// <seealso name="OnPlayerDisconnect" />
 /// <remarks>This function was added in <b>SA-MP 0.3z</b> and will not work in earlier versions!</remarks>
 /// <remarks>
 ///   <b>Status:</b><br />
@@ -1569,17 +1649,17 @@ native NetStats_ConnectionStatus(playerid);
 /// <param name="playerid">The ID of the player to get the IP and port of</param>
 /// <param name="output">A string array to store the IP and port in, passed by reference</param>
 /// <param name="size">The maximum length of the IP/port. 22 is recommended</param>
-/// <seealso name="GetPlayerIp"/>
-/// <seealso name="GetPlayerNetworkStats"/>
-/// <seealso name="GetNetworkStats"/>
-/// <seealso name="NetStats_GetConnectedTime"/>
-/// <seealso name="NetStats_MessagesReceived"/>
-/// <seealso name="NetStats_BytesReceived"/>
-/// <seealso name="NetStats_MessagesSent"/>
-/// <seealso name="NetStats_BytesSent"/>
-/// <seealso name="NetStats_MessagesRecvPerSecond"/>
-/// <seealso name="NetStats_PacketLossPercent"/>
-/// <seealso name="NetStats_ConnectionStatus"/>
+/// <seealso name="GetPlayerIp" />
+/// <seealso name="GetPlayerNetworkStats" />
+/// <seealso name="GetNetworkStats" />
+/// <seealso name="NetStats_GetConnectedTime" />
+/// <seealso name="NetStats_MessagesReceived" />
+/// <seealso name="NetStats_BytesReceived" />
+/// <seealso name="NetStats_MessagesSent" />
+/// <seealso name="NetStats_BytesSent" />
+/// <seealso name="NetStats_MessagesRecvPerSecond" />
+/// <seealso name="NetStats_PacketLossPercent" />
+/// <seealso name="NetStats_ConnectionStatus" />
 /// <remarks>This function was added in <b>SA-MP 0.3z</b> and will not work in earlier versions!</remarks>
 native NetStats_GetIpPort(playerid, output[], size = sizeof (output));
 
@@ -1592,13 +1672,13 @@ native NetStats_GetIpPort(playerid, output[], size = sizeof (output));
 /// <param name="y">The y position of the menu (640x460 canvas - <b><c>0</c></b> would put the menu at the far top)</param>
 /// <param name="col1width">The width for the first column</param>
 /// <param name="col2width">The width for the second column (optional=<b><c>0.0</c></b>)</param>
-/// <seealso name="AddMenuItem"/>
-/// <seealso name="SetMenuColumnHeader"/>
-/// <seealso name="DestroyMenu"/>
-/// <seealso name="ShowMenuForPlayer"/>
-/// <seealso name="HideMenuForPlayer"/>
-/// <seealso name="OnPlayerSelectedMenuRow"/>
-/// <seealso name="OnPlayerExitedMenu"/>
+/// <seealso name="AddMenuItem" />
+/// <seealso name="SetMenuColumnHeader" />
+/// <seealso name="DestroyMenu" />
+/// <seealso name="ShowMenuForPlayer" />
+/// <seealso name="HideMenuForPlayer" />
+/// <seealso name="OnPlayerSelectedMenuRow" />
+/// <seealso name="OnPlayerExitedMenu" />
 /// <remarks>
 ///   This function merely CREATES the menu - <a href="#ShowMenuForPlayer">ShowMenuForPlayer</a> must be used to show it.<br />
 ///   You can only create and access <b><c>2</c></b> columns (<b><c>0</c></b> and <b><c>1</c></b>).<br />
@@ -1610,11 +1690,11 @@ native Menu:CreateMenu(const title[], columns, Float:x, Float:y, Float:col1width
 
 /// <summary>Destroys the specified menu.</summary>
 /// <param name="menuid">The menu ID to destroy</param>
-/// <seealso name="CreateMenu"/>
-/// <seealso name="SetMenuColumnHeader"/>
-/// <seealso name="AddMenuItem"/>
-/// <seealso name="OnPlayerSelectedMenuRow"/>
-/// <seealso name="OnPlayerExitedMenu"/>
+/// <seealso name="CreateMenu" />
+/// <seealso name="SetMenuColumnHeader" />
+/// <seealso name="AddMenuItem" />
+/// <seealso name="OnPlayerSelectedMenuRow" />
+/// <seealso name="OnPlayerExitedMenu" />
 /// <returns><b><c>1</c></b> if the destroying was successful, otherwise <b><c>0</c></b>.</returns>
 native DestroyMenu(Menu:menuid);
 
@@ -1632,20 +1712,20 @@ native DestroyMenu(Menu:menuid);
 ///   </ul>
 /// </remarks>
 /// <returns>The index of the row this item was added to.</returns>
-/// <seealso name="CreateMenu"/>
-/// <seealso name="SetMenuColumnHeader"/>
-/// <seealso name="DestroyMenu"/>
-/// <seealso name="OnPlayerSelectedMenuRow"/>
-/// <seealso name="OnPlayerExitedMenu"/>
+/// <seealso name="CreateMenu" />
+/// <seealso name="SetMenuColumnHeader" />
+/// <seealso name="DestroyMenu" />
+/// <seealso name="OnPlayerSelectedMenuRow" />
+/// <seealso name="OnPlayerExitedMenu" />
 native AddMenuItem(Menu:menuid, column, const text[]);
 
 /// <summary>Sets the caption of a column in a menu.</summary>
 /// <param name="menuid">ID of the menu to change</param>
 /// <param name="column">The column (<b><c>0</c></b> or <b><c>1</c></b>) to set the header of</param>
 /// <param name="heading">The caption text for the column</param>
-/// <seealso name="AddMenuItem"/>
-/// <seealso name="CreateMenu"/>
-/// <seealso name="OnPlayerSelectedMenuRow"/>
+/// <seealso name="AddMenuItem" />
+/// <seealso name="CreateMenu" />
+/// <seealso name="OnPlayerSelectedMenuRow" />
 /// <remarks>Crashes when passed an invalid menu ID.</remarks>
 /// <remarks>Note that you can add only <b><c>12</c></b> items with <a href="#AddMenuItem">AddMenuItem</a>. The 13th object of a menu would replace the header of the column which is correctly set with this function.</remarks>
 native SetMenuColumnHeader(Menu:menuid, column, const heading[]);
@@ -1653,12 +1733,12 @@ native SetMenuColumnHeader(Menu:menuid, column, const heading[]);
 /// <summary>Shows a previously created menu for a player.</summary>
 /// <param name="menuid">The ID of the menu to show. Returned by CreateMenu</param>
 /// <param name="playerid">The ID of the player to whom the menu will be shown</param>
-/// <seealso name="CreateMenu"/>
-/// <seealso name="AddMenuItem"/>
-/// <seealso name="SetMenuColumnHeader"/>
-/// <seealso name="ShowPlayerDialog"/>
-/// <seealso name="OnPlayerSelectedMenuRow"/>
-/// <seealso name="OnPlayerExitedMenu"/>
+/// <seealso name="CreateMenu" />
+/// <seealso name="AddMenuItem" />
+/// <seealso name="SetMenuColumnHeader" />
+/// <seealso name="ShowPlayerDialog" />
+/// <seealso name="OnPlayerSelectedMenuRow" />
+/// <seealso name="OnPlayerExitedMenu" />
 /// <remarks>Crashes the both server and player if an invalid menu ID given.</remarks>
 /// <returns>
 ///   <b><c>1</c></b>: The function executed successfully.<br />
@@ -1669,10 +1749,10 @@ native ShowMenuForPlayer(Menu:menuid, playerid);
 /// <summary>Hides a menu for a player.</summary>
 /// <param name="menuid">The ID of the menu to hide. Returned by <a href="#CreateMenu">CreateMenu</a> and passed to <a href="#OnPlayerSelectedMenuRow">OnPlayerSelectedMenuRow</a></param>
 /// <param name="playerid">The ID of the player that the menu will be hidden for</param>
-/// <seealso name="ShowMenuForPlayer"/>
-/// <seealso name="AddMenuItem"/>
-/// <seealso name="SetMenuColumnHeader"/>
-/// <seealso name="CreateMenu"/>
+/// <seealso name="ShowMenuForPlayer" />
+/// <seealso name="AddMenuItem" />
+/// <seealso name="SetMenuColumnHeader" />
+/// <seealso name="CreateMenu" />
 /// <returns>
 ///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute.
@@ -1681,25 +1761,25 @@ native HideMenuForPlayer(Menu:menuid, playerid);
 
 /// <summary>Check if a menu ID is vliad.</summary>
 /// <param name="menuid">The menu to check for existance</param>
-/// <seealso name="CreateMenu"/>
-/// <seealso name="DestroyMenu"/>
+/// <seealso name="CreateMenu" />
+/// <seealso name="DestroyMenu" />
 /// <returns><b><c>1</c></b> if the menu is valid, otherwise <b><c>0</c></b>.</returns>
 native bool:IsValidMenu(Menu:menuid);
 
 /// <summary>Disable a menu.</summary>
 /// <param name="menuid">The ID of the menu to disable</param>
-/// <seealso name="CreateMenu"/>
-/// <seealso name="DestroyMenu"/>
-/// <seealso name="AddMenuItem"/>
+/// <seealso name="CreateMenu" />
+/// <seealso name="DestroyMenu" />
+/// <seealso name="AddMenuItem" />
 /// <remarks>Crashes when passed an invalid menu ID.</remarks>
 native DisableMenu(Menu:menuid);
 
 /// <summary>Disable a specific row in a menu <b>for all players</b>. It will be greyed-out and can't be selected by players.</summary>
 /// <param name="menuid">The ID of the menu to disable a row of. Ensure this is valid, as an invalid menu ID will crash the entire server</param>
 /// <param name="row">The ID of the row to disable (rows start at 0)</param>
-/// <seealso name="CreateMenu"/>
-/// <seealso name="DestroyMenu"/>
-/// <seealso name="AddMenuItem"/>
+/// <seealso name="CreateMenu" />
+/// <seealso name="DestroyMenu" />
+/// <seealso name="AddMenuItem" />
 /// <remarks>
 ///   Crashes when passed an invalid menu ID.<br />
 ///   This function disabled the specified menu row for <b>all players</b>. There is no function to disable a menu row for a specific player. You'd have to create two menus - one with a row disabled, and one without. Or one per player.
@@ -1709,13 +1789,13 @@ native DisableMenuRow(Menu:menuid, row);
 
 /// <summary>Gets the ID of the menu the player is currently viewing (shown by <a href="#ShowMenuForPlayer">ShowMenuForPlayer</a>).</summary>
 /// <param name="playerid">The ID of the player to get the current menu of</param>
-/// <seealso name="ShowMenuForPlayer"/>
-/// <seealso name="HideMenuForPlayer"/>
-/// <seealso name="CreateMenu"/>
-/// <seealso name="DestroyMenu"/>
-/// <seealso name="AddMenuItem"/>
-/// <seealso name="OnPlayerSelectedMenuRow"/>
-/// <seealso name="OnPlayerExitedMenu"/>
+/// <seealso name="ShowMenuForPlayer" />
+/// <seealso name="HideMenuForPlayer" />
+/// <seealso name="CreateMenu" />
+/// <seealso name="DestroyMenu" />
+/// <seealso name="AddMenuItem" />
+/// <seealso name="OnPlayerSelectedMenuRow" />
+/// <seealso name="OnPlayerExitedMenu" />
 /// <remarks>Returns previous menu when none is displayed.</remarks>
 /// <returns>The ID of the player's currently shown menu, or <b><c>INVALID_MENU</c></b> (<b><c>255</c></b>) if no menu shown.</returns>
 native Menu:GetPlayerMenu(playerid);
@@ -1781,7 +1861,7 @@ native TextDrawTextSize(Text:text, Float:width, Float:height);
 /// <param name="text">The ID of the textdraw to set the alignment of</param>
 /// <param name="alignment"><b><c>1</c></b>-left <b><c>2</c></b>-centered <b><c>3</c></b>-right</param>
 /// <remarks>For alignment <b><c>2</c></b> (center) the x and y values of <a href="#TextSize">TextSize</a> need to be swapped, see notes at <a href="#TextDrawTextSize">TextDrawTextSize</a>, also position coordinate become position of center of textdraw and not left/top edges. </remarks>
-native TextDrawAlignment(Text:text, e_TEXT_DRAW_ALIGN:alignment);
+native TextDrawAlignment(Text:text, __TAG(TEXT_DRAW_ALIGN):alignment);
 
 /// <summary>Sets the text colour of a textdraw.</summary>
 /// <param name="text">The ID of the textdraw to change the colour of.</param>
@@ -1864,16 +1944,16 @@ native TextDrawShowForPlayer(playerid, Text:text);
 /// <summary>Hides a textdraw for a specific player.</summary>
 /// <param name="playerid">The ID of the player that the textdraw should be hidden for</param>
 /// <param name="text">The ID of the textdraw to hide</param>
-/// <seealso name="TextDrawHideForAll"/>
-/// <seealso name="TextDrawShowForPlayer"/>
-/// <seealso name="TextDrawShowForAll"/>
+/// <seealso name="TextDrawHideForAll" />
+/// <seealso name="TextDrawShowForPlayer" />
+/// <seealso name="TextDrawShowForAll" />
 native TextDrawHideForPlayer(playerid, Text:text);
 
 /// <summary>Shows a textdraw for all players.</summary>
 /// <param name="text">The ID of the textdraw to show. Returned by <a href="#TextDrawCreate">TextDrawCreate</a></param>
-/// <seealso name="TextDrawShowForPlayer"/>
-/// <seealso name="TextDrawHideForPlayer"/>
-/// <seealso name="TextDrawHideForAll"/>
+/// <seealso name="TextDrawShowForPlayer" />
+/// <seealso name="TextDrawHideForPlayer" />
+/// <seealso name="TextDrawHideForAll" />
 /// <returns>
 ///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute. This means the textdraw specified does not exist.
@@ -1882,9 +1962,9 @@ native TextDrawShowForAll(Text:text);
 
 /// <summary>Hides a text draw for all players.</summary>
 /// <param name="text">The ID of the textdraw to hide (returned by <a href="#TextDrawCreate">TextDrawCreate</a>)</param>
-/// <seealso name="TextDrawShowForPlayer"/>
-/// <seealso name="TextDrawHideForPlayer"/>
-/// <seealso name="TextDrawShowForAll"/>
+/// <seealso name="TextDrawShowForPlayer" />
+/// <seealso name="TextDrawHideForPlayer" />
+/// <seealso name="TextDrawShowForAll" />
 native TextDrawHideForAll(Text:text);
 
 /// <summary>Changes the text on a textdraw.</summary>
@@ -1925,15 +2005,15 @@ native TextDrawSetPreviewVehCol(Text:text, colour1, colour2);
 /// <param name="minY">The y coordinate for the south side of the gangzone</param>
 /// <param name="maxX">The x coordinate for the east side of the gangzone</param>
 /// <param name="maxY">The y coordinate for the north side of the gangzone</param>
-/// <seealso name="GangZoneDestroy"/>
-/// <seealso name="GangZoneShowForPlayer"/>
-/// <seealso name="GangZoneShowForAll"/>
-/// <seealso name="GangZoneHideForPlayer"/>
-/// <seealso name="GangZoneHideForAll"/>
-/// <seealso name="GangZoneFlashForPlayer"/>
-/// <seealso name="GangZoneFlashForAll"/>
-/// <seealso name="GangZoneStopFlashForPlayer"/>
-/// <seealso name="GangZoneStopFlashForAll"/>
+/// <seealso name="GangZoneDestroy" />
+/// <seealso name="GangZoneShowForPlayer" />
+/// <seealso name="GangZoneShowForAll" />
+/// <seealso name="GangZoneHideForPlayer" />
+/// <seealso name="GangZoneHideForAll" />
+/// <seealso name="GangZoneFlashForPlayer" />
+/// <seealso name="GangZoneFlashForAll" />
+/// <seealso name="GangZoneStopFlashForPlayer" />
+/// <seealso name="GangZoneStopFlashForAll" />
 /// <remarks>
 ///   There is a limit of <b><c>1024</c></b> gangzones.<br />
 ///   Putting the parameters in the wrong order results in glitchy behavior.
@@ -1944,45 +2024,45 @@ native GangZoneCreate(Float:minX, Float:minY, Float:maxX, Float:maxY);
 
 /// <summary>Destroy a gangzone.</summary>
 /// <param name="zone">The ID of the zone to destroy</param>
-/// <seealso name="GangZoneCreate"/>
-/// <seealso name="GangZoneShowForPlayer"/>
-/// <seealso name="GangZoneShowForAll"/>
-/// <seealso name="GangZoneHideForPlayer"/>
-/// <seealso name="GangZoneHideForAll"/>
-/// <seealso name="GangZoneFlashForPlayer"/>
-/// <seealso name="GangZoneFlashForAll"/>
-/// <seealso name="GangZoneStopFlashForPlayer"/>
-/// <seealso name="GangZoneStopFlashForAll"/>
+/// <seealso name="GangZoneCreate" />
+/// <seealso name="GangZoneShowForPlayer" />
+/// <seealso name="GangZoneShowForAll" />
+/// <seealso name="GangZoneHideForPlayer" />
+/// <seealso name="GangZoneHideForAll" />
+/// <seealso name="GangZoneFlashForPlayer" />
+/// <seealso name="GangZoneFlashForAll" />
+/// <seealso name="GangZoneStopFlashForPlayer" />
+/// <seealso name="GangZoneStopFlashForAll" />
 native GangZoneDestroy(zone);
 
 /// <summary>Show a gangzone for a player. Must be created with <a href="#GangZoneCreate">GangZoneCreate</a> first.</summary>
 /// <param name="playerid">The ID of the player you would like to show the gangzone for.</param>
 /// <param name="zone">The ID of the gang zone to show for the player. Returned by <a href="#GangZoneCreate">GangZoneCreate</a></param>
 /// <param name="colour">The colour to show the gang zone, as an integer or hex in <b>RGBA</b> colour format. Alpha transparency supported</param>
-/// <seealso name="GangZoneCreate"/>
-/// <seealso name="GangZoneDestroy"/>
-/// <seealso name="GangZoneShowForAll"/>
-/// <seealso name="GangZoneHideForPlayer"/>
-/// <seealso name="GangZoneHideForAll"/>
-/// <seealso name="GangZoneFlashForPlayer"/>
-/// <seealso name="GangZoneFlashForAll"/>
-/// <seealso name="GangZoneStopFlashForPlayer"/>
-/// <seealso name="GangZoneStopFlashForAll"/>
+/// <seealso name="GangZoneCreate" />
+/// <seealso name="GangZoneDestroy" />
+/// <seealso name="GangZoneShowForAll" />
+/// <seealso name="GangZoneHideForPlayer" />
+/// <seealso name="GangZoneHideForAll" />
+/// <seealso name="GangZoneFlashForPlayer" />
+/// <seealso name="GangZoneFlashForAll" />
+/// <seealso name="GangZoneStopFlashForPlayer" />
+/// <seealso name="GangZoneStopFlashForAll" />
 /// <returns><b><c>1</c></b> if the gangzone was shown, otherwise <b><c>0</c></b> (non-existant).</returns>
 native GangZoneShowForPlayer(playerid, zone, colour);
 
 /// <summary>Shows a gangzone with the desired colour to all players.</summary>
 /// <param name="zone">The ID of the gangzone to show (returned by <a href="# GangZoneCreate">GangZoneCreate</a>)</param>
 /// <param name="colour">The colour to show the gang zone, as an integer or hex in <b>RGBA</b> colour format. Alpha transparency supported</param>
-/// <seealso name="GangZoneCreate"/>
-/// <seealso name="GangZoneDestroy"/>
-/// <seealso name="GangZoneShowForPlayer"/>
-/// <seealso name="GangZoneHideForPlayer"/>
-/// <seealso name="GangZoneHideForAll"/>
-/// <seealso name="GangZoneFlashForPlayer"/>
-/// <seealso name="GangZoneFlashForAll"/>
-/// <seealso name="GangZoneStopFlashForPlayer"/>
-/// <seealso name="GangZoneStopFlashForAll"/>
+/// <seealso name="GangZoneCreate" />
+/// <seealso name="GangZoneDestroy" />
+/// <seealso name="GangZoneShowForPlayer" />
+/// <seealso name="GangZoneHideForPlayer" />
+/// <seealso name="GangZoneHideForAll" />
+/// <seealso name="GangZoneFlashForPlayer" />
+/// <seealso name="GangZoneFlashForAll" />
+/// <seealso name="GangZoneStopFlashForPlayer" />
+/// <seealso name="GangZoneStopFlashForAll" />
 /// <returns>
 ///   <b><c>1</c></b>: The function executed successfully. The gang zone was shown for all players.<br />
 ///   <b><c>0</c></b>: The function failed to execute. The gangzone does not exist.
@@ -1992,84 +2072,84 @@ native GangZoneShowForAll(zone, colour);
 /// <summary>Hides a gangzone for a player.</summary>
 /// <param name="playerid">The ID of the player to hide the gangzone for</param>
 /// <param name="zone">The ID of the zone to hide</param>
-/// <seealso name="GangZoneCreate"/>
-/// <seealso name="GangZoneDestroy"/>
-/// <seealso name="GangZoneShowForPlayer"/>
-/// <seealso name="GangZoneShowForAll"/>
-/// <seealso name="GangZoneHideForAll"/>
-/// <seealso name="GangZoneFlashForPlayer"/>
-/// <seealso name="GangZoneFlashForAll"/>
-/// <seealso name="GangZoneStopFlashForPlayer"/>
-/// <seealso name="GangZoneStopFlashForAll"/>
+/// <seealso name="GangZoneCreate" />
+/// <seealso name="GangZoneDestroy" />
+/// <seealso name="GangZoneShowForPlayer" />
+/// <seealso name="GangZoneShowForAll" />
+/// <seealso name="GangZoneHideForAll" />
+/// <seealso name="GangZoneFlashForPlayer" />
+/// <seealso name="GangZoneFlashForAll" />
+/// <seealso name="GangZoneStopFlashForPlayer" />
+/// <seealso name="GangZoneStopFlashForAll" />
 native GangZoneHideForPlayer(playerid, zone);
 
 /// <summary>GangZoneHideForAll hides a gangzone from all players.</summary>
 /// <param name="zone">The zone to hide</param>
-/// <seealso name="GangZoneCreate"/>
-/// <seealso name="GangZoneDestroy"/>
-/// <seealso name="GangZoneShowForPlayer"/>
-/// <seealso name="GangZoneShowForAll"/>
-/// <seealso name="GangZoneHideForPlayer"/>
-/// <seealso name="GangZoneFlashForPlayer"/>
-/// <seealso name="GangZoneFlashForAll"/>
-/// <seealso name="GangZoneStopFlashForPlayer"/>
-/// <seealso name="GangZoneStopFlashForAll"/>
+/// <seealso name="GangZoneCreate" />
+/// <seealso name="GangZoneDestroy" />
+/// <seealso name="GangZoneShowForPlayer" />
+/// <seealso name="GangZoneShowForAll" />
+/// <seealso name="GangZoneHideForPlayer" />
+/// <seealso name="GangZoneFlashForPlayer" />
+/// <seealso name="GangZoneFlashForAll" />
+/// <seealso name="GangZoneStopFlashForPlayer" />
+/// <seealso name="GangZoneStopFlashForAll" />
 native GangZoneHideForAll(zone);
 
 /// <summary>Makes a gangzone flash for a player.</summary>
 /// <param name="playerid">The ID of the player to flash the gangzone for</param>
 /// <param name="zone">The ID of the zone to flash</param>
 /// <param name="flashColour">The colour to flash the gang zone, as an integer or hex in <b>RGBA</b> colour format. Alpha transparency supported</param>
-/// <seealso name="GangZoneCreate"/>
-/// <seealso name="GangZoneDestroy"/>
-/// <seealso name="GangZoneShowForPlayer"/>
-/// <seealso name="GangZoneShowForAll"/>
-/// <seealso name="GangZoneHideForPlayer"/>
-/// <seealso name="GangZoneHideForAll"/>
-/// <seealso name="GangZoneFlashForAll"/>
-/// <seealso name="GangZoneStopFlashForPlayer"/>
-/// <seealso name="GangZoneStopFlashForAll"/>
+/// <seealso name="GangZoneCreate" />
+/// <seealso name="GangZoneDestroy" />
+/// <seealso name="GangZoneShowForPlayer" />
+/// <seealso name="GangZoneShowForAll" />
+/// <seealso name="GangZoneHideForPlayer" />
+/// <seealso name="GangZoneHideForAll" />
+/// <seealso name="GangZoneFlashForAll" />
+/// <seealso name="GangZoneStopFlashForPlayer" />
+/// <seealso name="GangZoneStopFlashForAll" />
 native GangZoneFlashForPlayer(playerid, zone, flashColour);
 
 /// <summary>GangZoneFlashForAll flashes a gangzone for all players.</summary>
 /// <param name="zone">The zone to flash</param>
 /// <param name="flashColour">The colour to flash the gang zone, as an integer or hex in <b>RGBA</b> colour format. Alpha transparency supported</param>
-/// <seealso name="GangZoneCreate"/>
-/// <seealso name="GangZoneDestroy"/>
-/// <seealso name="GangZoneShowForPlayer"/>
-/// <seealso name="GangZoneShowForAll"/>
-/// <seealso name="GangZoneHideForPlayer"/>
-/// <seealso name="GangZoneHideForAll"/>
-/// <seealso name="GangZoneFlashForPlayer"/>
-/// <seealso name="GangZoneStopFlashForPlayer"/>
-/// <seealso name="GangZoneStopFlashForAll"/>
+/// <seealso name="GangZoneCreate" />
+/// <seealso name="GangZoneDestroy" />
+/// <seealso name="GangZoneShowForPlayer" />
+/// <seealso name="GangZoneShowForAll" />
+/// <seealso name="GangZoneHideForPlayer" />
+/// <seealso name="GangZoneHideForAll" />
+/// <seealso name="GangZoneFlashForPlayer" />
+/// <seealso name="GangZoneStopFlashForPlayer" />
+/// <seealso name="GangZoneStopFlashForAll" />
 native GangZoneFlashForAll(zone, flashColour);
 
 /// <summary>Stops a gangzone flashing for a player.</summary>
 /// <param name="playerid">The ID of the player to stop the gangzone flashing for</param>
 /// <param name="zone">The ID of the gangzonezone to stop flashing</param>
-/// <seealso name="GangZoneCreate"/>
-/// <seealso name="GangZoneDestroy"/>
-/// <seealso name="GangZoneShowForPlayer"/>
-/// <seealso name="GangZoneShowForAll"/>
-/// <seealso name="GangZoneHideForPlayer"/>
-/// <seealso name="GangZoneHideForAll"/>
-/// <seealso name="GangZoneFlashForPlayer"/>
-/// <seealso name="GangZoneFlashForAll"/>
-/// <seealso name="GangZoneStopFlashForAll"/>
+/// <seealso name="GangZoneCreate" />
+/// <seealso name="GangZoneDestroy" />
+/// <seealso name="GangZoneShowForPlayer" />
+/// <seealso name="GangZoneShowForAll" />
+/// <seealso name="GangZoneHideForPlayer" />
+/// <seealso name="GangZoneHideForAll" />
+/// <seealso name="GangZoneFlashForPlayer" />
+/// <seealso name="GangZoneFlashForAll" />
+/// <seealso name="GangZoneStopFlashForAll" />
 native GangZoneStopFlashForPlayer(playerid, zone);
 
 /// <summary>Stops a gangzone flashing for all players.</summary>
 /// <param name="zone">The ID of the zone to stop flashing. Returned by <a href="#GangZoneCreate">GangZoneCreate</a></param>
-/// <seealso name="GangZoneCreate"/>
-/// <seealso name="GangZoneDestroy"/>
-/// <seealso name="GangZoneShowForPlayer"/>
-/// <seealso name="GangZoneShowForAll"/>
-/// <seealso name="GangZoneHideForPlayer"/>
-/// <seealso name="GangZoneHideForAll"/>
-/// <seealso name="GangZoneFlashForPlayer"/>
-/// <seealso name="GangZoneFlashForAll"/>
-/// <seealso name="GangZoneStopFlashForPlayer"/>
+/// <seealso name="GangZoneCreate" />
+/// <seealso name="GangZoneDestroy" />
+/// <seealso name="GangZoneShowForPlayer" />
+/// <seealso name="GangZoneShowForAll" />
+/// <seealso name="GangZoneHideForPlayer" />
+/// <seealso name="GangZoneHideForAll" />
+/// <seealso name="GangZoneFlashForPlayer" />
+/// <seealso name="GangZoneFlashForAll" />
+/// <seealso name="GangZoneStopFlashForPlayer" />
 /// <returns>
 ///   <b><c>1</c></b>: The function executed successfully. Success is reported even if the gang zone wasn't flashing to begin with.<br />
 ///   <b><c>0</c></b>: The function failed to execute. The gangzone specified does not exist.
@@ -2087,16 +2167,16 @@ native GangZoneStopFlashForAll(zone);
 /// <param name="drawDistance">The distance from where you are able to see the 3D Text Label</param>
 /// <param name="virtualWorld">The virtual world in which you are able to see the 3D Text</param>
 /// <param name="testLOS">Test the line-of-sight so this text can't be seen through objects (optional=<b><c>0</c></b>)</param>
-/// <seealso name="Delete3DTextLabel"/>
-/// <seealso name="Attach3DTextLabelToPlayer"/>
-/// <seealso name="Attach3DTextLabelToVehicle"/>
-/// <seealso name="Update3DTextLabelText"/>
-/// <seealso name="CreatePlayer3DTextLabel"/>
-/// <seealso name="DeletePlayer3DTextLabel"/>
-/// <seealso name="UpdatePlayer3DTextLabelText"/>
+/// <seealso name="Delete3DTextLabel" />
+/// <seealso name="Attach3DTextLabelToPlayer" />
+/// <seealso name="Attach3DTextLabelToVehicle" />
+/// <seealso name="Update3DTextLabelText" />
+/// <seealso name="CreatePlayer3DTextLabel" />
+/// <seealso name="DeletePlayer3DTextLabel" />
+/// <seealso name="UpdatePlayer3DTextLabelText" />
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <remarks>
-///   If <paramref name="text"/> is empty, the server/clients next to the text might crash!<br />
+///   If <paramref name="text" /> is empty, the server/clients next to the text might crash!<br />
 ///   If the virtualWorld is set as <b><c>-1</c></b> the text will not appear.
 /// </remarks>
 /// <remarks>drawdistance seems to be a lot smaller when spectating.</remarks>
@@ -2106,13 +2186,13 @@ native Text3D:Create3DTextLabel(const text[], colour, Float:x, Float:y, Float:z,
 
 /// <summary>Delete a 3D text label (created with <a href="#Create3DTextLabel">Create3DTextLabel</a>).</summary>
 /// <param name="textid">The ID of the 3D text label to delete</param>
-/// <seealso name="Create3DTextLabel"/>
-/// <seealso name="Attach3DTextLabelToPlayer"/>
-/// <seealso name="Attach3DTextLabelToVehicle"/>
-/// <seealso name="Update3DTextLabelText"/>
-/// <seealso name="CreatePlayer3DTextLabel"/>
-/// <seealso name="DeletePlayer3DTextLabel"/>
-/// <seealso name="UpdatePlayer3DTextLabelText"/>
+/// <seealso name="Create3DTextLabel" />
+/// <seealso name="Attach3DTextLabelToPlayer" />
+/// <seealso name="Attach3DTextLabelToVehicle" />
+/// <seealso name="Update3DTextLabelText" />
+/// <seealso name="CreatePlayer3DTextLabel" />
+/// <seealso name="DeletePlayer3DTextLabel" />
+/// <seealso name="UpdatePlayer3DTextLabelText" />
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <returns><b><c>1</c></b> if the 3D text label was deleted, otherwise <b><c>0</c></b>.</returns>
 native Delete3DTextLabel(Text3D:textid);
@@ -2123,13 +2203,13 @@ native Delete3DTextLabel(Text3D:textid);
 /// <param name="offsetX">The x offset from the player</param>
 /// <param name="offsetY">The y offset from the player</param>
 /// <param name="offsetZ">The z offset from the player</param>
-/// <seealso name="Create3DTextLabel"/>
-/// <seealso name="Delete3DTextLabel"/>
-/// <seealso name="Attach3DTextLabelToVehicle"/>
-/// <seealso name="Update3DTextLabelText"/>
-/// <seealso name="CreatePlayer3DTextLabel"/>
-/// <seealso name="DeletePlayer3DTextLabel"/>
-/// <seealso name="UpdatePlayer3DTextLabelText"/>
+/// <seealso name="Create3DTextLabel" />
+/// <seealso name="Delete3DTextLabel" />
+/// <seealso name="Attach3DTextLabelToVehicle" />
+/// <seealso name="Update3DTextLabelText" />
+/// <seealso name="CreatePlayer3DTextLabel" />
+/// <seealso name="DeletePlayer3DTextLabel" />
+/// <seealso name="UpdatePlayer3DTextLabelText" />
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <returns>
 /// <b><c>1</c></b>: The function executed successfully.<br />
@@ -2143,13 +2223,13 @@ native Attach3DTextLabelToPlayer(Text3D:textid, parentid, Float:offsetX, Float:o
 /// <param name="offsetX">The offset-x coordinate of the player vehicle (the vehicle is 0.0, 0.0, 0.0).</param>
 /// <param name="offsetY">The offset-y coordinate of the player vehicle (the vehicle is 0.0, 0.0, 0.0).</param>
 /// <param name="offsetZ">The offset-z coordinate of the player vehicle (the vehicle is 0.0, 0.0, 0.0).</param>
-/// <seealso name="Create3DTextLabel"/>
-/// <seealso name="Delete3DTextLabel"/>
-/// <seealso name="Attach3DTextLabelToPlayer"/>
-/// <seealso name="Update3DTextLabelText"/>
-/// <seealso name="CreatePlayer3DTextLabel"/>
-/// <seealso name="DeletePlayer3DTextLabel"/>
-/// <seealso name="UpdatePlayer3DTextLabelText"/>
+/// <seealso name="Create3DTextLabel" />
+/// <seealso name="Delete3DTextLabel" />
+/// <seealso name="Attach3DTextLabelToPlayer" />
+/// <seealso name="Update3DTextLabelText" />
+/// <seealso name="CreatePlayer3DTextLabel" />
+/// <seealso name="DeletePlayer3DTextLabel" />
+/// <seealso name="UpdatePlayer3DTextLabelText" />
 /// <remarks>Attach3DTextLabelToPlayer was added in SA-MP 0.3a 	This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 native Attach3DTextLabelToVehicle(Text3D:textid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ);
 
@@ -2157,15 +2237,15 @@ native Attach3DTextLabelToVehicle(Text3D:textid, parentid, Float:offsetX, Float:
 /// <param name="textid">The 3D Text Label you want to update</param>
 /// <param name="colour">The colour the 3D Text Label should have from now on</param>
 /// <param name="text">The new text which the 3D Text Label should have from now on</param>
-/// <seealso name="Create3DTextLabel"/>
-/// <seealso name="Delete3DTextLabel"/>
-/// <seealso name="Attach3DTextLabelToPlayer"/>
-/// <seealso name="Attach3DTextLabelToVehicle"/>
-/// <seealso name="CreatePlayer3DTextLabel"/>
-/// <seealso name="DeletePlayer3DTextLabel"/>
-/// <seealso name="UpdatePlayer3DTextLabelText"/>
+/// <seealso name="Create3DTextLabel" />
+/// <seealso name="Delete3DTextLabel" />
+/// <seealso name="Attach3DTextLabelToPlayer" />
+/// <seealso name="Attach3DTextLabelToVehicle" />
+/// <seealso name="CreatePlayer3DTextLabel" />
+/// <seealso name="DeletePlayer3DTextLabel" />
+/// <seealso name="UpdatePlayer3DTextLabelText" />
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
-/// <remarks>If <paramref name="text"/> is empty, the server/clients next to the text might crash!</remarks>
+/// <remarks>If <paramref name="text" /> is empty, the server/clients next to the text might crash!</remarks>
 native Update3DTextLabelText(Text3D:textid, colour, const text[]);
 
 // Per-player 3D Text Labels
@@ -2181,15 +2261,15 @@ native Update3DTextLabelText(Text3D:textid, colour, const text[]);
 /// <param name="parentPlayerid">The player you want to attach the 3D Text Label to. (optional=<b><c>INVALID_PLAYER_ID</c></b>)</param>
 /// <param name="parentVehicleid">The vehicle you want to attach the 3D Text Label to. (optional=<b><c>INVALID_VEHICLE_ID</c></b>)</param>
 /// <param name="testLOS">Test the line-of-sight so this text can't be seen through walls (optional=<b><c>0</c></b>)</param>
-/// <seealso name="Create3DTextLabel"/>
-/// <seealso name="Delete3DTextLabel"/>
-/// <seealso name="Attach3DTextLabelToPlayer"/>
-/// <seealso name="Attach3DTextLabelToVehicle"/>
-/// <seealso name="Update3DTextLabelText"/>
-/// <seealso name="DeletePlayer3DTextLabel"/>
-/// <seealso name="UpdatePlayer3DTextLabelText"/>
+/// <seealso name="Create3DTextLabel" />
+/// <seealso name="Delete3DTextLabel" />
+/// <seealso name="Attach3DTextLabelToPlayer" />
+/// <seealso name="Attach3DTextLabelToVehicle" />
+/// <seealso name="Update3DTextLabelText" />
+/// <seealso name="DeletePlayer3DTextLabel" />
+/// <seealso name="UpdatePlayer3DTextLabelText" />
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
-/// <remarks>If <paramref name="text"/> is empty, the server/clients next to the text might crash!</remarks>
+/// <remarks>If <paramref name="text" /> is empty, the server/clients next to the text might crash!</remarks>
 /// <remarks>drawdistance seems to be a lot smaller when spectating.</remarks>
 /// <returns>The ID of the newly created Player 3D Text Label, or <b><c>INVALID_3DTEXT_ID</c></b> if the Player 3D Text Label limit (<b><c>MAX_3DTEXT_PLAYER</c></b>) was reached.</returns>
 native PlayerText3D:CreatePlayer3DTextLabel(playerid, const text[], colour, Float:x, Float:y, Float:z, Float:drawDistance, parentPlayerid = INVALID_PLAYER_ID, parentVehicleid = INVALID_VEHICLE_ID, bool:testLOS = false);
@@ -2197,12 +2277,12 @@ native PlayerText3D:CreatePlayer3DTextLabel(playerid, const text[], colour, Floa
 /// <summary>Destroy a 3D text label that was created using <a href="#CreatePlayer3DTextLabel">CreatePlayer3DTextLabel</a>.</summary>
 /// <param name="playerid">The ID of the player whose 3D text label to delete</param>
 /// <param name="textid">The ID of the player's 3D text label to delete</param>
-/// <seealso name="Create3DTextLabel"/>
-/// <seealso name="Attach3DTextLabelToPlayer"/>
-/// <seealso name="Attach3DTextLabelToVehicle"/>
-/// <seealso name="Update3DTextLabelText"/>
-/// <seealso name="CreatePlayer3DTextLabel"/>
-/// <seealso name="UpdatePlayer3DTextLabelText"/>
+/// <seealso name="Create3DTextLabel" />
+/// <seealso name="Attach3DTextLabelToPlayer" />
+/// <seealso name="Attach3DTextLabelToVehicle" />
+/// <seealso name="Update3DTextLabelText" />
+/// <seealso name="CreatePlayer3DTextLabel" />
+/// <seealso name="UpdatePlayer3DTextLabelText" />
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <returns>
 ///   <b><c>1</c></b>: The function executed successfully.<br />
@@ -2215,15 +2295,15 @@ native DeletePlayer3DTextLabel(playerid, PlayerText3D:textid);
 /// <param name="textid">The 3D Text Label you want to update</param>
 /// <param name="colour">The colour the 3D Text Label should have from now on</param>
 /// <param name="text">The new text which the 3D Text Label should have from now on</param>
-/// <seealso name="Create3DTextLabel"/>
-/// <seealso name="Delete3DTextLabel"/>
-/// <seealso name="Attach3DTextLabelToPlayer"/>
-/// <seealso name="Attach3DTextLabelToVehicle"/>
-/// <seealso name="Update3DTextLabelText"/>
-/// <seealso name="CreatePlayer3DTextLabel"/>
-/// <seealso name="DeletePlayer3DTextLabel"/>
+/// <seealso name="Create3DTextLabel" />
+/// <seealso name="Delete3DTextLabel" />
+/// <seealso name="Attach3DTextLabelToPlayer" />
+/// <seealso name="Attach3DTextLabelToVehicle" />
+/// <seealso name="Update3DTextLabelText" />
+/// <seealso name="CreatePlayer3DTextLabel" />
+/// <seealso name="DeletePlayer3DTextLabel" />
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
-/// <remarks>If <paramref name="text"/> is empty, the server/clients next to the text might crash!</remarks>
+/// <remarks>If <paramref name="text" /> is empty, the server/clients next to the text might crash!</remarks>
 native UpdatePlayer3DTextLabelText(playerid, PlayerText3D:textid, colour, const text[]);
 
 /// <summary>Shows the player a synchronous (only one at a time) dialog box.</summary>
@@ -2234,8 +2314,8 @@ native UpdatePlayer3DTextLabelText(playerid, PlayerText3D:textid, colour, const 
 /// <param name="info">The text to display in the main dialog. Use <b><c>\n</c></b> to start a new line and <b><c>\t</c></b> to tabulate</param>
 /// <param name="button1">The text on the left button</param>
 /// <param name="button2">The text on the right button. Leave it blank ( "" ) to hide it</param>
-/// <seealso name="TextDrawShowForPlayer"/>
-/// <seealso name="OnDialogResponse"/>
+/// <seealso name="TextDrawShowForPlayer" />
+/// <seealso name="OnDialogResponse" />
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <remarks>Use colour embedding for multiple colours in the text. </remarks>
 /// <remarks>Using <b><c>-1</c></b> as dialogid closes all dialogs currently shown on the client's screen. </remarks>
@@ -2243,7 +2323,7 @@ native UpdatePlayer3DTextLabelText(playerid, PlayerText3D:textid, colour, const 
 ///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute. This means the player is not connected.<br />
 /// </returns>
-native ShowPlayerDialog(playerid, dialogid, e_DIALOG_STYLE:style, const caption[], const info[], const button1[], const button2[]);
+native ShowPlayerDialog(playerid, dialogid, __TAG(DIALOG_STYLE):style, const caption[], const info[], const button1[], const button2[]);
 
 /// <summary>Get a players unique ID.</summary>
 /// <param name="playerid">The player to get the unique ID of</param>
@@ -2256,9 +2336,9 @@ native gpci(playerid, output[], size = sizeof (output));
 // --------------------------------------------------
 
 /// <summary>This callback is triggered when the gamemode starts.</summary>
-/// <seealso name="OnGameModeExit"/>
-/// <seealso name="OnFilterScriptInit"/>
-/// <seealso name="OnFilterScriptExit"/>
+/// <seealso name="OnGameModeExit" />
+/// <seealso name="OnFilterScriptInit" />
+/// <seealso name="OnFilterScriptExit" />
 /// <remarks>This function can also be used in a filterscript to detect if the gamemode changes with RCON commands like changemode or gmx, as changing the gamemode does not reload a filterscript.</remarks>
 /// <returns>
 ///   <b><c>0</c></b> - Will prevent other filterscripts from receiving this callback.<br />
@@ -2268,10 +2348,10 @@ native gpci(playerid, output[], size = sizeof (output));
 forward OnGameModeInit();
 
 /// <summary>This callback is called when a gamemode ends, either through 'gmx', the server being shut down, or <a href="#GameModeExit">GameModeExit</a>.</summary>
-/// <seealso name="OnGameModeInit"/>
-/// <seealso name="OnFilterScriptExit"/>
-/// <seealso name="OnFilterScriptInit"/>
-/// <seealso name="GameModeExit"/>
+/// <seealso name="OnGameModeInit" />
+/// <seealso name="OnFilterScriptExit" />
+/// <seealso name="OnFilterScriptInit" />
+/// <seealso name="GameModeExit" />
 /// <remarks>This function can also be used in a filterscript to detect if the gamemode changes with RCON commands like changemode or gmx, as changing the gamemode does not reload a filterscript.</remarks>
 /// <remarks>When using OnGameModeExit in conjunction with the 'rcon gmx' console command keep in mind there is a potential for client bugs to occur an example of this is excessive <a href="#RemoveBuildingForPlayer">RemoveBuildingForPlayer</a> calls during OnGameModeInit which could result in a client crash. </remarks>
 /// <remarks>This callback will NOT be called if the server crashes or the process is killed by other means, such as using the Linux kill command or pressing the close-button on the Windows console. </remarks>
@@ -2283,24 +2363,24 @@ forward OnGameModeInit();
 forward OnGameModeExit();
 
 /// <summary>This callback is called when a filterscript is initialized (loaded). It is only called inside the filterscript which is starting.</summary>
-/// <seealso name="OnFilterScriptExit"/>
-/// <seealso name="OnGameModeInit"/>
-/// <seealso name="OnGameModeExit"/>
+/// <seealso name="OnFilterScriptExit" />
+/// <seealso name="OnGameModeInit" />
+/// <seealso name="OnGameModeExit" />
 /// <returns>This callback does not handle returns.</returns>
 forward OnFilterScriptInit();
 
 /// <summary>This callback is called when a filterscript is unloaded. It is only called inside the filterscript which is unloaded.</summary>
-/// <seealso name="OnFilterScriptInit"/>
-/// <seealso name="OnGameModeInit"/>
-/// <seealso name="OnGameModeExit"/>
+/// <seealso name="OnFilterScriptInit" />
+/// <seealso name="OnGameModeInit" />
+/// <seealso name="OnGameModeExit" />
 /// <returns>This callback does not handle returns.</returns>
 forward OnFilterScriptExit();
 
 /// <summary>This callback is called when a player connects to the server.</summary>
 /// <param name="playerid">The ID of the player that connected</param>
-/// <seealso name="OnPlayerDisconnect"/>
-/// <seealso name="OnIncomingConnection"/>
-/// <seealso name="OnPlayerFinishedDownloading"/>
+/// <seealso name="OnPlayerDisconnect" />
+/// <seealso name="OnIncomingConnection" />
+/// <seealso name="OnPlayerFinishedDownloading" />
 /// <remarks>This callback can also be called by NPC.</remarks>
 /// <returns>
 ///   <b><c>0</c></b> - Will prevent other filterscripts from receiving this callback.<br />
@@ -2312,9 +2392,9 @@ forward OnPlayerConnect(playerid);
 /// <summary>This callback is called when a player disconnects from the server.</summary>
 /// <param name="playerid">The ID of the player that disconnected</param>
 /// <param name="reason">The reason for the disconnection. See table below</param>
-/// <seealso name="OnPlayerConnect"/>
-/// <seealso name="OnIncomingConnection"/>
-/// <seealso name="OnPlayerFinishedDownloading"/>
+/// <seealso name="OnPlayerConnect" />
+/// <seealso name="OnIncomingConnection" />
+/// <seealso name="OnPlayerFinishedDownloading" />
 /// <remarks>This callback can also be called by NPC.</remarks>
 /// <remarks>Some functions might not work correctly when used in this callback because the player is already disconnected when the callback is called. This means that you can't get unambiguous information from functions like <a href="#GetPlayerIp">GetPlayerIp</a> and <a href="#GetPlayerPos">GetPlayerPos</a>.</remarks>
 /// <remarks>
@@ -2334,11 +2414,11 @@ forward OnPlayerDisconnect(playerid, reason);
 
 /// <summary>This callback is called when a player spawns.(i.e. after caling <a href="#SpawnPlayer">SpawnPlayer</a> function).</summary>
 /// <param name="playerid">The ID of the player that spawned</param>
-/// <seealso name="OnPlayerDeath"/>
-/// <seealso name="OnVehicleSpawn"/>
-/// <seealso name="SpawnPlayer"/>
-/// <seealso name="AddPlayerClass"/>
-/// <seealso name="SetSpawnInfo"/>
+/// <seealso name="OnPlayerDeath" />
+/// <seealso name="OnVehicleSpawn" />
+/// <seealso name="SpawnPlayer" />
+/// <seealso name="AddPlayerClass" />
+/// <seealso name="SetSpawnInfo" />
 /// <remarks>This callback can also be called by NPC.</remarks>
 /// <remarks>The game sometimes deducts $100 from players after spawn.</remarks>
 /// <returns>
@@ -2352,9 +2432,9 @@ forward OnPlayerSpawn(playerid);
 /// <param name="playerid">The ID of the player that died</param>
 /// <param name="killerid">The ID of the player that killed the player who died, or <b><c>INVALID_PLAYER_ID</c></b> if there was none</param>
 /// <param name="reason">The ID of the <a href="http://wiki.sa-mp.com/wiki/Weapons">reason</a> for the player's death</param>
-/// <seealso name="OnPlayerSpawn"/>
-/// <seealso name="SendDeathMessage"/>
-/// <seealso name="SetPlayerHealth"/>
+/// <seealso name="OnPlayerSpawn" />
+/// <seealso name="SendDeathMessage" />
+/// <seealso name="SetPlayerHealth" />
 /// <remarks>
 ///   The reason will return 37 (flame thrower) from any fire sources (e.g. molotov, 18)<br />
 ///   The reason will return 51 from any weapon that creates an explosion (e.g. RPG, grenade)<br />
@@ -2370,10 +2450,10 @@ forward OnPlayerDeath(playerid, killerid, reason);
 
 /// <summary>This callback is called when a vehicle <b>re</b>spawns.</summary>
 /// <param name="vehicleid">The ID of the vehicle that spawned</param>
-/// <seealso name="OnVehicleDeath"/>
-/// <seealso name="OnPlayerSpawn"/>
-/// <seealso name="SetVehicleToRespawn"/>
-/// <seealso name="CreateVehicle"/>
+/// <seealso name="OnVehicleDeath" />
+/// <seealso name="OnPlayerSpawn" />
+/// <seealso name="SetVehicleToRespawn" />
+/// <seealso name="CreateVehicle" />
 /// <returns>
 ///   <b><c>0</c></b> - Will prevent other filterscripts from receiving this callback.<br />
 ///   <b><c>1</c></b> - Indicates that this callback will be passed to the next filterscript.<br />
@@ -2384,8 +2464,8 @@ forward OnVehicleSpawn(vehicleid);
 /// <summary>This callback is called when a vehicle is destroyed - either by exploding or becoming submerged in water.</summary>
 /// <param name="vehicleid">The ID of the vehicle that was destroyed</param>
 /// <param name="killerid">The ID of the player that reported (synced) the vehicle's destruction (name is misleading). Generally the driver or a passenger (if any) or the closest player</param>
-/// <seealso name="OnVehicleSpawn"/>
-/// <seealso name="SetVehicleHealth"/>
+/// <seealso name="OnVehicleSpawn" />
+/// <seealso name="SetVehicleHealth" />
 /// <remarks>This callback can also be called by NPC.</remarks>
 /// <remarks>This callback will also be called when a vehicle enters water, but the vehicle can be saved from destruction by teleportation or driving out (if only partially submerged). The callback won't be called a second time, and the vehicle may disappear when the driver exits, or after a short time.</remarks>
 /// <returns>
@@ -2397,9 +2477,9 @@ forward OnVehicleDeath(vehicleid, killerid);
 /// <summary>Called when a player sends a chat message.</summary>
 /// <param name="playerid">The ID of the player who typed the text</param>
 /// <param name="text">The text the player typed</param>
-/// <seealso name="OnPlayerCommandText"/>
-/// <seealso name="SendPlayerMessageToPlayer"/>
-/// <seealso name="SendPlayerMessageToAll"/>
+/// <seealso name="OnPlayerCommandText" />
+/// <seealso name="SendPlayerMessageToPlayer" />
+/// <seealso name="SendPlayerMessageToAll" />
 /// <remarks>This callback can also be called by NPC.</remarks>
 /// <returns>
 ///   Returning <b><c>0</c></b> in this callback will stop the text from being sent to all players.<br />
@@ -2410,9 +2490,9 @@ forward OnPlayerText(playerid, text[]);
 /// <summary>This callback is called when a player enters a command into the client chat window. Commands are anything that start with a forward slash, e.g. <c>/help</c>.</summary>
 /// <param name="playerid">The ID of the player that entered a command</param>
 /// <param name="cmdtext">The command that was entered (including the forward slash)</param>
-/// <seealso name="OnPlayerText"/>
-/// <seealso name="OnRconCommand"/>
-/// <seealso name="SendRconCommand"/>
+/// <seealso name="OnPlayerText" />
+/// <seealso name="OnRconCommand" />
+/// <seealso name="SendRconCommand" />
 /// <remarks>This callback can also be called by NPC.</remarks>
 /// <returns>
 ///   Return <b><c>1</c></b> if the command was processed, otherwise <b><c>0</c></b>; If the command was not found both in filterscripts and in gamemode, the player will be received a message: <em>SERVER: Unknown command</em>.<br />
@@ -2423,8 +2503,8 @@ forward OnPlayerCommandText(playerid, cmdtext[]);
 /// <summary>Called when a player changes class at class selection (and when class selection first appears).</summary>
 /// <param name="playerid">The ID of the player that changed class</param>
 /// <param name="classid">The ID of the current class being viewed (returned by <a href="#AddPlayerClass">AddPlayerClass</a>)</param>
-/// <seealso name="OnPlayerRequestSpawn"/>
-/// <seealso name="AddPlayerClass"/>
+/// <seealso name="OnPlayerRequestSpawn" />
+/// <seealso name="AddPlayerClass" />
 /// <remarks>This callback can also be called by NPC.</remarks>
 /// <remarks>This callback is also called when a player presses <b>F4</b>.</remarks>
 /// <returns>
@@ -2437,10 +2517,10 @@ forward OnPlayerRequestClass(playerid, classid);
 /// <param name="playerid">ID of the player who attempts to enter a vehicle</param>
 /// <param name="vehicleid">ID of the vehicle the player is attempting to enter</param>
 /// <param name="ispassenger"><b><c>0</c></b> if entering as driver. <b><c>1</c></b> if entering as passenger</param>
-/// <seealso name="OnPlayerExitVehicle"/>
-/// <seealso name="OnPlayerStateChange"/>
-/// <seealso name="PutPlayerInVehicle"/>
-/// <seealso name="GetPlayerVehicleSeat"/>
+/// <seealso name="OnPlayerExitVehicle" />
+/// <seealso name="OnPlayerStateChange" />
+/// <seealso name="PutPlayerInVehicle" />
+/// <seealso name="GetPlayerVehicleSeat" />
 /// <remarks>This callback is called when a player <b>BEGINS</b> to enter a vehicle, not when they HAVE entered it. See <a href="#OnPlayerStateChange">OnPlayerStateChange</a>. </remarks>
 /// <remarks>This callback is still called if the player is denied entry to the vehicle (e.g. it is locked or full). </remarks>
 /// <returns>
@@ -2452,10 +2532,10 @@ forward OnPlayerEnterVehicle(playerid, vehicleid, ispassenger);
 /// <summary>This callback is called when a player <b>starts</b> to exit a vehicle.</summary>
 /// <param name="playerid">The ID of the player that is exiting a vehicle</param>
 /// <param name="vehicleid">The ID of the vehicle the player is exiting</param>
-/// <seealso name="OnPlayerEnterVehicle"/>
-/// <seealso name="OnPlayerStateChange"/>
-/// <seealso name="RemovePlayerFromVehicle"/>
-/// <seealso name="GetPlayerVehicleSeat"/>
+/// <seealso name="OnPlayerEnterVehicle" />
+/// <seealso name="OnPlayerStateChange" />
+/// <seealso name="RemovePlayerFromVehicle" />
+/// <seealso name="GetPlayerVehicleSeat" />
 /// <remarks>Not called if the player falls off a bike or is removed from a vehicle by other means such as using <a href="#SetPlayerPos">SetPlayerPos</a>.</remarks>
 /// <remarks>You must use <a href="#OnPlayerStateChange">OnPlayerStateChange</a> and check if their old state is <b><c>PLAYER_STATE_DRIVER</c></b> or <b><c>PLAYER_STATE_PASSENGER</c></b> and their new state is <b><c>PLAYER_STATE_ONFOOT</c></b>.</remarks>
 /// <returns>
@@ -2468,10 +2548,10 @@ forward OnPlayerExitVehicle(playerid, vehicleid);
 /// <param name="playerid">The ID of the player that changed state</param>
 /// <param name="newstate">The player's new state</param>
 /// <param name="oldstate">The player's previous state</param>
-/// <seealso name="OnPlayerInteriorChange"/>
-/// <seealso name="GetPlayerState"/>
-/// <seealso name="GetPlayerSpecialAction"/>
-/// <seealso name="SetPlayerSpecialAction"/>
+/// <seealso name="OnPlayerInteriorChange" />
+/// <seealso name="GetPlayerState" />
+/// <seealso name="GetPlayerSpecialAction" />
+/// <seealso name="SetPlayerSpecialAction" />
 /// <remarks>This callback can also be called by NPC.</remarks>
 /// <remarks>
 ///   <b>States:</b><br />
@@ -2492,19 +2572,19 @@ forward OnPlayerExitVehicle(playerid, vehicleid);
 ///   This callback does not handle returns.<br />
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnPlayerStateChange(playerid, /*e_PLAYER_STATE:*/newstate, /*e_PLAYER_STATE:*/oldstate);
+forward OnPlayerStateChange(playerid, /*__TAG(PLAYER_STATE):*/newstate, /*__TAG(PLAYER_STATE):*/oldstate);
 
 /// <summary>This callback is called when a player enters the checkpoint set for that player.</summary>
 /// <param name="playerid">The player who entered the checkpoint</param>
-/// <seealso name="OnPlayerLeaveCheckpoint"/>
-/// <seealso name="OnPlayerEnterRaceCheckpoint"/>
-/// <seealso name="OnPlayerLeaveRaceCheckpoint"/>
-/// <seealso name="SetPlayerCheckpoint"/>
-/// <seealso name="DisablePlayerCheckpoint"/>
-/// <seealso name="IsPlayerInCheckpoint"/>
-/// <seealso name="SetPlayerRaceCheckpoint"/>
-/// <seealso name="DisablePlayerRaceCheckpoint"/>
-/// <seealso name="IsPlayerInRaceCheckpoint"/>
+/// <seealso name="OnPlayerLeaveCheckpoint" />
+/// <seealso name="OnPlayerEnterRaceCheckpoint" />
+/// <seealso name="OnPlayerLeaveRaceCheckpoint" />
+/// <seealso name="SetPlayerCheckpoint" />
+/// <seealso name="DisablePlayerCheckpoint" />
+/// <seealso name="IsPlayerInCheckpoint" />
+/// <seealso name="SetPlayerRaceCheckpoint" />
+/// <seealso name="DisablePlayerRaceCheckpoint" />
+/// <seealso name="IsPlayerInRaceCheckpoint" />
 /// <remarks>This callback can also be called by NPC.</remarks>
 /// <returns>
 ///   This callback does not handle returns.<br />
@@ -2514,15 +2594,15 @@ forward OnPlayerEnterCheckpoint(playerid);
 
 /// <summary>This callback is called when a player leaves the checkpoint set for them by <a href="#SetPlayerCheckpoint">SetPlayerCheckpoint</a>. Only one checkpoint can be set at a time.</summary>
 /// <param name="playerid">The ID of the player that left their checkpoint</param>
-/// <seealso name="OnPlayerEnterCheckpoint"/>
-/// <seealso name="OnPlayerEnterRaceCheckpoint"/>
-/// <seealso name="OnPlayerLeaveRaceCheckpoint"/>
-/// <seealso name="SetPlayerCheckpoint"/>
-/// <seealso name="DisablePlayerCheckpoint"/>
-/// <seealso name="IsPlayerInCheckpoint"/>
-/// <seealso name="SetPlayerRaceCheckpoint"/>
-/// <seealso name="DisablePlayerRaceCheckpoint"/>
-/// <seealso name="IsPlayerInRaceCheckpoint"/>
+/// <seealso name="OnPlayerEnterCheckpoint" />
+/// <seealso name="OnPlayerEnterRaceCheckpoint" />
+/// <seealso name="OnPlayerLeaveRaceCheckpoint" />
+/// <seealso name="SetPlayerCheckpoint" />
+/// <seealso name="DisablePlayerCheckpoint" />
+/// <seealso name="IsPlayerInCheckpoint" />
+/// <seealso name="SetPlayerRaceCheckpoint" />
+/// <seealso name="DisablePlayerRaceCheckpoint" />
+/// <seealso name="IsPlayerInRaceCheckpoint" />
 /// <remarks>This callback can also be called by NPC.</remarks>
 /// <returns>
 ///   This callback does not handle returns.<br />
@@ -2532,15 +2612,15 @@ forward OnPlayerLeaveCheckpoint(playerid);
 
 /// <summary>This callback is called when a player enters a race checkpoint.</summary>
 /// <param name="playerid">The ID of the player who entered the race checkpoint</param>
-/// <seealso name="OnPlayerEnterCheckpoint"/>
-/// <seealso name="OnPlayerLeaveCheckpoint"/>
-/// <seealso name="OnPlayerLeaveRaceCheckpoint"/>
-/// <seealso name="SetPlayerCheckpoint"/>
-/// <seealso name="DisablePlayerCheckpoint"/>
-/// <seealso name="IsPlayerInCheckpoint"/>
-/// <seealso name="SetPlayerRaceCheckpoint"/>
-/// <seealso name="DisablePlayerRaceCheckpoint"/>
-/// <seealso name="IsPlayerInRaceCheckpoint"/>
+/// <seealso name="OnPlayerEnterCheckpoint" />
+/// <seealso name="OnPlayerLeaveCheckpoint" />
+/// <seealso name="OnPlayerLeaveRaceCheckpoint" />
+/// <seealso name="SetPlayerCheckpoint" />
+/// <seealso name="DisablePlayerCheckpoint" />
+/// <seealso name="IsPlayerInCheckpoint" />
+/// <seealso name="SetPlayerRaceCheckpoint" />
+/// <seealso name="DisablePlayerRaceCheckpoint" />
+/// <seealso name="IsPlayerInRaceCheckpoint" />
 /// <remarks>This callback can also be called by NPC.</remarks>
 /// <returns>
 ///   This callback does not handle returns.<br />
@@ -2550,15 +2630,15 @@ forward OnPlayerEnterRaceCheckpoint(playerid);
 
 /// <summary>This callback is called when a player leaves the race checkpoint.</summary>
 /// <param name="playerid">The ID of the player that left the race checkpoint</param>
-/// <seealso name="OnPlayerEnterCheckpoint"/>
-/// <seealso name="OnPlayerLeaveCheckpoint"/>
-/// <seealso name="OnPlayerEnterRaceCheckpoint"/>
-/// <seealso name="SetPlayerCheckpoint"/>
-/// <seealso name="DisablePlayerCheckpoint"/>
-/// <seealso name="IsPlayerInCheckpoint"/>
-/// <seealso name="SetPlayerRaceCheckpoint"/>
-/// <seealso name="DisablePlayerRaceCheckpoint"/>
-/// <seealso name="IsPlayerInRaceCheckpoint"/>
+/// <seealso name="OnPlayerEnterCheckpoint" />
+/// <seealso name="OnPlayerLeaveCheckpoint" />
+/// <seealso name="OnPlayerEnterRaceCheckpoint" />
+/// <seealso name="SetPlayerCheckpoint" />
+/// <seealso name="DisablePlayerCheckpoint" />
+/// <seealso name="IsPlayerInCheckpoint" />
+/// <seealso name="SetPlayerRaceCheckpoint" />
+/// <seealso name="DisablePlayerRaceCheckpoint" />
+/// <seealso name="IsPlayerInRaceCheckpoint" />
 /// <remarks>This callback can also be called by NPC.</remarks>
 /// <returns>
 ///   This callback does not handle returns.<br />
@@ -2568,8 +2648,8 @@ forward OnPlayerLeaveRaceCheckpoint(playerid);
 
 /// <summary>This callback is called when a command is sent through the server console, remote RCON, or via the in-game "/rcon command".</summary>
 /// <param name="cmd">A string containing the command that was typed, as well as any passed parameters</param>
-/// <seealso name="IsPlayerAdmin"/>
-/// <seealso name="OnRconLoginAttempt"/>
+/// <seealso name="IsPlayerAdmin" />
+/// <seealso name="OnRconLoginAttempt" />
 /// <remarks>You will need to include this callback in a loaded filterscript for it to work in the gamemode!</remarks>
 /// <remarks>"/rcon" is not included in "cmd" when a player types a command. </remarks>
 /// <remarks>If you use the <a href="#print">print</a> function here, it will send a message to the player who typed the command in-game as well as the log.</remarks>
@@ -2583,8 +2663,8 @@ forward OnRconCommand(cmd[]);
 
 /// <summary>Called when a player attempts to spawn via class selection either by pressing SHIFT or clicking the 'Spawn' button.</summary>
 /// <param name="playerid">The ID of the player that requested to spawn</param>
-/// <seealso name="OnPlayerSpawn"/>
-/// <seealso name="OnPlayerRequestClass"/>
+/// <seealso name="OnPlayerSpawn" />
+/// <seealso name="OnPlayerRequestClass" />
 /// <remarks>This callback can also be called by NPC.</remarks>
 /// <remarks>To prevent players from spawning with certain classes, the last viewed class must be saved in a variable in <a href="#OnPlayerRequestClass">OnPlayerRequestClass</a>.</remarks>
 /// <returns>
@@ -2595,10 +2675,10 @@ forward OnPlayerRequestSpawn(playerid);
 
 /// <summary>This callback is called when an object is moved after <a href="#MoveObject">MoveObject</a> (when it stops moving).</summary>
 /// <param name="objectid">The ID of the object that was moved</param>
-/// <seealso name="MoveObject"/>
-/// <seealso name="IsObjectMoving"/>
-/// <seealso name="StopObject"/>
-/// <seealso name="OnPlayerObjectMoved"/>
+/// <seealso name="MoveObject" />
+/// <seealso name="IsObjectMoving" />
+/// <seealso name="StopObject" />
+/// <seealso name="OnPlayerObjectMoved" />
 /// <remarks><a href="#SetObjectPos">SetObjectPos</a> does not work when used in this callback. To fix it, recreate the object.</remarks>
 /// <returns>
 ///   This callback does not handle returns.<br />
@@ -2609,10 +2689,10 @@ forward OnObjectMoved(objectid);
 /// <summary>This callback is called when a player object is moved after <a href="#MovePlayerObject">MovePlayerObject</a> (when it stops moving).</summary>
 /// <param name="playerid">The playerid the object is assigned to</param>
 /// <param name="objectid">The ID of the player object that was moved</param>
-/// <seealso name="OnObjectMoved"/>
-/// <seealso name="MovePlayerObject"/>
-/// <seealso name="IsPlayerObjectMoving"/>
-/// <seealso name="StopPlayerObject"/>
+/// <seealso name="OnObjectMoved" />
+/// <seealso name="MovePlayerObject" />
+/// <seealso name="IsPlayerObjectMoving" />
+/// <seealso name="StopPlayerObject" />
 /// <remarks>This callback can also be called for NPC.</remarks>
 /// <returns>
 ///   This callback does not handle returns.<br />
@@ -2623,8 +2703,8 @@ forward OnPlayerObjectMoved(playerid, objectid);
 /// <summary>Called when a player picks up a pickup created with <a href="#CreatePickup">CreatePickup</a>.</summary>
 /// <param name="playerid">The ID of the player that picked up the pickup</param>
 /// <param name="pickupid">The ID of the pickup, returned by CreatePickup</param>
-/// <seealso name="CreatePickup"/>
-/// <seealso name="DestroyPickup"/>
+/// <seealso name="CreatePickup" />
+/// <seealso name="DestroyPickup" />
 /// <returns>
 ///   This callback does not handle returns.<br />
 ///   It is always called first in gamemode.
@@ -2635,10 +2715,10 @@ forward OnPlayerPickUpPickup(playerid, pickupid);
 /// <param name="playerid">The ID of the driver of the vehicle</param>
 /// <param name="vehicleid">The ID of the vehicle which is modded</param>
 /// <param name="componentid">The ID of the component which was added to the vehicle</param>
-/// <seealso name="AddVehicleComponent"/>
-/// <seealso name="OnEnterExitModShop"/>
-/// <seealso name="OnVehiclePaintjob"/>
-/// <seealso name="OnVehicleRespray"/>
+/// <seealso name="AddVehicleComponent" />
+/// <seealso name="OnEnterExitModShop" />
+/// <seealso name="OnVehiclePaintjob" />
+/// <seealso name="OnVehicleRespray" />
 /// <remarks>This callback is NOT called by <a href="#AddVehicleComponent">AddVehicleComponent</a>.</remarks>
 /// <returns>
 ///   Return <b><c>0</c></b> to desync the mod (or an invalid mod) from propagating and / or crashing players.<br />
@@ -2650,10 +2730,10 @@ forward OnVehicleMod(playerid, vehicleid, componentid);
 /// <param name="playerid">The ID of the player that entered or exited the modshop</param>
 /// <param name="enterexit"><b><c>1</c></b> if the player entered or <b><c>0</c></b> if they exited</param>
 /// <param name="interiorid">The interior ID of the modshop that the player is entering (or 0 if exiting)</param>
-/// <seealso name="OnVehicleMod"/>
-/// <seealso name="OnVehicleRespray"/>
-/// <seealso name="OnVehiclePaintjob"/>
-/// <seealso name="AddVehicleComponent"/>
+/// <seealso name="OnVehicleMod" />
+/// <seealso name="OnVehicleRespray" />
+/// <seealso name="OnVehiclePaintjob" />
+/// <seealso name="AddVehicleComponent" />
 /// <remarks>This callback was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <remarks>Players collide when they get into the same mod shop.</remarks>
 /// <returns>
@@ -2666,10 +2746,10 @@ forward OnEnterExitModShop(playerid, enterexit, interiorid);
 /// <param name="playerid">The ID of the player that changed the paintjob of their vehicle</param>
 /// <param name="vehicleid">The ID of the vehicle that had its paintjob changed</param>
 /// <param name="paintjobid">The ID of the new paintjob</param>
-/// <seealso name="ChangeVehiclePaintjob"/>
-/// <seealso name="ChangeVehicleColor"/>
-/// <seealso name="OnVehicleRespray"/>
-/// <seealso name="OnVehicleMod"/>
+/// <seealso name="ChangeVehiclePaintjob" />
+/// <seealso name="ChangeVehicleColor" />
+/// <seealso name="OnVehicleRespray" />
+/// <seealso name="OnVehicleMod" />
 /// <remarks>This callback is not called by <a href="#ChangeVehiclePaintjob">ChangeVehiclePaintjob</a>.</remarks>
 /// <returns>
 ///   This callback does not handle returns. Returning <b><c>0</c></b> won't deny the paintjob change.<br />
@@ -2682,11 +2762,11 @@ forward OnVehiclePaintjob(playerid, vehicleid, paintjobid);
 /// <param name="vehicleid">The ID of the vehicle that was resprayed</param>
 /// <param name="color1">The color that the vehicle's primary color was changed to</param>
 /// <param name="color2">The color that the vehicle's secondary color was changed to</param>
-/// <seealso name="ChangeVehicleColor"/>
-/// <seealso name="ChangeVehiclePaintjob"/>
-/// <seealso name="OnVehiclePaintjob"/>
-/// <seealso name="OnVehicleMod"/>
-/// <seealso name="OnEnterExitModShop"/>
+/// <seealso name="ChangeVehicleColor" />
+/// <seealso name="ChangeVehiclePaintjob" />
+/// <seealso name="OnVehiclePaintjob" />
+/// <seealso name="OnVehicleMod" />
+/// <seealso name="OnEnterExitModShop" />
 /// <remarks>Previewing a component inside a mod shop might call this callback.</remarks>
 /// <remarks>This callback is not called by <a href="#ChangeVehicleColor">ChangeVehicleColor</a>.</remarks>
 /// <returns>
@@ -2698,8 +2778,8 @@ forward OnVehicleRespray(playerid, vehicleid, color1, color2);
 /// <summary>This callback is called when a vehicle element such as doors, tires, panels, or lights change their damage status.</summary>
 /// <param name="vehicleid">The ID of the vehicle that was changed its damage status</param>
 /// <param name="playerid">The ID of the player who synced the change in the damage status (who had the car damaged or repaired)</param>
-/// <seealso name="GetVehicleDamageStatus"/>
-/// <seealso name="UpdateVehicleDamageStatus"/>
+/// <seealso name="GetVehicleDamageStatus" />
+/// <seealso name="UpdateVehicleDamageStatus" />
 /// <remarks>This callback was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <remarks>This does not include vehicle health changes</remarks>
 /// <returns>
@@ -2719,7 +2799,7 @@ forward OnVehicleDamageStatusUpdate(vehicleid, playerid);
 /// <param name="vel_x">The new X velocity of the vehicle. This parameter was added in <b>0.3z R4</b>. Leave it out if using an earlier version</param>
 /// <param name="vel_y">The new Y velocity of the vehicle. This parameter was added in <b>0.3z R4</b>. Leave it out if using an earlier version</param>
 /// <param name="vel_z">The new Z velocity of the vehicle. This parameter was added in <b>0.3z R4</b>. Leave it out if using an earlier version</param>
-/// <seealso name="OnTrailerUpdate"/>
+/// <seealso name="OnTrailerUpdate" />
 /// <remarks>This callback was added in <b>SA-MP 0.3c R3</b> and will not work in earlier versions!</remarks>
 /// <remarks>This callback is called very frequently per second per unoccupied vehicle. You should refrain from implementing intensive calculations or intensive file writing/reading operations in this callback.</remarks>
 /// <remarks><a href="#GetVehiclePos">GetVehiclePos</a> will return the old coordinates of the vehicle before this update.</remarks>
@@ -2732,13 +2812,13 @@ forward OnUnoccupiedVehicleUpdate(vehicleid, playerid, passenger_seat, Float:new
 /// <summary>This callback is called when a player selects an item from a menu (<a href="#ShowMenuForPlayer">ShowMenuForPlayer</a>).</summary>
 /// <param name="playerid">The ID of the player that selected a menu item</param>
 /// <param name="row">The ID of the row that was selected. The first row is ID <b><c>0</c></b></param>
-/// <seealso name="OnPlayerExitedMenu"/>
-/// <seealso name="OnDialogResponse"/>
-/// <seealso name="CreateMenu"/>
-/// <seealso name="DestroyMenu"/>
-/// <seealso name="AddMenuItem"/>
-/// <seealso name="ShowMenuForPlayer"/>
-/// <seealso name="HideMenuForPlayer"/>
+/// <seealso name="OnPlayerExitedMenu" />
+/// <seealso name="OnDialogResponse" />
+/// <seealso name="CreateMenu" />
+/// <seealso name="DestroyMenu" />
+/// <seealso name="AddMenuItem" />
+/// <seealso name="ShowMenuForPlayer" />
+/// <seealso name="HideMenuForPlayer" />
 /// <remarks>The menu ID is not passed to this callback. <a href="#GetPlayerMenu">GetPlayerMenu</a> must be used to determine which menu the player selected an item on.</remarks>
 /// <returns>
 ///   This callback does not handle returns.<br />
@@ -2748,9 +2828,9 @@ forward OnPlayerSelectedMenuRow(playerid, row);
 
 /// <summary>Called when a player exits a menu.</summary>
 /// <param name="playerid">The ID of the player that exited the menu</param>
-/// <seealso name="OnPlayerSelectedMenuRow"/>
-/// <seealso name="CreateMenu"/>
-/// <seealso name="DestroyMenu"/>
+/// <seealso name="OnPlayerSelectedMenuRow" />
+/// <seealso name="CreateMenu" />
+/// <seealso name="DestroyMenu" />
 /// <returns>
 ///   This callback does not handle returns.<br />
 ///   It is always called first in gamemode.
@@ -2761,10 +2841,10 @@ forward OnPlayerExitedMenu(playerid);
 /// <param name="playerid">The playerid who changed interior</param>
 /// <param name="newinteriorid">The interior the player is now in</param>
 /// <param name="oldinteriorid">The interior the player was in before</param>
-/// <seealso name="SetPlayerInterior"/>
-/// <seealso name="GetPlayerInterior"/>
-/// <seealso name="LinkVehicleToInterior"/>
-/// <seealso name="OnPlayerStateChange"/>
+/// <seealso name="SetPlayerInterior" />
+/// <seealso name="GetPlayerInterior" />
+/// <seealso name="LinkVehicleToInterior" />
+/// <seealso name="OnPlayerStateChange" />
 /// <returns>
 ///   This callback does not handle returns.<br />
 ///   It is always called first in gamemode.
@@ -2775,7 +2855,7 @@ forward OnPlayerInteriorChange(playerid, newinteriorid, oldinteriorid);
 /// <param name="playerid">The ID of the player that pressed or released a key</param>
 /// <param name="newkeys">A map (bitmask) of the keys currently held - see <a href="http://wiki.sa-mp.com/wiki/Keys">here</a></param>
 /// <param name="oldkeys">A map (bitmask) of the keys held prior to the current change - see <a href="http://wiki.sa-mp.com/wiki/Keys">here</a></param>
-/// <seealso name="GetPlayerKeys"/>
+/// <seealso name="GetPlayerKeys" />
 /// <remarks>This callback can also be called by NPC.</remarks>
 /// <remarks>
 ///   Useful macros:<br />
@@ -2803,9 +2883,9 @@ forward OnPlayerKeyStateChange(playerid, newkeys, oldkeys);
 /// <param name="ip">The IP of the player that tried to log in to RCON</param>
 /// <param name="password">The password used to login with</param>
 /// <param name="success"><b><c>0</c></b> if the password was incorrect or <b><c>1</c></b> if it was correct</param>
-/// <seealso name="OnRconCommand"/>
-/// <seealso name="IsPlayerAdmin"/>
-/// <seealso name="SendRconCommand"/>
+/// <seealso name="OnRconCommand" />
+/// <seealso name="IsPlayerAdmin" />
+/// <seealso name="SendRconCommand" />
 /// <remarks>This callback was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <remarks>This callback is only called when /rcon login is used in-game. </remarks>
 /// <remarks>This callback is only called when the player is not yet logged in. When the player is logged in, <a href="#OnRconCommand">OnRconCommand</a> is called instead.</remarks>
@@ -2830,9 +2910,9 @@ forward OnPlayerUpdate(playerid);
 /// <summary>This callback is called when a player is streamed by some other player's client.</summary>
 /// <param name="playerid">The ID of the player who has been streamed</param>
 /// <param name="forplayerid">The ID of the player that streamed the other player in</param>
-/// <seealso name="OnPlayerStreamOut"/>
-/// <seealso name="OnActorStreamIn"/>
-/// <seealso name="OnVehicleStreamIn"/>
+/// <seealso name="OnPlayerStreamOut" />
+/// <seealso name="OnActorStreamIn" />
+/// <seealso name="OnVehicleStreamIn" />
 /// <remarks>This callback was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <remarks>This callback can also be called by NPC.</remarks>
 /// <returns>
@@ -2844,9 +2924,9 @@ forward OnPlayerStreamIn(playerid, forplayerid);
 /// <summary>This callback is called when a player is streamed out from some other player's client.</summary>
 /// <param name="playerid">The player who has been destreamed</param>
 /// <param name="forplayerid">The player who has destreamed the other player</param>
-/// <seealso name="OnPlayerStreamIn"/>
-/// <seealso name="OnActorStreamOut"/>
-/// <seealso name="OnVehicleStreamOut"/>
+/// <seealso name="OnPlayerStreamIn" />
+/// <seealso name="OnActorStreamOut" />
+/// <seealso name="OnVehicleStreamOut" />
 /// <remarks>This callback was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <remarks>This callback can also be called by NPC.</remarks>
 /// <returns>
@@ -2858,9 +2938,9 @@ forward OnPlayerStreamOut(playerid, forplayerid);
 /// <summary>Called when a vehicle is streamed to a player's client.</summary>
 /// <param name="vehicleid">The ID of the vehicle that streamed in for the player</param>
 /// <param name="forplayerid">The ID of the player who the vehicle streamed in for</param>
-/// <seealso name="OnVehicleStreamOut"/>
-/// <seealso name="OnPlayerStreamIn"/>
-/// <seealso name="OnPlayerStreamOut"/>
+/// <seealso name="OnVehicleStreamOut" />
+/// <seealso name="OnPlayerStreamIn" />
+/// <seealso name="OnPlayerStreamOut" />
 /// <remarks>This callback was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <remarks>This callback can also be called by NPC.</remarks>
 /// <returns>
@@ -2872,9 +2952,9 @@ forward OnVehicleStreamIn(vehicleid, forplayerid);
 /// <summary>This callback is called when a vehicle is streamed out for a player's client (it's so far away that they can't see it).</summary>
 /// <param name="vehicleid">The ID of the vehicle that streamed out</param>
 /// <param name="forplayerid">The ID of the player who is no longer streaming the vehicle</param>
-/// <seealso name="OnVehicleStreamIn"/>
-/// <seealso name="OnPlayerStreamIn"/>
-/// <seealso name="OnPlayerStreamOut"/>
+/// <seealso name="OnVehicleStreamIn" />
+/// <seealso name="OnPlayerStreamIn" />
+/// <seealso name="OnPlayerStreamOut" />
 /// <remarks>This callback was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <remarks>This callback can also be called by NPC.</remarks>
 /// <returns>
@@ -2886,8 +2966,8 @@ forward OnVehicleStreamOut(vehicleid, forplayerid);
 /// <summary>This callback is called when an actor is streamed in by a player's client.</summary>
 /// <param name="actorid">The ID of the actor that has been streamed in for the player</param>
 /// <param name="forplayerid">The ID of the player that streamed the actor in</param>
-/// <seealso name="OnActorStreamOut"/>
-/// <seealso name="OnPlayerStreamIn"/>
+/// <seealso name="OnActorStreamOut" />
+/// <seealso name="OnPlayerStreamIn" />
 /// <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
 /// <remarks>This callback can also be called by NPC.</remarks>
 /// <remarks>It is always called first in filterscripts.</remarks>
@@ -2897,8 +2977,8 @@ forward OnActorStreamIn(actorid, forplayerid);
 /// <summary>This callback is called when an actor is streamed out by a player's client.</summary>
 /// <param name="actorid">The ID of the actor that has been streamed out for the player</param>
 /// <param name="forplayerid">The ID of the player that streamed the actor out</param>
-/// <seealso name="OnActorStreamIn"/>
-/// <seealso name="OnPlayerStreamOut"/>
+/// <seealso name="OnActorStreamIn" />
+/// <seealso name="OnPlayerStreamOut" />
 /// <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
 /// <remarks>This callback can also be called by NPC.</remarks>
 /// <remarks>It is always called first in filterscripts.</remarks>
@@ -2911,7 +2991,7 @@ forward OnActorStreamOut(actorid, forplayerid);
 /// <param name="response"><b><c>1</c></b> for left button and <b><c>0</c></b> for right button (if only one button shown, always <b><c>1</c></b>)</param>
 /// <param name="listitem">The ID of the list item selected by the player (starts at <b><c>0</c></b>) (only if using a list style dialog)</param>
 /// <param name="inputtext">The text entered into the input box by the player or the selected list item text</param>
-/// <seealso name="ShowPlayerDialog"/>
+/// <seealso name="ShowPlayerDialog" />
 /// <remarks>This callback was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <remarks>A player's dialog doesn't hide when the gamemode restarts, causing the server to print <c>"Warning: PlayerDialogResponse PlayerId: 0 dialog ID doesn't match last sent dialog ID"</c> if a player responded to this dialog after restart.</remarks>
 /// <remarks>Parameters can contain different values, based on dialog's <a href="http://wiki.sa-mp.com/wiki/Dialog_Styles">style</a>.</remarks>
@@ -2927,8 +3007,8 @@ forward OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]);
 /// <param name="amount">The amount of damage the player took (health and armour combined)</param>
 /// <param name="weaponid">The ID of the <a href="http://wiki.sa-mp.com/wiki/Weapons">weapon/reason</a> for the damage</param>
 /// <param name="bodypart">The body part that was hit. (NOTE: This parameter was added in <b>0.3z</b>. Leave it out if using an older version!)</param>
-/// <seealso name="OnPlayerGiveDamage"/>
-/// <seealso name="OnPlayerWeaponShot"/>
+/// <seealso name="OnPlayerGiveDamage" />
+/// <seealso name="OnPlayerWeaponShot" />
 /// <remarks>This callback was added in <b>SA-MP 0.3d</b> and will not work in earlier versions!</remarks>
 /// <remarks><a href="#GetPlayerHealth">GetPlayerHealth</a> and <a href="#GetPlayerArmour">GetPlayerArmour</a> will return the old amounts of the player before this callback. </remarks>
 /// <remarks>
@@ -2950,7 +3030,7 @@ forward OnPlayerTakeDamage(playerid, issuerid, Float:amount, weaponid, bodypart)
 /// <param name="amount">The amount of health/armour damagedid has lost (combined)</param>
 /// <param name="weaponid">The <a href="http://wiki.sa-mp.com/wiki/Weapons">reason</a> that caused the damage</param>
 /// <param name="bodypart">The body part that was hit. (NOTE: This parameter was added in <b>0.3z</b>. Leave it out if using an older version!)</param>
-/// <seealso name="OnPlayerTakeDamage"/>
+/// <seealso name="OnPlayerTakeDamage" />
 /// <remarks>This callback was added in <b>SA-MP 0.3d</b> and will not work in earlier versions!</remarks>
 /// <remarks>
 ///   Keep in mind this function can be inaccurate in some cases.<br />
@@ -2973,14 +3053,14 @@ forward OnPlayerGiveDamage(playerid, damagedid, Float:amount, weaponid, bodypart
 /// <param name="amount">The amount of health/armour damaged_actorid has lost</param>
 /// <param name="weaponid">The reason that caused the damage</param>
 /// <param name="bodypart">The body part that was hit</param>
-/// <seealso name="CreateActor"/>
-/// <seealso name="SetActorInvulnerable"/>
-/// <seealso name="SetActorHealth"/>
-/// <seealso name="GetActorHealth"/>
-/// <seealso name="IsActorInvulnerable"/>
-/// <seealso name="IsValidActor"/>
-/// <seealso name="OnActorStreamOut"/>
-/// <seealso name="OnPlayerStreamIn"/>
+/// <seealso name="CreateActor" />
+/// <seealso name="SetActorInvulnerable" />
+/// <seealso name="SetActorHealth" />
+/// <seealso name="GetActorHealth" />
+/// <seealso name="IsActorInvulnerable" />
+/// <seealso name="IsValidActor" />
+/// <seealso name="OnActorStreamOut" />
+/// <seealso name="OnPlayerStreamIn" />
 /// <remarks>This callback was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
 /// <remarks>This function does not get called if the actor is set invulnerable (WHICH IS BY DEFAULT). See <a href="#SetActorInvulnerable">SetActorInvulnerable</a>.</remarks>
 /// <returns>
@@ -2995,9 +3075,9 @@ forward OnPlayerGiveDamageActor(playerid, damaged_actorid, Float:amount, weaponi
 /// <param name="fX">The X float coordinate where the player clicked</param>
 /// <param name="fY">The Y float coordinate where the player clicked</param>
 /// <param name="fZ">The Z float coordinate where the player clicked (inaccurate - see note below)</param>
-/// <seealso name="SetPlayerPos"/>
-/// <seealso name="SetPlayerPosFindZ"/>
-/// <seealso name="GetPlayerPos"/>
+/// <seealso name="SetPlayerPos" />
+/// <seealso name="SetPlayerPosFindZ" />
+/// <seealso name="GetPlayerPos" />
 /// <remarks>This callback was added in <b>SA-MP 0.3d</b> and will not work in earlier versions!</remarks>
 /// <remarks>The Z value returned will be <b><c>0</c></b> (invalid) if it is far away from the player; use the <a href="http://forum.sa-mp.com/showthread.php?t=275492">MapAndreas plugin</a> to get a more accurate Z coordinate.</remarks>
 /// <returns>
@@ -3010,8 +3090,8 @@ forward OnPlayerClickMap(playerid, Float:fX, Float:fY, Float:fZ);
 /// <summary>This callback is called when a player clicks on a textdraw or cancels the select mode with the Escape key.</summary>
 /// <param name="playerid">The ID of the player that clicked on the textdraw</param>
 /// <param name="clickedid">The ID of the clicked textdraw. <b><c>INVALID_TEXT_DRAW</c></b> if selection was cancelled</param>
-/// <seealso name="OnPlayerClickPlayerTextDraw"/>
-/// <seealso name="OnPlayerClickPlayer"/>
+/// <seealso name="OnPlayerClickPlayerTextDraw" />
+/// <seealso name="OnPlayerClickPlayer" />
 /// <remarks>This callback was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <remarks>The clickable area is defined by <a href="#TextDrawTextSize">TextDrawTextSize</a>. The x and y parameters passed to that function must not be zero or negative. </remarks>
 /// <remarks>Do not use <a href="#CancelSelectTextDraw">CancelSelectTextDraw</a> unconditionally within this callback. This results in an infinite loop. </remarks>
@@ -3024,9 +3104,9 @@ forward OnPlayerClickTextDraw(playerid, Text:clickedid);
 /// <summary>This callback is called when a player clicks on a player-textdraw. It is not called when player cancels the select mode (ESC) - however, <a href="#OnPlayerClickTextDraw">OnPlayerClickTextDraw</a> is.</summary>
 /// <param name="playerid">The ID of the player that selected a textdraw</param>
 /// <param name="playertextid">The ID of the player-textdraw that the player selected</param>
-/// <seealso name="PlayerTextDrawSetSelectable"/>
-/// <seealso name="OnPlayerClickTextDraw"/>
-/// <seealso name="OnPlayerClickPlayer"/>
+/// <seealso name="PlayerTextDrawSetSelectable" />
+/// <seealso name="OnPlayerClickTextDraw" />
+/// <seealso name="OnPlayerClickPlayer" />
 /// <remarks>This callback was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <remarks>When a player presses ESC to cancel selecting a textdraw, <a href="#OnPlayerClickTextDraw">OnPlayerClickTextDraw</a> is called with a textdraw ID of <b><c>INVALID_TEXT_DRAW</c></b>. <a href="#OnPlayerClickPlayerTextDraw">OnPlayerClickPlayerTextDraw</a> won't be called also.</remarks>
 /// <returns>
@@ -3039,11 +3119,11 @@ forward OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid);
 /// <param name="playerid">The ID of the player attempting to connect</param>
 /// <param name="ip_address">The IP address of the player attempting to connect</param>
 /// <param name="port">The port of the attempted connection</param>
-/// <seealso name="OnPlayerConnect"/>
-/// <seealso name="OnPlayerDisconnect"/>
-/// <seealso name="OnPlayerFinishedDownloading"/>
-/// <seealso name="BlockIpAddress"/>
-/// <seealso name="UnBlockIpAddress"/>
+/// <seealso name="OnPlayerConnect" />
+/// <seealso name="OnPlayerDisconnect" />
+/// <seealso name="OnPlayerFinishedDownloading" />
+/// <seealso name="BlockIpAddress" />
+/// <seealso name="UnBlockIpAddress" />
 /// <remarks> 	This callback was added in <b>SA-MP 0.3z R2-2</b> and will not work in earlier versions!</remarks>
 /// <returns>
 ///   <b><c>1</c></b> - Will prevent other filterscripts from receiving this callback.<br />
@@ -3055,11 +3135,11 @@ forward OnIncomingConnection(playerid, ip_address[], port);
 /// <summary>This callback is called when a player sent a trailer update.</summary>
 /// <param name="playerid">The ID of the player who sent a trailer update</param>
 /// <param name="vehicleid">The Trailer being updated</param>
-/// <seealso name="OnUnoccupiedVehicleUpdate"/>
-/// <seealso name="GetVehicleTrailer"/>
-/// <seealso name="IsTrailerAttachedToVehicle"/>
-/// <seealso name="AttachTrailerToVehicle"/>
-/// <seealso name="DetachTrailerFromVehicle"/>
+/// <seealso name="OnUnoccupiedVehicleUpdate" />
+/// <seealso name="GetVehicleTrailer" />
+/// <seealso name="IsTrailerAttachedToVehicle" />
+/// <seealso name="AttachTrailerToVehicle" />
+/// <seealso name="DetachTrailerFromVehicle" />
 /// <remarks>This callback was added in <b>SA-MP 0.3z R4</b> and will not work in earlier versions!</remarks>
 /// <remarks>This callback is called very frequently per second per trailer. You should refrain from implementing intensive calculations or intensive file writing/reading operations in this callback. </remarks>
 /// <returns>
@@ -3073,7 +3153,7 @@ forward OnTrailerUpdate(playerid, vehicleid);
 /// <param name="playerid">The ID of the player that toggled the siren (driver)</param>
 /// <param name="vehicleid">The ID of the vehicle of which the siren was toggled for</param>
 /// <param name="newstate"><b><c>0</c></b> if siren was turned off, <b><c>1</c></b> if siren was turned on</param>
-/// <seealso name="GetVehicleParamsSirenState"/>
+/// <seealso name="GetVehicleParamsSirenState" />
 /// <remarks>This callback was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
 /// <remarks>This callback can also be called by NPC.</remarks>
 /// <remarks>This callback is only called when a vehicle's siren is toggled on or off, NOT when the alternate siren is in use (holding horn).</remarks>
@@ -3087,9 +3167,9 @@ forward OnVehicleSirenStateChange(playerid, vehicleid, newstate);
 /// <summary>This callback is called when a player finishes downloading custom models. For more information on how to add custom models to your server, see <a href="http://forum.sa-mp.com/showthread.php?t=644105">the release thread</a> and <a href="http://forum.sa-mp.com/showthread.php?t=644123">this tutorial</a>.</summary>
 /// <param name="playerid">The ID of the player that finished downloading custom models</param>
 /// <param name="virtualworld">The ID of the virtual world the player finished downloading custom models for</param>
-/// <seealso name="OnPlayerConnect"/>
-/// <seealso name="OnPlayerDisconnect"/>
-/// <seealso name="OnIncomingConnection"/>
+/// <seealso name="OnPlayerConnect" />
+/// <seealso name="OnPlayerDisconnect" />
+/// <seealso name="OnIncomingConnection" />
 /// <remarks>This callback was added in <b>SA-MP 0.3DL</b> and will not work in earlier versions!</remarks>
 /// <remarks>This callback is called every time a player changes virtual worlds, even if there are no custom models present in that world.</remarks>
 /// <returns>This callback does not handle returns.</returns>
@@ -3100,15 +3180,15 @@ forward OnPlayerRequestDownload(playerid, type, crc);
 /// <param name="playerid">The ID of the player that clicked on a player on the scoreboard</param>
 /// <param name="clickedplayerid">The ID of the player that was clicked on</param>
 /// <param name="source">The source of the player's click</param>
-/// <seealso name="OnPlayerClickTextDraw"/>
+/// <seealso name="OnPlayerClickTextDraw" />
 /// <remarks>This callback was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
-/// <remarks>There is currently only one <paramref name="source"/> (<b><c>0 - CLICK_SOURCE_SCOREBOARD</c></b>). The existence of this argument suggests that more sources may be supported in the future.</remarks>
+/// <remarks>There is currently only one <paramref name="source" /> (<b><c>0 - CLICK_SOURCE_SCOREBOARD</c></b>). The existence of this argument suggests that more sources may be supported in the future.</remarks>
 /// <returns>
 ///   <b><c>1</c></b> - Will prevent other filterscripts from receiving this callback.<br />
 ///   <b><c>0</c></b> - Indicates that this callback will be passed to the next filterscript.<br />
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnPlayerClickPlayer(playerid, clickedplayerid, e_CLICK_SOURCE:source);
+forward OnPlayerClickPlayer(playerid, clickedplayerid, /*__TAG(CLICK_SOURCE):*/source);
 
 /// <summary>This callback is called when a player finishes editing an object (<a href="#EditObject">EditObject</a>/<a href="#EditPlayerObject">EditPlayerObject</a>).</summary>
 /// <param name="playerid">The ID of the player that edited an object</param>
@@ -3121,10 +3201,10 @@ forward OnPlayerClickPlayer(playerid, clickedplayerid, e_CLICK_SOURCE:source);
 /// <param name="fRotX">The X rotation for the object that was edited</param>
 /// <param name="fRotY">The Y rotation for the object that was edited</param>
 /// <param name="fRotZ">The Z rotation for the object that was edited</param>
-/// <seealso name="EditObject"/>
-/// <seealso name="CreateObject"/>
-/// <seealso name="DestroyObject"/>
-/// <seealso name="MoveObject"/>
+/// <seealso name="EditObject" />
+/// <seealso name="CreateObject" />
+/// <seealso name="DestroyObject" />
+/// <seealso name="MoveObject" />
 /// <remarks>This callback was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <remarks>When using <b><c>EDIT_RESPONSE_UPDATE</c></b> be aware that this callback will not be called when releasing an edit in progress resulting in the last update of <b><c>EDIT_RESPONSE_UPDATE</c></b> being out of sync of the objects current position.</remarks>
 /// <returns>
@@ -3132,7 +3212,7 @@ forward OnPlayerClickPlayer(playerid, clickedplayerid, e_CLICK_SOURCE:source);
 ///   <b><c>0</c></b> - Indicates that this callback will be passed to the next script.<br />
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnPlayerEditObject(playerid, playerobject, objectid, /*e_EDIT_RESPONSE:*/response, Float:fX, Float:fY, Float:fZ, Float:fRotX, Float:fRotY, Float:fRotZ);
+forward OnPlayerEditObject(playerid, playerobject, objectid, /*__TAG(EDIT_RESPONSE):*/response, Float:fX, Float:fY, Float:fZ, Float:fRotX, Float:fRotY, Float:fRotZ);
 
 /// <summary>This callback is called when a player ends attached object edition mode.</summary>
 /// <param name="playerid">The ID of the player that ended edition mode</param>
@@ -3149,8 +3229,8 @@ forward OnPlayerEditObject(playerid, playerobject, objectid, /*e_EDIT_RESPONSE:*
 /// <param name="fScaleX">The X scale for the attached object that was edited</param>
 /// <param name="fScaleY">The Y scale for the attached object that was edited</param>
 /// <param name="fScaleZ">The Z scale for the attached object that was edited</param>
-/// <seealso name="EditAttachedObject"/>
-/// <seealso name="SetPlayerAttachedObject"/>
+/// <seealso name="EditAttachedObject" />
+/// <seealso name="SetPlayerAttachedObject" />
 /// <remarks>This callback was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <remarks>Editions should be discarded if response was <b><c>0</c></b> (cancelled). This must be done by storing the offsets etc. in an array BEFORE using <a href="#EditAttachedObject">EditAttachedObject</a>.</remarks>
 /// <returns>
@@ -3158,7 +3238,7 @@ forward OnPlayerEditObject(playerid, playerobject, objectid, /*e_EDIT_RESPONSE:*
 ///   <b><c>0</c></b> - Indicates that this callback will be passed to the next script.<br />
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnPlayerEditAttachedObject(playerid, /*e_EDIT_RESPONSE:*/response, index, modelid, boneid, Float:fOffsetX, Float:fOffsetY, Float:fOffsetZ, Float:fRotX, Float:fRotY, Float:fRotZ, Float:fScaleX, Float:fScaleY, Float:fScaleZ);
+forward OnPlayerEditAttachedObject(playerid, /*__TAG(EDIT_RESPONSE):*/response, index, modelid, boneid, Float:fOffsetX, Float:fOffsetY, Float:fOffsetZ, Float:fRotX, Float:fRotY, Float:fRotZ, Float:fScaleX, Float:fScaleY, Float:fScaleZ);
 
 /// <summary>This callback is called when a player selects an object after <a href="#SelectObject">SelectObject</a> has been used.</summary>
 /// <param name="playerid">The ID of the player that selected an object</param>
@@ -3168,14 +3248,14 @@ forward OnPlayerEditAttachedObject(playerid, /*e_EDIT_RESPONSE:*/response, index
 /// <param name="fX">The X position of the selected object</param>
 /// <param name="fY">The Y position of the selected object</param>
 /// <param name="fZ">The Z position of the selected object</param>
-/// <seealso name="SelectObject"/>
+/// <seealso name="SelectObject" />
 /// <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <returns>
 ///   <b><c>1</c></b> - Will prevent other scripts from receiving this callback.<br />
 ///   <b><c>0</c></b> - Indicates that this callback will be passed to the next script.<br />
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnPlayerSelectObject(playerid, e_SELECT_OBJECT:type, objectid, modelid, Float:fX, Float:fY, Float:fZ);
+forward OnPlayerSelectObject(playerid, /*__TAG(SELECT_OBJECT):*/type, objectid, modelid, Float:fX, Float:fY, Float:fZ);
 
 /// <summary>This callback is called when a player fires a shot from a weapon. Only bullet weapons are supported. Only <b>passenger</b> drive-by is supported (not driver drive-by, and not sea sparrow / hunter shots).</summary>
 /// <param name="playerid">The ID of the player that shot a weapon</param>
@@ -3185,8 +3265,8 @@ forward OnPlayerSelectObject(playerid, e_SELECT_OBJECT:type, objectid, modelid, 
 /// <param name="fX">The X coordinate that the shot hit</param>
 /// <param name="fY">The Y coordinate that the shot hit</param>
 /// <param name="fZ">The Z coordinate that the shot hit</param>
-/// <seealso name="OnPlayerGiveDamage"/>
-/// <seealso name="GetPlayerLastShotVectors"/>
+/// <seealso name="OnPlayerGiveDamage" />
+/// <seealso name="GetPlayerLastShotVectors" />
 /// <remarks>This callback was added in <b>SA-MP 0.3z</b> and will not work in earlier versions!</remarks>
 /// <remarks>
 ///     <li><b><c>BULLET_HIT_TYPE_NONE(0)</c></b></li>
@@ -3217,14 +3297,14 @@ forward OnPlayerSelectObject(playerid, e_SELECT_OBJECT:type, objectid, modelid, 
 ///   <b><c>1</c></b> - Allow the bullet to cause damage.<br />
 ///   It is always called first in filterscripts so returning <b><c>0</c></b> there also blocks other scripts from seeing it.
 /// </returns>
-forward OnPlayerWeaponShot(playerid, weaponid, e_BULLET_HIT_TYPE:hittype, hitid, Float:fX, Float:fY, Float:fZ);
+forward OnPlayerWeaponShot(playerid, weaponid, /*__TAG(BULLET_HIT_TYPE):*/hittype, hitid, Float:fX, Float:fY, Float:fZ);
 
 /// <summary>This callback is called when a SendClientCheck request comletes</summary>
 /// <param name="playerid">The ID of the player checked</param>
 /// <param name="actionid">The type of check performed</param>
 /// <param name="memaddr">The address requested</param>
 /// <param name="retndata">The result of the check</param>
-/// <seealso name="SendClientCheck"/>
+/// <seealso name="SendClientCheck" />
 forward OnClientCheckResponse(playerid, actionid, memaddr, retndata);
 
 /// <summary>This callback is called when a SendClientCheck request comletes</summary>
