@@ -7,6 +7,57 @@ The current latest version is **0.3.7-R2-2-1**.
 
 The master branch HEAD does not currently contain any RC libaries.
 
+## Tags
+
+The latest version of the SA:MP includes introduce many more tags to functions and callbacks.  These
+are useful in the long run, but slightly annoying to upgrade to.  There are three symbols:
+`NO_TAGS`, `WEAK_TAGS`, and `STRONG_TAGS`; that you can define before including `<a_samp>`, each one
+enabling progressively more checks:
+
+```pawn
+#define STRONG_TAGS
+#include <a_samp>
+```
+
+To encourage some adoption, the default is `WEAK_TAGS`.  Most old code uses will simply give a
+warning when the wrong tag is found:
+
+```pawn
+// Gives a warning:
+SetPlayerControllable(playerid, 1);
+
+// Should be:
+SetPlayerControllable(playerid, true);
+```
+
+However, there's a problem - callbacks give an error:
+
+```pawn
+forward OnPlayerStateChange(playerid, PLAYER_STATE:newstate, PLAYER_STATE:oldstate);
+
+public OnPlayerStateChange(playerid, newstate, oldstate)
+{
+}
+```
+
+This gives an error, when it should be fine.  Fixing it in a mode is easy - just use the correct
+tags on the variables in the callbacks.  Fixing it in a generic library needs a few extra lines to
+define a default tag when one isn't found (i.e. the user isn't using the improved includes):
+
+```pawn
+#if !defined PLAYER_STATE
+	// Use the default tag (none, `_:`) when the improved includes aren't found.
+	#define PLAYER_STATE: _:
+#endif
+public OnPlayerStateChange(playerid, PLAYER_STATE:newstate, PLAYER_STATE:oldstate)
+{
+	return Hooked_OnPlayerStateChange(playerid, newstate, oldstate);
+}
+
+// Don't forget to use ALS as normal.
+forward Hooked_OnPlayerStateChange(playerid, PLAYER_STATE:newstate, PLAYER_STATE:oldstate);
+```
+
 ## Why?
 
 The package management system built into the `sampctl` tool is based on GitHub
