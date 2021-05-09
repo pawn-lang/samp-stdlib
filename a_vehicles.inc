@@ -251,7 +251,7 @@ native ManualVehicleEngineAndLights();
 ///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute. This means the vehicle does not exist.
 /// </returns>
-native SetVehicleParamsEx(vehicleid, __TAG(VEHICLE_PARAMS):engine, __TAG(VEHICLE_PARAMS):lights, __TAG(VEHICLE_PARAMS):alarm, __TAG(VEHICLE_PARAMS):doors, __TAG(VEHICLE_PARAMS):bonnet, __TAG(VEHICLE_PARAMS):boot, __TAG(VEHICLE_PARAMS):objective);
+native SetVehicleParamsEx(vehicleid, VEHICLE_PARAMS:engine, VEHICLE_PARAMS:lights, VEHICLE_PARAMS:alarm, VEHICLE_PARAMS:doors, VEHICLE_PARAMS:bonnet, VEHICLE_PARAMS:boot, VEHICLE_PARAMS:objective);
 
 /// <summary>Gets a vehicle's parameters.</summary>
 /// <param name="vehicleid">The ID of the vehicle to get the parameters from</param>
@@ -265,7 +265,7 @@ native SetVehicleParamsEx(vehicleid, __TAG(VEHICLE_PARAMS):engine, __TAG(VEHICLE
 /// <seealso name="SetVehicleParamsEx" />
 /// <remarks>This function was added in <b>SA-MP 0.3c</b> and will not work in earlier versions!</remarks>
 /// <remarks>If a parameter is unset (SetVehicleParamsEx not used beforehand) the value will be <b><c>-1</c></b> ('unset').</remarks>
-native GetVehicleParamsEx(vehicleid, &__TAG(VEHICLE_PARAMS):engine, &__TAG(VEHICLE_PARAMS):lights, &__TAG(VEHICLE_PARAMS):alarm, &__TAG(VEHICLE_PARAMS):doors, &__TAG(VEHICLE_PARAMS):bonnet, &__TAG(VEHICLE_PARAMS):boot, &__TAG(VEHICLE_PARAMS):objective);
+native GetVehicleParamsEx(vehicleid, &VEHICLE_PARAMS:engine, &VEHICLE_PARAMS:lights, &VEHICLE_PARAMS:alarm, &VEHICLE_PARAMS:doors, &VEHICLE_PARAMS:bonnet, &VEHICLE_PARAMS:boot, &VEHICLE_PARAMS:objective);
 
 /// <summary>Returns a vehicle's siren state (on/off).</summary>
 /// <param name="vehicleid">The ID of the vehicle to get the siren state of</param>
@@ -548,7 +548,7 @@ native GetVehicleModel(vehicleid);
 ///   </ul>
 /// </remarks>
 /// <returns>The ID of the component installed in the specified slot. Returns <b><c>0</c></b> if no component in specified vehicle's specified slot, or if vehicle doesn't exist.</returns>
-native GetVehicleComponentInSlot(vehicleid, __TAG(CARMODTYPE):slot); // There is 1 slot for each CARMODTYPE_*
+native GetVehicleComponentInSlot(vehicleid, CARMODTYPE:slot); // There is 1 slot for each CARMODTYPE_*
 
 /// <summary>Find out what type of component a certain ID is.</summary>
 /// <param name="component">The component ID to check</param>
@@ -559,7 +559,7 @@ native GetVehicleComponentInSlot(vehicleid, __TAG(CARMODTYPE):slot); // There is
 /// <seealso name="OnEnterExitModShop" />
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <returns>The component slot ID of the specified component or <b><c>-1</c></b> if the component is invalid.</returns>
-native __TAG(CARMODTYPE):GetVehicleComponentType(component); // Find CARMODTYPE_* for component ID
+native CARMODTYPE:GetVehicleComponentType(component); // Find CARMODTYPE_* for component ID
 
 /// <summary>Fully repairs a vehicle, including visual damage (bumps, dents, scratches, popped tires etc.).</summary>
 /// <param name="vehicleid">The ID of the vehicle to repair</param>
@@ -734,7 +734,7 @@ native UpdateVehicleDamageStatus(vehicleid, panels, doors, lights, tires);
 ///     <li><b><c>VEHICLE_MODEL_INFO_REAR_BUMPER_Z </c></b> - height of the rear bumper</li>
 ///   </ul>
 /// </remarks>
-native GetVehicleModelInfo(vehiclemodel, __TAG(VEHICLE_MODEL_INFO):infotype, &Float:x, &Float:y, &Float:z);
+native GetVehicleModelInfo(vehiclemodel, VEHICLE_MODEL_INFO:infotype, &Float:x, &Float:y, &Float:z);
 
 // Virtual Worlds
 

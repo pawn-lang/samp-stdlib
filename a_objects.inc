@@ -592,7 +592,7 @@ native SetPlayerObjectMaterial(playerid, objectid, materialIndex, modelid, const
 ///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute.
 /// </returns>
-native SetObjectMaterialText(objectid, const text[], materialIndex = 0, __TAG(OBJECT_MATERIAL_SIZE):materialSize = OBJECT_MATERIAL_SIZE_256x128, const fontFace[] = "Arial", fontSize = 24, bool:bold = true, fontColour = 0xFFFFFFFF, backgroundColour = 0, __TAG(OBJECT_MATERIAL_TEXT_ALIGN):textalignment = OBJECT_MATERIAL_TEXT_ALIGN_LEFT);
+native SetObjectMaterialText(objectid, const text[], materialIndex = 0, OBJECT_MATERIAL_SIZE:materialSize = OBJECT_MATERIAL_SIZE_256x128, const fontFace[] = "Arial", fontSize = 24, bool:bold = true, fontColour = 0xFFFFFFFF, backgroundColour = 0, OBJECT_MATERIAL_TEXT_ALIGN:textalignment = OBJECT_MATERIAL_TEXT_ALIGN_LEFT);
 
 /// <summary>Replace the texture of a player object with text.</summary>
 /// <param name="playerid">The ID of the player whose player object to set the text of</param>
@@ -637,7 +637,7 @@ native SetObjectMaterialText(objectid, const text[], materialIndex = 0, __TAG(OB
 ///     <li><b><c>OBJECT_MATERIAL_SIZE_512x512</c></b> 140</li>
 ///   </ul>
 /// </remarks>
-native SetPlayerObjectMaterialText(playerid, objectid, const text[], materialIndex = 0, __TAG(OBJECT_MATERIAL_SIZE):materialSize = OBJECT_MATERIAL_SIZE_256x128, const fontFace[] = "Arial", fontSize = 24, bool:bold = true, fontColour = 0xFFFFFFFF, backgroundColour = 0, __TAG(OBJECT_MATERIAL_TEXT_ALIGN):textalignment = OBJECT_MATERIAL_TEXT_ALIGN_LEFT);
+native SetPlayerObjectMaterialText(playerid, objectid, const text[], materialIndex = 0, OBJECT_MATERIAL_SIZE:materialSize = OBJECT_MATERIAL_SIZE_256x128, const fontFace[] = "Arial", fontSize = 24, bool:bold = true, fontColour = 0xFFFFFFFF, backgroundColour = 0, OBJECT_MATERIAL_TEXT_ALIGN:textalignment = OBJECT_MATERIAL_TEXT_ALIGN_LEFT);
 
 /// <summary>Allows camera collisions with newly created objects to be disabled by default.</summary>
 /// <param name="disable"><b><c>1</c></b> to disable camera collisions for newly created objects and <b><c>0</c></b> to enable them (enabled by default)</param>

@@ -68,7 +68,7 @@ enum HTTP_ERROR:
 ///     <li>+ standard HTTP response codes</li>
 ///   </ul>
 /// </remarks>
-native HTTP(index, __TAG(HTTP_METHOD):method, const url[], const data[], const callback[]);
+native HTTP(index, HTTP_METHOD:method, const url[], const data[], const callback[]);
 
 // example HTTP callback: public MyHttpResponse(index, responseCode, const data[]) { ... }
 

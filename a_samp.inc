@@ -169,8 +169,8 @@ enum PLAYER_STATE:
 #define PLAYER_STATE_ENTER_VEHICLE_PASSENGER   (6)
 
 // Marker modes used by ShowPlayerMarkers()
-#define PLAYER_MARKERS: __TAG(PLAYER_MARKERS):
-enum PLAYER_MARKERS:
+#define PLAYER_MARKERS_MODE: __TAG(PLAYER_MARKERS_MODE):
+enum PLAYER_MARKERS_MODE:
 {
 	PLAYER_MARKERS_MODE_OFF,
 	PLAYER_MARKERS_MODE_GLOBAL,
@@ -923,7 +923,7 @@ native GetSVarNameAtIndex(index, output[], size = sizeof (output));
 ///   </ul>
 /// </remarks>
 /// <returns>Returns the type of the SVar. See table below.</returns>
-native __TAG(SERVER_VARTYPE):GetSVarType(const svar[]);
+native SERVER_VARTYPE:GetSVarType(const svar[]);
 
 // Game
 
@@ -1123,7 +1123,7 @@ native ShowNameTags(bool:show);
 ///   </ul>
 /// </remarks>
 /// <remarks>It is also possible to set a player's colour to a colour that has full transparency (no alpha value). This makes it possible to show markers on a per-player basis.</remarks>
-native ShowPlayerMarkers(__TAG(PLAYER_MARKERS):mode);
+native ShowPlayerMarkers(PLAYER_MARKERS_MODE:mode);
 
 /// <summary>Ends the current gamemode.</summary>
 /// <seealso name="OnGameModeExit" />
@@ -1861,7 +1861,7 @@ native TextDrawTextSize(Text:text, Float:width, Float:height);
 /// <param name="text">The ID of the textdraw to set the alignment of</param>
 /// <param name="alignment"><b><c>1</c></b>-left <b><c>2</c></b>-centered <b><c>3</c></b>-right</param>
 /// <remarks>For alignment <b><c>2</c></b> (center) the x and y values of <a href="#TextSize">TextSize</a> need to be swapped, see notes at <a href="#TextDrawTextSize">TextDrawTextSize</a>, also position coordinate become position of center of textdraw and not left/top edges. </remarks>
-native TextDrawAlignment(Text:text, __TAG(TEXT_DRAW_ALIGN):alignment);
+native TextDrawAlignment(Text:text, TEXT_DRAW_ALIGN:alignment);
 
 /// <summary>Sets the text colour of a textdraw.</summary>
 /// <param name="text">The ID of the textdraw to change the colour of.</param>
@@ -2323,7 +2323,7 @@ native UpdatePlayer3DTextLabelText(playerid, PlayerText3D:textid, colour, const 
 ///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute. This means the player is not connected.<br />
 /// </returns>
-native ShowPlayerDialog(playerid, dialogid, __TAG(DIALOG_STYLE):style, const caption[], const info[], const button1[], const button2[]);
+native ShowPlayerDialog(playerid, dialogid, DIALOG_STYLE:style, const caption[], const info[], const button1[], const button2[]);
 
 /// <summary>Get a players unique ID.</summary>
 /// <param name="playerid">The player to get the unique ID of</param>
@@ -2572,7 +2572,7 @@ forward OnPlayerExitVehicle(playerid, vehicleid);
 ///   This callback does not handle returns.<br />
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnPlayerStateChange(playerid, /*__TAG(PLAYER_STATE):*/newstate, /*__TAG(PLAYER_STATE):*/oldstate);
+forward OnPlayerStateChange(playerid, /*PLAYER_STATE:*/newstate, /*PLAYER_STATE:*/oldstate);
 
 /// <summary>This callback is called when a player enters the checkpoint set for that player.</summary>
 /// <param name="playerid">The player who entered the checkpoint</param>
@@ -3188,7 +3188,7 @@ forward OnPlayerRequestDownload(playerid, type, crc);
 ///   <b><c>0</c></b> - Indicates that this callback will be passed to the next filterscript.<br />
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnPlayerClickPlayer(playerid, clickedplayerid, /*__TAG(CLICK_SOURCE):*/source);
+forward OnPlayerClickPlayer(playerid, clickedplayerid, /*CLICK_SOURCE:*/source);
 
 /// <summary>This callback is called when a player finishes editing an object (<a href="#EditObject">EditObject</a>/<a href="#EditPlayerObject">EditPlayerObject</a>).</summary>
 /// <param name="playerid">The ID of the player that edited an object</param>
@@ -3212,7 +3212,7 @@ forward OnPlayerClickPlayer(playerid, clickedplayerid, /*__TAG(CLICK_SOURCE):*/s
 ///   <b><c>0</c></b> - Indicates that this callback will be passed to the next script.<br />
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnPlayerEditObject(playerid, playerobject, objectid, /*__TAG(EDIT_RESPONSE):*/response, Float:fX, Float:fY, Float:fZ, Float:fRotX, Float:fRotY, Float:fRotZ);
+forward OnPlayerEditObject(playerid, playerobject, objectid, /*EDIT_RESPONSE:*/response, Float:fX, Float:fY, Float:fZ, Float:fRotX, Float:fRotY, Float:fRotZ);
 
 /// <summary>This callback is called when a player ends attached object edition mode.</summary>
 /// <param name="playerid">The ID of the player that ended edition mode</param>
@@ -3238,7 +3238,7 @@ forward OnPlayerEditObject(playerid, playerobject, objectid, /*__TAG(EDIT_RESPON
 ///   <b><c>0</c></b> - Indicates that this callback will be passed to the next script.<br />
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnPlayerEditAttachedObject(playerid, /*__TAG(EDIT_RESPONSE):*/response, index, modelid, boneid, Float:fOffsetX, Float:fOffsetY, Float:fOffsetZ, Float:fRotX, Float:fRotY, Float:fRotZ, Float:fScaleX, Float:fScaleY, Float:fScaleZ);
+forward OnPlayerEditAttachedObject(playerid, /*EDIT_RESPONSE:*/response, index, modelid, boneid, Float:fOffsetX, Float:fOffsetY, Float:fOffsetZ, Float:fRotX, Float:fRotY, Float:fRotZ, Float:fScaleX, Float:fScaleY, Float:fScaleZ);
 
 /// <summary>This callback is called when a player selects an object after <a href="#SelectObject">SelectObject</a> has been used.</summary>
 /// <param name="playerid">The ID of the player that selected an object</param>
@@ -3255,7 +3255,7 @@ forward OnPlayerEditAttachedObject(playerid, /*__TAG(EDIT_RESPONSE):*/response, 
 ///   <b><c>0</c></b> - Indicates that this callback will be passed to the next script.<br />
 ///   It is always called first in filterscripts.
 /// </returns>
-forward OnPlayerSelectObject(playerid, /*__TAG(SELECT_OBJECT):*/type, objectid, modelid, Float:fX, Float:fY, Float:fZ);
+forward OnPlayerSelectObject(playerid, /*SELECT_OBJECT:*/type, objectid, modelid, Float:fX, Float:fY, Float:fZ);
 
 /// <summary>This callback is called when a player fires a shot from a weapon. Only bullet weapons are supported. Only <b>passenger</b> drive-by is supported (not driver drive-by, and not sea sparrow / hunter shots).</summary>
 /// <param name="playerid">The ID of the player that shot a weapon</param>
@@ -3297,7 +3297,7 @@ forward OnPlayerSelectObject(playerid, /*__TAG(SELECT_OBJECT):*/type, objectid, 
 ///   <b><c>1</c></b> - Allow the bullet to cause damage.<br />
 ///   It is always called first in filterscripts so returning <b><c>0</c></b> there also blocks other scripts from seeing it.
 /// </returns>
-forward OnPlayerWeaponShot(playerid, weaponid, /*__TAG(BULLET_HIT_TYPE):*/hittype, hitid, Float:fX, Float:fY, Float:fZ);
+forward OnPlayerWeaponShot(playerid, weaponid, /*BULLET_HIT_TYPE:*/hittype, hitid, Float:fX, Float:fY, Float:fZ);
 
 /// <summary>This callback is called when a SendClientCheck request comletes</summary>
 /// <param name="playerid">The ID of the player checked</param>

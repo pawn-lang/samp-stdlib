@@ -386,7 +386,7 @@ native GetPlayerAmmo(playerid);
 ///   </ul>
 /// </remarks>
 /// <returns>The state of the player's weapon. <b><c>0</c></b> if player specified does not exist.</returns>
-native __TAG(WEAPONSTATE):GetPlayerWeaponState(playerid);
+native WEAPONSTATE:GetPlayerWeaponState(playerid);
 
 /// <summary>Check who a player is aiming at.</summary>
 /// <param name="playerid">The ID of the player to get the target of</param>
@@ -637,7 +637,7 @@ native GetPlayerMoney(playerid);
 ///   </ul>
 /// </remarks>
 /// <returns>The player's current state as an integer.</returns>
-native __TAG(PLAYER_STATE):GetPlayerState(playerid);
+native PLAYER_STATE:GetPlayerState(playerid);
 
 /// <summary>Get the specified player's IP address and store it in a string.</summary>
 /// <param name="playerid">The ID of the player to get the IP address of</param>
@@ -786,7 +786,7 @@ native GetPlayerWantedLevel(playerid);
 ///     <li><b><c>FIGHT_STYLE_ELBOW</c></b></li>
 ///   </ul>
 /// </remarks>
-native SetPlayerFightingStyle(playerid, __TAG(FIGHT_STYLE):style);
+native SetPlayerFightingStyle(playerid, FIGHT_STYLE:style);
 
 /// <summary>Get the fighting style the player currently using.</summary>
 /// <param name="playerid">The ID of the player to get the fighting style of</param>
@@ -804,7 +804,7 @@ native SetPlayerFightingStyle(playerid, __TAG(FIGHT_STYLE):style);
 ///   </ul>
 /// </remarks>
 /// <returns>The ID of the fighting style of the player.</returns>
-native __TAG(FIGHT_STYLE):GetPlayerFightingStyle(playerid);
+native FIGHT_STYLE:GetPlayerFightingStyle(playerid);
 
 /// <summary>Set a player's velocity on the x, y and z axes.</summary>
 /// <param name="playerid">The player to apply the speed to</param>
@@ -933,7 +933,7 @@ native SetPlayerShopName(playerid, const shopname[]);
 ///     <li><b><c>WEAPONSKILL_SNIPERRIFLE(10)</c></b></li>
 ///   </ul>
 /// </remarks>
-native SetPlayerSkillLevel(playerid, __TAG(WEAPONSKILL):skill, level);
+native SetPlayerSkillLevel(playerid, WEAPONSKILL:skill, level);
 
 /// <summary>Get the ID of the vehicle that the player is surfing (stuck to the roof of).</summary>
 /// <param name="playerid">The ID of the player you want to know the surfing vehicle ID of</param>
@@ -1226,7 +1226,7 @@ native PlayerTextDrawTextSize(playerid, PlayerText:text, Float:width, Float:heig
 /// <seealso name="PlayerTextDrawHide" />
 /// <remarks>This feature (player-textdraws) was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <remarks>For alignment <b><c>2</c></b> (center) the x and y values of TextSize need to be swapped, see notes at <a href="#PlayerTextDrawTextSize">PlayerTextDrawTextSize</a>. </remarks>
-native PlayerTextDrawAlignment(playerid, PlayerText:text, __TAG(TEXT_DRAW_ALIGN):alignment);
+native PlayerTextDrawAlignment(playerid, PlayerText:text, TEXT_DRAW_ALIGN:alignment);
 
 /// <summary>Sets the text colour of a player-textdraw.</summary>
 /// <param name="playerid">The ID of the player who's textdraw to set the colour of</param>
@@ -1670,7 +1670,7 @@ native GetPVarNameAtIndex(playerid, index, output[], size = sizeof (output));
 ///   </ul>
 /// </remarks>
 /// <returns>Returns the type of the PVar. See table below.</returns>
-native __TAG(PLAYER_VARTYPE):GetPVarType(playerid, const pvar[]);
+native PLAYER_VARTYPE:GetPVarType(playerid, const pvar[]);
 
 #if MAX_CHATBUBBLE_LENGTH < 1 || MAX_CHATBUBBLE_LENGTH > 144
 	#error MAX_CHATBUBBLE_LENGTH must be >= 1 and <= 144
@@ -1857,7 +1857,7 @@ native GetAnimationName(index, animationLibrary[], len1 = sizeof (animationLibra
 ///   </ul>
 /// </remarks>
 /// <returns>The <a href="http://wiki.sa-mp.com/wiki/SpecialActions">special action</a> of the player.</returns>
-native __TAG(SPECIAL_ACTION):GetPlayerSpecialAction(playerid);
+native SPECIAL_ACTION:GetPlayerSpecialAction(playerid);
 
 /// <summary>This function allows to set players special action.</summary>
 /// <param name="playerid">The player that should perform the action</param>
@@ -1903,7 +1903,7 @@ native __TAG(SPECIAL_ACTION):GetPlayerSpecialAction(playerid);
 ///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute. This means the player is not connected.
 /// </returns>
-native SetPlayerSpecialAction(playerid, __TAG(SPECIAL_ACTION):actionid);
+native SetPlayerSpecialAction(playerid, SPECIAL_ACTION:actionid);
 
 /// <summary>Disables collisions between occupied vehicles for a player.</summary>
 /// <param name="playerid">The ID of the player for whom you want to disable collisions</param>
@@ -2053,7 +2053,7 @@ native ShowPlayerNameTagForPlayer(playerid, targetid, bool:show);
 ///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute. Player is not connected.
 /// </returns>
-native SetPlayerMapIcon(playerid, iconid, Float:x, Float:y, Float:z, markerType, colour, __TAG(MAPICON):style = MAPICON_LOCAL);
+native SetPlayerMapIcon(playerid, iconid, Float:x, Float:y, Float:z, markerType, colour, MAPICON:style = MAPICON_LOCAL);
 
 /// <summary>Removes a map icon that was set earlier for a player using <a href="#SetPlayerMapIcon">SetPlayerMapIcon</a>.</summary>
 /// <param name="playerid">The ID of the player whose icon to remove</param>
@@ -2107,7 +2107,7 @@ native SetPlayerCameraPos(playerid,Float:x, Float:y, Float:z);
 ///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute. The player specified does not exist.
 /// </returns>
-native SetPlayerCameraLookAt(playerid, Float:x, Float:y, Float:z, __TAG(CAMERA):cut = CAMERA_CUT);
+native SetPlayerCameraLookAt(playerid, Float:x, Float:y, Float:z, CAMERA:cut = CAMERA_CUT);
 
 /// <summary>Restore the camera to a place behind the player, after using a function like <a href="#SetPlayerCameraPos">SetPlayerCameraPos</a>.</summary>
 /// <param name="playerid">The player you want to restore the camera for</param>
@@ -2266,7 +2266,7 @@ native AttachCameraToPlayerObject(playerid, objectid);
 /// <seealso name="SetPlayerCameraLookAt" />
 /// <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <remarks>Use <b><c>TogglePlayerSpectating</c></b> to make objects stream in for the player while the camera is moving. You can reset the camera behind the player with <b><c>SetCameraBehindPlayer</c></b>.</remarks>
-native InterpolateCameraPos(playerid, Float:fromX, Float:fromY, Float:fromZ, Float:toX, Float:toY, Float:toZ, time, __TAG(CAMERA):cut = CAMERA_CUT);
+native InterpolateCameraPos(playerid, Float:fromX, Float:fromY, Float:fromZ, Float:toX, Float:toY, Float:toZ, time, CAMERA:cut = CAMERA_CUT);
 
 /// <summary>Interpolate a player's camera's 'look at' point between two coordinates with a set speed. Can be be used with <a href="#InterpolateCameraPos">InterpolateCameraPos</a>.</summary>
 /// <param name="playerid">The ID of the player the camera should be moved for</param>
@@ -2283,7 +2283,7 @@ native InterpolateCameraPos(playerid, Float:fromX, Float:fromY, Float:fromZ, Flo
 /// <seealso name="SetPlayerCameraPos" />
 /// <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <remarks>Use <b><c>TogglePlayerSpectating</c></b> to make objects stream in for the player while the camera is moving. You can reset the camera behind the player with <b><c>SetCameraBehindPlayer</c></b>.</remarks>
-native InterpolateCameraLookAt(playerid, Float:fromX, Float:fromY, Float:fromZ, Float:toX, Float:toY, Float:toZ, time, __TAG(CAMERA):cut = CAMERA_CUT);
+native InterpolateCameraLookAt(playerid, Float:fromX, Float:fromY, Float:fromZ, Float:toX, Float:toY, Float:toZ, time, CAMERA:cut = CAMERA_CUT);
 
 // Player conditionals
 
@@ -2412,7 +2412,7 @@ native TogglePlayerSpectating(playerid, bool:toggle);
 ///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute. One of the players specified does not exist.
 /// </returns>
-native PlayerSpectatePlayer(playerid, targetid, __TAG(SPECTATE_MODE):mode = SPECTATE_MODE_NORMAL);
+native PlayerSpectatePlayer(playerid, targetid, SPECTATE_MODE:mode = SPECTATE_MODE_NORMAL);
 
 /// <summary>Sets a player to spectate another vehicle. Their camera will be attached to the vehicle as if they are driving it.</summary>
 /// <param name="playerid">The ID of the player who should spectate a vehicle</param>
@@ -2426,7 +2426,7 @@ native PlayerSpectatePlayer(playerid, targetid, __TAG(SPECTATE_MODE):mode = SPEC
 ///   <b><c>1</c></b>: The function executed successfully. Note that success is reported if the player is not in spectator mode (<a href="#TogglePlayerSpectating">TogglePlayerSpectating</a>), but nothing will happen. <a href="#TogglePlayerSpectating">TogglePlayerSpectating</a> MUST be used first.<br />
 ///   <b><c>0</c></b>: The function failed to execute. The player, vehicle, or both don't exist.
 /// </returns>
-native PlayerSpectateVehicle(playerid, targetid, __TAG(SPECTATE_MODE):mode = SPECTATE_MODE_NORMAL);
+native PlayerSpectateVehicle(playerid, targetid, SPECTATE_MODE:mode = SPECTATE_MODE_NORMAL);
 
 /// <summary>Starts recording a player's movements to a file, which can then be reproduced by an NPC.</summary>
 /// <param name="playerid">The ID of the player to record</param>
@@ -2434,7 +2434,7 @@ native PlayerSpectateVehicle(playerid, targetid, __TAG(SPECTATE_MODE):mode = SPE
 /// <param name="recordFile">The name of the file which will hold the recorded data. It will be saved in the scriptfiles directory, with an automatically added .rec extension, you will need to move the file to npcmodes/recordings to use for playback</param>
 /// <seealso name="StopRecordingPlayerData" />
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
-native StartRecordingPlayerData(playerid, __TAG(PLAYER_RECORDING_TYPE):recordType, const recordFile[]);
+native StartRecordingPlayerData(playerid, PLAYER_RECORDING_TYPE:recordType, const recordFile[]);
 
 /// <summary>Stops all the recordings that had been started with <a href="#StartRecordingPlayerData">StartRecordingPlayerData</a> for a specific player.</summary>
 /// <param name="playerid">The player you want to stop the recordings of</param>
