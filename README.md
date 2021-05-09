@@ -58,6 +58,62 @@ public OnPlayerStateChange(playerid, PLAYER_STATE:newstate, PLAYER_STATE:oldstat
 forward Hooked_OnPlayerStateChange(playerid, PLAYER_STATE:newstate, PLAYER_STATE:oldstate);
 ```
 
+### Complete List
+
+* `OnPlayerStateChange`
+
+```pawn
+#if !defined PLAYER_STATE
+	#define PLAYER_STATE: _:
+#endif
+forward OnPlayerStateChange(playerid, PLAYER_STATE:newstate, PLAYER_STATE:oldstate);
+```
+
+* `OnPlayerClickPlayer`
+
+```pawn
+#if !defined CLICK_SOURCE
+	#define CLICK_SOURCE: _:
+#endif
+forward OnPlayerClickPlayer(playerid, clickedplayerid, CLICK_SOURCE:source);
+```
+
+* `OnPlayerEditObject`
+
+```pawn
+#if !defined EDIT_RESPONSE
+	#define EDIT_RESPONSE: _:
+#endif
+forward OnPlayerEditObject(playerid, playerobject, objectid, EDIT_RESPONSE:response, Float:fX, Float:fY, Float:fZ, Float:fRotX, Float:fRotY, Float:fRotZ);
+```
+
+* `OnPlayerEditAttachedObject`
+
+```pawn
+#if !defined EDIT_RESPONSE
+	#define EDIT_RESPONSE: _:
+#endif
+forward OnPlayerEditAttachedObject(playerid, EDIT_RESPONSE:response, index, modelid, boneid, Float:fOffsetX, Float:fOffsetY, Float:fOffsetZ, Float:fRotX, Float:fRotY, Float:fRotZ, Float:fScaleX, Float:fScaleY, Float:fScaleZ);
+```
+
+* `OnPlayerSelectObject`
+
+```pawn
+#if !defined SELECT_OBJECT
+	#define SELECT_OBJECT: _:
+#endif
+forward OnPlayerSelectObject(playerid, SELECT_OBJECT:type, objectid, modelid, Float:fX, Float:fY, Float:fZ);
+```
+
+* `OnPlayerWeaponShot`
+
+```pawn
+#if !defined BULLET_HIT_TYPE
+	#define BULLET_HIT_TYPE: _:
+#endif
+forward OnPlayerWeaponShot(playerid, weaponid, BULLET_HIT_TYPE:hittype, hitid, Float:fX, Float:fY, Float:fZ);
+```
+
 ## Why?
 
 The package management system built into the `sampctl` tool is based on GitHub
