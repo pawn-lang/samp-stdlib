@@ -681,7 +681,7 @@ native GetPlayerWeapon(playerid);
 /// <remarks>Only the FUNCTION of keys can be detected; not actual keys. For example, it is not possible to detect if a player presses <b>SPACE</b>, but you can detect if they press <b>SPRINT</b> (which can be mapped (assigned/binded) to ANY key (but is space by default)). </remarks>
 /// <remarks>As of update <b>0.3.7</b>, the keys "A" and "D" are not recognized when in a vehicle. However, keys "W" and "S" can be detected with the "keys" parameter. </remarks>
 /// <returns>The keys are stored in the specified variables.</returns>
-native GetPlayerKeys(playerid, &keys, &updown, &leftright);
+native GetPlayerKeys(playerid, &KEY:keys, &KEY:updown, &KEY:leftright);
 
 /// <summary>Get a player's name.</summary>
 /// <param name="playerid">The ID of the player to get the name of</param>

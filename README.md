@@ -114,6 +114,15 @@ forward OnPlayerSelectObject(playerid, SELECT_OBJECT:type, objectid, modelid, Fl
 forward OnPlayerWeaponShot(playerid, weaponid, BULLET_HIT_TYPE:hittype, hitid, Float:fX, Float:fY, Float:fZ);
 ```
 
+* `OnPlayerKeyStateChange`
+
+```pawn
+#if !defined KEY
+	#define KEY: _:
+#endif
+forward OnPlayerKeyStateChange(playerid, KEY:newkeys, KEY:oldkeys);
+```
+
 ## Why?
 
 The package management system built into the `sampctl` tool is based on GitHub

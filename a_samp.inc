@@ -2880,7 +2880,7 @@ forward OnPlayerInteriorChange(playerid, newinteriorid, oldinteriorid);
 ///   This callback does not handle returns.<br />
 ///   It is always called first in gamemode.
 /// </returns>
-forward OnPlayerKeyStateChange(playerid, newkeys, oldkeys);
+forward OnPlayerKeyStateChange(playerid, KEY:newkeys, KEY:oldkeys);
 
 /// <summary>This callback is called when someone attempts to log in to RCON in-game; successful or not.</summary>
 /// <param name="ip">The IP of the player that tried to log in to RCON</param>
