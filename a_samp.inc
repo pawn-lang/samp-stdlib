@@ -214,8 +214,8 @@
 #define BULLET_HIT_TYPE_PLAYER_OBJECT          (4)
 
 // Limits
-#if MAX_PLAYER_NAME < 1 || MAX_PLAYER_NAME > 24
-	#error MAX_PLAYER_NAME must be >= 1 and <= 24
+#if MAX_PLAYER_NAME < 3 || MAX_PLAYER_NAME > 24
+	#error MAX_PLAYER_NAME must be >= 3 and <= 24
 #endif
 
 #if MAX_PLAYERS < 1 || MAX_PLAYERS > 1000
