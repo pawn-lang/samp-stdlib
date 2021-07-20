@@ -316,7 +316,7 @@ native GetPlayerArmour(playerid, &Float:armour);
 
 /// <summary>Set the ammo of a player's weapon.</summary>
 /// <param name="playerid">The ID of the player to set the weapon ammo of</param>
-/// <param name="weaponslot">The ID of the <a href="http://wiki.sa-mp.com/wiki/Weapons">weapon slot</a> to set the ammo of.</param>
+/// <param name="weaponid">The ID of the <a href="http://wiki.sa-mp.com/wiki/Weapons">weapon</a> to set the ammo of.</param>
 /// <param name="ammo">The amount of ammo to set</param>
 /// <seealso name="GetPlayerAmmo"/>
 /// <seealso name="GivePlayerWeapon"/>
@@ -326,7 +326,7 @@ native GetPlayerArmour(playerid, &Float:armour);
 ///   <b><c>1</c></b>: The function executed successfully. Success is also returned when the weapon slot specified is invalid (not 0-12).<p/>
 ///   <b><c>0</c></b>: The function failed to execute. The player isn't connected.<p/>
 /// </returns>
-native SetPlayerAmmo(playerid, weaponslot, ammo);
+native SetPlayerAmmo(playerid, weaponid, ammo);
 
 /// <summary>Gets the amount of ammo in a player's current weapon.</summary>
 /// <param name="playerid">The ID of the player whose ammo to get</param>
