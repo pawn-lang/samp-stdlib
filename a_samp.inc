@@ -3025,6 +3025,10 @@ forward OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]);
 ///   <b><c>0</c></b> - Allows this callback to be called in other filterscripts.<br />
 ///   It is always called first in filterscripts so returning <b><c>1</c></b> there blocks other filterscripts from seeing it.
 /// </returns>
+
+#if !defined WEAPON
+	#define WEAPON: _:
+#endif
 forward OnPlayerTakeDamage(playerid, issuerid, Float:amount, WEAPON: weaponid, bodypart);
 
 /// <summary>This callback is called when a player gives damage to another player.</summary>
@@ -3048,6 +3052,9 @@ forward OnPlayerTakeDamage(playerid, issuerid, Float:amount, WEAPON: weaponid, b
 ///   <b><c>0</c></b> - Allows this callback to be called in other filterscripts.<br />
 ///   It is always called first in filterscripts so returning <b><c>1</c></b> there blocks other filterscripts from seeing it.
 /// </returns>
+#if !defined WEAPON
+	#define WEAPON: _:
+#endif
 forward OnPlayerGiveDamage(playerid, damagedid, Float:amount, WEAPON: weaponid, bodypart);
 
 /// <summary>This callback is called when a player gives damage to an actor.</summary>
@@ -3071,6 +3078,9 @@ forward OnPlayerGiveDamage(playerid, damagedid, Float:amount, WEAPON: weaponid, 
 ///   <b><c>0</c></b> - Allows this callback to be called in other filterscripts.<br />
 ///   It is always called first in filterscripts so returning <b><c>1</c></b> there blocks other filterscripts from seeing it.
 /// </returns>
+#if !defined WEAPON
+	#define WEAPON: _:
+#endif
 forward OnPlayerGiveDamageActor(playerid, damaged_actorid, Float:amount, WEAPON: weaponid, bodypart);
 
 /// <summary>OnPlayerClickMap is called when a player places a target/waypoint on the pause menu map (by right-clicking).</summary>
@@ -3314,6 +3324,9 @@ forward OnPlayerSelectObject(playerid, SELECT_OBJECT:type, objectid, modelid, Fl
 /// </returns>
 #if !defined BULLET_HIT_TYPE
 	#define BULLET_HIT_TYPE: _:
+#endif
+#if !defined WEAPON
+	#define WEAPON: _:
 #endif
 forward OnPlayerWeaponShot(playerid, WEAPON: weaponid, BULLET_HIT_TYPE:hittype, hitid, Float:fX, Float:fY, Float:fZ);
 
