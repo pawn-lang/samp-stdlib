@@ -962,7 +962,7 @@ native SetTeamCount(count);
 /// <seealso name="AddPlayerClassEx" />
 /// <seealso name="SetSpawnInfo" />
 /// <seealso name="SetPlayerSkin" />
-native AddPlayerClass(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, weapon1, ammo1, weapon2, ammo2, weapon3, ammo3);
+native AddPlayerClass(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, WEAPON: weapon1, ammo1, WEAPON: weapon2, ammo2, WEAPON: weapon3, ammo3);
 
 /// <summary>This function is exactly the same as the <a href="#AddPlayerClass">AddPlayerClass</a> function, with the addition of a team parameter.</summary>
 /// <param name="teamid">The team you want the player to spawn in</param>
@@ -988,7 +988,7 @@ native AddPlayerClass(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:a
 /// <seealso name="SetSpawnInfo" />
 /// <seealso name="SetPlayerTeam" />
 /// <seealso name="SetPlayerSkin" />
-native AddPlayerClassEx(teamid, modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, weapon1, ammo1, weapon2, ammo2, weapon3, ammo3);
+native AddPlayerClassEx(teamid, modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, WEAPON: weapon1, ammo1, WEAPON: weapon2, ammo2, WEAPON: weapon3, ammo3);
 
 /// <summary>Adds a 'static' vehicle (models are pre-loaded for players) to the gamemode.</summary>
 /// <param name="modelid">The <a href="http://wiki.sa-mp.com/wiki/Vehicle_Models">Model ID</a> for the vehicle</param>

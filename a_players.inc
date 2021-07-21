@@ -148,7 +148,7 @@ enum PLAYER_RECORDING_TYPE:
 /// <seealso name="SetPlayerSkin" />
 /// <seealso name="SetPlayerTeam" />
 /// <seealso name="SpawnPlayer" />
-native SetSpawnInfo(playerid, team, skin, Float:x, Float:y, Float:z, Float:rotation, weapon1, ammo1, weapon2, ammo2, weapon3, ammo3);
+native SetSpawnInfo(playerid, team, skin, Float:x, Float:y, Float:z, Float:rotation, WEAPON: weapon1, ammo1, WEAPON: weapon2, ammo2, WEAPON: weapon3, ammo3);
 
 /// <summary>(Re)Spawns a player.</summary>
 /// <param name="playerid">The ID of the player to spawn</param>
