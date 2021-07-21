@@ -1149,7 +1149,7 @@ native SetWorldTime(hour);
 ///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute. The weapon specified does not exist.
 /// </returns>
-native GetWeaponName(weaponid, weapon[], len = sizeof (weapon));
+native GetWeaponName(WEAPON: weaponid, weapon[], len = sizeof (weapon));
 
 /// <param name="enable"><b><c>1</c></b> to enable, <b><c>0</c></b> to disable tire popping</param>
 /// <remarks>This function was removed in <b>SA-MP 0.3</b>. Tire popping is enabled by default. If you want to disable tire popping, you'll have to manually script it using <a href="#OnVehicleDamageStatusUpdate">OnVehicleDamageStatusUpdate</a>.</remarks>
@@ -3025,7 +3025,7 @@ forward OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]);
 ///   <b><c>0</c></b> - Allows this callback to be called in other filterscripts.<br />
 ///   It is always called first in filterscripts so returning <b><c>1</c></b> there blocks other filterscripts from seeing it.
 /// </returns>
-forward OnPlayerTakeDamage(playerid, issuerid, Float:amount, weaponid, bodypart);
+forward OnPlayerTakeDamage(playerid, issuerid, Float:amount, WEAPON: weaponid, bodypart);
 
 /// <summary>This callback is called when a player gives damage to another player.</summary>
 /// <param name="playerid">The ID of the player that gave damage</param>
@@ -3048,7 +3048,7 @@ forward OnPlayerTakeDamage(playerid, issuerid, Float:amount, weaponid, bodypart)
 ///   <b><c>0</c></b> - Allows this callback to be called in other filterscripts.<br />
 ///   It is always called first in filterscripts so returning <b><c>1</c></b> there blocks other filterscripts from seeing it.
 /// </returns>
-forward OnPlayerGiveDamage(playerid, damagedid, Float:amount, weaponid, bodypart);
+forward OnPlayerGiveDamage(playerid, damagedid, Float:amount, WEAPON: weaponid, bodypart);
 
 /// <summary>This callback is called when a player gives damage to an actor.</summary>
 /// <param name="playerid">The ID of the player that gave damage</param>
@@ -3071,7 +3071,7 @@ forward OnPlayerGiveDamage(playerid, damagedid, Float:amount, weaponid, bodypart
 ///   <b><c>0</c></b> - Allows this callback to be called in other filterscripts.<br />
 ///   It is always called first in filterscripts so returning <b><c>1</c></b> there blocks other filterscripts from seeing it.
 /// </returns>
-forward OnPlayerGiveDamageActor(playerid, damaged_actorid, Float:amount, weaponid, bodypart);
+forward OnPlayerGiveDamageActor(playerid, damaged_actorid, Float:amount, WEAPON: weaponid, bodypart);
 
 /// <summary>OnPlayerClickMap is called when a player places a target/waypoint on the pause menu map (by right-clicking).</summary>
 /// <param name="playerid">The ID of the player that placed a target/waypoint</param>
@@ -3315,7 +3315,7 @@ forward OnPlayerSelectObject(playerid, SELECT_OBJECT:type, objectid, modelid, Fl
 #if !defined BULLET_HIT_TYPE
 	#define BULLET_HIT_TYPE: _:
 #endif
-forward OnPlayerWeaponShot(playerid, weaponid, BULLET_HIT_TYPE:hittype, hitid, Float:fX, Float:fY, Float:fZ);
+forward OnPlayerWeaponShot(playerid, WEAPON: weaponid, BULLET_HIT_TYPE:hittype, hitid, Float:fX, Float:fY, Float:fZ);
 
 /// <summary>This callback is called when a SendClientCheck request comletes</summary>
 /// <param name="playerid">The ID of the player checked</param>

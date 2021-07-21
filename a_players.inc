@@ -533,7 +533,7 @@ native GetPlayerCustomSkin(playerid);
 ///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute. This means the player is not connected.<br />
 /// </returns>
-native GivePlayerWeapon(playerid, weaponid, ammo);
+native GivePlayerWeapon(playerid, WEAPON: weaponid, ammo);
 
 /// <summary>Removes all weapons from a player.</summary>
 /// <param name="playerid">The ID of the player whose weapons to remove</param>
@@ -557,7 +557,7 @@ native ResetPlayerWeapons(playerid);
 ///   <b><c>1</c></b>: The function executed successfully. Success is returned even when the function fails to execute (the player doesn't have the weapon specified, or it is an invalid weapon).<br />
 ///   <b><c>0</c></b>: The function failed to execute. The player is not connected.
 /// </returns>
-native SetPlayerArmedWeapon(playerid, weaponid);
+native SetPlayerArmedWeapon(playerid, WEAPON: weaponid);
 
 /// <summary>Get the weapon and ammo in a specific player's weapon slot (e.g. the weapon in the 'SMG' slot).</summary>
 /// <param name="playerid">The ID of the player whose weapon data to retrieve</param>
