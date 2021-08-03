@@ -340,8 +340,14 @@ open.mp releases can use `A` as the first digit.
 
 	/// <summary>Prints a string to the server console (not in-game chat) and logs (server_log.txt).</summary>
 	/// <param name="string">The string to print</param>
+	/// <param name="foreground">The foreground colour to use (optional=<b><c>-1</c></b>)</param>
+	/// <param name="background">The background colour to use (optional=<b><c>-1</c></b>)</param>
+	/// <param name="highlight">The highlight colour to use (optional=<b><c>-1</c></b>)</param>
 	/// <seealso name="printf"/>
-	native print(const string[]);
+	/// <remarks>When the colour codes are left at -1, the default colours of the server console are used.</remarks>
+	/// <remarks>On most systems the following foreground and background colour codes can be used: black (0), red (1), green (2), yellow (3), blue (4), magenta (5), cyan (6) and white (7).</remarks>
+	/// <remarks>Most systems also support the bright/bold versions of these colours. The following highlight values can be used: regular (0) and bright/bold (1).</remarks>
+	native print(const string[], foreground=-1, background=-1, highlight=-1);
 
 	/// <summary>Outputs a formatted string on the console (the server window, not the in-game chat).</summary>
 	/// <param name="format">The format string</param>
