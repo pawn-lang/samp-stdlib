@@ -19,7 +19,7 @@
 
 // HTTP requests
 #define HTTP_METHOD: __TAG(HTTP_METHOD):
-enum HTTP_METHOD:
+enum HTTP_METHOD:__HTTP_METHOD
 {
 	HTTP_GET                                   = 1,
 	HTTP_POST,
@@ -30,7 +30,7 @@ enum HTTP_METHOD:
 // These codes compliment ordinary HTTP response codes returned in 'responseCode'
 // (10x) (20x OK) (30x Moved) (40x Unauthorised) (50x Server Error)
 #define HTTP_ERROR: __TAG(HTTP_ERROR):
-enum HTTP_ERROR:
+enum HTTP_ERROR:__HTTP_ERROR
 {
 	HTTP_ERROR_BAD_HOST                        = 1,
 	HTTP_ERROR_NO_SOCKET,
