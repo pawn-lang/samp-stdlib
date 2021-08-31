@@ -152,7 +152,7 @@ const PlayerText3D:INVALID_PLAYER_3DTEXT_ID    = PlayerText3D:0xFFFF;
 
 // States
 #define PLAYER_STATE: __TAG(PLAYER_STATE):
-enum PLAYER_STATE:
+enum PLAYER_STATE:__PLAYER_STATE
 {
 	PLAYER_STATE_NONE,
 	PLAYER_STATE_ONFOOT,
@@ -165,7 +165,7 @@ enum PLAYER_STATE:
 
 // Weapons
 #define WEAPON: __TAG(WEAPON):
-enum WEAPON:
+enum WEAPON:__WEAPON
 {
 	WEAPON_BRASSKNUCKLE                        = 1,
 	WEAPON_GOLFCLUB,
@@ -215,7 +215,7 @@ enum WEAPON:
 
 // Keys
 #define KEY: __TAG(KEY):
-enum KEY: (<<= 1)
+enum KEY:__KEY (<<= 1)
 {
 	KEY_ACTION                                 = 1,
 	KEY_CROUCH,
@@ -244,7 +244,7 @@ enum KEY: (<<= 1)
 }
 
 #define PLAYER_RECORDING_TYPE: __TAG(PLAYER_RECORDING_TYPE):
-enum PLAYER_RECORDING_TYPE:
+enum PLAYER_RECORDING_TYPE:__PLAYER_RECORDING_TYPE
 {
 	PLAYER_RECORDING_TYPE_NONE,
 	PLAYER_RECORDING_TYPE_DRIVER,
