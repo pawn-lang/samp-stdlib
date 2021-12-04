@@ -120,6 +120,8 @@
 	const MAX_PICKUPS                          = 4096;
 #endif
 
+#define INVALID_TIMER                          (0)
+
 #if defined NO_TAGS
 	#define __TAG(%0) _
 #elseif defined STRONG_TAGS
