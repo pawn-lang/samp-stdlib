@@ -387,19 +387,103 @@ enum BULLET_HIT_TYPE:__BULLET_HIT_TYPE
 public const SAMP_INCLUDES_VERSION = 0x037030;
 #pragma unused SAMP_INCLUDES_VERSION
 
-#include <core>
-#include <float>
-#include <string>
-#include <file>
-#include <time>
-#include <datagram>
+// Try many places to get the latest version.
+
+#tryinclude "..\pawn-stdlib\console"
+#tryinclude "..\pawn-stdlib\core"
+#tryinclude "..\pawn-stdlib\file"
+#tryinclude "..\pawn-stdlib\float"
+#tryinclude "..\pawn-stdlib\string"
+#tryinclude "..\pawn-stdlib\time"
+
+#tryinclude <pawn-stdlib\console>
+#tryinclude <pawn-stdlib\core>
+#tryinclude <pawn-stdlib\file>
+#tryinclude <pawn-stdlib\float>
+#tryinclude <pawn-stdlib\string>
+#tryinclude <pawn-stdlib\time>
+
+#tryinclude "console"
+#tryinclude "core"
+#tryinclude "file"
+#tryinclude "float"
+#tryinclude "string"
+#tryinclude "time"
+
 #tryinclude <console>
-#include <a_players>
-#include <a_vehicles>
-#include <a_objects>
-#include <a_actor>
-#include <a_sampdb>
-#include <a_http>
+#tryinclude <core>
+#tryinclude <file>
+#tryinclude <float>
+#tryinclude <string>
+#tryinclude <time>
+
+// `console` is optional.
+
+#if !defined _core_included
+	#error cannot read from file: "core"
+#endif
+
+#if !defined _file_included
+	#error cannot read from file: "file"
+#endif
+
+#if !defined _Float_included // Not `_float_included`.
+	#error cannot read from file: "float"
+#endif
+
+#if !defined _string_included
+	#error cannot read from file: "string"
+#endif
+
+#if !defined _time_included
+	#error cannot read from file: "time"
+#endif
+
+#tryinclude "a_actor"
+#tryinclude "a_objects"
+#tryinclude "a_players"
+#tryinclude "a_sampdb"
+#tryinclude "a_vehicles"
+
+#tryinclude <a_actor>
+#tryinclude <a_objects>
+#tryinclude <a_players>
+#tryinclude <a_sampdb>
+#tryinclude <a_vehicles>
+
+#if !defined _actor_included
+	#error cannot read from file: "a_actor"
+#endif
+
+#if !defined _file_included
+	#error cannot read from file: "a_file"
+#endif
+
+#if !defined _objects_included // Not `_float_included`.
+	#error cannot read from file: "a_objects"
+#endif
+
+#if !defined _players_included
+	#error cannot read from file: "a_players"
+#endif
+
+#if !defined _sampdb_included
+	#error cannot read from file: "a_sampdb"
+#endif
+
+#if !defined _vehicles_included
+	#error cannot read from file: "a_vehicles"
+#endif
+
+// Special case.  The old version didn't have `_http_included`.
+
+#tryinclude "a_http"
+#if !defined HTTP
+	#tryinclude <a_http>
+#endif
+#if !defined HTTP
+	#error cannot read from file: "a_http"
+#endif
 
 /*
 
