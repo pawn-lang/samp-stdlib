@@ -344,7 +344,7 @@ enum BULLET_HIT_TYPE:__BULLET_HIT_TYPE
 
 // Limits
 #if MAX_PLAYER_NAME < 3 || MAX_PLAYER_NAME > 24
-	#error MAX_PLAYER_NAME must be >= 1 and <= 24
+	#error MAX_PLAYER_NAME must be >= 3 and <= 24
 #endif
 
 #if MAX_PLAYERS < 1 || MAX_PLAYERS > 1000
