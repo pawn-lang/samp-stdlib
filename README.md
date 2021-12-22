@@ -111,6 +111,9 @@ forward OnPlayerSelectObject(playerid, SELECT_OBJECT:type, objectid, modelid, Fl
 #if !defined BULLET_HIT_TYPE
 	#define BULLET_HIT_TYPE: _:
 #endif
+#if !defined WEAPON
+	#define WEAPON: _:
+#endif
 forward OnPlayerWeaponShot(playerid, weaponid, BULLET_HIT_TYPE:hittype, hitid, Float:fX, Float:fY, Float:fZ);
 ```
 
@@ -122,6 +125,34 @@ forward OnPlayerWeaponShot(playerid, weaponid, BULLET_HIT_TYPE:hittype, hitid, F
 #endif
 forward OnPlayerKeyStateChange(playerid, KEY:newkeys, KEY:oldkeys);
 ```
+
+* `OnPlayerTakeDamage`
+
+```pawn
+#if !defined WEAPON
+	#define WEAPON: _:
+#endif
+forward OnPlayerTakeDamage(playerid, issuerid, Float:amount, WEAPON: weaponid, bodypart);
+```
+
+* `OnPlayerGiveDamage`
+
+```pawn
+#if !defined WEAPON
+	#define WEAPON: _:
+#endif
+forward OnPlayerGiveDamage(playerid, damagedid, Float:amount, WEAPON: weaponid, bodypart);
+```
+
+* `OnPlayerGiveDamageActor`
+
+```pawn
+#if !defined WEAPON
+	#define WEAPON: _:
+#endif
+forward OnPlayerGiveDamageActor(playerid, damaged_actorid, Float:amount, WEAPON: weaponid, bodypart);
+```
+
 
 ## Why?
 

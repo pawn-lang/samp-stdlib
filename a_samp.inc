@@ -1053,7 +1053,7 @@ native SetTeamCount(count);
 /// <seealso name="AddPlayerClassEx" />
 /// <seealso name="SetSpawnInfo" />
 /// <seealso name="SetPlayerSkin" />
-native AddPlayerClass(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, weapon1, ammo1, weapon2, ammo2, weapon3, ammo3);
+native AddPlayerClass(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, WEAPON: weapon1, ammo1, WEAPON: weapon2, ammo2, WEAPON: weapon3, ammo3);
 
 /// <summary>This function is exactly the same as the <a href="#AddPlayerClass">AddPlayerClass</a> function, with the addition of a team parameter.</summary>
 /// <param name="teamid">The team you want the player to spawn in</param>
@@ -1079,7 +1079,7 @@ native AddPlayerClass(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:a
 /// <seealso name="SetSpawnInfo" />
 /// <seealso name="SetPlayerTeam" />
 /// <seealso name="SetPlayerSkin" />
-native AddPlayerClassEx(teamid, modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, weapon1, ammo1, weapon2, ammo2, weapon3, ammo3);
+native AddPlayerClassEx(teamid, modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, WEAPON: weapon1, ammo1, WEAPON: weapon2, ammo2, WEAPON: weapon3, ammo3);
 
 /// <summary>Adds a 'static' vehicle (models are pre-loaded for players) to the gamemode.</summary>
 /// <param name="modelid">The <a href="http://wiki.sa-mp.com/wiki/Vehicle_Models">Model ID</a> for the vehicle</param>
@@ -1240,7 +1240,7 @@ native SetWorldTime(hour);
 ///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute. The weapon specified does not exist.
 /// </returns>
-native GetWeaponName(weaponid, weapon[], len = sizeof (weapon));
+native GetWeaponName(WEAPON: weaponid, weapon[], len = sizeof (weapon));
 
 /// <param name="enable"><b><c>1</c></b> to enable, <b><c>0</c></b> to disable tire popping</param>
 /// <remarks>This function was removed in <b>SA-MP 0.3</b>. Tire popping is enabled by default. If you want to disable tire popping, you'll have to manually script it using <a href="#OnVehicleDamageStatusUpdate">OnVehicleDamageStatusUpdate</a>.</remarks>
@@ -3116,7 +3116,11 @@ forward OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]);
 ///   <b><c>0</c></b> - Allows this callback to be called in other filterscripts.<br />
 ///   It is always called first in filterscripts so returning <b><c>1</c></b> there blocks other filterscripts from seeing it.
 /// </returns>
-forward OnPlayerTakeDamage(playerid, issuerid, Float:amount, weaponid, bodypart);
+
+#if !defined WEAPON
+	#define WEAPON: _:
+#endif
+forward OnPlayerTakeDamage(playerid, issuerid, Float:amount, WEAPON: weaponid, bodypart);
 
 /// <summary>This callback is called when a player gives damage to another player.</summary>
 /// <param name="playerid">The ID of the player that gave damage</param>
@@ -3139,7 +3143,10 @@ forward OnPlayerTakeDamage(playerid, issuerid, Float:amount, weaponid, bodypart)
 ///   <b><c>0</c></b> - Allows this callback to be called in other filterscripts.<br />
 ///   It is always called first in filterscripts so returning <b><c>1</c></b> there blocks other filterscripts from seeing it.
 /// </returns>
-forward OnPlayerGiveDamage(playerid, damagedid, Float:amount, weaponid, bodypart);
+#if !defined WEAPON
+	#define WEAPON: _:
+#endif
+forward OnPlayerGiveDamage(playerid, damagedid, Float:amount, WEAPON: weaponid, bodypart);
 
 /// <summary>This callback is called when a player gives damage to an actor.</summary>
 /// <param name="playerid">The ID of the player that gave damage</param>
@@ -3162,7 +3169,10 @@ forward OnPlayerGiveDamage(playerid, damagedid, Float:amount, weaponid, bodypart
 ///   <b><c>0</c></b> - Allows this callback to be called in other filterscripts.<br />
 ///   It is always called first in filterscripts so returning <b><c>1</c></b> there blocks other filterscripts from seeing it.
 /// </returns>
-forward OnPlayerGiveDamageActor(playerid, damaged_actorid, Float:amount, weaponid, bodypart);
+#if !defined WEAPON
+	#define WEAPON: _:
+#endif
+forward OnPlayerGiveDamageActor(playerid, damaged_actorid, Float:amount, WEAPON: weaponid, bodypart);
 
 /// <summary>OnPlayerClickMap is called when a player places a target/waypoint on the pause menu map (by right-clicking).</summary>
 /// <param name="playerid">The ID of the player that placed a target/waypoint</param>
@@ -3406,7 +3416,10 @@ forward OnPlayerSelectObject(playerid, SELECT_OBJECT:type, objectid, modelid, Fl
 #if !defined BULLET_HIT_TYPE
 	#define BULLET_HIT_TYPE: _:
 #endif
-forward OnPlayerWeaponShot(playerid, weaponid, BULLET_HIT_TYPE:hittype, hitid, Float:fX, Float:fY, Float:fZ);
+#if !defined WEAPON
+	#define WEAPON: _:
+#endif
+forward OnPlayerWeaponShot(playerid, WEAPON: weaponid, BULLET_HIT_TYPE:hittype, hitid, Float:fX, Float:fY, Float:fZ);
 
 /// <summary>This callback is called when a SendClientCheck request comletes</summary>
 /// <param name="playerid">The ID of the player checked</param>
