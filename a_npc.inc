@@ -120,6 +120,8 @@
 	const MAX_PICKUPS                          = 4096;
 #endif
 
+#define INVALID_TIMER                          (0)
+
 #if defined NO_TAGS
 	#define __TAG(%0) _
 #elseif defined STRONG_TAGS
@@ -167,9 +169,11 @@ enum PLAYER_STATE:__PLAYER_STATE
 #define WEAPON: __TAG(WEAPON):
 enum WEAPON:__WEAPON
 {
-	WEAPON_BRASSKNUCKLE                        = 1,
+	WEAPON_FIST,
+	WEAPON_BRASSKNUCKLE,
 	WEAPON_GOLFCLUB,
 	WEAPON_NITESTICK,
+	WEAPON_NIGHTSTICK                          = WEAPON_NITESTICK,
 	WEAPON_KNIFE,
 	WEAPON_BAT,
 	WEAPON_SHOVEL,
@@ -185,6 +189,7 @@ enum WEAPON:__WEAPON
 	WEAPON_GRENADE,
 	WEAPON_TEARGAS,
 	WEAPON_MOLTOV,
+	WEAPON_MOLOTOV                             = WEAPON_MOLTOV,
 	WEAPON_COLT45                              = 22,
 	WEAPON_SILENCED,
 	WEAPON_DEAGLE,
@@ -207,7 +212,9 @@ enum WEAPON:__WEAPON
 	WEAPON_SPRAYCAN,
 	WEAPON_FIREEXTINGUISHER,
 	WEAPON_CAMERA,
-	WEAPON_PARACHUTE                           = 46,
+	WEAPON_NIGHT_VISION_GOGGLES,
+	WEAPON_THERMAL_GOGGLES,
+	WEAPON_PARACHUTE,
 	WEAPON_VEHICLE                             = 49,
 	WEAPON_DROWN                               = 53,
 	WEAPON_COLLISION,
