@@ -361,7 +361,7 @@ native GetPlayerArmour(playerid, &Float:armour);
 ///   <b><c>1</c></b>: The function executed successfully. Success is also returned when the weapon specified is invalid.<br />
 ///   <b><c>0</c></b>: The function failed to execute. The player isn't connected.<br />
 /// </returns>
-native SetPlayerAmmo(playerid, weaponid, ammo);
+native SetPlayerAmmo(playerid, WEAPON:weaponid, ammo);
 
 /// <summary>Gets the amount of ammo in a player's current weapon.</summary>
 /// <param name="playerid">The ID of the player whose ammo to get</param>
@@ -533,7 +533,7 @@ native GetPlayerCustomSkin(playerid);
 ///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute. This means the player is not connected.<br />
 /// </returns>
-native GivePlayerWeapon(playerid, weaponid, ammo);
+native GivePlayerWeapon(playerid, WEAPON:weaponid, ammo);
 
 /// <summary>Removes all weapons from a player.</summary>
 /// <param name="playerid">The ID of the player whose weapons to remove</param>
@@ -557,7 +557,7 @@ native ResetPlayerWeapons(playerid);
 ///   <b><c>1</c></b>: The function executed successfully. Success is returned even when the function fails to execute (the player doesn't have the weapon specified, or it is an invalid weapon).<br />
 ///   <b><c>0</c></b>: The function failed to execute. The player is not connected.
 /// </returns>
-native SetPlayerArmedWeapon(playerid, weaponid);
+native SetPlayerArmedWeapon(playerid, WEAPON:weaponid);
 
 /// <summary>Get the weapon and ammo in a specific player's weapon slot (e.g. the weapon in the 'SMG' slot).</summary>
 /// <param name="playerid">The ID of the player whose weapon data to retrieve</param>
@@ -571,7 +571,7 @@ native SetPlayerArmedWeapon(playerid, weaponid);
 ///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute. The player isn't connected and/or the weapon slot specified is invalid (valid is <b><c>0-12</c></b>).
 /// </returns>
-native GetPlayerWeaponData(playerid, slot, &weapons, &ammo);
+native GetPlayerWeaponData(playerid, slot, &WEAPON:weapons, &ammo);
 
 /// <summary>Give money to or take money from a player.</summary>
 /// <param name="playerid">The ID of the player to give money to or take money from</param>
@@ -670,7 +670,7 @@ native GetPlayerPing(playerid);
 /// <seealso name="ResetPlayerWeapons" />
 /// <remarks>Prior to version <b>0.3z R1-2</b>, when the player state is <b>PLAYER_STATE_PASSENGER</b> this function returns the weapon held by the player before they entered the vehicle. If a cheat is used to spawn a weapon inside a vehicle, this function will not report it.</remarks>
 /// <returns>The ID of the player's current weapon. Returns <b><c>-1</c></b> if the player specified does not exist.</returns>
-native GetPlayerWeapon(playerid);
+native WEAPON:GetPlayerWeapon(playerid);
 
 /// <summary>Check which keys a player is pressing.</summary>
 /// <param name="playerid">The ID of the player to get the keys of</param>

@@ -232,6 +232,7 @@ enum WEAPON:__WEAPON
 	WEAPON_VEHICLE                             = 49,
 	WEAPON_DROWN                               = 53,
 	WEAPON_COLLISION,
+	WEAPON_SPLAT                               = WEAPON_COLLISION,
 }
 
 // Keys
