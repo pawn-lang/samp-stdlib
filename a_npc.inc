@@ -502,7 +502,7 @@ native SendCommand(const command[]);
 ///   </ul>
 /// </remarks>
 /// <returns>The player's current state as an integer.</returns>
-native GetPlayerState(playerid);
+native PLAYER_STATE:GetPlayerState(playerid);
 
 /// <summary>Get the position of a player, represented by x, y and z coordinates.</summary>
 /// <param name="playerid">The ID of the player to get the position of</param>
@@ -525,7 +525,7 @@ native GetPlayerPos(playerid, &Float:x, &Float:y, &Float:z);
 /// <seealso name="GetVehicleModel" />
 /// <returns>ID of the vehicle or <b><c>0</c></b> if not in a vehicle.</returns>
 native GetPlayerVehicleid(playerid);
-native GetPlayerArmedWeapon(playerid);
+native WEAPON:GetPlayerArmedWeapon(playerid);
 
 native GetPlayerHealth(playerid);
 native GetPlayerArmour(playerid);
@@ -535,7 +535,7 @@ native GetPlayerArmour(playerid);
 /// <seealso name="SetPlayerSpecialAction" />
 /// <seealso name="GetPlayerState" />
 /// <returns>The <a href="http://wiki.sa-mp.com/wiki/SpecialActions">special action</a> of the player.</returns>
-native GetPlayerSpecialAction(playerid);
+native SPECIAL_ACTION:GetPlayerSpecialAction(playerid);
 
 /// <summary>Checks if a player is streamed in for an NPC. Only nearby players are streamed in.</summary>
 /// <param name="playerid">The ID of the player to check</param>

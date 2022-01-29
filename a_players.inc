@@ -2090,7 +2090,7 @@ native AllowPlayerTeleport(playerid, bool:allow);
 ///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute. The player specified doesn't exist.
 /// </returns>
-native SetPlayerCameraPos(playerid,Float:x, Float:y, Float:z);
+native SetPlayerCameraPos(playerid, Float:x, Float:y, Float:z);
 
 /// <summary>Set the direction a player's camera looks at. Generally meant to be used in combination with <a href="#SetPlayerCameraPos">SetPlayerCameraPos</a>.</summary>
 /// <param name="playerid">The ID of the player whose camera to set</param>
