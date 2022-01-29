@@ -647,11 +647,11 @@ native GetPlayerName(playerid, name[], len = sizeof (name));
 native bool:IsPlayerConnected(playerid);
 
 /// <summary>This will run a .rec file which has to be saved in the npcmodes/recordings folder. These files allow the NPC to follow certain actions. Their actions can be recorded manually. For more information, check the related functions.</summary>
-/// <param name="playbacktype">The type of recording to be loaded</param>
+/// <param name="playbackType">The type of recording to be loaded</param>
 /// <param name="recordFile">The filename to be loaded, without the .rec extension</param>
 /// <seealso name="StopRecordingPlayback" />
 /// <remarks>This NPC function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
-native StartRecordingPlayback(PLAYER_RECORDING_TYPE:playbacktype, const recordFile[]);
+native StartRecordingPlayback(PLAYER_RECORDING_TYPE:playbackType, const recordFile[]);
 
 /// <summary>This will stop the current .rec file which is being ran by the NPC, making it stay idle until some other order is given.</summary>
 /// <seealso name="StartRecordingPlayback" />

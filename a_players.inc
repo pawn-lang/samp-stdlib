@@ -890,7 +890,7 @@ native StopAudioStreamForPlayer(playerid);
 
 /// <summary>Loads or unloads an interior script for a player (for example the ammunation menu).</summary>
 /// <param name="playerid">The ID of the player to load the interior script for</param>
-/// <param name="shopname">The shop script to load. Leave blank ("") to unload scripts</param>
+/// <param name="shopName">The shop script to load. Leave blank ("") to unload scripts</param>
 /// <seealso name="DisableInteriorEnterExits" />
 /// <seealso name="SetPlayerInterior" />
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
@@ -908,7 +908,7 @@ native StopAudioStreamForPlayer(playerid);
 ///     <li><b><c>"AMMUN5"</c></b> Ammunation 5</li>
 ///   </ul>
 /// </remarks>
-native SetPlayerShopName(playerid, const shopname[]);
+native SetPlayerShopName(playerid, const shopName[]);
 
 /// <summary>Set the skill level of a certain weapon type for a player.</summary>
 /// <param name="playerid">The ID of the player to set the weapon skill of</param>
