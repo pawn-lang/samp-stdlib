@@ -2419,9 +2419,16 @@ native ShowPlayerDialog(playerid, dialogid, DIALOG_STYLE:style, const caption[],
 
 /// <summary>Get a players unique ID.</summary>
 /// <param name="playerid">The player to get the unique ID of</param>
-/// <param name="output">Where to save the unique ID</param>
-/// <param name="size">The size of "output" (the serial)</param>
-native gpci(playerid, output[], size = sizeof (output));
+/// <param name="serial">Where to save the unique ID</param>
+/// <param name="len">The len of "serial" (the serial)</param>
+#pragma deprecated Use `GPCI`.
+native gpci(playerid, serial[], len = lenof (serial));
+
+/// <summary>Get a players unique ID.</summary>
+/// <param name="playerid">The player to get the unique ID of</param>
+/// <param name="serial">Where to save the unique ID</param>
+/// <param name="len">The len of "serial" (the serial)</param>
+native GPCI(playerid, serial[], len = lenof (serial)) = gpci;
 
 // --------------------------------------------------
 // Forwards (Callback declarations)

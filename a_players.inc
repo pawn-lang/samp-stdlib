@@ -1680,12 +1680,12 @@ native PLAYER_VARTYPE:GetPVarType(playerid, const pvar[]);
 /// <param name="playerid">The player which should have the chat bubble</param>
 /// <param name="text">The text to display</param>
 /// <param name="colour">The text colour</param>
-/// <param name="drawdistance">The distance from where players are able to see the chat bubble</param>
-/// <param name="expiretime">The time in miliseconds the bubble should be displayed for</param>
+/// <param name="drawDistance">The distance from where players are able to see the chat bubble</param>
+/// <param name="expireTime">The time in miliseconds the bubble should be displayed for</param>
 /// <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
 /// <remarks>You can't see your own chatbubbles. The same applies to attached 3D text labels.</remarks>
 /// <remarks>You can use colour embedding for multiple colours in the message.</remarks>
-native SetPlayerChatBubble(playerid, const text[], colour, Float:drawdistance, expiretime);
+native SetPlayerChatBubble(playerid, const text[], colour, Float:drawDistance, expireTime);
 
 // Player control
 
