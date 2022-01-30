@@ -524,7 +524,7 @@ native GetPlayerPos(playerid, &Float:x, &Float:y, &Float:z);
 /// <seealso name="GetPlayerVehicleSeat" />
 /// <seealso name="GetVehicleModel" />
 /// <returns>ID of the vehicle or <b><c>0</c></b> if not in a vehicle.</returns>
-native GetPlayerVehicleid(playerid);
+native GetPlayerVehicleID(playerid);
 native WEAPON:GetPlayerArmedWeapon(playerid);
 
 native GetPlayerHealth(playerid);
