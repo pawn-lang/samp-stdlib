@@ -104,11 +104,31 @@ enum MAPICON:__MAPICON
 	MAPICON_GLOBAL_CHECKPOINT                  // Displays always and has a checkpoint marker
 }
 
-#define CAMERA: __TAG(CAMERA):
-enum CAMERA:__CAMERA
+#define CAM_MOVE: __TAG(CAM_MOVE):
+enum CAM_MOVE:__CAMERA
 {
 	CAMERA_MOVE                                = 1,
 	CAMERA_CUT
+}
+
+#define CAM_MODE: __TAG(CAM_MODE):
+enum CAM_MODE:__CAM_MODE
+{
+	CAM_MODE_DISCONNECTED                      = -1,
+	CAM_MODE_NONE                              = 0,
+	CAM_MODE_BEHINDCAR                         = 3,
+	CAM_MODE_FOLLOWPED                         = 4,
+	CAM_MODE_SNIPER                            = 7,
+	CAM_MODE_ROCKETLAUNCHER                    = 8,
+	CAM_MODE_FIXED                             = 15,
+	CAM_MODE_1STPERSON                         = 16,
+	CAM_MODE_CAM_ON_A_STRING                   = 18,
+	CAM_MODE_BEHINDBOAT                        = 22,
+	CAM_MODE_CAMERA                            = 46,
+	CAM_MODE_ROCKETLAUNCHER_HS                 = 51,
+	CAM_MODE_AIMWEAPON                         = 53,
+	CAM_MODE_AIMWEAPON_FROMCAR                 = 55,
+	CAM_MODE_DW_HELI_CHASE                     = 56
 }
 
 // Spectating
@@ -2107,7 +2127,7 @@ native SetPlayerCameraPos(playerid, Float:x, Float:y, Float:z);
 ///   <b><c>1</c></b>: The function executed successfully.<br />
 ///   <b><c>0</c></b>: The function failed to execute. The player specified does not exist.
 /// </returns>
-native SetPlayerCameraLookAt(playerid, Float:x, Float:y, Float:z, CAMERA:cut = CAMERA_CUT);
+native SetPlayerCameraLookAt(playerid, Float:x, Float:y, Float:z, CAM_MOVE:cut = CAMERA_CUT);
 
 /// <summary>Restore the camera to a place behind the player, after using a function like <a href="#SetPlayerCameraPos">SetPlayerCameraPos</a>.</summary>
 /// <param name="playerid">The player you want to restore the camera for</param>
@@ -2151,7 +2171,7 @@ native GetPlayerCameraFrontVector(playerid, &Float:x, &Float:y, &Float:z);
 /// <seealso name="SetCameraBehindPlayer" />
 /// <remarks>This function was added in <b>SA-MP 0.3c R3</b> and will not work in earlier versions!</remarks>
 /// <returns>The camera mode as an integer (or <b><c>-1</c></b> if player is not connected).</returns>
-native GetPlayerCameraMode(playerid);
+native CAM_MODE:GetPlayerCameraMode(playerid);
 
 /// <summary>Toggle camera targeting functions for a player. Disabled by default to save bandwidth.</summary>
 /// <param name="playerid">The ID of the player to toggle camera targeting functions for</param>
@@ -2266,7 +2286,7 @@ native AttachCameraToPlayerObject(playerid, objectid);
 /// <seealso name="SetPlayerCameraLookAt" />
 /// <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <remarks>Use <b><c>TogglePlayerSpectating</c></b> to make objects stream in for the player while the camera is moving. You can reset the camera behind the player with <b><c>SetCameraBehindPlayer</c></b>.</remarks>
-native InterpolateCameraPos(playerid, Float:fromX, Float:fromY, Float:fromZ, Float:toX, Float:toY, Float:toZ, time, CAMERA:cut = CAMERA_CUT);
+native InterpolateCameraPos(playerid, Float:fromX, Float:fromY, Float:fromZ, Float:toX, Float:toY, Float:toZ, time, CAM_MOVE:cut = CAMERA_CUT);
 
 /// <summary>Interpolate a player's camera's 'look at' point between two coordinates with a set speed. Can be be used with <a href="#InterpolateCameraPos">InterpolateCameraPos</a>.</summary>
 /// <param name="playerid">The ID of the player the camera should be moved for</param>
@@ -2283,7 +2303,7 @@ native InterpolateCameraPos(playerid, Float:fromX, Float:fromY, Float:fromZ, Flo
 /// <seealso name="SetPlayerCameraPos" />
 /// <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
 /// <remarks>Use <b><c>TogglePlayerSpectating</c></b> to make objects stream in for the player while the camera is moving. You can reset the camera behind the player with <b><c>SetCameraBehindPlayer</c></b>.</remarks>
-native InterpolateCameraLookAt(playerid, Float:fromX, Float:fromY, Float:fromZ, Float:toX, Float:toY, Float:toZ, time, CAMERA:cut = CAMERA_CUT);
+native InterpolateCameraLookAt(playerid, Float:fromX, Float:fromY, Float:fromZ, Float:toX, Float:toY, Float:toZ, time, CAM_MOVE:cut = CAMERA_CUT);
 
 // Player conditionals
 
