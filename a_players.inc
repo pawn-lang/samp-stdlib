@@ -1403,7 +1403,7 @@ native PlayerTextDrawBackgroundColor(playerid, PlayerText:text, colour);
 /// <seealso name="PlayerTextDrawShow" />
 /// <seealso name="PlayerTextDrawHide" />
 /// <remarks>This feature (player-textdraws) was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
-native PlayerTextDrawFont(playerid, PlayerText:text, font);
+native PlayerTextDrawFont(playerid, PlayerText:text, TEXT_DRAW_FONT:font);
 
 /// <summary>Appears to scale text spacing to a proportional ratio. Useful when using <a href="#PlayerTextDrawLetterSize">PlayerTextDrawLetterSize</a> to ensure the text has even character spacing.</summary>
 /// <param name="playerid">The ID of the player whose player-textdraw to set the proportionality of</param>
