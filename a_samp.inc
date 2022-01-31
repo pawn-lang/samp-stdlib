@@ -281,15 +281,20 @@ enum DIALOG_STYLE:__DIALOG_STYLE
 #define TEXT_DRAW_FONT: __TAG(TEXT_DRAW_FONT):
 enum TEXT_DRAW_FONT:__TEXT_DRAW_FONT
 {
-	TEXT_DRAW_FONT_SPRITE_DRAW                 = 4,
-	TEXT_DRAW_FONT_MODEL_PREVIEW               = 5,
+	TEXT_DRAW_FONT_0,
+	TEXT_DRAW_FONT_1,
+	TEXT_DRAW_FONT_2,
+	TEXT_DRAW_FONT_3,
+	TEXT_DRAW_FONT_SPRITE_DRAW,
+	TEXT_DRAW_FONT_MODEL_PREVIEW,
 }
 
 #define TEXT_DRAW_ALIGN: __TAG(TEXT_DRAW_ALIGN):
 enum TEXT_DRAW_ALIGN:__TEXT_DRAW_ALIGN
 {
 	TEXT_DRAW_ALIGN_LEFT                       = 1,
-	TEXT_DRAW_ALIGN_CENTER,
+	TEXT_DRAW_ALIGN_CENTRE,
+	TEXT_DRAW_ALIGN_CENTER = TEXT_DRAW_ALIGN_CENTRE,
 	TEXT_DRAW_ALIGN_RIGHT
 }
 
@@ -2006,7 +2011,7 @@ native TextDrawBackgroundColor(Text:text, colour);
 /// <param name="text">The TextDraw to change</param>
 /// <param name="font">There are four font styles, see <a href="http://wiki.sa-mp.com/wiki/PlayerTextDrawFont">http://wiki.sa-mp.com/wiki/PlayerTextDrawFont</a>. Font value <b><c>4</c></b> specifies that this is a txd sprite; <b><c>5</c></b> specifies that this textdraw can display preview models. A font value greater than 5 does not display, and anything greater than 16 crashes the client</param>
 /// <remarks>If you want to change the font of a textdraw that is already shown, you don't have to recreate it. Simply use <a href="#TextDrawShowForPlayer">TextDrawShowForPlayer</a>/<a href="#TextDrawShowForAll">TextDrawShowForAll</a> after modifying the textdraw and the change will be visible.</remarks>
-native TextDrawFont(Text:text, font);
+native TextDrawFont(Text:text, TEXT_DRAW_FONT:font);
 
 /// <summary>Appears to scale text spacing to a proportional ratio. Useful when using <a href="#TextDrawLetterSize">TextDrawLetterSize</a> to ensure the text has even character spacing.</summary>
 /// <param name="text">The ID of the textdraw to set the proportionality of</param>
