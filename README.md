@@ -7,6 +7,14 @@ The current latest version is **0.3.7-R2-2-1**.
 
 The master branch HEAD does not currently contain any RC libaries.
 
+## Why?
+
+The package management system built into the `sampctl` tool is based on GitHub
+(Similar to that of the Go language) so it simplifies the process to have the
+standard library stored here on GitHub too. This means there doesn't need to be
+any special-case code written for the standard library, it can just be a package
+like all others.
+
 ## Tags
 
 The latest version of the SA:MP includes introduce many more tags to functions and callbacks.  These
@@ -122,14 +130,6 @@ forward OnPlayerWeaponShot(playerid, weaponid, BULLET_HIT_TYPE:hittype, hitid, F
 #endif
 forward OnPlayerKeyStateChange(playerid, KEY:newkeys, KEY:oldkeys);
 ```
-
-## Why?
-
-The package management system built into the `sampctl` tool is based on GitHub
-(Similar to that of the Go language) so it simplifies the process to have the
-standard library stored here on GitHub too. This means there doesn't need to be
-any special-case code written for the standard library, it can just be a package
-like all others.
 
 ## How Do Versions Work?
 
