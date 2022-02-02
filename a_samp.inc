@@ -348,6 +348,14 @@ enum BULLET_HIT_TYPE:__BULLET_HIT_TYPE
 	BULLET_HIT_TYPE_PLAYER_OBJECT
 }
 
+#define FORCE_SYNC: __TAG(FORCE_SYNC):
+enum FORCE_SYNC:__FORCE_SYNC
+{
+	SYNC_NONE, // Don't force sync to anyone else.
+	SYNC_ALL,  // Sync to all streamed-in players.
+	SYNC_OTHER // Sync to all streamed-in players, except the player with the animation.
+}
+
 // Limits
 #if MAX_PLAYER_NAME < 3 || MAX_PLAYER_NAME > 24
 	#error MAX_PLAYER_NAME must be >= 3 and <= 24

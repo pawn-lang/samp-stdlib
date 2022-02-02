@@ -1809,7 +1809,7 @@ native PlayerPlaySound(playerid, soundid, Float:x, Float:y, Float:z);
 /// <remarks>The <paramref name="forceSync" /> optional parameter, which defaults to <b><c>0</c></b>, in most cases is not needed since players sync animations themselves. The <paramref name="forceSync" /> parameter can force all players who can see <paramref name="playerid" /> to play the animation regardless of whether the player is performing that animation. This is useful in circumstances where the player can't sync the animation themselves. For example, they may be paused.</remarks>
 /// <remarks>An invalid animation library will crash the player's game.</remarks>
 /// <returns>This function always returns <b><c>1</c></b>, even if the player specified does not exist, or any of the parameters are invalid (e.g. invalid library).</returns>
-native ApplyAnimation(playerid, const animationLibrary[], const animationName[], Float:delta, bool:loop, bool:lockX, bool:lockY, bool:freeze, time, bool:forceSync = false);
+native ApplyAnimation(playerid, const animationLibrary[], const animationName[], Float:delta, bool:loop, bool:lockX, bool:lockY, bool:freeze, time, FORCE_SYNC:forceSync = SYNC_NONE);
 
 /// <summary>Clears all animations for the given player (it also cancels all current tasks such as jetpacking,parachuting,entering vehicles, driving (removes player out of vehicle), swimming, etc.. ).</summary>
 /// <param name="playerid">The ID of the player to clear the animations of</param>
@@ -1818,7 +1818,7 @@ native ApplyAnimation(playerid, const animationLibrary[], const animationName[],
 /// <remarks>ClearAnimations doesn't do anything when the animation ends if we pass 1 for the freeze parameter in <a href="#ApplyAnimation">ApplyAnimation</a>.</remarks>
 /// <remarks>Unlike some other ways to remove player from a vehicle, this will also reset the vehicle's velocity to zero, instantly stopping the car. Player will appear on top of the vehicle with the same location as he was in his car seat.</remarks>
 /// <returns>This function always returns <b><c>1</c></b>, even when the player specified is not connected.</returns>
-native ClearAnimations(playerid, bool:forceSync = false);
+native ClearAnimations(playerid, FORCE_SYNC:forceSync = SYNC_NONE);
 
 /// <summary>Returns the index of any running applied animations.</summary>
 /// <param name="playerid">ID of the player of whom you want to get the animation index of</param>
