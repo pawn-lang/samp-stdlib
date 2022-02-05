@@ -1395,8 +1395,8 @@ native bool:IsPlayerNPC(playerid);
 native AddCharModel(baseid, newid, const dff[], const textureLibrary[]);
 native AddSimpleModel(virtualWorld, baseid, newid, const dff[], const textureLibrary[]);
 native AddSimpleModelTimed(virtualWorld, baseid, newid, const dff[], const textureLibrary[], timeOn, timeOff);
-native FindModelFileNameFromCRC(crc, output[], retstr_size = sizeof (output));
-native FindTextureFileNameFromCRC(crc, output[], retstr_size = sizeof (output));
+native FindModelFileNameFromCRC(crc, output[], size = sizeof (output));
+native FindTextureFileNameFromCRC(crc, output[], size = sizeof (output));
 native RedirectDownload(playerid, const url[]);
 
 // Admin
