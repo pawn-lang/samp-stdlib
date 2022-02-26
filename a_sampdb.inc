@@ -17,6 +17,7 @@
 #pragma tabsize 4
 
 /**
+ * <library>a_sampdb</library>
  * <summary>This function is used to open a connection to a SQLite database, which is inside the <b><c>/scriptfiles</c></b> folder.</summary>
  * <param name="name">File name of the database</param>
  * <remarks>Return type for this function has changed since version <b>0.3.7 R2</b>.</remarks>
@@ -32,6 +33,7 @@ native DB:DB_Open(const name[]) = db_open;
 native DB:db_open(const name[]);
 
 /**
+ * <library>a_sampdb</library>
  * <summary>Closes an SQLite database that was opened with <a href="#db_open">db_open</a>.</summary>
  * <param name="db">The handle of the database connection to close (returned by <a href="#db_open">db_open</a>)</param>
  * <remarks>Using an <b>invalid handle</b> will crash your server! Get a <b>valid handle</b> by using <a href="#db_open">db_open</a>. But it's protected against <b><c>NULL</c></b> references</remarks>
@@ -46,6 +48,7 @@ native bool:DB_Close(DB:db) = db_close;
 native bool:db_close(DB:db);
 
 /**
+ * <library>a_sampdb</library>
  * <summary>This function is used to execute an SQL query on an opened SQLite database.</summary>
  * <param name="db">The database handle to query</param>
  * <param name="query">The query to execute</param>
@@ -59,6 +62,7 @@ native DBResult:DB_Query(DB:db, const query[]) = db_query;
 native DBResult:db_query(DB:db, const query[]);
 
 /**
+ * <library>a_sampdb</library>
  * <summary>Frees result memory allocated from <a href="#db_query">db_query</a>.</summary>
  * <param name="result">The result to free</param>
  * <returns>If <b><c>DBResult:dbhandle</c></b> is a valid handle, it returns <b><c>1</c></b>, otherwise <b><c>0</c></b> if <b><c>DBResult:dbhandle</c></b> is a <b><c>NULL</c></b> reference.</returns>
@@ -69,6 +73,7 @@ native bool:DB_FreeResult(DBResult:result) = db_free_result;
 native bool:db_free_result(DBResult:result);
 
 /**
+ * <library>a_sampdb</library>
  * <summary>Returns the number of rows from a <a href="#db_query">db_query</a>.</summary>
  * <param name="result">The result of <a href="#db_query">db_query</a></param>
  * <remarks>Using an <b>invalid handle</b> will crash your server! Get a <b>valid handle</b> by using <a href="#db_open">db_open</a>. But it's protected against <b><c>NULL</c></b> references</remarks>
@@ -80,6 +85,7 @@ native DB_NumRows(DBResult:result) = db_num_rows;
 native db_num_rows(DBResult:result);
 
 /**
+ * <library>a_sampdb</library>
  * <summary>Moves to the next row of the result allocated from <a href="#db_query">db_query</a>.</summary>
  * <param name="result">The result of <a href="#db_query">db_query</a></param>
  * <remarks>Using an <b>invalid handle</b> will crash your server! Get a <b>valid handle</b> by using <a href="#db_open">db_open</a>. But it's protected against <b><c>NULL</c></b> references</remarks>
@@ -91,6 +97,7 @@ native bool:DB_NextRow(DBResult:result) = db_next_row;
 native bool:db_next_row(DBResult:result);
 
 /**
+ * <library>a_sampdb</library>
  * <summary>Get the number of fields in a result.</summary>
  * <param name="result">The result of <a href="#db_query">db_query</a></param>
  * <remarks>Using an <b>invalid handle</b> will crash your server! Get a <b>valid handle</b> by using <a href="#db_open">db_open</a>. But it's protected against <b><c>NULL</c></b> references</remarks>
@@ -102,6 +109,7 @@ native DB_NumFields(DBResult:result) = db_num_fields;
 native db_num_fields(DBResult:result);
 
 /**
+ * <library>a_sampdb</library>
  * <summary>Returns the name of a field at a particular index.</summary>
  * <param name="result">The result to get the data from; returned by <a href="#db_query">db_query</a></param>
  * <param name="field">The index of the field to get the name of</param>
@@ -116,6 +124,7 @@ native bool:DB_FieldName(DBResult:result, field, output[], size = sizeof (output
 native bool:db_field_name(DBResult:result, field, output[], size = sizeof (output));
 
 /**
+ * <library>a_sampdb</library>
  * <summary>Get the content of a field from <a href="#db_query">db_query</a>.</summary>
  * <param name="result">The result to get the data from</param>
  * <param name="field">The field to get the data from</param>
@@ -130,6 +139,7 @@ native bool:DB_GetField(DBResult:result, field, output[], size = sizeof (output)
 native bool:db_get_field(DBResult:result, field, output[], size = sizeof (output));
 
 /**
+ * <library>a_sampdb</library>
  * <summary>Get the content of a field as an integer from <a href="#db_query">db_query</a>.</summary>
  * <param name="result">The result to get the data from</param>
  * <param name="field">The field to get the data from (optional=<b><c>0</c></b>)</param>
@@ -142,6 +152,7 @@ native DB_GetFieldInt(DBResult:result, field = 0) = db_get_field_int;
 native db_get_field_int(DBResult:result, field = 0);
 
 /**
+ * <library>a_sampdb</library>
  * <summary>Get the content of a field as a float from db_query.</summary>
  * <param name="result">The result to get the data from</param>
  * <param name="field">The field to get the data from (optional=<b><c>0</c></b>)</param>
@@ -154,6 +165,7 @@ native Float:DB_GetFieldFloat(DBResult:result, field = 0) = db_get_field_float;
 native Float:db_get_field_float(DBResult:result, field = 0);
 
 /**
+ * <library>a_sampdb</library>
  * <summary>Get the contents of field with specified name.</summary>
  * <param name="result">The result to get the data from</param>
  * <param name="field">The fieldname to get the data from</param>
@@ -168,6 +180,7 @@ native bool:DB_GetFieldAssoc(DBResult:result, const field[], output[], size = si
 native bool:db_get_field_assoc(DBResult:result, const field[], output[], size = sizeof (output));
 
 /**
+ * <library>a_sampdb</library>
  * <summary>Get the contents of field as an integer with specified name.</summary>
  * <param name="result">The result to get the data from</param>
  * <param name="field">The fieldname to get the data from</param>
@@ -180,6 +193,7 @@ native DB_GetFieldAssocInt(DBResult:result, const field[]) = db_get_field_assoc_
 native db_get_field_assoc_int(DBResult:result, const field[]);
 
 /**
+ * <library>a_sampdb</library>
  * <summary>Get the contents of field as a float with specified name.</summary>
  * <param name="result">The result to get the data from</param>
  * <param name="field">The fieldname to get the data from</param>
@@ -192,6 +206,7 @@ native Float:DB_GetFieldAssocFloat(DBResult:result, const field[]) = db_get_fiel
 native Float:db_get_field_assoc_float(DBResult:result, const field[]);
 
 /**
+ * <library>a_sampdb</library>
  * <summary>Get memory handle for an SQLite database that was opened with <a href="#db_open">db_open</a>.</summary>
  * <param name="db">The index of the database connection (returned by <a href="#db_open">db_open</a>)</param>
  * <remarks>This function was added in <b>SA-MP 0.3.7 R1</b> and will not work in earlier versions!</remarks>
@@ -203,6 +218,7 @@ native DB_GetMemHandle(DB:db) = db_get_mem_handle;
 native db_get_mem_handle(DB:db);
 
 /**
+ * <library>a_sampdb</library>
  * <summary>Get <b>memory handle</b> for an SQLite query that was executed with <a href="#db_query">db_query</a>.</summary>
  * <param name="result">The index of the query (returned by <a href="#db_query">db_query</a>)</param>
  * <remarks>This function was added in <b>SA-MP 0.3.7 R1</b> and will not work in earlier versions!</remarks>

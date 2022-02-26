@@ -392,6 +392,7 @@ open.mp releases can use `A` as the first digit.
 #endif
 
 /**
+ * <library>a_npc</library>
  * <summary>Formats a string to include variables and other strings inside it.</summary>
  * <param name="output">The string to output the result to</param>
  * <param name="len">The maximum length output can contain</param>
@@ -420,6 +421,7 @@ open.mp releases can use `A` as the first digit.
 native format(output[], len = sizeof (output), const format[], {Float, _}:...);
 
 /**
+ * <library>a_npc</library>
  * <summary>Sets a 'timer' to call a function after some time. Can be set to repeat.</summary>
  * <param name="functionName">Name of the function to call as a string. This must be a public function (forwarded). A null string here will crash the server</param>
  * <param name="interval">Interval in milliseconds</param>
@@ -435,6 +437,7 @@ native format(output[], len = sizeof (output), const format[], {Float, _}:...);
 native SetTimer(const functionName[], interval, bool:repeating);
 
 /**
+ * <library>a_npc</library>
  * <summary>Kills (stops) a running timer.</summary>
  * <param name="timerid">The ID of the timer to kill (returned by <a href="#SetTimer">SetTimer</a> or <a href="#SetTimerEx">SetTimerEx</a>)</param>
  * <seealso name="SetTimer" />
@@ -444,6 +447,7 @@ native SetTimer(const functionName[], interval, bool:repeating);
 native KillTimer(timerid);
 
 /**
+ * <library>a_npc</library>
  * <summary>Returns the uptime of the actual server (not the SA-MP server) in milliseconds.</summary>
  * <seealso name="tickcount" />
  * <remarks>GetTickCount will cause problems on servers with uptime of over 24 days as GetTickCount will eventually warp past the integer size constraints. However using <a href="https://gist.github.com/ziggi/5d7d8dc42f54531feba7ae924c608e73">this</a> function fixes the problem.</remarks>
@@ -453,6 +457,7 @@ native KillTimer(timerid);
 native GetTickCount();
 
 /**
+ * <library>a_npc</library>
  * <summary>Get the inversed value of a sine in degrees.</summary>
  * <param name="value">The sine for which to find the angle for</param>
  * <seealso name="floatsin" />
@@ -461,6 +466,7 @@ native GetTickCount();
 native Float:asin(Float:value);
 
 /**
+ * <library>a_npc</library>
  * <summary>Get the inversed value of a cosine in degrees.</summary>
  * <param name="value">The cosine for which to find the angle for</param>
  * <seealso name="floatcos" />
@@ -469,6 +475,7 @@ native Float:asin(Float:value);
 native Float:acos(Float:value);
 
 /**
+ * <library>a_npc</library>
  * <summary>Get the inversed value of a tangent in degrees.</summary>
  * <param name="value">The tangent for which to find the angle for</param>
  * <seealso name="atan2" />
@@ -478,6 +485,7 @@ native Float:acos(Float:value);
 native Float:atan(Float:value);
 
 /**
+ * <library>a_npc</library>
  * <summary>Get the multi-valued inversed value of a tangent in degrees.</summary>
  * <param name="y">y size</param>
  * <param name="x">x size</param>
@@ -488,6 +496,7 @@ native Float:atan(Float:value);
 native Float:atan2(Float:y, Float:x);
 
 /**
+ * <library>a_npc</library>
  * <summary>This will send a player text by the bot, just like using <a href="#SendPlayerMessageToAll">SendPlayerMessageToAll</a>, but this function is to be used inside the NPC scripts.</summary>
  * <param name="message">The text to be sent by the NPC</param>
  * <seealso name="SendCommand" />
@@ -496,6 +505,7 @@ native Float:atan2(Float:y, Float:x);
 native SendChat(const message[]);
 
 /**
+ * <library>a_npc</library>
  * <summary>This will force the NPC to write a desired command, and this way, getting the effects it would produce.</summary>
  * <param name="command">The command text to be sent by the NPC</param>
  * <seealso name="SendChat" />
@@ -504,6 +514,7 @@ native SendChat(const message[]);
 native SendCommand(const command[]);
 
 /**
+ * <library>a_npc</library>
  * <summary>Get a player's current state.</summary>
  * <param name="playerid">The ID of the player to get the current state of</param>
  * <seealso name="GetPlayerSpecialAction" />
@@ -529,6 +540,7 @@ native SendCommand(const command[]);
 native PLAYER_STATE:GetPlayerState(playerid);
 
 /**
+ * <library>a_npc</library>
  * <summary>Get the position of a player, represented by x, y and z coordinates.</summary>
  * <param name="playerid">The ID of the player to get the position of</param>
  * <param name="x">A float variable in which to store the x coordinate in, passed by reference</param>
@@ -544,6 +556,7 @@ native PLAYER_STATE:GetPlayerState(playerid);
 native GetPlayerPos(playerid, &Float:x, &Float:y, &Float:z);
 
 /**
+ * <library>a_npc</library>
  * <summary>This function gets the ID of the vehicle the player is currently in. Note: <b>NOT</b> the model ID of the vehicle. See <a href="#GetVehicleModel">GetVehicleModel</a> for that.</summary>
  * <param name="playerid">The ID of the player in the vehicle that you want to get the ID of</param>
  * <seealso name="IsPlayerInVehicle" />
@@ -559,6 +572,7 @@ native GetPlayerHealth(playerid);
 native GetPlayerArmour(playerid);
 
 /**
+ * <library>a_npc</library>
  * <summary>Retrieves a player's current <a href="http://wiki.sa-mp.com/wiki/SpecialActions">special action</a>.</summary>
  * <param name="playerid">The ID of the player to get the <a href="http://wiki.sa-mp.com/wiki/SpecialActions">special action</a> of</param>
  * <seealso name="SetPlayerSpecialAction" />
@@ -568,6 +582,7 @@ native GetPlayerArmour(playerid);
 native SPECIAL_ACTION:GetPlayerSpecialAction(playerid);
 
 /**
+ * <library>a_npc</library>
  * <summary>Checks if a player is streamed in for an NPC. Only nearby players are streamed in.</summary>
  * <param name="playerid">The ID of the player to check</param>
  * <seealso name="IsVehicleStreamedIn" />
@@ -577,6 +592,7 @@ native SPECIAL_ACTION:GetPlayerSpecialAction(playerid);
 native bool:IsPlayerStreamedIn(playerid);
 
 /**
+ * <library>a_npc</library>
  * <summary>Checks if a vehicle is streamed in for an NPC. Only nearby vehicles are streamed in.</summary>
  * <param name="vehicleid">The ID of the vehicle to check</param>
  * <seealso name="IsPlayerStreamedIn" />
@@ -586,6 +602,7 @@ native bool:IsPlayerStreamedIn(playerid);
 native bool:IsVehicleStreamedIn(vehicleid);
 
 /**
+ * <library>a_npc</library>
  * <summary>Check which keys a player is pressing.</summary>
  * <param name="playerid">The ID of the player to get the keys of</param>
  * <param name="keys">Bitmask containing the player's key states. <a href="http://wiki.sa-mp.com/wiki/Keys">List of keys</a></param>
@@ -599,6 +616,7 @@ native bool:IsVehicleStreamedIn(vehicleid);
 native GetPlayerKeys(playerid, &KEY:keys, &KEY:updown, &KEY:leftright);
 
 /**
+ * <library>a_npc</library>
  * <summary>Gets the angle a player is facing.</summary>
  * <param name="playerid">The player you want to get the angle of</param>
  * <param name="ang">The Float to store the angle in, passed by reference</param>
@@ -608,6 +626,7 @@ native GetPlayerKeys(playerid, &KEY:keys, &KEY:updown, &KEY:leftright);
 native GetPlayerFacingAngle(playerid, &Float:ang);
 
 /**
+ * <library>a_npc</library>
  * <summary>Get the current location of the NPC.</summary>
  * <param name="x">A float to save the x coordinate, passed by reference</param>
  * <param name="y">A float to save the y coordinate, passed by reference</param>
@@ -619,6 +638,7 @@ native GetPlayerFacingAngle(playerid, &Float:ang);
 native GetMyPos(&Float:x, &Float:y, &Float:z);
 
 /**
+ * <library>a_npc</library>
  * <summary>Set the position of the NPC.</summary>
  * <param name="x">The x coordinate to put the NPC at</param>
  * <param name="y">The y coordinate to put the NPC at</param>
@@ -630,6 +650,7 @@ native GetMyPos(&Float:x, &Float:y, &Float:z);
 native SetMyPos(Float:x, Float:y, Float:z);
 
 /**
+ * <library>a_npc</library>
  * <summary>Get the current facing angle of the NPC.</summary>
  * <param name="ang">A float to save the angle in, passed by reference</param>
  * <seealso name="SetMyFacingAngle" />
@@ -639,6 +660,7 @@ native SetMyPos(Float:x, Float:y, Float:z);
 native GetMyFacingAngle(&Float:ang);
 
 /**
+ * <library>a_npc</library>
  * <summary>Set the NPC's facing angle.</summary>
  * <param name="ang">The new NPC's facing angle</param>
  * <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
@@ -647,6 +669,7 @@ native GetMyFacingAngle(&Float:ang);
 native SetMyFacingAngle(Float:ang);
 
 /**
+ * <library>a_npc</library>
  * <summary>Get the distance between the NPC and a point.</summary>
  * <param name="x">The x coordinate of the point</param>
  * <param name="y">The y coordinate of the point</param>
@@ -660,6 +683,7 @@ native SetMyFacingAngle(Float:ang);
 native GetDistanceFromMeToPoint(Float:x, Float:y, Float:z, &Float:distance);
 
 /**
+ * <library>a_npc</library>
  * <summary>Checks if a player is in range of a point. This native function is faster than the PAWN implementation using distance formula.</summary>
  * <param name="playerid">The ID of the player</param>
  * <param name="range">The furthest distance the player can be from the point to be in range</param>
@@ -675,6 +699,7 @@ native GetDistanceFromMeToPoint(Float:x, Float:y, Float:z, &Float:distance);
 native bool:IsPlayerInRangeOfPoint(playerid, Float:range, Float:x, Float:y, Float:z);
 
 /**
+ * <library>a_npc</library>
  * <summary>Get a player's name.</summary>
  * <param name="playerid">The ID of the player to get the name of</param>
  * <param name="name">An array into which to store the name, passed by reference</param>
@@ -690,6 +715,7 @@ native bool:IsPlayerInRangeOfPoint(playerid, Float:range, Float:x, Float:y, Floa
 native GetPlayerName(playerid, name[], len = sizeof (name));
 
 /**
+ * <library>a_npc</library>
  * <summary>Checks if a player is connected (if an ID is taken by a connected player).</summary>
  * <param name="playerid">The ID of the player to check</param>
  * <seealso name="IsPlayerAdmin" />
@@ -701,6 +727,7 @@ native GetPlayerName(playerid, name[], len = sizeof (name));
 native bool:IsPlayerConnected(playerid);
 
 /**
+ * <library>a_npc</library>
  * <summary>This will run a .rec file which has to be saved in the npcmodes/recordings folder. These files allow the NPC to follow certain actions. Their actions can be recorded manually. For more information, check the related functions.</summary>
  * <param name="playbackType">The type of recording to be loaded</param>
  * <param name="recordFile">The filename to be loaded, without the .rec extension</param>
@@ -710,6 +737,7 @@ native bool:IsPlayerConnected(playerid);
 native StartRecordingPlayback(PLAYER_RECORDING_TYPE:playbackType, const recordFile[]);
 
 /**
+ * <library>a_npc</library>
  * <summary>This will stop the current .rec file which is being ran by the NPC, making it stay idle until some other order is given.</summary>
  * <seealso name="StartRecordingPlayback" />
  * <remarks>This NPC function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
@@ -717,6 +745,7 @@ native StartRecordingPlayback(PLAYER_RECORDING_TYPE:playbackType, const recordFi
 native StopRecordingPlayback();
 
 /**
+ * <library>a_npc</library>
  * <summary>This will pause playing back the recording.</summary>
  * <seealso name="ResumeRecordingPlayback" />
  * <remarks>This NPC function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
@@ -724,6 +753,7 @@ native StopRecordingPlayback();
 native PauseRecordingPlayback();
 
 /**
+ * <library>a_npc</library>
  * <summary>This will resume the paused recording.</summary>
  * <seealso name="PauseRecordingPlayback" />
  * <remarks>This NPC function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>

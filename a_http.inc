@@ -43,6 +43,7 @@ enum HTTP_ERROR:__HTTP_ERROR
 }
 
 /**
+ * <library>a_http</library>
  * <summary>Sends a threaded HTTP request.</summary>
  * <param name="index">ID used to differentiate requests that are sent to the same callback (useful for playerids)</param>
  * <param name="method">The type of request you wish to send</param>

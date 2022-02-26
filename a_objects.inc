@@ -53,6 +53,7 @@ enum OBJECT_MATERIAL_TEXT_ALIGN:__OBJECT_MATERIAL_TEXT_ALIGN
 // Objects
 
 /**
+ * <library>a_objects</library>
  * <summary>Creates an object at specified coordinates in the game world.</summary>
  * <param name="modelid">The model to create</param>
  * <param name="x">The x coordinate to create the object at</param>
@@ -84,6 +85,7 @@ enum OBJECT_MATERIAL_TEXT_ALIGN:__OBJECT_MATERIAL_TEXT_ALIGN
 native CreateObject(modelid, Float:x, Float:y, Float:z, Float:rotX, Float:rotY, Float:rotZ, Float:drawDistance = 0.0);
 
 /**
+ * <library>a_objects</library>
  * <summary>Attach an object to a vehicle.</summary>
  * <param name="objectid">The ID of the object to attach to the vehicle. Note that this is an object ID, not a model ID. The object must be CreateObject created first</param>
  * <param name="vehicleid">The ID of the vehicle to attach the object to</param>
@@ -104,6 +106,7 @@ native CreateObject(modelid, Float:x, Float:y, Float:z, Float:rotX, Float:rotY, 
 native AttachObjectToVehicle(objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotX, Float:rotY, Float:rotZ);
 
 /**
+ * <library>a_objects</library>
  * <summary>You can use this function to attach objects to other objects. The objects will folow the main object.</summary>
  * <param name="objectid">The object to attach to another object</param>
  * <param name="attachtoid">The object to attach the object to</param>
@@ -132,6 +135,7 @@ native AttachObjectToVehicle(objectid, parentid, Float:offsetX, Float:offsetY, F
 native AttachObjectToObject(objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotX, Float:rotY, Float:rotZ, bool:syncRotation = true);
 
 /**
+ * <library>a_objects</library>
  * <summary>Attach an object to a player.</summary>
  * <param name="objectid">The ID of the object to attach to the player</param>
  * <param name="playerid">The ID of the player to attach the object to</param>
@@ -151,6 +155,7 @@ native AttachObjectToObject(objectid, parentid, Float:offsetX, Float:offsetY, Fl
 native AttachObjectToPlayer(objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotX, Float:rotY, Float:rotZ);
 
 /**
+ * <library>a_objects</library>
  * <summary>Change the position of an object.</summary>
  * <param name="objectid">The ID of the object to set the position of. Returned by <a href="#CreateObject">CreateObject</a></param>
  * <param name="x">The x coordinate to position the object at</param>
@@ -165,6 +170,7 @@ native AttachObjectToPlayer(objectid, parentid, Float:offsetX, Float:offsetY, Fl
 native SetObjectPos(objectid, Float:x, Float:y, Float:z);
 
 /**
+ * <library>a_objects</library>
  * <summary>Get the position of an object.</summary>
  * <param name="objectid">The ID of the object to get the position of.</param>
  * <param name="x">A variable in which to store the x coordinate, passed by reference</param>
@@ -182,6 +188,7 @@ native SetObjectPos(objectid, Float:x, Float:y, Float:z);
 native GetObjectPos(objectid, &Float:x, &Float:y, &Float:z);
 
 /**
+ * <library>a_objects</library>
  * <summary>Set the rotation of an object on the three axes (x, y and z).</summary>
  * <param name="objectid">The ID of the object to set the rotation of</param>
  * <param name="rotX">The x rotation</param>
@@ -196,6 +203,7 @@ native GetObjectPos(objectid, &Float:x, &Float:y, &Float:z);
 native SetObjectRot(objectid, Float:rotX, Float:rotY, Float:rotZ);
 
 /**
+ * <library>a_objects</library>
  * <summary>Use this function to get the objects current rotation. The rotation is saved by reference in three rotX/rotY/rotZ variables.</summary>
  * <param name="objectid">The objectid of the object you want to get the rotation from</param>
  * <param name="rotX">The variable to store the x rotation, passed by reference</param>
@@ -210,6 +218,7 @@ native SetObjectRot(objectid, Float:rotX, Float:rotY, Float:rotZ);
 native GetObjectRot(objectid, &Float:rotX, &Float:rotY, &Float:rotZ);
 
 /**
+ * <library>a_objects</library>
  * <summary>Get the model ID of an object.</summary>
  * <param name="objectid">The ID of the object to get the model of</param>
  * <seealso name="GetPlayerObjectModel" />
@@ -220,6 +229,7 @@ native GetObjectRot(objectid, &Float:rotX, &Float:rotY, &Float:rotZ);
 native GetObjectModel(objectid);
 
 /**
+ * <library>a_objects</library>
  * <summary>Disable collisions between players' cameras and the specified object.</summary>
  * <param name="objectid">The ID of the object to disable camera collisions on</param>
  * <seealso name="SetObjectsDefaultCameraCol" />
@@ -234,6 +244,7 @@ native GetObjectModel(objectid);
 native SetObjectNoCameraCol(objectid);
 
 /**
+ * <library>a_objects</library>
  * <summary>Checks if an object with the ID provided exists.</summary>
  * <param name="objectid">The ID of the object to check the existence of</param>
  * <seealso name="IsValidPlayerObject" />
@@ -245,6 +256,7 @@ native SetObjectNoCameraCol(objectid);
 native bool:IsValidObject(objectid);
 
 /**
+ * <library>a_objects</library>
  * <summary>Destroys (removes) an object that was created using <a href="#CreateObject">CreateObject</a>.</summary>
  * <param name="objectid">The ID of the object to destroy. Returned by <a href="#CreateObject">CreateObject</a></param>
  * <seealso name="CreateObject" />
@@ -254,6 +266,7 @@ native bool:IsValidObject(objectid);
 native DestroyObject(objectid);
 
 /**
+ * <library>a_objects</library>
  * <summary>Move an object to a new position with a set speed. Players/vehicles will 'surf' the object as it moves.</summary>
  * <param name="objectid">The ID of the object to move</param>
  * <param name="x">The x coordinate to move the object to</param>
@@ -277,6 +290,7 @@ native DestroyObject(objectid);
 native MoveObject(objectid, Float:x, Float:y, Float:z, Float:speed, Float:rotX = -1000.0, Float:rotY = -1000.0, Float:rotZ = -1000.0);
 
 /**
+ * <library>a_objects</library>
  * <summary>Stop a moving object after <a href="#MoveObject">MoveObject</a> has been used.</summary>
  * <param name="objectid">The ID of the object to stop moving</param>
  * <seealso name="MoveObject" />
@@ -287,6 +301,7 @@ native MoveObject(objectid, Float:x, Float:y, Float:z, Float:speed, Float:rotX =
 native StopObject(objectid);
 
 /**
+ * <library>a_objects</library>
  * <summary>Checks if the given objectid is moving.</summary>
  * <param name="objectid">The objectid you want to check if is moving</param>
  * <seealso name="MoveObject" />
@@ -299,6 +314,7 @@ native StopObject(objectid);
 native bool:IsObjectMoving(objectid);
 
 /**
+ * <library>a_objects</library>
  * <summary>Allows a player to edit an object (position and rotation) using their mouse on a GUI (Graphical User Interface).</summary>
  * <param name="playerid">The ID of the player that should edit the object</param>
  * <param name="objectid">The ID of the object to be edited by the player</param>
@@ -316,6 +332,7 @@ native bool:IsObjectMoving(objectid);
 native EditObject(playerid, objectid);
 
 /**
+ * <library>a_objects</library>
  * <summary>Allows players to edit a player-object (position and rotation) with a GUI and their mouse.</summary>
  * <param name="playerid">The ID of the player that should edit the object</param>
  * <param name="objectid">The object to be edited by the player</param>
@@ -333,6 +350,7 @@ native EditObject(playerid, objectid);
 native EditPlayerObject(playerid, objectid);
 
 /**
+ * <library>a_objects</library>
  * <summary>Display the cursor and allow the player to select an object. <a href="#OnPlayerSelectObject">OnPlayerSelectObject</a> is called when the player selects an object.</summary>
  * <param name="playerid">The ID of the player that should be able to select the object</param>
  * <seealso name="EditObject" />
@@ -345,6 +363,7 @@ native EditPlayerObject(playerid, objectid);
 native SelectObject(playerid);
 
 /**
+ * <library>a_objects</library>
  * <summary>Cancel object edition mode for a player.</summary>
  * <param name="playerid">The ID of the player to cancel edition for</param>
  * <seealso name="SelectObject" />
@@ -356,6 +375,7 @@ native SelectObject(playerid);
 native CancelEdit(playerid);
 
 /**
+ * <library>a_objects</library>
  * <summary>Creates an object which will be visible to only one player.</summary>
  * <param name="playerid">The ID of the player to create the object for</param>
  * <param name="modelid">The model to create</param>
@@ -383,6 +403,7 @@ native CancelEdit(playerid);
 native CreatePlayerObject(playerid, modelid, Float:x, Float:y, Float:z, Float:rotX, Float:rotY, Float:rotZ, Float:drawDistance = 0.0);
 
 /**
+ * <library>a_objects</library>
  * <summary>Attach a player object to a vehicle.</summary>
  * <param name="playerid">The ID of the player the object was created for</param>
  * <param name="objectid">The ID of the object to attach to the vehicle</param>
@@ -402,6 +423,7 @@ native CreatePlayerObject(playerid, modelid, Float:x, Float:y, Float:z, Float:ro
 native AttachPlayerObjectToVehicle(playerid, objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotX, Float:rotY, Float:rotZ);
 
 /**
+ * <library>a_objects</library>
  * <summary>Sets the position of a player-object to the specified coordinates.</summary>
  * <param name="playerid">The ID of the player whose player-object to set the position of</param>
  * <param name="objectid">The ID of the player-object to set the position of. Returned by <a href="#CreatePlayerObject">CreatePlayerObject</a></param>
@@ -420,6 +442,7 @@ native AttachPlayerObjectToVehicle(playerid, objectid, parentid, Float:offsetX, 
 native SetPlayerObjectPos(playerid, objectid, Float:x, Float:y, Float:z);
 
 /**
+ * <library>a_objects</library>
  * <summary>Get the position of a player object (<a href="#CreatePlayerObject">CreatePlayerObject</a>).</summary>
  * <param name="playerid">The ID of the player whose player object to get the position of</param>
  * <param name="objectid">The object's ID of which you want the current location</param>
@@ -440,6 +463,7 @@ native SetPlayerObjectPos(playerid, objectid, Float:x, Float:y, Float:z);
 native GetPlayerObjectPos(playerid, objectid, &Float:x, &Float:y, &Float:z);
 
 /**
+ * <library>a_objects</library>
  * <summary>Set the rotation of an object on the x, y and z axis.</summary>
  * <param name="playerid">The ID of the player whose player-object to rotate</param>
  * <param name="objectid">The ID of the player-object to rotate</param>
@@ -459,6 +483,7 @@ native GetPlayerObjectPos(playerid, objectid, &Float:x, &Float:y, &Float:z);
 native SetPlayerObjectRot(playerid, objectid, Float:rotX, Float:rotY, Float:rotZ);
 
 /**
+ * <library>a_objects</library>
  * <summary>Use this function to get the object's current rotation. The rotation is saved by reference in three rotX/rotY/rotZ variables.</summary>
  * <param name="playerid">The player you associated this object to</param>
  * <param name="objectid">The objectid of the object you want to get the rotation from</param>
@@ -474,6 +499,7 @@ native SetPlayerObjectRot(playerid, objectid, Float:rotX, Float:rotY, Float:rotZ
 native GetPlayerObjectRot(playerid, objectid, &Float:rotX, &Float:rotY, &Float:rotZ);
 
 /**
+ * <library>a_objects</library>
  * <summary>Retrieve the model ID of a player-object.</summary>
  * <param name="playerid">The ID of the player whose player-object to get the model of</param>
  * <param name="objectid">The ID of the player-object of which to retrieve the model ID</param>
@@ -485,6 +511,7 @@ native GetPlayerObjectRot(playerid, objectid, &Float:rotX, &Float:rotY, &Float:r
 native GetPlayerObjectModel(playerid, objectid);
 
 /**
+ * <library>a_objects</library>
  * <summary>Toggles a player object camera collision.</summary>
  * <param name="playerid">The playerid the object belongs to</param>
  * <param name="objectid">The ID of the object you want to toggle</param>
@@ -497,6 +524,7 @@ native GetPlayerObjectModel(playerid, objectid);
 native SetPlayerObjectNoCameraCol(playerid, objectid);
 
 /**
+ * <library>a_objects</library>
  * <summary>Checks if the given object ID is valid for the given player.</summary>
  * <param name="playerid">The ID of the player whose player-object to validate</param>
  * <param name="objectid">The ID of the object to validate</param>
@@ -508,6 +536,7 @@ native SetPlayerObjectNoCameraCol(playerid, objectid);
 native bool:IsValidPlayerObject(playerid, objectid);
 
 /**
+ * <library>a_objects</library>
  * <summary>Destroy a player-object created using <a href="#CreatePlayerObject">CreatePlayerObject</a>.</summary>
  * <param name="playerid">The ID of the player whose player-object to destroy</param>
  * <param name="objectid">The ID of the player-object to destroy. Returned by <a href="#CreatePlayerObject">CreatePlayerObject</a></param>
@@ -518,6 +547,7 @@ native bool:IsValidPlayerObject(playerid, objectid);
 native DestroyPlayerObject(playerid, objectid);
 
 /**
+ * <library>a_objects</library>
  * <summary>Move a player object with a set speed. Also supports rotation. Players/vehicles will surf moving objects.</summary>
  * <param name="playerid">The ID of the player whose player-object to move</param>
  * <param name="objectid">The ID of the object to move</param>
@@ -541,6 +571,7 @@ native DestroyPlayerObject(playerid, objectid);
 native MovePlayerObject(playerid, objectid, Float:x, Float:y, Float:z, Float:speed, Float:rotX = -1000.0, Float:rotY = -1000.0, Float:rotZ = -1000.0);
 
 /**
+ * <library>a_objects</library>
  * <summary>Stop a moving player-object after <a href="#MovePlayerObject">MovePlayerObject</a> has been used.</summary>
  * <param name="playerid">The ID of the player whose player-object to stop</param>
  * <param name="objectid">The ID of the player-object to stop</param>
@@ -552,6 +583,7 @@ native MovePlayerObject(playerid, objectid, Float:x, Float:y, Float:z, Float:spe
 native StopPlayerObject(playerid, objectid);
 
 /**
+ * <library>a_objects</library>
  * <summary>Checks if the given player objectid is moving.</summary>
  * <param name="playerid">The ID of the player whose player-object is checked</param>
  * <param name="objectid">The player objectid you want to check if is moving</param>
@@ -565,6 +597,7 @@ native StopPlayerObject(playerid, objectid);
 native bool:IsPlayerObjectMoving(playerid, objectid);
 
 /**
+ * <library>a_objects</library>
  * <summary>The same as AttachObjectToPlayer but for objects which were created for player.</summary>
  * <param name="playerid">The ID of the player which is linked with the object</param>
  * <param name="objectid">The objectid you want to attach to the player</param>
@@ -584,6 +617,7 @@ native bool:IsPlayerObjectMoving(playerid, objectid);
 native AttachPlayerObjectToPlayer(playerid, objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotX, Float:rotY, Float:rotZ);
 
 /**
+ * <library>a_objects</library>
  * <summary>Replace the texture of an object with the texture from another model in the game.</summary>
  * <param name="objectid">The ID of the object to change the texture of</param>
  * <param name="materialIndex">The material index on the object to change (<b><c>0</c></b> to <b><c>15</c></b>)</param>
@@ -603,6 +637,7 @@ native AttachPlayerObjectToPlayer(playerid, objectid, parentid, Float:offsetX, F
 native SetObjectMaterial(objectid, materialIndex, modelid, const textureLibrary[], const textureName[], materialColour = 0);
 
 /**
+ * <library>a_objects</library>
  * <summary>Replace the texture of a player-object with the texture from another model in the game.</summary>
  * <param name="playerid">The ID of the player the object is associated to</param>
  * <param name="objectid">The ID of the object to replace the texture of</param>
@@ -619,6 +654,7 @@ native SetObjectMaterial(objectid, materialIndex, modelid, const textureLibrary[
 native SetPlayerObjectMaterial(playerid, objectid, materialIndex, modelid, const textureLibrary[], const textureName[], materialColour = 0);
 
 /**
+ * <library>a_objects</library>
  * <summary>Replace the texture of an object with text.</summary>
  * <param name="objectid">The ID of the object to replace the texture of with text</param>
  * <param name="text">The text to show on the object. (MAX <b>2048</b> characters)</param>
@@ -669,6 +705,7 @@ native SetPlayerObjectMaterial(playerid, objectid, materialIndex, modelid, const
 native SetObjectMaterialText(objectid, const text[], materialIndex = 0, OBJECT_MATERIAL_SIZE:materialSize = OBJECT_MATERIAL_SIZE_256x128, const fontFace[] = "Arial", fontSize = 24, bool:bold = true, fontColour = 0xFFFFFFFF, backgroundColour = 0, OBJECT_MATERIAL_TEXT_ALIGN:textalignment = OBJECT_MATERIAL_TEXT_ALIGN_LEFT);
 
 /**
+ * <library>a_objects</library>
  * <summary>Replace the texture of a player object with text.</summary>
  * <param name="playerid">The ID of the player whose player object to set the text of</param>
  * <param name="objectid">The ID of the object on which to place the text</param>
@@ -716,6 +753,7 @@ native SetObjectMaterialText(objectid, const text[], materialIndex = 0, OBJECT_M
 native SetPlayerObjectMaterialText(playerid, objectid, const text[], materialIndex = 0, OBJECT_MATERIAL_SIZE:materialSize = OBJECT_MATERIAL_SIZE_256x128, const fontFace[] = "Arial", fontSize = 24, bool:bold = true, fontColour = 0xFFFFFFFF, backgroundColour = 0, OBJECT_MATERIAL_TEXT_ALIGN:textalignment = OBJECT_MATERIAL_TEXT_ALIGN_LEFT);
 
 /**
+ * <library>a_objects</library>
  * <summary>Allows camera collisions with newly created objects to be disabled by default.</summary>
  * <param name="disable"><b><c>1</c></b> to disable camera collisions for newly created objects and <b><c>0</c></b> to enable them (enabled by default)</param>
  * <seealso name="SetObjectNoCameraCol" />

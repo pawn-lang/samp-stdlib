@@ -566,6 +566,7 @@ open.mp releases can use `A` as the first digit.
 // Util
 
 /**
+ * <library>a_samp</library>
  * <summary>Prints a string to the server console (not in-game chat) and logs (server_log.txt).</summary>
  * <param name="string">The string to print</param>
  * <seealso name="printf" />
@@ -582,6 +583,7 @@ open.mp releases can use `A` as the first digit.
 #endif
 
 /**
+ * <library>a_samp</library>
  * <summary>Outputs a formatted string on the console (the server window, not the in-game chat).</summary>
  * <param name="format">The format string</param>
  * <param name="">Indefinite number of arguments of any tag</param>
@@ -622,6 +624,7 @@ open.mp releases can use `A` as the first digit.
 #endif
 
 /**
+ * <library>a_samp</library>
  * <summary>Formats a string to include variables and other strings inside it.</summary>
  * <param name="output">The string to output the result to</param>
  * <param name="len">The maximum length output can contain</param>
@@ -650,6 +653,7 @@ open.mp releases can use `A` as the first digit.
 native format(output[], len = sizeof (output), const format[], {Float, _}:...);
 
 /**
+ * <library>a_samp</library>
  * <summary>This function sends a message to a specific player with a chosen colour in the chat. The whole line in the chatbox will be in the set colour unless colour embedding is used (since <b><c>0.3c</c></b>).</summary>
  * <param name="playerid">The ID of the player to display the message to</param>
  * <param name="colour">The colour of the message (<b>RGBA</b>)</param>
@@ -668,6 +672,7 @@ native format(output[], len = sizeof (output), const format[], {Float, _}:...);
 native SendClientMessage(playerid, colour, const message[]);
 
 /**
+ * <library>a_samp</library>
  * <summary>Displays a message in chat to all players. This is a multi-player equivalent of <a href="#SendClientMessage">SendClientMessage</a>.</summary>
  * <param name="colour">The colour of the message (<b>RGBA</b>)</param>
  * <param name="message">The message to show (<b>max 144 characters</b>)</param>
@@ -679,6 +684,7 @@ native SendClientMessage(playerid, colour, const message[]);
 native SendClientMessageToAll(colour, const message[]);
 
 /**
+ * <library>a_samp</library>
  * <summary>Sends a message in the name of a player to another player on the server. The message will appear in the chat box but can only be seen by the user specified with <paramref name="playerid" />. The line will start with the sender's name in their colour, followed by the message in white.</summary>
  * <param name="playerid">The ID of the player who will receive the message</param>
  * <param name="senderid">The sender's ID. If invalid, the message will not be sent</param>
@@ -692,6 +698,7 @@ native SendClientMessageToAll(colour, const message[]);
 native SendPlayerMessageToPlayer(playerid, senderid, const message[]);
 
 /**
+ * <library>a_samp</library>
  * <summary>Sends a message in the name of a player to all other players on the server. The line will start with the sender's name in their colour, followed by the message in white.</summary>
  * <param name="senderid">The ID of the sender. If invalid, the message will not be sent</param>
  * <param name="message">The message that will be sent</param>
@@ -703,6 +710,7 @@ native SendPlayerMessageToPlayer(playerid, senderid, const message[]);
 native SendPlayerMessageToAll(senderid, const message[]);
 
 /**
+ * <library>a_samp</library>
  * <summary>Adds a death to the 'killfeed' on the right-hand side of the screen for all players.</summary>
  * <param name="killer">The ID of the killer (can be <b><c>INVALID_PLAYER_ID</c></b>)</param>
  * <param name="killee">The ID of the player that died</param>
@@ -717,6 +725,7 @@ native SendPlayerMessageToAll(senderid, const message[]);
 native SendDeathMessage(killer, killee, weapon);
 
 /**
+ * <library>a_samp</library>
  * <summary>Adds a death to the 'killfeed' on the right-hand side of the screen for a single player.</summary>
  * <param name="playerid">The ID of the player to send the death message to</param>
  * <param name="killer">The ID of the killer (can be <b><c>INVALID_PLAYER_ID</c></b>)</param>
@@ -733,6 +742,7 @@ native SendDeathMessage(killer, killee, weapon);
 native SendDeathMessageToPlayer(playerid, killer, killee, weapon);
 
 /**
+ * <library>a_samp</library>
  * <summary>Shows 'game text' (on-screen text) for a certain length of time for all players.</summary>
  * <param name="string">The text to be displayed</param>
  * <param name="time">The duration of the text being shown in milliseconds</param>
@@ -744,6 +754,7 @@ native SendDeathMessageToPlayer(playerid, killer, killee, weapon);
 native GameTextForAll(const string[], time, style);
 
 /**
+ * <library>a_samp</library>
  * <summary>Shows 'game text' (on-screen text) for a certain length of time for a specific player.</summary>
  * <param name="playerid">The ID of the player to show the gametext for</param>
  * <param name="string">The text to be displayed</param>
@@ -759,6 +770,7 @@ native GameTextForAll(const string[], time, style);
 native GameTextForPlayer(playerid, const string[], time, style);
 
 /**
+ * <library>a_samp</library>
  * <summary>Sets a 'timer' to call a function after some time. Can be set to repeat.</summary>
  * <param name="functionName">Name of the function to call as a string. This must be a public function (forwarded). A null string here will crash the server</param>
  * <param name="interval">Interval in milliseconds</param>
@@ -774,6 +786,7 @@ native GameTextForPlayer(playerid, const string[], time, style);
 native SetTimer(const functionName[], interval, bool:repeating);
 
 /**
+ * <library>a_samp</library>
  * <summary>Sets a timer to call a function after the specified interval. This variant ('Ex') can pass parameters (such as a player ID) to the function.</summary>
  * <param name="functionName">The name of a public function to call when the timer expires</param>
  * <param name="interval">Interval in milliseconds</param>
@@ -804,6 +817,7 @@ native SetTimer(const functionName[], interval, bool:repeating);
 native SetTimerEx(const functionName[], interval, bool:repeating, const format[] = "", {Float, _}:...);
 
 /**
+ * <library>a_samp</library>
  * <summary>Kills (stops) a running timer.</summary>
  * <param name="timerid">The ID of the timer to kill (returned by <a href="#SetTimer">SetTimer</a> or <a href="#SetTimerEx">SetTimerEx</a>)</param>
  * <seealso name="SetTimer" />
@@ -813,6 +827,7 @@ native SetTimerEx(const functionName[], interval, bool:repeating, const format[]
 native KillTimer(timerid);
 
 /**
+ * <library>a_samp</library>
  * <summary>Returns the uptime of the actual server (not the SA-MP server) in milliseconds.</summary>
  * <seealso name="tickcount" />
  * <remarks>GetTickCount will cause problems on servers with uptime of over 24 days as GetTickCount will eventually warp past the integer size constraints. However using <a href="https://gist.github.com/ziggi/5d7d8dc42f54531feba7ae924c608e73">this</a> function fixes the problem.</remarks>
@@ -822,6 +837,7 @@ native KillTimer(timerid);
 native GetTickCount();
 
 /**
+ * <library>a_samp</library>
  * <summary>Returns the maximum number of players that can join the server, as set by the server variable 'maxplayers' in server.cfg.</summary>
  * <seealso name="GetPlayerPoolSize" />
  * <seealso name="IsPlayerConnected" />
@@ -831,6 +847,7 @@ native GetTickCount();
 native GetMaxPlayers();
 
 /**
+ * <library>a_samp</library>
  * <summary>Calls a public function in any script that is loaded.</summary>
  * <param name="function">Public function's name</param>
  * <param name="format">Tag/format of each variable</param>
@@ -853,6 +870,7 @@ native GetMaxPlayers();
 native CallRemoteFunction(const function[], const format[] = "", {Float, _}:...);
 
 /**
+ * <library>a_samp</library>
  * <summary>Calls a public function from the script in which it is used.</summary>
  * <param name="function">Public function's name</param>
  * <param name="format">Tag/format of each variable</param>
@@ -875,6 +893,7 @@ native CallRemoteFunction(const function[], const format[] = "", {Float, _}:...)
 native CallLocalFunction(const function[], const format[] = "", {Float, _}:...);
 
 /**
+ * <library>a_samp</library>
  * <summary>Returns the norm (length) of the provided vector.</summary>
  * <param name="x">The vector's magnitude on the x axis</param>
  * <param name="y">The vector's magnitude on the y axis</param>
@@ -888,6 +907,7 @@ native CallLocalFunction(const function[], const format[] = "", {Float, _}:...);
 native Float:VectorSize(Float:x, Float:y, Float:z);
 
 /**
+ * <library>a_samp</library>
  * <summary>Get the inversed value of a sine in degrees.</summary>
  * <param name="value">The sine for which to find the angle for</param>
  * <seealso name="floatsin" />
@@ -896,6 +916,7 @@ native Float:VectorSize(Float:x, Float:y, Float:z);
 native Float:asin(Float:value);
 
 /**
+ * <library>a_samp</library>
  * <summary>Get the inversed value of a cosine in degrees.</summary>
  * <param name="value">The cosine for which to find the angle for</param>
  * <seealso name="floatcos" />
@@ -904,6 +925,7 @@ native Float:asin(Float:value);
 native Float:acos(Float:value);
 
 /**
+ * <library>a_samp</library>
  * <summary>Get the inversed value of a tangent in degrees.</summary>
  * <param name="value">The tangent for which to find the angle for</param>
  * <seealso name="atan2" />
@@ -913,6 +935,7 @@ native Float:acos(Float:value);
 native Float:atan(Float:value);
 
 /**
+ * <library>a_samp</library>
  * <summary>Get the multi-valued inversed value of a tangent in degrees.</summary>
  * <param name="y">y size</param>
  * <param name="x">x size</param>
@@ -923,6 +946,7 @@ native Float:atan(Float:value);
 native Float:atan2(Float:y, Float:x);
 
 /**
+ * <library>a_samp</library>
  * <summary>Gets the highest playerid currently in use on the server.</summary>
  * <seealso name="GetVehiclePoolSize" />
  * <seealso name="GetMaxPlayers" />
@@ -932,6 +956,7 @@ native Float:atan2(Float:y, Float:x);
 native GetPlayerPoolSize();
 
 /**
+ * <library>a_samp</library>
  * <summary>Gets the highest vehicleid currently in use on the server.</summary>
  * <seealso name="GetPlayerPoolSize" />
  * <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
@@ -940,6 +965,7 @@ native GetPlayerPoolSize();
 native GetVehiclePoolSize();
 
 /**
+ * <library>a_samp</library>
  * <summary>Gets the highest actorid created on the server.</summary>
  * <seealso name="CreateActor" />
  * <seealso name="IsValidActor" />
@@ -952,6 +978,7 @@ native GetActorPoolSize();
 // Hash
 
 /**
+ * <library>a_samp</library>
  * <summary>Hashes a password using the SHA-256 hashing algorithm. Includes a salt. The output is always 256 bytes in length, or the equivalent of 64 Pawn cells.</summary>
  * <param name="password">The password to hash</param>
  * <param name="salt">The salt to use in the hash</param>
@@ -967,6 +994,7 @@ native SHA256_PassHash(const password[], const salt[], output[], size = sizeof (
 // Server wide persistent variable system (SVars)
 
 /**
+ * <library>a_samp</library>
  * <summary>Set an integer server variable.</summary>
  * <param name="svar">The name of the server variable</param>
  * <param name="value">The integer to be set</param>
@@ -985,6 +1013,7 @@ native SHA256_PassHash(const password[], const salt[], output[], size = sizeof (
 native SetSVarInt(const svar[], value);
 
 /**
+ * <library>a_samp</library>
  * <summary>Gets an integer server variable's value.</summary>
  * <param name="svar">The name of the server variable (case-insensitive). Assigned in SetSVarInt</param>
  * <seealso name="SetSVarInt" />
@@ -999,6 +1028,7 @@ native SetSVarInt(const svar[], value);
 native GetSVarInt(const svar[]);
 
 /**
+ * <library>a_samp</library>
  * <summary>Set a string server variable.</summary>
  * <param name="svar">The name of the server variable</param>
  * <param name="value">The string to be set</param>
@@ -1017,6 +1047,7 @@ native GetSVarInt(const svar[]);
 native SetSVarString(const svar[], const value[]);
 
 /**
+ * <library>a_samp</library>
  * <summary>Gets a string server variable's value.</summary>
  * <param name="svar">The name of the server variable (case-insensitive). Assigned in <a href="#SetSVarString">SetSVarString</a></param>
  * <param name="output">The array in which to store the string value in, passed by reference</param>
@@ -1033,6 +1064,7 @@ native SetSVarString(const svar[], const value[]);
 native GetSVarString(const svar[], output[], len = sizeof (output));
 
 /**
+ * <library>a_samp</library>
  * <summary>Set a float server variable.</summary>
  * <param name="svar">The name of the server variable</param>
  * <param name="value">The float to be set</param>
@@ -1051,6 +1083,7 @@ native GetSVarString(const svar[], output[], len = sizeof (output));
 native SetSVarFloat(const svar[], Float:value);
 
 /**
+ * <library>a_samp</library>
  * <summary>Gets a float server variable's value.</summary>
  * <param name="svar">The name of the server variable (case-insensitive). Assigned in <a href="#SetSVarFloat">SetSVarFloat</a></param>
  * <seealso name="SetSVarInt" />
@@ -1065,6 +1098,7 @@ native SetSVarFloat(const svar[], Float:value);
 native Float:GetSVarFloat(const svar[]);
 
 /**
+ * <library>a_samp</library>
  * <summary>Deletes a previously set server variable.</summary>
  * <param name="svar">The name of the server variable to delete</param>
  * <seealso name="SetSVarInt" />
@@ -1082,6 +1116,7 @@ native Float:GetSVarFloat(const svar[]);
 native DeleteSVar(const svar[]);
 
 /**
+ * <library>a_samp</library>
  * <summary>Each SVar (server-variable) has its own unique identification number for lookup, this function returns the highest ID.</summary>
  * <seealso name="GetSVarNameAtIndex" />
  * <seealso name="GetSVarType" />
@@ -1090,6 +1125,7 @@ native DeleteSVar(const svar[]);
 native GetSVarsUpperIndex();
 
 /**
+ * <library>a_samp</library>
  * <summary>Retrieve the name of a sVar via the index.</summary>
  * <param name="index">The index of the sVar</param>
  * <param name="output">A string to store the sVar's name in, passed by reference</param>
@@ -1102,6 +1138,7 @@ native GetSVarsUpperIndex();
 native GetSVarNameAtIndex(index, output[], size = sizeof (output));
 
 /**
+ * <library>a_samp</library>
  * <summary>Gets the type (integer, float or string) of a server variable.</summary>
  * <param name="svar">The name of the server variable to get the type of</param>
  * <seealso name="SetSVarInt" />
@@ -1127,12 +1164,14 @@ native SERVER_VARTYPE:GetSVarType(const svar[]);
 // Game
 
 /**
+ * <library>a_samp</library>
  * <summary>Set the name of the game mode, which appears in the server browser.</summary>
  * <param name="string">The gamemode name to display</param>
  */
 native SetGameModeText(const string[]);
 
 /**
+ * <library>a_samp</library>
  * <summary>This function is used to change the amount of teams used in the gamemode. It has no obvious way of being used, but can help to indicate the number of teams used for better (more effective) internal handling. This function should only be used in the <a href="#OnGameModeInit">OnGameModeInit</a> callback. Important: You can pass 2 billion here if you like, this function has no effect at all.</summary>
  * <param name="count">Number of teams the gamemode knows</param>
  * <seealso name="GetPlayerTeam" />
@@ -1141,6 +1180,7 @@ native SetGameModeText(const string[]);
 native SetTeamCount(count);
 
 /**
+ * <library>a_samp</library>
  * <summary>Adds a class to class selection. Classes are used so players may spawn with a skin of their choice.</summary>
  * <param name="modelid">The <a href="http://wiki.sa-mp.com/wiki/Skins">skin</a> which the player will spawn with</param>
  * <param name="spawnX">The x coordinate of the spawnpoint of this class</param>
@@ -1170,6 +1210,7 @@ native SetTeamCount(count);
 native AddPlayerClass(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, weapon1, ammo1, weapon2, ammo2, weapon3, ammo3);
 
 /**
+ * <library>a_samp</library>
  * <summary>This function is exactly the same as the <a href="#AddPlayerClass">AddPlayerClass</a> function, with the addition of a team parameter.</summary>
  * <param name="teamid">The team you want the player to spawn in</param>
  * <param name="modelid">The <a href="http://wiki.sa-mp.com/wiki/Skins">skin</a> which the player will spawn with</param>
@@ -1198,6 +1239,7 @@ native AddPlayerClass(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:a
 native AddPlayerClassEx(teamid, modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, weapon1, ammo1, weapon2, ammo2, weapon3, ammo3);
 
 /**
+ * <library>a_samp</library>
  * <summary>Adds a 'static' vehicle (models are pre-loaded for players) to the gamemode.</summary>
  * <param name="modelid">The <a href="http://wiki.sa-mp.com/wiki/Vehicle_Models">Model ID</a> for the vehicle</param>
  * <param name="spawnX">The x coordinate of the spawnpoint of this vehicle</param>
@@ -1220,6 +1262,7 @@ native AddPlayerClassEx(teamid, modelid, Float:spawnX, Float:spawnY, Float:spawn
 native AddStaticVehicle(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, colour1, colour2);
 
 /**
+ * <library>a_samp</library>
  * <summary>Adds a 'static' vehicle (models are pre-loaded for players)to the gamemode. Differs from <a href="#AddStaticVehicle">AddStaticVehicle</a> in only one way: allows a respawn time to be set for when the vehicle is left unoccupied by the driver.</summary>
  * <param name="modelid">The <a href="http://wiki.sa-mp.com/wiki/Vehicle_Models">Model ID</a> for the vehicle</param>
  * <param name="spawnX">The x coordinate of the spawnpoint of this vehicle</param>
@@ -1244,6 +1287,7 @@ native AddStaticVehicle(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float
 native AddStaticVehicleEx(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, colour1, colour2, respawnDelay, bool:addSiren = false);
 
 /**
+ * <library>a_samp</library>
  * <summary>This function adds a 'static' pickup to the game. These pickups support weapons, health, armor etc., with the ability to function without scripting them (weapons/health/armor will be given automatically).</summary>
  * <param name="model">The model of the pickup</param>
  * <param name="type">The pickup type. Determines how the pickup responds when picked up</param>
@@ -1264,6 +1308,7 @@ native AddStaticVehicleEx(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Flo
 native AddStaticPickup(model, type, Float:x, Float:y, Float:z, virtualWorld = 0);
 
 /**
+ * <library>a_samp</library>
  * <summary>This function does exactly the same as AddStaticPickup, except it returns a pickup ID which can be used to destroy it afterwards and be tracked using <a href="#OnPlayerPickUpPickup">OnPlayerPickUpPickup</a>.</summary>
  * <param name="model">The <a href="http://wiki.sa-mp.com/wiki/Pickup_IDs">model</a> of the pickup</param>
  * <param name="type">The pickup spawn type (see table under remarks)</param>
@@ -1310,6 +1355,7 @@ native AddStaticPickup(model, type, Float:x, Float:y, Float:z, virtualWorld = 0)
 native CreatePickup(model, type, Float:x, Float:y, Float:z, virtualWorld = 0);
 
 /**
+ * <library>a_samp</library>
  * <summary>Destroys a pickup created with <a href="#CreatePickup">CreatePickup</a>.</summary>
  * <param name="pickup">The ID of the pickup to destroy (returned by <a href="#CreatePickup">CreatePickup</a>)</param>
  * <seealso name="CreatePickup" />
@@ -1318,6 +1364,7 @@ native CreatePickup(model, type, Float:x, Float:y, Float:z, virtualWorld = 0);
 native DestroyPickup(pickup);
 
 /**
+ * <library>a_samp</library>
  * <summary>Toggle the drawing of nametags, health bars and armor bars above players.</summary>
  * <param name="show"><b><c>0</c></b> to disable, <b><c>1</c></b> to enable (enabled by default)</param>
  * <seealso name="DisableNameTagLOS" />
@@ -1328,6 +1375,7 @@ native DestroyPickup(pickup);
 native ShowNameTags(bool:show);
 
 /**
+ * <library>a_samp</library>
  * <summary>Toggles player markers (blips on the radar). Must be used when the server starts (<a href="#OnGameModeInit">OnGameModeInit</a>). For other times, see <a href="#SetPlayerMarkerForPlayer">SetPlayerMarkerForPlayer</a>.</summary>
  * <param name="mode">The mode to use for markers. They can be streamed, meaning they are only visible to nearby players. See table below</param>
  * <seealso name="SetPlayerMarkerForPlayer" />
@@ -1347,12 +1395,14 @@ native ShowNameTags(bool:show);
 native ShowPlayerMarkers(PLAYER_MARKERS_MODE:mode);
 
 /**
+ * <library>a_samp</library>
  * <summary>Ends the current gamemode.</summary>
  * <seealso name="OnGameModeExit" />
  */
 native GameModeExit();
 
 /**
+ * <library>a_samp</library>
  * <summary>Sets the world time (for all players) to a specific hour.</summary>
  * <param name="hour">The hour to set (<b><c>0</c></b>-<b><c>23</c></b>)</param>
  * <seealso name="SetPlayerTime" />
@@ -1364,6 +1414,7 @@ native GameModeExit();
 native SetWorldTime(hour);
 
 /**
+ * <library>a_samp</library>
  * <summary>Get the name of a weapon.</summary>
  * <param name="weaponid">The ID of the weapon to get the name of</param>
  * <param name="weapon">An array to store the weapon's name in, passed by reference</param>
@@ -1379,6 +1430,7 @@ native SetWorldTime(hour);
 native GetWeaponName(WEAPON:weaponid, weapon[], len = sizeof (weapon));
 
 /**
+ * <library>a_samp</library>
  * <param name="enable"><b><c>1</c></b> to enable, <b><c>0</c></b> to disable tire popping</param>
  * <remarks>This function was removed in <b>SA-MP 0.3</b>. Tire popping is enabled by default. If you want to disable tire popping, you'll have to manually script it using <a href="#OnVehicleDamageStatusUpdate">OnVehicleDamageStatusUpdate</a>.</remarks>
  */
@@ -1386,6 +1438,7 @@ native GetWeaponName(WEAPON:weaponid, weapon[], len = sizeof (weapon));
 native EnableTirePopping(bool:enable); // deprecated function
 
 /**
+ * <library>a_samp</library>
  * <summary>Enable friendly fire for team vehicles. Players will be unable to damage teammates' vehicles (<a href="#SetPlayerTeam">SetPlayerTeam</a> must be used!).</summary>
  * <seealso name="SetPlayerTeam" />
  * <remarks>This function was added in <b>SA-MP 0.3x</b> and will not work in earlier versions!</remarks>
@@ -1393,6 +1446,7 @@ native EnableTirePopping(bool:enable); // deprecated function
 native EnableVehicleFriendlyFire();
 
 /**
+ * <library>a_samp</library>
  * <summary>Toggle whether the usage of weapons in interiors is allowed or not.</summary>
  * <param name="allow"><b><c>1</c></b> to enable weapons in interiors (enabled by default), <b><c>0</c></b> to disable weapons in interiors</param>
  * <remarks>This function does not work in the current SA:MP version!</remarks>
@@ -1404,6 +1458,7 @@ native EnableVehicleFriendlyFire();
 native AllowInteriorWeapons(bool:allow);
 
 /**
+ * <library>a_samp</library>
  * <summary>Set the world weather for all players.</summary>
  * <param name="weatherid">The <a href="http://wiki.sa-mp.com/wiki/Weatherid">weather</a> to set</param>
  * <seealso name="SetPlayerWeather" />
@@ -1413,6 +1468,7 @@ native AllowInteriorWeapons(bool:allow);
 native SetWeather(weatherid);
 
 /**
+ * <library>a_samp</library>
  * <summary>Get the currently set gravity.</summary>
  * <seealso name="SetGravity" />
  * <returns>The current set gravity (as a float).</returns>
@@ -1420,6 +1476,7 @@ native SetWeather(weatherid);
 native Float:GetGravity();
 
 /**
+ * <library>a_samp</library>
  * <summary>Set the gravity for all players.</summary>
  * <param name="gravity">The value that the gravity should be set to (between -50 and 50)</param>
  * <seealso name="GetGravity" />
@@ -1431,6 +1488,7 @@ native Float:GetGravity();
 native SetGravity(Float:gravity);
 
 /**
+ * <library>a_samp</library>
  * <summary>This function will determine whether RCON admins will be teleported to their waypoint when they set one.</summary>
  * <param name="allow"><b><c>0</c></b> to disable and <b><c>1</c></b> to enable</param>
  * <remarks><b>This function, as of 0.3d, is deprecated. Please see <a href="#OnPlayerClickMap">OnPlayerClickMap</a>.</b></remarks>
@@ -1441,6 +1499,7 @@ native SetGravity(Float:gravity);
 native AllowAdminTeleport(bool:allow);
 
 /**
+ * <library>a_samp</library>
  * <summary>This function does not work in the current SA:MP version! </summary>
  * <seealso name="CreatePickup" />
  * <seealso name="GivePlayerMoney" />
@@ -1450,6 +1509,7 @@ native AllowAdminTeleport(bool:allow);
 native SetDeathDropAmount(amount);
 
 /**
+ * <library>a_samp</library>
  * <summary>Create an explosion at the specified coordinates.</summary>
  * <param name="x">The x coordinate of the explosion</param>
  * <param name="y">The y coordinate of the explosion</param>
@@ -1463,6 +1523,7 @@ native SetDeathDropAmount(amount);
 native CreateExplosion(Float:x, Float:y, Float:z, type, Float:radius);
 
 /**
+ * <library>a_samp</library>
  * <summary>This function allows to turn on zone / area names such as the "Vinewood" or "Doherty" text at the bottom-right of the screen as they enter the area. This is a gamemode option and should be set in the callback <a href="#OnGameModeInit">OnGameModeInit</a>.</summary>
  * <param name="enable">A toggle option for whether or not you'd like zone names on or off</param>
  * <remarks><b>This function was removed in SA-MP 0.3. This was due to crashes it caused.</b></remarks>
@@ -1470,6 +1531,7 @@ native CreateExplosion(Float:x, Float:y, Float:z, type, Float:radius);
 native EnableZoneNames(bool:enable);
 
 /**
+ * <library>a_samp</library>
  * <summary>Uses standard player walking animation (animation of the CJ skin) instead of custom animations for every skin (e.g. skating for skater skins).</summary>
  * <seealso name="ApplyAnimation" />
  * <seealso name="ClearAnimations" />
@@ -1479,6 +1541,7 @@ native EnableZoneNames(bool:enable);
 native UsePlayerPedAnims(); // Will cause the players to use CJ running/walking animations
 
 /**
+ * <library>a_samp</library>
  * <summary>Disable all the interior entrances and exits in the game (the yellow arrows at doors).</summary>
  * <seealso name="AllowInteriorWeapons" />
  * <remarks>If the gamemode is changed after this function has been used, and the new gamemode doesn't disable markers, the markers will NOT reappear for already-connected players (but will for newly connected players).</remarks>
@@ -1488,6 +1551,7 @@ native UsePlayerPedAnims(); // Will cause the players to use CJ running/walking 
 native DisableInteriorEnterExits();  // will disable all interior enter/exits in the game.
 
 /**
+ * <library>a_samp</library>
  * <summary>Set the maximum distance to display the names of players.</summary>
  * <param name="distance">The distance to set</param>
  * <seealso name="LimitGlobalChatRadius" />
@@ -1498,6 +1562,7 @@ native DisableInteriorEnterExits();  // will disable all interior enter/exits in
 native SetNameTagDrawDistance(Float:distance); // Distance at which nametags will start rendering on the client.
 
 /**
+ * <library>a_samp</library>
  * <summary>Disables the nametag Line-Of-Sight checking so that players can see nametags through objects.</summary>
  * <seealso name="ShowNameTags" />
  * <seealso name="ShowPlayerNameTagForPlayer" />
@@ -1507,6 +1572,7 @@ native SetNameTagDrawDistance(Float:distance); // Distance at which nametags wil
 native DisableNameTagLOS(); // Disables the nametag Line-Of-Sight checking
 
 /**
+ * <library>a_samp</library>
  * <summary>Set a radius limitation for the chat. Only players at a certain distance from the player will see their message in the chat. Also changes the distance at which a player can see other players on the map at the same distance.</summary>
  * <param name="chatRadius">The range in which players will be able to see chat</param>
  * <seealso name="SetNameTagDrawDistance" />
@@ -1517,6 +1583,7 @@ native DisableNameTagLOS(); // Disables the nametag Line-Of-Sight checking
 native LimitGlobalChatRadius(Float:chatRadius);
 
 /**
+ * <library>a_samp</library>
  * <summary>Set the player marker radius.</summary>
  * <param name="markerRadius">The radius that markers will show at</param>
  * <seealso name="ShowPlayerMarkers" />
@@ -1529,6 +1596,7 @@ native LimitPlayerMarkerRadius(Float:markerRadius);
 // Npc
 
 /**
+ * <library>a_samp</library>
  * <summary>Connect an NPC to the server.</summary>
  * <param name="name">The name the NPC should connect as. Must follow the same rules as normal player names</param>
  * <param name="script">The NPC script name that is located in the <b>npcmodes</b> folder (without the .amx extension)</param>
@@ -1541,6 +1609,7 @@ native LimitPlayerMarkerRadius(Float:markerRadius);
 native ConnectNPC(const name[], const script[]);
 
 /**
+ * <library>a_samp</library>
  * <summary>Check if a player is an actual player or an NPC.</summary>
  * <param name="playerid">The ID of the player to check</param>
  * <seealso name="ConnectNPC" />
@@ -1560,6 +1629,7 @@ native RedirectDownload(playerid, const url[]);
 // Admin
 
 /**
+ * <library>a_samp</library>
  * <summary>Check if a player is logged in as an RCON admin.</summary>
  * <param name="playerid">The ID of the player to check</param>
  * <seealso name="SendRconCommand" />
@@ -1569,6 +1639,7 @@ native RedirectDownload(playerid, const url[]);
 native bool:IsPlayerAdmin(playerid);
 
 /**
+ * <library>a_samp</library>
  * <summary>Kicks a player from the server. They will have to quit the game and re-connect if they wish to continue playing.</summary>
  * <param name="playerid">The ID of the player to kick</param>
  * <seealso name="Ban" />
@@ -1579,6 +1650,7 @@ native bool:IsPlayerAdmin(playerid);
 native Kick(playerid);
 
 /**
+ * <library>a_samp</library>
  * <summary>Ban a player who is currently in the server. They will be unable to join the server ever again. The ban will be IP-based, and be saved in the samp.ban file in the server's root directory. <a href="#BanEx">BanEx</a> can be used to give a reason for the ban. IP bans can be added/removed using the RCON banip and unbanip commands (<a href="#SendRconCommand">SendRconCommand</a>).</summary>
  * <param name="playerid">The ID of the player to ban</param>
  * <seealso name="BanEx" />
@@ -1589,6 +1661,7 @@ native Kick(playerid);
 native Ban(playerid);
 
 /**
+ * <library>a_samp</library>
  * <summary>Ban a player with a reason.</summary>
  * <param name="playerid">The ID of the player to ban</param>
  * <param name="reason">The reason for the ban</param>
@@ -1599,6 +1672,7 @@ native Ban(playerid);
 native BanEx(playerid, const reason[]);
 
 /**
+ * <library>a_samp</library>
  * <summary>Sends an RCON (Remote Console) command.</summary>
  * <param name="command">The RCON command to be executed</param>
  * <seealso name="IsPlayerAdmin" />
@@ -1612,6 +1686,7 @@ native BanEx(playerid, const reason[]);
 native SendRconCommand(const command[]);
 
 /**
+ * <library>a_samp</library>
  * <summary>Gets a player's network stats and saves them into a string.</summary>
  * <param name="playerid">The ID of the player you want to get the networkstats of</param>
  * <param name="output">The string to store the networkstats in, passed by reference</param>
@@ -1632,6 +1707,7 @@ native SendRconCommand(const command[]);
 native GetPlayerNetworkStats(playerid, output[], size = sizeof (output));
 
 /**
+ * <library>a_samp</library>
  * <summary>Gets the server's network stats and stores them in a string.</summary>
  * <param name="output">The string to store the network stats in, passed by reference</param>
  * <param name="size">The length of the string to be stored</param>
@@ -1673,6 +1749,7 @@ native GetPlayerNetworkStats(playerid, output[], size = sizeof (output));
 native GetNetworkStats(output[], size = sizeof (output));
 
 /**
+ * <library>a_samp</library>
  * <summary>Returns the SA-MP client version, as reported by the player.</summary>
  * <param name="playerid">The ID of the player to get the client version of</param>
  * <param name="version">The string to store the player's version in, passed by reference</param>
@@ -1687,6 +1764,7 @@ native GetNetworkStats(output[], size = sizeof (output));
 native GetPlayerVersion(playerid, version[], len = sizeof (version)); // Returns the SA-MP client revision as reported by the player
 
 /**
+ * <library>a_samp</library>
  * <summary>Blocks an IP address from further communication with the server for a set amount of time (with wildcards allowed). Players trying to connect to the server with a blocked IP address will receive the generic "You are banned from this server." message. Players that are online on the specified IP before the block will timeout after a few seconds and, upon reconnect, will receive the same message.</summary>
  * <param name="ipAddress">The IP to block</param>
  * <param name="timeMS">The time (in milliseconds) that the connection will be blocked for. <b><c>0</c></b> can be used for an indefinite block</param>
@@ -1698,6 +1776,7 @@ native GetPlayerVersion(playerid, version[], len = sizeof (version)); // Returns
 native BlockIpAddress(const ipAddress[], timeMS);
 
 /**
+ * <library>a_samp</library>
  * <summary>Unblock an IP address that was previously blocked using <a href="#BlockIpAddress">BlockIpAddress</a>.</summary>
  * <param name="ipAddress">The IP address to unblock</param>
  * <seealso name="BlockIpAddress" />
@@ -1709,6 +1788,7 @@ native UnBlockIpAddress(const ipAddress[]);
 // Deprecated:
 
 /**
+ * <library>a_samp</library>
  * <summary>Get the string value of a server variable.</summary>
  * <param name="cvar">The name of the string variable to get the value of</param>
  * <param name="buffer">An array into which to store the value, passed by reference</param>
@@ -1725,6 +1805,7 @@ native UnBlockIpAddress(const ipAddress[]);
 native GetServerVarAsString(const cvar[], buffer[], len = sizeof (buffer));
 
 /**
+ * <library>a_samp</library>
  * <summary>Get the integer value of a server variable.</summary>
  * <param name="cvar">The name of the integer variable to get the value of</param>
  * <seealso name="GetServerVarAsString" />
@@ -1737,6 +1818,7 @@ native GetServerVarAsString(const cvar[], buffer[], len = sizeof (buffer));
 native GetServerVarAsInt(const cvar[]);
 
 /**
+ * <library>a_samp</library>
  * <summary>Get the boolean value of a server variable.</summary>
  * <param name="cvar">The name of the boolean variable to get the value of</param>
  * <seealso name="GetServerVarAsString" />
@@ -1750,6 +1832,7 @@ native bool:GetServerVarAsBool(const cvar[]);
 // These are the same 3 functions as above although they avoid the name ambiguity/conflict with the SVar system.
 
 /**
+ * <library>a_samp</library>
  * <summary>Get the string value of a console variable.</summary>
  * <param name="cvar">The name of the string variable to get the value of</param>
  * <param name="buffer">An array into which to store the value, passed by reference</param>
@@ -1764,6 +1847,7 @@ native bool:GetServerVarAsBool(const cvar[]);
 native GetConsoleVarAsString(const cvar[], buffer[], len = sizeof (buffer));
 
 /**
+ * <library>a_samp</library>
  * <summary>Get the integer value of a console variable.</summary>
  * <param name="cvar">The name of the integer variable to get the value of</param>
  * <seealso name="GetConsoleVarAsString" />
@@ -1774,6 +1858,7 @@ native GetConsoleVarAsString(const cvar[], buffer[], len = sizeof (buffer));
 native GetConsoleVarAsInt(const cvar[]);
 
 /**
+ * <library>a_samp</library>
  * <summary>Get the boolean value of a console variable.</summary>
  * <param name="cvar">The name of the boolean variable to get the value of</param>
  * <seealso name="GetConsoleVarAsString" />
@@ -1786,6 +1871,7 @@ native bool:GetConsoleVarAsBool(const cvar[]);
 // Extended admin network stats
 
 /**
+ * <library>a_samp</library>
  * <summary>Gets the tick rate (like FPS) of the server.</summary>
  * <seealso name="GetNetworkStats" />
  * <remarks>This function was added in <b>SA-MP 0.3z</b> and will not work in earlier versions!</remarks>
@@ -1794,6 +1880,7 @@ native bool:GetConsoleVarAsBool(const cvar[]);
 native GetServerTickRate();
 
 /**
+ * <library>a_samp</library>
  * <summary>Gets the amount of time (in milliseconds) that a player has been connected to the server for.</summary>
  * <param name="playerid">The ID of the player to get the connected time of</param>
  * <seealso name="GetPlayerNetworkStats" />
@@ -1813,6 +1900,7 @@ native GetServerTickRate();
 native NetStats_GetConnectedTime(playerid);
 
 /**
+ * <library>a_samp</library>
  * <summary>Gets the number of messages the server has received from the player.</summary>
  * <param name="playerid">The ID of the player to get the data from</param>
  * <seealso name="GetPlayerNetworkStats" />
@@ -1831,6 +1919,7 @@ native NetStats_GetConnectedTime(playerid);
 native NetStats_MessagesReceived(playerid);
 
 /**
+ * <library>a_samp</library>
  * <summary>Gets the amount of data (in bytes) that the server has received from the player.</summary>
  * <param name="playerid">The ID of the player to get the data from</param>
  * <seealso name="GetPlayerNetworkStats" />
@@ -1849,6 +1938,7 @@ native NetStats_MessagesReceived(playerid);
 native NetStats_BytesReceived(playerid);
 
 /**
+ * <library>a_samp</library>
  * <summary>Gets the number of messages the server has sent to the player.</summary>
  * <param name="playerid">The ID of the player to get the data from</param>
  * <seealso name="GetPlayerNetworkStats" />
@@ -1867,6 +1957,7 @@ native NetStats_BytesReceived(playerid);
 native NetStats_MessagesSent(playerid);
 
 /**
+ * <library>a_samp</library>
  * <summary>Gets the amount of data (in bytes) that the server has sent to the player.</summary>
  * <param name="playerid">The ID of the player to get the data from</param>
  * <seealso name="GetPlayerNetworkStats" />
@@ -1885,6 +1976,7 @@ native NetStats_MessagesSent(playerid);
 native NetStats_BytesSent(playerid);
 
 /**
+ * <library>a_samp</library>
  * <summary>Gets the number of messages the player has received in the last second.</summary>
  * <param name="playerid">The ID of the player to get the data from</param>
  * <seealso name="GetPlayerNetworkStats" />
@@ -1903,6 +1995,7 @@ native NetStats_BytesSent(playerid);
 native NetStats_MessagesRecvPerSecond(playerid);
 
 /**
+ * <library>a_samp</library>
  * <summary>Gets the packet loss percentage of a player. Packet loss means data the player is sending to the server is being lost (or vice-versa).</summary>
  * <param name="playerid">The ID of the player to get the data from</param>
  * <seealso name="GetPlayerNetworkStats" />
@@ -1924,6 +2017,7 @@ native NetStats_MessagesRecvPerSecond(playerid);
 native Float:NetStats_PacketLossPercent(playerid);
 
 /**
+ * <library>a_samp</library>
  * <summary>Gets the player's current connection status.</summary>
  * <param name="playerid">The ID of the player to get the connection status of</param>
  * <seealso name="GetPlayerNetworkStats" />
@@ -1959,6 +2053,7 @@ native Float:NetStats_PacketLossPercent(playerid);
 native NetStats_ConnectionStatus(playerid);
 
 /**
+ * <library>a_samp</library>
  * <summary>Get a player's IP and port.</summary>
  * <param name="playerid">The ID of the player to get the IP and port of</param>
  * <param name="output">A string array to store the IP and port in, passed by reference</param>
@@ -1981,6 +2076,7 @@ native NetStats_GetIpPort(playerid, output[], size = sizeof (output));
 // Menu
 
 /**
+ * <library>a_samp</library>
  * <summary>Creates a menu.</summary>
  * <param name="title">The title for the new menu</param>
  * <param name="columns">How many colums shall the new menu have</param>
@@ -2006,6 +2102,7 @@ native NetStats_GetIpPort(playerid, output[], size = sizeof (output));
 native Menu:CreateMenu(const title[], columns, Float:x, Float:y, Float:col1width, Float:col2width = 0.0);
 
 /**
+ * <library>a_samp</library>
  * <summary>Destroys the specified menu.</summary>
  * <param name="menuid">The menu ID to destroy</param>
  * <seealso name="CreateMenu" />
@@ -2018,6 +2115,7 @@ native Menu:CreateMenu(const title[], columns, Float:x, Float:y, Float:col1width
 native DestroyMenu(Menu:menuid);
 
 /**
+ * <library>a_samp</library>
  * <summary>Adds an item to a specified menu.</summary>
  * <param name="menuid">The menu ID to add an item to</param>
  * <param name="column">The column to add the item to</param>
@@ -2041,6 +2139,7 @@ native DestroyMenu(Menu:menuid);
 native AddMenuItem(Menu:menuid, column, const text[]);
 
 /**
+ * <library>a_samp</library>
  * <summary>Sets the caption of a column in a menu.</summary>
  * <param name="menuid">ID of the menu to change</param>
  * <param name="column">The column (<b><c>0</c></b> or <b><c>1</c></b>) to set the header of</param>
@@ -2054,6 +2153,7 @@ native AddMenuItem(Menu:menuid, column, const text[]);
 native SetMenuColumnHeader(Menu:menuid, column, const heading[]);
 
 /**
+ * <library>a_samp</library>
  * <summary>Shows a previously created menu for a player.</summary>
  * <param name="menuid">The ID of the menu to show. Returned by CreateMenu</param>
  * <param name="playerid">The ID of the player to whom the menu will be shown</param>
@@ -2072,6 +2172,7 @@ native SetMenuColumnHeader(Menu:menuid, column, const heading[]);
 native ShowMenuForPlayer(Menu:menuid, playerid);
 
 /**
+ * <library>a_samp</library>
  * <summary>Hides a menu for a player.</summary>
  * <param name="menuid">The ID of the menu to hide. Returned by <a href="#CreateMenu">CreateMenu</a> and passed to <a href="#OnPlayerSelectedMenuRow">OnPlayerSelectedMenuRow</a></param>
  * <param name="playerid">The ID of the player that the menu will be hidden for</param>
@@ -2087,6 +2188,7 @@ native ShowMenuForPlayer(Menu:menuid, playerid);
 native HideMenuForPlayer(Menu:menuid, playerid);
 
 /**
+ * <library>a_samp</library>
  * <summary>Check if a menu ID is vliad.</summary>
  * <param name="menuid">The menu to check for existance</param>
  * <seealso name="CreateMenu" />
@@ -2096,6 +2198,7 @@ native HideMenuForPlayer(Menu:menuid, playerid);
 native bool:IsValidMenu(Menu:menuid);
 
 /**
+ * <library>a_samp</library>
  * <summary>Disable a menu.</summary>
  * <param name="menuid">The ID of the menu to disable</param>
  * <seealso name="CreateMenu" />
@@ -2106,6 +2209,7 @@ native bool:IsValidMenu(Menu:menuid);
 native DisableMenu(Menu:menuid);
 
 /**
+ * <library>a_samp</library>
  * <summary>Disable a specific row in a menu <b>for all players</b>. It will be greyed-out and can't be selected by players.</summary>
  * <param name="menuid">The ID of the menu to disable a row of. Ensure this is valid, as an invalid menu ID will crash the entire server</param>
  * <param name="row">The ID of the row to disable (rows start at 0)</param>
@@ -2121,6 +2225,7 @@ native DisableMenu(Menu:menuid);
 native DisableMenuRow(Menu:menuid, row);
 
 /**
+ * <library>a_samp</library>
  * <summary>Gets the ID of the menu the player is currently viewing (shown by <a href="#ShowMenuForPlayer">ShowMenuForPlayer</a>).</summary>
  * <param name="playerid">The ID of the player to get the current menu of</param>
  * <seealso name="ShowMenuForPlayer" />
@@ -2136,6 +2241,7 @@ native DisableMenuRow(Menu:menuid, row);
 native Menu:GetPlayerMenu(playerid);
 
 /**
+ * <library>a_samp</library>
  * <summary>Creates a textdraw. Textdraws are, as the name implies, text (mainly - there can be boxes, sprites and model previews (skins/vehicles/weapons/objects too) that is drawn on a player's screens.</summary>
  * <param name="x">The x (left/right) coordinate to create the textdraw at</param>
  * <param name="y">The y (up/down) coordinate to create the textdraw at</param>
@@ -2162,12 +2268,14 @@ native Menu:GetPlayerMenu(playerid);
 native Text:TextDrawCreate(Float:x, Float:y, const text[]);
 
 /**
+ * <library>a_samp</library>
  * <summary>Destroys a previously-created textdraw.</summary>
  * <param name="text">The ID of the textdraw to destroy. Returned by <a href="#TextDrawCreate">TextDrawCreate</a></param>
  */
 native TextDrawDestroy(Text:text);
 
 /**
+ * <library>a_samp</library>
  * <summary>Sets the width and height of the letters.</summary>
  * <param name="text">The TextDraw to change</param>
  * <param name="width">Width of a char</param>
@@ -2179,6 +2287,7 @@ native TextDrawDestroy(Text:text);
 native TextDrawLetterSize(Text:text, Float:width, Float:height);
 
 /**
+ * <library>a_samp</library>
  * <summary>Change the size of a textdraw (box if <a href="#TextDrawUseBox">TextDrawUseBox</a> is enabled and/or clickable area for use with <a href="#TextDrawSetSelectable">TextDrawSetSelectable</a>).</summary>
  * <param name="text">The TextDraw to set the size of</param>
  * <param name="width">The size on the x axis (left/right) following the same 640x480 grid as <a href="#TextDrawCreate">TextDrawCreate</a></param>
@@ -2201,6 +2310,7 @@ native TextDrawLetterSize(Text:text, Float:width, Float:height);
 native TextDrawTextSize(Text:text, Float:width, Float:height);
 
 /**
+ * <library>a_samp</library>
  * <summary>Set the alignment of text in a text draw.</summary>
  * <param name="text">The ID of the textdraw to set the alignment of</param>
  * <param name="alignment"><b><c>1</c></b>-left <b><c>2</c></b>-centered <b><c>3</c></b>-right</param>
@@ -2209,6 +2319,7 @@ native TextDrawTextSize(Text:text, Float:width, Float:height);
 native TextDrawAlignment(Text:text, TEXT_DRAW_ALIGN:alignment);
 
 /**
+ * <library>a_samp</library>
  * <summary>Sets the text colour of a textdraw.</summary>
  * <param name="text">The ID of the textdraw to change the colour of.</param>
  * <param name="colour">The colour to set the textdraw to</param>
@@ -2218,6 +2329,7 @@ native TextDrawAlignment(Text:text, TEXT_DRAW_ALIGN:alignment);
 native TextDrawColor(Text:text, colour);
 
 /**
+ * <library>a_samp</library>
  * <summary>Toggle whether a textdraw uses a box or not.</summary>
  * <param name="text">The ID of the text textdraw to toggle the box of</param>
  * <param name="use"><b><c>1</c></b> to show a box or <b><c>0</c></b> to not show a box</param>
@@ -2230,6 +2342,7 @@ native TextDrawColor(Text:text, colour);
 native TextDrawUseBox(Text:text, bool:use);
 
 /**
+ * <library>a_samp</library>
  * <summary>Adjusts the text box colour (only used if <a href="#TextDrawUseBox">TextDrawUseBox</a> 'use' parameter is <b><c>1</c></b>).</summary>
  * <param name="text">The TextDraw to change</param>
  * <param name="colour">The colour (<b>RGBA</b>)</param>
@@ -2238,6 +2351,7 @@ native TextDrawUseBox(Text:text, bool:use);
 native TextDrawBoxColor(Text:text, colour);
 
 /**
+ * <library>a_samp</library>
  * <summary>Sets the size of a textdraw's text's shadow.</summary>
  * <param name="text">The ID of the textdraw to set the shadow size of</param>
  * <param name="size">The size of the shadow. <b><c>1</c></b> is generally used for a normal shadow size. <b><c>0</c></b> disables the shadow completely</param>
@@ -2251,6 +2365,7 @@ native TextDrawBoxColor(Text:text, colour);
 native TextDrawSetShadow(Text:text, size);
 
 /**
+ * <library>a_samp</library>
  * <summary>Sets the thickness of a textdraw's text's outline. <a href="#TextDrawBackgroundColor">TextDrawBackgroundColor</a> can be used to change the colour.</summary>
  * <param name="text">The ID of the text draw to set the outline thickness of</param>
  * <param name="size">The thickness of the outline, as an integer. <b><c>0</c></b> for no outline</param>
@@ -2259,6 +2374,7 @@ native TextDrawSetShadow(Text:text, size);
 native TextDrawSetOutline(Text:text, size);
 
 /**
+ * <library>a_samp</library>
  * <summary>Adjusts the text draw area background colour (the outline/shadow - NOT the box. For box colour, see <a href="#TextDrawBoxColor">TextDrawBoxColor</a>).</summary>
  * <param name="text">The ID of the textdraw to set the background colour of</param>
  * <param name="colour">The colour that the textdraw should be set to</param>
@@ -2268,6 +2384,7 @@ native TextDrawSetOutline(Text:text, size);
 native TextDrawBackgroundColor(Text:text, colour);
 
 /**
+ * <library>a_samp</library>
  * <summary>Changes the text font.</summary>
  * <param name="text">The TextDraw to change</param>
  * <param name="font">There are four font styles, see <a href="http://wiki.sa-mp.com/wiki/PlayerTextDrawFont">http://wiki.sa-mp.com/wiki/PlayerTextDrawFont</a>. Font value <b><c>4</c></b> specifies that this is a txd sprite; <b><c>5</c></b> specifies that this textdraw can display preview models. A font value greater than 5 does not display, and anything greater than 16 crashes the client</param>
@@ -2276,6 +2393,7 @@ native TextDrawBackgroundColor(Text:text, colour);
 native TextDrawFont(Text:text, TEXT_DRAW_FONT:font);
 
 /**
+ * <library>a_samp</library>
  * <summary>Appears to scale text spacing to a proportional ratio. Useful when using <a href="#TextDrawLetterSize">TextDrawLetterSize</a> to ensure the text has even character spacing.</summary>
  * <param name="text">The ID of the textdraw to set the proportionality of</param>
  * <param name="set"><b><c>1</c></b> to enable proportionality, <b><c>0</c></b> to disable</param>
@@ -2285,6 +2403,7 @@ native TextDrawFont(Text:text, TEXT_DRAW_FONT:font);
 native TextDrawSetProportional(Text:text, bool:set);
 
 /**
+ * <library>a_samp</library>
  * <summary>Sets whether a textdraw can be selected (clicked on) or not.</summary>
  * <param name="text">The ID of the textdraw to make selectable</param>
  * <param name="set"><b><c>1</c></b> to make it selectable, or <b><c>0</c></b> to make it not selectable</param>
@@ -2295,6 +2414,7 @@ native TextDrawSetProportional(Text:text, bool:set);
 native TextDrawSetSelectable(Text:text, bool:set);
 
 /**
+ * <library>a_samp</library>
  * <summary>Shows a textdraw for a specific player.</summary>
  * <param name="playerid">The ID of the player to show the textdraw for</param>
  * <param name="text">The ID of the textdraw to show. Returned by <a href="#TextDrawCreate">TextDrawCreate</a></param>
@@ -2307,6 +2427,7 @@ native TextDrawSetSelectable(Text:text, bool:set);
 native TextDrawShowForPlayer(playerid, Text:text);
 
 /**
+ * <library>a_samp</library>
  * <summary>Hides a textdraw for a specific player.</summary>
  * <param name="playerid">The ID of the player that the textdraw should be hidden for</param>
  * <param name="text">The ID of the textdraw to hide</param>
@@ -2317,6 +2438,7 @@ native TextDrawShowForPlayer(playerid, Text:text);
 native TextDrawHideForPlayer(playerid, Text:text);
 
 /**
+ * <library>a_samp</library>
  * <summary>Shows a textdraw for all players.</summary>
  * <param name="text">The ID of the textdraw to show. Returned by <a href="#TextDrawCreate">TextDrawCreate</a></param>
  * <seealso name="TextDrawShowForPlayer" />
@@ -2330,6 +2452,7 @@ native TextDrawHideForPlayer(playerid, Text:text);
 native TextDrawShowForAll(Text:text);
 
 /**
+ * <library>a_samp</library>
  * <summary>Hides a text draw for all players.</summary>
  * <param name="text">The ID of the textdraw to hide (returned by <a href="#TextDrawCreate">TextDrawCreate</a>)</param>
  * <seealso name="TextDrawShowForPlayer" />
@@ -2339,6 +2462,7 @@ native TextDrawShowForAll(Text:text);
 native TextDrawHideForAll(Text:text);
 
 /**
+ * <library>a_samp</library>
  * <summary>Changes the text on a textdraw.</summary>
  * <param name="text">The TextDraw to change</param>
  * <param name="string">The new string for the TextDraw</param>
@@ -2347,6 +2471,7 @@ native TextDrawHideForAll(Text:text);
 native TextDrawSetString(Text:text, const string[]);
 
 /**
+ * <library>a_samp</library>
  * <summary>Set the model for a textdraw model preview. Click <a href="http://www.sa-mp.com/stuff/03xShots/pmenu.png">here</a> to see this function's effect.</summary>
  * <param name="text">The textdraw ID that will display the 3D preview</param>
  * <param name="modelIndex">The GTA SA or SA:MP model ID to display</param>
@@ -2357,6 +2482,7 @@ native TextDrawSetString(Text:text, const string[]);
 native TextDrawSetPreviewModel(Text:text, modelIndex);
 
 /**
+ * <library>a_samp</library>
  * <summary>Sets the rotation and zoom of a 3D model preview textdraw.</summary>
  * <param name="rotX">The x rotation value</param>
  * <param name="rotY">The y rotation value</param>
@@ -2368,6 +2494,7 @@ native TextDrawSetPreviewModel(Text:text, modelIndex);
 native TextDrawSetPreviewRot(Text:text, Float:rotX, Float:rotY, Float:rotZ, Float:zoom = 1.0);
 
 /**
+ * <library>a_samp</library>
  * <summary>If a vehicle model is used in a 3D preview textdraw, this sets the two colour values for that vehicle.</summary>
  * <param name="text">The textdraw ID that is set to display a 3D vehicle model preview</param>
  * <param name="colour1">The primary Color ID to set the vehicle to</param>
@@ -2380,6 +2507,7 @@ native TextDrawSetPreviewVehCol(Text:text, colour1, colour2);
 // Gang Zones
 
 /**
+ * <library>a_samp</library>
  * <summary>Create a gangzone (coloured radar area).</summary>
  * <param name="minX">The x coordinate for the west side of the gangzone</param>
  * <param name="minY">The y coordinate for the south side of the gangzone</param>
@@ -2404,6 +2532,7 @@ native TextDrawSetPreviewVehCol(Text:text, colour1, colour2);
 native GangZoneCreate(Float:minX, Float:minY, Float:maxX, Float:maxY);
 
 /**
+ * <library>a_samp</library>
  * <summary>Destroy a gangzone.</summary>
  * <param name="zone">The ID of the zone to destroy</param>
  * <seealso name="GangZoneCreate" />
@@ -2419,6 +2548,7 @@ native GangZoneCreate(Float:minX, Float:minY, Float:maxX, Float:maxY);
 native GangZoneDestroy(zone);
 
 /**
+ * <library>a_samp</library>
  * <summary>Show a gangzone for a player. Must be created with <a href="#GangZoneCreate">GangZoneCreate</a> first.</summary>
  * <param name="playerid">The ID of the player you would like to show the gangzone for.</param>
  * <param name="zone">The ID of the gang zone to show for the player. Returned by <a href="#GangZoneCreate">GangZoneCreate</a></param>
@@ -2437,6 +2567,7 @@ native GangZoneDestroy(zone);
 native GangZoneShowForPlayer(playerid, zone, colour);
 
 /**
+ * <library>a_samp</library>
  * <summary>Shows a gangzone with the desired colour to all players.</summary>
  * <param name="zone">The ID of the gangzone to show (returned by <a href="# GangZoneCreate">GangZoneCreate</a>)</param>
  * <param name="colour">The colour to show the gang zone, as an integer or hex in <b>RGBA</b> colour format. Alpha transparency supported</param>
@@ -2457,6 +2588,7 @@ native GangZoneShowForPlayer(playerid, zone, colour);
 native GangZoneShowForAll(zone, colour);
 
 /**
+ * <library>a_samp</library>
  * <summary>Hides a gangzone for a player.</summary>
  * <param name="playerid">The ID of the player to hide the gangzone for</param>
  * <param name="zone">The ID of the zone to hide</param>
@@ -2473,6 +2605,7 @@ native GangZoneShowForAll(zone, colour);
 native GangZoneHideForPlayer(playerid, zone);
 
 /**
+ * <library>a_samp</library>
  * <summary>GangZoneHideForAll hides a gangzone from all players.</summary>
  * <param name="zone">The zone to hide</param>
  * <seealso name="GangZoneCreate" />
@@ -2488,6 +2621,7 @@ native GangZoneHideForPlayer(playerid, zone);
 native GangZoneHideForAll(zone);
 
 /**
+ * <library>a_samp</library>
  * <summary>Makes a gangzone flash for a player.</summary>
  * <param name="playerid">The ID of the player to flash the gangzone for</param>
  * <param name="zone">The ID of the zone to flash</param>
@@ -2505,6 +2639,7 @@ native GangZoneHideForAll(zone);
 native GangZoneFlashForPlayer(playerid, zone, flashColour);
 
 /**
+ * <library>a_samp</library>
  * <summary>GangZoneFlashForAll flashes a gangzone for all players.</summary>
  * <param name="zone">The zone to flash</param>
  * <param name="flashColour">The colour to flash the gang zone, as an integer or hex in <b>RGBA</b> colour format. Alpha transparency supported</param>
@@ -2521,6 +2656,7 @@ native GangZoneFlashForPlayer(playerid, zone, flashColour);
 native GangZoneFlashForAll(zone, flashColour);
 
 /**
+ * <library>a_samp</library>
  * <summary>Stops a gangzone flashing for a player.</summary>
  * <param name="playerid">The ID of the player to stop the gangzone flashing for</param>
  * <param name="zone">The ID of the gangzonezone to stop flashing</param>
@@ -2537,6 +2673,7 @@ native GangZoneFlashForAll(zone, flashColour);
 native GangZoneStopFlashForPlayer(playerid, zone);
 
 /**
+ * <library>a_samp</library>
  * <summary>Stops a gangzone flashing for all players.</summary>
  * <param name="zone">The ID of the zone to stop flashing. Returned by <a href="#GangZoneCreate">GangZoneCreate</a></param>
  * <seealso name="GangZoneCreate" />
@@ -2558,6 +2695,7 @@ native GangZoneStopFlashForAll(zone);
 // Global 3D Text Labels
 
 /**
+ * <library>a_samp</library>
  * <summary>Creates a 3D Text Label at a specific location in the world.</summary>
  * <param name="text">The initial text string</param>
  * <param name="colour">The text Color, as an integer or hex in <b>RGBA</b> colour format</param>
@@ -2586,6 +2724,7 @@ native GangZoneStopFlashForAll(zone);
 native Text3D:Create3DTextLabel(const text[], colour, Float:x, Float:y, Float:z, Float:drawDistance, virtualWorld, bool:testLOS = false);
 
 /**
+ * <library>a_samp</library>
  * <summary>Delete a 3D text label (created with <a href="#Create3DTextLabel">Create3DTextLabel</a>).</summary>
  * <param name="textid">The ID of the 3D text label to delete</param>
  * <seealso name="Create3DTextLabel" />
@@ -2601,6 +2740,7 @@ native Text3D:Create3DTextLabel(const text[], colour, Float:x, Float:y, Float:z,
 native Delete3DTextLabel(Text3D:textid);
 
 /**
+ * <library>a_samp</library>
  * <summary>Attach a 3D text label to a player.</summary>
  * <param name="textid">The ID of the 3D text label to attach. Returned by <a href="#Create3DTextLabel">Create3DTextLabel</a></param>
  * <param name="parentid">The ID of the player to attach the label to</param>
@@ -2623,6 +2763,7 @@ native Delete3DTextLabel(Text3D:textid);
 native Attach3DTextLabelToPlayer(Text3D:textid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ);
 
 /**
+ * <library>a_samp</library>
  * <summary>Attaches a 3D Text Label to a specific vehicle.</summary>
  * <param name="textid">The ID of the 3D text label to attach. Returned by <a href="#Create3DTextLabel">Create3DTextLabel</a></param>
  * <param name="parentid">The vehicle you want to attach the 3D Text Label to</param>
@@ -2641,6 +2782,7 @@ native Attach3DTextLabelToPlayer(Text3D:textid, parentid, Float:offsetX, Float:o
 native Attach3DTextLabelToVehicle(Text3D:textid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ);
 
 /**
+ * <library>a_samp</library>
  * <summary>Updates a 3D Text Label text and colour.</summary>
  * <param name="textid">The 3D Text Label you want to update</param>
  * <param name="colour">The colour the 3D Text Label should have from now on</param>
@@ -2660,6 +2802,7 @@ native Update3DTextLabelText(Text3D:textid, colour, const text[]);
 // Per-player 3D Text Labels
 
 /**
+ * <library>a_samp</library>
  * <summary>Creates a 3D Text Label only for a specific player.</summary>
  * <param name="playerid">The player which should see the newly created 3DText Label</param>
  * <param name="text">The text to display</param>
@@ -2686,6 +2829,7 @@ native Update3DTextLabelText(Text3D:textid, colour, const text[]);
 native PlayerText3D:CreatePlayer3DTextLabel(playerid, const text[], colour, Float:x, Float:y, Float:z, Float:drawDistance, parentPlayerid = INVALID_PLAYER_ID, parentVehicleid = INVALID_VEHICLE_ID, bool:testLOS = false);
 
 /**
+ * <library>a_samp</library>
  * <summary>Destroy a 3D text label that was created using <a href="#CreatePlayer3DTextLabel">CreatePlayer3DTextLabel</a>.</summary>
  * <param name="playerid">The ID of the player whose 3D text label to delete</param>
  * <param name="textid">The ID of the player's 3D text label to delete</param>
@@ -2704,6 +2848,7 @@ native PlayerText3D:CreatePlayer3DTextLabel(playerid, const text[], colour, Floa
 native DeletePlayer3DTextLabel(playerid, PlayerText3D:textid);
 
 /**
+ * <library>a_samp</library>
  * <summary>Updates a player 3D Text Label's text and colour.</summary>
  * <param name="playerid">The ID of the player for which the 3D Text Label was created</param>
  * <param name="textid">The 3D Text Label you want to update</param>
@@ -2722,6 +2867,7 @@ native DeletePlayer3DTextLabel(playerid, PlayerText3D:textid);
 native UpdatePlayer3DTextLabelText(playerid, PlayerText3D:textid, colour, const text[]);
 
 /**
+ * <library>a_samp</library>
  * <summary>Shows the player a synchronous (only one at a time) dialog box.</summary>
  * <param name="playerid">The ID of the player to show the dialog to</param>
  * <param name="dialogid">An ID to assign this dialog to, so responses can be processed. Max dialogid is <b><c>32767</c></b>. Using negative values will close any open dialog</param>
@@ -2743,6 +2889,7 @@ native UpdatePlayer3DTextLabelText(playerid, PlayerText3D:textid, colour, const 
 native ShowPlayerDialog(playerid, dialogid, DIALOG_STYLE:style, const caption[], const info[], const button1[], const button2[]);
 
 /**
+ * <library>a_samp</library>
  * <summary>Get a players unique ID.</summary>
  * <param name="playerid">The player to get the unique ID of</param>
  * <param name="serial">Where to save the unique ID</param>
@@ -2752,6 +2899,7 @@ native ShowPlayerDialog(playerid, dialogid, DIALOG_STYLE:style, const caption[],
 native gpci(playerid, serial[], len = sizeof (serial));
 
 /**
+ * <library>a_samp</library>
  * <summary>Get a players unique ID.</summary>
  * <param name="playerid">The player to get the unique ID of</param>
  * <param name="serial">Where to save the unique ID</param>

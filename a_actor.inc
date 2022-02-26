@@ -17,6 +17,7 @@
 #pragma tabsize 4
 
 /**
+ * <library>a_actor</library>
  * <summary>Create a static 'actor' in the world. These 'actors' are like NPCs, however they have limited functionality. They do not take up server player slots.</summary>
  * <param name="modelid">The model ID (skin ID) the actor should have</param>
  * <param name="x">The x coordinate to create the actor at</param>
@@ -59,6 +60,7 @@
 native CreateActor(modelid, Float:x, Float:y, Float:z, Float:angle);
 
 /**
+ * <library>a_actor</library>
  * <summary>Destroy an actor which was created with <a href="#CreateActor">CreateActor</a>.</summary>
  * <param name="actorid">The ID of the actor to destroy. Returned by <a href="#CreateActor">CreateActor</a></param>
  * <seealso name="CreateActor" />
@@ -71,6 +73,7 @@ native CreateActor(modelid, Float:x, Float:y, Float:z, Float:angle);
 native DestroyActor(actorid);
 
 /**
+ * <library>a_actor</library>
  * <summary>Checks if an actor is streamed in for a player.</summary>
  * <param name="actorid">The ID of the actor</param>
  * <param name="playerid">The ID of the player</param>
@@ -82,6 +85,7 @@ native DestroyActor(actorid);
 native bool:IsActorStreamedIn(actorid, playerid);
 
 /**
+ * <library>a_actor</library>
  * <summary>Set the virtual world of an actor. Only players in the same world will see the actor.</summary>
  * <param name="actorid">The ID of the actor (returned by <a href="#CreateActor">CreateActor</a>) to set the virtual world of</param>
  * <param name="virtualWorld">The virtual world to put the actor ID</param>
@@ -96,6 +100,7 @@ native bool:IsActorStreamedIn(actorid, playerid);
 native SetActorVirtualWorld(actorid, virtualWorld);
 
 /**
+ * <library>a_actor</library>
  * <summary>Get the virtual world of an actor.</summary>
  * <param name="actorid">The ID of the actor to get the virtual world of</param>
  * <seealso name="SetActorVirtualWorld" />
@@ -105,6 +110,7 @@ native SetActorVirtualWorld(actorid, virtualWorld);
 native GetActorVirtualWorld(actorid);
 
 /**
+ * <library>a_actor</library>
  * <summary>Apply an animation to an actor.</summary>
  * <param name="actorid">The ID of the actor to apply the animation to</param>
  * <param name="animationLibrary">The animation library from which to apply an animation</param>
@@ -126,6 +132,7 @@ native GetActorVirtualWorld(actorid);
 native ApplyActorAnimation(actorid, const animationLibrary[], const animationName[], Float:delta, bool:loop, bool:lockX, bool:lockY, bool:freeze, time);
 
 /**
+ * <library>a_actor</library>
  * <summary>Clear any animations applied to an actor.</summary>
  * <param name="actorid">The ID of the actor (returned by <a href="#CreateActor">CreateActor</a>) to clear the animations for</param>
  * <seealso name="ApplyActorAnimation" />
@@ -138,6 +145,7 @@ native ApplyActorAnimation(actorid, const animationLibrary[], const animationNam
 native ClearActorAnimations(actorid);
 
 /**
+ * <library>a_actor</library>
  * <summary>Set the position of an actor.</summary>
  * <param name="actorid">The ID of the actor to set the position of. Returned by <a href="#CreateActor">CreateActor</a></param>
  * <param name="x">The x coordinate to position the actor at</param>
@@ -155,6 +163,7 @@ native ClearActorAnimations(actorid);
 native SetActorPos(actorid, Float:x, Float:y, Float:z);
 
 /**
+ * <library>a_actor</library>
  * <summary>Get the position of an actor.</summary>
  * <param name="actorid">The ID of the actor to get the position of. Returned by <a href="# CreateActor">CreateActor</a></param>
  * <param name="x">A float variable, passed by reference, in which to store the x coordinate of the actor</param>
@@ -170,6 +179,7 @@ native SetActorPos(actorid, Float:x, Float:y, Float:z);
 native GetActorPos(actorid, &Float:x, &Float:y, &Float:z);
 
 /**
+ * <library>a_actor</library>
  * <summary>Set the facing angle of an actor.</summary>
  * <param name="actorid">The ID of the actor to set the facing angle of. Returned by <a href="#CreateActor">CreateActor</a></param>
  * <param name="angle">The facing angle to set for the actor</param>
@@ -186,6 +196,7 @@ native GetActorPos(actorid, &Float:x, &Float:y, &Float:z);
 native SetActorFacingAngle(actorid, Float:angle);
 
 /**
+ * <library>a_actor</library>
  * <summary>Get the facing angle of an actor.</summary>
  * <param name="actorid">The ID of the actor to get the facing angle of. Returned by <a href="#CreateActor">CreateActor</a></param>
  * <param name="angle">A float variable, passed by reference, in to which the actor's facing angle will be stored</param>
@@ -200,6 +211,7 @@ native SetActorFacingAngle(actorid, Float:angle);
 native GetActorFacingAngle(actorid, &Float:angle);
 
 /**
+ * <library>a_actor</library>
  * <summary>Set the health of an actor.</summary>
  * <param name="actorid">The ID of the actor to set the health of</param>
  * <param name="health">The value to set the actors's health to</param>
@@ -212,6 +224,7 @@ native GetActorFacingAngle(actorid, &Float:angle);
 native SetActorHealth(actorid, Float:health);
 
 /**
+ * <library>a_actor</library>
  * <summary>Get the health of an actor.</summary>
  * <param name="actorid">The ID of the actor to get the health of</param>
  * <param name="health">A float variable, passed by reference, in to which to store the actor's health</param>
@@ -224,6 +237,7 @@ native SetActorHealth(actorid, Float:health);
 native GetActorHealth(actorid, &Float:health);
 
 /**
+ * <library>a_actor</library>
  * <summary>Toggle an actor's invulnerability.</summary>
  * <param name="actorid">The ID of the actor to set invulnerability</param>
  * <param name="invulnerable"><b><c>false</c></b> to make them vulnerable, <b><c>true</c></b> to make them invulnerable (optional=<b><c>true</c></b>)</param>
@@ -238,6 +252,7 @@ native GetActorHealth(actorid, &Float:health);
 native SetActorInvulnerable(actorid, bool:invulnerable = true);
 
 /**
+ * <library>a_actor</library>
  * <summary>Check if an actor is invulnerable.</summary>
  * <param name="actorid">The ID of the actor to check</param>
  * <seealso name="CreateActor" />
@@ -249,6 +264,7 @@ native SetActorInvulnerable(actorid, bool:invulnerable = true);
 native bool:IsActorInvulnerable(actorid);
 
 /**
+ * <library>a_actor</library>
  * <summary>Checks if an actor ID is valid.</summary>
  * <param name="actorid">The ID of the actor to check</param>
  * <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>

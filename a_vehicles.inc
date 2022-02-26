@@ -68,6 +68,7 @@ enum VEHICLE_MODEL_INFO:__VEHICLE_MODEL_INFO
 // Vehicle
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Creates a vehicle in the world. Can be used in place of <a href="#AddStaticVehicleEx">AddStaticVehicleEx</a> at any time in the script.</summary>
  * <param name="modelid">The <a href="http://wiki.sa-mp.com/wiki/Vehicle_Models">model</a> for the vehicle</param>
  * <param name="x">The x coordinate for the vehicle</param>
@@ -93,6 +94,7 @@ enum VEHICLE_MODEL_INFO:__VEHICLE_MODEL_INFO
 native CreateVehicle(modelid, Float:x, Float:y, Float:z, Float:rotation, colour1, colour2, respawnDelay, bool:addSiren = false);
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Destroy a vehicle. It will disappear instantly.</summary>
  * <param name="vehicleid">The ID of the vehicle to destroy</param>
  * <seealso name="CreateVehicle" />
@@ -106,6 +108,7 @@ native CreateVehicle(modelid, Float:x, Float:y, Float:z, Float:rotation, colour1
 native DestroyVehicle(vehicleid);
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Checks if a vehicle is streamed in for a player. Only nearby vehicles are streamed in (visible) for a player.</summary>
  * <param name="vehicleid">The ID of the vehicle to check</param>
  * <param name="playerid">The ID of the player to check</param>
@@ -123,6 +126,7 @@ native DestroyVehicle(vehicleid);
 native bool:IsVehicleStreamedIn(vehicleid, playerid);
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Gets the position of a vehicle.</summary>
  * <param name="vehicleid">The ID of the vehicle to get the position of</param>
  * <param name="x">A float variable in which to store the x coordinate, passed by reference</param>
@@ -139,6 +143,7 @@ native bool:IsVehicleStreamedIn(vehicleid, playerid);
 native GetVehiclePos(vehicleid, &Float:x, &Float:y, &Float:z);
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Set a vehicle's position.</summary>
  * <param name="vehicleid">Vehicle ID that you want set new position</param>
  * <param name="x">The x coordinate to position the vehicle at</param>
@@ -156,6 +161,7 @@ native GetVehiclePos(vehicleid, &Float:x, &Float:y, &Float:z);
 native SetVehiclePos(vehicleid, Float:x, Float:y, Float:z);
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Get the rotation of a vehicle on the z axis (yaw).</summary>
  * <param name="vehicleid">The ID of the vehicle to get the z angle of</param>
  * <param name="angle">A float variable in which to store the z rotation, passed by reference</param>
@@ -172,6 +178,7 @@ native SetVehiclePos(vehicleid, Float:x, Float:y, Float:z);
 native GetVehicleZAngle(vehicleid, &Float:angle);
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Returns a vehicle's rotation on all axes as a quaternion.</summary>
  * <param name="vehicleid">The ID of the vehicle to get the rotation of</param>
  * <param name="w">A float variable in which to store the first quaternion angle, passed by reference</param>
@@ -204,6 +211,7 @@ native GetVehicleZAngle(vehicleid, &Float:angle);
 native GetVehicleRotationQuat(vehicleid, &Float:w, &Float:x, &Float:y, &Float:z);
 
 /**
+ * <library>a_vehicles</library>
  * <summary>This function can be used to calculate the distance (as a float) between a vehicle and another map coordinate. This can be useful to detect how far a vehicle away is from a location.</summary>
  * <param name="vehicleid">The ID of the vehicle to calculate the distance for</param>
  * <param name="x">The x map coordinate</param>
@@ -217,6 +225,7 @@ native GetVehicleRotationQuat(vehicleid, &Float:w, &Float:x, &Float:y, &Float:z)
 native Float:GetVehicleDistanceFromPoint(vehicleid, Float:x, Float:y, Float:z);
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Set the z rotation (yaw) of a vehicle.</summary>
  * <param name="vehicleid">The ID of the vehicle to set the rotation of</param>
  * <param name="angle">The z angle to set</param>
@@ -232,6 +241,7 @@ native Float:GetVehicleDistanceFromPoint(vehicleid, Float:x, Float:y, Float:z);
 native SetVehicleZAngle(vehicleid, Float:angle);
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Set the parameters of a vehicle for a player.</summary>
  * <param name="vehicle">The ID of the vehicle to set the parameters of</param>
  * <param name="playerid">The ID of the player to set the vehicle's parameters for</param>
@@ -248,6 +258,7 @@ native SetVehicleZAngle(vehicleid, Float:angle);
 native SetVehicleParamsForPlayer(vehicleid, playerid, objective, doors);
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Use this function before any player connects (<a href="#OnGameModeInit">OnGameModeInit</a>) to tell all clients that the script will control vehicle engines and lights. This prevents the game automatically turning the engine on/off when players enter/exit vehicles and headlights automatically coming on when it is dark.</summary>
  * <seealso name="SetVehicleParamsEx" />
  * <seealso name="GetVehicleParamsEx" />
@@ -259,6 +270,7 @@ native SetVehicleParamsForPlayer(vehicleid, playerid, objective, doors);
 native ManualVehicleEngineAndLights();
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Sets a vehicle's parameters for all players.</summary>
  * <param name="vehicleid">The ID of the vehicle to set the parameters of</param>
  * <param name="engine">Engine status. <b><c>0</c></b> - Off, <b><c>1</c></b> - On</param>
@@ -282,6 +294,7 @@ native ManualVehicleEngineAndLights();
 native SetVehicleParamsEx(vehicleid, VEHICLE_PARAMS:engine, VEHICLE_PARAMS:lights, VEHICLE_PARAMS:alarm, VEHICLE_PARAMS:doors, VEHICLE_PARAMS:bonnet, VEHICLE_PARAMS:boot, VEHICLE_PARAMS:objective);
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Gets a vehicle's parameters.</summary>
  * <param name="vehicleid">The ID of the vehicle to get the parameters from</param>
  * <param name="engine">Get the engine status. If <b><c>1</c></b>, the engine is running.</param>
@@ -298,6 +311,7 @@ native SetVehicleParamsEx(vehicleid, VEHICLE_PARAMS:engine, VEHICLE_PARAMS:light
 native GetVehicleParamsEx(vehicleid, &VEHICLE_PARAMS:engine, &VEHICLE_PARAMS:lights, &VEHICLE_PARAMS:alarm, &VEHICLE_PARAMS:doors, &VEHICLE_PARAMS:bonnet, &VEHICLE_PARAMS:boot, &VEHICLE_PARAMS:objective);
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Returns a vehicle's siren state (on/off).</summary>
  * <param name="vehicleid">The ID of the vehicle to get the siren state of</param>
  * <seealso name="OnVehicleSirenStateChange" />
@@ -307,6 +321,7 @@ native GetVehicleParamsEx(vehicleid, &VEHICLE_PARAMS:engine, &VEHICLE_PARAMS:lig
 native GetVehicleParamsSirenState(vehicleid);
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Allows you to open and close the doors of a vehicle.</summary>
  * <param name="vehicleid">The ID of the vehicle to set the door state of</param>
  * <param name="frontLeft">The state of the driver's door. <b><c>1</c></b> to open, <b><c>0</c></b> to close</param>
@@ -322,6 +337,7 @@ native GetVehicleParamsSirenState(vehicleid);
 native SetVehicleParamsCarDoors(vehicleid, frontLeft, frontRight, rearLeft, rearRight);
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Allows you to retrieve the current state of a vehicle's doors.</summary>
  * <param name="vehicleid">The ID of the vehicle</param>
  * <param name="frontLeft">The integer to save the state of the driver's door to</param>
@@ -337,6 +353,7 @@ native SetVehicleParamsCarDoors(vehicleid, frontLeft, frontRight, rearLeft, rear
 native GetVehicleParamsCarDoors(vehicleid, &frontLeft, &frontRight, &rearLeft, &rearRight);
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Allows you to open and close the windows of a vehicle.</summary>
  * <param name="vehicleid">The ID of the vehicle to set the window state of</param>
  * <param name="frontLeft">The state of the driver's window. <b><c>0</c></b> to open, <b><c>1</c></b> to close</param>
@@ -351,6 +368,7 @@ native GetVehicleParamsCarDoors(vehicleid, &frontLeft, &frontRight, &rearLeft, &
 native SetVehicleParamsCarWindows(vehicleid, frontLeft, frontRight, rearLeft, rearRight);
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Allows you to retrieve the current state of a vehicle's windows.</summary>
  * <param name="vehicleid">The ID of the vehicle</param>
  * <param name="frontLeft">The integer to save the state of the drivers window to</param>
@@ -367,6 +385,7 @@ native SetVehicleParamsCarWindows(vehicleid, frontLeft, frontRight, rearLeft, re
 native GetVehicleParamsCarWindows(vehicleid, &frontLeft, &frontRight, &rearLeft, &rearRight);
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Sets a vehicle back to the position at where it was created.</summary>
  * <param name="vehicleid">The ID of the vehicle to respawn</param>
  * <seealso name="CreateVehicle" />
@@ -379,6 +398,7 @@ native GetVehicleParamsCarWindows(vehicleid, &frontLeft, &frontRight, &rearLeft,
 native SetVehicleToRespawn(vehicleid);
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Links a vehicle to an interior. Vehicles can only be seen by players in the same interior (<a href="#SetPlayerInterior">SetPlayerInterior</a>).</summary>
  * <param name="vehicleid">The ID of the vehicle to link to an interior</param>
  * <param name="interiorid">The <a href="http://wiki.sa-mp.com/wiki/Interiorids">Interior ID</a> to link it to</param>
@@ -392,6 +412,7 @@ native SetVehicleToRespawn(vehicleid);
 native LinkVehicleToInterior(vehicleid, interiorid);
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Adds a 'component' (often referred to as a 'mod' (modification)) to a vehicle. Valid components can be found <a href="http://wiki.sa-mp.com/wiki/Car_Component_ID">here</a>.</summary>
  * <param name="vehicleid">The ID of the vehicle to add the component to. Not to be confused with <a href="http://wiki.sa-mp.com/wiki/Confuse_modelid">modelid</a></param>
  * <param name="componentid">The <a href="http://wiki.sa-mp.com/wiki/Car_Component_ID">ID of the component</a> to add to the vehicle</param>
@@ -411,6 +432,7 @@ native LinkVehicleToInterior(vehicleid, interiorid);
 native AddVehicleComponent(vehicleid, componentid);
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Remove a component from a vehicle.</summary>
  * <param name="vehicleid">ID of the vehicle</param>
  * <param name="componentid">ID of the <a href="http://wiki.sa-mp.com/wiki/Car_Component_ID">component</a> to remove</param>
@@ -423,6 +445,7 @@ native AddVehicleComponent(vehicleid, componentid);
 native RemoveVehicleComponent(vehicleid, componentid);
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Change a vehicle's primary and secondary colours.</summary>
  * <param name="vehicleid">The ID of the vehicle to change the colours of</param>
  * <param name="colour1">The new vehicle's primary <a href="http://wiki.sa-mp.com/wiki/Color_ID">Color ID</a></param>
@@ -438,6 +461,7 @@ native RemoveVehicleComponent(vehicleid, componentid);
 native ChangeVehicleColor(vehicleid, colour1, colour2);
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Change a vehicle's paintjob (for plain colours see <a href="#ChangeVehicleColor">ChangeVehicleColor</a>).</summary>
  * <param name="vehicleid">The ID of the vehicle to change the paintjob of</param>
  * <param name="paintjobid">The ID of the Paintjob to apply. Use <b><c>3</c></b> to remove a paintjob</param>
@@ -453,6 +477,7 @@ native ChangeVehicleColor(vehicleid, colour1, colour2);
 native ChangeVehiclePaintjob(vehicleid, paintjobid);
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Set a vehicle's health. When a vehicle's health decreases the engine will produce smoke, and finally fire when it decreases to less than 250 (25%).</summary>
  * <param name="vehicleid">The ID of the vehicle to set the health of</param>
  * <param name="health">The health, given as a float value</param>
@@ -479,6 +504,7 @@ native ChangeVehiclePaintjob(vehicleid, paintjobid);
 native SetVehicleHealth(vehicleid, Float:health);
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Get the health of a vehicle.</summary>
  * <param name="vehicleid">The ID of the vehicle to get the health of</param>
  * <param name="health">A float variable in which to store the vehicle's health, passed by reference</param>
@@ -504,6 +530,7 @@ native SetVehicleHealth(vehicleid, Float:health);
 native GetVehicleHealth(vehicleid, &Float:health);
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Attach a vehicle to another vehicle as a trailer.</summary>
  * <param name="trailerid">The ID of the vehicle that will be pulled</param>
  * <param name="vehicleid">The ID of the vehicle that will pull the trailer</param>
@@ -516,6 +543,7 @@ native GetVehicleHealth(vehicleid, &Float:health);
 native AttachTrailerToVehicle(trailerid, vehicleid);
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Detach the connection between a vehicle and its trailer, if any.</summary>
  * <param name="vehicleid">ID of the pulling vehicle</param>
  * <seealso name="AttachTrailerToVehicle" />
@@ -525,6 +553,7 @@ native AttachTrailerToVehicle(trailerid, vehicleid);
 native DetachTrailerFromVehicle(vehicleid);
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Checks if a vehicle has a trailer attached to it. Use <a href="#GetVehicleTrailer">GetVehicleTrailer</a> to get the vehicle ID of the trailer (if any).</summary>
  * <param name="vehicleid">The ID of the vehicle to check for trailers</param>
  * <seealso name="GetVehicleTrailer" />
@@ -535,6 +564,7 @@ native DetachTrailerFromVehicle(vehicleid);
 native bool:IsTrailerAttachedToVehicle(vehicleid);
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Get the ID of the trailer attached to a vehicle.</summary>
  * <param name="vehicleid">The ID of the vehicle to get the trailer of</param>
  * <seealso name="AttachTrailerToVehicle" />
@@ -545,6 +575,7 @@ native bool:IsTrailerAttachedToVehicle(vehicleid);
 native GetVehicleTrailer(vehicleid);
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Set a vehicle numberPlate.</summary>
  * <param name="vehicleid">The ID of the vehicle to set the number plate of</param>
  * <param name="numberPlate">The text that should be displayed on the number plate</param>
@@ -569,6 +600,7 @@ native GetVehicleTrailer(vehicleid);
 native SetVehicleNumberPlate(vehicleid, const numberPlate[]);
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Gets the <a href="http://wiki.sa-mp.com/wiki/Vehicle_Models">model ID</a> of a vehicle.</summary>
  * <param name="vehicleid">The ID of the vehicle to get the model of</param>
  * <seealso name="GetPlayerVehicleid" />
@@ -580,6 +612,7 @@ native SetVehicleNumberPlate(vehicleid, const numberPlate[]);
 native GetVehicleModel(vehicleid);
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Retrieves the installed component ID (modshop mod(ification)) on a vehicle in a specific slot.</summary>
  * <param name="vehicleid">The ID of the vehicle to check for the component</param>
  * <param name="slot">The component slot to check for components (see below)</param>
@@ -621,6 +654,7 @@ native GetVehicleModel(vehicleid);
 native GetVehicleComponentInSlot(vehicleid, CARMODTYPE:slot); // There is 1 slot for each CARMODTYPE_*
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Find out what type of component a certain ID is.</summary>
  * <param name="component">The component ID to check</param>
  * <seealso name="AddVehicleComponent" />
@@ -634,6 +668,7 @@ native GetVehicleComponentInSlot(vehicleid, CARMODTYPE:slot); // There is 1 slot
 native CARMODTYPE:GetVehicleComponentType(component); // Find CARMODTYPE_* for component ID
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Fully repairs a vehicle, including visual damage (bumps, dents, scratches, popped tires etc.).</summary>
  * <param name="vehicleid">The ID of the vehicle to repair</param>
  * <seealso name="SetVehicleHealth" />
@@ -647,6 +682,7 @@ native CARMODTYPE:GetVehicleComponentType(component); // Find CARMODTYPE_* for c
 native RepairVehicle(vehicleid); // Repairs the damage model and resets the health
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Get the velocity of a vehicle on the x, y and z axes.</summary>
  * <param name="vehicleid">The ID of the vehicle to get the velocity of</param>
  * <param name="x">A float variable in to which to store the vehicle's x velocity, passed by reference</param>
@@ -665,6 +701,7 @@ native RepairVehicle(vehicleid); // Repairs the damage model and resets the heal
 native GetVehicleVelocity(vehicleid, &Float:x, &Float:y, &Float:z);
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Sets the x, y and z velocity of a vehicle.</summary>
  * <param name="vehicleid">The ID of the vehicle to set the velocity of</param>
  * <param name="x">The velocity in the x direction</param>
@@ -680,6 +717,7 @@ native GetVehicleVelocity(vehicleid, &Float:x, &Float:y, &Float:z);
 native SetVehicleVelocity(vehicleid, Float:x, Float:y, Float:z);
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Sets the angular x, y and z velocity of a vehicle.</summary>
  * <param name="vehicleid">The ID of the vehicle to set the velocity of</param>
  * <param name="x">The amount of velocity in the angular x direction</param>
@@ -697,6 +735,7 @@ native SetVehicleVelocity(vehicleid, Float:x, Float:y, Float:z);
 native SetVehicleAngularVelocity(vehicleid, Float:x, Float:y, Float:z);
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Retrieve the damage statuses of a vehicle.</summary>
  * <param name="vehicleid">The ID of the vehicle to get the damage statuses of</param>
  * <param name="panels">A variable to store the panel damage data in, passed by reference</param>
@@ -749,6 +788,7 @@ native SetVehicleAngularVelocity(vehicleid, Float:x, Float:y, Float:z);
 native GetVehicleDamageStatus(vehicleid, &panels, &doors, &lights, &tires);
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Sets the various visual damage statuses of a vehicle, such as popped tires, broken lights and damaged panels.</summary>
  * <param name="vehicleid">The ID of the vehicle to set the damage of</param>
  * <param name="panels">A set of bits containing the panel damage status</param>
@@ -797,6 +837,7 @@ native GetVehicleDamageStatus(vehicleid, &panels, &doors, &lights, &tires);
 native UpdateVehicleDamageStatus(vehicleid, panels, doors, lights, tires);
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Retrieve information about a specific vehicle model such as the size or position of seats.</summary>
  * <param name="vehiclemodel">The vehicle <a href="http://wiki.sa-mp.com/wiki/Vehicles:All">model</a> to get info of</param>
  * <param name="infotype">The type of information to retrieve</param>
@@ -825,6 +866,7 @@ native GetVehicleModelInfo(vehiclemodel, VEHICLE_MODEL_INFO:infotype, &Float:x, 
 // Virtual Worlds
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Sets the 'virtual world' of a vehicle. Players will only be able to see vehicles in their own virtual world.</summary>
  * <param name="vehicleid">The ID of vehicle to set the virtual world of</param>
  * <param name="virtualWorld">The ID of the virtual world to put the vehicle in</param>
@@ -834,6 +876,7 @@ native GetVehicleModelInfo(vehiclemodel, VEHICLE_MODEL_INFO:infotype, &Float:x, 
 native SetVehicleVirtualWorld(vehicleid, virtualWorld);
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Get the virtual world of a vehicle.</summary>
  * <param name="vehicleid">The ID of the vehicle to get the virtual world of</param>
  * <seealso name="SetVehicleVirtualWorld" />
@@ -843,6 +886,7 @@ native SetVehicleVirtualWorld(vehicleid, virtualWorld);
 native GetVehicleVirtualWorld(vehicleid);
 
 /**
+ * <library>a_vehicles</library>
  * <summary>Check if a vehicle ID is valid.</summary>
  * <param name="vehicleid">The ID of the vehicle to check</param>
  * <seealso name="CreateVehicle" />
