@@ -3031,6 +3031,7 @@ forward OnPlayerExitVehicle(playerid, vehicleid);
  *   This callback does not handle returns.<br />
  *   It is always called first in filterscripts.
  * </returns>
+ */
 #if !defined PLAYER_STATE
 	#define PLAYER_STATE: _:
 #endif
@@ -3377,6 +3378,9 @@ forward OnPlayerInteriorChange(playerid, newinteriorid, oldinteriorid);
  *   It is always called first in gamemode.
  * </returns>
  */
+#if !defined KEY
+	#define KEY: _:
+#endif
 forward OnPlayerKeyStateChange(playerid, KEY:newkeys, KEY:oldkeys);
 
 /**
@@ -3727,6 +3731,7 @@ forward OnPlayerRequestDownload(playerid, type, crc);
  *   <b><c>0</c></b> - Indicates that this callback will be passed to the next filterscript.<br />
  *   It is always called first in filterscripts.
  * </returns>
+ */
 #if !defined CLICK_SOURCE
 	#define CLICK_SOURCE: _:
 #endif
@@ -3755,6 +3760,7 @@ forward OnPlayerClickPlayer(playerid, clickedplayerid, CLICK_SOURCE:source);
  *   <b><c>0</c></b> - Indicates that this callback will be passed to the next script.<br />
  *   It is always called first in filterscripts.
  * </returns>
+ */
 #if !defined EDIT_RESPONSE
 	#define EDIT_RESPONSE: _:
 #endif
@@ -3785,6 +3791,7 @@ forward OnPlayerEditObject(playerid, playerobject, objectid, EDIT_RESPONSE:respo
  *   <b><c>0</c></b> - Indicates that this callback will be passed to the next script.<br />
  *   It is always called first in filterscripts.
  * </returns>
+ */
 #if !defined EDIT_RESPONSE
 	#define EDIT_RESPONSE: _:
 #endif
@@ -3806,6 +3813,7 @@ forward OnPlayerEditAttachedObject(playerid, EDIT_RESPONSE:response, index, mode
  *   <b><c>0</c></b> - Indicates that this callback will be passed to the next script.<br />
  *   It is always called first in filterscripts.
  * </returns>
+ */
 #if !defined SELECT_OBJECT
 	#define SELECT_OBJECT: _:
 #endif
@@ -3852,6 +3860,7 @@ forward OnPlayerSelectObject(playerid, SELECT_OBJECT:type, objectid, modelid, Fl
  *   <b><c>1</c></b> - Allow the bullet to cause damage.<br />
  *   It is always called first in filterscripts so returning <b><c>0</c></b> there also blocks other scripts from seeing it.
  * </returns>
+ */
 #if !defined BULLET_HIT_TYPE
 	#define BULLET_HIT_TYPE: _:
 #endif
