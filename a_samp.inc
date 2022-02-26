@@ -692,7 +692,8 @@ native SendClientMessage(playerid, colour, const message[]);
 
 /**
  * <library>a_samp</library>
- * <summary>Displays a message in chat to all players.  This is a multi-player equivalent of <a href="#SendClientMessage">SendClientMessage</a>.</summary>
+ * <summary>Displays a message in chat to all players.  This is a multi-player equivalent of
+ * <a href="#SendClientMessage">SendClientMessage</a>.</summary>
  * <param name="colour">The colour of the message (<b>RGBA</b>)</param>
  * <param name="message">The message to show (<b>max 144 characters</b>)</param>
  * <seealso name="SendClientMessage" />
@@ -813,7 +814,8 @@ native GameTextForPlayer(playerid, const string[], time, style);
  * <param name="repeating">Whether the timer should repeat or not</param>
  * <seealso name="SetTimerEx" />
  * <seealso name="KillTimer" />
- * <remarks>Timer intervals are not accurate (roughly 25% off).  There's a fix available <a href="http://forum.sa-mp.com/showthread.php?t=289675">here</a>.
+ * <remarks>Timer intervals are not accurate (roughly 25% off).  There's a fix available
+ * <a href="http://forum.sa-mp.com/showthread.php?t=289675">here</a>.
  * </remarks>
  * <remarks>Timer IDs are never used twice.  You can use <a href="#KillTimer">KillTimer</a> on a timer
  * ID and it won't matter if it's running or not. </remarks>
@@ -837,7 +839,8 @@ native SetTimer(const functionName[], interval, bool:repeating);
  * <seealso name="KillTimer" />
  * <seealso name="CallLocalFunction" />
  * <seealso name="CallRemoteFunction" />
- * <remarks>Timer intervals are not accurate (roughly 25% off).  There's a fix available <a href="http://forum.sa-mp.com/showthread.php?t=289675">here</a>.
+ * <remarks>Timer intervals are not accurate (roughly 25% off).  There's a fix available
+ * <a href="http://forum.sa-mp.com/showthread.php?t=289675">here</a>.
  * </remarks>
  * <remarks>Timer IDs are never used twice.  You can use KillTimer() on a timer ID and it won't matter
  * if it's running or not. </remarks>
@@ -877,7 +880,8 @@ native KillTimer(timerid);
  * <summary>Returns the uptime of the actual server (not the SA-MP server) in milliseconds.</summary>
  * <seealso name="tickcount" />
  * <remarks>GetTickCount will cause problems on servers with uptime of over 24 days as GetTickCount
- * will eventually warp past the integer size constraints.  However using <a href="https://gist.github.com/ziggi/5d7d8dc42f54531feba7ae924c608e73">this</a>
+ * will eventually warp past the integer size constraints.  However using
+ * <a href="https://gist.github.com/ziggi/5d7d8dc42f54531feba7ae924c608e73">this</a>
  * function fixes the problem.</remarks>
  * <remarks>One common use for GetTickCount is for benchmarking.  It can be used to calculate how much
  * time some code takes to execute.</remarks>
@@ -1393,7 +1397,8 @@ native AddStaticVehicleEx(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Flo
  *   <br />
  *   <b><c>0</c></b> if failed to create.
  * </returns>
- * <remarks>This function doesn't return a pickup ID that you can use in, for example, <a href="#OnPlayerPickUpPickup">OnPlayerPickUpPickup</a>.
+ * <remarks>This function doesn't return a pickup ID that you can use in, for example,
+ * <a href="#OnPlayerPickUpPickup">OnPlayerPickUpPickup</a>.
  *  Use <a href="#CreatePickup">CreatePickup</a> if you'd like to assign IDs.</remarks>
  * <seealso name="CreatePickup" />
  * <seealso name="DestroyPickup" />
@@ -1529,7 +1534,8 @@ native GameModeExit();
  * <seealso name="SetWeather" />
  * <seealso name="SetGravity" />
  * <remarks>To set the minutes and/or to set the time for individual players, see <a href="#SetPlayerTime">SetPlayerTime</a>.</remarks>
- * <remarks>This function is only relevant for players that do not use a passing clock - see <a href="#TogglePlayerClock">TogglePlayerClock</a>.</remarks>
+ * <remarks>This function is only relevant for players that do not use a passing clock - see <a href="#TogglePlayerClock">
+ * TogglePlayerClock</a>.</remarks>
  */
 native SetWorldTime(hour);
 
@@ -1553,7 +1559,8 @@ native GetWeaponName(WEAPON:weaponid, weapon[], len = sizeof (weapon));
  * <library>a_samp</library>
  * <param name="enable"><b><c>1</c></b> to enable, <b><c>0</c></b> to disable tire popping</param>
  * <remarks>This function was removed in <b>SA-MP 0.3</b>.  Tire popping is enabled by default.  If
- * you want to disable tire popping, you'll have to manually script it using <a href="#OnVehicleDamageStatusUpdate">OnVehicleDamageStatusUpdate</a>.</remarks>
+ * you want to disable tire popping, you'll have to manually script it using <a href="#OnVehicleDamageStatusUpdate">
+ * OnVehicleDamageStatusUpdate</a>.</remarks>
  */
 #pragma deprecated Use `OnVehicleDamageStatusUpdate`.
 native EnableTirePopping(bool:enable); // deprecated function
@@ -1742,7 +1749,8 @@ native LimitPlayerMarkerRadius(Float:markerRadius);
  * <seealso name="IsPlayerNPC" />
  * <seealso name="OnPlayerConnect" />
  * <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
- * <remarks>NPCs do not have nametags.  These can be scripted with <a href="#Attach3DTextLabelToPlayer">Attach3DTextLabelToPlayer</a>.</remarks>
+ * <remarks>NPCs do not have nametags.  These can be scripted with
+ * <a href="#Attach3DTextLabelToPlayer">Attach3DTextLabelToPlayer</a>.</remarks>
  * <returns>This function always return <b><c>1</c></b>.</returns>
  */
 native ConnectNPC(const name[], const script[]);
@@ -1974,7 +1982,8 @@ native UnBlockIpAddress(const ipAddress[]);
  * <param name="len">The length of the string that should be stored</param>
  * <seealso name="GetServerVarAsInt" />
  * <seealso name="GetServerVarAsBool" />
- * <remarks>This function, as of <b>0.3.7 R2</b>, is deprecated.  Please see <a href="#GetConsoleVarAsString">GetConsoleVarAsString</a></remarks>
+ * <remarks>This function, as of <b>0.3.7 R2</b>, is deprecated.  Please see
+ * <a href="#GetConsoleVarAsString">GetConsoleVarAsString</a></remarks>
  * <remarks>Using this function on anything other than a <b>string</b> (int, bool or float) or a <b>nonexistent</b>
  * server variable, will <b>crash</b> your server! This is a bug.</remarks>
  * <remarks>Type 'varlist' in the server console to display a list of available server variables and
@@ -2216,7 +2225,8 @@ native NetStats_MessagesRecvPerSecond(playerid);
  * 1.0% is outright bad.</remarks>
  * <remarks>This function has been found to be currently unreliable the output is not as expected when
  * compared to the client.  Therefore this function should not be used as a packet loss kicker. </remarks>
- * <remarks>A more accurate packetloss function can be found here: <a href="http://forum.sa-mp.com/showpost.php?p=2488911&amp;postcount=984">http://forum.sa-mp.com/showpost.php?p=2488911&amp;postcount=984</a></remarks>
+ * <remarks>A more accurate packetloss function can be found here: <a href="http://forum.sa-mp.com/showpost.php?p=2488911&amp;postcount=984">
+ * http://forum.sa-mp.com/showpost.php?p=2488911&amp;postcount=984</a></remarks>
  * <returns>The percentage packet loss as a float. <b><c>0.0</c></b> if player not connected.</returns>
  */
 native Float:NetStats_PacketLossPercent(playerid);
@@ -2519,7 +2529,8 @@ native TextDrawDestroy(Text:text);
  * <b>Hint</b>: it is easier and extremely precise to use <b><c>LD_SPAC:white</c></b> sprite for box-only
  * textdraws, <a href="#TextDrawTextSize">TextDrawTextSize</a> will have regular offsets.</remarks>
  * <remarks>If you want to change the letter size of a textdraw that is already shown, you don't have
- * to recreate it.  Simply use <a href="#TextDrawShowForPlayer">TextDrawShowForPlayer</a>/<a href="#TextDrawShowForAll">TextDrawShowForAll</a>
+ * to recreate it.  Simply use <a href="#TextDrawShowForPlayer">TextDrawShowForPlayer</a>/
+ * <a href="#TextDrawShowForAll">TextDrawShowForAll</a>
  * after modifying the textdraw and the change will be visible. </remarks>
  * <remarks>Fonts appear to look the best with an x to y ratio of <b><c>1</c></b> to <b><c>4</c></b>
  * (e.g.  if x is <b><c>0.5</c></b> then y should be <b><c>2</c></b>). </remarks>
@@ -2531,8 +2542,10 @@ native TextDrawLetterSize(Text:text, Float:width, Float:height);
  * <summary>Change the size of a textdraw (box if <a href="#TextDrawUseBox">TextDrawUseBox</a> is enabled
  * and/or clickable area for use with <a href="#TextDrawSetSelectable">TextDrawSetSelectable</a>).</summary>
  * <param name="text">The TextDraw to set the size of</param>
- * <param name="width">The size on the x axis (left/right) following the same 640x480 grid as <a href="#TextDrawCreate">TextDrawCreate</a></param>
- * <param name="height">The size on the y axis (up/down) following the same 640x480 grid as <a href="#TextDrawCreate">TextDrawCreate</a></param>
+ * <param name="width">The size on the x axis (left/right) following the same 640x480 grid as
+ * <a href="#TextDrawCreate">TextDrawCreate</a></param>
+ * <param name="height">The size on the y axis (up/down) following the same 640x480 grid as
+ * <a href="#TextDrawCreate">TextDrawCreate</a></param>
  * <remarks>
  *   The x and y have different meanings with different TextDrawAlignment values:<br />
  *   <ul>
@@ -2552,7 +2565,8 @@ native TextDrawLetterSize(Text:text, Float:width, Float:height);
  * whether a box is shown or not.
  * </remarks>
  * <remarks>If you want to change the text size of a textdraw that is already shown, you don't have
- * to recreate it.  Simply use <a href="#TextDrawShowForPlayer">TextDrawShowForPlayer</a>/<a href="#TextDrawShowForAll">TextDrawShowForAll</a>
+ * to recreate it.  Simply use <a href="#TextDrawShowForPlayer">TextDrawShowForPlayer</a>/
+ * <a href="#TextDrawShowForAll">TextDrawShowForAll</a>
  * after modifying the textdraw and the change will be visible.</remarks>
  */
 native TextDrawTextSize(Text:text, Float:width, Float:height);
@@ -2601,7 +2615,8 @@ native TextDrawUseBox(Text:text, bool:use);
  * <param name="text">The TextDraw to change</param>
  * <param name="colour">The colour (<b>RGBA</b>)</param>
  * <remarks>If you want to change the boxcolour of a textdraw that is already shown, you don't have
- * to recreate it.  Simply use <a href="#TextDrawShowForPlayer">TextDrawShowForPlayer</a>/<a href="#TextDrawShowForAll">TextDrawShowForAll</a>
+ * to recreate it.  Simply use <a href="#TextDrawShowForPlayer">TextDrawShowForPlayer</a>/
+ * <a href="#TextDrawShowForAll">TextDrawShowForAll</a>
  * after modifying the textdraw and the change will be visible.</remarks>
  */
 native TextDrawBoxColor(Text:text, colour);
@@ -2645,7 +2660,8 @@ native TextDrawSetOutline(Text:text, size);
  * the outline colour will match the colour used in <a href="#TextDrawBackgroundColor">TextDrawBackgroundColor</a>.
  *  Changing the value of colour seems to alter the colour used in <a href="#TextDrawColor">TextDrawColor</a></remarks>
  * <remarks>If you want to change the background colour of a textdraw that is already shown, you don't
- * have to recreate it.  Simply use <a href="#TextDrawShowForPlayer">TextDrawShowForPlayer</a>/<a href="#TextDrawShowForAll">TextDrawShowForAll</a>
+ * have to recreate it.  Simply use <a href="#TextDrawShowForPlayer">TextDrawShowForPlayer</a>/
+ * <a href="#TextDrawShowForAll">TextDrawShowForAll</a>
  * after modifying the textdraw and the change will be visible.</remarks>
  */
 native TextDrawBackgroundColor(Text:text, colour);
@@ -2654,7 +2670,8 @@ native TextDrawBackgroundColor(Text:text, colour);
  * <library>a_samp</library>
  * <summary>Changes the text font.</summary>
  * <param name="text">The TextDraw to change</param>
- * <param name="font">There are four font styles, see <a href="http://wiki.sa-mp.com/wiki/PlayerTextDrawFont">http://wiki.sa-mp.com/wiki/PlayerTextDrawFont</a>.
+ * <param name="font">There are four font styles, see
+ * <a href="http://wiki.sa-mp.com/wiki/PlayerTextDrawFont">http://wiki.sa-mp.com/wiki/PlayerTextDrawFont</a>.
  *  Font value <b><c>4</c></b> specifies that this is a txd sprite; <b><c>5</c></b> specifies that this
  * textdraw can display preview models.  A font value greater than 5 does not display, and anything
  * greater than 16 crashes the client</param>
@@ -2673,7 +2690,8 @@ native TextDrawFont(Text:text, TEXT_DRAW_FONT:font);
  * <remarks>Proportionality is set to <b><c>1</c></b> by default, you might skip this function if you
  * don't want to disable it. </remarks>
  * <remarks>If you want to change the proportionality of a textdraw that is already shown, you don't
- * have to recreate it.  Simply use <a href="#TextDrawShowForPlayer">TextDrawShowForPlayer</a>/<a href="#TextDrawShowForAll">TextDrawShowForAll</a>
+ * have to recreate it.  Simply use <a href="#TextDrawShowForPlayer">TextDrawShowForPlayer</a>/
+ * <a href="#TextDrawShowForAll">TextDrawShowForAll</a>
  * after modifying the textdraw and the change will be visible. </remarks>
  */
 native TextDrawSetProportional(Text:text, bool:set);
@@ -3239,7 +3257,8 @@ forward OnGameModeInit();
  * <remarks>This function can also be used in a filterscript to detect if the gamemode changes with
  * RCON commands like changemode or gmx, as changing the gamemode does not reload a filterscript.</remarks>
  * <remarks>When using OnGameModeExit in conjunction with the 'rcon gmx' console command keep in mind
- * there is a potential for client bugs to occur an example of this is excessive <a href="#RemoveBuildingForPlayer">RemoveBuildingForPlayer</a>
+ * there is a potential for client bugs to occur an example of this is excessive
+ * <a href="#RemoveBuildingForPlayer">RemoveBuildingForPlayer</a>
  * calls during OnGameModeInit which could result in a client crash. </remarks>
  * <remarks>This callback will NOT be called if the server crashes or the process is killed by other
  * means, such as using the Linux kill command or pressing the close-button on the Windows console.
@@ -3546,7 +3565,8 @@ forward OnPlayerStateChange(playerid, PLAYER_STATE:newstate, PLAYER_STATE:oldsta
 forward OnPlayerEnterCheckpoint(playerid);
 
 /**
- * <summary>This callback is called when a player leaves the checkpoint set for them by <a href="#SetPlayerCheckpoint">SetPlayerCheckpoint</a>.
+ * <summary>This callback is called when a player leaves the checkpoint set for them by
+ * <a href="#SetPlayerCheckpoint">SetPlayerCheckpoint</a>.
  *  Only one checkpoint can be set at a time.</summary>
  * <param name="playerid">The ID of the player that left their checkpoint</param>
  * <seealso name="OnPlayerEnterCheckpoint" />
@@ -3883,7 +3903,8 @@ forward OnPlayerInteriorChange(playerid, newinteriorid, oldinteriorid);
  *  Directional keys do not trigger OnPlayerKeyStateChange (up/down/left/right).</summary>
  * <param name="playerid">The ID of the player that pressed or released a key</param>
  * <param name="newkeys">A map (bitmask) of the keys currently held - see <a href="http://wiki.sa-mp.com/wiki/Keys">here</a></param>
- * <param name="oldkeys">A map (bitmask) of the keys held prior to the current change - see <a href="http://wiki.sa-mp.com/wiki/Keys">here</a></param>
+ * <param name="oldkeys">A map (bitmask) of the keys held prior to the current change - see
+ * <a href="http://wiki.sa-mp.com/wiki/Keys">here</a></param>
  * <seealso name="GetPlayerKeys" />
  * <remarks>This callback can also be called by NPC.</remarks>
  * <remarks>
@@ -4061,7 +4082,8 @@ forward OnActorStreamOut(actorid, forplayerid);
  * <remarks>A player's dialog doesn't hide when the gamemode restarts, causing the server to print <c>"Warning:
  * PlayerDialogResponse PlayerId: 0 dialog ID doesn't match last sent dialog ID"</c> if a player responded
  * to this dialog after restart.</remarks>
- * <remarks>Parameters can contain different values, based on dialog's <a href="http://wiki.sa-mp.com/wiki/Dialog_Styles">style</a>.</remarks>
+ * <remarks>Parameters can contain different values, based on dialog's <a href="http://wiki.sa-mp.com/wiki/Dialog_Styles">style</a>.
+ * </remarks>
  * <returns>
  *   Returning <b><c>0</c></b> in this callback will pass the dialog to another script in case no matching
  * code were found in your gamemode's callback.<br />

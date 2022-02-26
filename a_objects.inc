@@ -89,7 +89,8 @@ enum OBJECT_MATERIAL_TEXT_ALIGN:__OBJECT_MATERIAL_TEXT_ALIGN
  * stays at <b><c>0</c></b> rotation.  This would only really work for objects that consist ONLY of
  * light, so wouldn't work for the police light for example. </remarks>
  * <remarks>There is a limit of <a href="http://wiki.sa-mp.com/wiki/Limits"><b><c>1000</c></b> objects
- * (<b><c>MAX_OBJECTS</c></b>)</a>.  To circumvent this limit, you can use a <a href="http://forum.sa-mp.com/showthread.php?t=102865">streamer</a></remarks>
+ * (<b><c>MAX_OBJECTS</c></b>)</a>.  To circumvent this limit, you can use a
+ * <a href="http://forum.sa-mp.com/showthread.php?t=102865">streamer</a></remarks>
  * <returns>The ID of the object that was created, or <b><c>INVALID_OBJECT_ID</c></b> if the object
  * limit (<b><c>MAX_OBJECTS</c></b>) was reached.</returns>
  */
@@ -464,7 +465,8 @@ native AttachPlayerObjectToVehicle(playerid, objectid, parentid, Float:offsetX, 
  * <library>a_objects</library>
  * <summary>Sets the position of a player-object to the specified coordinates.</summary>
  * <param name="playerid">The ID of the player whose player-object to set the position of</param>
- * <param name="objectid">The ID of the player-object to set the position of.  Returned by <a href="#CreatePlayerObject">CreatePlayerObject</a></param>
+ * <param name="objectid">The ID of the player-object to set the position of.  Returned by
+ * <a href="#CreatePlayerObject">CreatePlayerObject</a></param>
  * <param name="x">The x coordinate to put the object at</param>
  * <param name="y">The y coordinate to put the object at</param>
  * <param name="z">The z coordinate to put the object at</param>

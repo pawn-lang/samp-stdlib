@@ -158,7 +158,8 @@ enum PLAYER_RECORDING_TYPE:__PLAYER_RECORDING_TYPE
  * <summary>This function can be used to change the spawn information of a specific player.  It allows
  * you to automatically set someone's spawn weapons, their team, skin and spawn position, normally used
  * in case of minigames or automatic-spawn systems.  This function is more crash-safe then using <a
- * href="#SetPlayerSkin">SetPlayerSkin</a> in <a href="#OnPlayerSpawn">OnPlayerSpawn</a> and/or <a href="#OnPlayerRequestClass">OnPlayerRequestClass</a>,
+ * href="#SetPlayerSkin">SetPlayerSkin</a> in <a href="#OnPlayerSpawn">OnPlayerSpawn</a> and/or
+ * <a href="#OnPlayerRequestClass">OnPlayerRequestClass</a>,
  * even though this has been fixed in 0.2.</summary>
  * <param name="playerid">The Playerid of who you want to set the spawn information</param>
  * <param name="team">The Team-ID of the chosen player</param>
@@ -670,7 +671,8 @@ native GetPlayerColor(playerid);
  * <seealso name="GetPlayerSkin" />
  * <seealso name="SetSpawnInfo" />
  * <remarks>If a player's skin is set when they are crouching, in a vehicle, or performing certain animations,
- * they will become frozen or otherwise glitched.  This can be fixed by using <a href="#TogglePlayerControllable">TogglePlayerControllable</a>.
+ * they will become frozen or otherwise glitched.  This can be fixed by using
+ * <a href="#TogglePlayerControllable">TogglePlayerControllable</a>.
  *  Players can be detected as being crouched through <a href="#GetPlayerSpecialAction">GetPlayerSpecialAction</a>
  * (<b><c>SPECIAL_ACTION_DUCK</c></b>).</remarks>
  * <remarks>Setting a player's skin when he is dead may crash players around him.</remarks>
@@ -731,7 +733,8 @@ native GivePlayerWeapon(playerid, WEAPON:weaponid, ammo);
  * <param name="playerid">The ID of the player whose weapons to remove</param>
  * <seealso name="GivePlayerWeapon" />
  * <seealso name="GetPlayerWeapon" />
- * <remarks>To remove individual weapons from a player, set their ammo to <b><c>0</c></b> using <a href="#SetPlayerAmmo">SetPlayerAmmo</a>.</remarks>
+ * <remarks>To remove individual weapons from a player, set their ammo to <b><c>0</c></b> using
+ * <a href="#SetPlayerAmmo">SetPlayerAmmo</a>.</remarks>
  * <returns>
  *   <b><c>1</c></b>: The function executed successfully.<br />
  *   <b><c>0</c></b>: The function failed to execute.  This means the player specified does not exist.
@@ -1359,7 +1362,8 @@ native GetPlayerLastShotVectors(playerid, &Float:originX, &Float:originY, &Float
  * <remarks>In version <b>0.3d</b> and onwards, <b><c>10</c></b> objects can be attached to a single
  * player (index <b><c>0</c></b>-<b><c>9</c></b>).  In earlier versions, the limit is <b><c>5</c></b>
  * (index <b><c>0</c></b>-<b><c>4</c></b>).</remarks>
- * <remarks>This function is separate from the <a href="#CreateObject">CreateObject</a> / <a href="#CreatePlayerObject">CreatePlayerObject</a>
+ * <remarks>This function is separate from the <a href="#CreateObject">CreateObject</a>/
+ * <a href="#CreatePlayerObject">CreatePlayerObject</a>
  * pools.</remarks>
  * <remarks>
  *   <b>Bone IDs:</b><br />
@@ -1565,8 +1569,10 @@ native PlayerTextDrawLetterSize(playerid, PlayerText:text, Float:width, Float:he
  * is enabled and/or clickable area for use with <a href="#PlayerTextDrawSetSelectable">PlayerTextDrawSetSelectable</a>).</summary>
  * <param name="playerid">The ID of the player whose player-textdraw to set the size of</param>
  * <param name="text">The ID of the player-textdraw to set the size of</param>
- * <param name="width">The size on the x axis (left/right) following the same 640x480 grid as <a href="#TextDrawCreate">TextDrawCreate</a></param>
- * <param name="height">The size on the y axis (up/down) following the same 640x480 grid as <a href="#TextDrawCreate">TextDrawCreate</a></param>
+ * <param name="width">The size on the x axis (left/right) following the same 640x480 grid as
+ * <a href="#TextDrawCreate">TextDrawCreate</a></param>
+ * <param name="height">The size on the y axis (up/down) following the same 640x480 grid as
+ * <a href="#TextDrawCreate">TextDrawCreate</a></param>
  * <seealso name="CreatePlayerTextDraw" />
  * <seealso name="PlayerTextDrawDestroy" />
  * <seealso name="PlayerTextDrawColor" />
@@ -1741,7 +1747,8 @@ native PlayerTextDrawSetShadow(playerid, PlayerText:text, size);
 
 /**
  * <library>a_players</library>
- * <summary>Set the outline of a player-textdraw.  The outline colour cannot be changed unless <a href="#PlayerTextDrawBackgroundColor">PlayerTextDrawBackgroundColor</a>
+ * <summary>Set the outline of a player-textdraw.  The outline colour cannot be changed unless
+ * <a href="#PlayerTextDrawBackgroundColor">PlayerTextDrawBackgroundColor</a>
  * is used.</summary>
  * <param name="playerid">The ID of the player whose player-textdraw to set the outline of</param>
  * <param name="text">The ID of the player-textdraw to set the outline of</param>
@@ -1801,7 +1808,8 @@ native PlayerTextDrawBackgroundColor(playerid, PlayerText:text, colour);
  * <param name="playerid">The ID of the player whose player-textdraw to change the font of</param>
  * <param name="text">The ID of the player-textdraw to change the font of</param>
  * <param name="font">There are four font styles.  A font value greater than <b><c>3</c></b> does not
- * display, and anything greater than <b><c>16</c></b> crashes the client.  See <a href="http://wiki.sa-mp.com/wiki/PlayerTextDrawFont">http://wiki.sa-mp.com/wiki/PlayerTextDrawFont</a></param>
+ * display, and anything greater than <b><c>16</c></b> crashes the client.  See
+ * <a href="http://wiki.sa-mp.com/wiki/PlayerTextDrawFont">http://wiki.sa-mp.com/wiki/PlayerTextDrawFont</a></param>
  * <seealso name="CreatePlayerTextDraw" />
  * <seealso name="PlayerTextDrawDestroy" />
  * <seealso name="PlayerTextDrawColor" />
@@ -1824,7 +1832,8 @@ native PlayerTextDrawFont(playerid, PlayerText:text, TEXT_DRAW_FONT:font);
 
 /**
  * <library>a_players</library>
- * <summary>Appears to scale text spacing to a proportional ratio.  Useful when using <a href="#PlayerTextDrawLetterSize">PlayerTextDrawLetterSize</a>
+ * <summary>Appears to scale text spacing to a proportional ratio.  Useful when using
+ * <a href="#PlayerTextDrawLetterSize">PlayerTextDrawLetterSize</a>
  * to ensure the text has even character spacing.</summary>
  * <param name="playerid">The ID of the player whose player-textdraw to set the proportionality of</param>
  * <param name="text">The ID of the player-textdraw to set the proportionality of</param>
@@ -2535,7 +2544,8 @@ native DisableRemoteVehicleCollisions(playerid, bool:disable);
  * <remarks>
  *   If a checkpoint is already set it will use the size of that checkpoint instead of the new one.<br
  * />
- *   Checkpoints created on server-created objects (<a href="#CreateObject">CreateObject</a>/<a href="#CreatePlayerObject">CreatePlayerObject</a>)
+ *   Checkpoints created on server-created objects (<a href="#CreateObject">CreateObject</a>/
+ * <a href="#CreatePlayerObject">CreatePlayerObject</a>)
  * will appear down on the 'real' ground, but will still function correctly.  A pickup can be used instead.
  * </remarks>
  * <remarks>Checkpoints are asynchronous, meaning only one can be shown at a time.  To 'stream' checkpoints
@@ -2717,7 +2727,8 @@ native SetPlayerMapIcon(playerid, iconid, Float:x, Float:y, Float:z, markerType,
  * <library>a_players</library>
  * <summary>Removes a map icon that was set earlier for a player using <a href="#SetPlayerMapIcon">SetPlayerMapIcon</a>.</summary>
  * <param name="playerid">The ID of the player whose icon to remove</param>
- * <param name="iconid">The ID of the icon to remove.  This is the second parameter of <a href="#SetPlayerMapIcon">SetPlayerMapIcon</a></param>
+ * <param name="iconid">The ID of the icon to remove.  This is the second parameter of
+ * <a href="#SetPlayerMapIcon">SetPlayerMapIcon</a></param>
  * <seealso name="SetPlayerMapIcon" />
  * <returns>
  *   <b><c>1</c></b>: The function executed successfully.<br />
@@ -2787,7 +2798,8 @@ native SetPlayerCameraLookAt(playerid, Float:x, Float:y, Float:z, CAM_MOVE:cut =
 
 /**
  * <library>a_players</library>
- * <summary>Restore the camera to a place behind the player, after using a function like <a href="#SetPlayerCameraPos">SetPlayerCameraPos</a>.</summary>
+ * <summary>Restore the camera to a place behind the player, after using a function like
+ * <a href="#SetPlayerCameraPos">SetPlayerCameraPos</a>.</summary>
  * <param name="playerid">The player you want to restore the camera for</param>
  * <seealso name="SetPlayerCameraPos" />
  * <seealso name="SetPlayerCameraLookAt" />
@@ -3089,7 +3101,8 @@ native bool:IsPlayerInCheckpoint(playerid);
 
 /**
  * <library>a_players</library>
- * <summary>Check if the player is inside their current set race checkpoint (<a href="#SetPlayerRaceCheckpoint">SetPlayerRaceCheckpoint</a>).</summary>
+ * <summary>Check if the player is inside their current set race checkpoint
+ * (<a href="#SetPlayerRaceCheckpoint">SetPlayerRaceCheckpoint</a>).</summary>
  * <param name="playerid">The ID of the player to check</param>
  * <seealso name="SetPlayerCheckpoint" />
  * <seealso name="DisablePlayerCheckpoint" />
@@ -3269,7 +3282,8 @@ native StopRecordingPlayerData(playerid);
  * <seealso name="OnPlayerClickTextDraw" />
  * <seealso name="OnPlayerClickPlayerTextDraw" />
  * <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
- * <remarks><a href="#TextDrawSetSelectable">TextDrawSetSelectable</a> or <a href="#PlayerTextDrawSetSelectable">PlayerTextDrawSetSelectable</a>
+ * <remarks><a href="#TextDrawSetSelectable">TextDrawSetSelectable</a> or
+ * <a href="#PlayerTextDrawSetSelectable">PlayerTextDrawSetSelectable</a>
  * MUST be used first, to allow a textdraw to be selectable.</remarks>
  * <remarks>It is the TEXT which will be highlighted when hovered over, NOT the box (if one is shown).</remarks>
  */

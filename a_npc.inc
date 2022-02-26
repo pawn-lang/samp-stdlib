@@ -464,7 +464,8 @@ native format(output[], len = sizeof (output), const format[], {Float, _}:...);
  * <param name="repeating">Whether the timer should repeat or not</param>
  * <seealso name="SetTimerEx" />
  * <seealso name="KillTimer" />
- * <remarks>Timer intervals are not accurate (roughly 25% off).  There's a fix available <a href="http://forum.sa-mp.com/showthread.php?t=289675">here</a>.
+ * <remarks>Timer intervals are not accurate (roughly 25% off).  There's a fix available
+ * <a href="http://forum.sa-mp.com/showthread.php?t=289675">here</a>.
  * </remarks>
  * <remarks>Timer IDs are never used twice.  You can use <a href="#KillTimer">KillTimer</a> on a timer
  * ID and it won't matter if it's running or not. </remarks>
@@ -490,7 +491,8 @@ native KillTimer(timerid);
  * <summary>Returns the uptime of the actual server (not the SA-MP server) in milliseconds.</summary>
  * <seealso name="tickcount" />
  * <remarks>GetTickCount will cause problems on servers with uptime of over 24 days as GetTickCount
- * will eventually warp past the integer size constraints.  However using <a href="https://gist.github.com/ziggi/5d7d8dc42f54531feba7ae924c608e73">this</a>
+ * will eventually warp past the integer size constraints.  However using
+ * <a href="https://gist.github.com/ziggi/5d7d8dc42f54531feba7ae924c608e73">this</a>
  * function fixes the problem.</remarks>
  * <remarks>One common use for GetTickCount is for benchmarking.  It can be used to calculate how much
  * time some code takes to execute.</remarks>
@@ -900,7 +902,8 @@ forward OnNPCExitVehicle();
  * <summary>This callback gets called whenever the NPC sees a ClientMessage.  This will be everytime
  * a <a href="#SendClientMessageToAll">SendClientMessageToAll</a> function is used and everytime a <a
  * href="#SendClientMessage">SendClientMessage</a> function is sent towards the NPC.  This callback
- * won't be called when someone says something.  For a version of this with player text, see <a href="#OnPlayerText">OnPlayerText</a>.</summary>
+ * won't be called when someone says something.  For a version of this with player text, see
+ * <a href="#OnPlayerText">OnPlayerText</a>.</summary>
  * <param name="colour">The colour the ClientMessage is</param>
  * <param name="text">The actual message</param>
  * <seealso name="OnPlayerText" />

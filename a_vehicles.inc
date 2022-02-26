@@ -587,7 +587,8 @@ native GetVehicleHealth(vehicleid, &Float:health);
  * <seealso name="DetachTrailerFromVehicle" />
  * <seealso name="IsTrailerAttachedToVehicle" />
  * <seealso name="GetVehicleTrailer" />
- * <remarks>This will only work if both vehicles are streamed in for a player (check <a href="#IsVehicleStreamedIn">IsVehicleStreamedIn</a>).</remarks>
+ * <remarks>This will only work if both vehicles are streamed in for a player (check
+ * <a href="#IsVehicleStreamedIn">IsVehicleStreamedIn</a>).</remarks>
  * <returns>This function always returns <b><c>1</c></b>, even if neither of the vehicle IDs passed
  * are valid.</returns>
  */
