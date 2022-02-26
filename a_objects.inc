@@ -1,7 +1,9 @@
-/*  SA-MP Object Functions
- *
- * (c) Copyright 2005-2015, SA-MP Team
- *
+/**
+ * <library name="a_objects" description="SA-MP Object Functions.">
+ * <license>
+ *   (c) Copyright 2005-2015, SA-MP Team
+ * </license>
+ * </library>
  */
 
 #if defined _INC_a_objects

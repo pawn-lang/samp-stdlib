@@ -1,7 +1,9 @@
-/*  SA-MP Vehicle Functions
- *
- * (c) Copyright 2005-2012, SA-MP Team
- *
+/**
+ * <library name="a_vehicles" description="SA-MP Vehicle Functions.">
+ * <license>
+ *   (c) Copyright 2005-2012, SA-MP Team
+ * </license>
+ * </library>
  */
 
 #if defined _INC_a_vehicles

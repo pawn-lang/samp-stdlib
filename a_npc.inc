@@ -1,7 +1,9 @@
-/*  SA-MP NPC Functions
- *
- * (c) Copyright 2009, SA-MP Team
- *
+/**
+ * <library name="a_npc" description="SA-MP NPC Functions.">
+ * <license>
+ *   (c) Copyright 2009, SA-MP Team
+ * </license>
+ * </library>
  */
 
 #if defined _INC_a_npc

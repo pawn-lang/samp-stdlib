@@ -1,7 +1,10 @@
-//  SA-MP Native SQLite Database Functions
-//
-//  (c) Copyright 2015, SA-MP Team
-//
+/**
+ * <library name="a_sampdb" description="SA-MP Native SQLite Database Functions.">
+ * <license>
+ *   (c) Copyright 2015, SA-MP Team
+ * </license>
+ * </library>
+ */
 
 #if defined _INC_a_sampdb
 	#endinput

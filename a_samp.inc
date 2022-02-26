@@ -1,7 +1,9 @@
-/*  SA-MP Functions
- *
- * (c) Copyright 2005-2017, SA-MP Team
- *
+/**
+ * <library name="a_samp" description="SA-MP Functions.">
+ * <license>
+ *   (c) Copyright 2005-2017, SA-MP Team
+ * </license>
+ * </library>
  */
 
 #if defined _INC_a_samp

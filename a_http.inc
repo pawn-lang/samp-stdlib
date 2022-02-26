@@ -1,7 +1,9 @@
- /*  SA-MP threaded HTTP/1.0 client for pawn
- *
- * (c) Copyright 2010, SA-MP Team
- *
+/**
+ * <library name="a_http" description="SA-MP threaded HTTP/1.0 client for pawn.">
+ * <license>
+ *   (c) Copyright 2010, SA-MP Team
+ * </license>
+ * </library>
  */
 
 #if defined _INC_a_http

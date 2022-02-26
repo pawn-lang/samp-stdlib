@@ -1,7 +1,9 @@
-/*  SA-MP Actor Functions
- *
- * (c) Copyright 2015, SA-MP Team
- *
+/**
+ * <library name="a_actor" description="SA-MP Actor Functions.">
+ * <license>
+ *   (c) Copyright 2015, SA-MP Team
+ * </license>
+ * </library>
  */
 
 #if defined _INC_a_actor
