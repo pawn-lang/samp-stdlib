@@ -482,7 +482,7 @@ public const SAMP_INCLUDES_VERSION = 0x037030;
 	#error cannot read from file: "a_file"
 #endif
 
-#if !defined _objects_included // Not `_float_included`.
+#if !defined _objects_included
 	#error cannot read from file: "a_objects"
 #endif
 
@@ -499,12 +499,13 @@ public const SAMP_INCLUDES_VERSION = 0x037030;
 #endif
 
 // Special case.  The old version didn't have `_http_included`.
-
 #tryinclude "a_http"
 #if !defined HTTP
 	#tryinclude <a_http>
 #endif
-#if !defined HTTP
+#if defined HTTP
+	#define _http_included
+#else
 	#error cannot read from file: "a_http"
 #endif
 
