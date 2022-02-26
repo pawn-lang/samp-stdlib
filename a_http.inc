@@ -1,3 +1,8 @@
+#if defined _INC_a_http
+	#endinput
+#endif
+#define _INC_a_http
+
 /**
  * <library name="a_http" description="SA-MP threaded HTTP/1.0 client for pawn.">
  * <license>
@@ -6,14 +11,8 @@
  * </library>
  */
 
-#if defined _INC_a_http
-	#endinput
-#endif
-#define _INC_a_http
-
-#define SAMP_CONST_CORRECT
-
 #pragma tabsize 4
+#define SAMP_CONST_CORRECT
 
 // --------------------------------------------------
 // Defines

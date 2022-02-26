@@ -1,11 +1,3 @@
-/**
- * <library name="a_samp" description="SA-MP Functions.">
- * <license>
- *   (c) Copyright 2005-2017, SA-MP Team
- * </license>
- * </library>
- */
-
 #if defined _INC_a_samp
 	#endinput
 #endif
@@ -15,11 +7,18 @@
 #define _INC_a_samp
 #define _samp_included
 
-#define SAMP_CONST_CORRECT
+/**
+ * <library name="a_samp" description="SA-MP Functions.">
+ * <license>
+ *   (c) Copyright 2005-2017, SA-MP Team
+ * </license>
+ * </library>
+ */
 
 // Ignores warning 217 for properly indented PAWNO code
 // It's tab size is 4 and often uses 4 spaces instead, PAWNCC's is 8
 #pragma tabsize 4
+#define SAMP_CONST_CORRECT
 
 // --------------------------------------------------
 // Defines

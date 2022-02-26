@@ -1,3 +1,9 @@
+#if defined _INC_a_players
+	#endinput
+#endif
+#define _INC_a_players
+#define _players_included
+
 /**
  * <library name="a_players" description="SA-MP Player Functions.">
  * <license>
@@ -6,15 +12,8 @@
  * </library>
  */
 
-#if defined _INC_a_players
-	#endinput
-#endif
-#define _INC_a_players
-#define _players_included
-
-#define SAMP_CONST_CORRECT
-
 #pragma tabsize 4
+#define SAMP_CONST_CORRECT
 
 // Limits
 #if !defined MAX_PLAYER_ATTACHED_OBJECTS

@@ -1,3 +1,9 @@
+#if defined _INC_a_actor
+	#endinput
+#endif
+#define _INC_a_actor
+#define _actor_included
+
 /**
  * <library name="a_actor" description="SA-MP Actor Functions.">
  * <license>
@@ -6,15 +12,8 @@
  * </library>
  */
 
-#if defined _INC_a_actor
-	#endinput
-#endif
-#define _INC_a_actor
-#define _actor_included
-
-#define SAMP_CONST_CORRECT
-
 #pragma tabsize 4
+#define SAMP_CONST_CORRECT
 
 /**
  * <library>a_actor</library>

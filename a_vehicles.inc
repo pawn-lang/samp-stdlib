@@ -1,3 +1,9 @@
+#if defined _INC_a_vehicles
+	#endinput
+#endif
+#define _INC_a_vehicles
+#define _vehicles_included
+
 /**
  * <library name="a_vehicles" description="SA-MP Vehicle Functions.">
  * <license>
@@ -6,15 +12,8 @@
  * </library>
  */
 
-#if defined _INC_a_vehicles
-	#endinput
-#endif
-#define _INC_a_vehicles
-#define _vehicles_included
-
-#define SAMP_CONST_CORRECT
-
 #pragma tabsize 4
+#define SAMP_CONST_CORRECT
 
 // --------------------------------------------------
 // Defines

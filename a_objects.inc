@@ -1,3 +1,9 @@
+#if defined _INC_a_objects
+	#endinput
+#endif
+#define _INC_a_objects
+#define _objects_included
+
 /**
  * <library name="a_objects" description="SA-MP Object Functions.">
  * <license>
@@ -6,15 +12,8 @@
  * </library>
  */
 
-#if defined _INC_a_objects
-	#endinput
-#endif
-#define _INC_a_objects
-#define _objects_included
-
-#define SAMP_CONST_CORRECT
-
 #pragma tabsize 4
+#define SAMP_CONST_CORRECT
 
 // --------------------------------------------------
 // Defines

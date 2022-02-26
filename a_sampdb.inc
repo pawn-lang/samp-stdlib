@@ -1,3 +1,9 @@
+#if defined _INC_a_sampdb
+	#endinput
+#endif
+#define _INC_a_sampdb
+#define _sampdb_included
+
 /**
  * <library name="a_sampdb" description="SA-MP Native SQLite Database Functions.">
  * <license>
@@ -6,15 +12,8 @@
  * </library>
  */
 
-#if defined _INC_a_sampdb
-	#endinput
-#endif
-#define _INC_a_sampdb
-#define _sampdb_included
-
-#define SAMP_CONST_CORRECT
-
 #pragma tabsize 4
+#define SAMP_CONST_CORRECT
 
 /**
  * <library>a_sampdb</library>
