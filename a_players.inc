@@ -2340,6 +2340,7 @@ native RemovePlayerMapIcon(playerid, iconid);
  * <remarks><b>This function, as of 0.3d, is deprecated. Check <a href="#OnPlayerClickMap">OnPlayerClickMap</a>.</b></remarks>
  * <remarks>This function will work only if <a href="#AllowAdminTeleport">AllowAdminTeleport</a> is enabled, and you have to be an admin.</remarks>
  * <seealso name="AllowAdminTeleport" />
+ */
 #pragma deprecated Use `OnPlayerClickMap`.
 native AllowPlayerTeleport(playerid, bool:allow);
 

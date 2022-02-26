@@ -960,6 +960,7 @@ native GetActorPoolSize();
  * <remarks>This function was added in <b>SA-MP 0.3.7-R1</b> and will not work in earlier versions!</remarks>
  * <remarks>The salt is appended to the end of the password, meaning password 'foo' and salt 'bar' would form 'foobar'. </remarks>
  * <remarks>The salt should be random, unique for each player and at least as long as the hashed password. It is to be stored alongside the actual hash in the player's account. </remarks>
+ */
 #pragma deprecated Use BCrypt for hashing passwords.
 native SHA256_PassHash(const password[], const salt[], output[], size = sizeof (output)); // SHA256 for password hashing
 
@@ -1380,6 +1381,7 @@ native GetWeaponName(WEAPON:weaponid, weapon[], len = sizeof (weapon));
 /**
  * <param name="enable"><b><c>1</c></b> to enable, <b><c>0</c></b> to disable tire popping</param>
  * <remarks>This function was removed in <b>SA-MP 0.3</b>. Tire popping is enabled by default. If you want to disable tire popping, you'll have to manually script it using <a href="#OnVehicleDamageStatusUpdate">OnVehicleDamageStatusUpdate</a>.</remarks>
+ */
 #pragma deprecated Use `OnVehicleDamageStatusUpdate`.
 native EnableTirePopping(bool:enable); // deprecated function
 
@@ -1397,6 +1399,7 @@ native EnableVehicleFriendlyFire();
  * <seealso name="SetPlayerInterior" />
  * <seealso name="GetPlayerInterior" />
  * <seealso name="OnPlayerInteriorChange" />
+ */
 #pragma deprecated Use `OnPlayerInteriorChange`.
 native AllowInteriorWeapons(bool:allow);
 
@@ -1433,6 +1436,7 @@ native SetGravity(Float:gravity);
  * <remarks><b>This function, as of 0.3d, is deprecated. Please see <a href="#OnPlayerClickMap">OnPlayerClickMap</a>.</b></remarks>
  * <seealso name="IsPlayerAdmin" />
  * <seealso name="AllowPlayerTeleport" />
+ */
 #pragma deprecated Use `OnPlayerClickMap`.
 native AllowAdminTeleport(bool:allow);
 
@@ -1441,6 +1445,7 @@ native AllowAdminTeleport(bool:allow);
  * <seealso name="CreatePickup" />
  * <seealso name="GivePlayerMoney" />
  * <seealso name="OnPlayerDeath" />
+ */
 #pragma deprecated Use `CreatePickup`.
 native SetDeathDropAmount(amount);
 
@@ -1715,6 +1720,7 @@ native UnBlockIpAddress(const ipAddress[]);
  * <remarks>Type 'varlist' in the server console to display a list of available server variables and their types.</remarks>
  * <remarks>When filterscripts or plugins is specified as the cvar, this function only returns the name of the first specified filterscript or plugin. This is a bug.</remarks>
  * <returns>The length of the returned string. <b><c>0</c></b> if the specified server variable is not a string or doesn't exist.</returns>
+ */
 #pragma deprecated Use `GetConsoleVarAsString`.
 native GetServerVarAsString(const cvar[], buffer[], len = sizeof (buffer));
 
@@ -1726,6 +1732,7 @@ native GetServerVarAsString(const cvar[], buffer[], len = sizeof (buffer));
  * <remarks>This function, as of <b>0.3.7 R2</b>, is deprecated. Please see <a href="#GetConsoleVarAsInt">GetConsoleVarAsInt</a></remarks>
  * <remarks>Type 'varlist' in the server console to display a list of available server variables and their types.</remarks>
  * <returns>The value of the specified server variable. 0 if the specified server variable is not an integer or doesn't exist.</returns>
+ */
 #pragma deprecated Use `GetConsoleVarAsInt`.
 native GetServerVarAsInt(const cvar[]);
 
@@ -1737,6 +1744,7 @@ native GetServerVarAsInt(const cvar[]);
  * <remarks>This function, as of <b>0.3.7 R2</b>, is deprecated. Please see <a href="#GetConsoleVarAsBool">GetConsoleVarAsBool</a></remarks>
  * <remarks>Type 'varlist' in the server console to display a list of available server variables and their types.</remarks>
  * <returns>The value of the specified server variable. <b><c>0</c></b> if the specified server variable is not a boolean or doesn't exist.</returns>
+ */
 #pragma deprecated Use `GetConsoleVarAsBool`.
 native bool:GetServerVarAsBool(const cvar[]);
 // These are the same 3 functions as above although they avoid the name ambiguity/conflict with the SVar system.
@@ -2739,6 +2747,7 @@ native ShowPlayerDialog(playerid, dialogid, DIALOG_STYLE:style, const caption[],
  * <param name="playerid">The player to get the unique ID of</param>
  * <param name="serial">Where to save the unique ID</param>
  * <param name="len">The size of "output" (the serial)</param>
+ */
 #pragma deprecated Use `GPCI`.
 native gpci(playerid, serial[], len = sizeof (serial));
 
