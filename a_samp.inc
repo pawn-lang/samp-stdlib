@@ -1619,11 +1619,34 @@ native ConnectNPC(const name[], const script[]);
  */
 native bool:IsPlayerNPC(playerid);
 
+/**
+ * <library>a_samp</library>
+ */
 native AddCharModel(baseid, newid, const dff[], const textureLibrary[]);
+
+/**
+ * <library>a_samp</library>
+ */
 native AddSimpleModel(virtualWorld, baseid, newid, const dff[], const textureLibrary[]);
+
+/**
+ * <library>a_samp</library>
+ */
 native AddSimpleModelTimed(virtualWorld, baseid, newid, const dff[], const textureLibrary[], timeOn, timeOff);
+
+/**
+ * <library>a_samp</library>
+ */
 native FindModelFileNameFromCRC(crc, output[], size = sizeof (output));
+
+/**
+ * <library>a_samp</library>
+ */
 native FindTextureFileNameFromCRC(crc, output[], size = sizeof (output));
+
+/**
+ * <library>a_samp</library>
+ */
 native RedirectDownload(playerid, const url[]);
 
 // Admin

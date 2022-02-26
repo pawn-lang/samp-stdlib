@@ -44,6 +44,9 @@ native DB:db_open(const name[]);
  */
 native bool:DB_Close(DB:db) = db_close;
 
+/**
+ * <library>a_sampdb</library>
+ */
 #pragma deprecated Use `DB_Close`.
 native bool:db_close(DB:db);
 
@@ -58,6 +61,9 @@ native bool:db_close(DB:db);
  */
 native DBResult:DB_Query(DB:db, const query[]) = db_query;
 
+/**
+ * <library>a_sampdb</library>
+ */
 #pragma deprecated Use `DB_Query`.
 native DBResult:db_query(DB:db, const query[]);
 
@@ -69,6 +75,9 @@ native DBResult:db_query(DB:db, const query[]);
  */
 native bool:DB_FreeResult(DBResult:result) = db_free_result;
 
+/**
+ * <library>a_sampdb</library>
+ */
 #pragma deprecated Use `DB_FreeResult`.
 native bool:db_free_result(DBResult:result);
 
@@ -81,6 +90,9 @@ native bool:db_free_result(DBResult:result);
  */
 native DB_NumRows(DBResult:result) = db_num_rows;
 
+/**
+ * <library>a_sampdb</library>
+ */
 #pragma deprecated Use `DB_NumRows`.
 native db_num_rows(DBResult:result);
 
@@ -93,6 +105,9 @@ native db_num_rows(DBResult:result);
  */
 native bool:DB_NextRow(DBResult:result) = db_next_row;
 
+/**
+ * <library>a_sampdb</library>
+ */
 #pragma deprecated Use `DB_NextRow`.
 native bool:db_next_row(DBResult:result);
 
@@ -105,6 +120,9 @@ native bool:db_next_row(DBResult:result);
  */
 native DB_NumFields(DBResult:result) = db_num_fields;
 
+/**
+ * <library>a_sampdb</library>
+ */
 #pragma deprecated Use `DB_NumFields`.
 native db_num_fields(DBResult:result);
 
@@ -120,6 +138,9 @@ native db_num_fields(DBResult:result);
  */
 native bool:DB_FieldName(DBResult:result, field, output[], size = sizeof (output)) = db_field_name;
 
+/**
+ * <library>a_sampdb</library>
+ */
 #pragma deprecated Use `DB_FieldName`.
 native bool:db_field_name(DBResult:result, field, output[], size = sizeof (output));
 
@@ -135,6 +156,9 @@ native bool:db_field_name(DBResult:result, field, output[], size = sizeof (outpu
  */
 native bool:DB_GetField(DBResult:result, field, output[], size = sizeof (output)) = db_get_field;
 
+/**
+ * <library>a_sampdb</library>
+ */
 #pragma deprecated Use `DB_GetField`.
 native bool:db_get_field(DBResult:result, field, output[], size = sizeof (output));
 
@@ -148,6 +172,9 @@ native bool:db_get_field(DBResult:result, field, output[], size = sizeof (output
  */
 native DB_GetFieldInt(DBResult:result, field = 0) = db_get_field_int;
 
+/**
+ * <library>a_sampdb</library>
+ */
 #pragma deprecated Use `DB_GetFieldInt`.
 native db_get_field_int(DBResult:result, field = 0);
 
@@ -161,6 +188,9 @@ native db_get_field_int(DBResult:result, field = 0);
  */
 native Float:DB_GetFieldFloat(DBResult:result, field = 0) = db_get_field_float;
 
+/**
+ * <library>a_sampdb</library>
+ */
 #pragma deprecated Use `DB_GetFieldFloat`.
 native Float:db_get_field_float(DBResult:result, field = 0);
 
@@ -176,6 +206,9 @@ native Float:db_get_field_float(DBResult:result, field = 0);
  */
 native bool:DB_GetFieldAssoc(DBResult:result, const field[], output[], size = sizeof (output)) = db_get_field_assoc;
 
+/**
+ * <library>a_sampdb</library>
+ */
 #pragma deprecated Use `DB_GetFieldAssoc`.
 native bool:db_get_field_assoc(DBResult:result, const field[], output[], size = sizeof (output));
 
@@ -189,6 +222,9 @@ native bool:db_get_field_assoc(DBResult:result, const field[], output[], size = 
  */
 native DB_GetFieldAssocInt(DBResult:result, const field[]) = db_get_field_assoc_int;
 
+/**
+ * <library>a_sampdb</library>
+ */
 #pragma deprecated Use `DB_GetFieldAssocInt`.
 native db_get_field_assoc_int(DBResult:result, const field[]);
 
@@ -202,6 +238,9 @@ native db_get_field_assoc_int(DBResult:result, const field[]);
  */
 native Float:DB_GetFieldAssocFloat(DBResult:result, const field[]) = db_get_field_assoc_float;
 
+/**
+ * <library>a_sampdb</library>
+ */
 #pragma deprecated Use `DB_GetFieldAssocFloat`.
 native Float:db_get_field_assoc_float(DBResult:result, const field[]);
 
@@ -214,6 +253,9 @@ native Float:db_get_field_assoc_float(DBResult:result, const field[]);
  */
 native DB_GetMemHandle(DB:db) = db_get_mem_handle;
 
+/**
+ * <library>a_sampdb</library>
+ */
 #pragma deprecated Use `DB_GetMemHandle`.
 native db_get_mem_handle(DB:db);
 
@@ -226,16 +268,31 @@ native db_get_mem_handle(DB:db);
  */
 native DB_GetResultMemHandle(DBResult:result) = db_get_result_mem_handle;
 
+/**
+ * <library>a_sampdb</library>
+ */
 #pragma deprecated Use `DB_GetResultMemHandle`.
 native db_get_result_mem_handle(DBResult:result);
 
+/**
+ * <library>a_sampdb</library>
+ */
 native DB_DebugOpenFiles() = db_debug_openfiles;
 
+/**
+ * <library>a_sampdb</library>
+ */
 #pragma deprecated Use `DB_DebugOpenFiles`.
 native db_debug_openfiles();
 
+/**
+ * <library>a_sampdb</library>
+ */
 native DB_DebugOpenResults() = db_debug_openresults;
 
+/**
+ * <library>a_sampdb</library>
+ */
 #pragma deprecated Use `DB_DebugOpenResults`.
 native db_debug_openresults();
 
