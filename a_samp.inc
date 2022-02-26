@@ -505,6 +505,7 @@ public const SAMP_INCLUDES_VERSION = 0x037030;
 #endif
 #if defined HTTP
 	#define _http_included
+	#define _inc_a_http
 #else
 	#error cannot read from file: "a_http"
 #endif
