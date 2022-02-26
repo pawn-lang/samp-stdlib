@@ -62,7 +62,9 @@ enum OBJECT_MATERIAL_TEXT_ALIGN:__OBJECT_MATERIAL_TEXT_ALIGN
  * <param name="rotX">The x rotation of the object</param>
  * <param name="rotY">The y rotation of the object</param>
  * <param name="rotZ">The z rotation of the object</param>
- * <param name="drawDistance">The distance that San Andreas renders objects at. <b><c>0.0</c></b> will cause objects to render at their default distances. <b>Usable since 0.3b, limited to <c>300</c> prior to 0.3x</b> (optional=<b><c>0.0</c></b>)</param>
+ * <param name="drawDistance">The distance that San Andreas renders objects at. <b><c>0.0</c></b> will
+ * cause objects to render at their default distances. <b>Usable since 0.3b, limited to <c>300</c> prior
+ * to 0.3x</b> (optional=<b><c>0.0</c></b>)</param>
  * <seealso name="DestroyObject" />
  * <seealso name="IsValidObject" />
  * <seealso name="CreatePlayerObject" />
@@ -75,19 +77,29 @@ enum OBJECT_MATERIAL_TEXT_ALIGN:__OBJECT_MATERIAL_TEXT_ALIGN
  * <seealso name="SetObjectMaterialText" />
  * <seealso name="SetObjectMaterial" />
  * <remarks>
- *   Objects that emit light (lampposts, police lights, bollard lights, neons etc.) that have a greater rotation than <b><c>16.26</c></b> degrees (or <b><c>-16.26</c></b>) on either the x or y axis will stop shining.  This effect also applies to light objects attached to other objects, players and vehicles.
- *   If a light object is attached to a car and the car is rotated over <b><c>16.26</c></b> degrees (like in a rollover), the object will also stop emitting light.  This is a GTA:SA issue and is not caused by a bug in SA-MP.
+ *   Objects that emit light (lampposts, police lights, bollard lights, neons etc.) that have a greater
+ * rotation than <b><c>16.26</c></b> degrees (or <b><c>-16.26</c></b>) on either the x or y axis will
+ * stop shining.  This effect also applies to light objects attached to other objects, players and vehicles.
+ *   If a light object is attached to a car and the car is rotated over <b><c>16.26</c></b> degrees
+ * (like in a rollover), the object will also stop emitting light.  This is a GTA:SA issue and is not
+ * caused by a bug in SA-MP.
  * </remarks>
- * <remarks>In case the light is attached to another object, one fix for this is to set <b>SyncRotation</b> to false in <a href="#AttachObjectToObject">AttachObjectToObject</a>.  This will ensure the light stays at <b><c>0</c></b> rotation.  This would only really work for objects that consist ONLY of light, so wouldn't work for the police light for example. </remarks>
- * <remarks>There is a limit of <a href="http://wiki.sa-mp.com/wiki/Limits"><b><c>1000</c></b> objects (<b><c>MAX_OBJECTS</c></b>)</a>.  To circumvent this limit, you can use a <a href="http://forum.sa-mp.com/showthread.php?t=102865">streamer</a></remarks>
- * <returns>The ID of the object that was created, or <b><c>INVALID_OBJECT_ID</c></b> if the object limit (<b><c>MAX_OBJECTS</c></b>) was reached.</returns>
+ * <remarks>In case the light is attached to another object, one fix for this is to set <b>SyncRotation</b>
+ * to false in <a href="#AttachObjectToObject">AttachObjectToObject</a>.  This will ensure the light
+ * stays at <b><c>0</c></b> rotation.  This would only really work for objects that consist ONLY of
+ * light, so wouldn't work for the police light for example. </remarks>
+ * <remarks>There is a limit of <a href="http://wiki.sa-mp.com/wiki/Limits"><b><c>1000</c></b> objects
+ * (<b><c>MAX_OBJECTS</c></b>)</a>.  To circumvent this limit, you can use a <a href="http://forum.sa-mp.com/showthread.php?t=102865">streamer</a></remarks>
+ * <returns>The ID of the object that was created, or <b><c>INVALID_OBJECT_ID</c></b> if the object
+ * limit (<b><c>MAX_OBJECTS</c></b>) was reached.</returns>
  */
 native CreateObject(modelid, Float:x, Float:y, Float:z, Float:rotX, Float:rotY, Float:rotZ, Float:drawDistance = 0.0);
 
 /**
  * <library>a_objects</library>
  * <summary>Attach an object to a vehicle.</summary>
- * <param name="objectid">The ID of the object to attach to the vehicle.  Note that this is an object ID, not a model ID.  The object must be CreateObject created first</param>
+ * <param name="objectid">The ID of the object to attach to the vehicle.  Note that this is an object
+ * ID, not a model ID.  The object must be CreateObject created first</param>
  * <param name="vehicleid">The ID of the vehicle to attach the object to</param>
  * <param name="offsetX">The x axis offset from the vehicle to attach the object to</param>
  * <param name="offsetY">The y axis offset from the vehicle to attach the object to</param>
@@ -101,13 +113,16 @@ native CreateObject(modelid, Float:x, Float:y, Float:z, Float:rotX, Float:rotY, 
  * <seealso name="CreateObject" />
  * <remarks>This function was added in <b>SA-MP 0.3c</b> and will not work in earlier versions!</remarks>
  * <remarks>The object must be created first.</remarks>
- * <remarks>When the vehicle is destroyed or respawned, the attached objects won't be destroyed with it; they will remain stationary at the position the vehicle disappeared and be reattached to the next vehicle to claim the vehicle ID that the objects were attached to.</remarks>
+ * <remarks>When the vehicle is destroyed or respawned, the attached objects won't be destroyed with
+ * it; they will remain stationary at the position the vehicle disappeared and be reattached to the
+ * next vehicle to claim the vehicle ID that the objects were attached to.</remarks>
  */
 native AttachObjectToVehicle(objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotX, Float:rotY, Float:rotZ);
 
 /**
  * <library>a_objects</library>
- * <summary>You can use this function to attach objects to other objects.  The objects will folow the main object.</summary>
+ * <summary>You can use this function to attach objects to other objects.  The objects will folow the
+ * main object.</summary>
  * <param name="objectid">The object to attach to another object</param>
  * <param name="attachtoid">The object to attach the object to</param>
  * <param name="offsetX">The distance between the main object and the object in the x direction</param>
@@ -116,7 +131,8 @@ native AttachObjectToVehicle(objectid, parentid, Float:offsetX, Float:offsetY, F
  * <param name="rotX">The x rotation between the object and the main object</param>
  * <param name="rotY">The y rotation between the object and the main object</param>
  * <param name="rotZ">The z rotation between the object and the main object</param>
- * <param name="syncRotation">If set to <b><c>0</c></b>, objectid's rotation will not change with <paramref name="attachtoid" />'s (optional=<b><c>1</c></b>)</param>
+ * <param name="syncRotation">If set to <b><c>0</c></b>, objectid's rotation will not change with <paramref
+ * name="attachtoid" />'s (optional=<b><c>1</c></b>)</param>
  * <seealso name="AttachObjectToPlayer" />
  * <seealso name="AttachObjectToVehicle" />
  * <seealso name="CreateObject" />
@@ -124,12 +140,15 @@ native AttachObjectToVehicle(objectid, parentid, Float:offsetX, Float:offsetY, F
  * <remarks>
  *   <ul>
  *     <li>Both objects need to be created before attempting to attach them.</li>
- *     <li>There is no player-object version of this function (AttachPlayerObjectToObject), meaning it will not be supported by streamers.</li>
+ *     <li>There is no player-object version of this function (AttachPlayerObjectToObject), meaning
+ * it will not be supported by streamers.</li>
  *   </ul>
  * </remarks>
  * <returns>
  * <b><c>1</c></b>: The function executed successfully.<br />
- * <b><c>0</c></b>: The function failed to execute.  This means the first object (<paramref name="objectid" />) does not exist.  There are no internal checks to verify that the second object (<paramref name="attachtoid" />) exists.
+ * <b><c>0</c></b>: The function failed to execute.  This means the first object (<paramref name="objectid"
+ * />) does not exist.  There are no internal checks to verify that the second object (<paramref name="attachtoid"
+ * />) exists.
  * </returns>
  */
 native AttachObjectToObject(objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotX, Float:rotY, Float:rotZ, bool:syncRotation = true);
@@ -204,7 +223,8 @@ native SetObjectRot(objectid, Float:rotX, Float:rotY, Float:rotZ);
 
 /**
  * <library>a_objects</library>
- * <summary>Use this function to get the objects current rotation.  The rotation is saved by reference in three rotX/rotY/rotZ variables.</summary>
+ * <summary>Use this function to get the objects current rotation.  The rotation is saved by reference
+ * in three rotX/rotY/rotZ variables.</summary>
  * <param name="objectid">The objectid of the object you want to get the rotation from</param>
  * <param name="rotX">The variable to store the x rotation, passed by reference</param>
  * <param name="rotY">The variable to store the y rotation, passed by reference</param>
@@ -235,7 +255,8 @@ native GetObjectModel(objectid);
  * <seealso name="SetObjectsDefaultCameraCol" />
  * <seealso name="SetPlayerObjectNoCameraCol" />
  * <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions! </remarks>
- * <remarks>This only works outside the map boundaries (past <b><c>-3000</c></b>/<b><c>3000</c></b> units on the x and/or y axis).</remarks>
+ * <remarks>This only works outside the map boundaries (past <b><c>-3000</c></b>/<b><c>3000</c></b>
+ * units on the x and/or y axis).</remarks>
  * <returns>
  *   <b><c>1</c></b>: The function executed successfully.<br />
  *   <b><c>0</c></b>: The function failed to execute.  The object specified does not exist.
@@ -267,7 +288,8 @@ native DestroyObject(objectid);
 
 /**
  * <library>a_objects</library>
- * <summary>Move an object to a new position with a set speed.  Players/vehicles will 'surf' the object as it moves.</summary>
+ * <summary>Move an object to a new position with a set speed.  Players/vehicles will 'surf' the object
+ * as it moves.</summary>
  * <param name="objectid">The ID of the object to move</param>
  * <param name="x">The x coordinate to move the object to</param>
  * <param name="y">The y coordinate to move the object to</param>
@@ -283,8 +305,14 @@ native DestroyObject(objectid);
  * <seealso name="SetObjectPos" />
  * <seealso name="SetObjectRot" />
  * <seealso name="CreateObject" />
- * <remarks>This function can be used to make objects rotate smoothly.  In order to achieve this however, the object must also be <b>moved</b>.  The specified rotation is the rotation the object will have after the movement.  Hence the object will not rotate when no movement is applied.  For a script example take a look at the ferriswheel.pwn filterscript made by Kye included in the server package (SA-MP 0.3d and above). </remarks>
- * <remarks>To fully understand the above note, you can (but not limited to) increase the z position by <b><c>(+0.001</c></b>) and then (<b><c>-0.001</c></b>) after moving it again, as not changing the x, y or z will not rotate the object. </remarks>
+ * <remarks>This function can be used to make objects rotate smoothly.  In order to achieve this however,
+ * the object must also be <b>moved</b>.  The specified rotation is the rotation the object will have
+ * after the movement.  Hence the object will not rotate when no movement is applied.  For a script
+ * example take a look at the ferriswheel.pwn filterscript made by Kye included in the server package
+ * (SA-MP 0.3d and above). </remarks>
+ * <remarks>To fully understand the above note, you can (but not limited to) increase the z position
+ * by <b><c>(+0.001</c></b>) and then (<b><c>-0.001</c></b>) after moving it again, as not changing
+ * the x, y or z will not rotate the object. </remarks>
  * <returns>The time it will take for the object to move in milliseconds.</returns>
  */
 native MoveObject(objectid, Float:x, Float:y, Float:z, Float:speed, Float:rotX = -1000.0, Float:rotY = -1000.0, Float:rotZ = -1000.0);
@@ -315,7 +343,8 @@ native bool:IsObjectMoving(objectid);
 
 /**
  * <library>a_objects</library>
- * <summary>Allows a player to edit an object (position and rotation) using their mouse on a GUI (Graphical User Interface).</summary>
+ * <summary>Allows a player to edit an object (position and rotation) using their mouse on a GUI (Graphical
+ * User Interface).</summary>
  * <param name="playerid">The ID of the player that should edit the object</param>
  * <param name="objectid">The ID of the object to be edited by the player</param>
  * <seealso name="EditPlayerObject" />
@@ -323,9 +352,11 @@ native bool:IsObjectMoving(objectid);
  * <seealso name="SelectObject" />
  * <seealso name="CancelEdit" />
  * <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
- * <remarks>You can move the camera while editing by pressing and holding the <b>spacebar</b> (or <b>W</b> in vehicle) and moving your mouse.</remarks>
+ * <remarks>You can move the camera while editing by pressing and holding the <b>spacebar</b> (or <b>W</b>
+ * in vehicle) and moving your mouse.</remarks>
  * <returns>
- *   <b><c>1</c></b>: The function executed successfully.  Success is reported when a non-existent object is specified, but nothing will happen.<br />
+ *   <b><c>1</c></b>: The function executed successfully.  Success is reported when a non-existent object
+ * is specified, but nothing will happen.<br />
  *   <b><c>0</c></b>: The function failed to execute.  The player is not connected.
  * </returns>
  */
@@ -341,7 +372,8 @@ native EditObject(playerid, objectid);
  * <seealso name="SelectObject" />
  * <seealso name="CancelEdit" />
  * <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
- * <remarks>You can move the camera while editing by pressing and holding the <b>spacebar</b> (or <b>W</b> in vehicle) and moving your mouse.</remarks>
+ * <remarks>You can move the camera while editing by pressing and holding the <b>spacebar</b> (or <b>W</b>
+ * in vehicle) and moving your mouse.</remarks>
  * <returns>
  *   <b><c>1</c></b>: The function executed successfully.<br />
  *   <b><c>0</c></b>: The function failed to execute.  Player or object not valid.
@@ -351,7 +383,8 @@ native EditPlayerObject(playerid, objectid);
 
 /**
  * <library>a_objects</library>
- * <summary>Display the cursor and allow the player to select an object. <a href="#OnPlayerSelectObject">OnPlayerSelectObject</a> is called when the player selects an object.</summary>
+ * <summary>Display the cursor and allow the player to select an object. <a href="#OnPlayerSelectObject">OnPlayerSelectObject</a>
+ * is called when the player selects an object.</summary>
  * <param name="playerid">The ID of the player that should be able to select the object</param>
  * <seealso name="EditObject" />
  * <seealso name="EditPlayerObject" />
@@ -385,7 +418,10 @@ native CancelEdit(playerid);
  * <param name="rotX">The x rotation of the object</param>
  * <param name="rotY">The y rotation of the object</param>
  * <param name="rotZ">The z rotation of the object</param>
- * <param name="drawDistance">The distance from which objects will appear to players. <b><c>0.0</c></b> will cause an object to render at its default distance.  Leaving this parameter out will cause objects to be rendered at their default distance. <b>The maximum usable distance is <c>300</c> in versions prior to 0.3x</b>, in which drawdistance can be unlimited (optional=<b><c>0.0</c></b>)</param>
+ * <param name="drawDistance">The distance from which objects will appear to players. <b><c>0.0</c></b>
+ * will cause an object to render at its default distance.  Leaving this parameter out will cause objects
+ * to be rendered at their default distance. <b>The maximum usable distance is <c>300</c> in versions
+ * prior to 0.3x</b>, in which drawdistance can be unlimited (optional=<b><c>0.0</c></b>)</param>
  * <seealso name="CreateObject" />
  * <seealso name="IsValidPlayerObject" />
  * <seealso name="DestroyPlayerObject" />
@@ -397,8 +433,10 @@ native CancelEdit(playerid);
  * <seealso name="GetPlayerObjectRot" />
  * <seealso name="AttachPlayerObjectToPlayer" />
  * <seealso name="AttachObjectToPlayer" />
- * <remarks>The 'DrawDistance' parameter was added in <b>0.3b</b>.  It must be left out in scripts for older versions of SA:MP.</remarks>
- * <returns>The ID of the object that was created, or <b><c>INVALID_OBJECT_ID</c></b> if the object limit (<b><c>MAX_OBJECTS</c></b>) was reached.</returns>
+ * <remarks>The 'DrawDistance' parameter was added in <b>0.3b</b>.  It must be left out in scripts for
+ * older versions of SA:MP.</remarks>
+ * <returns>The ID of the object that was created, or <b><c>INVALID_OBJECT_ID</c></b> if the object
+ * limit (<b><c>MAX_OBJECTS</c></b>) was reached.</returns>
  */
 native CreatePlayerObject(playerid, modelid, Float:x, Float:y, Float:z, Float:rotX, Float:rotY, Float:rotZ, Float:drawDistance = 0.0);
 
@@ -456,7 +494,8 @@ native SetPlayerObjectPos(playerid, objectid, Float:x, Float:y, Float:z);
  * <seealso name="CreatePlayerObject" />
  * <returns>
  *   <b><c>1</c></b>: The function executed successfully.<br />
- *   <b><c>0</c></b>: The function failed to execute.  The player and/or the object don't exist.<br />
+ *   <b><c>0</c></b>: The function failed to execute.  The player and/or the object don't exist.<br
+ * />
  *   The object's position is stored in the specified variables.
  * </returns>
  */
@@ -484,7 +523,8 @@ native SetPlayerObjectRot(playerid, objectid, Float:rotX, Float:rotY, Float:rotZ
 
 /**
  * <library>a_objects</library>
- * <summary>Use this function to get the object's current rotation.  The rotation is saved by reference in three rotX/rotY/rotZ variables.</summary>
+ * <summary>Use this function to get the object's current rotation.  The rotation is saved by reference
+ * in three rotX/rotY/rotZ variables.</summary>
  * <param name="playerid">The player you associated this object to</param>
  * <param name="objectid">The objectid of the object you want to get the rotation from</param>
  * <param name="rotX">The variable to store the x rotation, passed by reference</param>
@@ -506,7 +546,8 @@ native GetPlayerObjectRot(playerid, objectid, &Float:rotX, &Float:rotY, &Float:r
  * <seealso name="GetObjectModel" />
  * <seealso name="CreatePlayerObject" />
  * <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
- * <returns>The model ID of the player object.  If the player or object don't exist, it will return <b><c>-1</c></b> or <b><c>0</c></b> if the player or object does not exist.</returns>
+ * <returns>The model ID of the player object.  If the player or object don't exist, it will return
+ * <b><c>-1</c></b> or <b><c>0</c></b> if the player or object does not exist.</returns>
  */
 native GetPlayerObjectModel(playerid, objectid);
 
@@ -518,7 +559,8 @@ native GetPlayerObjectModel(playerid, objectid);
  * <seealso name="SetObjectNoCameraCol" />
  * <seealso name="SetObjectsDefaultCameraCol" />
  * <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
- * <remarks>This only works outside the map boundaries (past <b><c>-3000</c></b>/<b><c>3000</c></b> units on the x and/or y axis).</remarks>
+ * <remarks>This only works outside the map boundaries (past <b><c>-3000</c></b>/<b><c>3000</c></b>
+ * units on the x and/or y axis).</remarks>
  * <returns><b><c>1</c></b> regardless of if the object exists or not.</returns>
  */
 native SetPlayerObjectNoCameraCol(playerid, objectid);
@@ -548,7 +590,8 @@ native DestroyPlayerObject(playerid, objectid);
 
 /**
  * <library>a_objects</library>
- * <summary>Move a player object with a set speed.  Also supports rotation.  Players/vehicles will surf moving objects.</summary>
+ * <summary>Move a player object with a set speed.  Also supports rotation.  Players/vehicles will surf
+ * moving objects.</summary>
  * <param name="playerid">The ID of the player whose player-object to move</param>
  * <param name="objectid">The ID of the object to move</param>
  * <param name="x">The x coordinate to move the object to</param>
@@ -572,7 +615,8 @@ native MovePlayerObject(playerid, objectid, Float:x, Float:y, Float:z, Float:spe
 
 /**
  * <library>a_objects</library>
- * <summary>Stop a moving player-object after <a href="#MovePlayerObject">MovePlayerObject</a> has been used.</summary>
+ * <summary>Stop a moving player-object after <a href="#MovePlayerObject">MovePlayerObject</a> has been
+ * used.</summary>
  * <param name="playerid">The ID of the player whose player-object to stop</param>
  * <param name="objectid">The ID of the player-object to stop</param>
  * <seealso name="MovePlayerObject" />
@@ -621,10 +665,14 @@ native AttachPlayerObjectToPlayer(playerid, objectid, parentid, Float:offsetX, F
  * <summary>Replace the texture of an object with the texture from another model in the game.</summary>
  * <param name="objectid">The ID of the object to change the texture of</param>
  * <param name="materialIndex">The material index on the object to change (<b><c>0</c></b> to <b><c>15</c></b>)</param>
- * <param name="modelid">The modelid on which the replacement texture is located.  Use <b><c>0</c></b> for alpha.  Use <b><c>-1</c></b> to change the material colour without altering the texture</param>
- * <param name="textureLibrary">The name of the txd file which contains the replacement texture (use <b><c>"none"</c></b> if not required)</param>
- * <param name="textureName">The name of the texture to use as the replacement (use <b><c>"none"</c></b> if not required)</param>
- * <param name="materialColour">The object colour to set, as an integer or hex in <b>ARGB</b> colour format.  Using <b><c>0</c></b> keeps the existing material colour (optional=<b><c>0</c></b>)</param>
+ * <param name="modelid">The modelid on which the replacement texture is located.  Use <b><c>0</c></b>
+ * for alpha.  Use <b><c>-1</c></b> to change the material colour without altering the texture</param>
+ * <param name="textureLibrary">The name of the txd file which contains the replacement texture (use
+ * <b><c>"none"</c></b> if not required)</param>
+ * <param name="textureName">The name of the texture to use as the replacement (use <b><c>"none"</c></b>
+ * if not required)</param>
+ * <param name="materialColour">The object colour to set, as an integer or hex in <b>ARGB</b> colour
+ * format.  Using <b><c>0</c></b> keeps the existing material colour (optional=<b><c>0</c></b>)</param>
  * <seealso name="SetPlayerObjectMaterial" />
  * <seealso name="SetObjectMaterialText" />
  * <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
@@ -642,10 +690,14 @@ native SetObjectMaterial(objectid, materialIndex, modelid, const textureLibrary[
  * <param name="playerid">The ID of the player the object is associated to</param>
  * <param name="objectid">The ID of the object to replace the texture of</param>
  * <param name="materialIndex">The material index on the object to change (<b><c>0</c></b> to <b><c>15</c></b>)</param>
- * <param name="modelid">The modelid on which replacement texture is located.  Use <b><c>0</c></b> for alpha.  Use <b><c>-1</c></b> to change the material colour without altering the existing texture</param>
- * <param name="textureLibrary">The name of the txd file which contains the replacement texture (use <b><c>"none"</c></b> if not required)</param>
- * <param name="textureName">The name of the texture to use as the replacement (use <b><c>"none"</c></b> if not required)</param>
- * <param name="materialColour">The object colour to set (<b>ARGB</b>).  Using <b><c>0</c></b> keeps the existing material colour (optional=<b><c>0</c></b>)</param>
+ * <param name="modelid">The modelid on which replacement texture is located.  Use <b><c>0</c></b> for
+ * alpha.  Use <b><c>-1</c></b> to change the material colour without altering the existing texture</param>
+ * <param name="textureLibrary">The name of the txd file which contains the replacement texture (use
+ * <b><c>"none"</c></b> if not required)</param>
+ * <param name="textureName">The name of the texture to use as the replacement (use <b><c>"none"</c></b>
+ * if not required)</param>
+ * <param name="materialColour">The object colour to set (<b>ARGB</b>).  Using <b><c>0</c></b> keeps
+ * the existing material colour (optional=<b><c>0</c></b>)</param>
  * <seealso name="SetObjectMaterial" />
  * <seealso name="SetPlayerObjectMaterialText" />
  * <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
@@ -755,12 +807,15 @@ native SetPlayerObjectMaterialText(playerid, objectid, const text[], materialInd
 /**
  * <library>a_objects</library>
  * <summary>Allows camera collisions with newly created objects to be disabled by default.</summary>
- * <param name="disable"><b><c>1</c></b> to disable camera collisions for newly created objects and <b><c>0</c></b> to enable them (enabled by default)</param>
+ * <param name="disable"><b><c>1</c></b> to disable camera collisions for newly created objects and
+ * <b><c>0</c></b> to enable them (enabled by default)</param>
  * <seealso name="SetObjectNoCameraCol" />
  * <seealso name="SetPlayerObjectNoCameraCol" />
  * <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
- * <remarks>This function only affects the camera collision of objects created AFTER its use - it does not toggle existing objects' camera collisions.</remarks>
- * <remarks>This only works outside the map boundaries (past <b><c>-3000</c></b>/<b><c>3000</c></b> units on the x and/or y axis).</remarks>
+ * <remarks>This function only affects the camera collision of objects created AFTER its use - it does
+ * not toggle existing objects' camera collisions.</remarks>
+ * <remarks>This only works outside the map boundaries (past <b><c>-3000</c></b>/<b><c>3000</c></b>
+ * units on the x and/or y axis).</remarks>
  */
 native SetObjectsDefaultCameraCol(bool:disable);
 

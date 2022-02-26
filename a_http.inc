@@ -45,11 +45,13 @@ enum HTTP_ERROR:__HTTP_ERROR
 /**
  * <library>a_http</library>
  * <summary>Sends a threaded HTTP request.</summary>
- * <param name="index">ID used to differentiate requests that are sent to the same callback (useful for playerids)</param>
+ * <param name="index">ID used to differentiate requests that are sent to the same callback (useful
+ * for playerids)</param>
  * <param name="method">The type of request you wish to send</param>
  * <param name="url">The URL you want to request. (Without 'http://')</param>
  * <param name="data">Any POST data you want to send with the request</param>
- * <param name="callback">Name of the callback function you want to use to handle responses to this request</param>
+ * <param name="callback">Name of the callback function you want to use to handle responses to this
+ * request</param>
  * <remarks>This function was added in <b>SA-MP 0.3b</b> and will not work in earlier versions!</remarks>
  * <returns><b><c>1</c></b> on success, <b><c>0</c></b> on failure.</returns>
  * <remarks>
