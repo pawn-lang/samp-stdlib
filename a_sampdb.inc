@@ -36,10 +36,10 @@ native DB:db_open(const name[]);
  * <library>a_sampdb</library>
  * <summary>Closes an SQLite database that was opened with <a href="#db_open">db_open</a>.</summary>
  * <param name="db">The handle of the database connection to close (returned by <a href="#db_open">db_open</a>)</param>
- * <remarks>Using an <b>invalid handle</b> will crash your server! Get a <b>valid handle</b> by using <a href="#db_open">db_open</a>. But it's protected against <b><c>NULL</c></b> references</remarks>
+ * <remarks>Using an <b>invalid handle</b> will crash your server! Get a <b>valid handle</b> by using <a href="#db_open">db_open</a>.  But it's protected against <b><c>NULL</c></b> references</remarks>
  * <returns>
  *   <b><c>1</c></b>: The function executed successfully.<br />
- *   <b><c>0</c></b>: The function failed to execute. May mean that the database handle specified is not open.
+ *   <b><c>0</c></b>: The function failed to execute.  May mean that the database handle specified is not open.
  * </returns>
  */
 native bool:DB_Close(DB:db) = db_close;
@@ -85,7 +85,7 @@ native bool:db_free_result(DBResult:result);
  * <library>a_sampdb</library>
  * <summary>Returns the number of rows from a <a href="#db_query">db_query</a>.</summary>
  * <param name="result">The result of <a href="#db_query">db_query</a></param>
- * <remarks>Using an <b>invalid handle</b> will crash your server! Get a <b>valid handle</b> by using <a href="#db_open">db_open</a>. But it's protected against <b><c>NULL</c></b> references</remarks>
+ * <remarks>Using an <b>invalid handle</b> will crash your server! Get a <b>valid handle</b> by using <a href="#db_open">db_open</a>.  But it's protected against <b><c>NULL</c></b> references</remarks>
  * <returns>The number of rows in the result.</returns>
  */
 native DB_NumRows(DBResult:result) = db_num_rows;
@@ -100,7 +100,7 @@ native db_num_rows(DBResult:result);
  * <library>a_sampdb</library>
  * <summary>Moves to the next row of the result allocated from <a href="#db_query">db_query</a>.</summary>
  * <param name="result">The result of <a href="#db_query">db_query</a></param>
- * <remarks>Using an <b>invalid handle</b> will crash your server! Get a <b>valid handle</b> by using <a href="#db_open">db_open</a>. But it's protected against <b><c>NULL</c></b> references</remarks>
+ * <remarks>Using an <b>invalid handle</b> will crash your server! Get a <b>valid handle</b> by using <a href="#db_open">db_open</a>.  But it's protected against <b><c>NULL</c></b> references</remarks>
  * <returns>Returns <b><c>1</c></b> on success, otherwise <b><c>0</c></b> if <b><c>DBResult:result</c></b> is a <b><c>NULL</c></b> reference or the last row is reached.</returns>
  */
 native bool:DB_NextRow(DBResult:result) = db_next_row;
@@ -115,7 +115,7 @@ native bool:db_next_row(DBResult:result);
  * <library>a_sampdb</library>
  * <summary>Get the number of fields in a result.</summary>
  * <param name="result">The result of <a href="#db_query">db_query</a></param>
- * <remarks>Using an <b>invalid handle</b> will crash your server! Get a <b>valid handle</b> by using <a href="#db_open">db_open</a>. But it's protected against <b><c>NULL</c></b> references</remarks>
+ * <remarks>Using an <b>invalid handle</b> will crash your server! Get a <b>valid handle</b> by using <a href="#db_open">db_open</a>.  But it's protected against <b><c>NULL</c></b> references</remarks>
  * <returns>The number of fields in the result.</returns>
  */
 native DB_NumFields(DBResult:result) = db_num_fields;
@@ -133,7 +133,7 @@ native db_num_fields(DBResult:result);
  * <param name="field">The index of the field to get the name of</param>
  * <param name="output">The returned value</param>
  * <param name="size">The max length of the field</param>
- * <remarks>Using an <b>invalid handle</b> will crash your server! Get a <b>valid handle</b> by using <a href="#db_open">db_open</a>. But it's protected against <b><c>NULL</c></b> references</remarks>
+ * <remarks>Using an <b>invalid handle</b> will crash your server! Get a <b>valid handle</b> by using <a href="#db_open">db_open</a>.  But it's protected against <b><c>NULL</c></b> references</remarks>
  * <returns>Returns <b><c>1</c></b>, if the function was successful, otherwise <b><c>0</c></b> if <b><c>DBResult:result</c></b> is a <b><c>NULL</c></b> reference or the column index not available.</returns>
  */
 native bool:DB_FieldName(DBResult:result, field, output[], size = sizeof (output)) = db_field_name;
@@ -151,7 +151,7 @@ native bool:db_field_name(DBResult:result, field, output[], size = sizeof (outpu
  * <param name="field">The field to get the data from</param>
  * <param name="output">The returned value</param>
  * <param name="size">The max length of the field</param>
- * <remarks>Using an <b>invalid handle</b> will crash your server! Get a <b>valid handle</b> by using <a href="#db_open">db_open</a>. But it's protected against <b><c>NULL</c></b> references</remarks>
+ * <remarks>Using an <b>invalid handle</b> will crash your server! Get a <b>valid handle</b> by using <a href="#db_open">db_open</a>.  But it's protected against <b><c>NULL</c></b> references</remarks>
  * <returns>Returns <b><c>1</c></b> if successful, otherwise <b><c>0</c></b> if <b><c>DBResult:result</c></b> is a <b><c>NULL</c></b> reference or the column index not available.</returns>
  */
 native bool:DB_GetField(DBResult:result, field, output[], size = sizeof (output)) = db_get_field;
@@ -167,7 +167,7 @@ native bool:db_get_field(DBResult:result, field, output[], size = sizeof (output
  * <summary>Get the content of a field as an integer from <a href="#db_query">db_query</a>.</summary>
  * <param name="result">The result to get the data from</param>
  * <param name="field">The field to get the data from (optional=<b><c>0</c></b>)</param>
- * <remarks>Using an <b>invalid handle</b> will crash your server! Get a <b>valid handle</b> by using <a href="#db_open">db_open</a>. But it's protected against <b><c>NULL</c></b> references</remarks>
+ * <remarks>Using an <b>invalid handle</b> will crash your server! Get a <b>valid handle</b> by using <a href="#db_open">db_open</a>.  But it's protected against <b><c>NULL</c></b> references</remarks>
  * <returns>Retrieved value as integer (number).</returns>
  */
 native DB_GetFieldInt(DBResult:result, field = 0) = db_get_field_int;
@@ -183,7 +183,7 @@ native db_get_field_int(DBResult:result, field = 0);
  * <summary>Get the content of a field as a float from db_query.</summary>
  * <param name="result">The result to get the data from</param>
  * <param name="field">The field to get the data from (optional=<b><c>0</c></b>)</param>
- * <remarks>Using an <b>invalid handle</b> will crash your server! Get a <b>valid handle</b> by using <a href="#db_open">db_open</a>. But it's protected against <b><c>NULL</c></b> references</remarks>
+ * <remarks>Using an <b>invalid handle</b> will crash your server! Get a <b>valid handle</b> by using <a href="#db_open">db_open</a>.  But it's protected against <b><c>NULL</c></b> references</remarks>
  * <returns>Retrieved value as floating point number.</returns>
  */
 native Float:DB_GetFieldFloat(DBResult:result, field = 0) = db_get_field_float;
@@ -201,7 +201,7 @@ native Float:db_get_field_float(DBResult:result, field = 0);
  * <param name="field">The fieldname to get the data from</param>
  * <param name="output">The returned value</param>
  * <param name="size">The max length of the field</param>
- * <remarks>Using an <b>invalid handle</b> will crash your server! Get a <b>valid handle</b> by using <a href="#db_open">db_open</a>. But it's protected against <b><c>NULL</c></b> references</remarks>
+ * <remarks>Using an <b>invalid handle</b> will crash your server! Get a <b>valid handle</b> by using <a href="#db_open">db_open</a>.  But it's protected against <b><c>NULL</c></b> references</remarks>
  * <returns>Returns <b><c>1</c></b> if successful, otherwise <b><c>0</c></b> if <b><c>DBResult:result</c></b> is a <b><c>NULL</c></b> reference or the column index not available.</returns>
  */
 native bool:DB_GetFieldAssoc(DBResult:result, const field[], output[], size = sizeof (output)) = db_get_field_assoc;
@@ -217,7 +217,7 @@ native bool:db_get_field_assoc(DBResult:result, const field[], output[], size = 
  * <summary>Get the contents of field as an integer with specified name.</summary>
  * <param name="result">The result to get the data from</param>
  * <param name="field">The fieldname to get the data from</param>
- * <remarks>Using an <b>invalid handle</b> will crash your server! Get a <b>valid handle</b> by using <a href="#db_open">db_open</a>. But it's protected against <b><c>NULL</c></b> references</remarks>
+ * <remarks>Using an <b>invalid handle</b> will crash your server! Get a <b>valid handle</b> by using <a href="#db_open">db_open</a>.  But it's protected against <b><c>NULL</c></b> references</remarks>
  * <returns>Retrieved value as integer (number).</returns>
  */
 native DB_GetFieldAssocInt(DBResult:result, const field[]) = db_get_field_assoc_int;
@@ -233,7 +233,7 @@ native db_get_field_assoc_int(DBResult:result, const field[]);
  * <summary>Get the contents of field as a float with specified name.</summary>
  * <param name="result">The result to get the data from</param>
  * <param name="field">The fieldname to get the data from</param>
- * <remarks>Using an <b>invalid handle</b> will crash your server! Get a <b>valid handle</b> by using <a href="#db_open">db_open</a>. But it's protected against <b><c>NULL</c></b> references</remarks>
+ * <remarks>Using an <b>invalid handle</b> will crash your server! Get a <b>valid handle</b> by using <a href="#db_open">db_open</a>.  But it's protected against <b><c>NULL</c></b> references</remarks>
  * <returns>Retrieved value as floating point number.</returns>
  */
 native Float:DB_GetFieldAssocFloat(DBResult:result, const field[]) = db_get_field_assoc_float;
