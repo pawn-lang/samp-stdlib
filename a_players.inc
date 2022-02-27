@@ -104,7 +104,7 @@ static stock WEAPONSTATE:_@WEAPONSTATE() { return WEAPONSTATE; }
 
 /**
  * <library>a_players</library>
- * <remarks>PVar enumeration</remarks>
+ * <summary>PVar enumeration</summary>
  */
 #define PLAYER_VARTYPE: __TAG(PLAYER_VARTYPE):
 enum PLAYER_VARTYPE:__PLAYER_VARTYPE
@@ -166,7 +166,7 @@ static stock CAM_MODE:_@CAM_MODE() { return CAM_MODE; }
 
 /**
  * <library>a_players</library>
- * <remarks>Spectating</remarks>
+ * <summary>Spectating</summary>
  */
 #define SPECTATE_MODE: __TAG(SPECTATE_MODE):
 enum SPECTATE_MODE:__SPECTATE_MODE
@@ -179,7 +179,7 @@ static stock SPECTATE_MODE:_@SPECTATE_MODE() { return SPECTATE_MODE; }
 
 /**
  * <library>a_players</library>
- * <remarks>Recording for NPC playback</remarks>
+ * <summary>Recording for NPC playback</summary>
  */
 #define PLAYER_RECORDING_TYPE: __TAG(PLAYER_RECORDING_TYPE):
 enum PLAYER_RECORDING_TYPE:__PLAYER_RECORDING_TYPE

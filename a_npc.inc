@@ -249,7 +249,10 @@ const INVALID_GANG_ZONE                        = 0xFFFFFFFF;
 const Text3D:INVALID_3DTEXT_ID                 = Text3D:0xFFFF;
 const PlayerText3D:INVALID_PLAYER_3DTEXT_ID    = PlayerText3D:0xFFFF;
 
-// States
+/**
+ * <library>a_npc</library>
+ * <summary>States</summary>
+ */
 #define PLAYER_STATE: __TAG(PLAYER_STATE):
 enum PLAYER_STATE:__PLAYER_STATE
 {
@@ -261,8 +264,33 @@ enum PLAYER_STATE:__PLAYER_STATE
 	PLAYER_STATE_SPAWNED,
 	PLAYER_STATE_SPECTATING
 }
+static stock PLAYER_STATE:_@PLAYER_STATE() { return PLAYER_STATE; }
 
-// Weapons
+/**
+ * <library>a_npc</library>
+ * <summary>Used internally</summary>
+ */
+#pragma deprecated Used internally.
+const PLAYER_STATE:PLAYER_STATE_EXIT_VEHICLE = PLAYER_STATE:4;
+
+/**
+ * <library>a_npc</library>
+ * <summary>Used internally</summary>
+ */
+#pragma deprecated Used internally.
+const PLAYER_STATE:PLAYER_STATE_ENTER_VEHICLE_DRIVER = PLAYER_STATE:5;
+
+/**
+ * <library>a_npc</library>
+ * <summary>Used internally</summary>
+ */
+#pragma deprecated Used internally.
+const PLAYER_STATE:PLAYER_STATE_ENTER_VEHICLE_PASSENGER = PLAYER_STATE:6;
+
+/**
+ * <library>a_npc</library>
+ * <summary>Weapons</summary>
+ */
 #define WEAPON: __TAG(WEAPON):
 enum WEAPON:__WEAPON
 {
@@ -315,9 +343,14 @@ enum WEAPON:__WEAPON
 	WEAPON_VEHICLE                             = 49,
 	WEAPON_DROWN                               = 53,
 	WEAPON_COLLISION,
+	WEAPON_SPLAT                               = WEAPON_COLLISION,
 }
+static stock WEAPON:_@WEAPON() { return WEAPON; }
 
-// Keys
+/**
+ * <library>a_npc</library>
+ * <summary>Keys</summary>
+ */
 #define KEY: __TAG(KEY):
 enum KEY:__KEY (<<= 1)
 {
@@ -346,7 +379,11 @@ enum KEY:__KEY (<<= 1)
 	KEY_LEFT                                   = -128,
 	KEY_RIGHT                                  =  128,
 }
+static stock KEY:_@KEY() { return KEY; }
 
+/**
+ * <library>a_npc</library>
+ */
 #define PLAYER_RECORDING_TYPE: __TAG(PLAYER_RECORDING_TYPE):
 enum PLAYER_RECORDING_TYPE:__PLAYER_RECORDING_TYPE
 {
@@ -354,6 +391,7 @@ enum PLAYER_RECORDING_TYPE:__PLAYER_RECORDING_TYPE
 	PLAYER_RECORDING_TYPE_DRIVER,
 	PLAYER_RECORDING_TYPE_ONFOOT
 }
+static stock PLAYER_RECORDING_TYPE:_@PLAYER_RECORDING_TYPE() { return PLAYER_RECORDING_TYPE; }
 
 // Limits
 #if MAX_PLAYER_NAME < 1 || MAX_PLAYER_NAME > 24

@@ -236,20 +236,65 @@ const MAX_PICKUPS                              = __MAX_PICKUPS;
 #define __LESS __TAG
 
 // Invalids
+/**
+ * <library>a_samp</library>
+ */
 const NO_TEAM = 0xFF;
 
+/**
+ * <library>a_samp</library>
+ */
 const INVALID_PLAYER_ID                        = 0xFFFF;
+
+/**
+ * <library>a_samp</library>
+ */
 const INVALID_VEHICLE_ID                       = 0xFFFF;
+
+/**
+ * <library>a_samp</library>
+ */
 const INVALID_ACTOR_ID                         = 0xFFFF;
+
+/**
+ * <library>a_samp</library>
+ */
 const INVALID_OBJECT_ID                        = 0xFFFF;
+
+/**
+ * <library>a_samp</library>
+ */
 const Menu:INVALID_MENU                        = Menu:0xFF;
+
+/**
+ * <library>a_samp</library>
+ */
 const Text:INVALID_TEXT_DRAW                   = Text:0xFFFF;
+
+/**
+ * <library>a_samp</library>
+ */
 const PlayerText:INVALID_PLAYER_TEXT_DRAW      = PlayerText:0xFFFF;
+
+/**
+ * <library>a_samp</library>
+ */
 const INVALID_GANG_ZONE                        = 0xFFFFFFFF;
+
+/**
+ * <library>a_samp</library>
+ */
 const Text3D:INVALID_3DTEXT_ID                 = Text3D:0xFFFF;
+
+/**
+ * <library>a_samp</library>
+ */
 const PlayerText3D:INVALID_PLAYER_3DTEXT_ID    = PlayerText3D:0xFFFF;
 
-// States
+/**
+ * <library>a_samp</library>
+ * <summary>States</summary>
+ */
 #define PLAYER_STATE: __TAG(PLAYER_STATE):
 enum PLAYER_STATE:__PLAYER_STATE
 {
@@ -261,13 +306,33 @@ enum PLAYER_STATE:__PLAYER_STATE
 	PLAYER_STATE_SPAWNED,
 	PLAYER_STATE_SPECTATING
 }
+static stock PLAYER_STATE:_@PLAYER_STATE() { return PLAYER_STATE; }
 
-// Deprecated.
-#define PLAYER_STATE_EXIT_VEHICLE              (4)
-#define PLAYER_STATE_ENTER_VEHICLE_DRIVER      (5)
-#define PLAYER_STATE_ENTER_VEHICLE_PASSENGER   (6)
+/**
+ * <library>a_samp</library>
+ * <summary>Used internally</summary>
+ */
+#pragma deprecated Used internally.
+const PLAYER_STATE:PLAYER_STATE_EXIT_VEHICLE = PLAYER_STATE:4;
 
-// Marker modes used by ShowPlayerMarkers()
+/**
+ * <library>a_samp</library>
+ * <summary>Used internally</summary>
+ */
+#pragma deprecated Used internally.
+const PLAYER_STATE:PLAYER_STATE_ENTER_VEHICLE_DRIVER = PLAYER_STATE:5;
+
+/**
+ * <library>a_samp</library>
+ * <summary>Used internally</summary>
+ */
+#pragma deprecated Used internally.
+const PLAYER_STATE:PLAYER_STATE_ENTER_VEHICLE_PASSENGER = PLAYER_STATE:6;
+
+/**
+ * <library>a_samp</library>
+ * <summary>Marker modes used by <c>ShowPlayerMarkers()</c></summary>
+ */
 #define PLAYER_MARKERS_MODE: __TAG(PLAYER_MARKERS_MODE):
 enum PLAYER_MARKERS_MODE:__PLAYER_MARKERS_MODE
 {
@@ -275,8 +340,12 @@ enum PLAYER_MARKERS_MODE:__PLAYER_MARKERS_MODE
 	PLAYER_MARKERS_MODE_GLOBAL,
 	PLAYER_MARKERS_MODE_STREAMED
 }
+static stock PLAYER_MARKERS_MODE:_@PLAYER_MARKERS_MODE() { return PLAYER_MARKERS_MODE; }
 
-// Weapons
+/**
+ * <library>a_samp</library>
+ * <summary>Weapons</summary>
+ */
 #define WEAPON: __TAG(WEAPON):
 enum WEAPON:__WEAPON
 {
@@ -331,8 +400,12 @@ enum WEAPON:__WEAPON
 	WEAPON_COLLISION,
 	WEAPON_SPLAT                               = WEAPON_COLLISION,
 }
+static stock WEAPON:_@WEAPON() { return WEAPON; }
 
-// Keys
+/**
+ * <library>a_samp</library>
+ * <summary>Keys</summary>
+ */
 #define KEY: __TAG(KEY):
 enum KEY:__KEY (<<= 1)
 {
@@ -361,8 +434,12 @@ enum KEY:__KEY (<<= 1)
 	KEY_LEFT                                   = -128,
 	KEY_RIGHT                                  =  128,
 }
+static stock KEY:_@KEY() { return KEY; }
 
-// Player GUI Dialog
+/**
+ * <library>a_samp</library>
+ * <summary>Player GUI dialog</summary>
+ */
 #define DIALOG_STYLE: __TAG(DIALOG_STYLE):
 enum DIALOG_STYLE:__DIALOG_STYLE
 {
@@ -373,8 +450,12 @@ enum DIALOG_STYLE:__DIALOG_STYLE
 	DIALOG_STYLE_TABLIST,
 	DIALOG_STYLE_TABLIST_HEADERS
 }
+static stock DIALOG_STYLE:_@DIALOG_STYLE() { return DIALOG_STYLE; }
 
-// Text Draw
+/**
+ * <library>a_samp</library>
+ * <summary>Text draw font</summary>
+ */
 #define TEXT_DRAW_FONT: __TAG(TEXT_DRAW_FONT):
 enum TEXT_DRAW_FONT:__TEXT_DRAW_FONT
 {
@@ -385,7 +466,12 @@ enum TEXT_DRAW_FONT:__TEXT_DRAW_FONT
 	TEXT_DRAW_FONT_SPRITE_DRAW,
 	TEXT_DRAW_FONT_MODEL_PREVIEW,
 }
+static stock TEXT_DRAW_FONT:_@TEXT_DRAW_FONT() { return TEXT_DRAW_FONT; }
 
+/**
+ * <library>a_samp</library>
+ * <summary>Text draw alignment</summary>
+ */
 #define TEXT_DRAW_ALIGN: __TAG(TEXT_DRAW_ALIGN):
 enum TEXT_DRAW_ALIGN:__TEXT_DRAW_ALIGN
 {
@@ -394,8 +480,12 @@ enum TEXT_DRAW_ALIGN:__TEXT_DRAW_ALIGN
 	TEXT_DRAW_ALIGN_CENTER = TEXT_DRAW_ALIGN_CENTRE,
 	TEXT_DRAW_ALIGN_RIGHT
 }
+static stock TEXT_DRAW_ALIGN:_@TEXT_DRAW_ALIGN() { return TEXT_DRAW_ALIGN; }
 
-// SVar enumeration
+/**
+ * <library>a_samp</library>
+ * <summary>SVar enumeration</summary>
+ */
 #define SERVER_VARTYPE: __TAG(SERVER_VARTYPE):
 enum SERVER_VARTYPE:__SERVER_VARTYPE
 {
@@ -404,8 +494,12 @@ enum SERVER_VARTYPE:__SERVER_VARTYPE
 	SERVER_VARTYPE_STRING,
 	SERVER_VARTYPE_FLOAT
 }
+static stock SERVER_VARTYPE:_@SERVER_VARTYPE() { return SERVER_VARTYPE; }
 
-// Artwork/NetModels
+/**
+ * <library>a_samp</library>
+ * <summary>Artwork/NetModels</summary>
+ */
 #define DOWNLOAD_REQUEST: __TAG(DOWNLOAD_REQUEST):
 enum DOWNLOAD_REQUEST:__DOWNLOAD_REQUEST
 {
@@ -413,13 +507,21 @@ enum DOWNLOAD_REQUEST:__DOWNLOAD_REQUEST
 	DOWNLOAD_REQUEST_MODEL_FILE,
 	DOWNLOAD_REQUEST_TEXTURE_FILE
 }
+static stock DOWNLOAD_REQUEST:_@DOWNLOAD_REQUEST() { return DOWNLOAD_REQUEST; }
 
+/**
+ * <library>a_samp</library>
+ */
 #define CLICK_SOURCE: __TAG(CLICK_SOURCE):
 enum CLICK_SOURCE:__CLICK_SOURCE
 {
 	CLICK_SOURCE_SCOREBOARD
 }
+static stock CLICK_SOURCE:_@CLICK_SOURCE() { return CLICK_SOURCE; }
 
+/**
+ * <library>a_samp</library>
+ */
 #define EDIT_RESPONSE: __TAG(EDIT_RESPONSE):
 enum EDIT_RESPONSE:__EDIT_RESPONSE
 {
@@ -427,14 +529,22 @@ enum EDIT_RESPONSE:__EDIT_RESPONSE
 	EDIT_RESPONSE_FINAL,
 	EDIT_RESPONSE_UPDATE
 }
+static stock EDIT_RESPONSE:_@EDIT_RESPONSE() { return EDIT_RESPONSE; }
 
+/**
+ * <library>a_samp</library>
+ */
 #define SELECT_OBJECT: __TAG(SELECT_OBJECT):
 enum SELECT_OBJECT:__SELECT_OBJECT
 {
 	SELECT_OBJECT_GLOBAL_OBJECT                = 1,
 	SELECT_OBJECT_PLAYER_OBJECT
 }
+static stock SELECT_OBJECT:_@SELECT_OBJECT() { return SELECT_OBJECT; }
 
+/**
+ * <library>a_samp</library>
+ */
 #define BULLET_HIT_TYPE: __TAG(BULLET_HIT_TYPE):
 enum BULLET_HIT_TYPE:__BULLET_HIT_TYPE
 {
@@ -444,7 +554,11 @@ enum BULLET_HIT_TYPE:__BULLET_HIT_TYPE
 	BULLET_HIT_TYPE_OBJECT,
 	BULLET_HIT_TYPE_PLAYER_OBJECT
 }
+static stock BULLET_HIT_TYPE:_@BULLET_HIT_TYPE() { return BULLET_HIT_TYPE; }
 
+/**
+ * <library>a_samp</library>
+ */
 #define FORCE_SYNC: __TAG(FORCE_SYNC):
 enum FORCE_SYNC:__FORCE_SYNC
 {
@@ -452,6 +566,7 @@ enum FORCE_SYNC:__FORCE_SYNC
 	SYNC_ALL,  // Sync to all streamed-in players.
 	SYNC_OTHER // Sync to all streamed-in players, except the player with the animation.
 }
+static stock FORCE_SYNC:_@FORCE_SYNC() { return FORCE_SYNC; }
 
 // Limits
 #if MAX_PLAYER_NAME < 3 || MAX_PLAYER_NAME > 24

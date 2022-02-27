@@ -20,9 +20,7 @@
 
 /**
  * <library>a_http</library>
- * <remarks>
- *   HTTP request types
- * </remarks>
+ * <summary>HTTP request types</summary>
  */
 #define HTTP_METHOD: __TAG(HTTP_METHOD):
 enum HTTP_METHOD:__HTTP_METHOD
@@ -35,9 +33,8 @@ static stock HTTP_METHOD:_@HTTP_METHOD() { return HTTP_METHOD; }
 
 /**
  * <library>a_http</library>
+ * <summary>HTTP error response codes<summary>
  * <remarks>
- *   HTTP error response codes
- *
  *   These codes compliment ordinary HTTP response codes returned in 'responseCode'
  *   (10x) (20x OK) (30x Moved) (40x Unauthorised) (50x Server Error)
  * </remarks>
