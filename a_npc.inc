@@ -20,9 +20,6 @@
 #pragma tabsize 4
 #define SAMP_CONST_CORRECT
 
-// Fixes a bug with two pawndoc comments before an enum.
-///
-
 // --------------------------------------------------
 // Defines
 // --------------------------------------------------
@@ -295,6 +292,8 @@ const Text3D:INVALID_3DTEXT_ID                 = Text3D:0xFFFF;
  */
 const PlayerText3D:INVALID_PLAYER_3DTEXT_ID    = PlayerText3D:0xFFFF;
 
+///
+
 /**
  * <library>a_npc</library>
  * <summary>States</summary>
@@ -334,6 +333,8 @@ const PLAYER_STATE:PLAYER_STATE_ENTER_VEHICLE_DRV = PLAYER_STATE:5;
 #pragma deprecated Used internally.
 const PLAYER_STATE:PLAYER_STATE_ENTER_VEHICLE_PASS = PLAYER_STATE:6;
 #define PLAYER_STATE_ENTER_VEHICLE_PASSENGER PLAYER_STATE_ENTER_VEHICLE_PASS
+
+///
 
 /**
  * <library>a_npc</library>
@@ -395,6 +396,8 @@ enum WEAPON:__WEAPON
 }
 static stock WEAPON:_@WEAPON() { return __WEAPON; }
 
+///
+
 /**
  * <library>a_npc</library>
  * <summary>Keys</summary>
@@ -428,6 +431,8 @@ enum KEY:__KEY (<<= 1)
 	KEY_RIGHT                                  =  128,
 }
 static stock KEY:_@KEY() { return __KEY; }
+
+///
 
 /**
  * <library>a_npc</library>

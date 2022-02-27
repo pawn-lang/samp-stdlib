@@ -15,12 +15,11 @@
 #pragma tabsize 4
 #define SAMP_CONST_CORRECT
 
-// Fixes a bug with two pawndoc comments before an enum.
-///
-
 // --------------------------------------------------
 // Defines
 // --------------------------------------------------
+
+///
 
 /**
  * <library>a_vehicles</library>
@@ -47,6 +46,8 @@ enum CARMODTYPE:__CARMODTYPE
 }
 static stock CARMODTYPE:_@CARMODTYPE() { return __CARMODTYPE; }
 
+///
+
 /**
  * <library>a_vehicles</library>
  */
@@ -58,6 +59,8 @@ enum VEHICLE_PARAMS:__VEHICLE_PARAMS
 	VEHICLE_PARAMS_ON
 }
 static stock VEHICLE_PARAMS:_@VEHICLE_PARAMS() { return __VEHICLE_PARAMS; }
+
+///
 
 /**
  * <library>a_vehicles</library>

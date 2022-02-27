@@ -15,9 +15,6 @@
 #pragma tabsize 4
 #define SAMP_CONST_CORRECT
 
-// Fixes a bug with two pawndoc comments before an enum.
-///
-
 // Limits
 #if !defined MAX_PLAYER_ATTACHED_OBJECTS
 	#define MAX_PLAYER_ATTACHED_OBJECTS        (10)
@@ -26,6 +23,8 @@
 #if !defined MAX_CHATBUBBLE_LENGTH
 	#define MAX_CHATBUBBLE_LENGTH              (144)
 #endif
+
+///
 
 /**
  * <library>a_players</library>
@@ -56,6 +55,8 @@ enum SPECIAL_ACTION:__SPECIAL_ACTION
 }
 static stock SPECIAL_ACTION:_@SPECIAL_ACTION() { return __SPECIAL_ACTION; }
 
+///
+
 /**
  * <library>a_players</library>
  */
@@ -70,6 +71,8 @@ enum FIGHT_STYLE:__FIGHT_STYLE
 	FIGHT_STYLE_ELBOW
 }
 static stock FIGHT_STYLE:_@FIGHT_STYLE() { return __FIGHT_STYLE; }
+
+///
 
 /**
  * <library>a_players</library>
@@ -91,6 +94,8 @@ enum WEAPONSKILL:__WEAPONSKILL
 }
 static stock WEAPONSKILL:_@WEAPONSKILL() { return __WEAPONSKILL; }
 
+///
+
 /**
  * <library>a_players</library>
  */
@@ -104,6 +109,8 @@ enum WEAPONSTATE:__WEAPONSTATE
 	WEAPONSTATE_RELOADING
 }
 static stock WEAPONSTATE:_@WEAPONSTATE() { return __WEAPONSTATE; }
+
+///
 
 /**
  * <library>a_players</library>
@@ -119,6 +126,8 @@ enum PLAYER_VARTYPE:__PLAYER_VARTYPE
 }
 static stock PLAYER_VARTYPE:_@PLAYER_VARTYPE() { return __PLAYER_VARTYPE; }
 
+///
+
 /**
  * <library>a_players</library>
  */
@@ -132,6 +141,8 @@ enum MAPICON:__MAPICON
 }
 static stock MAPICON:_@MAPICON() { return __MAPICON; }
 
+///
+
 /**
  * <library>a_players</library>
  */
@@ -142,6 +153,8 @@ enum CAM_MOVE:__CAMERA
 	CAMERA_CUT
 }
 static stock CAMERA_MOVE:_@CAMERA_MOVE() { return __CAMERA_MOVE; }
+
+///
 
 /**
  * <library>a_players</library>
@@ -167,6 +180,8 @@ enum CAM_MODE:__CAM_MODE
 }
 static stock CAM_MODE:_@CAM_MODE() { return __CAM_MODE; }
 
+///
+
 /**
  * <library>a_players</library>
  * <summary>Spectating</summary>
@@ -179,6 +194,8 @@ enum SPECTATE_MODE:__SPECTATE_MODE
 	SPECTATE_MODE_SIDE
 }
 static stock SPECTATE_MODE:_@SPECTATE_MODE() { return __SPECTATE_MODE; }
+
+///
 
 /**
  * <library>a_players</library>

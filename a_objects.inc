@@ -15,12 +15,11 @@
 #pragma tabsize 4
 #define SAMP_CONST_CORRECT
 
-// Fixes a bug with two pawndoc comments before an enum.
-///
-
 // --------------------------------------------------
 // Defines
 // --------------------------------------------------
+
+///
 
 /**
  * <library>a_objects</library>
@@ -44,6 +43,8 @@ enum OBJECT_MATERIAL_SIZE:__OBJECT_MATERIAL_SIZE (+= 10)
 	OBJECT_MATERIAL_SIZE_512x512
 }
 static stock OBJECT_MATERIAL_SIZE:_@OBJECT_MATERIAL_SIZE() { return __OBJECT_MATERIAL_SIZE; }
+
+///
 
 /**
  * <library>a_objects</library>

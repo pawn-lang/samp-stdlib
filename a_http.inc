@@ -15,12 +15,11 @@
 #pragma tabsize 4
 #define SAMP_CONST_CORRECT
 
-// Fixes a bug with two pawndoc comments before an enum.
-///
-
 // --------------------------------------------------
 // Defines
 // --------------------------------------------------
+
+///
 
 /**
  * <library>a_http</library>
@@ -34,6 +33,8 @@ enum HTTP_METHOD:__HTTP_METHOD
 	HTTP_HEAD
 }
 static stock HTTP_METHOD:_@HTTP_METHOD() { return __HTTP_METHOD; }
+
+///
 
 /**
  * <library>a_http</library>

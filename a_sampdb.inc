@@ -15,9 +15,6 @@
 #pragma tabsize 4
 #define SAMP_CONST_CORRECT
 
-// Fixes a bug with two pawndoc comments before an enum.
-///
-
 /**
  * <library>a_sampdb</library>
  * <summary>This function is used to open a connection to a SQLite database, which is inside the <b><c>/scriptfiles</c></b>
