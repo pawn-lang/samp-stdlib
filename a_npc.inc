@@ -236,17 +236,60 @@ const MAX_PICKUPS                              = __MAX_PICKUPS;
 #define __LESS __TAG
 
 // Invalids
+
+/**
+ * <library>a_npc</library>
+ */
 const NO_TEAM = 0xFF;
 
+/**
+ * <library>a_npc</library>
+ */
 const INVALID_PLAYER_ID                        = 0xFFFF;
+
+/**
+ * <library>a_npc</library>
+ */
 const INVALID_VEHICLE_ID                       = 0xFFFF;
+
+/**
+ * <library>a_npc</library>
+ */
 const INVALID_ACTOR_ID                         = 0xFFFF;
+
+/**
+ * <library>a_npc</library>
+ */
 const INVALID_OBJECT_ID                        = 0xFFFF;
+
+/**
+ * <library>a_npc</library>
+ */
 const Menu:INVALID_MENU                        = Menu:0xFF;
+
+/**
+ * <library>a_npc</library>
+ */
 const Text:INVALID_TEXT_DRAW                   = Text:0xFFFF;
+
+/**
+ * <library>a_npc</library>
+ */
 const PlayerText:INVALID_PLAYER_TEXT_DRAW      = PlayerText:0xFFFF;
+
+/**
+ * <library>a_npc</library>
+ */
 const INVALID_GANG_ZONE                        = 0xFFFFFFFF;
+
+/**
+ * <library>a_npc</library>
+ */
 const Text3D:INVALID_3DTEXT_ID                 = Text3D:0xFFFF;
+
+/**
+ * <library>a_npc</library>
+ */
 const PlayerText3D:INVALID_PLAYER_3DTEXT_ID    = PlayerText3D:0xFFFF;
 
 /**
@@ -264,7 +307,7 @@ enum PLAYER_STATE:__PLAYER_STATE
 	PLAYER_STATE_SPAWNED,
 	PLAYER_STATE_SPECTATING
 }
-static stock PLAYER_STATE:_@PLAYER_STATE() { return PLAYER_STATE; }
+static stock PLAYER_STATE:_@PLAYER_STATE() { return __PLAYER_STATE; }
 
 /**
  * <library>a_npc</library>
@@ -345,7 +388,7 @@ enum WEAPON:__WEAPON
 	WEAPON_COLLISION,
 	WEAPON_SPLAT                               = WEAPON_COLLISION,
 }
-static stock WEAPON:_@WEAPON() { return WEAPON; }
+static stock WEAPON:_@WEAPON() { return __WEAPON; }
 
 /**
  * <library>a_npc</library>
@@ -379,7 +422,7 @@ enum KEY:__KEY (<<= 1)
 	KEY_LEFT                                   = -128,
 	KEY_RIGHT                                  =  128,
 }
-static stock KEY:_@KEY() { return KEY; }
+static stock KEY:_@KEY() { return __KEY; }
 
 /**
  * <library>a_npc</library>
@@ -391,7 +434,7 @@ enum PLAYER_RECORDING_TYPE:__PLAYER_RECORDING_TYPE
 	PLAYER_RECORDING_TYPE_DRIVER,
 	PLAYER_RECORDING_TYPE_ONFOOT
 }
-static stock PLAYER_RECORDING_TYPE:_@PLAYER_RECORDING_TYPE() { return PLAYER_RECORDING_TYPE; }
+static stock PLAYER_RECORDING_TYPE:_@PLAYER_RECORDING_TYPE() { return __PLAYER_RECORDING_TYPE; }
 
 // Limits
 #if MAX_PLAYER_NAME < 1 || MAX_PLAYER_NAME > 24

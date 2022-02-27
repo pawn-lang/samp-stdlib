@@ -306,7 +306,7 @@ enum PLAYER_STATE:__PLAYER_STATE
 	PLAYER_STATE_SPAWNED,
 	PLAYER_STATE_SPECTATING
 }
-static stock PLAYER_STATE:_@PLAYER_STATE() { return PLAYER_STATE; }
+static stock PLAYER_STATE:_@PLAYER_STATE() { return __PLAYER_STATE; }
 
 /**
  * <library>a_samp</library>
@@ -340,7 +340,7 @@ enum PLAYER_MARKERS_MODE:__PLAYER_MARKERS_MODE
 	PLAYER_MARKERS_MODE_GLOBAL,
 	PLAYER_MARKERS_MODE_STREAMED
 }
-static stock PLAYER_MARKERS_MODE:_@PLAYER_MARKERS_MODE() { return PLAYER_MARKERS_MODE; }
+static stock PLAYER_MARKERS_MODE:_@PLAYER_MARKERS_MODE() { return __PLAYER_MARKERS_MODE; }
 
 /**
  * <library>a_samp</library>
@@ -400,7 +400,7 @@ enum WEAPON:__WEAPON
 	WEAPON_COLLISION,
 	WEAPON_SPLAT                               = WEAPON_COLLISION,
 }
-static stock WEAPON:_@WEAPON() { return WEAPON; }
+static stock WEAPON:_@WEAPON() { return __WEAPON; }
 
 /**
  * <library>a_samp</library>
@@ -434,7 +434,7 @@ enum KEY:__KEY (<<= 1)
 	KEY_LEFT                                   = -128,
 	KEY_RIGHT                                  =  128,
 }
-static stock KEY:_@KEY() { return KEY; }
+static stock KEY:_@KEY() { return __KEY; }
 
 /**
  * <library>a_samp</library>
@@ -450,7 +450,7 @@ enum DIALOG_STYLE:__DIALOG_STYLE
 	DIALOG_STYLE_TABLIST,
 	DIALOG_STYLE_TABLIST_HEADERS
 }
-static stock DIALOG_STYLE:_@DIALOG_STYLE() { return DIALOG_STYLE; }
+static stock DIALOG_STYLE:_@DIALOG_STYLE() { return __DIALOG_STYLE; }
 
 /**
  * <library>a_samp</library>
@@ -466,7 +466,7 @@ enum TEXT_DRAW_FONT:__TEXT_DRAW_FONT
 	TEXT_DRAW_FONT_SPRITE_DRAW,
 	TEXT_DRAW_FONT_MODEL_PREVIEW,
 }
-static stock TEXT_DRAW_FONT:_@TEXT_DRAW_FONT() { return TEXT_DRAW_FONT; }
+static stock TEXT_DRAW_FONT:_@TEXT_DRAW_FONT() { return __TEXT_DRAW_FONT; }
 
 /**
  * <library>a_samp</library>
@@ -480,7 +480,7 @@ enum TEXT_DRAW_ALIGN:__TEXT_DRAW_ALIGN
 	TEXT_DRAW_ALIGN_CENTER = TEXT_DRAW_ALIGN_CENTRE,
 	TEXT_DRAW_ALIGN_RIGHT
 }
-static stock TEXT_DRAW_ALIGN:_@TEXT_DRAW_ALIGN() { return TEXT_DRAW_ALIGN; }
+static stock TEXT_DRAW_ALIGN:_@TEXT_DRAW_ALIGN() { return __TEXT_DRAW_ALIGN; }
 
 /**
  * <library>a_samp</library>
@@ -494,7 +494,7 @@ enum SERVER_VARTYPE:__SERVER_VARTYPE
 	SERVER_VARTYPE_STRING,
 	SERVER_VARTYPE_FLOAT
 }
-static stock SERVER_VARTYPE:_@SERVER_VARTYPE() { return SERVER_VARTYPE; }
+static stock SERVER_VARTYPE:_@SERVER_VARTYPE() { return __SERVER_VARTYPE; }
 
 /**
  * <library>a_samp</library>
@@ -507,7 +507,7 @@ enum DOWNLOAD_REQUEST:__DOWNLOAD_REQUEST
 	DOWNLOAD_REQUEST_MODEL_FILE,
 	DOWNLOAD_REQUEST_TEXTURE_FILE
 }
-static stock DOWNLOAD_REQUEST:_@DOWNLOAD_REQUEST() { return DOWNLOAD_REQUEST; }
+static stock DOWNLOAD_REQUEST:_@DOWNLOAD_REQUEST() { return __DOWNLOAD_REQUEST; }
 
 /**
  * <library>a_samp</library>
@@ -517,7 +517,7 @@ enum CLICK_SOURCE:__CLICK_SOURCE
 {
 	CLICK_SOURCE_SCOREBOARD
 }
-static stock CLICK_SOURCE:_@CLICK_SOURCE() { return CLICK_SOURCE; }
+static stock CLICK_SOURCE:_@CLICK_SOURCE() { return __CLICK_SOURCE; }
 
 /**
  * <library>a_samp</library>
@@ -529,7 +529,7 @@ enum EDIT_RESPONSE:__EDIT_RESPONSE
 	EDIT_RESPONSE_FINAL,
 	EDIT_RESPONSE_UPDATE
 }
-static stock EDIT_RESPONSE:_@EDIT_RESPONSE() { return EDIT_RESPONSE; }
+static stock EDIT_RESPONSE:_@EDIT_RESPONSE() { return __EDIT_RESPONSE; }
 
 /**
  * <library>a_samp</library>
@@ -540,7 +540,7 @@ enum SELECT_OBJECT:__SELECT_OBJECT
 	SELECT_OBJECT_GLOBAL_OBJECT                = 1,
 	SELECT_OBJECT_PLAYER_OBJECT
 }
-static stock SELECT_OBJECT:_@SELECT_OBJECT() { return SELECT_OBJECT; }
+static stock SELECT_OBJECT:_@SELECT_OBJECT() { return __SELECT_OBJECT; }
 
 /**
  * <library>a_samp</library>
@@ -554,7 +554,7 @@ enum BULLET_HIT_TYPE:__BULLET_HIT_TYPE
 	BULLET_HIT_TYPE_OBJECT,
 	BULLET_HIT_TYPE_PLAYER_OBJECT
 }
-static stock BULLET_HIT_TYPE:_@BULLET_HIT_TYPE() { return BULLET_HIT_TYPE; }
+static stock BULLET_HIT_TYPE:_@BULLET_HIT_TYPE() { return __BULLET_HIT_TYPE; }
 
 /**
  * <library>a_samp</library>
@@ -566,7 +566,7 @@ enum FORCE_SYNC:__FORCE_SYNC
 	SYNC_ALL,  // Sync to all streamed-in players.
 	SYNC_OTHER // Sync to all streamed-in players, except the player with the animation.
 }
-static stock FORCE_SYNC:_@FORCE_SYNC() { return FORCE_SYNC; }
+static stock FORCE_SYNC:_@FORCE_SYNC() { return __FORCE_SYNC; }
 
 // Limits
 #if MAX_PLAYER_NAME < 3 || MAX_PLAYER_NAME > 24

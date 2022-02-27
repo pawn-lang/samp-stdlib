@@ -51,7 +51,7 @@ enum SPECIAL_ACTION:__SPECIAL_ACTION
 	SPECIAL_ACTION_CARRY,
 	SPECIAL_ACTION_PISSING                     = 68
 }
-static stock SPECIAL_ACTION:_@SPECIAL_ACTION() { return SPECIAL_ACTION; }
+static stock SPECIAL_ACTION:_@SPECIAL_ACTION() { return __SPECIAL_ACTION; }
 
 /**
  * <library>a_players</library>
@@ -66,7 +66,7 @@ enum FIGHT_STYLE:__FIGHT_STYLE
 	FIGHT_STYLE_GRABKICK                       = 15,
 	FIGHT_STYLE_ELBOW
 }
-static stock FIGHT_STYLE:_@FIGHT_STYLE() { return FIGHT_STYLE; }
+static stock FIGHT_STYLE:_@FIGHT_STYLE() { return __FIGHT_STYLE; }
 
 /**
  * <library>a_players</library>
@@ -86,7 +86,7 @@ enum WEAPONSKILL:__WEAPONSKILL
 	WEAPONSKILL_M4,
 	WEAPONSKILL_SNIPERRIFLE,
 }
-static stock WEAPONSKILL:_@WEAPONSKILL() { return WEAPONSKILL; }
+static stock WEAPONSKILL:_@WEAPONSKILL() { return __WEAPONSKILL; }
 
 /**
  * <library>a_players</library>
@@ -100,7 +100,7 @@ enum WEAPONSTATE:__WEAPONSTATE
 	WEAPONSTATE_MORE_BULLETS,
 	WEAPONSTATE_RELOADING
 }
-static stock WEAPONSTATE:_@WEAPONSTATE() { return WEAPONSTATE; }
+static stock WEAPONSTATE:_@WEAPONSTATE() { return __WEAPONSTATE; }
 
 /**
  * <library>a_players</library>
@@ -114,7 +114,7 @@ enum PLAYER_VARTYPE:__PLAYER_VARTYPE
 	PLAYER_VARTYPE_STRING,
 	PLAYER_VARTYPE_FLOAT
 }
-static stock PLAYER_VARTYPE:_@PLAYER_VARTYPE() { return PLAYER_VARTYPE; }
+static stock PLAYER_VARTYPE:_@PLAYER_VARTYPE() { return __PLAYER_VARTYPE; }
 
 /**
  * <library>a_players</library>
@@ -127,7 +127,7 @@ enum MAPICON:__MAPICON
 	MAPICON_LOCAL_CHECKPOINT,                  // Displays in the player's local area and has a checkpoint marker
 	MAPICON_GLOBAL_CHECKPOINT                  // Displays always and has a checkpoint marker
 }
-static stock MAPICON:_@MAPICON() { return MAPICON; }
+static stock MAPICON:_@MAPICON() { return __MAPICON; }
 
 /**
  * <library>a_players</library>
@@ -138,7 +138,7 @@ enum CAM_MOVE:__CAMERA
 	CAMERA_MOVE                                = 1,
 	CAMERA_CUT
 }
-static stock CAMERA_MOVE:_@CAMERA_MOVE() { return CAMERA_MOVE; }
+static stock CAMERA_MOVE:_@CAMERA_MOVE() { return __CAMERA_MOVE; }
 
 /**
  * <library>a_players</library>
@@ -162,7 +162,7 @@ enum CAM_MODE:__CAM_MODE
 	CAM_MODE_AIMWEAPON_FROMCAR                 = 55,
 	CAM_MODE_DW_HELI_CHASE                     = 56
 }
-static stock CAM_MODE:_@CAM_MODE() { return CAM_MODE; }
+static stock CAM_MODE:_@CAM_MODE() { return __CAM_MODE; }
 
 /**
  * <library>a_players</library>
@@ -175,7 +175,7 @@ enum SPECTATE_MODE:__SPECTATE_MODE
 	SPECTATE_MODE_FIXED,
 	SPECTATE_MODE_SIDE
 }
-static stock SPECTATE_MODE:_@SPECTATE_MODE() { return SPECTATE_MODE; }
+static stock SPECTATE_MODE:_@SPECTATE_MODE() { return __SPECTATE_MODE; }
 
 /**
  * <library>a_players</library>
@@ -188,7 +188,7 @@ enum PLAYER_RECORDING_TYPE:__PLAYER_RECORDING_TYPE
 	PLAYER_RECORDING_TYPE_DRIVER,
 	PLAYER_RECORDING_TYPE_ONFOOT
 }
-static stock PLAYER_RECORDING_TYPE:_@PLAYER_RECORDING_TYPE() { return PLAYER_RECORDING_TYPE; }
+static stock PLAYER_RECORDING_TYPE:_@PLAYER_RECORDING_TYPE() { return __PLAYER_RECORDING_TYPE; }
 
 // Player
 

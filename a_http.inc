@@ -29,7 +29,7 @@ enum HTTP_METHOD:__HTTP_METHOD
 	HTTP_POST,
 	HTTP_HEAD
 }
-static stock HTTP_METHOD:_@HTTP_METHOD() { return HTTP_METHOD; }
+static stock HTTP_METHOD:_@HTTP_METHOD() { return __HTTP_METHOD; }
 
 /**
  * <library>a_http</library>
@@ -49,7 +49,7 @@ enum HTTP_ERROR:__HTTP_ERROR
 	HTTP_ERROR_CONTENT_TOO_BIG,
 	HTTP_ERROR_MALFORMED_RESPONSE
 }
-static stock HTTP_ERROR:_@HTTP_ERROR() { return HTTP_ERROR; }
+static stock HTTP_ERROR:_@HTTP_ERROR() { return __HTTP_ERROR; }
 
 /**
  * <library>a_http</library>
