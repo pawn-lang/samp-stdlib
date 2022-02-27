@@ -38,7 +38,7 @@ static stock HTTP_METHOD:_@HTTP_METHOD() { return __HTTP_METHOD; }
 
 /**
  * <library>a_http</library>
- * <summary>HTTP error response codes<summary>
+ * <summary>HTTP error response codes</summary>
  * <remarks>
  *   These codes compliment ordinary HTTP response codes returned in 'responseCode'
  *   (10x) (20x OK) (30x Moved) (40x Unauthorised) (50x Server Error)
