@@ -30,6 +30,9 @@
  */
 native DB:DB_Open(const name[]) = db_open;
 
+/**
+ * <library>a_sampdb</library>
+ */
 #pragma deprecated Use `DB_Open`.
 native DB:db_open(const name[]);
 

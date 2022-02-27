@@ -18,7 +18,12 @@
 // Defines
 // --------------------------------------------------
 
-// HTTP requests
+/**
+ * <library>a_http</library>
+ * <remarks>
+ *   HTTP request types
+ * </remarks>
+ */
 #define HTTP_METHOD: __TAG(HTTP_METHOD):
 enum HTTP_METHOD:__HTTP_METHOD
 {
@@ -26,10 +31,17 @@ enum HTTP_METHOD:__HTTP_METHOD
 	HTTP_POST,
 	HTTP_HEAD
 }
+static stock HTTP_METHOD:_@HTTP_METHOD() { return HTTP_METHOD; }
 
-// HTTP error response codes
-// These codes compliment ordinary HTTP response codes returned in 'responseCode'
-// (10x) (20x OK) (30x Moved) (40x Unauthorised) (50x Server Error)
+/**
+ * <library>a_http</library>
+ * <remarks>
+ *   HTTP error response codes
+ *
+ *   These codes compliment ordinary HTTP response codes returned in 'responseCode'
+ *   (10x) (20x OK) (30x Moved) (40x Unauthorised) (50x Server Error)
+ * </remarks>
+ */
 #define HTTP_ERROR: __TAG(HTTP_ERROR):
 enum HTTP_ERROR:__HTTP_ERROR
 {
@@ -40,6 +52,7 @@ enum HTTP_ERROR:__HTTP_ERROR
 	HTTP_ERROR_CONTENT_TOO_BIG,
 	HTTP_ERROR_MALFORMED_RESPONSE
 }
+static stock HTTP_ERROR:_@HTTP_ERROR() { return HTTP_ERROR; }
 
 /**
  * <library>a_http</library>
@@ -73,8 +86,13 @@ enum HTTP_ERROR:__HTTP_ERROR
  *     <li>+ standard HTTP response codes</li>
  *   </ul>
  * </remarks>
+ * <example>
+ * 	 <code>
+ *      // HTTP callback. <br />
+ *      public MyHttpResponse(index, responseCode, const data[]) { ... }
+ * 	 </code>
+ * </example>
  */
 native HTTP(index, HTTP_METHOD:method, const url[], const data[], const callback[]);
 
-// example HTTP callback: public MyHttpResponse(index, responseCode, const data[]) { ... }
 
