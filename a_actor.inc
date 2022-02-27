@@ -15,6 +15,9 @@
 #pragma tabsize 4
 #define SAMP_CONST_CORRECT
 
+/// Fixes a bug with two pawndoc comments before an enum.
+static stock const __A_ACTOR_PAWNDOC = 0;
+
 /**
  * <library>a_actor</library>
  * <summary>Create a static 'actor' in the world.  These 'actors' are like NPCs, however they have limited
