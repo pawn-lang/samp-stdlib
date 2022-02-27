@@ -20,8 +20,8 @@
 #pragma tabsize 4
 #define SAMP_CONST_CORRECT
 
-/// Fixes a bug with two pawndoc comments before an enum.
-static stock const __A_SAMP_PAWNDOC = 0;
+// Fixes a bug with two pawndoc comments before an enum.
+///
 
 // --------------------------------------------------
 // Defines
@@ -323,14 +323,16 @@ const PLAYER_STATE:PLAYER_STATE_EXIT_VEHICLE = PLAYER_STATE:4;
  * <summary>Used internally</summary>
  */
 #pragma deprecated Used internally.
-const PLAYER_STATE:PLAYER_STATE_ENTER_VEHICLE_DRIVER = PLAYER_STATE:5;
+const PLAYER_STATE:PLAYER_STATE_ENTER_VEHICLE_DRV = PLAYER_STATE:5;
+#define PLAYER_STATE_ENTER_VEHICLE_DRIVER PLAYER_STATE_ENTER_VEHICLE_DRV
 
 /**
  * <library>a_samp</library>
  * <summary>Used internally</summary>
  */
 #pragma deprecated Used internally.
-const PLAYER_STATE:PLAYER_STATE_ENTER_VEHICLE_PASSENGER = PLAYER_STATE:6;
+const PLAYER_STATE:PLAYER_STATE_ENTER_VEHICLE_PASS = PLAYER_STATE:6;
+#define PLAYER_STATE_ENTER_VEHICLE_PASSENGER PLAYER_STATE_ENTER_VEHICLE_PASS
 
 /**
  * <library>a_samp</library>

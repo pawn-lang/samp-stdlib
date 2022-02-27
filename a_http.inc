@@ -2,6 +2,7 @@
 	#endinput
 #endif
 #define _INC_a_http
+#define _http_included
 
 /**
  * <library name="a_http" description="SA-MP threaded HTTP/1.0 client for pawn.">
@@ -14,8 +15,8 @@
 #pragma tabsize 4
 #define SAMP_CONST_CORRECT
 
-/// Fixes a bug with two pawndoc comments before an enum.
-static stock const __A_HTTP_PAWNDOC = 0;
+// Fixes a bug with two pawndoc comments before an enum.
+///
 
 // --------------------------------------------------
 // Defines

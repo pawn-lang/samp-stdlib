@@ -15,8 +15,8 @@
 #pragma tabsize 4
 #define SAMP_CONST_CORRECT
 
-/// Fixes a bug with two pawndoc comments before an enum.
-static stock const __A_PLAYERS_PAWNDOC = 0;
+// Fixes a bug with two pawndoc comments before an enum.
+///
 
 // Limits
 #if !defined MAX_PLAYER_ATTACHED_OBJECTS
