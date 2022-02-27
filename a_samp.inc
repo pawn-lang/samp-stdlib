@@ -29,182 +29,193 @@
  * <library>a_samp</library>
  */
 #if defined MAX_PLAYER_NAME
-	static const __MAX_PLAYER_NAME             = MAX_PLAYER_NAME;
+	const __MAX_PLAYER_NAME                    = MAX_PLAYER_NAME;
 	#undef MAX_PLAYER_NAME
 #else
-	static const __MAX_PLAYER_NAME             = 24;
+	const __MAX_PLAYER_NAME                    = 24;
 #endif
 
 /**
  * <library>a_samp</library>
  */
 const MAX_PLAYER_NAME                          = __MAX_PLAYER_NAME;
+#define __MAX_PLAYER_NAME
 
 /**
  * <library>a_samp</library>
  */
 #if defined MAX_PLAYERS
-	static const __MAX_PLAYERS                 = MAX_PLAYERS;
+	const __MAX_PLAYERS                        = MAX_PLAYERS;
 	#undef MAX_PLAYERS
 #else
-	static const __MAX_PLAYERS                 = 1000;
+	const __MAX_PLAYERS                        = 1000;
 #endif
 
 /**
  * <library>a_samp</library>
  */
 const MAX_PLAYERS                              = __MAX_PLAYERS;
+#define __MAX_PLAYERS
 
 /**
  * <library>a_samp</library>
  */
 #if defined MAX_VEHICLES
-	static const __MAX_VEHICLES                = MAX_VEHICLES;
+	const __MAX_VEHICLES                       = MAX_VEHICLES;
 	#undef MAX_VEHICLES
 #else
-	static const __MAX_VEHICLES                = 2000;
+	const __MAX_VEHICLES                       = 2000;
 #endif
 
 /**
  * <library>a_samp</library>
  */
 const MAX_VEHICLES                             = __MAX_VEHICLES;
+#define __MAX_VEHICLES
 
 /**
  * <library>a_samp</library>
  */
 #if defined MAX_ACTORS
-	static const __MAX_ACTORS                  = MAX_ACTORS;
+	const __MAX_ACTORS                         = MAX_ACTORS;
 	#undef MAX_ACTORS
 #else
-	static const __MAX_ACTORS                  = 1000;
+	const __MAX_ACTORS                         = 1000;
 #endif
 
 /**
  * <library>a_samp</library>
  */
 const MAX_ACTORS                               = __MAX_ACTORS;
+#define __MAX_ACTORS
 
 /**
  * <library>a_samp</library>
  */
 #if defined MAX_OBJECTS
-	static const __MAX_OBJECTS                 = MAX_OBJECTS;
+	const __MAX_OBJECTS                        = MAX_OBJECTS;
 	#undef MAX_OBJECTS
 #else
-	static const __MAX_OBJECTS                 = 2000;
+	const __MAX_OBJECTS                        = 2000;
 #endif
 
 /**
  * <library>a_samp</library>
  */
 const MAX_OBJECTS                              = __MAX_OBJECTS;
+#define __MAX_OBJECTS
 
 /**
  * <library>a_samp</library>
  */
 #if defined MAX_GANG_ZONES
-	static const __MAX_GANG_ZONES              = MAX_GANG_ZONES;
+	const __MAX_GANG_ZONES                     = MAX_GANG_ZONES;
 	#undef MAX_GANG_ZONES
 #else
-	static const __MAX_GANG_ZONES              = 1024;
+	const __MAX_GANG_ZONES                     = 1024;
 #endif
 
 /**
  * <library>a_samp</library>
  */
 const MAX_GANG_ZONES                           = __MAX_GANG_ZONES;
+#define __MAX_GANG_ZONES
 
 /**
  * <library>a_samp</library>
  */
 #if defined MAX_TEXT_DRAWS
-	static const Text:__MAX_TEXT_DRAWS         = Text:MAX_TEXT_DRAWS;
+	const Text:__MAX_TEXT_DRAWS                = Text:MAX_TEXT_DRAWS;
 	#undef MAX_TEXT_DRAWS
-	const Text:MAX_TEXT_DRAWS                  = __MAX_TEXT_DRAWS;
 #else
-	static const Text:__MAX_TEXT_DRAWS         = Text:2048;
+	const Text:__MAX_TEXT_DRAWS                = Text:2048;
 #endif
 
 /**
  * <library>a_samp</library>
  */
 const Text:MAX_TEXT_DRAWS                      = __MAX_TEXT_DRAWS;
+#define __MAX_TEXT_DRAWS
 
 /**
  * <library>a_samp</library>
  */
 #if defined MAX_PLAYER_TEXT_DRAWS
-	static const PlayerText:__MAX_PLAYER_TEXT_DRAWS = PlayerText:MAX_PLAYER_TEXT_DRAWS;
+	const PlayerText:__MAX_PLAYER_TEXT_DRAWS        = PlayerText:MAX_PLAYER_TEXT_DRAWS;
 	#undef MAX_PLAYER_TEXT_DRAWS
 #else
-	static const PlayerText:__MAX_PLAYER_TEXT_DRAWS = PlayerText:256;
+	const PlayerText:__MAX_PLAYER_TEXT_DRAWS        = PlayerText:256;
 #endif
 
 /**
  * <library>a_samp</library>
  */
 const PlayerText:MAX_PLAYER_TEXT_DRAWS         = __MAX_PLAYER_TEXT_DRAWS;
+#define __MAX_PLAYER_TEXT_DRAWS
 
 /**
  * <library>a_samp</library>
  */
 #if defined MAX_MENUS
-	static const Menu:__MAX_MENUS              = Menu:MAX_MENUS;
+	const Menu:__MAX_MENUS                     = Menu:MAX_MENUS;
 	#undef MAX_MENUS
 #else
-	static const Menu:__MAX_MENUS              = Menu:128;
+	const Menu:__MAX_MENUS                     = Menu:128;
 #endif
 
 /**
  * <library>a_samp</library>
  */
 const Menu:MAX_MENUS                           = __MAX_MENUS;
+#define __MAX_MENUS
 
 /**
  * <library>a_samp</library>
  */
 #if defined MAX_3DTEXT_GLOBAL
-	static const Text3D:__MAX_3DTEXT_GLOBAL    = Text3D:MAX_3DTEXT_GLOBAL;
+	const Text3D:__MAX_3DTEXT_GLOBAL           = Text3D:MAX_3DTEXT_GLOBAL;
 	#undef MAX_3DTEXT_GLOBAL
 #else
-	static const Text3D:__MAX_3DTEXT_GLOBAL    = Text3D:1024;
+	const Text3D:__MAX_3DTEXT_GLOBAL           = Text3D:1024;
 #endif
 
 /**
  * <library>a_samp</library>
  */
 const Text3D:MAX_3DTEXT_GLOBAL                 = __MAX_3DTEXT_GLOBAL;
+#define __MAX_3DTEXT_GLOBAL
 
 /**
  * <library>a_samp</library>
  */
 #if defined MAX_3DTEXT_PLAYER
-	static const PlayerText3D:__MAX_3DTEXT_PLAYER = PlayerText3D:MAX_3DTEXT_PLAYER;
+	const PlayerText3D:__MAX_3DTEXT_PLAYER        = PlayerText3D:MAX_3DTEXT_PLAYER;
 	#undef MAX_3DTEXT_PLAYER
 #else
-	static const PlayerText3D:__MAX_3DTEXT_PLAYER = PlayerText3D:1024;
+	const PlayerText3D:__MAX_3DTEXT_PLAYER        = PlayerText3D:1024;
 #endif
 
 /**
  * <library>a_samp</library>
  */
 const PlayerText3D:MAX_3DTEXT_PLAYER           = __MAX_3DTEXT_PLAYER;
+#define __MAX_3DTEXT_PLAYER
 
 /**
  * <library>a_samp</library>
  */
 #if defined MAX_PICKUPS
-	static const __MAX_PICKUPS                 = MAX_PICKUPS;
+	const __MAX_PICKUPS                        = MAX_PICKUPS;
 	#undef MAX_PICKUPS
 #else
-	static const __MAX_PICKUPS                 = 4096;
+	const __MAX_PICKUPS                        = 4096;
 #endif
 
 /**
  * <library>a_samp</library>
  */
 const MAX_PICKUPS                              = __MAX_PICKUPS;
+#define __MAX_PICKUPS
 
 #define INVALID_TIMER                          (0)
 
