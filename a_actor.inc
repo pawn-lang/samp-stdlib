@@ -5,7 +5,7 @@
 #define _actor_included
 
 /**
- * <library name="a_actor" description="SA-MP Actor Functions.">
+ * <library name="a_actor" summary="SA-MP Actor Functions.">
  * <license>
  *   (c) Copyright 2015, SA-MP Team
  * </license>

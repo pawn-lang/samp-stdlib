@@ -5,7 +5,7 @@
 #define _players_included
 
 /**
- * <library name="a_players" description="SA-MP Player Functions.">
+ * <library name="a_players" summary="SA-MP Player Functions.">
  * <license>
  *   (c) Copyright 2005-2017, SA-MP Team
  * </license>

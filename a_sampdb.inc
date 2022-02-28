@@ -5,7 +5,7 @@
 #define _sampdb_included
 
 /**
- * <library name="a_sampdb" description="SA-MP Native SQLite Database Functions.">
+ * <library name="a_sampdb" summary="SA-MP Native SQLite Database Functions.">
  * <license>
  *   (c) Copyright 2015, SA-MP Team
  * </license>

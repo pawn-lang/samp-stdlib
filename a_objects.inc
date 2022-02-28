@@ -5,7 +5,7 @@
 #define _objects_included
 
 /**
- * <library name="a_objects" description="SA-MP Object Functions.">
+ * <library name="a_objects" summary="SA-MP Object Functions.">
  * <license>
  *   (c) Copyright 2005-2015, SA-MP Team
  * </license>

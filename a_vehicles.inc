@@ -5,7 +5,7 @@
 #define _vehicles_included
 
 /**
- * <library name="a_vehicles" description="SA-MP Vehicle Functions.">
+ * <library name="a_vehicles" summary="SA-MP Vehicle Functions.">
  * <license>
  *   (c) Copyright 2005-2012, SA-MP Team
  * </license>

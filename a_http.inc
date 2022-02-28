@@ -5,7 +5,7 @@
 #define _http_included
 
 /**
- * <library name="a_http" description="SA-MP threaded HTTP/1.0 client for pawn.">
+ * <library name="a_http" summary="SA-MP threaded HTTP/1.0 client for pawn.">
  * <license>
  *   (c) Copyright 2010, SA-MP Team
  * </license>

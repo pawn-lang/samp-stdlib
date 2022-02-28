@@ -8,7 +8,7 @@
 #define _samp_included
 
 /**
- * <library name="a_samp" description="SA-MP Functions.">
+ * <library name="a_samp" summary="SA-MP Functions.">
  * <license>
  *   (c) Copyright 2005-2017, SA-MP Team
  * </license>

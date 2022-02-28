@@ -8,7 +8,7 @@
 #define _samp_included
 
 /**
- * <library name="a_npc" description="SA-MP NPC Functions.">
+ * <library name="a_npc" summary="SA-MP NPC Functions.">
  * <license>
  *   (c) Copyright 2009, SA-MP Team
  * </license>
