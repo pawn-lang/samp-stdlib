@@ -12,19 +12,85 @@
  * </library>
  */
 
+///
+
 #pragma tabsize 4
 #define SAMP_CONST_CORRECT
 
 // Limits
-#if !defined MAX_PLAYER_ATTACHED_OBJECTS
-	#define MAX_PLAYER_ATTACHED_OBJECTS        (10)
+/**
+ * <library>a_players</library>
+ */
+#if defined MAX_PLAYER_TEXT_DRAWS
+	const PlayerText:__MAX_PLAYER_TEXT_DRAWS   = MAX_PLAYER_TEXT_DRAWS;
+	#define __MAX_PLAYER_TEXT_DRAWS
+#else
+	const PlayerText:MAX_PLAYER_TEXT_DRAWS     = PlayerText:256;
+	#define MAX_PLAYER_TEXT_DRAWS              (PlayerText:256)
 #endif
 
-#if !defined MAX_CHATBUBBLE_LENGTH
-	#define MAX_CHATBUBBLE_LENGTH              (144)
+/**
+ * <library>a_players</library>
+ */
+#if defined MAX_3DTEXT_PLAYER
+	const PlayerText3D:__MAX_3DTEXT_PLAYER     = MAX_3DTEXT_PLAYER;
+	#define __MAX_3DTEXT_PLAYER
+#else
+	const PlayerText3D:MAX_3DTEXT_PLAYER       = PlayerText3D:1024;
+	#define MAX_3DTEXT_PLAYER                  (PlayerText3D:1024)
 #endif
 
-///
+/**
+ * <library>a_players</library>
+ */
+#if defined MAX_PLAYER_ATTACHED_OBJECTS
+	const __MAX_PLAYER_ATTACHED_OBJECTS        = MAX_PLAYER_ATTACHED_OBJECTS;
+	#define __MAX_PLAYER_ATTACHED_OBJECTS
+#else
+	const MAX_PLAYER_ATTACHED_OBJECTS          = 10;
+	#define MAX_PLAYER_ATTACHED_OBJECTS        10
+#endif
+
+/**
+ * <library>a_players</library>
+ */
+#if defined MAX_CHATBUBBLE_LENGTH
+	const __MAX_CHATBUBBLE_LENGTH              = MAX_CHATBUBBLE_LENGTH;
+	#define __MAX_CHATBUBBLE_LENGTH
+#else
+	const MAX_CHATBUBBLE_LENGTH                = 144;
+	#define MAX_CHATBUBBLE_LENGTH              144
+#endif
+
+// Invalids
+/**
+ * <library>a_npc</library>
+ */
+const PlayerText3D:INVALID_PLAYER_3DTEXT_ID    = PlayerText3D:0xFFFF;
+#define INVALID_PLAYER_3DTEXT_ID               (PlayerText3D:0xFFFF)
+
+/**
+ * <library>a_samp</library>
+ */
+const PlayerText:INVALID_PLAYER_TEXT_DRAW      = PlayerText:0xFFFF;
+#define INVALID_PLAYER_TEXT_DRAW               (PlayerText:0xFFFF)
+
+// Checks
+#if MAX_PLAYER_TEXT_DRAWS < PlayerText:1 || MAX_PLAYER_TEXT_DRAWS > PlayerText:256
+	#error MAX_PLAYER_TEXT_DRAWS must be >= 1 and <= 256
+#endif
+
+#if MAX_3DTEXT_PLAYER < PlayerText3D:1 || MAX_3DTEXT_PLAYER > PlayerText3D:1024
+	#error MAX_3DTEXT_PLAYER must be >= 1 and <= 1024
+#endif
+
+#if MAX_PLAYER_ATTACHED_OBJECTS < 0 || MAX_PLAYER_ATTACHED_OBJECTS > 10
+	#error MAX_PLAYER_ATTACHED_OBJECTS must be >= 0 and <= 10
+#endif
+
+#if MAX_CHATBUBBLE_LENGTH < 1 || MAX_CHATBUBBLE_LENGTH > 144
+	#error MAX_CHATBUBBLE_LENGTH must be >= 1 and <= 144
+#endif
 
 /**
  * <library>a_players</library>
@@ -1006,7 +1072,7 @@ native GetPlayerKeys(playerid, &KEY:keys, &KEY:updown, &KEY:leftright);
  * <seealso name="GetPlayerScore" />
  * <seealso name="GetPlayerVersion" />
  * <remarks>A player's name can be up to 24 characters long (as of <b>0.3d R2</b>) by using <a href="#SetPlayerName">SetPlayerName</a>.
- *  This is defined in <c>a_samp.inc</c> as <b><c>MAX_PLAYER_NAME</c></b>.  However, the client can
+ *  This is defined in <c>a_samp.inc</c> as <b><c>24</c></b>.  However, the client can
  * only join with a nickname between 3 and 20 characters, otherwise the connection will be rejected
  * and the player has to quit to choose a valid name.</remarks>
  * <returns>The length of the player's name. <b><c>0</c></b> if player specified doesn't exist.</returns>
@@ -3394,4 +3460,70 @@ native CreateExplosionForPlayer(playerid, Float:x, Float:y, Float:z, type, Float
  * <param name="byteCount">The number of bytes to check</param>
  */
 native SendClientCheck(playerid, type, memoryAddress, memoryOffset, byteCount);
+
+/**
+ * <library>a_samp</library>
+ * <summary>Creates a 3D Text Label only for a specific player.</summary>
+ * <param name="playerid">The player which should see the newly created 3DText Label</param>
+ * <param name="text">The text to display</param>
+ * <param name="colour">The text colour</param>
+ * <param name="x">x Coordinate (or offset if attached)</param>
+ * <param name="y">y Coordinate (or offset if attached)</param>
+ * <param name="z">z Coordinate (or offset if attached)</param>
+ * <param name="drawDistance">The distance where you are able to see the 3D Text Label</param>
+ * <param name="parentPlayerid">The player you want to attach the 3D Text Label to. (optional=<b><c>INVALID_PLAYER_ID</c></b>)</param>
+ * <param name="parentVehicleid">The vehicle you want to attach the 3D Text Label to. (optional=<b><c>INVALID_VEHICLE_ID</c></b>)</param>
+ * <param name="testLOS">Test the line-of-sight so this text can't be seen through walls (optional=<b><c>0</c></b>)</param>
+ * <seealso name="Create3DTextLabel" />
+ * <seealso name="Delete3DTextLabel" />
+ * <seealso name="Attach3DTextLabelToPlayer" />
+ * <seealso name="Attach3DTextLabelToVehicle" />
+ * <seealso name="Update3DTextLabelText" />
+ * <seealso name="DeletePlayer3DTextLabel" />
+ * <seealso name="UpdatePlayer3DTextLabelText" />
+ * <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
+ * <remarks>If <paramref name="text" /> is empty, the server/clients next to the text might crash!</remarks>
+ * <remarks>drawdistance seems to be a lot smaller when spectating.</remarks>
+ * <returns>The ID of the newly created Player 3D Text Label, or <b><c>INVALID_3DTEXT_ID</c></b> if
+ * the Player 3D Text Label limit (<b><c>MAX_3DTEXT_PLAYER</c></b>) was reached.</returns>
+ */
+native PlayerText3D:CreatePlayer3DTextLabel(playerid, const text[], colour, Float:x, Float:y, Float:z, Float:drawDistance, parentPlayerid = INVALID_PLAYER_ID, parentVehicleid = INVALID_VEHICLE_ID, bool:testLOS = false);
+
+/**
+ * <library>a_samp</library>
+ * <summary>Destroy a 3D text label that was created using <a href="#CreatePlayer3DTextLabel">CreatePlayer3DTextLabel</a>.</summary>
+ * <param name="playerid">The ID of the player whose 3D text label to delete</param>
+ * <param name="textid">The ID of the player's 3D text label to delete</param>
+ * <seealso name="Create3DTextLabel" />
+ * <seealso name="Attach3DTextLabelToPlayer" />
+ * <seealso name="Attach3DTextLabelToVehicle" />
+ * <seealso name="Update3DTextLabelText" />
+ * <seealso name="CreatePlayer3DTextLabel" />
+ * <seealso name="UpdatePlayer3DTextLabelText" />
+ * <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
+ * <returns>
+ *   <b><c>1</c></b>: The function executed successfully.<br />
+ *   <b><c>0</c></b>: The function failed to execute.  This means the label specified doesn't exist.
+ * </returns>
+ */
+native DeletePlayer3DTextLabel(playerid, PlayerText3D:textid);
+
+/**
+ * <library>a_samp</library>
+ * <summary>Updates a player 3D Text Label's text and colour.</summary>
+ * <param name="playerid">The ID of the player for which the 3D Text Label was created</param>
+ * <param name="textid">The 3D Text Label you want to update</param>
+ * <param name="colour">The colour the 3D Text Label should have from now on</param>
+ * <param name="text">The new text which the 3D Text Label should have from now on</param>
+ * <seealso name="Create3DTextLabel" />
+ * <seealso name="Delete3DTextLabel" />
+ * <seealso name="Attach3DTextLabelToPlayer" />
+ * <seealso name="Attach3DTextLabelToVehicle" />
+ * <seealso name="Update3DTextLabelText" />
+ * <seealso name="CreatePlayer3DTextLabel" />
+ * <seealso name="DeletePlayer3DTextLabel" />
+ * <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
+ * <remarks>If <paramref name="text" /> is empty, the server/clients next to the text might crash!</remarks>
+ */
+native UpdatePlayer3DTextLabelText(playerid, PlayerText3D:textid, colour, const text[]);
 

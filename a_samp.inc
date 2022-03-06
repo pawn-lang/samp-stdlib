@@ -15,10 +15,70 @@
  * </library>
  */
 
+///
+
 // Ignores warning 217 for properly indented PAWNO code
 // It's tab size is 4 and often uses 4 spaces instead, PAWNCC's is 8
 #pragma tabsize 4
 #define SAMP_CONST_CORRECT
+
+/**
+ *   <remarks>
+ *   Version examples:
+ *   <ul>
+ *     <li><c>0.3.DL R1       - 03D010</c></li>
+ *     <li>                               </li>
+ *     <li><c>0.3.7 R3        - 037030</c></li>
+ *     <li><c>0.3.7 R2-2      - 037022</c></li>
+ *     <li><c>0.3.7 R1-2      - 037012</c></li>
+ *     <li><c>0.3.7           - 037000</c></li>
+ *     <li>                               </li>
+ *     <li><c>0.3z R4         - 030700</c></li>
+ *     <li><c>0.3z R3         - 030700</c></li>
+ *     <li><c>0.3z R2-1       - 030700</c></li>
+ *     <li><c>0.3z R1-2       - 030700</c></li>
+ *     <li><c>0.3z            - 030700</c></li>
+ *     <li><c>0.3x R2 patch 1 - 030621</c></li>
+ *     <li><c>0.3x R2         - 030620</c></li>
+ *     <li><c>0.3x R1-2       - 030612</c></li>
+ *     <li><c>0.3x            - 030600</c></li>
+ *     <li><c>0.3e            - 030500</c></li>
+ *     <li><c>0.3d            - 030400</c></li>
+ *     <li><c>0.3c            - 030300</c></li>
+ *     <li><c>0.3b            - 030200</c></li>
+ *     <li><c>0.3a            - 030100</c></li>
+ *     <li>                               </li>
+ *     <li><c>0.2X            - 02A000</c></li>
+ *     <li><c>0.2.2 R3        - 022300</c></li>
+ *   </ul>
+ *   Rough rules:
+ *   
+ *   <p />
+ *   Uses (roughtly) BCD.  Special versions are denoted outside 0-9.
+ *   <code>
+ *   0.1.2c R4-5
+ *   | | ||  | |
+ *   0 1 23  4 5
+ *   =
+ *   0x012345
+ *   </code>
+ *   (assuming c is the third revision)
+ *   
+ *   <p />
+ *   0.2X becomes 02A000 because it is basically 0.2.3, but not, while higher than
+ *   0.2.2 so can't be 020400 (for example).  Also, its a capital letter, so doesn't
+ *   use the revision method.
+ *   
+ *   <p />
+ *   P.S.  Making a consistent scheme for SA:MP versions is REALLY hard.
+ *   
+ *   <p />
+ *   open.mp releases can use `A` as the first digit.
+ *   </remarks>
+ */
+
+public const SAMP_INCLUDES_VERSION = 0x037030;
+#pragma unused SAMP_INCLUDES_VERSION
 
 // Optionally stricter tags.
 #if defined NO_TAGS
@@ -122,17 +182,6 @@
 /**
  * <library>a_samp</library>
  */
-#if defined MAX_PLAYER_TEXT_DRAWS
-	const PlayerText:__MAX_PLAYER_TEXT_DRAWS   = MAX_PLAYER_TEXT_DRAWS;
-	#define __MAX_PLAYER_TEXT_DRAWS
-#else
-	const PlayerText:MAX_PLAYER_TEXT_DRAWS     = PlayerText:256;
-	#define MAX_PLAYER_TEXT_DRAWS              (PlayerText:256)
-#endif
-
-/**
- * <library>a_samp</library>
- */
 #if defined MAX_MENUS
 	const Menu:__MAX_MENUS                     = MAX_MENUS;
 	#define __MAX_MENUS
@@ -150,17 +199,6 @@
 #else
 	const Text3D:MAX_3DTEXT_GLOBAL             = Text3D:1024;
 	#define MAX_3DTEXT_GLOBAL                  (Text3D:1024)
-#endif
-
-/**
- * <library>a_samp</library>
- */
-#if defined MAX_3DTEXT_PLAYER
-	const PlayerText3D:__MAX_3DTEXT_PLAYER     = MAX_3DTEXT_PLAYER;
-	#define __MAX_3DTEXT_PLAYER
-#else
-	const PlayerText3D:MAX_3DTEXT_PLAYER       = PlayerText3D:1024;
-	#define MAX_3DTEXT_PLAYER                  (PlayerText3D:1024)
 #endif
 
 /**
@@ -226,12 +264,6 @@ const Text:INVALID_TEXT_DRAW                   = Text:0xFFFF;
 /**
  * <library>a_samp</library>
  */
-const PlayerText:INVALID_PLAYER_TEXT_DRAW      = PlayerText:0xFFFF;
-#define INVALID_PLAYER_TEXT_DRAW               (PlayerText:0xFFFF)
-
-/**
- * <library>a_samp</library>
- */
 const INVALID_GANG_ZONE                        = 0xFFFFFFFF;
 #define INVALID_GANG_ZONE                      0xFFFFFFFF
 
@@ -240,12 +272,6 @@ const INVALID_GANG_ZONE                        = 0xFFFFFFFF;
  */
 const Text3D:INVALID_3DTEXT_ID                 = Text3D:0xFFFF;
 #define INVALID_3DTEXT_ID                      (Text3D:0xFFFF)
-
-/**
- * <library>a_samp</library>
- */
-const PlayerText3D:INVALID_PLAYER_3DTEXT_ID    = PlayerText3D:0xFFFF;
-#define INVALID_PLAYER_3DTEXT_ID               (PlayerText3D:0xFFFF)
 
 /**
  * <library>a_samp</library>
@@ -553,58 +579,6 @@ enum FORCE_SYNC:__FORCE_SYNC
 }
 static stock FORCE_SYNC:_@FORCE_SYNC() { return __FORCE_SYNC; }
 
-// Limits
-#if MAX_PLAYER_NAME < 3 || MAX_PLAYER_NAME > 24
-	#error MAX_PLAYER_NAME must be >= 3 and <= 24
-#endif
-
-#if MAX_PLAYERS < 1 || MAX_PLAYERS > 1000
-	#error MAX_PLAYERS must be >= 1 and <= 1000
-#endif
-
-#if MAX_VEHICLES < 1 || MAX_VEHICLES > 2000
-	#error MAX_VEHICLES must be >= 1 and <= 2000
-#endif
-
-#if MAX_ACTORS < 1 || MAX_ACTORS > 1000
-	#error MAX_ACTORS must be >= 1 and <= 1000
-#endif
-
-#if MAX_OBJECTS < 1 || MAX_OBJECTS > 2000
-	#error MAX_OBJECTS must be >= 1 and <= 2000
-#endif
-
-#if MAX_GANG_ZONES < 1 || MAX_GANG_ZONES > 1024
-	#error MAX_GANG_ZONES must be >= 1 and <= 1024
-#endif
-
-#if MAX_TEXT_DRAWS < Text:1 || MAX_TEXT_DRAWS > Text:2048
-	#error MAX_TEXT_DRAWS must be >= 1 and <= 2048
-#endif
-
-#if MAX_PLAYER_TEXT_DRAWS < PlayerText:1 || MAX_PLAYER_TEXT_DRAWS > PlayerText:256
-	#error MAX_PLAYER_TEXT_DRAWS must be >= 1 and <= 256
-#endif
-
-#if MAX_MENUS < Menu:1 || MAX_MENUS > Menu:128
-	#error MAX_MENUS must be >= 1 and <= 128
-#endif
-
-#if MAX_3DTEXT_GLOBAL < Text3D:1 || MAX_3DTEXT_GLOBAL > Text3D:1024
-	#error MAX_3DTEXT_GLOBAL must be >= 1 and <= 1024
-#endif
-
-#if MAX_3DTEXT_PLAYER < PlayerText3D:1 || MAX_3DTEXT_PLAYER > PlayerText3D:1024
-	#error MAX_3DTEXT_PLAYER must be >= 1 and <= 1024
-#endif
-
-#if MAX_PICKUPS < 1 || MAX_PICKUPS > 4096
-	#error MAX_PICKUPS must be >= 1 and <= 4096
-#endif
-
-public const SAMP_INCLUDES_VERSION = 0x037030;
-#pragma unused SAMP_INCLUDES_VERSION
-
 // Try many places to get the latest version.
 
 #tryinclude "..\pawn-stdlib\console"
@@ -705,56 +679,46 @@ public const SAMP_INCLUDES_VERSION = 0x037030;
 	#error cannot read from file: "a_http"
 #endif
 
-/*
+// Checks
+#if MAX_PLAYER_NAME < 3 || MAX_PLAYER_NAME > 24
+	#error MAX_PLAYER_NAME must be >= 3 and <= 24
+#endif
 
-Version examples:
+#if MAX_PLAYERS < 1 || MAX_PLAYERS > 1000
+	#error MAX_PLAYERS must be >= 1 and <= 1000
+#endif
 
-0.3.DL R1       - 03D010
+#if MAX_VEHICLES < 1 || MAX_VEHICLES > 2000
+	#error MAX_VEHICLES must be >= 1 and <= 2000
+#endif
 
-0.3.7 R3        - 037030
-0.3.7 R2-2      - 037022
-0.3.7 R1-2      - 037012
-0.3.7           - 037000
+#if MAX_ACTORS < 1 || MAX_ACTORS > 1000
+	#error MAX_ACTORS must be >= 1 and <= 1000
+#endif
 
-0.3z R4         - 030700
-0.3z R3         - 030700
-0.3z R2-1       - 030700
-0.3z R1-2       - 030700
-0.3z            - 030700
-0.3x R2 patch 1 - 030621
-0.3x R2         - 030620
-0.3x R1-2       - 030612
-0.3x            - 030600
-0.3e            - 030500
-0.3d            - 030400
-0.3c            - 030300
-0.3b            - 030200
-0.3a            - 030100
+#if MAX_OBJECTS < 1 || MAX_OBJECTS > 2000
+	#error MAX_OBJECTS must be >= 1 and <= 2000
+#endif
 
-0.2X            - 02A000
-0.2.2 R3        - 022300
+#if MAX_GANG_ZONES < 1 || MAX_GANG_ZONES > 1024
+	#error MAX_GANG_ZONES must be >= 1 and <= 1024
+#endif
 
-Rough rules:
+#if MAX_TEXT_DRAWS < Text:1 || MAX_TEXT_DRAWS > Text:2048
+	#error MAX_TEXT_DRAWS must be >= 1 and <= 2048
+#endif
 
-Uses (roughtly) BCD.  Special versions are denoted outside 0-9.
+#if MAX_MENUS < Menu:1 || MAX_MENUS > Menu:128
+	#error MAX_MENUS must be >= 1 and <= 128
+#endif
 
-0.1.2c R4-5
-| | ||  | |
-0 1 23  4 5
-=
-0x012345
+#if MAX_3DTEXT_GLOBAL < Text3D:1 || MAX_3DTEXT_GLOBAL > Text3D:1024
+	#error MAX_3DTEXT_GLOBAL must be >= 1 and <= 1024
+#endif
 
-(assuming c is the third revision)
-
-0.2X becomes 02A000 because it is basically 0.2.3, but not, while higher than
-0.2.2 so can't be 020400 (for example).  Also, its a capital letter, so doesn't
-use the revision method.
-
-P.S.  Making a consistent scheme for SA:MP versions is REALLY hard.
-
-open.mp releases can use `A` as the first digit.
-
-*/
+#if MAX_PICKUPS < 1 || MAX_PICKUPS > 4096
+	#error MAX_PICKUPS must be >= 1 and <= 4096
+#endif
 
 // --------------------------------------------------
 // Natives
@@ -3305,74 +3269,6 @@ native Attach3DTextLabelToVehicle(Text3D:textid, parentid, Float:offsetX, Float:
  * <remarks>If <paramref name="text" /> is empty, the server/clients next to the text might crash!</remarks>
  */
 native Update3DTextLabelText(Text3D:textid, colour, const text[]);
-
-// Per-player 3D Text Labels
-
-/**
- * <library>a_samp</library>
- * <summary>Creates a 3D Text Label only for a specific player.</summary>
- * <param name="playerid">The player which should see the newly created 3DText Label</param>
- * <param name="text">The text to display</param>
- * <param name="colour">The text colour</param>
- * <param name="x">x Coordinate (or offset if attached)</param>
- * <param name="y">y Coordinate (or offset if attached)</param>
- * <param name="z">z Coordinate (or offset if attached)</param>
- * <param name="drawDistance">The distance where you are able to see the 3D Text Label</param>
- * <param name="parentPlayerid">The player you want to attach the 3D Text Label to. (optional=<b><c>INVALID_PLAYER_ID</c></b>)</param>
- * <param name="parentVehicleid">The vehicle you want to attach the 3D Text Label to. (optional=<b><c>INVALID_VEHICLE_ID</c></b>)</param>
- * <param name="testLOS">Test the line-of-sight so this text can't be seen through walls (optional=<b><c>0</c></b>)</param>
- * <seealso name="Create3DTextLabel" />
- * <seealso name="Delete3DTextLabel" />
- * <seealso name="Attach3DTextLabelToPlayer" />
- * <seealso name="Attach3DTextLabelToVehicle" />
- * <seealso name="Update3DTextLabelText" />
- * <seealso name="DeletePlayer3DTextLabel" />
- * <seealso name="UpdatePlayer3DTextLabelText" />
- * <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
- * <remarks>If <paramref name="text" /> is empty, the server/clients next to the text might crash!</remarks>
- * <remarks>drawdistance seems to be a lot smaller when spectating.</remarks>
- * <returns>The ID of the newly created Player 3D Text Label, or <b><c>INVALID_3DTEXT_ID</c></b> if
- * the Player 3D Text Label limit (<b><c>MAX_3DTEXT_PLAYER</c></b>) was reached.</returns>
- */
-native PlayerText3D:CreatePlayer3DTextLabel(playerid, const text[], colour, Float:x, Float:y, Float:z, Float:drawDistance, parentPlayerid = INVALID_PLAYER_ID, parentVehicleid = INVALID_VEHICLE_ID, bool:testLOS = false);
-
-/**
- * <library>a_samp</library>
- * <summary>Destroy a 3D text label that was created using <a href="#CreatePlayer3DTextLabel">CreatePlayer3DTextLabel</a>.</summary>
- * <param name="playerid">The ID of the player whose 3D text label to delete</param>
- * <param name="textid">The ID of the player's 3D text label to delete</param>
- * <seealso name="Create3DTextLabel" />
- * <seealso name="Attach3DTextLabelToPlayer" />
- * <seealso name="Attach3DTextLabelToVehicle" />
- * <seealso name="Update3DTextLabelText" />
- * <seealso name="CreatePlayer3DTextLabel" />
- * <seealso name="UpdatePlayer3DTextLabelText" />
- * <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
- * <returns>
- *   <b><c>1</c></b>: The function executed successfully.<br />
- *   <b><c>0</c></b>: The function failed to execute.  This means the label specified doesn't exist.
- * </returns>
- */
-native DeletePlayer3DTextLabel(playerid, PlayerText3D:textid);
-
-/**
- * <library>a_samp</library>
- * <summary>Updates a player 3D Text Label's text and colour.</summary>
- * <param name="playerid">The ID of the player for which the 3D Text Label was created</param>
- * <param name="textid">The 3D Text Label you want to update</param>
- * <param name="colour">The colour the 3D Text Label should have from now on</param>
- * <param name="text">The new text which the 3D Text Label should have from now on</param>
- * <seealso name="Create3DTextLabel" />
- * <seealso name="Delete3DTextLabel" />
- * <seealso name="Attach3DTextLabelToPlayer" />
- * <seealso name="Attach3DTextLabelToVehicle" />
- * <seealso name="Update3DTextLabelText" />
- * <seealso name="CreatePlayer3DTextLabel" />
- * <seealso name="DeletePlayer3DTextLabel" />
- * <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
- * <remarks>If <paramref name="text" /> is empty, the server/clients next to the text might crash!</remarks>
- */
-native UpdatePlayer3DTextLabelText(playerid, PlayerText3D:textid, colour, const text[]);
 
 /**
  * <library>a_samp</library>
