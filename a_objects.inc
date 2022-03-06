@@ -21,6 +21,46 @@
 // Defines
 // --------------------------------------------------
 
+// Limits
+/**
+ * <library>a_objects</library>
+ */
+#if defined MAX_OBJECTS
+	const __MAX_OBJECTS                        = MAX_OBJECTS;
+	#define __MAX_OBJECTS
+#else
+	const MAX_OBJECTS                          = 2000;
+	#define MAX_OBJECTS                        2000
+#endif
+
+// Invalids
+/**
+ * <library>a_objects</library>
+ */
+const INVALID_OBJECT_ID                        = 0xFFFF;
+#define INVALID_OBJECT_ID                      0xFFFF
+
+// Checks
+#if MAX_OBJECTS < 1 || MAX_OBJECTS > 2000
+	#error MAX_OBJECTS must be >= 1 and <= 2000
+#endif
+
+// Enums
+///
+
+/**
+ * <library>a_objects</library>
+ */
+#define SELECT_OBJECT: __TAG(SELECT_OBJECT):
+enum SELECT_OBJECT:__SELECT_OBJECT
+{
+	SELECT_OBJECT_GLOBAL_OBJECT                = 1,
+	SELECT_OBJECT_PLAYER_OBJECT
+}
+static stock SELECT_OBJECT:_@SELECT_OBJECT() { return __SELECT_OBJECT; }
+
+///
+
 /**
  * <library>a_objects</library>
  */
@@ -831,4 +871,127 @@ native SetPlayerObjectMaterialText(playerid, objectid, const text[], materialInd
  * units on the x and/or y axis).</remarks>
  */
 native SetObjectsDefaultCameraCol(bool:disable);
+
+/**
+ * <summary>This callback is called when a player selects an object after <a href="#SelectObject">SelectObject</a>
+ * has been used.</summary>
+ * <param name="playerid">The ID of the player that selected an object</param>
+ * <param name="type">The type of selection</param>
+ * <param name="objectid">The ID of the selected object</param>
+ * <param name="modelid">The model ID of the selected object</param>
+ * <param name="fX">The X position of the selected object</param>
+ * <param name="fY">The Y position of the selected object</param>
+ * <param name="fZ">The Z position of the selected object</param>
+ * <seealso name="SelectObject" />
+ * <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
+ * <returns>
+ *   <b><c>1</c></b> - Will prevent other scripts from receiving this callback.<br />
+ *   <b><c>0</c></b> - Indicates that this callback will be passed to the next script.<br />
+ *   It is always called first in filterscripts.
+ * </returns>
+ */
+#if !defined SELECT_OBJECT
+	#define SELECT_OBJECT: _:
+#endif
+forward OnPlayerSelectObject(playerid, SELECT_OBJECT:type, objectid, modelid, Float:fX, Float:fY, Float:fZ);
+
+/**
+ * <summary>This callback is called when a player finishes editing an object (<a href="#EditObject">EditObject</a>/<a
+ * href="#EditPlayerObject">EditPlayerObject</a>).</summary>
+ * <param name="playerid">The ID of the player that edited an object</param>
+ * <param name="playerobject"><b><c>0</c></b> if it is a global object or <b><c>1</c></b> if it is a
+ * playerobject</param>
+ * <param name="objectid">The ID of the edited object</param>
+ * <param name="response">The type of response</param>
+ * <param name="fX">The X offset for the object that was edited</param>
+ * <param name="fY">The Y offset for the object that was edited</param>
+ * <param name="fZ">The Z offset for the object that was edited</param>
+ * <param name="fRotX">The X rotation for the object that was edited</param>
+ * <param name="fRotY">The Y rotation for the object that was edited</param>
+ * <param name="fRotZ">The Z rotation for the object that was edited</param>
+ * <seealso name="EditObject" />
+ * <seealso name="CreateObject" />
+ * <seealso name="DestroyObject" />
+ * <seealso name="MoveObject" />
+ * <remarks>This callback was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
+ * <remarks>When using <b><c>EDIT_RESPONSE_UPDATE</c></b> be aware that this callback will not be called
+ * when releasing an edit in progress resulting in the last update of <b><c>EDIT_RESPONSE_UPDATE</c></b>
+ * being out of sync of the objects current position.</remarks>
+ * <returns>
+ *   <b><c>1</c></b> - Will prevent other scripts from receiving this callback.<br />
+ *   <b><c>0</c></b> - Indicates that this callback will be passed to the next script.<br />
+ *   It is always called first in filterscripts.
+ * </returns>
+ */
+#if !defined EDIT_RESPONSE
+	#define EDIT_RESPONSE: _:
+#endif
+forward OnPlayerEditObject(playerid, playerobject, objectid, EDIT_RESPONSE:response, Float:fX, Float:fY, Float:fZ, Float:fRotX, Float:fRotY, Float:fRotZ);
+
+/**
+ * <summary>This callback is called when a player ends attached object edition mode.</summary>
+ * <param name="playerid">The ID of the player that ended edition mode</param>
+ * <param name="response"><b><c>0</c></b> if they cancelled (ESC) or <b><c>1</c></b> if they clicked
+ * the save icon</param>
+ * <param name="index">The index of the attached object</param>
+ * <param name="modelid">The model of the attached object that was edited</param>
+ * <param name="boneid">The bone of the attached object that was edited</param>
+ * <param name="fOffsetX">The X offset for the attached object that was edited</param>
+ * <param name="fOffsetY">The Y offset for the attached object that was edited</param>
+ * <param name="fOffsetZ">The Z offset for the attached object that was edited</param>
+ * <param name="fRotX">The X rotation for the attached object that was edited</param>
+ * <param name="fRotY">The Y rotation for the attached object that was edited</param>
+ * <param name="fRotZ">The Z rotation for the attached object that was edited</param>
+ * <param name="fScaleX">The X scale for the attached object that was edited</param>
+ * <param name="fScaleY">The Y scale for the attached object that was edited</param>
+ * <param name="fScaleZ">The Z scale for the attached object that was edited</param>
+ * <seealso name="EditAttachedObject" />
+ * <seealso name="SetPlayerAttachedObject" />
+ * <remarks>This callback was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
+ * <remarks>Editions should be discarded if response was <b><c>0</c></b> (cancelled).  This must be
+ * done by storing the offsets etc.  in an array BEFORE using <a href="#EditAttachedObject">EditAttachedObject</a>.</remarks>
+ * <returns>
+ *   <b><c>1</c></b> - Will prevent other scripts from receiving this callback.<br />
+ *   <b><c>0</c></b> - Indicates that this callback will be passed to the next script.<br />
+ *   It is always called first in filterscripts.
+ * </returns>
+ */
+#if !defined EDIT_RESPONSE
+	#define EDIT_RESPONSE: _:
+#endif
+forward OnPlayerEditAttachedObject(playerid, EDIT_RESPONSE:response, index, modelid, boneid, Float:fOffsetX, Float:fOffsetY, Float:fOffsetZ, Float:fRotX, Float:fRotY, Float:fRotZ, Float:fScaleX, Float:fScaleY, Float:fScaleZ);
+
+/**
+ * <summary>This callback is called when an object is moved after <a href="#MoveObject">MoveObject</a>
+ * (when it stops moving).</summary>
+ * <param name="objectid">The ID of the object that was moved</param>
+ * <seealso name="MoveObject" />
+ * <seealso name="IsObjectMoving" />
+ * <seealso name="StopObject" />
+ * <seealso name="OnPlayerObjectMoved" />
+ * <remarks><a href="#SetObjectPos">SetObjectPos</a> does not work when used in this callback.  To fix
+ * it, recreate the object.</remarks>
+ * <returns>
+ *   This callback does not handle returns.<br />
+ *   It is always called first in filterscripts.
+ * </returns>
+ */
+forward OnObjectMoved(objectid);
+
+/**
+ * <summary>This callback is called when a player object is moved after <a href="#MovePlayerObject">MovePlayerObject</a>
+ * (when it stops moving).</summary>
+ * <param name="playerid">The playerid the object is assigned to</param>
+ * <param name="objectid">The ID of the player object that was moved</param>
+ * <seealso name="OnObjectMoved" />
+ * <seealso name="MovePlayerObject" />
+ * <seealso name="IsPlayerObjectMoving" />
+ * <seealso name="StopPlayerObject" />
+ * <remarks>This callback can also be called for NPC.</remarks>
+ * <returns>
+ *   This callback does not handle returns.<br />
+ *   It is always called first in filterscripts.
+ * </returns>
+ */
+forward OnPlayerObjectMoved(playerid, objectid);
 

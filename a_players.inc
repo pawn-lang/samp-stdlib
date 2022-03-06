@@ -17,7 +17,33 @@
 #pragma tabsize 4
 #define SAMP_CONST_CORRECT
 
+// --------------------------------------------------
+// Defines
+// --------------------------------------------------
+
 // Limits
+/**
+ * <library>a_players</library>
+ */
+#if defined MAX_PLAYER_NAME
+	const __MAX_PLAYER_NAME                    = MAX_PLAYER_NAME;
+	#define __MAX_PLAYER_NAME
+#else
+	const MAX_PLAYER_NAME                      = 24;
+	#define MAX_PLAYER_NAME                    24
+#endif
+
+/**
+ * <library>a_players</library>
+ */
+#if defined MAX_PLAYERS
+	const __MAX_PLAYERS                        = MAX_PLAYERS;
+	#define __MAX_PLAYERS
+#else
+	const MAX_PLAYERS                          = 1000;
+	#define MAX_PLAYERS                        1000
+#endif
+
 /**
  * <library>a_players</library>
  */
@@ -64,18 +90,38 @@
 
 // Invalids
 /**
- * <library>a_npc</library>
+ * <library>a_players</library>
  */
 const PlayerText3D:INVALID_PLAYER_3DTEXT_ID    = PlayerText3D:0xFFFF;
 #define INVALID_PLAYER_3DTEXT_ID               (PlayerText3D:0xFFFF)
 
 /**
- * <library>a_samp</library>
+ * <library>a_players</library>
  */
 const PlayerText:INVALID_PLAYER_TEXT_DRAW      = PlayerText:0xFFFF;
 #define INVALID_PLAYER_TEXT_DRAW               (PlayerText:0xFFFF)
 
+/**
+ * <library>a_players</library>
+ */
+const NO_TEAM                                  = 0xFF;
+#define NO_TEAM                                0xFF
+
+/**
+ * <library>a_players</library>
+ */
+const INVALID_PLAYER_ID                        = 0xFFFF;
+#define INVALID_PLAYER_ID                      0xFFFF
+
 // Checks
+#if MAX_PLAYER_NAME < 3 || MAX_PLAYER_NAME > 24
+	#error MAX_PLAYER_NAME must be >= 3 and <= 24
+#endif
+
+#if MAX_PLAYERS < 1 || MAX_PLAYERS > 1000
+	#error MAX_PLAYERS must be >= 1 and <= 1000
+#endif
+
 #if MAX_PLAYER_TEXT_DRAWS < PlayerText:1 || MAX_PLAYER_TEXT_DRAWS > PlayerText:256
 	#error MAX_PLAYER_TEXT_DRAWS must be >= 1 and <= 256
 #endif
@@ -91,6 +137,67 @@ const PlayerText:INVALID_PLAYER_TEXT_DRAW      = PlayerText:0xFFFF;
 #if MAX_CHATBUBBLE_LENGTH < 1 || MAX_CHATBUBBLE_LENGTH > 144
 	#error MAX_CHATBUBBLE_LENGTH must be >= 1 and <= 144
 #endif
+
+// Enums
+///
+
+/**
+ * <library>a_players</library>
+ * <summary>States</summary>
+ */
+#define PLAYER_STATE: __TAG(PLAYER_STATE):
+enum PLAYER_STATE:__PLAYER_STATE
+{
+	PLAYER_STATE_NONE,
+	PLAYER_STATE_ONFOOT,
+	PLAYER_STATE_DRIVER,
+	PLAYER_STATE_PASSENGER,
+	PLAYER_STATE_WASTED                        = 7,
+	PLAYER_STATE_SPAWNED,
+	PLAYER_STATE_SPECTATING
+}
+static stock PLAYER_STATE:_@PLAYER_STATE() { return __PLAYER_STATE; }
+
+/**
+ * <library>a_players</library>
+ * <summary>Used internally</summary>
+ */
+#pragma deprecated Used internally.
+const PLAYER_STATE:PLAYER_STATE_EXIT_VEH       = PLAYER_STATE:4;
+#define PLAYER_STATE_EXIT_VEHICLE              PLAYER_STATE_EXIT_VEH
+
+/**
+ * <library>a_players</library>
+ * <summary>Used internally</summary>
+ */
+#pragma deprecated Used internally.
+const PLAYER_STATE:PLAYER_STATE_ENTER_VEHICLE_DRV = PLAYER_STATE:5;
+#define PLAYER_STATE_ENTER_VEHICLE_DRIVER      PLAYER_STATE_ENTER_VEHICLE_DRV
+
+/**
+ * <library>a_players</library>
+ * <summary>Used internally</summary>
+ */
+#pragma deprecated Used internally.
+const PLAYER_STATE:PLAYER_STATE_ENTER_VEHICLE_PASS = PLAYER_STATE:6;
+#define PLAYER_STATE_ENTER_VEHICLE_PASSENGER   PLAYER_STATE_ENTER_VEHICLE_PASS
+
+///
+
+/**
+ * <library>a_players</library>
+ * <summary>Marker modes used by <c>ShowPlayerMarkers()</c></summary>
+ */
+#define PLAYER_MARKERS_MODE: __TAG(PLAYER_MARKERS_MODE):
+enum PLAYER_MARKERS_MODE:__PLAYER_MARKERS_MODE
+{
+	PLAYER_MARKERS_MODE_OFF,
+	PLAYER_MARKERS_MODE_GLOBAL,
+	PLAYER_MARKERS_MODE_STREAMED
+}
+static stock PLAYER_MARKERS_MODE:_@PLAYER_MARKERS_MODE() { return __PLAYER_MARKERS_MODE; }
+
+///
 
 /**
  * <library>a_players</library>
@@ -1072,7 +1179,7 @@ native GetPlayerKeys(playerid, &KEY:keys, &KEY:updown, &KEY:leftright);
  * <seealso name="GetPlayerScore" />
  * <seealso name="GetPlayerVersion" />
  * <remarks>A player's name can be up to 24 characters long (as of <b>0.3d R2</b>) by using <a href="#SetPlayerName">SetPlayerName</a>.
- *  This is defined in <c>a_samp.inc</c> as <b><c>24</c></b>.  However, the client can
+ * This is defined as <b><c>24</c></b> by default.  However, the client can
  * only join with a nickname between 3 and 20 characters, otherwise the connection will be rejected
  * and the player has to quit to choose a valid name.</remarks>
  * <returns>The length of the player's name. <b><c>0</c></b> if player specified doesn't exist.</returns>
@@ -3462,7 +3569,7 @@ native CreateExplosionForPlayer(playerid, Float:x, Float:y, Float:z, type, Float
 native SendClientCheck(playerid, type, memoryAddress, memoryOffset, byteCount);
 
 /**
- * <library>a_samp</library>
+ * <library>a_players</library>
  * <summary>Creates a 3D Text Label only for a specific player.</summary>
  * <param name="playerid">The player which should see the newly created 3DText Label</param>
  * <param name="text">The text to display</param>
@@ -3490,7 +3597,7 @@ native SendClientCheck(playerid, type, memoryAddress, memoryOffset, byteCount);
 native PlayerText3D:CreatePlayer3DTextLabel(playerid, const text[], colour, Float:x, Float:y, Float:z, Float:drawDistance, parentPlayerid = INVALID_PLAYER_ID, parentVehicleid = INVALID_VEHICLE_ID, bool:testLOS = false);
 
 /**
- * <library>a_samp</library>
+ * <library>a_players</library>
  * <summary>Destroy a 3D text label that was created using <a href="#CreatePlayer3DTextLabel">CreatePlayer3DTextLabel</a>.</summary>
  * <param name="playerid">The ID of the player whose 3D text label to delete</param>
  * <param name="textid">The ID of the player's 3D text label to delete</param>
@@ -3509,7 +3616,7 @@ native PlayerText3D:CreatePlayer3DTextLabel(playerid, const text[], colour, Floa
 native DeletePlayer3DTextLabel(playerid, PlayerText3D:textid);
 
 /**
- * <library>a_samp</library>
+ * <library>a_players</library>
  * <summary>Updates a player 3D Text Label's text and colour.</summary>
  * <param name="playerid">The ID of the player for which the 3D Text Label was created</param>
  * <param name="textid">The 3D Text Label you want to update</param>
@@ -3526,4 +3633,177 @@ native DeletePlayer3DTextLabel(playerid, PlayerText3D:textid);
  * <remarks>If <paramref name="text" /> is empty, the server/clients next to the text might crash!</remarks>
  */
 native UpdatePlayer3DTextLabelText(playerid, PlayerText3D:textid, colour, const text[]);
+
+/**
+ * <summary>This callback is called when a player clicks on a player-textdraw.  It is not called when
+ * player cancels the select mode (ESC) - however, <a href="#OnPlayerClickTextDraw">OnPlayerClickTextDraw</a>
+ * is.</summary>
+ * <param name="playerid">The ID of the player that selected a textdraw</param>
+ * <param name="playertextid">The ID of the player-textdraw that the player selected</param>
+ * <seealso name="PlayerTextDrawSetSelectable" />
+ * <seealso name="OnPlayerClickTextDraw" />
+ * <seealso name="OnPlayerClickPlayer" />
+ * <remarks>This callback was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
+ * <remarks>When a player presses ESC to cancel selecting a textdraw, <a href="#OnPlayerClickTextDraw">OnPlayerClickTextDraw</a>
+ * is called with a textdraw ID of <b><c>INVALID_TEXT_DRAW</c></b>. <a href="#OnPlayerClickPlayerTextDraw">OnPlayerClickPlayerTextDraw</a>
+ * won't be called also.</remarks>
+ * <returns>
+ *   Returning <b><c>1</c></b> in this callback will prevent it being called in other scripts.  This
+ * should be used to signal that the textdraw on which they clicked was 'found' and no further processing
+ * is needed.  You should return <b><c>0</c></b> if the textdraw on which they clicked wasn't found,
+ * just like in <a href="#OnPlayerCommandText">OnPlayerCommandText</a>.<br />
+ *   It is always called first in filterscripts so returning <b><c>1</c></b> there also blocks other
+ * scripts from seeing it.
+ * </returns>
+ */
+forward OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid);
+
+/**
+ * <summary>This callback is called when a player is streamed by some other player's client.</summary>
+ * <param name="playerid">The ID of the player who has been streamed</param>
+ * <param name="forplayerid">The ID of the player that streamed the other player in</param>
+ * <seealso name="OnPlayerStreamOut" />
+ * <seealso name="OnActorStreamIn" />
+ * <seealso name="OnVehicleStreamIn" />
+ * <remarks>This callback was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
+ * <remarks>This callback can also be called by NPC.</remarks>
+ * <returns>
+ *   This callback does not handle returns.<br />
+ *   It is always called first in filterscripts.
+ * </returns>
+ */
+forward OnPlayerStreamIn(playerid, forplayerid);
+
+/**
+ * <summary>This callback is called when a player is streamed out from some other player's client.</summary>
+ * <param name="playerid">The player who has been destreamed</param>
+ * <param name="forplayerid">The player who has destreamed the other player</param>
+ * <seealso name="OnPlayerStreamIn" />
+ * <seealso name="OnActorStreamOut" />
+ * <seealso name="OnVehicleStreamOut" />
+ * <remarks>This callback was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
+ * <remarks>This callback can also be called by NPC.</remarks>
+ * <returns>
+ *   This callback does not handle returns.<br />
+ *   It is always called first in filterscripts.
+ * </returns>
+ */
+forward OnPlayerStreamOut(playerid, forplayerid);
+
+/**
+ * <summary>This callback is called when a player takes damage.</summary>
+ * <param name="playerid">The ID of the player that took damage</param>
+ * <param name="issuerid">The ID of the player that caused the damage. <b><c>INVALID_PLAYER_ID</c></b>
+ * if self-inflicted</param>
+ * <param name="amount">The amount of damage the player took (health and armour combined)</param>
+ * <param name="weaponid">The ID of the <a href="http://wiki.sa-mp.com/wiki/Weapons">weapon/reason</a>
+ * for the damage</param>
+ * <param name="bodypart">The body part that was hit. (NOTE: This parameter was added in <b>0.3z</b>.
+ *  Leave it out if using an older version!)</param>
+ * <seealso name="OnPlayerGiveDamage" />
+ * <seealso name="OnPlayerWeaponShot" />
+ * <remarks>This callback was added in <b>SA-MP 0.3d</b> and will not work in earlier versions!</remarks>
+ * <remarks><a href="#GetPlayerHealth">GetPlayerHealth</a> and <a href="#GetPlayerArmour">GetPlayerArmour</a>
+ * will return the old amounts of the player before this callback. </remarks>
+ * <remarks>
+ *   The weaponid will return <b><c>37</c></b> (flame thrower) from any fire sources (e.g.  molotov,
+ * <b><c>18</c></b>).<br />
+ *   The weaponid will return <b><c>51</c></b> from any weapon that creates an explosion (e.g.  RPG,
+ * grenade)<br />
+ *   <b>playerid</b> is the only one who can call the callback.<br />
+ *   The amount is always the maximum damage the weaponid can do, even when the health left is less
+ * than that maximum damage.  So when a player has <b><c>100.0</c></b> health and gets shot with a Desert
+ * Eagle which has a damage value of <b><c>46.2</c></b>, it takes 3 shots to kill that player.  All
+ * 3 shots will show an amount of <b><c>46.2</c></b>, even though when the last shot hits, the player
+ * only has <b><c>7.6</c></b> health left.
+ * </remarks>
+ * <returns>
+ *   <b><c>1</c></b> - Callback will not be called in other filterscripts.<br />
+ *   <b><c>0</c></b> - Allows this callback to be called in other filterscripts.<br />
+ *   It is always called first in filterscripts so returning <b><c>1</c></b> there blocks other filterscripts
+ * from seeing it.
+ * </returns>
+ */
+forward OnPlayerTakeDamage(playerid, issuerid, Float:amount, weaponid, bodypart);
+
+/**
+ * <summary>This callback is called when a player gives damage to another player.</summary>
+ * <param name="playerid">The ID of the player that gave damage</param>
+ * <param name="damagedid">The ID of the player that received damage</param>
+ * <param name="amount">The amount of health/armour damagedid has lost (combined)</param>
+ * <param name="weaponid">The <a href="http://wiki.sa-mp.com/wiki/Weapons">reason</a> that caused the
+ * damage</param>
+ * <param name="bodypart">The body part that was hit. (NOTE: This parameter was added in <b>0.3z</b>.
+ *  Leave it out if using an older version!)</param>
+ * <seealso name="OnPlayerTakeDamage" />
+ * <remarks>This callback was added in <b>SA-MP 0.3d</b> and will not work in earlier versions!</remarks>
+ * <remarks>
+ *   Keep in mind this function can be inaccurate in some cases.<br />
+ *   If you want to prevent certain players from damaging eachother, use <a href="#SetPlayerTeam">SetPlayerTeam</a>.<br
+ * />
+ *   The weaponid will return <b><c>37</c></b> (flame thrower) from any fire sources (e.g.  molotov,
+ * 18)<br />
+ *   The weaponid will return <b><c>51</c></b> from any weapon that creates an explosion (e.g.  RPG,
+ * grenade)<br />
+ *   <b>playerid</b> is the only one who can call the callback.<br />
+ *   The amount is always the maximum damage the weaponid can do, even when the health left is less
+ * than that maximum damage.  So when a player has <b><c>100.0</c></b> health and gets shot with a Desert
+ * Eagle which has a damage value of <b><c>46.2</c></b>, it takes 3 shots to kill that player.  All
+ * 3 shots will show an amount of <b><c>46.2</c></b>, even though when the last shot hits, the player
+ * only has <b><c>7.6</c></b> health left.
+ * </remarks>
+ * <returns>
+ *   <b><c>1</c></b> - Callback will not be called in other filterscripts.<br />
+ *   <b><c>0</c></b> - Allows this callback to be called in other filterscripts.<br />
+ *   It is always called first in filterscripts so returning <b><c>1</c></b> there blocks other filterscripts
+ * from seeing it.
+ * </returns>
+ */
+forward OnPlayerGiveDamage(playerid, damagedid, Float:amount, weaponid, bodypart);
+
+/**
+ * <summary>Called when a player double-clicks on a player on the scoreboard.</summary>
+ * <param name="playerid">The ID of the player that clicked on a player on the scoreboard</param>
+ * <param name="clickedplayerid">The ID of the player that was clicked on</param>
+ * <param name="source">The source of the player's click</param>
+ * <seealso name="OnPlayerClickTextDraw" />
+ * <remarks>This callback was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
+ * <remarks>There is currently only one <paramref name="source" /> (<b><c>0 - CLICK_SOURCE_SCOREBOARD</c></b>).
+ *  The existence of this argument suggests that more sources may be supported in the future.</remarks>
+ * <returns>
+ *   <b><c>1</c></b> - Will prevent other filterscripts from receiving this callback.<br />
+ *   <b><c>0</c></b> - Indicates that this callback will be passed to the next filterscript.<br />
+ *   It is always called first in filterscripts.
+ * </returns>
+ */
+#if !defined CLICK_SOURCE
+	#define CLICK_SOURCE: _:
+#endif
+forward OnPlayerClickPlayer(playerid, clickedplayerid, CLICK_SOURCE:source);
+
+/**
+ * <summary>This callback is called when a player dies, either by suicide or by being killed by another
+ * player.</summary>
+ * <param name="playerid">The ID of the player that died</param>
+ * <param name="killerid">The ID of the player that killed the player who died, or <b><c>INVALID_PLAYER_ID</c></b>
+ * if there was none</param>
+ * <param name="reason">The ID of the <a href="http://wiki.sa-mp.com/wiki/Weapons">reason</a> for the
+ * player's death</param>
+ * <seealso name="OnPlayerSpawn" />
+ * <seealso name="SendDeathMessage" />
+ * <seealso name="SetPlayerHealth" />
+ * <remarks>
+ *   The reason will return 37 (flame thrower) from any fire sources (e.g.  molotov, 18)<br />
+ *   The reason will return 51 from any weapon that creates an explosion (e.g.  RPG, grenade)<br />
+ *   You do not need to check whether killerid is valid before using it in <a href="#SendDeathMessage">SendDeathMessage</a>.
+ * <b><c>INVALID_PLAYER_ID</c></b> is a valid killerid ID parameter in that function.<br />
+ *   <b>playerid</b> is the only one who can call the callback. (good to know for anti fake death)
+ * </remarks>
+ * <returns>
+ *   <b><c>0</c></b> - Will prevent other filterscripts from receiving this callback.<br />
+ *   <b><c>1</c></b> - Indicates that this callback will be passed to the next filterscript.<br />
+ *   It is always called first in filterscripts.
+ * </returns>
+ */
+forward OnPlayerDeath(playerid, killerid, reason);
 

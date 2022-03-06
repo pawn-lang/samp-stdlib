@@ -21,6 +21,15 @@
 // Defines
 // --------------------------------------------------
 
+// Limits
+
+// Invalids
+
+// Checks
+
+// Enums
+///
+
 /**
  * <library>a_http</library>
  * <summary>HTTP request types</summary>

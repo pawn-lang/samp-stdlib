@@ -21,6 +21,33 @@
 // Defines
 // --------------------------------------------------
 
+// Limits
+/**
+ * <library>a_vehicles</library>
+ */
+#if defined MAX_VEHICLES
+	const __MAX_VEHICLES                       = MAX_VEHICLES;
+	#define __MAX_VEHICLES
+#else
+	const MAX_VEHICLES                         = 2000;
+	#define MAX_VEHICLES                       2000
+#endif
+
+// Invalids
+/**
+ * <library>a_vehicles</library>
+ */
+const INVALID_VEHICLE_ID                       = 0xFFFF;
+#define INVALID_VEHICLE_ID                     0xFFFF
+
+// Checks
+#if MAX_VEHICLES < 1 || MAX_VEHICLES > 2000
+	#error MAX_VEHICLES must be >= 1 and <= 2000
+#endif
+
+// Enums
+///
+
 /**
  * <library>a_vehicles</library>
  */
@@ -987,4 +1014,289 @@ native GetVehicleVirtualWorld(vehicleid);
  * <returns>true or false.</returns>
  */
 native bool:IsValidVehicle(vehicleid);
+
+/**
+ * <summary>This callback is called when a player sent a trailer update.</summary>
+ * <param name="playerid">The ID of the player who sent a trailer update</param>
+ * <param name="vehicleid">The Trailer being updated</param>
+ * <seealso name="OnUnoccupiedVehicleUpdate" />
+ * <seealso name="GetVehicleTrailer" />
+ * <seealso name="IsTrailerAttachedToVehicle" />
+ * <seealso name="AttachTrailerToVehicle" />
+ * <seealso name="DetachTrailerFromVehicle" />
+ * <remarks>This callback was added in <b>SA-MP 0.3z R4</b> and will not work in earlier versions!</remarks>
+ * <remarks>This callback is called very frequently per second per trailer.  You should refrain from
+ * implementing intensive calculations or intensive file writing/reading operations in this callback.
+ * </remarks>
+ * <returns>
+ *   <b><c>0</c></b> - Cancels any trailer updates from being sent to other players.  Update is still
+ * sent to the updating player.<br />
+ *   <b><c>1</c></b> - Processes the trailer update as normal and synchronizes it between all players.<br
+ * />
+ *   It is always called first in filterscripts.
+ * </returns>
+ */
+forward OnTrailerUpdate(playerid, vehicleid);
+
+/**
+ * <summary>This callback is called when a vehicle's siren is toggled.</summary>
+ * <param name="playerid">The ID of the player that toggled the siren (driver)</param>
+ * <param name="vehicleid">The ID of the vehicle of which the siren was toggled for</param>
+ * <param name="newstate"><b><c>0</c></b> if siren was turned off, <b><c>1</c></b> if siren was turned
+ * on</param>
+ * <seealso name="GetVehicleParamsSirenState" />
+ * <remarks>This callback was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
+ * <remarks>This callback can also be called by NPC.</remarks>
+ * <remarks>This callback is only called when a vehicle's siren is toggled on or off, NOT when the alternate
+ * siren is in use (holding horn).</remarks>
+ * <returns>
+ *   <b><c>1</c></b> - Will prevent gamemode from receiving this callback.<br />
+ *   <b><c>0</c></b> - Indicates that this callback will be passed to the gamemode.<br />
+ *   It is always called first in filterscripts.
+ * </returns>
+ */
+forward OnVehicleSirenStateChange(playerid, vehicleid, newstate);
+
+/**
+ * <summary>Called when a vehicle is streamed to a player's client.</summary>
+ * <param name="vehicleid">The ID of the vehicle that streamed in for the player</param>
+ * <param name="forplayerid">The ID of the player who the vehicle streamed in for</param>
+ * <seealso name="OnVehicleStreamOut" />
+ * <seealso name="OnPlayerStreamIn" />
+ * <seealso name="OnPlayerStreamOut" />
+ * <remarks>This callback was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
+ * <remarks>This callback can also be called by NPC.</remarks>
+ * <returns>
+ *   This callback does not handle returns.<br />
+ *   It is always called first in filterscripts.
+ * </returns>
+ */
+forward OnVehicleStreamIn(vehicleid, forplayerid);
+
+/**
+ * <summary>This callback is called when a vehicle is streamed out for a player's client (it's so far
+ * away that they can't see it).</summary>
+ * <param name="vehicleid">The ID of the vehicle that streamed out</param>
+ * <param name="forplayerid">The ID of the player who is no longer streaming the vehicle</param>
+ * <seealso name="OnVehicleStreamIn" />
+ * <seealso name="OnPlayerStreamIn" />
+ * <seealso name="OnPlayerStreamOut" />
+ * <remarks>This callback was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
+ * <remarks>This callback can also be called by NPC.</remarks>
+ * <returns>
+ *   This callback does not handle returns.<br />
+ *   It is always called first in filterscripts.
+ * </returns>
+ */
+forward OnVehicleStreamOut(vehicleid, forplayerid);
+
+/**
+ * <summary>This callback is called when a player <b><c>starts</c></b> to enter a vehicle, meaning the
+ * player is not in vehicle yet at the time this callback is called.</summary>
+ * <param name="playerid">ID of the player who attempts to enter a vehicle</param>
+ * <param name="vehicleid">ID of the vehicle the player is attempting to enter</param>
+ * <param name="ispassenger"><b><c>0</c></b> if entering as driver. <b><c>1</c></b> if entering as passenger</param>
+ * <seealso name="OnPlayerExitVehicle" />
+ * <seealso name="OnPlayerStateChange" />
+ * <seealso name="PutPlayerInVehicle" />
+ * <seealso name="GetPlayerVehicleSeat" />
+ * <remarks>This callback is called when a player <b>BEGINS</b> to enter a vehicle, not when they HAVE
+ * entered it.  See <a href="#OnPlayerStateChange">OnPlayerStateChange</a>. </remarks>
+ * <remarks>This callback is still called if the player is denied entry to the vehicle (e.g.  it is
+ * locked or full). </remarks>
+ * <returns>
+ *   This callback does not handle returns.<br />
+ *   It is always called first in filterscripts.
+ * </returns>
+ */
+forward OnPlayerEnterVehicle(playerid, vehicleid, ispassenger);
+
+/**
+ * <summary>This callback is called when a player <b>starts</b> to exit a vehicle.</summary>
+ * <param name="playerid">The ID of the player that is exiting a vehicle</param>
+ * <param name="vehicleid">The ID of the vehicle the player is exiting</param>
+ * <seealso name="OnPlayerEnterVehicle" />
+ * <seealso name="OnPlayerStateChange" />
+ * <seealso name="RemovePlayerFromVehicle" />
+ * <seealso name="GetPlayerVehicleSeat" />
+ * <remarks>Not called if the player falls off a bike or is removed from a vehicle by other means such
+ * as using <a href="#SetPlayerPos">SetPlayerPos</a>.</remarks>
+ * <remarks>You must use <a href="#OnPlayerStateChange">OnPlayerStateChange</a> and check if their old
+ * state is <b><c>PLAYER_STATE_DRIVER</c></b> or <b><c>PLAYER_STATE_PASSENGER</c></b> and their new
+ * state is <b><c>PLAYER_STATE_ONFOOT</c></b>.</remarks>
+ * <returns>
+ *   This callback does not handle returns.<br />
+ *   It is always called first in filterscripts.
+ * </returns>
+ */
+forward OnPlayerExitVehicle(playerid, vehicleid);
+
+/**
+ * <summary>This callback is called when a vehicle <b>re</b>spawns.</summary>
+ * <param name="vehicleid">The ID of the vehicle that spawned</param>
+ * <seealso name="OnVehicleDeath" />
+ * <seealso name="OnPlayerSpawn" />
+ * <seealso name="SetVehicleToRespawn" />
+ * <seealso name="CreateVehicle" />
+ * <returns>
+ *   <b><c>0</c></b> - Will prevent other filterscripts from receiving this callback.<br />
+ *   <b><c>1</c></b> - Indicates that this callback will be passed to the next filterscript.<br />
+ *   It is always called first in filterscripts.
+ * </returns>
+ */
+forward OnVehicleSpawn(vehicleid);
+
+/**
+ * <summary>This callback is called when a vehicle is destroyed - either by exploding or becoming submerged
+ * in water.</summary>
+ * <param name="vehicleid">The ID of the vehicle that was destroyed</param>
+ * <param name="killerid">The ID of the player that reported (synced) the vehicle's destruction (name
+ * is misleading).  Generally the driver or a passenger (if any) or the closest player</param>
+ * <seealso name="OnVehicleSpawn" />
+ * <seealso name="SetVehicleHealth" />
+ * <remarks>This callback can also be called by NPC.</remarks>
+ * <remarks>This callback will also be called when a vehicle enters water, but the vehicle can be saved
+ * from destruction by teleportation or driving out (if only partially submerged).  The callback won't
+ * be called a second time, and the vehicle may disappear when the driver exits, or after a short time.</remarks>
+ * <returns>
+ *   This callback does not handle returns.<br />
+ *   It is always called first in filterscripts.
+ * </returns>
+ */
+forward OnVehicleDeath(vehicleid, killerid);
+
+/**
+ * <summary>This callback is called when a vehicle is modded.</summary>
+ * <param name="playerid">The ID of the driver of the vehicle</param>
+ * <param name="vehicleid">The ID of the vehicle which is modded</param>
+ * <param name="componentid">The ID of the component which was added to the vehicle</param>
+ * <seealso name="AddVehicleComponent" />
+ * <seealso name="OnEnterExitModShop" />
+ * <seealso name="OnVehiclePaintjob" />
+ * <seealso name="OnVehicleRespray" />
+ * <remarks>This callback is NOT called by <a href="#AddVehicleComponent">AddVehicleComponent</a>.</remarks>
+ * <returns>
+ *   Return <b><c>0</c></b> to desync the mod (or an invalid mod) from propagating and / or crashing
+ * players.<br />
+ *   It is always called first in gamemode so returning <b><c>0</c></b> there also blocks other filterscripts
+ * from seeing it.
+ * </returns>
+ */
+forward OnVehicleMod(playerid, vehicleid, componentid);
+
+/**
+ * <summary>This callback is called when a player enters or exits a mod shop.</summary>
+ * <param name="playerid">The ID of the player that entered or exited the modshop</param>
+ * <param name="enterexit"><b><c>1</c></b> if the player entered or <b><c>0</c></b> if they exited</param>
+ * <param name="interiorid">The interior ID of the modshop that the player is entering (or 0 if exiting)</param>
+ * <seealso name="OnVehicleMod" />
+ * <seealso name="OnVehicleRespray" />
+ * <seealso name="OnVehiclePaintjob" />
+ * <seealso name="AddVehicleComponent" />
+ * <remarks>This callback was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
+ * <remarks>Players collide when they get into the same mod shop.</remarks>
+ * <returns>
+ *   This callback does not handle returns.<br />
+ *   It is always called first in filterscripts.
+ * </returns>
+ */
+forward OnEnterExitModShop(playerid, enterexit, interiorid);
+
+/**
+ * <summary>Called when a player previews a vehicle paintjob inside a mod shop.  Watch out, this callback
+ * is not called when the player buys the paintjob.</summary>
+ * <param name="playerid">The ID of the player that changed the paintjob of their vehicle</param>
+ * <param name="vehicleid">The ID of the vehicle that had its paintjob changed</param>
+ * <param name="paintjobid">The ID of the new paintjob</param>
+ * <seealso name="ChangeVehiclePaintjob" />
+ * <seealso name="ChangeVehicleColor" />
+ * <seealso name="OnVehicleRespray" />
+ * <seealso name="OnVehicleMod" />
+ * <remarks>This callback is not called by <a href="#ChangeVehiclePaintjob">ChangeVehiclePaintjob</a>.</remarks>
+ * <returns>
+ *   This callback does not handle returns.  Returning <b><c>0</c></b> won't deny the paintjob change.<br
+ * />
+ *   It is always called first in gamemode so returning <b><c>0</c></b> there blocks other filterscripts
+ * from seeing it.
+ * </returns>
+ */
+forward OnVehiclePaintjob(playerid, vehicleid, paintjobid);
+
+/**
+ * <summary>This callback is called when a player exits a mod shop, even if the colors weren't changed.
+ *  Watch out, the name is ambiguous, Pay 'n' Spray shops don't call this callback.</summary>
+ * <param name="playerid">The ID of the player that is driving the vehicle</param>
+ * <param name="vehicleid">The ID of the vehicle that was resprayed</param>
+ * <param name="color1">The color that the vehicle's primary color was changed to</param>
+ * <param name="color2">The color that the vehicle's secondary color was changed to</param>
+ * <seealso name="ChangeVehicleColor" />
+ * <seealso name="ChangeVehiclePaintjob" />
+ * <seealso name="OnVehiclePaintjob" />
+ * <seealso name="OnVehicleMod" />
+ * <seealso name="OnEnterExitModShop" />
+ * <remarks>Previewing a component inside a mod shop might call this callback.</remarks>
+ * <remarks>This callback is not called by <a href="#ChangeVehicleColor">ChangeVehicleColor</a>.</remarks>
+ * <returns>
+ *   Returning <b><c>0</c></b> in this callback will deny the colour change.  Returning <b><c>1</c></b>
+ * will allow it.  This can be used to prevent hackers from changing vehicle colours using cheats.<br
+ * />
+ *   It is always called first in gamemode so returning <b><c>0</c></b> there also blocks other filterscripts
+ * from seeing it.
+ * </returns>
+ */
+forward OnVehicleRespray(playerid, vehicleid, color1, color2);
+
+/**
+ * <summary>This callback is called when a vehicle element such as doors, tires, panels, or lights change
+ * their damage status.</summary>
+ * <param name="vehicleid">The ID of the vehicle that was changed its damage status</param>
+ * <param name="playerid">The ID of the player who synced the change in the damage status (who had the
+ * car damaged or repaired)</param>
+ * <seealso name="GetVehicleDamageStatus" />
+ * <seealso name="UpdateVehicleDamageStatus" />
+ * <remarks>This callback was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
+ * <remarks>This does not include vehicle health changes</remarks>
+ * <returns>
+ *   <b><c>1</c></b> - Will prevent other filterscripts from receiving this callback.<br />
+ *   <b><c>0</c></b> - Indicates that this callback will be passed to the next filterscript.<br />
+ *   It is always called first in filterscripts.<br />
+ * </returns>
+ */
+forward OnVehicleDamageStatusUpdate(vehicleid, playerid);
+
+/**
+ * <summary>This callback is called when a player's client updates/syncs the position of a vehicle they're
+ * not driving.  This can happen outside of the vehicle or when the player is a passenger of a vehicle
+ * that has no driver.</summary>
+ * <param name="vehicleid">The ID of the vehicle that's position was updated</param>
+ * <param name="playerid">The ID of the player that sent a vehicle position sync update</param>
+ * <param name="passenger_seat">The ID of the seat if the player is a passenger.  0=not in vehicle,
+ * 1=front passenger, 2=backleft 3=backright 4+ is for coach/bus etc.  with many passenger seats</param>
+ * <param name="new_x">The new X coordinate of the vehicle.  This parameter was added in <b>0.3z</b>.
+ *  Leave it out if using an earlier version</param>
+ * <param name="new_y">The new Y coordinate of the vehicle.  This parameter was added in <b>0.3z</b>.
+ *  Leave it out if using an earlier version</param>
+ * <param name="new_z">The new Z coordinate of the vehicle.  This parameter was added in <b>0.3z</b>.
+ *  Leave it out if using an earlier version</param>
+ * <param name="vel_x">The new X velocity of the vehicle.  This parameter was added in <b>0.3z R4</b>.
+ *  Leave it out if using an earlier version</param>
+ * <param name="vel_y">The new Y velocity of the vehicle.  This parameter was added in <b>0.3z R4</b>.
+ *  Leave it out if using an earlier version</param>
+ * <param name="vel_z">The new Z velocity of the vehicle.  This parameter was added in <b>0.3z R4</b>.
+ *  Leave it out if using an earlier version</param>
+ * <seealso name="OnTrailerUpdate" />
+ * <remarks>This callback was added in <b>SA-MP 0.3c R3</b> and will not work in earlier versions!</remarks>
+ * <remarks>This callback is called very frequently per second per unoccupied vehicle.  You should refrain
+ * from implementing intensive calculations or intensive file writing/reading operations in this callback.</remarks>
+ * <remarks><a href="#GetVehiclePos">GetVehiclePos</a> will return the old coordinates of the vehicle
+ * before this update.</remarks>
+ * <returns>
+ *   Returning <b><c>0</c></b> in this callback will stop the vehicle's position being synced to other
+ * players.  Update is still sent to the updating player.  Useful for combating vehicle teleport hacks.<br
+ * />
+ *   It is always called first in filterscripts so returning <b><c>0</c></b> there also blocks other
+ * scripts from seeing it.
+ * </returns>
+ */
+forward OnUnoccupiedVehicleUpdate(vehicleid, playerid, passenger_seat, Float:new_x, Float:new_y, Float:new_z, Float:vel_x, Float:vel_y, Float:vel_z);
 

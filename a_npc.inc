@@ -307,6 +307,38 @@ const Text3D:INVALID_3DTEXT_ID                 = Text3D:0xFFFF;
 const PlayerText3D:INVALID_PLAYER_3DTEXT_ID    = PlayerText3D:0xFFFF;
 #define INVALID_PLAYER_3DTEXT_ID               (PlayerText3D:0xFFFF)
 
+// Checks
+#if MAX_PLAYER_NAME < 1 || MAX_PLAYER_NAME > 24
+	#error MAX_PLAYER_NAME must be >= 1 and <= 24
+#endif
+
+#if MAX_PLAYERS < 1 || MAX_PLAYERS > 1000
+	#error MAX_PLAYERS must be >= 1 and <= 1000
+#endif
+
+#if MAX_VEHICLES < 1 || MAX_VEHICLES > 2000
+	#error MAX_VEHICLES must be >= 1 and <= 2000
+#endif
+
+#if MAX_OBJECTS < 1 || MAX_OBJECTS > 2000
+	#error MAX_OBJECTS must be >= 1 and <= 2000
+#endif
+
+#if MAX_GANG_ZONES < 1 || MAX_GANG_ZONES > 1024
+	#error MAX_GANG_ZONES must be >= 1 and <= 1024
+#endif
+
+#if MAX_TEXT_DRAWS < Text:1 || MAX_TEXT_DRAWS > Text:2048
+	#error MAX_TEXT_DRAWS must be >= 1 and <= 2048
+#endif
+
+#if MAX_MENUS < Menu:1 || MAX_MENUS > Menu:128
+	#error MAX_MENUS must be >= 1 and <= 128
+#endif
+
+// Enums
+///
+
 /**
  * <library>a_npc</library>
  * <summary>States</summary>
@@ -459,35 +491,6 @@ enum PLAYER_RECORDING_TYPE:__PLAYER_RECORDING_TYPE
 	PLAYER_RECORDING_TYPE_ONFOOT
 }
 static stock PLAYER_RECORDING_TYPE:_@PLAYER_RECORDING_TYPE() { return __PLAYER_RECORDING_TYPE; }
-
-// Checks
-#if MAX_PLAYER_NAME < 1 || MAX_PLAYER_NAME > 24
-	#error MAX_PLAYER_NAME must be >= 1 and <= 24
-#endif
-
-#if MAX_PLAYERS < 1 || MAX_PLAYERS > 1000
-	#error MAX_PLAYERS must be >= 1 and <= 1000
-#endif
-
-#if MAX_VEHICLES < 1 || MAX_VEHICLES > 2000
-	#error MAX_VEHICLES must be >= 1 and <= 2000
-#endif
-
-#if MAX_OBJECTS < 1 || MAX_OBJECTS > 2000
-	#error MAX_OBJECTS must be >= 1 and <= 2000
-#endif
-
-#if MAX_GANG_ZONES < 1 || MAX_GANG_ZONES > 1024
-	#error MAX_GANG_ZONES must be >= 1 and <= 1024
-#endif
-
-#if MAX_TEXT_DRAWS < Text:1 || MAX_TEXT_DRAWS > Text:2048
-	#error MAX_TEXT_DRAWS must be >= 1 and <= 2048
-#endif
-
-#if MAX_MENUS < Menu:1 || MAX_MENUS > Menu:128
-	#error MAX_MENUS must be >= 1 and <= 128
-#endif
 
 #include <core>
 #include <float>

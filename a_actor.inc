@@ -17,6 +17,34 @@
 #pragma tabsize 4
 #define SAMP_CONST_CORRECT
 
+// --------------------------------------------------
+// Defines
+// --------------------------------------------------
+
+// Limits
+/**
+ * <library>a_actor</library>
+ */
+#if defined MAX_ACTORS
+	const __MAX_ACTORS                         = MAX_ACTORS;
+	#define __MAX_ACTORS
+#else
+	const MAX_ACTORS                           = 1000;
+	#define MAX_ACTORS                         1000
+#endif
+
+// Invalids
+/**
+ * <library>a_actor</library>
+ */
+const INVALID_ACTOR_ID                         = 0xFFFF;
+#define INVALID_ACTOR_ID                       0xFFFF
+
+// Checks
+#if MAX_ACTORS < 1 || MAX_ACTORS > 1000
+	#error MAX_ACTORS must be >= 1 and <= 1000
+#endif
+
 /**
  * <library>a_actor</library>
  * <summary>Create a static 'actor' in the world.  These 'actors' are like NPCs, however they have limited
@@ -292,4 +320,57 @@ native bool:IsActorInvulnerable(actorid);
  * <returns><b><c>1</c></b> if the actor is valid, <b><c>0</c></b> if not.</returns>
  */
 native bool:IsValidActor(actorid);
+
+/**
+ * <summary>This callback is called when a player gives damage to an actor.</summary>
+ * <param name="playerid">The ID of the player that gave damage</param>
+ * <param name="damaged_actorid">The ID of the actor that received damage</param>
+ * <param name="amount">The amount of health/armour damaged_actorid has lost</param>
+ * <param name="weaponid">The reason that caused the damage</param>
+ * <param name="bodypart">The body part that was hit</param>
+ * <seealso name="CreateActor" />
+ * <seealso name="SetActorInvulnerable" />
+ * <seealso name="SetActorHealth" />
+ * <seealso name="GetActorHealth" />
+ * <seealso name="IsActorInvulnerable" />
+ * <seealso name="IsValidActor" />
+ * <seealso name="OnActorStreamOut" />
+ * <seealso name="OnPlayerStreamIn" />
+ * <remarks>This callback was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
+ * <remarks>This function does not get called if the actor is set invulnerable (WHICH IS BY DEFAULT).
+ *  See <a href="#SetActorInvulnerable">SetActorInvulnerable</a>.</remarks>
+ * <returns>
+ *   <b><c>1</c></b> - Callback will not be called in other filterscripts.<br />
+ *   <b><c>0</c></b> - Allows this callback to be called in other filterscripts.<br />
+ *   It is always called first in filterscripts so returning <b><c>1</c></b> there blocks other filterscripts
+ * from seeing it.
+ * </returns>
+ */
+forward OnPlayerGiveDamageActor(playerid, damaged_actorid, Float:amount, weaponid, bodypart);
+
+/**
+ * <summary>This callback is called when an actor is streamed in by a player's client.</summary>
+ * <param name="actorid">The ID of the actor that has been streamed in for the player</param>
+ * <param name="forplayerid">The ID of the player that streamed the actor in</param>
+ * <seealso name="OnActorStreamOut" />
+ * <seealso name="OnPlayerStreamIn" />
+ * <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
+ * <remarks>This callback can also be called by NPC.</remarks>
+ * <remarks>It is always called first in filterscripts.</remarks>
+ * <returns>This callback does not handle returns.</returns>
+ */
+forward OnActorStreamIn(actorid, forplayerid);
+
+/**
+ * <summary>This callback is called when an actor is streamed out by a player's client.</summary>
+ * <param name="actorid">The ID of the actor that has been streamed out for the player</param>
+ * <param name="forplayerid">The ID of the player that streamed the actor out</param>
+ * <seealso name="OnActorStreamIn" />
+ * <seealso name="OnPlayerStreamOut" />
+ * <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
+ * <remarks>This callback can also be called by NPC.</remarks>
+ * <remarks>It is always called first in filterscripts.</remarks>
+ * <returns>This callback does not handle returns.</returns>
+ */
+forward OnActorStreamOut(actorid, forplayerid);
 
