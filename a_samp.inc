@@ -511,28 +511,24 @@ static stock FORCE_SYNC:_@FORCE_SYNC() { return __FORCE_SYNC; }
 #tryinclude <a_actor>
 #tryinclude <a_sampdb>
 
-#if !defined _actor_included
-	#error cannot read from file: "a_actor"
-#endif
-
-#if !defined _file_included
-	#error cannot read from file: "a_file"
-#endif
-
-#if !defined _objects_included
-	#error cannot read from file: "a_objects"
+#if !defined _vehicles_included
+	#error cannot read from file: "a_vehicles"
 #endif
 
 #if !defined _players_included
 	#error cannot read from file: "a_players"
 #endif
 
-#if !defined _sampdb_included
-	#error cannot read from file: "a_sampdb"
+#if !defined _objects_included
+	#error cannot read from file: "a_objects"
 #endif
 
-#if !defined _vehicles_included
-	#error cannot read from file: "a_vehicles"
+#if !defined _actor_included
+	#error cannot read from file: "a_actor"
+#endif
+
+#if !defined _sampdb_included
+	#error cannot read from file: "a_sampdb"
 #endif
 
 // Special case.  The old version didn't have `_http_included`.
