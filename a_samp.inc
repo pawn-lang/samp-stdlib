@@ -500,45 +500,48 @@ static stock FORCE_SYNC:_@FORCE_SYNC() { return __FORCE_SYNC; }
 #endif
 
 #tryinclude "a_vehicles"
-#tryinclude "a_players"
-#tryinclude "a_objects"
-#tryinclude "a_actor"
-#tryinclude "a_sampdb"
-
 #tryinclude <a_vehicles>
-#tryinclude <a_players>
-#tryinclude <a_objects>
-#tryinclude <a_actor>
-#tryinclude <a_sampdb>
-
 #if !defined _vehicles_included
 	#error cannot read from file: "a_vehicles"
 #endif
 
+#tryinclude "a_players"
+#tryinclude <a_players>
 #if !defined _players_included
 	#error cannot read from file: "a_players"
 #endif
 
+#tryinclude "a_objects"
+#tryinclude <a_objects>
 #if !defined _objects_included
 	#error cannot read from file: "a_objects"
 #endif
 
+#tryinclude "a_actor"
+#tryinclude <a_actor>
 #if !defined _actor_included
 	#error cannot read from file: "a_actor"
 #endif
 
+#tryinclude "a_sampdb"
+#tryinclude <a_sampdb>
 #if !defined _sampdb_included
 	#error cannot read from file: "a_sampdb"
 #endif
 
 // Special case.  The old version didn't have `_http_included`.
-#tryinclude "a_http"
-#if !defined HTTP
+#if !defined HTTP_ERROR_MALFORMED_RESPONSE
+	#tryinclude "a_http"
+#endif
+#if !defined HTTP_ERROR_MALFORMED_RESPONSE
 	#tryinclude <a_http>
 #endif
-#if defined HTTP
+#if defined HTTP_ERROR_MALFORMED_RESPONSE
 	#define _http_included
 	#define _inc_a_http
+
+	// And try fix the old duplicate definition.
+	#define HTTP(index,%9type,%9url[],%9data[],%9callback[]); __HTTP(index, HTTP_METHOD:method, const url[], const data[], const callback[]) = HTTP;
 #else
 	#error cannot read from file: "a_http"
 #endif
