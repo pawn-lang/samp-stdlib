@@ -269,8 +269,8 @@ static stock PLAYER_STATE:_@PLAYER_STATE() { return __PLAYER_STATE; }
  * <summary>Used internally</summary>
  */
 #pragma deprecated Used internally.
-const PLAYER_STATE:PLAYER_STATE_EXIT_VEHICLE = PLAYER_STATE:4;
-#define PLAYER_STATE_EXIT_VEHICLE              PLAYER_STATE_EXIT_VEHICLE
+const PLAYER_STATE:PLAYER_STATE_EXIT_VEH       = PLAYER_STATE:4;
+#define PLAYER_STATE_EXIT_VEHICLE              PLAYER_STATE_EXIT_VEH
 
 /**
  * <library>a_samp</library>
