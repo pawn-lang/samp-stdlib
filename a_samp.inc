@@ -499,17 +499,17 @@ static stock FORCE_SYNC:_@FORCE_SYNC() { return __FORCE_SYNC; }
 	#error cannot read from file: "time"
 #endif
 
-#tryinclude "a_actor"
-#tryinclude "a_objects"
-#tryinclude "a_players"
-#tryinclude "a_sampdb"
 #tryinclude "a_vehicles"
+#tryinclude "a_players"
+#tryinclude "a_objects"
+#tryinclude "a_actor"
+#tryinclude "a_sampdb"
 
-#tryinclude <a_actor>
-#tryinclude <a_objects>
-#tryinclude <a_players>
-#tryinclude <a_sampdb>
 #tryinclude <a_vehicles>
+#tryinclude <a_players>
+#tryinclude <a_objects>
+#tryinclude <a_actor>
+#tryinclude <a_sampdb>
 
 #if !defined _actor_included
 	#error cannot read from file: "a_actor"
