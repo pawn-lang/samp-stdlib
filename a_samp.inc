@@ -20,205 +20,7 @@
 #pragma tabsize 4
 #define SAMP_CONST_CORRECT
 
-// --------------------------------------------------
-// Defines
-// --------------------------------------------------
-
-// Limits
-/**
- * <library>a_samp</library>
- */
-#if defined MAX_PLAYER_NAME
-	const __MAX_PLAYER_NAME                    = MAX_PLAYER_NAME;
-	#undef MAX_PLAYER_NAME
-#else
-	const __MAX_PLAYER_NAME                    = 24;
-#endif
-
-/**
- * <library>a_samp</library>
- */
-const MAX_PLAYER_NAME                          = __MAX_PLAYER_NAME;
-#define __MAX_PLAYER_NAME
-
-/**
- * <library>a_samp</library>
- */
-#if defined MAX_PLAYERS
-	const __MAX_PLAYERS                        = MAX_PLAYERS;
-	#undef MAX_PLAYERS
-#else
-	const __MAX_PLAYERS                        = 1000;
-#endif
-
-/**
- * <library>a_samp</library>
- */
-const MAX_PLAYERS                              = __MAX_PLAYERS;
-#define __MAX_PLAYERS
-
-/**
- * <library>a_samp</library>
- */
-#if defined MAX_VEHICLES
-	const __MAX_VEHICLES                       = MAX_VEHICLES;
-	#undef MAX_VEHICLES
-#else
-	const __MAX_VEHICLES                       = 2000;
-#endif
-
-/**
- * <library>a_samp</library>
- */
-const MAX_VEHICLES                             = __MAX_VEHICLES;
-#define __MAX_VEHICLES
-
-/**
- * <library>a_samp</library>
- */
-#if defined MAX_ACTORS
-	const __MAX_ACTORS                         = MAX_ACTORS;
-	#undef MAX_ACTORS
-#else
-	const __MAX_ACTORS                         = 1000;
-#endif
-
-/**
- * <library>a_samp</library>
- */
-const MAX_ACTORS                               = __MAX_ACTORS;
-#define __MAX_ACTORS
-
-/**
- * <library>a_samp</library>
- */
-#if defined MAX_OBJECTS
-	const __MAX_OBJECTS                        = MAX_OBJECTS;
-	#undef MAX_OBJECTS
-#else
-	const __MAX_OBJECTS                        = 2000;
-#endif
-
-/**
- * <library>a_samp</library>
- */
-const MAX_OBJECTS                              = __MAX_OBJECTS;
-#define __MAX_OBJECTS
-
-/**
- * <library>a_samp</library>
- */
-#if defined MAX_GANG_ZONES
-	const __MAX_GANG_ZONES                     = MAX_GANG_ZONES;
-	#undef MAX_GANG_ZONES
-#else
-	const __MAX_GANG_ZONES                     = 1024;
-#endif
-
-/**
- * <library>a_samp</library>
- */
-const MAX_GANG_ZONES                           = __MAX_GANG_ZONES;
-#define __MAX_GANG_ZONES
-
-/**
- * <library>a_samp</library>
- */
-#if defined MAX_TEXT_DRAWS
-	const Text:__MAX_TEXT_DRAWS                = Text:MAX_TEXT_DRAWS;
-	#undef MAX_TEXT_DRAWS
-#else
-	const Text:__MAX_TEXT_DRAWS                = Text:2048;
-#endif
-
-/**
- * <library>a_samp</library>
- */
-const Text:MAX_TEXT_DRAWS                      = __MAX_TEXT_DRAWS;
-#define __MAX_TEXT_DRAWS
-
-/**
- * <library>a_samp</library>
- */
-#if defined MAX_PLAYER_TEXT_DRAWS
-	const PlayerText:__MAX_PLAYER_TEXT_DRAWS        = PlayerText:MAX_PLAYER_TEXT_DRAWS;
-	#undef MAX_PLAYER_TEXT_DRAWS
-#else
-	const PlayerText:__MAX_PLAYER_TEXT_DRAWS        = PlayerText:256;
-#endif
-
-/**
- * <library>a_samp</library>
- */
-const PlayerText:MAX_PLAYER_TEXT_DRAWS         = __MAX_PLAYER_TEXT_DRAWS;
-#define __MAX_PLAYER_TEXT_DRAWS
-
-/**
- * <library>a_samp</library>
- */
-#if defined MAX_MENUS
-	const Menu:__MAX_MENUS                     = Menu:MAX_MENUS;
-	#undef MAX_MENUS
-#else
-	const Menu:__MAX_MENUS                     = Menu:128;
-#endif
-
-/**
- * <library>a_samp</library>
- */
-const Menu:MAX_MENUS                           = __MAX_MENUS;
-#define __MAX_MENUS
-
-/**
- * <library>a_samp</library>
- */
-#if defined MAX_3DTEXT_GLOBAL
-	const Text3D:__MAX_3DTEXT_GLOBAL           = Text3D:MAX_3DTEXT_GLOBAL;
-	#undef MAX_3DTEXT_GLOBAL
-#else
-	const Text3D:__MAX_3DTEXT_GLOBAL           = Text3D:1024;
-#endif
-
-/**
- * <library>a_samp</library>
- */
-const Text3D:MAX_3DTEXT_GLOBAL                 = __MAX_3DTEXT_GLOBAL;
-#define __MAX_3DTEXT_GLOBAL
-
-/**
- * <library>a_samp</library>
- */
-#if defined MAX_3DTEXT_PLAYER
-	const PlayerText3D:__MAX_3DTEXT_PLAYER        = PlayerText3D:MAX_3DTEXT_PLAYER;
-	#undef MAX_3DTEXT_PLAYER
-#else
-	const PlayerText3D:__MAX_3DTEXT_PLAYER        = PlayerText3D:1024;
-#endif
-
-/**
- * <library>a_samp</library>
- */
-const PlayerText3D:MAX_3DTEXT_PLAYER           = __MAX_3DTEXT_PLAYER;
-#define __MAX_3DTEXT_PLAYER
-
-/**
- * <library>a_samp</library>
- */
-#if defined MAX_PICKUPS
-	const __MAX_PICKUPS                        = MAX_PICKUPS;
-	#undef MAX_PICKUPS
-#else
-	const __MAX_PICKUPS                        = 4096;
-#endif
-
-/**
- * <library>a_samp</library>
- */
-const MAX_PICKUPS                              = __MAX_PICKUPS;
-#define __MAX_PICKUPS
-
-#define INVALID_TIMER                          (0)
-
+// Optionally stricter tags.
 #if defined NO_TAGS
 	#define __TAG(%0) _
 #elseif defined STRONG_TAGS
@@ -235,61 +37,215 @@ const MAX_PICKUPS                              = __MAX_PICKUPS;
 #endif
 #define __LESS __TAG
 
+// --------------------------------------------------
+// Defines
+// --------------------------------------------------
+
+// Limits
+/**
+ * <library>a_samp</library>
+ */
+#if defined MAX_PLAYER_NAME
+	const __MAX_PLAYER_NAME                    = MAX_PLAYER_NAME;
+	#define __MAX_PLAYER_NAME
+#else
+	const MAX_PLAYER_NAME                      = 24;
+	#define MAX_PLAYER_NAME                    24
+#endif
+
+/**
+ * <library>a_samp</library>
+ */
+#if defined MAX_PLAYERS
+	const __MAX_PLAYERS                        = MAX_PLAYERS;
+	#define __MAX_PLAYERS
+#else
+	const MAX_PLAYERS                          = 1000;
+	#define MAX_PLAYERS                        1000
+#endif
+
+/**
+ * <library>a_samp</library>
+ */
+#if defined MAX_VEHICLES
+	const __MAX_VEHICLES                       = MAX_VEHICLES;
+	#define __MAX_VEHICLES
+#else
+	const MAX_VEHICLES                         = 2000;
+	#define MAX_VEHICLES                       2000
+#endif
+
+/**
+ * <library>a_samp</library>
+ */
+#if defined MAX_ACTORS
+	const __MAX_ACTORS                         = MAX_ACTORS;
+	#define __MAX_ACTORS
+#else
+	const MAX_ACTORS                           = 1000;
+	#define MAX_ACTORS                         1000
+#endif
+
+/**
+ * <library>a_samp</library>
+ */
+#if defined MAX_OBJECTS
+	const __MAX_OBJECTS                        = MAX_OBJECTS;
+	#define __MAX_OBJECTS
+#else
+	const MAX_OBJECTS                          = 2000;
+	#define MAX_OBJECTS                        2000
+#endif
+
+/**
+ * <library>a_samp</library>
+ */
+#if defined MAX_GANG_ZONES
+	const __MAX_GANG_ZONES                     = MAX_GANG_ZONES;
+	#define __MAX_GANG_ZONES
+#else
+	const MAX_GANG_ZONES                       = 1024;
+	#define MAX_GANG_ZONES                     1024
+#endif
+
+/**
+ * <library>a_samp</library>
+ */
+#if defined MAX_TEXT_DRAWS
+	const Text:__MAX_TEXT_DRAWS                = MAX_TEXT_DRAWS;
+	#define __MAX_TEXT_DRAWS
+#else
+	const Text:MAX_TEXT_DRAWS                  = Text:2048;
+	#define MAX_TEXT_DRAWS                     (Text:2048)
+#endif
+
+/**
+ * <library>a_samp</library>
+ */
+#if defined MAX_PLAYER_TEXT_DRAWS
+	const PlayerText:__MAX_PLAYER_TEXT_DRAWS   = MAX_PLAYER_TEXT_DRAWS;
+	#define __MAX_PLAYER_TEXT_DRAWS
+#else
+	const PlayerText:MAX_PLAYER_TEXT_DRAWS     = PlayerText:256;
+	#define MAX_PLAYER_TEXT_DRAWS              (PlayerText:256)
+#endif
+
+/**
+ * <library>a_samp</library>
+ */
+#if defined MAX_MENUS
+	const Menu:__MAX_MENUS                     = MAX_MENUS;
+	#define __MAX_MENUS
+#else
+	const Menu:MAX_MENUS                       = Menu:128;
+	#define MAX_MENUS                          (Menu:128)
+#endif
+
+/**
+ * <library>a_samp</library>
+ */
+#if defined MAX_3DTEXT_GLOBAL
+	const Text3D:__MAX_3DTEXT_GLOBAL           = MAX_3DTEXT_GLOBAL;
+	#define __MAX_3DTEXT_GLOBAL
+#else
+	const Text3D:MAX_3DTEXT_GLOBAL             = Text3D:1024;
+	#define MAX_3DTEXT_GLOBAL                  (Text3D:1024)
+#endif
+
+/**
+ * <library>a_samp</library>
+ */
+#if defined MAX_3DTEXT_PLAYER
+	const PlayerText3D:__MAX_3DTEXT_PLAYER     = MAX_3DTEXT_PLAYER;
+	#define __MAX_3DTEXT_PLAYER
+#else
+	const PlayerText3D:MAX_3DTEXT_PLAYER       = PlayerText3D:1024;
+	#define MAX_3DTEXT_PLAYER                  (PlayerText3D:1024)
+#endif
+
+/**
+ * <library>a_samp</library>
+ */
+#if defined MAX_PICKUPS
+	const __MAX_PICKUPS                        = MAX_PICKUPS;
+	#define __MAX_PICKUPS
+#else
+	const MAX_PICKUPS                          = 4096;
+	#define MAX_PICKUPS                        4096
+#endif
+
 // Invalids
 /**
  * <library>a_samp</library>
  */
-const NO_TEAM = 0xFF;
+const INVALID_TIMER                            = 0;
+#define INVALID_TIMER                          0
+
+/**
+ * <library>a_samp</library>
+ */
+const NO_TEAM                                  = 0xFF;
+#define NO_TEAM                                0xFF
 
 /**
  * <library>a_samp</library>
  */
 const INVALID_PLAYER_ID                        = 0xFFFF;
+#define INVALID_PLAYER_ID                      0xFFFF
 
 /**
  * <library>a_samp</library>
  */
 const INVALID_VEHICLE_ID                       = 0xFFFF;
+#define INVALID_VEHICLE_ID                     0xFFFF
 
 /**
  * <library>a_samp</library>
  */
 const INVALID_ACTOR_ID                         = 0xFFFF;
+#define INVALID_ACTOR_ID                       0xFFFF
 
 /**
  * <library>a_samp</library>
  */
 const INVALID_OBJECT_ID                        = 0xFFFF;
+#define INVALID_OBJECT_ID                      0xFFFF
 
 /**
  * <library>a_samp</library>
  */
 const Menu:INVALID_MENU                        = Menu:0xFF;
+#define INVALID_MENU                           (Menu:0xFF)
 
 /**
  * <library>a_samp</library>
  */
 const Text:INVALID_TEXT_DRAW                   = Text:0xFFFF;
+#define INVALID_TEXT_DRAW                      (Text:0xFFFF)
 
 /**
  * <library>a_samp</library>
  */
 const PlayerText:INVALID_PLAYER_TEXT_DRAW      = PlayerText:0xFFFF;
+#define INVALID_PLAYER_TEXT_DRAW               (PlayerText:0xFFFF)
 
 /**
  * <library>a_samp</library>
  */
 const INVALID_GANG_ZONE                        = 0xFFFFFFFF;
+#define INVALID_GANG_ZONE                      0xFFFFFFFF
 
 /**
  * <library>a_samp</library>
  */
 const Text3D:INVALID_3DTEXT_ID                 = Text3D:0xFFFF;
+#define INVALID_3DTEXT_ID                      (Text3D:0xFFFF)
 
 /**
  * <library>a_samp</library>
  */
 const PlayerText3D:INVALID_PLAYER_3DTEXT_ID    = PlayerText3D:0xFFFF;
+#define INVALID_PLAYER_3DTEXT_ID               (PlayerText3D:0xFFFF)
 
 /**
  * <library>a_samp</library>
@@ -314,6 +270,7 @@ static stock PLAYER_STATE:_@PLAYER_STATE() { return __PLAYER_STATE; }
  */
 #pragma deprecated Used internally.
 const PLAYER_STATE:PLAYER_STATE_EXIT_VEHICLE = PLAYER_STATE:4;
+#define PLAYER_STATE_EXIT_VEHICLE              (PLAYER_STATE:4)
 
 /**
  * <library>a_samp</library>
@@ -321,7 +278,7 @@ const PLAYER_STATE:PLAYER_STATE_EXIT_VEHICLE = PLAYER_STATE:4;
  */
 #pragma deprecated Used internally.
 const PLAYER_STATE:PLAYER_STATE_ENTER_VEHICLE_DRV = PLAYER_STATE:5;
-#define PLAYER_STATE_ENTER_VEHICLE_DRIVER PLAYER_STATE_ENTER_VEHICLE_DRV
+#define PLAYER_STATE_ENTER_VEHICLE_DRIVER           (PLAYER_STATE:5)
 
 /**
  * <library>a_samp</library>
@@ -329,7 +286,7 @@ const PLAYER_STATE:PLAYER_STATE_ENTER_VEHICLE_DRV = PLAYER_STATE:5;
  */
 #pragma deprecated Used internally.
 const PLAYER_STATE:PLAYER_STATE_ENTER_VEHICLE_PASS = PLAYER_STATE:6;
-#define PLAYER_STATE_ENTER_VEHICLE_PASSENGER PLAYER_STATE_ENTER_VEHICLE_PASS
+#define PLAYER_STATE_ENTER_VEHICLE_PASSENGER         (PLAYER_STATE:6)
 
 ///
 
