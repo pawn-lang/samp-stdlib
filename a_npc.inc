@@ -503,12 +503,10 @@ open.mp releases can use `A` as the first digit.
  * <seealso name="printf" />
  */
 #if defined _console_included
-	static stock a_samp_unused_print(const string[])
-	{
-		#pragma unused string
-		// Fixes a pawndoc bug - comments on `#ifdef`ed out functions are still
-		// put in the output, unattached to any function.  So make a function.
-	}
+	// Fixes a pawndoc bug - comments on `#ifdef`ed out functions are still put
+	// in the output, unattached to any function.  So make a function.
+	native a_npc_unused_print(const string[]);
+	#define a_npc_unused_print
 #else
 	native print(const string[]);
 #endif
@@ -546,12 +544,10 @@ open.mp releases can use `A` as the first digit.
  * the <b><c>%</c></b> and the <b><c>f</c></b>. (example: <b><c>%.2f</c></b>)</remarks>
  */
 #if defined _console_included
-	static stock a_npc_unused_printf(const format[], {Float, _}:...)
-	{
-		#pragma unused format
-		// Fixes a pawndoc bug - comments on `#ifdef`ed out functions are still
-		// put in the output, unattached to any function.  So make a function.
-	}
+	// Fixes a pawndoc bug - comments on `#ifdef`ed out functions are still put
+	// in the output, unattached to any function.  So make a function.
+	native a_npc_unused_printf(const format[], {Float, _}:...);
+	#define a_npc_unused_printf
 #else
 	native printf(const format[], {Float, _}:...);
 #endif
