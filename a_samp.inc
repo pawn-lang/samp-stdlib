@@ -546,8 +546,8 @@ static stock FORCE_SYNC:_@FORCE_SYNC() { return __FORCE_SYNC; }
 	#define _http_included
 	#define _inc_a_http
 
-	// And try fix the old duplicate definition.
-	#define HTTP(index,%9type,%9url[],%9data[],%9callback[]); __HTTP(index, HTTP_METHOD:method, const url[], const data[], const callback[]) = HTTP;
+	//// And try fix the old duplicate definition.
+	//#define HTTP(index,%9type,%9url[],%9data[],%9callback[]); __HTTP(index, HTTP_METHOD:method, const url[], const data[], const callback[]) = HTTP;
 #else
 	#error cannot read from file: "a_http"
 #endif
