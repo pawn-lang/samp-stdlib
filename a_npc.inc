@@ -21,6 +21,11 @@
  * </library>
  */
 
+// Ignores warning 217 for properly indented PAWNO code
+// It's tab size is 4 and often uses 4 spaces instead, PAWNCC's is 8
+#pragma tabsize 4
+#define SAMP_CONST_CORRECT
+
 ///
 
 /**
@@ -80,11 +85,6 @@
 
 public const SAMP_INCLUDES_VERSION = 0x037030;
 #pragma unused SAMP_INCLUDES_VERSION
-
-// Ignores warning 217 for properly indented PAWNO code
-// It's tab size is 4 and often uses 4 spaces instead, PAWNCC's is 8
-#pragma tabsize 4
-#define SAMP_CONST_CORRECT
 
 // Optionally stricter tags.
 #if defined NO_TAGS

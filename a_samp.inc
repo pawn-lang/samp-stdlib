@@ -21,12 +21,12 @@
  * </library>
  */
 
-///
-
 // Ignores warning 217 for properly indented PAWNO code
 // It's tab size is 4 and often uses 4 spaces instead, PAWNCC's is 8
 #pragma tabsize 4
 #define SAMP_CONST_CORRECT
+
+///
 
 /**
  *   <remarks>
