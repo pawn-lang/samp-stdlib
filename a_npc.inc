@@ -26,7 +26,7 @@
 #pragma tabsize 4
 #define SAMP_CONST_CORRECT
 
-///
+/// <p/>
 
 /**
  *   <remarks>
@@ -343,7 +343,7 @@ const PlayerText3D:INVALID_PLAYER_3DTEXT_ID    = PlayerText3D:0xFFFF;
 #endif
 
 // Enums
-///
+/// <p/>
 
 /**
  * <library>a_npc</library>
@@ -386,7 +386,7 @@ const PLAYER_STATE:PLAYER_STATE_ENTER_VEHICLE_DRV = PLAYER_STATE:5;
 const PLAYER_STATE:PLAYER_STATE_ENTER_VEHICLE_PASS = PLAYER_STATE:6;
 #define PLAYER_STATE_ENTER_VEHICLE_PASSENGER   PLAYER_STATE_ENTER_VEHICLE_PASS
 
-///
+/// <p/>
 
 /**
  * <library>a_npc</library>
@@ -448,7 +448,7 @@ enum WEAPON:__WEAPON
 }
 static stock WEAPON:_@WEAPON() { return __WEAPON; }
 
-///
+/// <p/>
 
 /**
  * <library>a_npc</library>
@@ -484,7 +484,7 @@ enum KEY:__KEY (<<= 1)
 }
 static stock KEY:_@KEY() { return __KEY; }
 
-///
+/// <p/>
 
 /**
  * <library>a_npc</library>

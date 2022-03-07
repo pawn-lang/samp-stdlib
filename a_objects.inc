@@ -21,7 +21,7 @@
 #pragma tabsize 4
 #define SAMP_CONST_CORRECT
 
-///
+/// <p/>
 
 // --------------------------------------------------
 // Defines
@@ -52,7 +52,7 @@ const INVALID_OBJECT_ID                        = 0xFFFF;
 #endif
 
 // Enums
-///
+/// <p/>
 
 /**
  * <library>a_objects</library>
@@ -65,7 +65,7 @@ enum SELECT_OBJECT:__SELECT_OBJECT
 }
 static stock SELECT_OBJECT:_@SELECT_OBJECT() { return __SELECT_OBJECT; }
 
-///
+/// <p/>
 
 /**
  * <library>a_objects</library>
@@ -90,7 +90,7 @@ enum OBJECT_MATERIAL_SIZE:__OBJECT_MATERIAL_SIZE (+= 10)
 }
 static stock OBJECT_MATERIAL_SIZE:_@OBJECT_MATERIAL_SIZE() { return __OBJECT_MATERIAL_SIZE; }
 
-///
+/// <p/>
 
 /**
  * <library>a_objects</library>

@@ -21,7 +21,7 @@
 #pragma tabsize 4
 #define SAMP_CONST_CORRECT
 
-///
+/// <p/>
 
 // --------------------------------------------------
 // Defines
@@ -145,7 +145,7 @@ const INVALID_PLAYER_ID                        = 0xFFFF;
 #endif
 
 // Enums
-///
+/// <p/>
 
 /**
  * <library>a_players</library>
@@ -188,7 +188,7 @@ const PLAYER_STATE:PLAYER_STATE_ENTER_VEHICLE_DRV = PLAYER_STATE:5;
 const PLAYER_STATE:PLAYER_STATE_ENTER_VEHICLE_PASS = PLAYER_STATE:6;
 #define PLAYER_STATE_ENTER_VEHICLE_PASSENGER   PLAYER_STATE_ENTER_VEHICLE_PASS
 
-///
+/// <p/>
 
 /**
  * <library>a_players</library>
@@ -203,7 +203,7 @@ enum PLAYER_MARKERS_MODE:__PLAYER_MARKERS_MODE
 }
 static stock PLAYER_MARKERS_MODE:_@PLAYER_MARKERS_MODE() { return __PLAYER_MARKERS_MODE; }
 
-///
+/// <p/>
 
 /**
  * <library>a_players</library>
@@ -234,7 +234,7 @@ enum SPECIAL_ACTION:__SPECIAL_ACTION
 }
 static stock SPECIAL_ACTION:_@SPECIAL_ACTION() { return __SPECIAL_ACTION; }
 
-///
+/// <p/>
 
 /**
  * <library>a_players</library>
@@ -251,7 +251,7 @@ enum FIGHT_STYLE:__FIGHT_STYLE
 }
 static stock FIGHT_STYLE:_@FIGHT_STYLE() { return __FIGHT_STYLE; }
 
-///
+/// <p/>
 
 /**
  * <library>a_players</library>
@@ -273,7 +273,7 @@ enum WEAPONSKILL:__WEAPONSKILL
 }
 static stock WEAPONSKILL:_@WEAPONSKILL() { return __WEAPONSKILL; }
 
-///
+/// <p/>
 
 /**
  * <library>a_players</library>
@@ -289,7 +289,7 @@ enum WEAPONSTATE:__WEAPONSTATE
 }
 static stock WEAPONSTATE:_@WEAPONSTATE() { return __WEAPONSTATE; }
 
-///
+/// <p/>
 
 /**
  * <library>a_players</library>
@@ -305,7 +305,7 @@ enum PLAYER_VARTYPE:__PLAYER_VARTYPE
 }
 static stock PLAYER_VARTYPE:_@PLAYER_VARTYPE() { return __PLAYER_VARTYPE; }
 
-///
+/// <p/>
 
 /**
  * <library>a_players</library>
@@ -320,7 +320,7 @@ enum MAPICON:__MAPICON
 }
 static stock MAPICON:_@MAPICON() { return __MAPICON; }
 
-///
+/// <p/>
 
 /**
  * <library>a_players</library>
@@ -333,7 +333,7 @@ enum CAM_MOVE:__CAMERA
 }
 static stock CAMERA_MOVE:_@CAMERA_MOVE() { return __CAMERA_MOVE; }
 
-///
+/// <p/>
 
 /**
  * <library>a_players</library>
@@ -359,7 +359,7 @@ enum CAM_MODE:__CAM_MODE
 }
 static stock CAM_MODE:_@CAM_MODE() { return __CAM_MODE; }
 
-///
+/// <p/>
 
 /**
  * <library>a_players</library>
@@ -374,7 +374,7 @@ enum SPECTATE_MODE:__SPECTATE_MODE
 }
 static stock SPECTATE_MODE:_@SPECTATE_MODE() { return __SPECTATE_MODE; }
 
-///
+/// <p/>
 
 /**
  * <library>a_players</library>

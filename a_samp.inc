@@ -26,7 +26,7 @@
 #pragma tabsize 4
 #define SAMP_CONST_CORRECT
 
-///
+/// <p/>
 
 /**
  *   <remarks>
@@ -216,7 +216,7 @@ const Text3D:INVALID_3DTEXT_ID                 = Text3D:0xFFFF;
 #endif
 
 // Enums
-///
+/// <p/>
 
 /**
  * <library>a_samp</library>
@@ -278,7 +278,7 @@ enum WEAPON:__WEAPON
 }
 static stock WEAPON:_@WEAPON() { return __WEAPON; }
 
-///
+/// <p/>
 
 /**
  * <library>a_samp</library>
@@ -314,7 +314,7 @@ enum KEY:__KEY (<<= 1)
 }
 static stock KEY:_@KEY() { return __KEY; }
 
-///
+/// <p/>
 
 /**
  * <library>a_samp</library>
@@ -332,7 +332,7 @@ enum DIALOG_STYLE:__DIALOG_STYLE
 }
 static stock DIALOG_STYLE:_@DIALOG_STYLE() { return __DIALOG_STYLE; }
 
-///
+/// <p/>
 
 /**
  * <library>a_samp</library>
@@ -350,7 +350,7 @@ enum TEXT_DRAW_FONT:__TEXT_DRAW_FONT
 }
 static stock TEXT_DRAW_FONT:_@TEXT_DRAW_FONT() { return __TEXT_DRAW_FONT; }
 
-///
+/// <p/>
 
 /**
  * <library>a_samp</library>
@@ -366,7 +366,7 @@ enum TEXT_DRAW_ALIGN:__TEXT_DRAW_ALIGN
 }
 static stock TEXT_DRAW_ALIGN:_@TEXT_DRAW_ALIGN() { return __TEXT_DRAW_ALIGN; }
 
-///
+/// <p/>
 
 /**
  * <library>a_samp</library>
@@ -382,7 +382,7 @@ enum SERVER_VARTYPE:__SERVER_VARTYPE
 }
 static stock SERVER_VARTYPE:_@SERVER_VARTYPE() { return __SERVER_VARTYPE; }
 
-///
+/// <p/>
 
 /**
  * <library>a_samp</library>
@@ -397,7 +397,7 @@ enum DOWNLOAD_REQUEST:__DOWNLOAD_REQUEST
 }
 static stock DOWNLOAD_REQUEST:_@DOWNLOAD_REQUEST() { return __DOWNLOAD_REQUEST; }
 
-///
+/// <p/>
 
 /**
  * <library>a_samp</library>
@@ -409,7 +409,7 @@ enum CLICK_SOURCE:__CLICK_SOURCE
 }
 static stock CLICK_SOURCE:_@CLICK_SOURCE() { return __CLICK_SOURCE; }
 
-///
+/// <p/>
 
 /**
  * <library>a_samp</library>
@@ -423,7 +423,7 @@ enum EDIT_RESPONSE:__EDIT_RESPONSE
 }
 static stock EDIT_RESPONSE:_@EDIT_RESPONSE() { return __EDIT_RESPONSE; }
 
-///
+/// <p/>
 
 /**
  * <library>a_samp</library>
@@ -439,7 +439,7 @@ enum BULLET_HIT_TYPE:__BULLET_HIT_TYPE
 }
 static stock BULLET_HIT_TYPE:_@BULLET_HIT_TYPE() { return __BULLET_HIT_TYPE; }
 
-///
+/// <p/>
 
 /**
  * <library>a_samp</library>
