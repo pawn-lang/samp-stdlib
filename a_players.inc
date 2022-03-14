@@ -363,6 +363,26 @@ static stock CAM_MODE:_@CAM_MODE() { return __CAM_MODE; }
 
 /**
  * <library>a_players</library>
+ */
+#define RACECP_TYPE: __TAG(RACECP_TYPE):
+enum RACECP_TYPE:__RACECP_TYPE
+{
+	RACECP_TYPE_GROUND_NORMAL                  = 0,
+	RACECP_TYPE_GROUND_FINISH                  = 1,
+	RACECP_TYPE_GROUND_EMPTY                   = 2,
+	RACECP_TYPE_AIR_NORMAL                     = 3,
+	RACECP_TYPE_AIR_FINISH                     = 4,
+	RACECP_TYPE_AIR_ROTATING                   = 5,
+	RACECP_TYPE_AIR_STROBING                   = 6,
+	RACECP_TYPE_AIR_SWINGING                   = 7,
+	RACECP_TYPE_AIR_BOBBING                    = 8
+}
+static stock RACECP_TYPE:_@RACECP_TYPE() { return __RACECP_TYPE; }
+
+/// <p/>
+
+/**
+ * <library>a_players</library>
  * <summary>Spectating</summary>
  */
 #define SPECTATE_MODE: __TAG(SPECTATE_MODE):
@@ -2856,7 +2876,7 @@ native DisablePlayerCheckpoint(playerid);
  *   <b><c>0</c></b>: The function failed to execute.  This means the player specified does not exist.
  * </returns>
  */
-native SetPlayerRaceCheckpoint(playerid, type, Float:centerX, Float:centerY, Float:centerZ, Float:nextX, Float:nextY, Float:nextZ, Float:size);
+native SetPlayerRaceCheckpoint(playerid, RACECP_TYPE:type, Float:centerX, Float:centerY, Float:centerZ, Float:nextX, Float:nextY, Float:nextZ, Float:size);
 
 /**
  * <library>a_players</library>
