@@ -364,20 +364,20 @@ static stock CAM_MODE:_@CAM_MODE() { return __CAM_MODE; }
 /**
  * <library>a_players</library>
  */
-#define RACECP_TYPE: __TAG(RACECP_TYPE):
-enum RACECP_TYPE:__RACECP_TYPE
+#define CP_TYPE: __TAG(CP_TYPE):
+enum CP_TYPE:__CP_TYPE
 {
-	RACECP_TYPE_GROUND_NORMAL                  = 0,
-	RACECP_TYPE_GROUND_FINISH                  = 1,
-	RACECP_TYPE_GROUND_EMPTY                   = 2,
-	RACECP_TYPE_AIR_NORMAL                     = 3,
-	RACECP_TYPE_AIR_FINISH                     = 4,
-	RACECP_TYPE_AIR_ROTATING                   = 5,
-	RACECP_TYPE_AIR_STROBING                   = 6,
-	RACECP_TYPE_AIR_SWINGING                   = 7,
-	RACECP_TYPE_AIR_BOBBING                    = 8
+	CP_TYPE_GROUND_NORMAL                  = 0,
+	CP_TYPE_GROUND_FINISH                  = 1,
+	CP_TYPE_GROUND_EMPTY                   = 2,
+	CP_TYPE_AIR_NORMAL                     = 3,
+	CP_TYPE_AIR_FINISH                     = 4,
+	CP_TYPE_AIR_ROTATING                   = 5,
+	CP_TYPE_AIR_STROBING                   = 6,
+	CP_TYPE_AIR_SWINGING                   = 7,
+	CP_TYPE_AIR_BOBBING                    = 8
 }
-static stock RACECP_TYPE:_@RACECP_TYPE() { return __RACECP_TYPE; }
+static stock CP_TYPE:_@CP_TYPE() { return __CP_TYPE; }
 
 /// <p/>
 
@@ -2876,7 +2876,7 @@ native DisablePlayerCheckpoint(playerid);
  *   <b><c>0</c></b>: The function failed to execute.  This means the player specified does not exist.
  * </returns>
  */
-native SetPlayerRaceCheckpoint(playerid, RACECP_TYPE:type, Float:centerX, Float:centerY, Float:centerZ, Float:nextX, Float:nextY, Float:nextZ, Float:size);
+native SetPlayerRaceCheckpoint(playerid, CP_TYPE:type, Float:centerX, Float:centerY, Float:centerZ, Float:nextX, Float:nextY, Float:nextZ, Float:size);
 
 /**
  * <library>a_players</library>
