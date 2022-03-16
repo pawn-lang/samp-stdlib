@@ -108,7 +108,7 @@ native CreateActor(modelid, Float:x, Float:y, Float:z, Float:angle);
  *   <b><c>0</c></b>: The function failed to execute.  The actor with the ID specified does not exist.
  * </returns>
  */
-native DestroyActor(actorid);
+native bool:DestroyActor(actorid);
 
 /**
  * <library>a_actor</library>
@@ -137,7 +137,7 @@ native bool:IsActorStreamedIn(actorid, playerid);
  *   <b><c>0</c></b>: The function failed to execute.  The actor specified does not exist.
  * </returns>
  */
-native SetActorVirtualWorld(actorid, virtualWorld);
+native bool:SetActorVirtualWorld(actorid, virtualWorld);
 
 /**
  * <library>a_actor</library>
@@ -176,7 +176,7 @@ native GetActorVirtualWorld(actorid);
  * <b><c>0</c></b>: The function failed to execute.  The actor specified does not exist.
  * </returns>
  */
-native ApplyActorAnimation(actorid, const animationLibrary[], const animationName[], Float:delta, bool:loop, bool:lockX, bool:lockY, bool:freeze, time);
+native bool:ApplyActorAnimation(actorid, const animationLibrary[], const animationName[], Float:delta, bool:loop, bool:lockX, bool:lockY, bool:freeze, time);
 
 /**
  * <library>a_actor</library>
@@ -190,7 +190,7 @@ native ApplyActorAnimation(actorid, const animationLibrary[], const animationNam
  *   <b><c>0</c></b>: The function failed to execute.  The actor specified does not exist.
  * </returns>
  */
-native ClearActorAnimations(actorid);
+native bool:ClearActorAnimations(actorid);
 
 /**
  * <library>a_actor</library>
@@ -209,7 +209,7 @@ native ClearActorAnimations(actorid);
  *   <b><c>0</c></b>: The function failed to execute.  The actor specified does not exist.
  * </returns>
  */
-native SetActorPos(actorid, Float:x, Float:y, Float:z);
+native bool:SetActorPos(actorid, Float:x, Float:y, Float:z);
 
 /**
  * <library>a_actor</library>
@@ -228,7 +228,7 @@ native SetActorPos(actorid, Float:x, Float:y, Float:z);
  *   <b><c>0</c></b>: The function failed to execute.  The actor specified does not exist.<br />
  * </returns>
  */
-native GetActorPos(actorid, &Float:x, &Float:y, &Float:z);
+native bool:GetActorPos(actorid, &Float:x, &Float:y, &Float:z);
 
 /**
  * <library>a_actor</library>
@@ -246,7 +246,7 @@ native GetActorPos(actorid, &Float:x, &Float:y, &Float:z);
  *   <b><c>0</c></b>: The function failed to execute.  The actor specified does not exist.
  * </returns>
  */
-native SetActorFacingAngle(actorid, Float:angle);
+native bool:SetActorFacingAngle(actorid, Float:angle);
 
 /**
  * <library>a_actor</library>
@@ -262,7 +262,7 @@ native SetActorFacingAngle(actorid, Float:angle);
  *   <b><c>0</c></b>: The function failed to execute.  The actor specified does not exist.
  * </returns>
  */
-native GetActorFacingAngle(actorid, &Float:angle);
+native bool:GetActorFacingAngle(actorid, &Float:angle);
 
 /**
  * <library>a_actor</library>
@@ -275,7 +275,7 @@ native GetActorFacingAngle(actorid, &Float:angle);
  *   <b><c>0</c></b> on failure (i.e.  actor is not created).
  * </returns>
  */
-native SetActorHealth(actorid, Float:health);
+native bool:SetActorHealth(actorid, Float:health);
 
 /**
  * <library>a_actor</library>
@@ -288,7 +288,7 @@ native SetActorHealth(actorid, Float:health);
  *   <b><c>0</c></b> - failure (i.e.  actor is not created).<br />
  * </returns>
  */
-native GetActorHealth(actorid, &Float:health);
+native bool:GetActorHealth(actorid, &Float:health);
 
 /**
  * <library>a_actor</library>
@@ -304,7 +304,7 @@ native GetActorHealth(actorid, &Float:health);
  *   <b><c>0</c></b> - Failure (i.e.  Actor is not created).
  * </returns>
  */
-native SetActorInvulnerable(actorid, bool:invulnerable = true);
+native bool:SetActorInvulnerable(actorid, bool:invulnerable = true);
 
 /**
  * <library>a_actor</library>
