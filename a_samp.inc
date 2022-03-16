@@ -2320,7 +2320,7 @@ native Menu:CreateMenu(const title[], columns, Float:x, Float:y, Float:col1width
  * <seealso name="OnPlayerExitedMenu" />
  * <returns><b><c>1</c></b> if the destroying was successful, otherwise <b><c>0</c></b>.</returns>
  */
-native DestroyMenu(Menu:menuid);
+native bool:DestroyMenu(Menu:menuid);
 
 /**
  * <library>a_samp</library>
@@ -2362,7 +2362,7 @@ native AddMenuItem(Menu:menuid, column, const text[]);
  *  The 13th object of a menu would replace the header of the column which is correctly set with this
  * function.</remarks>
  */
-native SetMenuColumnHeader(Menu:menuid, column, const heading[]);
+native bool:SetMenuColumnHeader(Menu:menuid, column, const heading[]);
 
 /**
  * <library>a_samp</library>
@@ -2381,7 +2381,7 @@ native SetMenuColumnHeader(Menu:menuid, column, const heading[]);
  *   <b><c>0</c></b>: The function failed to execute.  Menu and/or player doesn't exist.
  * </returns>
  */
-native ShowMenuForPlayer(Menu:menuid, playerid);
+native bool:ShowMenuForPlayer(Menu:menuid, playerid);
 
 /**
  * <library>a_samp</library>
@@ -2398,7 +2398,7 @@ native ShowMenuForPlayer(Menu:menuid, playerid);
  *   <b><c>0</c></b>: The function failed to execute.
  * </returns>
  */
-native HideMenuForPlayer(Menu:menuid, playerid);
+native bool:HideMenuForPlayer(Menu:menuid, playerid);
 
 /**
  * <library>a_samp</library>
@@ -2419,7 +2419,7 @@ native bool:IsValidMenu(Menu:menuid);
  * <seealso name="AddMenuItem" />
  * <remarks>Crashes when passed an invalid menu ID.</remarks>
  */
-native DisableMenu(Menu:menuid);
+native bool:DisableMenu(Menu:menuid);
 
 /**
  * <library>a_samp</library>
@@ -2440,7 +2440,7 @@ native DisableMenu(Menu:menuid);
  * <returns>This function always returns <b><c>1</c></b>, even if the function fails.  If an invalid
  * row is specified, nothing will happen.  If an invalid menu ID is specified, the server will crash.</returns>
  */
-native DisableMenuRow(Menu:menuid, row);
+native bool:DisableMenuRow(Menu:menuid, row);
 
 /**
  * <library>a_samp</library>
