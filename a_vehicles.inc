@@ -987,7 +987,7 @@ native bool:UpdateVehicleDamageStatus(vehicleid, panels, doors, lights, tires);
  *   </ul>
  * </remarks>
  */
-native GetVehicleModelInfo(vehiclemodel, VEHICLE_MODEL_INFO:infotype, &Float:x, &Float:y, &Float:z);
+native bool:GetVehicleModelInfo(vehiclemodel, VEHICLE_MODEL_INFO:infotype, &Float:x, &Float:y, &Float:z);
 
 // Virtual Worlds
 
