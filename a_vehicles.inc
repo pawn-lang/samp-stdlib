@@ -60,6 +60,7 @@ const INVALID_VEHICLE_ID                       = 0xFFFF;
 #define CARMODTYPE: __TAG(CARMODTYPE):
 enum CARMODTYPE:__CARMODTYPE
 {
+	CARMODTYPE_NONE                            = -1,
 	CARMODTYPE_SPOILER,
 	CARMODTYPE_HOOD,
 	CARMODTYPE_ROOF,
@@ -159,7 +160,7 @@ native CreateVehicle(modelid, Float:x, Float:y, Float:z, Float:rotation, colour1
  *   <b><c>0</c></b>: The function failed to execute.  The vehicle does not exist.
  * </returns>
  */
-native DestroyVehicle(vehicleid);
+native bool:DestroyVehicle(vehicleid);
 
 /**
  * <library>a_vehicles</library>
@@ -196,7 +197,7 @@ native bool:IsVehicleStreamedIn(vehicleid, playerid);
  *   <b><c>0</c></b>: The function failed to execute.  The vehicle specified does not exist.
  * </returns>
  */
-native GetVehiclePos(vehicleid, &Float:x, &Float:y, &Float:z);
+native bool:GetVehiclePos(vehicleid, &Float:x, &Float:y, &Float:z);
 
 /**
  * <library>a_vehicles</library>
@@ -214,7 +215,7 @@ native GetVehiclePos(vehicleid, &Float:x, &Float:y, &Float:z);
  *   <b><c>0</c></b>: The function failed to execute.  The vehicle specified does not exist.
  * </returns>
  */
-native SetVehiclePos(vehicleid, Float:x, Float:y, Float:z);
+native bool:SetVehiclePos(vehicleid, Float:x, Float:y, Float:z);
 
 /**
  * <library>a_vehicles</library>
@@ -231,7 +232,7 @@ native SetVehiclePos(vehicleid, Float:x, Float:y, Float:z);
  *   <b><c>0</c></b>: The function failed to execute.  This means the vehicle does not exist.
  * </returns>
  */
-native GetVehicleZAngle(vehicleid, &Float:angle);
+native bool:GetVehicleZAngle(vehicleid, &Float:angle);
 
 /**
  * <library>a_vehicles</library>
@@ -267,7 +268,7 @@ native GetVehicleZAngle(vehicleid, &Float:angle);
  *   <b><c>0</c></b>: The function failed to execute.  This means the vehicle specified does not exist.
  * </returns>
  */
-native GetVehicleRotationQuat(vehicleid, &Float:w, &Float:x, &Float:y, &Float:z);
+native bool:GetVehicleRotationQuat(vehicleid, &Float:w, &Float:x, &Float:y, &Float:z);
 
 /**
  * <library>a_vehicles</library>
@@ -299,7 +300,7 @@ native Float:GetVehicleDistanceFromPoint(vehicleid, Float:x, Float:y, Float:z);
  *   <b><c>0</c></b>: The function failed to execute.  The vehicle specified does not exist.
  * </returns>
  */
-native SetVehicleZAngle(vehicleid, Float:angle);
+native bool:SetVehicleZAngle(vehicleid, Float:angle);
 
 /**
  * <library>a_vehicles</library>
@@ -321,7 +322,7 @@ native SetVehicleZAngle(vehicleid, Float:angle);
  *   <b><c>0</c></b>: The function failed to execute.  The player and/or vehicle specified do not exist.
  * </returns>
  */
-native SetVehicleParamsForPlayer(vehicleid, playerid, objective, doors);
+native bool:SetVehicleParamsForPlayer(vehicleid, playerid, objective, doors);
 
 /**
  * <library>a_vehicles</library>
@@ -365,7 +366,7 @@ native ManualVehicleEngineAndLights();
  *   <b><c>0</c></b>: The function failed to execute.  This means the vehicle does not exist.
  * </returns>
  */
-native SetVehicleParamsEx(vehicleid, VEHICLE_PARAMS:engine, VEHICLE_PARAMS:lights, VEHICLE_PARAMS:alarm, VEHICLE_PARAMS:doors, VEHICLE_PARAMS:bonnet, VEHICLE_PARAMS:boot, VEHICLE_PARAMS:objective);
+native bool:SetVehicleParamsEx(vehicleid, VEHICLE_PARAMS:engine, VEHICLE_PARAMS:lights, VEHICLE_PARAMS:alarm, VEHICLE_PARAMS:doors, VEHICLE_PARAMS:bonnet, VEHICLE_PARAMS:boot, VEHICLE_PARAMS:objective);
 
 /**
  * <library>a_vehicles</library>
@@ -383,7 +384,7 @@ native SetVehicleParamsEx(vehicleid, VEHICLE_PARAMS:engine, VEHICLE_PARAMS:light
  * <remarks>If a parameter is unset (SetVehicleParamsEx not used beforehand) the value will be <b><c>-1</c></b>
  * ('unset').</remarks>
  */
-native GetVehicleParamsEx(vehicleid, &VEHICLE_PARAMS:engine, &VEHICLE_PARAMS:lights, &VEHICLE_PARAMS:alarm, &VEHICLE_PARAMS:doors, &VEHICLE_PARAMS:bonnet, &VEHICLE_PARAMS:boot, &VEHICLE_PARAMS:objective);
+native bool:GetVehicleParamsEx(vehicleid, &VEHICLE_PARAMS:engine, &VEHICLE_PARAMS:lights, &VEHICLE_PARAMS:alarm, &VEHICLE_PARAMS:doors, &VEHICLE_PARAMS:bonnet, &VEHICLE_PARAMS:boot, &VEHICLE_PARAMS:objective);
 
 /**
  * <library>a_vehicles</library>
@@ -393,7 +394,7 @@ native GetVehicleParamsEx(vehicleid, &VEHICLE_PARAMS:engine, &VEHICLE_PARAMS:lig
  * <remarks>This function was added in <b>SA-MP 0.3c R3</b> and will not work in earlier versions!</remarks>
  * <returns><b><c>-1</c></b> if unset (off), <b><c>0</c></b> if off, <b><c>1</c></b> if on</returns>
  */
-native GetVehicleParamsSirenState(vehicleid);
+native VEHICLE_PARAMS:GetVehicleParamsSirenState(vehicleid);
 
 /**
  * <library>a_vehicles</library>
@@ -413,7 +414,7 @@ native GetVehicleParamsSirenState(vehicleid);
  * <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
  * <remarks><b><c>1</c></b> is open, <b><c>0</c></b> is closed</remarks>
  */
-native SetVehicleParamsCarDoors(vehicleid, frontLeft, frontRight, rearLeft, rearRight);
+native bool:SetVehicleParamsCarDoors(vehicleid, frontLeft, frontRight, rearLeft, rearRight);
 
 /**
  * <library>a_vehicles</library>
@@ -430,7 +431,7 @@ native SetVehicleParamsCarDoors(vehicleid, frontLeft, frontRight, rearLeft, rear
  * <remarks>The values returned in each variable are as follows: <b><c>-1</c></b> if not set, <b><c>0</c></b>
  * if closed, <b><c>1</c></b> if open.</remarks>
  */
-native GetVehicleParamsCarDoors(vehicleid, &frontLeft, &frontRight, &rearLeft, &rearRight);
+native bool:GetVehicleParamsCarDoors(vehicleid, &frontLeft, &frontRight, &rearLeft, &rearRight);
 
 /**
  * <library>a_vehicles</library>
@@ -449,7 +450,7 @@ native GetVehicleParamsCarDoors(vehicleid, &frontLeft, &frontRight, &rearLeft, &
  * <seealso name="GetVehicleParamsCarWindows" />
  * <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
  */
-native SetVehicleParamsCarWindows(vehicleid, frontLeft, frontRight, rearLeft, rearRight);
+native bool:SetVehicleParamsCarWindows(vehicleid, frontLeft, frontRight, rearLeft, rearRight);
 
 /**
  * <library>a_vehicles</library>
@@ -467,7 +468,7 @@ native SetVehicleParamsCarWindows(vehicleid, frontLeft, frontRight, rearLeft, re
  * if closed, <b><c>1</c></b> if open.</remarks>
  * <returns>The vehicle's windows state is stored in the specified variables.</returns>
  */
-native GetVehicleParamsCarWindows(vehicleid, &frontLeft, &frontRight, &rearLeft, &rearRight);
+native bool:GetVehicleParamsCarWindows(vehicleid, &frontLeft, &frontRight, &rearLeft, &rearRight);
 
 /**
  * <library>a_vehicles</library>
@@ -480,7 +481,7 @@ native GetVehicleParamsCarWindows(vehicleid, &frontLeft, &frontRight, &rearLeft,
  *   <b><c>0</c></b>: The function failed to execute.  The vehicle does not exist.
  * </returns>
  */
-native SetVehicleToRespawn(vehicleid);
+native bool:SetVehicleToRespawn(vehicleid);
 
 /**
  * <library>a_vehicles</library>
@@ -496,7 +497,7 @@ native SetVehicleToRespawn(vehicleid);
  *   <b><c>0</c></b>: The function failed to execute.  This means the vehicle does not exist.<br />
  * </returns>
  */
-native LinkVehicleToInterior(vehicleid, interiorid);
+native bool:LinkVehicleToInterior(vehicleid, interiorid);
 
 /**
  * <library>a_vehicles</library>
@@ -520,7 +521,7 @@ native LinkVehicleToInterior(vehicleid, interiorid);
  * <seealso name="OnVehicleMod" />
  * <seealso name="OnEnterExitModShop" />
  */
-native AddVehicleComponent(vehicleid, componentid);
+native bool:AddVehicleComponent(vehicleid, componentid);
 
 /**
  * <library>a_vehicles</library>
@@ -534,7 +535,7 @@ native AddVehicleComponent(vehicleid, componentid);
  * <seealso name="OnVehicleMod" />
  * <seealso name="OnEnterExitModShop" />
  */
-native RemoveVehicleComponent(vehicleid, componentid);
+native bool:RemoveVehicleComponent(vehicleid, componentid);
 
 /**
  * <library>a_vehicles</library>
@@ -554,7 +555,7 @@ native RemoveVehicleComponent(vehicleid, componentid);
  *   <b><c>0</c></b>: The function failed to execute.  The vehicle does not exist.
  * </returns>
  */
-native ChangeVehicleColor(vehicleid, colour1, colour2);
+native bool:ChangeVehicleColor(vehicleid, colour1, colour2);
 
 /**
  * <library>a_vehicles</library>
@@ -571,7 +572,7 @@ native ChangeVehicleColor(vehicleid, colour1, colour2);
  * <returns>This function always returns <b><c>1</c></b> (success), even if the vehicle passed is not
  * created.</returns>
  */
-native ChangeVehiclePaintjob(vehicleid, paintjobid);
+native bool:ChangeVehiclePaintjob(vehicleid, paintjobid);
 
 /**
  * <library>a_vehicles</library>
@@ -600,7 +601,7 @@ native ChangeVehiclePaintjob(vehicleid, paintjobid);
  *   <b><c>0</c></b>: The function failed to execute.  This means the vehicle does not exist.
  * </returns>
  */
-native SetVehicleHealth(vehicleid, Float:health);
+native bool:SetVehicleHealth(vehicleid, Float:health);
 
 /**
  * <library>a_vehicles</library>
@@ -627,7 +628,7 @@ native SetVehicleHealth(vehicleid, Float:health);
  *   <b><c>0</c></b> - failure (invalid vehicle ID).<br />
  * </returns>
  */
-native GetVehicleHealth(vehicleid, &Float:health);
+native bool:GetVehicleHealth(vehicleid, &Float:health);
 
 /**
  * <library>a_vehicles</library>
@@ -642,7 +643,7 @@ native GetVehicleHealth(vehicleid, &Float:health);
  * <returns>This function always returns <b><c>1</c></b>, even if neither of the vehicle IDs passed
  * are valid.</returns>
  */
-native AttachTrailerToVehicle(trailerid, vehicleid);
+native bool:AttachTrailerToVehicle(trailerid, vehicleid);
 
 /**
  * <library>a_vehicles</library>
@@ -652,7 +653,7 @@ native AttachTrailerToVehicle(trailerid, vehicleid);
  * <seealso name="IsTrailerAttachedToVehicle" />
  * <seealso name="GetVehicleTrailer" />
  */
-native DetachTrailerFromVehicle(vehicleid);
+native bool:DetachTrailerFromVehicle(vehicleid);
 
 /**
  * <library>a_vehicles</library>
@@ -706,7 +707,7 @@ native GetVehicleTrailer(vehicleid);
  *   <b><c>0</c></b>: The function failed to execute.  The vehicle does not exist.<br />
  * </returns>
  */
-native SetVehicleNumberPlate(vehicleid, const numberPlate[]);
+native bool:SetVehicleNumberPlate(vehicleid, const numberPlate[]);
 
 /**
  * <library>a_vehicles</library>
@@ -799,7 +800,7 @@ native CARMODTYPE:GetVehicleComponentType(component); // Find CARMODTYPE_* for c
  *   <b><c>0</c></b>: The function failed to execute.  This means the vehicle specified does not exist.
  * </returns>
  */
-native RepairVehicle(vehicleid); // Repairs the damage model and resets the health
+native bool:RepairVehicle(vehicleid); // Repairs the damage model and resets the health
 
 /**
  * <library>a_vehicles</library>
@@ -820,7 +821,7 @@ native RepairVehicle(vehicleid); // Repairs the damage model and resets the heal
  * />
  * </returns>
  */
-native GetVehicleVelocity(vehicleid, &Float:x, &Float:y, &Float:z);
+native bool:GetVehicleVelocity(vehicleid, &Float:x, &Float:y, &Float:z);
 
 /**
  * <library>a_vehicles</library>
@@ -836,7 +837,7 @@ native GetVehicleVelocity(vehicleid, &Float:x, &Float:y, &Float:z);
  *   <b><c>0</c></b>: The function failed to execute.  The vehicle does not exist.
  * </returns>
  */
-native SetVehicleVelocity(vehicleid, Float:x, Float:y, Float:z);
+native bool:SetVehicleVelocity(vehicleid, Float:x, Float:y, Float:z);
 
 /**
  * <library>a_vehicles</library>
@@ -854,7 +855,7 @@ native SetVehicleVelocity(vehicleid, Float:x, Float:y, Float:z);
  *   <b><c>0</c></b>: The function failed to execute.  The vehicle does not exist.
  * </returns>
  */
-native SetVehicleAngularVelocity(vehicleid, Float:x, Float:y, Float:z);
+native bool:SetVehicleAngularVelocity(vehicleid, Float:x, Float:y, Float:z);
 
 /**
  * <library>a_vehicles</library>
@@ -907,7 +908,7 @@ native SetVehicleAngularVelocity(vehicleid, Float:x, Float:y, Float:z);
  *   <b><c>0</c></b>: The function failed to execute.  This means the vehicle specified does not exist.
  * </returns>
  */
-native GetVehicleDamageStatus(vehicleid, &panels, &doors, &lights, &tires);
+native bool:GetVehicleDamageStatus(vehicleid, &panels, &doors, &lights, &tires);
 
 /**
  * <library>a_vehicles</library>
@@ -957,7 +958,7 @@ native GetVehicleDamageStatus(vehicleid, &panels, &doors, &lights, &tires);
  *   </ul>
  * </remarks>
  */
-native UpdateVehicleDamageStatus(vehicleid, panels, doors, lights, tires);
+native bool:UpdateVehicleDamageStatus(vehicleid, panels, doors, lights, tires);
 
 /**
  * <library>a_vehicles</library>
@@ -999,7 +1000,7 @@ native GetVehicleModelInfo(vehiclemodel, VEHICLE_MODEL_INFO:infotype, &Float:x, 
  * <seealso name="GetVehicleVirtualWorld" />
  * <seealso name="SetPlayerVirtualWorld" />
  */
-native SetVehicleVirtualWorld(vehicleid, virtualWorld);
+native bool:SetVehicleVirtualWorld(vehicleid, virtualWorld);
 
 /**
  * <library>a_vehicles</library>
