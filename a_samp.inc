@@ -1981,7 +1981,7 @@ native UnBlockIpAddress(const ipAddress[]);
  * a string or doesn't exist.</returns>
  */
 #pragma deprecated Use `GetConsoleVarAsString`.
-native GetServerVarAsString(const cvar[], buffer[], len = sizeof (buffer));
+native GetServerVarAsString(const cvar[], buffer[], len = sizeof (buffer)) = GetConsoleVarAsString;
 
 /**
  * <library>a_samp</library>
@@ -1996,7 +1996,7 @@ native GetServerVarAsString(const cvar[], buffer[], len = sizeof (buffer));
  * integer or doesn't exist.</returns>
  */
 #pragma deprecated Use `GetConsoleVarAsInt`.
-native GetServerVarAsInt(const cvar[]);
+native GetServerVarAsInt(const cvar[]) = GetConsoleVarAsInt;
 
 /**
  * <library>a_samp</library>
@@ -2011,7 +2011,7 @@ native GetServerVarAsInt(const cvar[]);
  * is not a boolean or doesn't exist.</returns>
  */
 #pragma deprecated Use `GetConsoleVarAsBool`.
-native bool:GetServerVarAsBool(const cvar[]);
+native bool:GetServerVarAsBool(const cvar[]) = GetConsoleVarAsBool;
 // These are the same 3 functions as above although they avoid the name ambiguity/conflict with the SVar system.
 
 /**
