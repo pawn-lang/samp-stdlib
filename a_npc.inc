@@ -83,8 +83,24 @@
  *   </remarks>
  */
 
-public const SAMP_INCLUDES_VERSION = 0x037030;
-#pragma unused SAMP_INCLUDES_VERSION
+public const __SAMP_INCLUDES_VERSION = 0x037030;
+#pragma unused __SAMP_INCLUDES_VERSION
+
+/**
+ *   <remarks>
+ *   If running on SA:MP this will remain <c>0</c>, open.mp will set it.
+ *   open.mp versions look like:
+ *   <code>
+ *      01.04.02.0544
+ *   </code>
+ *   Thus they are encoded here as:
+ *   <code>
+ *      (major << 28) | (minor << 21) | (patch << 14) | (prerel)
+ *   </code>
+ *   </remarks>
+ */
+public const __OPEN_MP_VERSION = 0;
+#pragma unused __OPEN_MP_VERSION
 
 // Optionally stricter tags.
 #if defined NO_TAGS
