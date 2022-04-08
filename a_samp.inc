@@ -691,7 +691,7 @@ native format(output[], len = sizeof (output), const format[], {Float, _}:...);
  *   <b><c>0</c></b>: The function failed to execute.  The player is not connected.
  * </returns>
  */
-native SendClientMessage(playerid, colour, const message[]);
+native bool:SendClientMessage(playerid, colour, const message[]);
 
 /**
  * <library>a_samp</library>
@@ -705,7 +705,7 @@ native SendClientMessage(playerid, colour, const message[]);
  *  It will result in crashes otherwise.</remarks>
  * <returns>This function always returns <b><c>1</c></b>.</returns>
  */
-native SendClientMessageToAll(colour, const message[]);
+native void:SendClientMessageToAll(colour, const message[]);
 
 /**
  * <library>a_samp</library>
@@ -722,7 +722,7 @@ native SendClientMessageToAll(colour, const message[]);
  * <remarks>Avoid using format specifiers in your messages without formatting the string that is sent.
  *  It will result in crashes otherwise.</remarks>
  */
-native SendPlayerMessageToPlayer(playerid, senderid, const message[]);
+native bool:SendPlayerMessageToPlayer(playerid, senderid, const message[]);
 
 /**
  * <library>a_samp</library>
@@ -736,7 +736,7 @@ native SendPlayerMessageToPlayer(playerid, senderid, const message[]);
  * <remarks>Avoid using format specifiers in your messages without formatting the string that is sent.
  *  It will result in crashes otherwise.</remarks>
  */
-native SendPlayerMessageToAll(senderid, const message[]);
+native bool:SendPlayerMessageToAll(senderid, const message[]);
 
 /**
  * <library>a_samp</library>
@@ -757,7 +757,7 @@ native SendPlayerMessageToAll(senderid, const message[]);
  * <paramref name="reason" /> is invalid, a generic skull-and-crossbones icon is shown. <paramref name="killer"
  * /> being invalid (<b><c>INVALID_PLAYER_ID</c></b>) is valid.</returns>
  */
-native SendDeathMessage(killer, killee, weapon);
+native bool:SendDeathMessage(killer, killee, weapon);
 
 /**
  * <library>a_samp</library>
@@ -775,7 +775,7 @@ native SendDeathMessage(killer, killee, weapon);
  *   <b><c>0</c></b>: The function failed to execute.
  * </returns>
  */
-native SendDeathMessageToPlayer(playerid, killer, killee, weapon);
+native bool:SendDeathMessageToPlayer(playerid, killer, killee, weapon);
 
 /**
  * <library>a_samp</library>
@@ -787,7 +787,7 @@ native SendDeathMessageToPlayer(playerid, killer, killee, weapon);
  * <seealso name="TextDrawShowForAll" />
  * <returns>This function always returns <b><c>1</c></b>.</returns>
  */
-native GameTextForAll(const string[], time, style);
+native void:GameTextForAll(const string[], time, style);
 
 /**
  * <library>a_samp</library>
@@ -806,7 +806,7 @@ native GameTextForAll(const string[], time, style);
  * is not connected.
  * </returns>
  */
-native GameTextForPlayer(playerid, const string[], time, style);
+native bool:GameTextForPlayer(playerid, const string[], time, style);
 
 /**
  * <library>a_samp</library>
@@ -876,7 +876,7 @@ native SetTimerEx(const functionName[], interval, bool:repeating, const format[]
  * <seealso name="SetTimerEx" />
  * <returns>This function always returns <b><c>0</c></b>.</returns>
  */
-native KillTimer(timerid);
+native void:KillTimer(timerid);
 
 /**
  * <library>a_samp</library>
@@ -1013,6 +1013,7 @@ native Float:atan2(Float:y, Float:x);
  * <returns>The highest playerid currently in use on the server or <b><c>0</c></b> if there are no connected
  * players.</returns>
  */
+#pragma deprecated This function is fundamentally broken.
 native GetPlayerPoolSize();
 
 /**
@@ -1023,6 +1024,7 @@ native GetPlayerPoolSize();
  * <returns>The highest vehicleid currently in use on the server or <b><c>0</c></b> if there are no
  * created vehicles.</returns>
  */
+#pragma deprecated This function is fundamentally broken.
 native GetVehiclePoolSize();
 
 /**
@@ -1034,6 +1036,7 @@ native GetVehiclePoolSize();
  * <remarks>This function was added in <b><b>SA-MP 0.3.7</b></b> and will not work in earlier versions!</remarks>
  * <returns>The highest actorid created on the server or <b><c>0</c></b> if there are no created actors.</returns>
  */
+#pragma deprecated This function is fundamentally broken.
 native GetActorPoolSize();
 
 // Hash
@@ -1074,7 +1077,7 @@ native SHA256_PassHash(const password[], const salt[], output[], size = sizeof (
  *   <b><c>0</c></b>: The function failed to execute.  The variable name is null or over 40 characters.
  * </returns>
  */
-native SetSVarInt(const svar[], value);
+native bool:SetSVarInt(const svar[], value);
 
 /**
  * <library>a_samp</library>
@@ -1109,7 +1112,7 @@ native GetSVarInt(const svar[]);
  *   <b><c>0</c></b>: The function failed to execute.  The variable name is null or over 40 characters.
  * </returns>
  */
-native SetSVarString(const svar[], const value[]);
+native bool:SetSVarString(const svar[], const value[]);
 
 /**
  * <library>a_samp</library>
@@ -1145,7 +1148,7 @@ native GetSVarString(const svar[], output[], len = sizeof (output));
  *   <b><c>0</c></b>: The function failed to execute.  The variable name is null or over 40 characters.
  * </returns>
  */
-native SetSVarFloat(const svar[], Float:value);
+native bool:SetSVarFloat(const svar[], Float:value);
 
 /**
  * <library>a_samp</library>
@@ -1180,7 +1183,7 @@ native Float:GetSVarFloat(const svar[]);
  *   <b><c>0</c></b>: The function failed to execute.  There is no variable set with the given name.
  * </returns>
  */
-native DeleteSVar(const svar[]);
+native bool:DeleteSVar(const svar[]);
 
 /**
  * <library>a_samp</library>
@@ -1485,7 +1488,7 @@ native CreatePickup(model, type, Float:x, Float:y, Float:z, virtualWorld = 0);
  * <seealso name="CreatePickup" />
  * <seealso name="OnPlayerPickUpPickup" />
  */
-native DestroyPickup(pickup);
+native bool:DestroyPickup(pickup);
 
 /**
  * <library>a_samp</library>
@@ -1497,7 +1500,7 @@ native DestroyPickup(pickup);
  * <remarks>This function can only be used in <a href="#OnGameModeInit">OnGameModeInit</a>.  For other
  * times, see <a href="#ShowPlayerNameTagForPlayer">ShowPlayerNameTagForPlayer</a>.</remarks>
  */
-native ShowNameTags(bool:show);
+native void:ShowNameTags(bool:show);
 
 /**
  * <library>a_samp</library>
@@ -1520,14 +1523,14 @@ native ShowNameTags(bool:show);
  * <remarks>It is also possible to set a player's colour to a colour that has full transparency (no
  * alpha value).  This makes it possible to show markers on a per-player basis.</remarks>
  */
-native ShowPlayerMarkers(PLAYER_MARKERS_MODE:mode);
+native void:ShowPlayerMarkers(PLAYER_MARKERS_MODE:mode);
 
 /**
  * <library>a_samp</library>
  * <summary>Ends the current gamemode.</summary>
  * <seealso name="OnGameModeExit" />
  */
-native GameModeExit();
+native void:GameModeExit();
 
 /**
  * <library>a_samp</library>
@@ -1540,7 +1543,7 @@ native GameModeExit();
  * <remarks>This function is only relevant for players that do not use a passing clock - see <a href="#TogglePlayerClock">
  * TogglePlayerClock</a>.</remarks>
  */
-native SetWorldTime(hour);
+native void:SetWorldTime(hour);
 
 /**
  * <library>a_samp</library>
@@ -1556,7 +1559,7 @@ native SetWorldTime(hour);
  *   <b><c>0</c></b>: The function failed to execute.  The weapon specified does not exist.
  * </returns>
  */
-native GetWeaponName(WEAPON:weaponid, weapon[], len = sizeof (weapon));
+native bool:GetWeaponName(WEAPON:weaponid, weapon[], len = sizeof (weapon));
 
 /**
  * <library>a_samp</library>
@@ -1566,7 +1569,7 @@ native GetWeaponName(WEAPON:weaponid, weapon[], len = sizeof (weapon));
  * OnVehicleDamageStatusUpdate</a>.</remarks>
  */
 #pragma deprecated Use `OnVehicleDamageStatusUpdate`.
-native EnableTirePopping(bool:enable); // deprecated function
+native void:EnableTirePopping(bool:enable); // deprecated function
 
 /**
  * <library>a_samp</library>
@@ -1575,7 +1578,7 @@ native EnableTirePopping(bool:enable); // deprecated function
  * <seealso name="SetPlayerTeam" />
  * <remarks>This function was added in <b>SA-MP 0.3x</b> and will not work in earlier versions!</remarks>
  */
-native EnableVehicleFriendlyFire();
+native void:EnableVehicleFriendlyFire();
 
 /**
  * <library>a_samp</library>
@@ -1588,7 +1591,7 @@ native EnableVehicleFriendlyFire();
  * <seealso name="OnPlayerInteriorChange" />
  */
 #pragma deprecated Use `OnPlayerInteriorChange`.
-native AllowInteriorWeapons(bool:allow);
+native void:AllowInteriorWeapons(bool:allow);
 
 /**
  * <library>a_samp</library>
@@ -1599,7 +1602,7 @@ native AllowInteriorWeapons(bool:allow);
  * <remarks>If <a href="#TogglePlayerClock">TogglePlayerClock</a> is enabled, weather will slowly change
  * over time, instead of changing instantly.</remarks>
  */
-native SetWeather(weatherid);
+native void:SetWeather(weatherid);
 
 /**
  * <library>a_samp</library>
@@ -1620,7 +1623,7 @@ native Float:GetGravity();
  * <returns>This function always returns <b><c>1</c></b>, even when it fails to execute if the gravity
  * is out of the limits (lower than <b><c>-50.0</c></b> or higher than <b><c>+50.0</c></b>).</returns>
  */
-native SetGravity(Float:gravity);
+native void:SetGravity(Float:gravity);
 
 /**
  * <library>a_samp</library>
@@ -1632,7 +1635,7 @@ native SetGravity(Float:gravity);
  * <seealso name="AllowPlayerTeleport" />
  */
 #pragma deprecated Use `OnPlayerClickMap`.
-native AllowAdminTeleport(bool:allow);
+native void:AllowAdminTeleport(bool:allow);
 
 /**
  * <library>a_samp</library>
@@ -1642,7 +1645,7 @@ native AllowAdminTeleport(bool:allow);
  * <seealso name="OnPlayerDeath" />
  */
 #pragma deprecated Use `CreatePickup`.
-native SetDeathDropAmount(amount);
+native void:SetDeathDropAmount(amount);
 
 /**
  * <library>a_samp</library>
@@ -1658,7 +1661,7 @@ native SetDeathDropAmount(amount);
  * <returns>This function always returns <b><c>1</c></b>, even when the explosion type and/or radius
  * values are invalid.</returns>
  */
-native CreateExplosion(Float:x, Float:y, Float:z, type, Float:radius);
+native void:CreateExplosion(Float:x, Float:y, Float:z, type, Float:radius);
 
 /**
  * <library>a_samp</library>
@@ -1668,6 +1671,7 @@ native CreateExplosion(Float:x, Float:y, Float:z, type, Float:radius);
  * <param name="enable">A toggle option for whether or not you'd like zone names on or off</param>
  * <remarks><b>This function was removed in SA-MP 0.3.  This was due to crashes it caused.</b></remarks>
  */
+#pragma deprecated Show names manually.
 native EnableZoneNames(bool:enable);
 
 /**
@@ -3142,7 +3146,7 @@ native Update3DTextLabelText(Text3D:textid, colour, const text[]);
  *   <b><c>0</c></b>: The function failed to execute.  This means the player is not connected.<br />
  * </returns>
  */
-native ShowPlayerDialog(playerid, dialogid, DIALOG_STYLE:style, const caption[], const info[], const button1[], const button2[]);
+native bool:ShowPlayerDialog(playerid, dialogid, DIALOG_STYLE:style, const caption[], const info[], const button1[], const button2[]);
 
 /**
  * <library>a_samp</library>
