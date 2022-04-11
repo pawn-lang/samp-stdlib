@@ -439,7 +439,7 @@ static stock PLAYER_RECORDING_TYPE:_@PLAYER_RECORDING_TYPE() { return __PLAYER_R
  * <seealso name="SetPlayerTeam" />
  * <seealso name="SpawnPlayer" />
  */
-native SetSpawnInfo(playerid, team, skin, Float:x, Float:y, Float:z, Float:rotation, weapon1, ammo1, weapon2, ammo2, weapon3, ammo3);
+native SetSpawnInfo(playerid, team, skin, Float:x, Float:y, Float:z, Float:rotation, WEAPON:weapon1, ammo1, WEAPON:weapon2, ammo2, WEAPON:weapon3, ammo3);
 
 /**
  * <library>a_players</library>

@@ -1013,7 +1013,7 @@ native Float:atan2(Float:y, Float:x);
  * <returns>The highest playerid currently in use on the server or <b><c>0</c></b> if there are no connected
  * players.</returns>
  */
-#pragma deprecated This function is fundamentally broken.
+#pragma deprecated This function is fundamentally broken.  See: https://open.mp/docs/scripting/functions/GetPlayerPoolSize
 native GetPlayerPoolSize();
 
 /**
@@ -1024,7 +1024,7 @@ native GetPlayerPoolSize();
  * <returns>The highest vehicleid currently in use on the server or <b><c>0</c></b> if there are no
  * created vehicles.</returns>
  */
-#pragma deprecated This function is fundamentally broken.
+#pragma deprecated This function is fundamentally broken.  See: https://open.mp/docs/scripting/functions/GetVehiclePoolSize
 native GetVehiclePoolSize();
 
 /**
@@ -1036,7 +1036,7 @@ native GetVehiclePoolSize();
  * <remarks>This function was added in <b><b>SA-MP 0.3.7</b></b> and will not work in earlier versions!</remarks>
  * <returns>The highest actorid created on the server or <b><c>0</c></b> if there are no created actors.</returns>
  */
-#pragma deprecated This function is fundamentally broken.
+#pragma deprecated This function is fundamentally broken.  See: https://open.mp/docs/scripting/functions/GetActorPoolSize
 native GetActorPoolSize();
 
 // Hash
@@ -1288,7 +1288,7 @@ native SetTeamCount(count);
  * <seealso name="SetSpawnInfo" />
  * <seealso name="SetPlayerSkin" />
  */
-native AddPlayerClass(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, weapon1, ammo1, weapon2, ammo2, weapon3, ammo3);
+native AddPlayerClass(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, WEAPON:weapon1, ammo1, WEAPON:weapon2, ammo2, WEAPON:weapon3, ammo3);
 
 /**
  * <library>a_samp</library>
@@ -1325,7 +1325,7 @@ native AddPlayerClass(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:a
  * <seealso name="SetPlayerTeam" />
  * <seealso name="SetPlayerSkin" />
  */
-native AddPlayerClassEx(teamid, modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, weapon1, ammo1, weapon2, ammo2, weapon3, ammo3);
+native AddPlayerClassEx(teamid, modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, WEAPON:weapon1, ammo1, WEAPON:weapon2, ammo2, WEAPON:weapon3, ammo3);
 
 /**
  * <library>a_samp</library>

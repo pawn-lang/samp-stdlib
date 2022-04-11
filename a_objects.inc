@@ -175,7 +175,7 @@ native CreateObject(modelid, Float:x, Float:y, Float:z, Float:rotX, Float:rotY, 
  * it; they will remain stationary at the position the vehicle disappeared and be reattached to the
  * next vehicle to claim the vehicle ID that the objects were attached to.</remarks>
  */
-native AttachObjectToVehicle(objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotX, Float:rotY, Float:rotZ);
+native bool:AttachObjectToVehicle(objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotX, Float:rotY, Float:rotZ);
 
 /**
  * <library>a_objects</library>
@@ -209,7 +209,7 @@ native AttachObjectToVehicle(objectid, parentid, Float:offsetX, Float:offsetY, F
  * />) exists.
  * </returns>
  */
-native AttachObjectToObject(objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotX, Float:rotY, Float:rotZ, bool:syncRotation = true);
+native bool:AttachObjectToObject(objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotX, Float:rotY, Float:rotZ, bool:syncRotation = true);
 
 /**
  * <library>a_objects</library>
@@ -229,7 +229,7 @@ native AttachObjectToObject(objectid, parentid, Float:offsetX, Float:offsetY, Fl
  * <seealso name="CreateObject" />
  * <returns>This function always returns <b><c>0</c></b>.</returns>
  */
-native AttachObjectToPlayer(objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotX, Float:rotY, Float:rotZ);
+native void:AttachObjectToPlayer(objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotX, Float:rotY, Float:rotZ);
 
 /**
  * <library>a_objects</library>
