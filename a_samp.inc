@@ -263,6 +263,7 @@
 #endif
 
 public const SAMP_INCLUDES_VERSION = 0x037030;
+#pragma unused SAMP_INCLUDES_VERSION
 
 #include <core>
 #include <float>
