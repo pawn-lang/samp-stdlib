@@ -1073,12 +1073,12 @@ forward OnNPCExitVehicle();
  * href="#SendClientMessage">SendClientMessage</a> function is sent towards the NPC.  This callback
  * won't be called when someone says something.  For a version of this with player text, see
  * <a href="#OnPlayerText">OnPlayerText</a>.</summary>
- * <param name="colour">The colour the ClientMessage is</param>
+ * <param name="color">The colour the ClientMessage is</param>
  * <param name="text">The actual message</param>
  * <seealso name="OnPlayerText" />
  * <remarks>This NPC callback was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
  */
-forward OnClientMessage(colour, text[]);
+forward OnClientMessage(color, text[]);
 
 /**
  * <summary>Just as the player version of the callback, this callback is called when any player dies.</summary>
