@@ -131,6 +131,15 @@ forward OnPlayerWeaponShot(playerid, weaponid, BULLET_HIT_TYPE:hittype, hitid, F
 forward OnPlayerKeyStateChange(playerid, KEY:newkeys, KEY:oldkeys);
 ```
 
+* `OnPlayerRequestDownload`
+
+```pawn
+#if !defined DOWNLOAD_REQUEST
+	#define DOWNLOAD_REQUEST: _:
+#endif
+forward OnPlayerRequestDownload(playerid, DOWNLOAD_REQUEST:type, crc);
+```
+
 ## How Do Versions Work?
 
 ### Versions are represented by [Git Tags](https://help.github.com/articles/working-with-tags/)
