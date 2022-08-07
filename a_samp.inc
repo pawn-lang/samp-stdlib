@@ -106,9 +106,9 @@ public const __OPEN_MP_VERSION = 0;
 #if defined NO_TAGS
 	#define __TAG(%0) _
 #elseif defined STRONG_TAGS
-	#define __TAG(%0) E_%0
+	#define __TAG(%0) T_%0
 #else // if defined WEAK_TAGS
-	#define __TAG(%0) e_%0
+	#define __TAG(%0) t_%0
 	#define WEAK_TAGS
 #endif
 #if defined MORE_TAGS
