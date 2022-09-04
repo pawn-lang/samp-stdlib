@@ -100,7 +100,7 @@ SetPlayerControllable(playerid, 1);
 SetPlayerControllable(playerid, true);
 ```
 
-Generally arameters that only accept a limited range of values (for example, object attachment bones) are now all enumerations so that passing invalid values gives a warning:
+Generally parameters that only accept a limited range of values (for example, object attachment bones) are now all enumerations so that passing invalid values gives a warning:
 
 ```pawn
 TextDrawAlignment(textid, TEXT_DRAW_ALIGN_LEFT); // Fine
