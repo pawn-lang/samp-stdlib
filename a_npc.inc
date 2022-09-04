@@ -411,58 +411,89 @@ const PLAYER_STATE:PLAYER_STATE_ENTER_VEHICLE_PASS = PLAYER_STATE:6;
 #define WEAPON: __TAG(WEAPON):
 enum WEAPON:__WEAPON
 {
-	WEAPON_FIST,
-	WEAPON_BRASSKNUCKLE,
-	WEAPON_GOLFCLUB,
-	WEAPON_NITESTICK,
+	WEAPON_UNKNOWN                             = -1,
+	WEAPON_FIST                                =  0,
+	WEAPON_BRASSKNUCKLE                        =  1,
+	WEAPON_GOLFCLUB                            =  2,
+	WEAPON_NITESTICK                           =  3,
 	WEAPON_NIGHTSTICK                          = WEAPON_NITESTICK,
-	WEAPON_KNIFE,
-	WEAPON_BAT,
-	WEAPON_SHOVEL,
-	WEAPON_POOLSTICK,
-	WEAPON_KATANA,
-	WEAPON_CHAINSAW,
-	WEAPON_DILDO,
-	WEAPON_DILDO2,
-	WEAPON_VIBRATOR,
-	WEAPON_VIBRATOR2,
-	WEAPON_FLOWER,
-	WEAPON_CANE,
-	WEAPON_GRENADE,
-	WEAPON_TEARGAS,
-	WEAPON_MOLTOV,
+	WEAPON_KNIFE                               =  4,
+	WEAPON_BAT                                 =  5,
+	WEAPON_SHOVEL                              =  6,
+	WEAPON_POOLSTICK                           =  7,
+	WEAPON_KATANA                              =  8,
+	WEAPON_CHAINSAW                            =  9,
+	WEAPON_DILDO                               = 10,
+	WEAPON_DILDO2                              = 11,
+	WEAPON_VIBRATOR                            = 12,
+	WEAPON_VIBRATOR2                           = 13,
+	WEAPON_FLOWER                              = 14,
+	WEAPON_CANE                                = 15,
+	WEAPON_GRENADE                             = 16,
+	WEAPON_TEARGAS                             = 17,
+	WEAPON_MOLTOV                              = 18,
 	WEAPON_MOLOTOV                             = WEAPON_MOLTOV,
 	WEAPON_COLT45                              = 22,
-	WEAPON_SILENCED,
-	WEAPON_DEAGLE,
-	WEAPON_SHOTGUN,
-	WEAPON_SAWEDOFF,
-	WEAPON_SHOTGSPA,
-	WEAPON_UZI,
-	WEAPON_MP5,
-	WEAPON_AK47,
-	WEAPON_M4,
-	WEAPON_TEC9,
-	WEAPON_RIFLE,
-	WEAPON_SNIPER,
-	WEAPON_ROCKETLAUNCHER,
-	WEAPON_HEATSEEKER,
-	WEAPON_FLAMETHROWER,
-	WEAPON_MINIGUN,
-	WEAPON_SATCHEL,
-	WEAPON_BOMB,
-	WEAPON_SPRAYCAN,
-	WEAPON_FIREEXTINGUISHER,
-	WEAPON_CAMERA,
-	WEAPON_NIGHT_VISION_GOGGLES,
-	WEAPON_THERMAL_GOGGLES,
-	WEAPON_PARACHUTE,
+	WEAPON_SILENCED                            = 23,
+	WEAPON_DEAGLE                              = 24,
+	WEAPON_SHOTGUN                             = 25,
+	WEAPON_SAWEDOFF                            = 26,
+	WEAPON_SHOTGSPA                            = 27,
+	WEAPON_UZI                                 = 28,
+	WEAPON_MP5                                 = 29,
+	WEAPON_AK47                                = 30,
+	WEAPON_M4                                  = 31,
+	WEAPON_TEC9                                = 32,
+	WEAPON_RIFLE                               = 33,
+	WEAPON_SNIPER                              = 34,
+	WEAPON_ROCKETLAUNCHER                      = 35,
+	WEAPON_HEATSEEKER                          = 36,
+	WEAPON_FLAMETHROWER                        = 37,
+	WEAPON_MINIGUN                             = 38,
+	WEAPON_SATCHEL                             = 39,
+	WEAPON_BOMB                                = 40,
+	WEAPON_SPRAYCAN                            = 41,
+	WEAPON_FIREEXTINGUISHER                    = 42,
+	WEAPON_CAMERA                              = 43,
+	WEAPON_NIGHT_VISION_GOGGLES                = 44,
+	WEAPON_THERMAL_GOGGLES                     = 45,
+	WEAPON_PARACHUTE                           = 46,
 	WEAPON_VEHICLE                             = 49,
 	WEAPON_DROWN                               = 53,
-	WEAPON_COLLISION,
-	WEAPON_SPLAT                               = WEAPON_COLLISION,
+	WEAPON_COLLISION                           = 54,
+	WEAPON_SPLAT                               = WEAPON_COLLISION
 }
 static stock WEAPON:_@WEAPON() { return __WEAPON; }
+
+#define MAX_WEAPONS __WEAPON
+
+/// <p/>
+
+/**
+ * <library>a_npc</library>
+ * <summary>Weapon Slots</summary>
+ */
+#define WEAPON_SLOT: __TAG(WEAPON_SLOT):
+enum WEAPON_SLOT:__WEAPON_SLOT
+{
+	WEAPON_SLOT_UNKNOWN                        = -1,
+	WEAPON_SLOT_UNARMED                        =  0,
+	WEAPON_SLOT_MELEE                          =  1,
+	WEAPON_SLOT_PISTOL                         =  2,
+	WEAPON_SLOT_SHOTGUN                        =  3,
+	WEAPON_SLOT_MACHINE_GUN                    =  4,
+	WEAPON_SLOT_ASSAULT_RIFLE                  =  5,
+	WEAPON_SLOT_LONG_RIFLE                     =  6,
+	WEAPON_SLOT_ARTILLERY                      =  7,
+	WEAPON_SLOT_EXPLOSIVES                     =  8,
+	WEAPON_SLOT_EQUIPMENT                      =  9,
+	WEAPON_SLOT_GIFT                           = 10,
+	WEAPON_SLOT_GADGET                         = 11,
+	WEAPON_SLOT_DETONATOR                      = 12
+}
+static stock WEAPON_SLOT:_@WEAPON_SLOT() { return __WEAPON_SLOT; }
+
+#define MAX_WEAPON_SLOTS __WEAPON_SLOT
 
 /// <p/>
 
