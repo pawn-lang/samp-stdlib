@@ -205,15 +205,15 @@ It could take a lot of testing and debugging to find the problem here without a 
 ```pawn
 switch (GetPVarType(playerid, "MY_DATA"))
 {
-case VARTYPE_NONE:
+case PLAYER_VARTYPE_NONE:
 	printf("Unknown type");
-case VARTYPE_INT:
+case PLAYER_VARTYPE_INT:
 	printf("Found an int");
-case VARTYPE_STRING:
+case PLAYER_VARTYPE_STRING:
 	printf("Found a float");
-case VARTYPE_FLOAT:
+case PLAYER_VARTYPE_FLOAT:
 	printf("Found a string");
-case VARTYPE_BOOL:
+case PLAYER_VARTYPE_BOOL:
 	printf("Found a boolean");
 }
 ```
