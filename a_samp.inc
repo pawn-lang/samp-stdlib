@@ -59,7 +59,7 @@
  *   </ul>
  *   Rough rules:
  *   
- *   <p />
+ *   <p/>
  *   Uses (roughtly) BCD.  Special versions are denoted outside 0-9.
  *   <code>
  *   0.1.2c R4-5
@@ -70,15 +70,15 @@
  *   </code>
  *   (assuming c is the third revision)
  *   
- *   <p />
+ *   <p/>
  *   0.2X becomes 02A000 because it is basically 0.2.3, but not, while higher than
  *   0.2.2 so can't be 020400 (for example).  Also, its a capital letter, so doesn't
  *   use the revision method.
  *   
- *   <p />
+ *   <p/>
  *   P.S.  Making a consistent scheme for SA:MP versions is REALLY hard.
  *   
- *   <p />
+ *   <p/>
  *   open.mp releases can use `A` as the first digit.
  *   </remarks>
  */
