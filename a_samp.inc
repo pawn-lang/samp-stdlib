@@ -3851,7 +3851,7 @@ forward OnPlayerRequestDownload(playerid, DOWNLOAD_REQUEST:type, crc);
 forward OnPlayerWeaponShot(playerid, weaponid, BULLET_HIT_TYPE:hittype, hitid, Float:fX, Float:fY, Float:fZ);
 
 /**
- * <summary>This callback is called when a SendClientCheck request comletes</summary>
+ * <summary>This callback is called when a SendClientCheck request completes</summary>
  * <param name="playerid">The ID of the player checked</param>
  * <param name="actionid">The type of check performed</param>
  * <param name="memaddr">The address requested</param>
@@ -3861,7 +3861,7 @@ forward OnPlayerWeaponShot(playerid, weaponid, BULLET_HIT_TYPE:hittype, hitid, F
 forward OnClientCheckResponse(playerid, actionid, memaddr, retndata);
 
 /**
- * <summary>This callback is called when a SendClientCheck request comletes</summary>
+ * <summary>This callback is called when the money increases from the GTA SA scm</summary>
  * <param name="playerid">The ID of the player who got cash from the game</param>
  * <param name="amount">The amount of cash given</param>
  * <param name="source">Where the money came from</param>
