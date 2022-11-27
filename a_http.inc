@@ -1,66 +1,115 @@
- /*  SA-MP threaded HTTP/1.0 client for pawn
- *
- *  (c) Copyright 2010, SA-MP Team
- *
- */
-
 #if defined _INC_a_http
 	#endinput
 #endif
 #define _INC_a_http
+#define _http_included
 
-#define SAMP_CONST_CORRECT
+/**
+ * <library name="a_http" summary="SA-MP threaded HTTP/1.0 client for pawn.">
+ *   <license>
+ *     (c) Copyright 2010, SA-MP Team
+ *   </license>
+ *   <summary pawndoc="true">
+ *     This library uses the enhanced <em>pawndoc.xsl</em> from
+ *     <a href="https://github.com/pawn-lang/pawndoc">pawn-lang/pawndoc</a>.
+ *     This XSL has features such as library and markdown support, and will not
+ *     render this message when used.
+ *   </summary>
+ * </library>
+ */
 
 #pragma tabsize 4
+#define SAMP_CONST_CORRECT
+
+/// <p/>
 
 // --------------------------------------------------
 // Defines
 // --------------------------------------------------
 
-// HTTP requests
-#define HTTP_GET                               (1)
-#define HTTP_POST                              (2)
-#define HTTP_HEAD                              (3)
+// Limits
 
-// HTTP error response codes
-// These codes compliment ordinary HTTP response codes returned in 'response_code'
-// (10x) (20x OK) (30x Moved) (40x Unauthorised) (50x Server Error)  
-#define HTTP_ERROR_BAD_HOST                    (1)
-#define HTTP_ERROR_NO_SOCKET                   (2)
-#define HTTP_ERROR_CANT_CONNECT                (3)
-#define HTTP_ERROR_CANT_WRITE                  (4)
-#define HTTP_ERROR_CONTENT_TOO_BIG             (5)
-#define HTTP_ERROR_MALFORMED_RESPONSE          (6)
+// Invalids
 
-/// <summary>Sends a threaded HTTP request.</summary>
-/// <param name="index">ID used to differentiate requests that are sent to the same callback (useful for playerids)</param>
-/// <param name="type">The type of request you wish to send</param>
-/// <param name="url">The URL you want to request. (Without 'http://')</param>
-/// <param name="data">Any POST data you want to send with the request</param>
-/// <param name="callback">Name of the callback function you want to use to handle responses to this request</param>
-/// <remarks>This function was added in <b>SA-MP 0.3b</b> and will not work in earlier versions!</remarks>
-/// <returns><b><c>1</c></b> on success, <b><c>0</c></b> on failure.</returns>
-/// <remarks>
-///   <b>Request types:</b><p/>
-///   <ul>
-///     <li><b><c>HTTP_GET</c></b></li>
-///     <li><b><c>HTTP_POST</c></b></li>
-///     <li><b><c>HTTP_HEAD</c></b></li>
-///   </ul>
-/// </remarks>
-/// <remarks>
-///   <b>Response codes:</b><p/>
-///   <ul>
-///     <li><b><c>HTTP_ERROR_BAD_HOST</c></b></li>
-///     <li><b><c>HTTP_ERROR_NO_SOCKET</c></b></li>
-///     <li><b><c>HTTP_ERROR_CANT_CONNECT</c></b></li>
-///     <li><b><c>HTTP_ERROR_CANT_WRITE</c></b></li>
-///     <li><b><c>HTTP_ERROR_CONTENT_TOO_BIG</c></b></li>
-///     <li><b><c>HTTP_ERROR_MALFORMED_RESPONSE</c></b></li>
-///     <li>+ standard HTTP response codes</li>
-///   </ul>
-/// </remarks>
-native HTTP(index, type, const url[], const data[], const callback[]);
+// Checks
 
-// example HTTP callback: public MyHttpResponse(index, response_code, const data[]) { ... }
+// Enums
+///
+
+/**
+ * <library>a_http</library>
+ * <summary>HTTP request types</summary>
+ */
+#define HTTP_METHOD: __TAG(HTTP_METHOD):
+enum HTTP_METHOD:__HTTP_METHOD
+{
+	HTTP_GET                                   = 1,
+	HTTP_POST,
+	HTTP_HEAD
+}
+static stock HTTP_METHOD:_@HTTP_METHOD() { return __HTTP_METHOD; }
+
+///
+
+/**
+ * <library>a_http</library>
+ * <summary>HTTP error response codes</summary>
+ * <remarks>
+ *   These codes compliment ordinary HTTP response codes returned in 'responseCode'
+ *   (10x) (20x OK) (30x Moved) (40x Unauthorised) (50x Server Error)
+ * </remarks>
+ */
+#define HTTP_ERROR: __TAG(HTTP_ERROR):
+enum HTTP_ERROR:__HTTP_ERROR
+{
+	HTTP_ERROR_BAD_HOST                        = 1,
+	HTTP_ERROR_NO_SOCKET,
+	HTTP_ERROR_CANT_CONNECT,
+	HTTP_ERROR_CANT_WRITE,
+	HTTP_ERROR_CONTENT_TOO_BIG,
+	HTTP_ERROR_MALFORMED_RESPONSE
+}
+static stock HTTP_ERROR:_@HTTP_ERROR() { return __HTTP_ERROR; }
+
+/**
+ * <library>a_http</library>
+ * <summary>Sends a threaded HTTP request.</summary>
+ * <param name="index">ID used to differentiate requests that are sent to the same callback (useful
+ * for playerids)</param>
+ * <param name="method">The type of request you wish to send</param>
+ * <param name="url">The URL you want to request. (Without 'http://')</param>
+ * <param name="data">Any POST data you want to send with the request</param>
+ * <param name="callback">Name of the callback function you want to use to handle responses to this
+ * request</param>
+ * <remarks>This function was added in <b>SA-MP 0.3b</b> and will not work in earlier versions!</remarks>
+ * <returns><b><c>1</c></b> on success, <b><c>0</c></b> on failure.</returns>
+ * <remarks>
+ *   <b>Request types:</b><br />
+ *   <ul>
+ *     <li><b><c>HTTP_GET</c></b></li>
+ *     <li><b><c>HTTP_POST</c></b></li>
+ *     <li><b><c>HTTP_HEAD</c></b></li>
+ *   </ul>
+ * </remarks>
+ * <remarks>
+ *   <b>Response codes:</b><br />
+ *   <ul>
+ *     <li><b><c>HTTP_ERROR_BAD_HOST</c></b></li>
+ *     <li><b><c>HTTP_ERROR_NO_SOCKET</c></b></li>
+ *     <li><b><c>HTTP_ERROR_CANT_CONNECT</c></b></li>
+ *     <li><b><c>HTTP_ERROR_CANT_WRITE</c></b></li>
+ *     <li><b><c>HTTP_ERROR_CONTENT_TOO_BIG</c></b></li>
+ *     <li><b><c>HTTP_ERROR_MALFORMED_RESPONSE</c></b></li>
+ *     <li>+ standard HTTP response codes</li>
+ *   </ul>
+ * </remarks>
+ * <example>
+ * 	 <code>
+ *      // HTTP callback. <br />
+ *      public MyHttpResponse(index, responseCode, const data[]) { ... }
+ * 	 </code>
+ * </example>
+ */
+native HTTP(index, HTTP_METHOD:method, const url[], const data[], const callback[]);
+
 
