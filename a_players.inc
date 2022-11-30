@@ -2660,7 +2660,7 @@ native GetPlayerAnimationIndex(playerid); // return the index of any running app
  * <remarks>This function was added in <b>SA-MP 0.3b</b> and will not work in earlier versions!</remarks>
  * <returns><b><c>1</c></b> on success, <b><c>0</c></b> on failure.</returns>
  */
-native GetAnimationName(index, animationLibrary[], len1 = sizeof (animationLibrary), animationName[], len2 = sizeof (animationName)); // get the animation lib/name for the index
+native GetAnimationName(index, const animationLibrary[], len1 = sizeof (animationLibrary), const animationName[], len2 = sizeof (animationName)); // get the animation lib/name for the index
 
 /**
  * <library>a_players</library>
