@@ -2,12 +2,15 @@
 	#endinput
 #endif
 
-#if defined _INC_a_npc
-	#error Include `<a_samp>` or `<a_npc>`, not both.
+#if !defined __PawnBuild
+	// Doesn't support `#warning`.
+	static Using_legacy_wrapper;
+	static Include_open@mp_directly;
+	#include <open.mp>
+	#endinput
 #endif
-#define _INC_a_samp
-#define _samp_included
-
+	
 // This is just a backwards-compatible wrapper.
+#warning Using legacy wrapper.  Include <open.mp> directly.
 #include <open.mp>
 
