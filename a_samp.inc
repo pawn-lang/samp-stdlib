@@ -104,6 +104,8 @@
 #define PLAYER_MARKERS_MODE_STREAMED           (2)
 
 // Weapons
+#define UNKNOWN_WEAPON	                       (-1)
+#define WEAPON_FIST	                       (0)
 #define WEAPON_BRASSKNUCKLE                    (1)
 #define WEAPON_GOLFCLUB                        (2)
 #define WEAPON_NITESTICK                       (3)
